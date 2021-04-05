@@ -1,6 +1,6 @@
-## Variables, Number Systems, and I/O
+# Variables, Number Systems, and I/O
 
-### Variables
+## Variables
 
 **Variables** are what we store _values_ in. A value can be anything from a primitive value, all the way up to an object instance. They're declared like this:
 
@@ -18,9 +18,9 @@ Scanner sinput = new Scanner(System.in);
 int a = sinput.nextInt();
 ```
 
-### Number systems
+## Number systems
 
-#### Two's Complement
+### Two's Complement
 
 _Useful links: [source](https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html#:~:text=Two's%20complement%20is%20the%20way,add%20one%20to%20the%20result.&text=That%20is%20how%20one%20would%20write%20%2D28%20in%208%20bit%20binary.)_ _[conversion tool](https://www.rapidtables.com/convert/number/decimal-to-binary.html)_
 
@@ -47,7 +47,7 @@ For example, given 8 bits and the number -28:
 1 1 1 0 0 1 0 0
 ```
 
-#### Two's Complement: Converting to decimal
+### Two's Complement: Converting to decimal
 It is therefore also possible to convert _from_ Two's Complement; take the number `0xFFFFFFFF` as an example. This is the hex representation of `1111 1111 1111 1111 1111 1111 1111 1111`.
 
 At first glance, we can tell that **this number is negative**, as it has a leading (leftmost) bit set to `1`.
@@ -59,7 +59,7 @@ If you want to see what this number is a negative _of_, then we follow a similar
 
 Therefore, inverting all the bits `0xFFFFFFFF` results in `0000 0000 0000 0000 0000`. Then, adding `1` leads to `0000 0000 0000 0001`, which is the number `1`. Therefore, the _negative_ of `0xFFFFFFFF` is 1, and hence the _value_ is `-1`.
 
-### IEEE 754 notation for floating point numbers
+## IEEE 754 notation for floating point numbers
 
 _Useful links: [GeeksforGeeks (source)](https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/)_ _[Conversion Tool](https://www.h-schmidt.net/FloatConverter/IEEE754.html)_
 
@@ -72,7 +72,7 @@ Before we begin, a brief reminder on fractional binary: `9.125 = 101.001`. We ac
 
 The table is a little janky, but it hopefully gets the point across; you continue in descending powers of 2 as you go rightwards. Anything beyond `2^1` is followed by a decimal place, `.`.
 
-#### Components of the IEEE 754 Floating Point Number
+### Components of the IEEE 754 Floating Point Number
 
 Before diving into the components, it's much better to look at an example. Therefore, take the decimal number `43.625`; this has binary representation `101011.101`. However, we would represent this as `1.01011101` x 2<sup>5</sup>.
 
@@ -87,9 +87,31 @@ With these components established, we can rewrite our previous example, `43.625`
 |-|-|-|-|
 |`0`|`100000`|`01011101000000000000000`| `010000001011101000000000000000` |
 
-#### IEEE 754 Double-precision Number
+### IEEE 754 Double-precision Number
 
 Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.
 
 | Sign (1 bit) (no change) | Exponent (11 bits) (is now **1023 larger**, not 127) | Mantissa (52 bits) | Complete representation is 64 bits |
 |-|-|-|-|
+
+### Special values
+
+IEEE 754 also has some special values you need to keep in mind:
+
+The **exponent bits** = `0000 0000`
+- If the _fraction_ is `0`, the value is `0` or `-0`.
+- Otherwise, renormalise the number with this form: (`-1`)<sup>sign bit</sup> x `0.(fraction)` x 2<sup>-127</sup>
+
+The **exponent bits** = `1111 1111`
+- If the _fraction_ is `0`, the value is `+- infinity`.
+- Otherwise, the value is `NaN`, otherwise known as **not a number**.
+
+## Output
+
+The main content I gleamed from this was to be familiar with the three Linux streams:
+
+| Stream | Purpose | Example |
+|-|-|-|
+| `System.in` | Collect input | `Scanner` uses this stream to collect user input |
+| `System.out` | Send normal output | Your typical `System.out.println()` will output to this stream |
+| `System.err` | Send output when there is an error | Some IDE's such as Eclipse will output to this stream to highlight text in a different colour |
