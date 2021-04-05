@@ -38,7 +38,7 @@ For example, given 8 bits and the number -28:
 ##### Write out the binary form
 `28 = 0 0 0 1 1 1 0 0`
 ##### Invert the digits
-` 0 0 0 1 1 1 0 0 => 1 1 1 0 0 0 1 1 `
+`0 0 0 1 1 1 0 0 => 1 1 1 0 0 0 1 1`
 ##### Add 1
 ``` 
 1 1 1 0 0 0 1 1
