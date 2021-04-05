@@ -37,7 +37,7 @@ As you can see, this is quite a bit of content. Therefore, it means you can prob
 
 Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
 
-1. [x] [Variables, number systems, and I/O](p1.md) (1 to 4 from above)
+1. [x] [Variables, number systems, and I/O](part1.md) (1 to 4 from above)
 2. [ ] Conditional and iterative statements (5 to 6)
 3. [ ] Arrays, methods, scope and recursion (7 to 9)
 4. [ ] Object oriented programming (10 to 14)
