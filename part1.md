@@ -115,3 +115,33 @@ The main content I gleamed from this was to be familiar with the three Linux str
 | `System.in` | Collect input | `Scanner` uses this stream to collect user input |
 | `System.out` | Send normal output | Your typical `System.out.println()` will output to this stream |
 | `System.err` | Send output when there is an error | Some IDE's such as Eclipse will output to this stream to highlight text in a different colour |
+
+## Casting
+
+Generally speaking, this is the process of **changing the data type** of one piece of data from one type to another. You need to be familiar with the different types (pun not intended) of casting:
+
+| Flavour | Implicit casting | Explicit casting |
+|-|-|-|
+| Definition | No loss of precision | Possible loss of precision |
+| Example | `float pi = 3.141f; double big_pi = pi;` | `float pi = 3.141f; int less_pi = pi;` |
+
+The compiler will 'let you know' (otherwise known as screaming) if you attempt an explicit cast; therefore, proper casting syntax is as follows:
+`{TYPE} cast_var = {TYPE} original_var`, where `{TYPE}` is the _new_ type you want to cast to.
+
+## Lazy and strict evaluation
+
+You will be familiar with both `&/&&` and `|/||`; if you use either of these, your code will still compile correctly. However, one is **strict** whilst the other is **lazy**. If you need a quick way to remember this, a **SINGLE CHARACTER** means **STRICT** evaluation.
+
+The only difference between a strict and a lazy evaluation is how many of the operands are computed; this means that if you are expecting something to happen on the RHS of a comparison, **only a strict evaluation** will execute the LHs as well as the RHS. In essence, a lazy comparison will only execute both operands if needed.
+
+```java
+int a = 5;
+
+// Lazy AND example; the LHS is false, so the overall statement is false. The RHS is not executed, and a = 5.
+if (false && (a++ == 5)) {}
+
+// Strict AND example; the LHS is false, but the RHS is still executed. a = 6 after this, even though the result is false.
+if (false & (a++ == 5)) {}
+
+// Therefore, a lazy OR operator will not execute the RHS if the LHS is true.
+```
