@@ -32,6 +32,8 @@ Two's complement is the way in which computers represent integers. To get the tw
 
 **It is a given** that if the leftmost bit is a `1`, then **this number is negative**.
 
+**⚠ Important:** If you are converting a positive integer _to_ two's complement form, then you simply do a basic conversion. When converting to binary, you only invert the bits if you have a negative number. Similarly, if you see the number `00011110`, this is `30`- you do not need to do the hokey-pokey inversion magic. If you are reading from a binary number, you can either read the basic decimal number _OR_ the decimal from the signed 2's complement. In which case, the number `11111101` would read `253` and `-3` respectively.
+
 For example, given 8 bits and the number -28:
 ##### Write out the binary form
 `28 = 0 0 0 1 1 1 0 0`
