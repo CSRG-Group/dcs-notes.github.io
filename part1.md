@@ -61,7 +61,7 @@ Therefore, inverting all the bits `0xFFFFFFFF` results in `0000 0000 0000 0000 0
 
 ### IEEE 754 notation for floating point numbers
 
-_Sources: [GeeksforGeeks](https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/)_
+_Useful links: [GeeksforGeeks (source)](https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/)_ _[Conversion Tool](https://www.h-schmidt.net/FloatConverter/IEEE754.html)_
 
 Before we begin, a brief reminder on fractional binary: `9.125 = 101.001`. We achieved this result with the following intuition:
 
@@ -80,3 +80,16 @@ Before diving into the components, it's much better to look at an example. There
 There are three basic components which make up the IEEE 754 floating point number:
 1. The **sign of Mantissa**: this is a _single bit_ where a `0` represents a positive number, whilst a `1` represents a negative number.
 2. The **biased exponent**: this is an _eight bit_ exponent field which represents both positive and negative exponents. Therefore, the exponent is **127 greater** than the index for 2<sup>a</sup>. For example, given the index 2<sup>5</sup>, the value of the exponent would actually be `a = 5 + 127 = 132 = 10000100 (binary)`
+3. The **Mantissa**: this is a _twenty-three bit_ field which makes up the numbers to the **left of the exponent**. However, there is **never a leading 0**. Being binary, we **exclude the first 1** to give us more precision. Therefore, `101011101 => 01011101000000000000000`.
+
+With these components established, we can rewrite our previous example, `43.625`, `1.01011101` x 2<sup>5</sup> in IEEE 754 notation:
+| Sign (1 bit) | Exponent (8 bits) | Mantissa (23 bits) | Complete representation |
+|-|-|-|-|
+|`0`|`100000`|`01011101000000000000000`| `010000001011101000000000000000` |
+
+#### IEEE 754 Double-precision Number
+
+Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.
+
+| Sign (1 bit) (no change) | Exponent (11 bits) (is now **1023 larger**, not 127) | Mantissa (52 bits) | Complete representation is 64 bits |
+|-|-|-|-|
