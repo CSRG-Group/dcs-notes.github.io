@@ -145,3 +145,21 @@ if (false & (a++ == 5)) {}
 
 // Therefore, a lazy OR operator will not execute the RHS if the LHS is true.
 ```
+## Pre- and Post-increment
+
+There are two ways to increment a numerical variable using the `++` operation:
+
+| Prefix `++var` | Postfix `var++` |
+|-|-|
+| The value is _incremented first_, and then returned. | The value is _returned first_, and then it is incremented |
+
+I've found that a useful way to remember this is to think of where the `++` is; in the prefix case, the `++` precedes the variable name. Therefore, you can think of the return always happening when you reach the `var`. Hence, prefix `++var` incremements and then returns, whilst postfix `var++` returns and then increments.
+
+## Operator precedence _(BIDMAS on steroids)_
+
+The Java creators realised that they too wanted to implement operator precedence. It follows this order:
+
+| P | U | M | A | S | R | E | S | L | A |
+|-|-|-|-|-|-|-|-|-|-|
+| Postfix | Unary | Muliplicative | Additive | Shift | Relational | Equality | Strict Ops | Lazy Ops | Assignment |
+| `var++` | `++var` | `* / %` | `+ -` | `<<`| `<= < >= >` | `== !=` | `&` | `&&` | `= += -= *= /= ...`|
