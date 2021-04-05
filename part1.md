@@ -58,3 +58,25 @@ If you want to see what this number is a negative _of_, then we follow a similar
 2. Add one
 
 Therefore, inverting all the bits `0xFFFFFFFF` results in `0000 0000 0000 0000 0000`. Then, adding `1` leads to `0000 0000 0000 0001`, which is the number `1`. Therefore, the _negative_ of `0xFFFFFFFF` is 1, and hence the _value_ is `-1`.
+
+### IEEE 754 notation for floating point numbers
+
+_Sources: [GeeksforGeeks](https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/)_
+
+Before we begin, a brief reminder on fractional binary: `9.125 = 101.001`. We achieved this result with the following intuition:
+
+| Binary place values | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>-1</sup> | 2<sup>-2</sup> | 2<sup>-3</sup> |
+|------------|-----|-----|-----|--------|--------|--------|
+| Binary bits| 1 | 0 | 1 | 0 | 0 | 1|
+| Decimal values | 8 | 0 | 1 | 0 | 0 | 0.125 |
+
+The table is a little janky, but it hopefully gets the point across; you continue in descending powers of 2 as you go rightwards. Anything beyond `2^1` is followed by a decimal place, `.`.
+
+#### Components of the IEEE 754 Floating Point Number
+
+Before diving into the components, it's much better to look at an example. Therefore, take the decimal number `43.625`; this has binary representation `101011.101`. However, we would represent this as `1.01011101` x 2<sup>5</sup>.
+
+
+There are three basic components which make up the IEEE 754 floating point number:
+1. The **sign of Mantissa**: this is a _single bit_ where a `0` represents a positive number, whilst a `1` represents a negative number.
+2. The **biased exponent**: this is an _eight bit_ exponent field which represents both positive and negative exponents. Therefore, the exponent is **127 greater** than the index for 2<sup>a</sup>. For example, given the index 2<sup>5</sup>, the value of the exponent would actually be `a = 5 + 127 = 132 = 10000100 (binary)`
