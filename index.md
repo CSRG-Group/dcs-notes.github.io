@@ -1,37 +1,42 @@
-## Welcome to GitHub Pages
+## Welcome to the CS118 revision guide
 
-You can use the [editor on GitHub](https://github.com/arkamnite/cs118.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This is a trial-run to evaluate several things:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+1. How well does an online revision guide (a set of notes) compare to a word-processed alternative in terms of ease of access?
+2. Is it easier to add content to an online version compared to a word-processed alternative?
+3. Is it inherently more difficult to revise from online material?
 
-### Markdown
+It's worth mentioning that whilst I'm more than happy to implement changes, this guide is by no means a guarantee. If at any point I discover that this goes against DCS' anti-plagiarism guidelines, I will immediately take it down. However, that being said, I'm unsure what the policy is on open-book material if it is contributed to by students. By any means, this page will be made private on the day of the exam.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+I _may_ add code examples so as to properly leverage the Github sites functionality. However, I feel I would have to modify the lecture code rather than simply 'borrow' it, which means I may or may not have time to do this.
 
-```markdown
-Syntax highlighted code block
+### Topic progress
 
-# Header 1
-## Header 2
-### Header 3
+There are five broad topics overall which were split into 11 lectures- these specific topics are as follows:
 
-- Bulleted
-- List
+1. Storing values in Java
+2. Primitive types
+3. Operating on variables
+4. Pre- and post-increment
+5. Branching (`if`...`else`)
+6. Bounded and unbounded repetition
+7. Declaring an array
+8. Passing by value (parameters) and passing by reference (objects and arrays)
+9. Recursion definition and requirements
+10. OOP principles
+11. Constructor methods
+12. The `static` keyword
+13. The `super` and `this` keyword
+14. Dynamic polymorphism
+15. Abstract classes and functions
+16. Interfaces
+17. Exceptions
+18. Generics
 
-1. Numbered
-2. List
+As you can see, this is quite a bit of content. Therefore, it means you can probably gauge your current progress by running through this list and asking yourself how much you are familiar with. Anyone who has completed the CS126 coursework should be okay with everything other than _dynamic polymorphism_, _abstract classes_, and perhaps the nuances of _passing by value / reference_.
 
-**Bold** and _Italic_ and `Code` text
+Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/arkamnite/cs118.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+1. Variables, number systems, and I/O
+2. Conditional statements
+3. Iterative statements
