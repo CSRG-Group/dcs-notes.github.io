@@ -84,8 +84,8 @@ There are three basic components which make up the IEEE 754 floating point numbe
 
 With these components established, we can rewrite our previous example, `43.625`, `1.01011101` x 2<sup>5</sup> in IEEE 754 notation:
 | Sign (1 bit) | Exponent (8 bits) | Mantissa (23 bits) | Complete representation |
-|-|-|-|-|
-|`0`|`100000`|`01011101000000000000000`| `010000001011101000000000000000` |
+|--------------|-------------------|--------------------|-------------------------|
+| `0`|`100000`|`01011101000000000000000`| `010000001011101000000000000000` |
 
 ### IEEE 754 Double-precision Number
 
@@ -111,7 +111,7 @@ The **exponent bits** = `1111 1111`
 The main content I gleamed from this was to be familiar with the three Linux streams:
 
 | Stream | Purpose | Example |
-|-|-|-|
+|--------|---------|---------|
 | `System.in` | Collect input | `Scanner` uses this stream to collect user input |
 | `System.out` | Send normal output | Your typical `System.out.println()` will output to this stream |
 | `System.err` | Send output when there is an error | Some IDE's such as Eclipse will output to this stream to highlight text in a different colour |
@@ -121,7 +121,7 @@ The main content I gleamed from this was to be familiar with the three Linux str
 Generally speaking, this is the process of **changing the data type** of one piece of data from one type to another. You need to be familiar with the different types (pun not intended) of casting:
 
 | Flavour | Implicit casting | Explicit casting |
-|-|-|-|
+|---------|------------------|------------------|
 | Definition | No loss of precision | Possible loss of precision |
 | Example | `float pi = 3.141f; double big_pi = pi;` | `float pi = 3.141f; int less_pi = pi;` |
 
