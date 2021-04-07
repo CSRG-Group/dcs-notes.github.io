@@ -1,4 +1,4 @@
-# Inheritance, Abstract Classes, and Interfaces
+# Inheritance, Abstract Classes, nd Interfaces
 
 _A huge thank you to **Justin Tan** for contributing this post._
 
