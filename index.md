@@ -39,7 +39,7 @@ Given the large number of topics, it makes sense to break these down into broade
 
 1. [x] [Variables, number systems, and I/O](part1.md) (1 to 4 from above)
 2. [x] [Conditional and iterative statements](part2.md) (5 to 6)
-3. [ ] Arrays, methods, scope and recursion (7 to 9)
+3. [x] [Arrays, methods, scope and recursion](part3.md) (7 to 9)
 4. [x] [Object oriented programming](part4.md) (10 to 12)
 5. [x] [Abstract classes and inheritance (in progress)](part5.md) (13 to 16)
 6. [ ] Exceptions (17)
