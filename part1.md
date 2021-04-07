@@ -85,7 +85,7 @@ There are three basic components which make up the IEEE 754 floating point numbe
 With these components established, we can rewrite our previous example, `43.625`, `1.01011101` x 2<sup>5</sup> in IEEE 754 notation:
 | Sign (1 bit) | Exponent (8 bits) | Mantissa (23 bits) | Complete representation |
 |--------------|-------------------|--------------------|-------------------------|
-| `0`|`100000`|`01011101000000000000000`| `010000001011101000000000000000` |
+| `0`          | `100000`          | `01011101000000000000000` | `010000001011101000000000000000` |
 
 ### IEEE 754 Double-precision Number
 
