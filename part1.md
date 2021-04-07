@@ -83,6 +83,7 @@ There are three basic components which make up the IEEE 754 floating point numbe
 3. The **Mantissa**: this is a _twenty-three bit_ field which makes up the numbers to the **left of the exponent**. However, there is **never a leading 0**. Being binary, we **exclude the first 1** to give us more precision. Therefore, `101011101 => 01011101000000000000000`.
 
 With these components established, we can rewrite our previous example, `43.625`, `1.01011101` x 2<sup>5</sup> in IEEE 754 notation:
+
 | Sign (1 bit) | Exponent (8 bits) | Mantissa (23 bits) | Complete representation |
 |--------------|-------------------|--------------------|-------------------------|
 | `0`          | `100000`          | `01011101000000000000000` | `010000001011101000000000000000` |
