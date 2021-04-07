@@ -49,7 +49,7 @@ smallArray = largeArray; // This should replace the data pointed to by smallArra
                          // Now, you can access the 6th and 7th elements of smallArray. Don't try this in C.
 ```
 
-ICYMI, the `length` property, which is a part of all arrays in Java, was used to know when to stop iterating.
+ICYMI, the `length` property, which is a part of all arrays in Java, was used to know when to stop iterating. There is a much neater and quicker way of copying across an array, found in the [`arraycopy`](https://docs.oracle.com/javase/7/docs/api/java/lang/System.html) method in the `System` class.
 
 ### Multi-dimensional arrays
 It is also possible to create multi-dimensional arrays; one must simply add another set of square brackets after the first set.
@@ -60,9 +60,9 @@ int[][] twoDArray = new int[20][20];
 
 // Populating a 2D array
 int[][] twoDArrayTwo = { 
-                           { 1, 2, 3 },
-                           { 4, 5, 6 },
-                           { 7, 8, 9 }
+                           { 1, 2, 3 }, // The first element of the outer array
+                           { 4, 5, 6 }, // The second element of the outer array
+                           { 7, 8, 9 }  // The third element of the outer array
                        };
 
 // Assigning to a 2D array
@@ -84,3 +84,85 @@ for (int i = 0; i < arrayOfInts.length; i++) {
   arrayOfInts[i] = new int[i];
 }
 ```
+
+## Methods
+
+You are most likely familiar with methods by now, so this section is simply used to describe the _signature_ of a method and the different keywords you can use.
+
+| Component | Access privileges | Return type | Name | List of function parameters |
+|-----------|-------------------|-------------|------|-----------------------------|
+| Definition | Who can access this method from outside the class? | What type does this method return? | What should the name be? | Which arguments can be provided and used by the method? |
+| Options | `public`, `private`, `protected`. Private means that no other classes can call this method from instances of this class, and `protected` means that only children of the class can call this function. | Any object or primitive type, and `void` for no return. | An ASCII string. | This can be left empty- if you provide arguments, they are in the form `[type] nameOfArgument`. If this is a list, they are comma separated.|
+| Example | `public static`- this can be accessed from outside the class by the compiler, or any other classes. | `void` The main function returns no type. | `main` A special compiler-recognised name that signifies the main entry point. | `(String[] args)` The main method takes an array of strings as an argument. |
+
+### Function overloading
+
+If you have more than one method of the **same name, but different parameter lists**, this is known as **overloading**. The compiler will recognise which method you've called based on the parameters you've given it.
+
+```java
+// Two methods with the same name, and return type, but different parameters
+// If the static keyword scares you, don't worry about it for now.
+public static int integerMethod(int a) { return a; }
+public static int integerMethod() { return 0; }
+
+public static void main(String[] args) {
+  System.out.println("The parameter method: " + integerMethod(5)); // Will print "5";
+  System.out.println("The non-parameter method: " + integerMethod()); // Will print "0";
+}
+```
+
+## Scope
+
+Scope refers to how long a variable is relevant for, and when it becomes relevant. 
+
+As an analogy, imagine if you just moved into a new house and there's no furniture. If you tried to sit down on a specific chair, you wouldn't be able to- there's no chair in the room. You hop onto IKEA / Amazon, and order a chair, and it arrives in the room. The chair is _now in scope_. You can now sit on that chair in particular.
+
+Let's say that you decide not to put the chair away once you're done. You'd rather keep it in the room you're in, and you decide to do this for all the furniture you ever need- you never throw anything away. Your room, just like your computer memory, would soon fill up. Therefore, you realise you should throw some old chairs out- this is throwing the chair _out of scope_. You cannot sit on that chair anymore as you've just thrown it out!
+
+In Java, we have the same analogy, roughly speaking. Our 'room' is defined between any pair of curly braces: `{ }`. Once you reach the end of the curly braces, any variables in there go out of scope. Take a look at this code example:
+
+```java
+public class Room {
+  // Creating a Door object. This will survive until the very last closing brace.
+  public Door doorObject;
+  
+  {
+    // We are creating a chair in this scope.
+    Chair myChair = new Chair(); // Chair object enters scope. Remember, an object is an instance of a class.
+    doChairThings(myChair);
+    shut(doorObject); // The doorObject is still in scope, as we have not left its closing braces yet.
+  } // The myChair variable is no longer in scope once we leave these braces.
+  
+  {
+    // We can create another chair here
+    Chair myChair = new Chair(); // This chair object is not the same as the previous one!
+    smash(myChair); // We won't be smashing the other chair, as the other one is out of scope- there is no 'other'.
+  }
+  
+  doChairThings(myChair); // This will fail, as there's no more 'myChair' in scope.
+  
+  slamDoor(doorObject); // This will work fine, as the doorObject is still in scope.
+  
+} // The doorObject also goes out of scope here.
+```
+
+## Passing by value and passing by reference
+
+### Passing by value
+Only the 8 primitive types are passed by value- and this is always the case. This means that the **value of the variable is copied** when we refer to it. Any changes to the variable do not affect the original variable unless you _assign_ a new value to the _old_ variable, such as `n = n + 1` which increments the value of `n`. When we wrote `n + 1`, this simply copied the value _inside_ `n`, and then returned the incremented value of this. We then had to _assign_ it back to `n`. 
+
+### Passing by reference
+This is not the same for objects, including `String`- objects can be very large and often contain many fields. Therefore, these are passed to functions by passing the _memory address_ of the variable- operating on it will induce changes in the original variable. Therefore, think carefully if you are attempting to **copy a variable** into a new one. (An example of this was when we copied an array previously into a larger one).
+
+## Recursion
+A recursive function is any function that **calls itself**. There are common applications for this when calculating a Fibonacci number, or a factorial of a number. All recursive functions are made up of the following two components:
+- Base case(s). These can be seen as values that are returned when an upper or lower limit(s) is reached.
+- Recursive call(s). These are specific calls to the function again. Remember to use the `return` keyword before a recursive call so that you eventually return the series of computations.
+
+#### Example: factorial
+```
+f(x) = 1              if x = 0          ==> This is the base case
+f(x) = x * f(x - 1)   if x > 0          ==> This is the recursive call
+```
+
+If you are implementing this in any language, you can make the distinction between a base case and a recursive call by using a simple `if...else` statement or a `switch` statement. You must remember to `return` the result of either.
