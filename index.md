@@ -35,6 +35,10 @@ There are five broad topics overall which were split into 11 lectures- these spe
 
 As you can see, this is quite a bit of content. Therefore, it means you can probably gauge your current progress by running through this list and asking yourself how much you are familiar with. Anyone who has completed the CS126 coursework should be okay with everything other than _dynamic polymorphism_, _abstract classes_, and perhaps the nuances of _passing by value / reference_.
 
+### Complete Notes
+
+Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](CS118NotesFull.md).
+
 Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
 
 1. [x] [Variables, number systems, and I/O](part1.md) (1 to 4 from above)
