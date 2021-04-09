@@ -45,6 +45,6 @@ Given the large number of topics, it makes sense to break these down into broade
 2. [x] [Conditional and iterative statements](part2.md) (5 to 6)
 3. [x] [Arrays, methods, scope and recursion](part3.md) (7 to 9)
 4. [x] [Object oriented programming (in progress)](part4.md) (10 to 12)
-5. [x] [Abstract classes and inheritance](part5.md) (13 to 16)
+5. [x] [Abstract classes and inheritance (in progress)](part5.md) (13 to 16)
 6. [ ] Exceptions (17)
 7. [ ] Generics (18)
