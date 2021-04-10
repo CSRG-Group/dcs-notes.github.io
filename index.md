@@ -47,4 +47,4 @@ Given the large number of topics, it makes sense to break these down into broade
 4. [x] [Object oriented programming (in progress)](part4.md) (10 to 12)
 5. [x] [Abstract classes and inheritance](part5.md) (13 to 16)
 6. [ ] Exceptions (17)
-7. [ ] Gener
+7. [ ] Generics (18)
