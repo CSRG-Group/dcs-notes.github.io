@@ -356,21 +356,9 @@ This all seems pretty useless doesn’t it? If we aren’t defining anything con
 Interfaces allow us to give **concrete classes** a certain functionality/property that perhaps isn’t appropriate to define in a subclass-superclass class hierarchy. Lets give an example to explain:
 
 Suppose we have the class hierarchy as shown below, where Animal, Striped, and Plain are abstract classes and the last level of classes are concrete. 
-$$
-\begin{gather}
-\text{Animal} \\
-\swarrow \quad \quad \quad \searrow \\
-\text{Striped} \qquad \quad \text{Plain} \\
-    \;\swarrow 
-        \quad \quad \;\; 
-    \downarrow 
-        \quad \qquad \; 
-    \downarrow  
-        \quad \quad 
-    \searrow \\
-\quad\quad\text{Tiger} \quad\quad\text{Zebra} \;\;\quad\quad \text{Lion} \quad\quad \text{Buffalo} \quad
-\end{gather}
-$$
+
+<img src="C:\Users\tanho\AppData\Roaming\Typora\typora-user-images\image-20210410151212531.png" alt="image-20210410151212531" style="zoom:30%;" />
+
 Suppose now that we want to be able to compare the number of stripes that an animal has. So that we can easily do something like
 
 ```java
