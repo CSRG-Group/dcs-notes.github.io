@@ -357,7 +357,7 @@ Interfaces allow us to give **concrete classes** a certain functionality/propert
 
 Suppose we have the class hierarchy as shown below, where Animal, Striped, and Plain are abstract classes and the last level of classes are concrete. 
 
-<img src="media\ClassDiagram.png" alt="Class Hierarchy Diagram" style="zoom:40%;" />
+<img src="media\ClassDiagram.png" alt="Class Hierarchy Diagram" style="zoom:40%;display:block;margin-left:auto;margin-right:auto;" />
 
 Suppose now that we want to be able to compare the number of stripes that an animal has. So that we can easily do something like
 
