@@ -22,10 +22,6 @@ You will have noticed that these are exception _objects_, which means they are i
 In Java, the `Throwable` class is a superclass of both the `Exception` and the `Error` classes. There is an important distinction to make between the two (Java specification):
 1. An `Error` is a subclass of `Throwable` that indicates a serious problem that a reasonable application _should not try_ to catch.
 2. The `Exception` class and its subclasses are a form of `Throwable` that indicates conditions that a resonable application _might want_ to catch.
-  
-Moreover, there are two forms of `Exception`:
-- Checked exceptions
-- Unchecked exceptions
 
 ## How do you use exceptions? (The `try-catch` statement)
 In order to make your code throw exceptions, you must use a `try-catch` statement. They take the following form:
@@ -55,4 +51,49 @@ If you code doesn't cause any runtime errors, then none of the code in the `catc
 ## Exceptions and inheritance
 
 It is important to note that since exceptions are based on classes, the order in which a superclass exception and a subclass exception is caught has significant implications on your code. Specifically, if the **first `catch` block is a superclass** of another `catch` block, then **the subclass `catch` block will never be executed**
+
+## Checked and unchecked exceptions
+
+Now that we are familiar with `try-catch` statements, we can delve into the difference between checked and unchecked exceptions, and how they must be handled. 
+
+### Checked exceptions (`throws`)
+A checked exception is any exception that **must be checked at compile-time**. For example, you may want to use the `BufferedReader` class to open a file and read the first line, but there are two possible exceptions that could be thrown:
+1. The file does not exist, and would throw a `FileNotFound` exception.
+2. There could be an error when reading a line, which would throw an `IOException` exception.
+
+Both of these exceptions are checked and must be 'caught or declared to be thrown'. Here is an example of code that does not compile due to not checking these exceptions:
+
+```java
+someMethod() {
+   BufferedReader read = new BufferedReader(new FileReader("maybeFile.txt"));
+   String line;
+   while ((line = read.readLine()) != null) {
+      System.out.println("Found line: " + line);   
+   }
+}
+```
+You have two options when it comes to handling checked errors:
+- Surround the two statements in a try-catch block
+- Re-throw the exception using the `throws` keyword
+
+It is almost always better to use the latter option, unless you have a penchant for adding many `try-catch` statements into your code.
+
+#### Using `throws`
+In the example above, the `FileNotFound` exception is a subclass of the `IOException` exception. If you _cast_ (🥁) your mind back to the superclass and subclass scenario, this means we only need to catch the `IOException`, and could maybe query the exception object specifically. The `throws` keyword can be added in the method signature and will handle this for us; we can therefore fix the above code as follows:
+
+```java
+someCompilableMethod() throws IOException {
+   BufferedReader read = new BufferedReader(new FileReader("maybeFile.txt"));
+   String line;
+   while ((line = read.readLine()) != null) {
+      System.out.println("Found line: " + line);   
+   }
+}
+```
+
+### Unchecked exceptions
+
+These are any exceptions that do not need to be checked at compile time 'if they can be thrown by the execution of the method or the constructor and propogate outside the method or constructor boundary'. In English, this means that exceptions that are subclasses of `Error` and `RuntimeException`- for example, trying to divide by 0 will throw the `ArithmeticException`. It does not make sense to _have_ to catch this at compile time, but you can choose to check and handle it in a graceful manner. A final way to decide between which type of exception to use is this (from the Java documents):
+
+_"If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception"_.
 
