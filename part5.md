@@ -1,4 +1,4 @@
-# Inheritance, Abstract Classes, nd Interfaces
+# Inheritance, Abstract Classes, and Interfaces
 
 _A huge thank you to **Justin Tan** for contributing this post._
 
@@ -48,6 +48,10 @@ If we call the `eat()` method from the `chocolate` now we will get
 ```
 This cake tastes amazing!
 ```
+
+### Why inheritance?
+
+You probably already know this, but inheritance means that we can reduce repeated code. Another reason to use inheritance is so that **run-time polymorphism** is possible! We will discuss this in further detail below but essentially it allows us to define a general method for a superclass but do something specific to it depending on the eventual subclass that we have no knowledge of at compile time. 
 
 ### The `super` and `this` keyword
 
@@ -264,4 +268,132 @@ Check out [this](https://dzone.com/articles/everything-about-method-overloading-
 
 ## Abstract Classes
 
-TBC
+If we recall, the motivation behind inheritance is to reduce repeated code and to allow for run-time polymorphism. By now you should realise that each subclass becomes more specific than its superclass, and eventually superclasses become so general that they seem abstract. We can call these general classes **abstract classes**. 
+
+### Properties of abstract classes
+
+Firstly, abstract classes **cannot** be instantiated. The reason is that they are meant to capture common properties and behaviours at an abstract level and are meant to be **extended** (or inherited from) to make a subclass that is more specific. Therefore, there should not be a need to instantiate abstract classes. 
+
+In fact, it would not make sense to instantiate/define and instance of an abstract class because of **abstract methods**. These are methods that would not make sense for the abstract class to define but makes sense for its **subclasses** to define. **Abstract classes** can contain a mix of **abstract methods** and **concrete methods**. 
+
+Lets give an example: 
+
+Suppose that we want define an abstract **Food** class for an online supermarket. (I tried to come up with a better example...:pensive:)
+
+```java
+public abstract class Food {
+    // Protein, carbs, and fats in grams
+    private double protein;
+    private double carbs;
+    private double fats;
+    // Return total amount of calories in a Food (Concrete method)
+    public double calories() {
+        return protein x 4.0 + carbs x 4.0 + fats x 9.0;
+	}
+    // Abstract methods
+   	public abstract String description();
+    public abstract double price();
+}
+```
+
+Here we have defined the **calories** method for the abstract **Food** class. This is a concrete method because all kinds of food will always have a certain amount of *protein*, *carbohyrdates*, and *fat* which will always be 4,4, and 9 calories per gram. Therefore, it makes sense to define a concrete method for all kinds of **Food** (Remember that any subclasses will inherit this method from **Food**). 
+
+Next, there are the abstract methods for **description** and **price**. Since every kind of ingredient/type of food that will be sold at the supermarket is going to be different it doesn’t make sense to define a concrete method for all **Food**. 
+
+However, we know that we want to have a description and price for each item and hence we define these 2 abstract methods for all kinds of **Food**. This makes it compulsory for subclasses to have a specific and concrete definition of these **abstract methods**. This is useful when using **Generics** because any class that extends the abstract **Food** class is guaranteed to have a definition for **description** and **price**. 
+
+Just in case there’s confusion: Inheriting from an abstract class is the same as any normal classes.
+
+```java
+public class NewYorkCheeseCake extends Food {...}
+```
+
+## Interfaces
+
+Now that you have an idea of what an **abstract class** is, what its properties are, and what it is kind of used for, interfaces become really easy to understand. Just think of interfaces as the most abstract class in a hierarchy of classes. This is where there are no **concrete methods** at all and all methods are **abstract**. 
+
+Here is how we define an interface:
+
+```java
+public interface Hi {...}
+```
+
+and this is how we *implement* an interface (I sincerely apologise for my lack of creativity :sob:)
+
+```java
+public class Hi2 implements Hi {...}
+```
+
+### Properties of interfaces
+
+As mentioned earlier, interfaces have no **concrete methods** and all methods are **abstract**.
+
+Just like abstract classes, interfaces **cannot be instantiated**. 
+
+Additionally, interfaces can **only** contain **methods** and the methods cannot be implemented/defined. (They must be left “empty” like abstract methods but they shouldn’t be declared with the keyword **abstract**!)
+
+```java
+public interface Hi {
+    public void method1();
+    public int method2(int a, int b);
+    public boolean method3(int a, Test b);
+    ...
+}
+```
+
+## Multiple inheritance
+
+While Java doesn’t allow multiple inheritance (meaning that we can’t extend from two different superclasses - only 1 superclass per subclass!), Java allows you to implement multiple inheritance because interfaces just require a class that implements it to define a particular method - there is no “inheritance” of a particular definition of a method. 
+
+### Why interfaces?
+
+This all seems pretty useless doesn’t it? If we aren’t defining anything concrete, why bother with interfaces at all? (That’s what I thought too until I was enlightened ​🤯​). 
+
+*We bother because interfaces are used to **encapsulate** a small subset of functionality/a property.* 
+
+#### What does that mean?
+
+Interfaces allow us to give **concrete classes** a certain functionality/property that perhaps isn’t appropriate to define in a subclass-superclass class hierarchy. Lets give an example to explain:
+
+Suppose we have the class hierarchy as shown below, where Animal, Striped, and Plain are abstract classes and the last level of classes are concrete. 
+
+<img src="media\ClassDiagram.png" alt="Class Hierarchy Diagram" style="zoom:40%;display:block;margin-left:auto;margin-right:auto;" />
+
+Suppose now that we want to be able to compare the number of stripes that an animal has. So that we can easily do something like
+
+```java
+Tiger bob = new Tiger();
+Zebra tom = new Zebra();
+bob.compare(tom);
+```
+
+```java 
+bob has more stripes than tom
+```
+
+To do this we can implement the **Comparable** interface (Its in `Java.util`) in the **Striped** class and define the `compareTo()` method for the **Striped** class. 
+
+```java
+public abstract Striped extends Animal implements Comparable<Striped> {
+    private Integer stripes;
+    public String nickname;
+    public Integer getNoOfStripes() {
+        return this.stripes;
+    }
+    // Custom compareTo method
+    @Override
+    public int compareTo(Striped animal) {
+        int comp = this.stripes.compare(animal.getNoOfStripes());
+        if (comp == -1)
+            System.out.println(this.nickname + " has more stripes than " + animal.nickname);
+        else if (comp == 0)
+            System.out.println("They have the same number of stripes");
+        else
+            System.out.println(this.nickname + " has fewer stripes than " + animal.nickname);
+        return comp;
+    }
+}
+```
+
+Now any **Animal** that is **Striped** as well can be compared with each other based on the number of stripes that they have. This may allow additional functionality such as sorting striped animals by the number of stripes they have.
+
