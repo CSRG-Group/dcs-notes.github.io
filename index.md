@@ -14,14 +14,6 @@ We welcome pull requests from anyone who is happy to share their notes, and we w
 
 Currently, all the notes are in markdown (`.md`) format , but we should be able to support any other file formats, for example webpages and PDFs. We would also be very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (And the `ctrl+f` key is going to be used pretty heavily in open book exams).
 
-1. [x] [Variables, number systems, and I/O](part1.md) (1 to 4 from above)
-2. [x] [Conditional and iterative statements](part2.md) (5 to 6)
-3. [x] [Arrays, methods, scope and recursion](part3.md) (7 to 9)
-4. [x] [Object oriented programming (in progress)](part4.md) (10 to 12)
-5. [x] [Abstract classes and inheritance](part5.md) (13 to 16)
-6. [x] [Exceptions](part6.md) (17)
-7. [ ] Generics (18)
-
 ### How to make a pull request
 
 1. On GitHub, on the repository's page (https://github.com/arkamnite/cs118.github.io), click the `Fork repository` button
