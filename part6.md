@@ -97,3 +97,29 @@ These are any exceptions that do not need to be checked at compile time 'if they
 
 _"If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception"_.
 
+## Writing your own exceptions
+
+As stated before, any Exception is just a class that extends the Exception class. Therefore, if you are writing your own exceptions, you should **choose the most specific** exception that **encapsulates your Exception**, and then **extend this**. 
+
+If however you are extending an _unchecked exception_, then you should extend a `RuntimeException`. (Use the criteria above to decide which exception to extend). It is typical for you to add messages and perhaps chain other exceptions together in any custom exceptions- this can be used to **add detail to previous exceptions**.
+
+It is at this point that we can revert to using `if...else` statements to decide when to `throw` (**not `throws`**) our new exception- for example, imagine if you wanted to use a method to raise a number to a certain power, as long as this index was positive:
+
+```java
+int index = -1;
+if (index > 0) {
+   raisePower(5, index);
+} else {
+   // This may or may not be an existing exception- pretend that we've just created it now, and that it extends from an Exception that also takes a debug message to be printed.
+   throw new NegativeExponentException("You asked for a negative exponent: " + index);
+}
+```
+
+## Chaining exceptions
+
+There are four constructors for most `Exception` classes:
+- Default constructor, no parameters
+- Constructor which allows for an error String
+- Two constructors which have space for another `Throwable` class, which allows you to chain exceptions together.
+
+You can use the built-in `Throwable` member methods to find out more about the exception, which will allow you to chain together information and/or exceptions specifically based on the cause of the run-time error. [This page](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html) contains the documentation for the `Throwable` class. You can use that page to check through the methods that you think are relevant to your code in particular, rather than them all being listed here.
