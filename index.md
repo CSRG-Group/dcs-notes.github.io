@@ -1,45 +1,18 @@
-## Welcome to the CS118 revision guide
+# Welcome to the Warwick first year Computer Science revision guide
 
-This is a trial-run to evaluate several things:
+This website is a collection of notes for the modules in the first year computer science degree at the University of Warwick. It is entirely student-run, and not affiliated with or endorsed by the University.
 
-1. How well does an online revision guide (a set of notes) compare to a word-processed alternative in terms of ease of access?
-2. Is it easier to add content to an online version compared to a word-processed alternative?
-3. Is it inherently more difficult to revise from online material?
+## Notes
 
-It's worth mentioning that whilst I'm more than happy to implement changes, this guide is by no means a guarantee. If at any point I discover that this goes against DCS' anti-plagiarism guidelines, I will immediately take it down. However, that being said, I'm unsure what the policy is on open-book material if it is contributed to by students. By any means, this page will be made private on the day of the exam.
+### [CS118](cs118/index.md)
 
-I _may_ add code examples so as to properly leverage the Github sites functionality. However, I feel I would have to modify the lecture code rather than simply 'borrow' it, which means I may or may not have time to do this.
+More modules will be added as we accumulate notes on them.
 
-### Topic progress
+## Contributing
 
-There are five broad topics overall which were split into 11 lectures- these specific topics are as follows:
+We welcome pull requests from anyone who is happy to share their notes, and we will try to provide any attribution you would like for content you contribute.
 
-1. Storing values in Java
-2. Primitive types
-3. Operating on variables
-4. Pre- and post-increment
-5. Branching (`if`...`else`)
-6. Bounded and unbounded repetition
-7. Declaring an array
-8. Passing by value (parameters) and passing by reference (objects and arrays)
-9. Recursion definition and requirements
-10. OOP principles
-11. Constructor methods
-12. The `static` keyword
-13. The `super` and `this` keyword
-14. Dynamic polymorphism
-15. Abstract classes and functions
-16. Interfaces
-17. Exceptions
-18. Generics
-
-As you can see, this is quite a bit of content. Therefore, it means you can probably gauge your current progress by running through this list and asking yourself how much you are familiar with. Anyone who has completed the CS126 coursework should be okay with everything other than _dynamic polymorphism_, _abstract classes_, and perhaps the nuances of _passing by value / reference_.
-
-### Complete Notes
-
-Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](CS118NotesFull.md).
-
-Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
+Currently, all the notes are in markdown (`.md`) format , but we should be able to support any other file formats, for example webpages and PDFs. We would also be very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (And the `ctrl+f` key is going to be used pretty heavily in open book exams).
 
 1. [x] [Variables, number systems, and I/O](part1.md) (1 to 4 from above)
 2. [x] [Conditional and iterative statements](part2.md) (5 to 6)
@@ -48,3 +21,21 @@ Given the large number of topics, it makes sense to break these down into broade
 5. [x] [Abstract classes and inheritance](part5.md) (13 to 16)
 6. [x] [Exceptions](part6.md) (17)
 7. [ ] Generics (18)
+
+### How to make a pull request
+
+1. On GitHub, on the repository's page (https://github.com/arkamnite/cs118.github.io), click the `Fork repository` button
+2. Clone your fork of the repository to your computer by running the command `git clone https://github.com/<YOUR_GITHUB_USERNAME>/cs118.github.io`
+3. Create a new branch on your local repository by running the command `git checkout -b <NEW_BRANCH_NAME>`. Naming the branch as a very brief description of what the change entails is helpful for when accepting pull requests.
+4. Create a new remote for the upstream repository by running the command `git remote add upstream https://github.com/arkamnite/cs118.github.io`
+5. Make your changes/contributions to the repository. This will normally only entail adding files into the appropriate module folder. Then, add and commit your changes to the repository (`git add -A` and `git commit -m "<COMMIT_MESSAGE>"`)
+6. Push your changes to the remote by running the command `git push -u origin <NEW_BRANCH_NAME>`
+7. On GitHub, on the repository's page (https://github.com/arkamnite/cs118.github.io), after the changes have been pushed, a "Compare & pull request" will appear. Click on it, then the "Create pull request" button on the screen, and we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
+
+If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section.
+
+## Contact us
+
+Currently, the main contributors to this project are: Akram (Repository owner), Edmund Goodman, and Yijun Hu
+
+If you have any additional questions, or want to become more involved in this project, please feel free to DM us on WhatsApp or Discord.
