@@ -6,8 +6,16 @@
 
  - Ways to classify programming languages
    	- High and low level languages
-      	- Programming paradigms
-- Java
+      - Low level languages only support simple operations, which they can run very quickly, but are difficult to program complex tasks in due to this restriction
+      - High level languages rely on abstractions on top of low level languages to perform more complex operations, but these operations run slower as they are composed from many smaller ones, and are often less fit for purpose, as they are generic for many use cases
+    - Programming paradigms
+      - Imperative, instructing a machine how to change its state
+        - Procedural - Grouping sequences of instructions into procedures
+        - Object orientated - Grouping data and operations on the data together to model systems
+      - Declarative, declaring the properties of the desired result, but not how to compute it
+        - Functional - Declaring the result as the value of a sequence of function applications
+        - Logical - Declaring the result as the answer to a question composed of a set of axioms and inference rules
+- Java is an object orientated programming language
   - Provides automatic memory management, called garbage collection
   - Error checks at both compile and runtime
   - Doesn't compile straight to machine code like most compiled languages, but instead to "bytecode", which is not human-readable, but is portable between machines, unlike machine code, which is specific to an individual machines architecture/instruction set
@@ -54,7 +62,7 @@
   - `long`, $-2^{63}$ to $2^{63}-1$ (8 bytes)
   - `float`, -3.4e38 and 3.4e38 with 6 to 7 significant digits of accuracy (32 bits)
   - `double`, -1.7e308 and 1.7e308 with 14 to 15 significant digits of accuracy (64 bits)
-- Java primitives are data types where the data value is stored directly in memory, as opposed to a reference to it being stored (as is done for library or user defined objects). There only are eight java primitives `byte`, `short`, `int`, `long`, `char`, `boolean`, `float` and `double`.
+- Java primitives are data types where the data value is stored directly in memory, as opposed to a reference to it being stored (as is done for library or user defined objects). There only are eight java primitives `byte`, `short`, `int`, `long`, `char`, `boolean`, `float` and `double`. Primitives have default values they take when initialised, but not set to a value, for most numeric types, this is $0$.
 - Precision and casting
   - Sometimes, we may want to change the precision the data type storing a value can support. We do this in a process called (type) casting, of which there are two types
     - Explicit/narrowing casting is when the value is moved to a data type which supports less precision. Data can (possibly) be lost in this operation. This most be indicated with a forced cast, which brackets to show it, e.g. `float wideValue = 3.141f; int narrowedValue = (int) wideValue`
@@ -223,9 +231,26 @@
 - Classes are the "blueprint" for objects, defining what data will be stored, and the implementation of the algorithms on it, whereas objects are "instances" of classes, containing the data, and allowing the operations to be performed on it
 - The `class` keyword defines a new class, and `public` classes need their own file (by convention, classes start with a capital letter)
 - Constructor methods are special methods that have the same name as the class and return no value. They "set up" the object, normally assigning values to variables. (Objects needn't have constructors, they are merely overriding the default constructor, which performs no operations)
+- New instances of an object are created using the `new` keyword, which allocates space in memory and calls the constructor. If an object is initialised but not instantiated, it takes the special `null` value as with arrays
 - The `this` keyword refers to class variables. It can be omitted normally, unless there is a name clash with a local variable of the same name.
 - Objects are created from classes using the `new` keyword. This reserves space in memory for the default values of the object, and calls the constructor
 - To compare objects, we need to use the `.equals()` method, which compares the state of the all variables within the object (and can be overridden), as opposed to the `==` operator, which compares the actual memory location, so would only return true for two references to the same object instance, not just two objects with the same values
+
+## Pillars of object orientated programming (Additional)
+
+There is some argument over the number of "pillars", but the four commonly accepted ones are:
+
+- Abstraction
+  - "Exposing essential features, whilst hiding irrelevant detail" 
+  - Used so that the purpose/interface of a function can be separated from its implementation, making code re-usable, more understandable, and easier to modify (won't break things, changes need to be made in fewer places)
+- Encapsulation
+  - "Bundling data and operations that can be performed on that data together - leads to data hiding"
+  - "the action of enclosing something in or as if in a capsule", so that an object controls its own internal state, and should only be able to be changed through its interface. This is often implemented through/results in data hiding, which is removing access to variables within a class by making the `private`, and then providing getters and setters, rather than direct access to the data.
+- Inheritance
+  - "Creating new classes from existing ones, reducing programmer effort"
+  - "Allowing an object to acquire the properties and methods of another object", so that code can be re-used, along with helping abstractions and hierarchy.
+- Polymorphism (definition "the condition of occurring in several different forms")
+  - Using objects that can take many forms - allows us to invoke operations from derived classes while using a base class reference at run-time
 
 ## Modifiers
 
@@ -264,7 +289,7 @@
   - We call the "parent" a base of a super class
   - We call the "child" a derived or sub class
   - A class is indicated as inheriting from a superclass using the `extends` keyword, e.g. `public class Lion extends Cat`. Classes can only inherit from one superclass in Java (but sometimes more in other languages)
-  - A subclass inherits all the properties from its superclass, and may have some additional ones of its own, and/or override some of the parents
+  - A subclass inherits all the properties from its superclass, and may have some additional ones of its own, and/or override some of the parents, however, it must not remove methods from the parent class (known as Liskov substitution principle - not examined)
   - Overriding is when a subclass changes the definition of a function defined by its superclass. It is somewhat like overloading with different numbers of parameters for methods. If a method defined in the superclass is re-defined for the subclass, it will override it. This means that instances of the superclass will run the superclass definition, but those of the subclass will run the subclass definition, without the parent class being modified, and the subclass still retaining all other parent properties without having to redefine them
   - The `super` keyword is like the `this` keyword for the superclass. We can then use `super()` to call the superclass constructor in the subclass, so it doesn't need to be redefined (it must be the first thing that happens in the subclass constructor)
   - `protected` properties cannot be "seen" externally, but can be "seen" by subclasses, meaning we needn't go through or define accessor methods for such properties
@@ -273,20 +298,22 @@
   - "Polymorphism describes its ability to process objects of different types through a single uniform interface"
   - "Inheritance lets us  inherit attributes and methods from another class. Polymorphism  uses those methods to perform different tasks. This allows us to perform a single  action in different ways." (https://www.w3schools.com/java/java_polymorphism.asp)
   - We can pass `Object` classes into any method that takes any non-primitive type, since everything is a subclass of it
-  - Static polymorphism implements method overloading, as it decides which method to call dependent on the parameters it has been provided with
-  - Dynamic polymorphism allows us to cast objects which are stored in their superclass to their subclass, so we can use their subclass interfaces
+  - Static vs dynamic polymorphism
+    - Static polymorphism occurs at compile time, for example method overloading an overriding, as different behaviour is exhibited by the same method dependent on the input types
+    - Dynamic polymorphism occurs at runtime, and allows us to cast objects which are stored in their superclass to their subclass, so we can use their subclass interfaces
   - The `instanceof` keyword tells us whether an object is of a given type of class. We can use this to check when we need to cast objects so we can use their appropriate interfaces
 
 ## Abstract classes and interfaces
 
 - In object orientated programming, each subclass is more specific than its superclass, and each superclass more general than its subclass. At some point, superclasses become so general they become what we call "abstract"
   - Abstract classes are a special type of class which allow us to capture common properties and behaviours at an abstract level. The `abstract` keyword is added to the class signature denotes them, e.g. `public abstract class Feline`
-  - They cannot be initialised
+  - They cannot be initialised, and so don't need a constructor method
   - They can contain a mix of abstract and concrete methods (again, `abstract` keyword added to method signature)
     - Abstract methods are ones which must be provided by all subclasses, but will be different for different subclasses, so no implementation is given
     - Concrete methods are ones which will be the same for all subclasses, so they are fully defined, and will just be inherited as usual into the subclasses
   - Concrete (i.e. default/normal) classes can then inherit from abstract classes
     - We can omit any concrete definitions/variable instantiations which are inherited, but **must** provide implementations for all abstract functions
+  - They needn't implement all of the methods a subclass will provide
 - Eventually, we end up in a situation where abstract classes contain only abstract methods. This is then called an "interface". This time, the `interface` keyword is used instead of the `abstract` one
   - Interfaces can only contain methods without implementations, but these these methods shouldn't be declared `abstract` nor `interface` merely the method signature provided.
   - Whilst only one class can be inherited, multiple interfaces can be "implemented". This is to avoid the issue of two superclasses providing different implementations for the same method
@@ -307,7 +334,7 @@
     - Exceptions are "conditions that a reasonable application might want to catch"
   - There are two types of exceptions
     - Checked exceptions, which must be caught or re-thrown for the code to compile
-    - Unchecked exceptions are subclasses of either Error or RuntimeException. The do not need to be specifically thrown, and while they can be caught, they don't need to be for compilation
+    - Unchecked exceptions are subclasses of either Error or RuntimeException. They do not need to be specifically thrown, and while they can be caught, they don't need to be for compilation
   - Custom exceptions can be written
     - The exception should inherit from the most specific exception class that encapsulates it
     - Normally, they are just defined as inheriting from the superclass exception, then overriding the 4 polymorphic constructors to provide appropriate error messages etc.
