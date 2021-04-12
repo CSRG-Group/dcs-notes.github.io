@@ -1,10 +1,14 @@
 # Welcome to the Warwick first year Computer Science revision guide
 
-This website is a collection of notes for the modules in the first year computer science degree at the University of Warwick. It is entirely student-run, and not affiliated with or endorsed by the University.
+This website is a collection of notes for the modules in the first year computer science degree at the University of Warwick.
+
+It is entirely student-run, and not affiliated with or endorsed by the University. If at any point we are told this goes against DCS anti-plagiarism guidelines, or any other policy, we will immediately take it down. Additionally, we cannot provide guarantees that all the notes are correct as all content is written by students, however, we will try our hardest to maintain quality.
 
 ## Notes
 
 ### [CS118](cs118/index.md)
+
+### [CS130](cs130/index.md)
 
 More modules will be added as we accumulate notes on them.
 
@@ -12,7 +16,7 @@ More modules will be added as we accumulate notes on them.
 
 We welcome pull requests from anyone who is happy to share their notes, and we will try to provide any attribution you would like for content you contribute.
 
-Currently, all the notes are in markdown (`.md`) format , but we should be able to support any other file formats, for example webpages and PDFs. We would also be very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (And the `ctrl+f` key is going to be used pretty heavily in open book exams).
+Currently, all the notes are in markdown (`.md`) format, but we should be able to support any other file formats, for example webpages and PDFs. We would also be very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (the `ctrl+f` key is going to be used pretty heavily in open book exams).
 
 ### How to make a pull request
 
