@@ -48,7 +48,7 @@ Along with topics with odd nuances, again including but not limited to:
 
 ### Complete Notes
 
-Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](combined.md).
+Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](combined.html).
 
 Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
 
