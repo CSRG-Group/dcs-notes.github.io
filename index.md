@@ -10,6 +10,8 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ### [CS130](cs130/index.md)
 
+### [CS140](cs140/index.md)
+
 More modules will be added as we accumulate notes on them.
 
 ## Contributing
