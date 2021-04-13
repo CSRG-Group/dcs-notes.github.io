@@ -1,6 +1,6 @@
-# cs118.github.io
+# dcs-notes.github.io
 
-~~CS118: Programming for Computer Scientists.~~ Warwick first year Computer Science
+Warwick first year Computer Science
 
 Thank you for visiting this site! This repository contains a collection of notes for the modules in the first year computer science degree at the University of Warwick. It is entirely student-run, and not affiliated with or endorsed by the University.
 
