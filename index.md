@@ -20,7 +20,7 @@ Currently, all the notes are in markdown (`.md`) format, but we should be able t
 
 ### How to make a pull request
 
-1. On GitHub, on the repository's page (https://github.com/arkamnite/cs118.github.io), click the `Fork repository` button
+1. On GitHub, on the repository's page (https://github.com/arkamnite/dcs-notes.github.io), click the `Fork repository` button
 2. Clone your fork of the repository to your computer by running the command `git clone https://github.com/<YOUR_GITHUB_USERNAME>/cs118.github.io`
 3. Create a new branch on your local repository by running the command `git checkout -b <NEW_BRANCH_NAME>`. Naming the branch as a very brief description of what the change entails is helpful for when accepting pull requests.
 4. Create a new remote for the upstream repository by running the command `git remote add upstream https://github.com/arkamnite/cs118.github.io`
