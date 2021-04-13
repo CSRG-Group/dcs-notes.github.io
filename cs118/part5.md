@@ -26,7 +26,7 @@ public static main(String[] args) {
 }
 ```
 
-Because we haven’t specified anything in the `Cake` class yet the output we get is still: 
+Because we haven’t specified anything in the `Cake` class yet the output we get is still:
 
 ```
 This tastes amazing!
@@ -51,7 +51,7 @@ This cake tastes amazing!
 
 ### Why inheritance?
 
-You probably already know this, but inheritance means that we can reduce repeated code. Another reason to use inheritance is so that **run-time polymorphism** is possible! We will discuss this in further detail below but essentially it allows us to define a general method for a superclass but do something specific to it depending on the eventual subclass that we have no knowledge of at compile time. 
+You probably already know this, but inheritance means that we can reduce repeated code. Another reason to use inheritance is so that **run-time polymorphism** is possible! We will discuss this in further detail below but essentially it allows us to define a general method for a superclass but do something specific to it depending on the eventual subclass that we have no knowledge of at compile time.
 
 ### The `super` and `this` keyword
 
@@ -61,7 +61,7 @@ The `this` keyword is used to refer to the current instance of the class. In a s
 
 The superclass’s constructor should be the first thing that you call when defining the subclass constructor - especially if there are parameters that the `super` constructor must take. Otherwise, Java will call the default (no argument) `super ` constructor `super()` - and if it is meant to take parameters you will get a compile-time error.
 
-If your subclass happens to have 2 constructors then one of them should call the other constructor with `this()` and the other should have `super()` in it. 
+If your subclass happens to have 2 constructors then one of them should call the other constructor with `this()` and the other should have `super()` in it.
 
 ### Method overriding
 
@@ -144,7 +144,7 @@ Hi cake!
 
 On the other hand, **Dynamic Polymorphism** is run-time polymorphism - Java will determine what class to treat a specific object when the program is executed.
 
-Lets look an example before elaborating. Adding on to our previous two classes `Food` and `Cake`, lets introduce two new classes `Apple` and `Hungryboi`: 
+Lets look an example before elaborating. Adding on to our previous two classes `Food` and `Cake`, lets introduce two new classes `Apple` and `Hungryboi`:
 
 ```java
 public class Food {
@@ -183,7 +183,7 @@ public static void main(String[] args) {
     Food redApple   = new Apple();
     Food cheeseCake = new Cake();
     Object random   = new Cake();
-    
+  
     // Remember that the digest method calls the eat method
     // in the Food, Apple, and Cake class
     me.digest(somefood); 
@@ -215,7 +215,7 @@ true
 
 The reason why line 2 and line 3 show the output for the `Apple` and `Cake` class respectively is because even though they are declared as a `Food` type, Java resolves their types at run-time. Java is able to tell that one is the `Apple` subclass, and the other is the `Cake` subclass, and it calls the appropriate subclass methods.
 
-This **only** works because the `Food` class also has the `eat()` method defined. If we wanted to use a method that is only defined in the `Cake` class, then we would have to cast `cheeseCake` to a `Cake`. 
+This **only** works because the `Food` class also has the `eat()` method defined. If we wanted to use a method that is only defined in the `Cake` class, then we would have to cast `cheeseCake` to a `Cake`.
 
 ```java
 public class Cake extends Food {
@@ -242,7 +242,7 @@ public static void main(String[] args) {
 
 #### Something to note:
 
-If you’re on Java SE 15 or newer and try this line of code below - you will get an error. 
+If you’re on Java SE 15 or newer and try this line of code below - you will get an error.
 
 ```java
 System.out.println(cheeseCake instanceof Hungryboi)
@@ -256,11 +256,11 @@ That’s because at compile-time, Java knows casting fails so `instanceof ` comp
 
 **Static polymorphism** has to deal with polymorphism at compile-time. This usually refers to method overloading where a single method name can refer to a range of methods that differ by either the **type** of their parameters or the **number** of parameters they have. The Java compiler identifies this at compile-time and it is converted into byte-code for the JVM (Java Virtual Machine) to interpret, which then converts the byte-code to the native machine code and executes the program.
 
-**Dynamic polymorphism** refers to polymorphism at run-time, this is because the JVM decides which method is to be called only at run-time. At compile-time, calling a method is considered by its reference type (e.g. `Food somefood` is of type food where `somefood` is the reference). At run-time, the specific method that is called will be decided by the type of the object that the reference is pointing to/holding (e.g. `Food somefood = new Cake()`, so the methods that will be called will be from the `Cake` class). Here we say that it is resolved at run-time because the compiler does not know if the method has been overridden or not ([N. Joshi, 2019](https://dzone.com/articles/how-does-jvm-handle-polymorphism-method-overloadin#logical-way:~:text=considered from the reference type. But,object which the reference is holding.)). 
+**Dynamic polymorphism** refers to polymorphism at run-time, this is because the JVM decides which method is to be called only at run-time. At compile-time, calling a method is considered by its reference type (e.g. `Food somefood` is of type food where `somefood` is the reference). At run-time, the specific method that is called will be decided by the type of the object that the reference is pointing to/holding (e.g. `Food somefood = new Cake()`, so the methods that will be called will be from the `Cake` class). Here we say that it is resolved at run-time because the compiler does not know if the method has been overridden or not ([N. Joshi, 2019](https://dzone.com/articles/how-does-jvm-handle-polymorphism-method-overloadin#logical-way:~:text=considered from the reference type. But,object which the reference is holding.)).
 
 ### Method overloading vs overriding
 
-Two methods are **overloaded** when they have the same name but different types/number of arguments (essentially their list of arguments must look different). Other than that, overloaded methods can return different types, do different things or throw different exceptions. Method overloading can happen in the same class or in subclasses. 
+Two methods are **overloaded** when they have the same name but different types/number of arguments (essentially their list of arguments must look different). Other than that, overloaded methods can return different types, do different things or throw different exceptions. Method overloading can happen in the same class or in subclasses.
 
 A method from a subclass **overrides** a method from a superclass when it has the same name and same type and number of arguments. There are a set of rules that the subclass method must abide to such as having the same return type, must have the same or less restrictive access modifier, and must not throw new or broader checked exceptions. Method overriding can only happen to inherited methods, which imply that it can only happen between subclasses and their superclass(es).
 
@@ -268,15 +268,15 @@ Check out [this](https://dzone.com/articles/everything-about-method-overloading-
 
 ## Abstract Classes
 
-If we recall, the motivation behind inheritance is to reduce repeated code and to allow for run-time polymorphism. By now you should realise that each subclass becomes more specific than its superclass, and eventually superclasses become so general that they seem abstract. We can call these general classes **abstract classes**. 
+If we recall, the motivation behind inheritance is to reduce repeated code and to allow for run-time polymorphism. By now you should realise that each subclass becomes more specific than its superclass, and eventually superclasses become so general that they seem abstract. We can call these general classes **abstract classes**.
 
 ### Properties of abstract classes
 
-Firstly, abstract classes **cannot** be instantiated. The reason is that they are meant to capture common properties and behaviours at an abstract level and are meant to be **extended** (or inherited from) to make a subclass that is more specific. Therefore, there should not be a need to instantiate abstract classes. 
+Firstly, abstract classes **cannot** be instantiated. The reason is that they are meant to capture common properties and behaviours at an abstract level and are meant to be **extended** (or inherited from) to make a subclass that is more specific. Therefore, there should not be a need to instantiate abstract classes.
 
-In fact, it would not make sense to instantiate/define and instance of an abstract class because of **abstract methods**. These are methods that would not make sense for the abstract class to define but makes sense for its **subclasses** to define. **Abstract classes** can contain a mix of **abstract methods** and **concrete methods**. 
+In fact, it would not make sense to instantiate/define and instance of an abstract class because of **abstract methods**. These are methods that would not make sense for the abstract class to define but makes sense for its **subclasses** to define. **Abstract classes** can contain a mix of **abstract methods** and **concrete methods**.
 
-Lets give an example: 
+Lets give an example:
 
 Suppose that we want define an abstract **Food** class for an online supermarket. (I tried to come up with a better example...:pensive:)
 
@@ -296,11 +296,11 @@ public abstract class Food {
 }
 ```
 
-Here we have defined the **calories** method for the abstract **Food** class. This is a concrete method because all kinds of food will always have a certain amount of *protein*, *carbohyrdates*, and *fat* which will always be 4,4, and 9 calories per gram. Therefore, it makes sense to define a concrete method for all kinds of **Food** (Remember that any subclasses will inherit this method from **Food**). 
+Here we have defined the **calories** method for the abstract **Food** class. This is a concrete method because all kinds of food will always have a certain amount of *protein*, *carbohyrdates*, and *fat* which will always be 4,4, and 9 calories per gram. Therefore, it makes sense to define a concrete method for all kinds of **Food** (Remember that any subclasses will inherit this method from **Food**).
 
-Next, there are the abstract methods for **description** and **price**. Since every kind of ingredient/type of food that will be sold at the supermarket is going to be different it doesn’t make sense to define a concrete method for all **Food**. 
+Next, there are the abstract methods for **description** and **price**. Since every kind of ingredient/type of food that will be sold at the supermarket is going to be different it doesn’t make sense to define a concrete method for all **Food**.
 
-However, we know that we want to have a description and price for each item and hence we define these 2 abstract methods for all kinds of **Food**. This makes it compulsory for subclasses to have a specific and concrete definition of these **abstract methods**. This is useful when using **Generics** because any class that extends the abstract **Food** class is guaranteed to have a definition for **description** and **price**. 
+However, we know that we want to have a description and price for each item and hence we define these 2 abstract methods for all kinds of **Food**. This makes it compulsory for subclasses to have a specific and concrete definition of these **abstract methods**. This is useful when using **Generics** because any class that extends the abstract **Food** class is guaranteed to have a definition for **description** and **price**.
 
 Just in case there’s confusion: Inheriting from an abstract class is the same as any normal classes.
 
@@ -310,7 +310,7 @@ public class NewYorkCheeseCake extends Food {...}
 
 ## Interfaces
 
-Now that you have an idea of what an **abstract class** is, what its properties are, and what it is kind of used for, interfaces become really easy to understand. Just think of interfaces as the most abstract class in a hierarchy of classes. This is where there are no **concrete methods** at all and all methods are **abstract**. 
+Now that you have an idea of what an **abstract class** is, what its properties are, and what it is kind of used for, interfaces become really easy to understand. Just think of interfaces as the most abstract class in a hierarchy of classes. This is where there are no **concrete methods** at all and all methods are **abstract**.
 
 Here is how we define an interface:
 
@@ -328,12 +328,17 @@ public class Hi2 implements Hi {...}
 
 As mentioned earlier, interfaces have no **concrete methods** and all methods are **abstract**.
 
-Just like abstract classes, interfaces **cannot be instantiated**. 
+Just like abstract classes, interfaces **cannot be instantiated**.
 
-Additionally, interfaces can **only** contain **methods** and the methods cannot be implemented/defined. (They must be left “empty” like abstract methods but they shouldn’t be declared with the keyword **abstract**!)
+Additionally, interfaces can **only** contain:
+
+1. Fields which are *public static final* and if not specified are defaulted to this
+2. Methods which are not defined/implemented. (They must be left “empty” like abstract methods but they shouldn’t be declared with the keyword **abstract**!)
 
 ```java
 public interface Hi {
+    int var1 = 1;
+    public static final int var2 = 2;
     public void method1();
     public int method2(int a, int b);
     public boolean method3(int a, Test b);
@@ -343,19 +348,19 @@ public interface Hi {
 
 ## Multiple inheritance
 
-While Java doesn’t allow multiple inheritance (meaning that we can’t extend from two different superclasses - only 1 superclass per subclass!), Java allows you to implement multiple inheritance because interfaces just require a class that implements it to define a particular method - there is no “inheritance” of a particular definition of a method. 
+While Java doesn’t allow multiple inheritance (meaning that we can’t extend from two different superclasses - only 1 superclass per subclass!), Java allows you to implement multiple inheritance because interfaces just require a class that implements it to define a particular method - there is no “inheritance” of a particular definition of a method.
 
 ### Why interfaces?
 
-This all seems pretty useless doesn’t it? If we aren’t defining anything concrete, why bother with interfaces at all? (That’s what I thought too until I was enlightened ​🤯​). 
+This all seems pretty useless doesn’t it? If we aren’t defining anything concrete, why bother with interfaces at all? (That’s what I thought too until I was enlightened 🤯).
 
-*We bother because interfaces are used to **encapsulate** a small subset of functionality/a property.* 
+*We bother because interfaces are used to **encapsulate** a small subset of functionality/a property.*
 
 #### What does that mean?
 
 Interfaces allow us to give **concrete classes** a certain functionality/property that perhaps isn’t appropriate to define in a subclass-superclass class hierarchy. Lets give an example to explain:
 
-Suppose we have the class hierarchy as shown below, where Animal, Striped, and Plain are abstract classes and the last level of classes are concrete. 
+Suppose we have the class hierarchy as shown below, where Animal, Striped, and Plain are abstract classes and the last level of classes are concrete.
 
 <img src="..\media\ClassDiagram.png" alt="Class Hierarchy Diagram" style="zoom:40%;display:block;margin-left:auto;margin-right:auto;" />
 
@@ -367,11 +372,11 @@ Zebra tom = new Zebra();
 bob.compare(tom);
 ```
 
-```java 
+```java
 bob has more stripes than tom
 ```
 
-To do this we can implement the **Comparable** interface (Its in `Java.util`) in the **Striped** class and define the `compareTo()` method for the **Striped** class. 
+To do this we can implement the **Comparable** interface (Its in `Java.util`) in the **Striped** class and define the `compareTo()` method for the **Striped** class.
 
 ```java
 public abstract Striped extends Animal implements Comparable<Striped> {
@@ -396,4 +401,3 @@ public abstract Striped extends Animal implements Comparable<Striped> {
 ```
 
 Now any **Animal** that is **Striped** as well can be compared with each other based on the number of stripes that they have. This may allow additional functionality such as sorting striped animals by the number of stripes they have.
-
