@@ -62,10 +62,13 @@ public class Main{
     switch (c){
       case RED:
         System.out.println("Colour is red");
+        break;
       case BLUE:
         System.out.println("Colour is blue");
+        break;
       case GREEN:
         System.out.println("Colour is green");
+        break;
     }
   }
 }
