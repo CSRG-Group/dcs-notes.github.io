@@ -40,13 +40,36 @@ switch (variable) {
 ```
 
 The eagle-eyed amongst you will notice that each case is matched on an **equality** basis- not using `equals()` or `compareTo()`. Therefore, **switch cases only work for the following primitives:**
-- long
 - int
 - short
 - byte
 - char
 
-You will not be able to use switch cases on instances of classes / objects!
+Switch statements will also work on enumerated types (enums), `String`s, and objects that wrap the corresponding primitives:
+- Character
+- Byte
+- Short
+- Integer
+
+An example of a switch on a enum:
+
+```java
+public class Main{
+  enum Colour{RED,GREEN,BLUE}
+
+  public static void main(String[] args) {
+    Colour c = Colour.RED;
+    switch (c){
+      case RED:
+        System.out.println("Colour is red");
+      case BLUE:
+        System.out.println("Colour is blue");
+      case GREEN:
+        System.out.println("Colour is green");
+    }
+  }
+}
+```
 
 There are a few caveats to take away from this:
 - `switch` statements are evaluated bottom to top
