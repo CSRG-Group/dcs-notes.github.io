@@ -26,7 +26,7 @@ Currently, all the notes are in markdown (`.md`) format, but we should be able t
 4. Create a new remote for the upstream repository by running the command `git remote add upstream https://github.com/arkamnite/cs118.github.io`
 5. Make your changes/contributions to the repository. This will normally only entail adding files into the appropriate module folder. Then, add and commit your changes to the repository (`git add -A` and `git commit -m "<COMMIT_MESSAGE>"`)
 6. Push your changes to the remote by running the command `git push -u origin <NEW_BRANCH_NAME>`
-7. On GitHub, on the repository's page (https://github.com/arkamnite/cs118.github.io), after the changes have been pushed, a "Compare & pull request" will appear. Click on it, then the "Create pull request" button on the screen, and we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
+7. On GitHub, on the repository's page (https://github.com/arkamnite/dcs-notes.github.io), after the changes have been pushed, a "Compare & pull request" will appear. Click on it, then the "Create pull request" button on the screen, and we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
 
 If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section.
 
