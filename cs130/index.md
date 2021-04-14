@@ -6,17 +6,17 @@
 
 Detailed typed notes for CS130 by Yijun can be found [here](./content/INDEX.html), with links to each individual section:
 
-1. [x] [Sets](./INDEX.html#sets)
-2. [x] [Propositional logic](./INDEX.html#proplogic)
-3. [x] [Logic of predicates](./INDEX.html#predicates)
-4. [x] [Proofs](./INDEX.html#proofs)
-5. [x] [Relations](./INDEX.html#relations)
-6. [x] [Functions](./INDEX.html#functions)
-7. [x] [Set Cardinality](./INDEX.html#cardinality)
-8. [x] [Graphs](./INDEX.html#graphs)
-9. [x] [Trees](./INDEX.html#trees)
-10. [x] [Partial orders](./INDEX.html#partorder)
-11. [x] [Probability](./INDEX.html#prob)
+1. [x] [Sets](./content/INDEX.html#sets)
+2. [x] [Propositional logic](./content/INDEX.html#proplogic)
+3. [x] [Logic of predicates](./content/INDEX.html#predicates)
+4. [x] [Proofs](./content/INDEX.html#proofs)
+5. [x] [Relations](./content/INDEX.html#relations)
+6. [x] [Functions](./content/INDEX.html#functions)
+7. [x] [Set Cardinality](./content/INDEX.html#cardinality)
+8. [x] [Graphs](./content/INDEX.html#graphs)
+9. [x] [Trees](./content/INDEX.html#trees)
+10. [x] [Partial orders](./content/INDEX.html#partorder)
+11. [x] [Probability](./content/INDEX.html#prob)
 
 
 
