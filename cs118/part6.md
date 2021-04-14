@@ -1,3 +1,5 @@
+<span style="float:left">👈[Exceptions](part6.md)</span>
+<span style="float:right">[Exceptions]👉(part6.md)</span>
 # Error Handling and Exceptions
 
 The original delivery of this content loosely introduced what an exception was, then demonstrated the `try-catch` statement, before explaining more about exceptions, and _then_ demonstrating the `try-catch-finally` statement, before delivering more theory. As a result, I have opted to deliver as much theory as possible at the beginning, before diving into any code examples. If you are looking for the `try-catch` statement and its variant, then this can be found at the bottom of the page.
@@ -123,7 +125,3 @@ There are four constructors for most `Exception` classes:
 - Two constructors which have space for another `Throwable` class, which allows you to chain exceptions together.
 
 You can use the built-in `Throwable` member methods to find out more about the exception, which will allow you to chain together information and/or exceptions specifically based on the cause of the run-time error. [This page](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html) contains the documentation for the `Throwable` class. You can use that page to check through the methods that you think are relevant to your code in particular, rather than them all being listed here.
-
-<hr>
-<span style="float:left">👈[Exceptions](part6.md)</span>
-<span style="float:right">[Exceptions]👉(part6.md)</span>
