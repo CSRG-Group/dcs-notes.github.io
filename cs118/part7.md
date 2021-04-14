@@ -1,3 +1,4 @@
+<a style="float:left" href="part5.html" title="Error Handling and Exceptions">👈Prev</a>
 # Generics and the Java Class Library
 
 By this point, you're most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour. 
@@ -151,9 +152,6 @@ Going through the documentation in this safe space means you can pick up valuabl
 This abruptly brings us to the end of the modular CS118 revision notes! 🎉🎉 Thank you to everyone who submitted content, and remember to contact someone (or submit a pull request) if you spot any errors or would like to make a contribution for any modules, listed or otherwise. I hope by this point, there will be some answers to the questions posed on the CS118 landing page.
 
 Thank you once again for this community effort.
-
-<hr>
-👈[Exceptions](part6.md)
 
 
 

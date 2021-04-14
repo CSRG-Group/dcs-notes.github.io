@@ -1,3 +1,5 @@
+<a style="float:left" href="part3.html" title="Arrays, Methods, Scope, and Recursion">👈Prev</a>
+<a style="float:right" href="part5.html" title="Inheritance, Abstract Classes, and Interfaces">Next👉</a>
 # Object Oriented Programming
 
 ## The 4 Pillars of OOP

@@ -1,3 +1,4 @@
+<a style="float:right" href="part2.html" title="Conditional Statements">Next👉</a>
 # Variables, Number Systems, and I/O
 
 ## Variables
