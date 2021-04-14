@@ -20,6 +20,10 @@ We welcome pull requests from anyone who is happy to share their notes, and we w
 
 Currently, all the notes are in markdown (`.md`) format, but we should be able to support any other file formats, for example webpages and PDFs. We would also be very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (the `ctrl+f` key is going to be used pretty heavily in open book exams).
 
+### Errata
+
+If you think you have found a mistake in any of the notes, please tell us! If you feel comfortable making a pull request or creating an issue, you can make the change yourself by editing the appropriate file (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used). Otherwise, see the "Contact us" section for how to tell us about it (if you know who made the notes, they're probably the best people to ask to get it fixed).
+
 ### How to make a pull request
 
 1. On GitHub, on the repository's page (https://github.com/arkamnite/dcs-notes.github.io), click the `Fork repository` button
@@ -30,7 +34,7 @@ Currently, all the notes are in markdown (`.md`) format, but we should be able t
 6. Push your changes to the remote by running the command `git push -u origin <NEW_BRANCH_NAME>`
 7. On GitHub, on the repository's page (https://github.com/arkamnite/dcs-notes.github.io), after the changes have been pushed, a "Compare & pull request" will appear. Click on it, then the "Create pull request" button on the screen, and we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
 
-If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section.
+If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section to ask us about it.
 
 ## Contact us
 
