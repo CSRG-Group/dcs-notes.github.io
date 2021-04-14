@@ -2,22 +2,39 @@
 
 ## Generics
 
-By this point, you're most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour. Using generics in your code is the final step in making code that is truly reusable- in short, generics allow **stronger type checking at compile-time**. This has one key implication- you are less likely to run into run-time errors if you caught this type of error in advance. Take the following example, where we load a `Stack` which one _type_ of object, and try to read this object as another type:
+By this point, you're most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour. 
+
+Using generics in your code makes it **safer** and **more reusable**, notably it allows
+
+1. stronger type checking at compile-time. 
+2. elimination of type casts
+3. implementation of generic algorithms tailored to different types. 
+
+The key implication of this is that you are less likely to encounter run-time errors because you can you catch type related errors at *compile-time*.
+
+Take the following example, where we load a `Stack` which one _type_ of object, and try to read this object as another type:
 
 ```java
-Stack stack = new Stack(); // Creating a new stack, it simply holds data of type 'Object'
-stack.push("hello"); // String is a subclass of Object and this operation passses
-Integer n = (Integer) stack.pop(); // We are attempting to cast the String object to an Integer Object- this isn't possible at runtime.
+// Creating a new stack, it simply holds data of type 'Object'
+Stack stack = new Stack(); 
+// String is a subclass of Object and this operation passses
+stack.push("hello"); 
+// We are attempting to cast the String object to an Integer Object
+// this isn't possible at runtime.
+Integer n = (Integer) stack.pop(); 
 ```
 Note how when we created the `Stack` object, we didn't specify what type it would hold- this was defined in the `Stack` class itself. This meant there wasn't necessarily a restriction on whether we decided to store a `String` or an `Integer` first. 
 
 Imagine if we had done the following- we create a new subclass of `Stack` that will only store `String` objects in an array, so we cannot store any other type. Our code would look like this:
 ```java
-StringStack stringStack = new StringStack(); // We create a new type of Stack that only stores Strings
-stringStack.push("hello"); // We can push a String onto the StringStack as the class specifies this type.
-Integer n = (Integer) stringStack.pop(); // StringStack specifically returns a String from the top of the stack
-                                         // this cast would fail at compile time, ideally, as the compiler should 
-                                         // know that this is a mismatched type.
+// We create a new type of Stack that only stores Strings
+StringStack stringStack = new StringStack(); 
+// We can push a String onto the StringStack as the class specifies this type.
+stringStack.push("hello");
+// StringStack specifically returns a String from the top of the stack
+// this cast would fail at compile time, ideally, as the compiler should 
+// know that this is a mismatched type.
+Integer n = (Integer) stringStack.pop();
 ```
 
 It would be incredibly tedious to have to create a new type of `Stack` class every time we wanted a different data type to be stored. Luckily, Java enables this behaviour through the use of generics- our code could look roughly like this:
