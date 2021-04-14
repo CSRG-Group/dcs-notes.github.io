@@ -19,12 +19,12 @@ Detailed typed notes for CS130 by Yijun can be found [here](./content/INDEX.html
 Detailed handwritten notes for CS130 by Edmund:
 
 1. [x] [Propositions and predicates](./handwritten/propositionsAndPredicates.pdf)
-2. [ ] [Sets]()
-3. [ ] [Proofs]()
-4. [ ] [Relations]()
-5. [ ] [Functions]()
-6. [ ] [Induction]()
-7. [ ] [Graphs]()
+2. [x] [Sets](./handwritten/sets.pdf)
+3. [x] [Proofs](./handwritten/proofs)
+4. [x] [Relations](./handwritten/relations.pdf)
+5. [x] [Functions](./handwritten/functions.pdf)
+6. [x] [Induction](./handwritten/inductions.pdf)
+7. [x] [Graphs](./handwritten/graphs.pdf)
 8. [ ] [Partial orders]()
 9. [ ] [Trees]()
 10. [ ] [Probability]()
