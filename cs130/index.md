@@ -1,5 +1,9 @@
 ## Welcome to the CS130 revision guide
 
+
+
+### Complete notes
+
 Detailed typed notes for CS130 by Yijun can be found [here](./content/INDEX.html), with links to each individual section:
 
 1. [x] [Sets](./INDEX.html#sets)
@@ -16,7 +20,7 @@ Detailed typed notes for CS130 by Yijun can be found [here](./content/INDEX.html
 
 
 
-Detailed handwritten notes for CS130 by Edmund:
+Detailed handwritten notes for CS130 by Edmund are linked below:
 
 1. [x] [Propositions and predicates](./handwritten/propositionsAndPredicates.pdf)
 2. [x] [Sets](./handwritten/sets.pdf)
@@ -31,11 +35,14 @@ Detailed handwritten notes for CS130 by Edmund:
 
 
 
-Additional notes:
+### Additional notes
 
-- Since the exam is held online this year, questions are likely to be more proof than solution based, so we included notes on proofs
-   - [Proof approaches](./ProofApproaches)
-   - [Types of proof](./TypesOfProof)
+In addition to full notes, there is a condensed "cheat sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
 
 - [General cheat sheet](./CheatSheet)
 
+
+
+Since the exam is held online this year, questions are likely to be more proof than solution based, so we included notes on proofs:
+- [Proof approaches](./ProofApproaches)
+- [Types of proof](./TypesOfProof)
