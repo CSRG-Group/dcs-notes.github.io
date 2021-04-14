@@ -1,4 +1,4 @@
-<a style="float:left" href="part5.html" title="Error Handling and Exceptions">👈Prev</a>
+<a style="float:left" href="part6.html" title="Error Handling and Exceptions">👈Prev</a>
 # Generics and the Java Class Library
 
 By this point, you're most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour. 
