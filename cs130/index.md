@@ -27,7 +27,7 @@ Detailed handwritten notes for CS130 by Edmund are linked below:
 3. [x] [Proofs](./handwritten/proofs)
 4. [x] [Relations](./handwritten/relations.pdf)
 5. [x] [Functions](./handwritten/functions.pdf)
-6. [x] [Induction](./handwritten/inductions.pdf)
+6. [x] [Induction](./handwritten/induction.pdf)
 7. [x] [Graphs](./handwritten/graphs.pdf)
 8. [x] [Partial orders](./handwritten/partialOrders.pdf)
 9. [x] [Trees](./handwritten/trees.pdf)
