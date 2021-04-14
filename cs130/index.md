@@ -39,7 +39,7 @@ Detailed handwritten notes for CS130 by Edmund are linked below:
 
 In addition to full notes, there is a condensed "crib sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
 
-- [General crib sheet](./cheatSheet)
+- [General crib sheet](./cribSheet)
 
 
 
