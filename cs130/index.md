@@ -27,7 +27,7 @@ Detailed handwritten notes for CS130 by Edmund:
 7. [x] [Graphs](./handwritten/graphs.pdf)
 8. [x] [Partial orders](./handwritten/partialOrders.pdf)
 9. [x] [Trees](./handwritten/trees.pdf)
-10. [ ] [Probability]()
+10. [x] [Probability](./handwritten/probability.pdf)
 
 
 
