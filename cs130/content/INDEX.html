@@ -3286,10 +3286,102 @@
             </p>
 
             <p>
-                Probability 06-4 01:36
+                In particular, expectations of the form \(E[X^{k}]\) for a \(k \in \mathbb{Z}^+\) is called the <b>\(k\)<sup>th</sup> moment</b> of \(X\). 
             </p>
 
+            <p>
+                Another, suppose \(m = EX\) (\(m\) is real). Consider a function \(g: \mathbb{R} \longrightarrow \mathbb{R} : g(x) = (x-m)^2\). Then,
+                \[E[g(X)] = E[X-m]^2 = E[X - EX]^2 = \sigma^2 = \textrm{ variance of } x\]
+                This measures how far away values of \(X\) are from its expectation. Typically standard deviation, \(\sigma\) is used instead. Stdev is in the same units as the original measurement.  
+            </p>
+
+            <p class="side">
+                <b><i>Theorem.</i></b> On variance:
+                \[\sigma^2 = E[X^2] - (EX)^2\]
+            </p>
+
+            <button class="collapsible">Proof...</button>
+            <div class="ccontent">
+                <p>
+                    <b><i>Proof.</i></b> Relying on linearity of expectation (and knowing that \(m \in \mathbb{R}\)) - 
+                    \begin{align}
+                    \sigma^2 &= E(X-m)^2 = E[X^2 - 2Xm + m^2] = E[X^2] + E[-2mX] + E[m^2] \\
+                    &= E[X^2] -2m E[X] + m^2\\
+                    &= E[X^2] -2(EX)(EX) + (EX)^2 = E[X^2] - (EX)^2
+                    \end{align}
+                    $$\tag*{$\Box$}$$
+                </p>
+            </div>
+
+            <p class="side">
+                <b><i>Theorem.</i></b> <i>(Markov's inequality)</i> Suppose \(X\) is a random variable, \(X \geq 0\). Then,
+                \[\forall a \in \mathbb{R}_{>0}, \; P(X \geq a) \leq \frac{EX}{a}\]
+                Basically, if you fix the expectation, the larger you want to deviate from 0 the less likely it's going to happen.
+            </p>
+
+            <button class="collapsible">Proof...</button>
+            <div class="ccontent">
+                <p>
+                    <b><i>Proof.</i></b> For a special case, assume the range of X is finite. Thus
+                    \[\exists v_1, v_2, ... , v_n \in \mathbb{R}_{\geq 0} : \sum_{i = 1}^{n} P(X = v_i) = 1.\]
+                    Then,
+                    \[EX = \sum_{i=1}^{n} p_i v_i.\]
+                    Let's then split up these \(v\)s, such that some are strictly less than some value \(a\), and all others are greater than or equal to \(a\). Let's look at the sets \(S = \{i : v_i < a\}\) and \(T = \{i : v_i \geq a\}\). Then,
+                    \[EX = \sum_{i=1}^{n} p_i v_i = \sum_{i \in S} p_i v_i + \sum_{i \in T} p_i v_i\]
+                    Both \(p_i, v_i \geq 0\), thus we can just drop the first term of the sum and replace with a greater than or equal to sign, since it is not negative. Thus,
+                    \[EX = \sum_{i=1}^{n} p_i v_i \geq \sum_{i \in T} p_i v_i.\]
+                    In the second term, all the values are at least \(a\), and therefore
+                    \[\sum_{i \in T} p_i v_i \geq \sum p_i a = a \sum_{i \in T} p_i = aP(X \geq a).\]
+                    \[\textrm{Hence } EX \geq aP(X \geq a \implies P(X \geq a) = \frac{EX}{a}.\]
+                </p>
+                $$\tag*{$\Box$}$$
+            </div>
+
             <h2 id="pro-8">Infinite Sample Spaces and Randomness</h2>
+
+            <p>
+                <i>Note: this is mostly wacky philosophy; if you don't have time don't read this.</i>
+            </p>
+
+            <p>
+                Why do we include \((\Omega, 2^\Omega, P)\)? Mostly, the space of events. We have been using \(2^\Omega\) all the time, but why this specific set?
+            </p>
+
+            <p>
+                Consider we have an experiment, which can yield the values \([0, 1)\), and let's say all numbers are equally likely. How would probabilities be defined for this?
+            </p>
+
+            <p>
+                We have the constraint \(P(x) = P(y) \; \forall x, y, \in [0, 1)\). What does P be? If we have <i>any</i> \(P(x) > 0\), we can just add together \(\frac{1}{P(x)}\) events, and then have a probability greater than 1, which can't happen. 
+            </p>
+
+            <p>
+                So the only logical choice is \(P(x) = 0 \; \forall x \in [0, 1)\). However, now when we take an event (e.g. \([0, \frac{1}{2}]\)), we can no longer say that it is the sum of every elementary outcome, since every elementary outcome has a probability 0. 
+            </p>
+
+            <p>
+                Therefore, we have to rethink our prob. space to only consider certain events \(F \subseteq 2^\Omega\), and thus the space \((\Omega, F, P)\). And we will only define \(P : F \longrightarrow [0, 1]\). <i>The way we actually determine P is not covered</i>.
+            </p>
+
+            <p>
+                Now we want to go deep, and ask what is a random number? Randomness we can say is intrinsic to the experiment, and not necessarily to the outcome. One way we could define this is that we could take an experiment, and when we perform it an increasing number of times, \(\frac{\textrm{Successful trials}}{\textrm{trials}} \longrightarrow a \in \mathbb{R}\). 
+            </p>
+
+            <p>
+                Of course in certain cases this is not so clear cut, where we cannot assign a result via experimentation, and we get uncertainty, probability based on belief. For example, I <i>think</i> there'll be a 0.25 chance of rain, but a 0.75 chance of a clear sky. However if I get a contextual clue that suggests rain, my belief may shift to rain. 
+            </p>
+
+            <p>
+                If we perform an experiment many times, and get a sequence of results HTTHHTHT..., another question one can have is whether this sequence of results is random. Is HHHHHH... 100 times more or less random than HTHTTTHTTHHH...? This is part of a study called algorithmic statistics.
+            </p>
+
+            <p>
+                Finally, related to randomness we have <i>pseudorandomness</i>, which are heavily used in computer science. The idea of pseudorandomness is that <i>randomness is a relative notion</i>. If you see me flip a coin, and it lands on heads, you may think it's random. However, pretend you're some sort of superhero level analytical genius, and can analyse and predict the motion of the coin as it flies, then you will have already known it will land on heads before it heads. Then, it's not really as random. So it depends on the observer.
+            </p>
+
+            <p>
+                The same idea is with pseudorandomness: they suffice as random for the observer, however are actually predetermined.
+            </p>
 
         </div>
 
