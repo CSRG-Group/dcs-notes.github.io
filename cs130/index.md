@@ -25,8 +25,8 @@ Detailed handwritten notes for CS130 by Edmund:
 5. [x] [Functions](./handwritten/functions.pdf)
 6. [x] [Induction](./handwritten/inductions.pdf)
 7. [x] [Graphs](./handwritten/graphs.pdf)
-8. [ ] [Partial orders]()
-9. [ ] [Trees]()
+8. [x] [Partial orders](./handwritten/partialOrders.pdf)
+9. [x] [Trees](./handwritten/trees.pdf)
 10. [ ] [Probability]()
 
 
