@@ -1,10 +1,8 @@
 # Generics and the Java Class Library
 
-## Generics
-
 By this point, you're most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour. 
 
-Using generics in your code makes it **safer** and **more reusable**, notably it allows
+Using **generics** in your code makes it **safer** and **more reusable**, notably it allows
 
 1. stronger type checking at compile-time. 
 2. elimination of type casts
@@ -57,12 +55,13 @@ There are two ways I like to think of generics in Java:
 It therefore goes without saying that you cannot create an object of a class which uses generics without providing which type you'd like to use! In accordance with the analogy above, it would be akin to not putting a head on the screwdriver.
 
 ## Implementing Generics
-Now that you're convinced of their usefulness, here's how you would create a class that utilises generics (the example we'll go for is a `Box` that stores only one type):
+Now that you're convinced of their usefulness, here's how you would create a class that utilises generics (the example we'll go for is a `Box` that stores only one type): <a id="genref">$\;$</a>
 
 ```java
-// Within this class, we will refer to this generic object as 'E'. This can be used like a type-
-// imagine it as a synonym for whatever type you're going to put into the box.
-// 'E' is decided on by Java conventions- it is not enforced by the compiler
+// Within this class, we will refer to this generic object as 'E'. This 
+// can be used like a type - imagine it as a synonym for whatever type 
+// you're going to put into the box.'E' is decided on by Java conventions
+// - it is not enforced by the compiler
 public class GenericBox<E> {
   private E item; // A private member of type E
   
@@ -87,19 +86,19 @@ GenericBox<String> stringBox = new GenericBox<String>("A string in a box");
 GenericBox<Integer> intBox = new GenericBox<Integer>(42);
 
 stringBox.get(); // Will return "A string in a box" in a String object.
-intBox.get(); // Will return 42 in an integer object.
+intBox.get();    // Will return 42 in an integer object.
 ```
 
 You can use multiple generics at the same time- just put the types in a comma-separated list within the diamond brackets:
 ```java
 public class TwoTypes<E, F, G> { ... }
 ```
-You can also enforce a specific requirement for each type- what if you wanted to only store objects that can be compared to one another?
+You can also enforce a **specific restriction** for each type - what if you wanted to only store objects that can be compared to one another?
 ```java
 public class ComparedObjectsOnly<E extends Comparable<E>> { ... }
 ```
 
-In this example, the `Comparable` class constraint is extended by all objects that can be compared to one another using -1, 0, or 1. This also means you can store your own kinds of comparable objects as a generic- it isn't limited to build-in classes such as `String` or `Integer`. It is important to note that **you cannot use primitives with generics**.
+In this example, the `Comparable` class constraint is extended by all objects that can be compared to one another using -1, 0, or 1. This also means you can store your own kinds of comparable objects as a generic - it isn't limited to build-in classes such as `String` or `Integer`. It is important to note that **you cannot use primitives with generics**.
 
 As mentioned earlier, there is a convention that exists when deciding which symbols to use for generics:
 - `E` for Element
@@ -110,9 +109,42 @@ As mentioned earlier, there is a convention that exists when deciding which symb
 
 Some of these will make more sense when you cast your mind back to CS126, and where each of those ideas are used for various data structures.
 
+## Generic Methods
+
+When defining some methods, it might be useful to write generic method that only operate of particular types. For example, lets say you have a `compare` method as shown below:
+
+```java
+public static boolean compare(Pair p1, Pair p2) {
+    return p1.getKey().equals(p2.getKey()) && 
+           p2.getValue().equals(p2.getValue());
+}
+```
+
+With this definition the following code will be valid even though the `Pair` object might contain types that do not match:
+
+```java
+Pair<Integer, String> t1 = new Pair<>(3,"bleh");
+Pair<String, String>  t2 = new Pair<>("hi","bye");
+compare(t1,t2); // Valid even though it doesn't make sense!
+```
+
+Hence, to specify the generic types that the `compare` method will take as parameters, we can define the `compare` method like this:
+
+```java
+public static <K,V> boolean compare(Pair<K,V> p1, Pair<K,V> p2) {
+    // compare...
+}
+```
+
+Now when we try to compare `Pair` objects that contain mismatched types, a compile-time error will appear.
+
+Do note that we won’t have to specify the generics in the method **if** the generics that you want to refer to in the parameters of the method are already defined at the class-level, like it is in the first line of the `GenericBox` class defined <a href="#genref">above</a>. 
+
 ## The Java Class Library
 
-The original lecture for this content spent some time going over the [Java Class Library](https://docs.oracle.com/javase/7/docs/api/)- I felt it would be improper to include lengthy descriptions here, as there is no way to really define what is useful or not. It is up to you to search through the documentation and decide what you find interesting- for a first start, check out the [`util`](https://docs.oracle.com/javase/7/docs/api/) documentation and try and find some classes you recognise, such as `Stack` or `Iterator`. Going through the documentation in this safe space means you can pick up valuable skills on how to read a specification when your IDE does not have any suggestions.
+The original lecture for this content spent some time going over the [Java Class Library](https://docs.oracle.com/javase/7/docs/api/) I felt it would be improper to include lengthy descriptions here, as there is no way to really define what is useful or not. It is up to you to search through the documentation and decide what you find interesting - for a first start, check out the [`util`](https://docs.oracle.com/javase/7/docs/api/) documentation and try and find some classes you recognise, such as `Stack` or `Iterator`. 
+
+Going through the documentation in this safe space means you can pick up valuable skills on how to read a specification when your IDE does not have any suggestions.
 
 # Concluding notes from the author
 
