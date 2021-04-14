@@ -40,7 +40,9 @@ Along with topics with odd nuances, again including but not limited to:
 
 ### Complete Notes
 
-Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](combined.html).
+Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](./combined.html). A cut down version of the notes covering only the non-trivial content can be found on [this page.](cribSheet.html)
+
+
 
 Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
 
@@ -51,3 +53,4 @@ Given the large number of topics, it makes sense to break these down into broade
 5. [x] [Abstract classes and inheritance](part5.md) (13 to 16)
 6. [x] [Exceptions](part6.md) (17)
 7. [x] [Generics](part7.md) (18)
+
