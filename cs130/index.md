@@ -37,12 +37,12 @@ Detailed handwritten notes for CS130 by Edmund are linked below:
 
 ### Additional notes
 
-In addition to full notes, there is a condensed "cheat sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
+In addition to full notes, there is a condensed "crib sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
 
-- [General cheat sheet](./CheatSheet)
+- [General crib sheet](./cheatSheet)
 
 
 
 Since the exam is held online this year, questions are likely to be more proof than solution based, so we included notes on proofs:
-- [Proof approaches](./ProofApproaches)
-- [Types of proof](./TypesOfProof)
+- [Proof approaches](./proofApproaches)
+- [Types of proof](./typesOfProof)
