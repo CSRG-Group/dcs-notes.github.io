@@ -1,3 +1,5 @@
+<a style="float:left" href="part4.html" title="Object Oriented Programming">👈Prev</a>
+<a style="float:right" href="part6.html" title="Error Handling & Exceptions">Next👉</a>
 # Inheritance, Abstract Classes, and Interfaces
 
 _A huge thank you to **Justin Tan** for contributing this post._
