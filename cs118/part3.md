@@ -1,3 +1,5 @@
+<a style="float:left" href="part2.html" title="Conditional Statements">👈Prev</a>
+<a style="float:right" href="part4.html" title="Object Oriented Programming">Next👉</a>
 # Arrays, Methods, Scope, and Recursion
 
 ## Arrays

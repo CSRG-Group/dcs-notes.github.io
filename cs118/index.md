@@ -1,16 +1,6 @@
 ## Welcome to the CS118 revision guide
 
-This is a trial-run to evaluate several things:
-
-1. How well does an online revision guide (a set of notes) compare to a word-processed alternative in terms of ease of access?
-2. Is it easier to add content to an online version compared to a word-processed alternative?
-3. Is it inherently more difficult to revise from online material?
-
-It's worth mentioning that whilst I'm more than happy to implement changes, this guide is by no means a guarantee. If at any point I discover that this goes against DCS' anti-plagiarism guidelines, I will immediately take it down. However, that being said, I'm unsure what the policy is on open-book material if it is contributed to by students. By any means, this page will be made private on the day of the exam.
-
-I _may_ add code examples to properly leverage the GitHub sites functionality. However, I feel I would have to modify the lecture code rather than simply 'borrow' it, which means I may or may not have time to do this.
-
-### Topic progress
+### Topics and content
 
 There are five broad topics overall which were split into 11 lectures- these specific topics are as follows:
 
@@ -46,9 +36,13 @@ Along with topics with odd nuances, again including but not limited to:
  - Passing by value / reference
  - Encapsulation vs. data hiding
 
+
+
 ### Complete Notes
 
-Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](combined.html).
+Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](./combined.html). A cut down version of the notes covering only the non-trivial content can be found on [this page.](cribSheet.html)
+
+
 
 Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
 
@@ -59,3 +53,4 @@ Given the large number of topics, it makes sense to break these down into broade
 5. [x] [Abstract classes and inheritance](part5.md) (13 to 16)
 6. [x] [Exceptions](part6.md) (17)
 7. [x] [Generics](part7.md) (18)
+

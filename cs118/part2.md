@@ -1,3 +1,5 @@
+<a style="float:left" href="part1.html" title="Variables, Number Systems, and I/O">👈Prev</a>
+<a style="float:right" href="part3.html" title="Arrays, Methods, Scope, and Recursion">Next👉</a>
 # Conditional Statements
 
 This part of the page covers the `if...else` statement, the ternary operator, and the `switch` statement.
