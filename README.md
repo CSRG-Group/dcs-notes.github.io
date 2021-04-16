@@ -12,6 +12,10 @@ Thank you for visiting this site! This repository contains a collection of notes
 
 We would be incredibly grateful for any input of content for the individual pages; if you decide you'd like to help contribute to individual pages, do submit a pull request! This would mean we get full coverage of the content finished faster, and everyone on the course can benefit from high quality shared notes.
 
+This work is licensed under Creative Commons "Attribution-NonCommercial-ShareAlike 4.0 International", and the full license document can be found [here](./LICENSE.txt). Essentially, attribute any content to the people who made it, don't use it to make money, and, even if you change the content, share it under the same license.
+
+If you want to take a local download of the repository, please consider taking a fork as opposed to a clone, as that means it is easier for you to both stay up to date, and to contribute later if you want to. Furthermore, it helps us to some extent see how many people are interested in what we are doing.
+
 Currently, the main contributors to this project are: Akram Ahmad (Repository owner), Edmund Goodman, Justin Tan, Yijun Hu, and Josh Fitzmaurice. If you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord.
 
 

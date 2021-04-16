@@ -14,6 +14,12 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 More modules will be added as we accumulate notes on them.
 
+## Licensing and downloading
+
+This work is licensed under Creative Commons "Attribution-NonCommercial-ShareAlike 4.0 International", and the full license document can be found [here](./LICENSE.txt). Essentially, attribute any content to the people who made it, don't use it to make money, and, even if you change the content, share it under the same license.
+
+If you want to take a local download of the repository, please consider taking a fork as opposed to a clone, as that means it is easier for you to both stay up to date, and to contribute later if you want to. Furthermore, it helps us to some extent see how many people are interested in what we are doing.
+
 ## Contributing
 
 We welcome pull requests from anyone who is happy to share their notes, and would be incredibly grateful for any input of content for the individual pages. We will try to provide any attribution you would like for content you contribute. If you decide you'd like to help contribute, do submit a pull request! This would mean we get full coverage of the content finished faster, and everyone on the course can benefit from high quality shared notes.
