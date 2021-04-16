@@ -16,13 +16,13 @@ More modules will be added as we accumulate notes on them.
 
 ## Contributing
 
-We welcome pull requests from anyone who is happy to share their notes, and we will try to provide any attribution you would like for content you contribute.
+We welcome pull requests from anyone who is happy to share their notes, and would be incredibly grateful for any input of content for the individual pages. We will try to provide any attribution you would like for content you contribute. If you decide you'd like to help contribute, do submit a pull request! This would mean we get full coverage of the content finished faster, and everyone on the course can benefit from high quality shared notes.
 
-Currently, all the notes are in markdown (`.md`) format, but we should be able to support any other file formats, for example webpages and PDFs. We would also be very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (the `ctrl+f` key is going to be used pretty heavily in open book exams).
+Currently, most of the notes are in markdown (`.md`) format, but we also support most other file formats, for example static webpages and PDFs. We are also very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (the `ctrl+f` key is going to be used pretty heavily in open book exams).
 
 ### Errata
 
-If you think you have found a mistake in any of the notes, please tell us! If you feel comfortable making a pull request or creating an issue, you can make the change yourself by editing the appropriate file (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used). Otherwise, see the "Contact us" section for how to tell us about it (if you know who made the notes, they're probably the best people to ask to get it fixed).
+If you think you have found a mistake in any of the notes, please tell us! If you feel comfortable making a pull request, you can make the change yourself by editing the appropriate file (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used) and submit it through GitHub. Otherwise, see the "Contact us" section for how to tell us about it (if you know who made the notes, they're probably the best people to ask to get it fixed).
 
 ### How to make a pull request
 
@@ -38,6 +38,6 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 
 ## Contact us
 
-Currently, the main contributors to this project are: Akram Ahmad (Repository owner), Edmund Goodman, Justin Tan, and Yijun Hu.
+Currently, the main contributors to this project are: Akram Ahmad (Repository owner), Edmund Goodman, Justin Tan, Yijun Hu, and Josh Fitzmaurice.
 
 If you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord.
