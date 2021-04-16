@@ -45,4 +45,3 @@ In addition to full notes, there is a condensed "crib sheet", which includes mos
 
 Since the exam is held online this year, questions are likely to be more proof than solution based, so we included notes on proofs:
 - [Proof approaches](./proofApproaches)
-- [Types of proof](./typesOfProof)
