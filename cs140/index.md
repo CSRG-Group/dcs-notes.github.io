@@ -12,3 +12,7 @@ Without further ado, here are the lecture topics:
 7. [ ] Secure email
 8. [ ] Authentication protocols
 9. [ ] Virtualisation
+
+### Complete Notes
+
+Many thanks to **Josh Fitzmaurice** who has generously contributed his notes. These cover the entire topic and can be found on [this page](./cs140-full.pdf).
