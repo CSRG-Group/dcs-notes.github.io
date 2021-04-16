@@ -36,7 +36,7 @@ Two's complement is the way in which computers represent integers. To get the tw
 **⚠ Important:** If you are converting a positive integer _to_ two's complement form, then you simply do a basic conversion. When converting to binary, you only invert the bits if you have a negative number. Similarly, if you see the number `00011110`, this is `30`- you do not need to do the hokey-pokey inversion magic. If you are reading from a binary number, you can either read the basic decimal number _OR_ the decimal from the signed 2's complement. In which case, the number `11111101` would read `253` and `-3` respectively.
 
 For example, given 8 bits and the number -28:
-##### Write out the binary form
+##### Write out the binary form of +28
 `28 = 0 0 0 1 1 1 0 0`
 ##### Invert the digits
 `0 0 0 1 1 1 0 0 => 1 1 1 0 0 0 1 1`
@@ -60,6 +60,21 @@ If you want to see what this number is a negative _of_, then we follow a similar
 
 Therefore, inverting all the bits `0xFFFFFFFF` results in `0000 0000 0000 0000 0000`. Then, adding `1` leads to `0000 0000 0000 0001`, which is the number `1`. Therefore, the _negative_ of `0xFFFFFFFF` is 1, and hence the _value_ is `-1`.
 
+### Java’s numeric data types
+
+| Type    | Bytes           | Value in Decimal                         |
+| ------- | --------------- | ---------------------------------------- |
+| `byte`  | 1 byte (8 bits) | -128 to +127                             |
+| `short` | 2 bytes         | -32768 to +32767                         |
+| `int`   | 4 bytes         | -2<sup>31</sup> to +(2<sup>31</sup> - 1) |
+| `long`  | 8 bytes         | -2<sup>63</sup> to +(2<sup>63</sup> - 1) |
+
+We’ve seen how two’s complement is used to represent **integers**. For decimal numbers, like `float` and `double`, we use floating point notation to store their values (IEEE-754).
+
+A `float` is 32-bits and can represent numbers between -3.4e38 and 3.4e38 with 6 to 7 significant digits of accuracy.
+
+A `double` is 64-bits and can be represent numbers between -1.7e308 and 1.7e308 with 14 to 15 significant digits of accuracy. 
+
 ## IEEE 754 notation for floating point numbers
 
 _Useful links: [GeeksforGeeks (source)](https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/)_ _[Conversion Tool](https://www.h-schmidt.net/FloatConverter/IEEE754.html)_
@@ -75,32 +90,41 @@ The table is a little janky, but it hopefully gets the point across; you continu
 
 ### Components of the IEEE 754 Floating Point Number
 
-Before diving into the components, it's much better to look at an example. Therefore, take the decimal number `43.625`; this has binary representation `101011.101`. However, we would represent this as `1.01011101` x 2<sup>5</sup>.
+Before diving into the components, it's much better to look at an example. Therefore, take the decimal number `43.625`; this has binary representation `101011.101`. However, we would represent this as `1.01011101` x 2<sup>5</sup>. 
+
+In general the value of a floating point number is determined by
+
+> (-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 127</sup>
 
 
 There are three basic components which make up the IEEE 754 floating point number:
-1. The **sign of Mantissa**: this is a _single bit_ where a `0` represents a positive number, whilst a `1` represents a negative number.
-2. The **biased exponent**: this is an _eight bit_ exponent field which represents both positive and negative exponents. Therefore, the exponent is **127 greater** than the index for 2<sup>a</sup>. For example, given the index 2<sup>5</sup>, the value of the exponent would actually be `a = 5 + 127 = 132 = 10000100 (binary)`
-3. The **Mantissa**: this is a _twenty-three bit_ field which makes up the numbers to the **left of the exponent**. However, there is **never a leading 0**. Being binary, we **exclude the first 1** to give us more precision. Therefore, `101011101 => 01011101000000000000000`.
+1. The **Sign Bit**: this is a _single bit_ where a `0` represents a positive number, whilst a `1` represents a negative number.
+2. The **Biased Exponent**: this is an _eight bit_ exponent field which represents both positive and negative exponents. It is **biased** because it is a fixed positive value that is then subtracted by 127 to represent either a positive or negative exponent. For example, given the exponent bits 10000100<sub>2</sub> = 132<sub>10</sub>. We arrive at the index 2<sup>5</sup> because 2<sup>132-127</sup> = 2<sup>5</sup>. 
+3. The **Mantissa**: this is a _twenty-three bit_ field which makes up the numbers to right of the decimal point `.` (as shown in the formula above). The most significant bit (the left most) is 1/2<sup>1</sup>, then 1/2<sup>2</sup>, and so on. In most cases, the value before the `.` is 1, however in some cases which we will explain in the **special** cases section below, it may be 0 (this is when it is renormalised). 
 
 With these components established, we can rewrite our previous example, `43.625`, `1.01011101` x 2<sup>5</sup> in IEEE 754 notation:
 
-| Sign (1 bit) | Exponent (8 bits) | Mantissa (23 bits) | Complete representation |
-|--------------|-------------------|--------------------|-------------------------|
-| `0`          | `100000`          | `01011101000000000000000` | `010000001011101000000000000000` |
+| Sign (1 bit) | Exponent (8 bits) | Mantissa (23 bits) |
+|--------------|-------------------|--------------------|
+| `0`          | `10000100`      | `01011101000000000000000` |
+
+**Complete representation:** `0 10000100 01011101000000000000000`
 
 ### IEEE 754 Double-precision Number
 
 Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.
 
-| Sign (1 bit) (no change) | Exponent (11 bits) (is now **1023 larger**, not 127) | Mantissa (52 bits) | Complete representation is 64 bits |
-|-|-|-|-|
+>  (-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 1023</sup>
+
+- **Sign Bit.** No change in bits.
+- **Mantissa.** 64-bits
+- **Biased Exponent.** 11-bits
 
 ### Special values
 
 IEEE 754 also has some special values you need to keep in mind:
 
-The **exponent bits** = `0000 0000`
+When the **exponent bits** = `0000 0000`
 - If the _fraction_ is `0`, the value is `0` or `-0`.
 - Otherwise, renormalise the number with this form: (`-1`)<sup>sign bit</sup> x `0.(fraction)` x 2<sup>-127</sup>
 
@@ -122,13 +146,18 @@ The main content I gleamed from this was to be familiar with the three Linux str
 
 Generally speaking, this is the process of **changing the data type** of one piece of data from one type to another. You need to be familiar with the different types (pun not intended) of casting:
 
-| Flavour | Implicit casting | Explicit casting |
+|  | Implicit casting | Explicit casting |
 |---------|------------------|------------------|
-| Definition | No loss of precision | Possible loss of precision |
-| Example | `float pi = 3.141f; double big_pi = pi;` | `float pi = 3.141f; int less_pi = pi;` |
+| **Definition** | No loss of precision | Possible loss of precision |
+| **Example** | `float pi = 3.141f;` <br />`double big_pi = pi;` | `float pi = 3.141f;` <br />`int less_pi = pi;` |
 
-The compiler will 'let you know' (otherwise known as screaming) if you attempt an explicit cast; therefore, proper casting syntax is as follows:
-`{TYPE} cast_var = {TYPE} original_var`, where `{TYPE}` is the _new_ type you want to cast to.
+The compiler will 'let you know' (otherwise known as screaming) if you attempt an **explicit cast**. However, if this is intentional you can do it like this.
+
+```java
+// lets say you want to cast a variable from a float to an int
+float pi = 3.144;
+int more_pi = (int) pi; // essentially tells the compiler not to worry
+```
 
 ## Lazy and strict evaluation
 
@@ -163,5 +192,5 @@ The Java creators realised that they too wanted to implement operator precedence
 
 | P | U | M | A | S | R | E | S | L | A |
 |-|-|-|-|-|-|-|-|-|-|
-| Postfix | Unary | Muliplicative | Additive | Shift | Relational | Equality | Strict Ops | Lazy Ops | Assignment |
+| Postfix | Unary | Multiplicative | Additive | Shift | Relational | Equality | Strict Ops | Lazy Ops | Assignment |
 | `var++` | `++var` | `* / %` | `+ -` | `<<`| `<= < >= >` | `== !=` | `&` | `&&` | `= += -= *= /= ...`|
