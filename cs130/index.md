@@ -1,10 +1,8 @@
 ## Welcome to the CS130 revision guide
 
-
-
 ### Complete notes
 
-Detailed typed notes for CS130 by Yijun can be found [here](./content/INDEX.html), with links to each individual section:
+Detailed typed notes for CS130 by **Yijun Hu** which cover the entire module can be found [here](./content/INDEX.html), with each individual section linked below:
 
 1. [x] [Sets](./content/INDEX.html#sets)
 2. [x] [Propositional logic](./content/INDEX.html#proplogic)
@@ -20,7 +18,7 @@ Detailed typed notes for CS130 by Yijun can be found [here](./content/INDEX.html
 
 
 
-Detailed handwritten notes for CS130 by Edmund are linked below:
+Detailed handwritten notes for CS130 by **Edmund Goodman** which cover the entire module are linked below by section:
 
 1. [x] [Propositions and predicates](./handwritten/propositionsAndPredicates.pdf)
 2. [x] [Sets](./handwritten/sets.pdf)
@@ -42,6 +40,5 @@ In addition to full notes, there is a condensed "crib sheet", which includes mos
 - [General crib sheet](./cribSheet)
 
 
-
-Since the exam is held online this year, questions are likely to be more proof than solution based, so we included notes on proofs:
+Since the exam is held online this year, questions are likely to be more proof than solution based, so a document on standard proof techniques is also likely to prove useful:
 - [Proof approaches](./proofApproaches)

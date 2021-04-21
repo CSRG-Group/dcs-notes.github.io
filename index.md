@@ -44,6 +44,6 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 
 ## Contact us
 
-Currently, the main contributors to this project are: Akram Ahmad (Repository owner), Edmund Goodman, Justin Tan, Yijun Hu, and Josh Fitzmaurice.
+Currently, the main contributors to this project are: Akram Ahmad, Edmund Goodman, Justin Tan, Yijun Hu, and Josh Fitzmaurice.
 
 If you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord.
