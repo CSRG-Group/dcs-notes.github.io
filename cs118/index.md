@@ -42,6 +42,8 @@ Along with topics with odd nuances, again including but not limited to:
 
 Many thanks to **Edmund Goodman** who has generously contributed his notes. These cover the entire topic and can be found on [this page](./combined.html). A cut down version of the notes covering only the non-trivial content can be found on [this page.](cribSheet.html)
 
+There are a set of flash cards [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03), which are based off the existing page.
+
 
 
 Given the large number of topics, it makes sense to break these down into broader topics- these will each form their own pages, and will be activated as progress on them continues:
