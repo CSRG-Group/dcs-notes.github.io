@@ -1,0 +1,293 @@
+Variables	Used to store values, can be used to store values from primitive types up to objects
+
+2's compliment	The last bit is negative - if 0 then positive, else negative
+To get a negative number into two compliment, write out the positive, then flip all and add 1
+
+Javas numeric types	byte
+short
+int
+long
+
+byte	8 bits long
+
+short	16 bits
+
+int	32 bits
+
+long	64
+
+IEEE 754 floating point	A 1 bit sign, an 8 bit exponent - 128, then 23 bits mantissa
+
+IEEE 745 double precision number	1 bit sign, -1024 then exponent 11 bits, 52 bit mantissa
+
+Special values for floating point 1111 1111 exponent	if fraction = 0, then +- infinity, else NAN
+
+special values for floating point 0000 0000 exponent	then value = 0 or - 0
+
+pre/post increment/decrement	Prefix++/-- var, the value is incremented then returned, 
+Postfix var ++/-- returned then incremented
+
+Order precendence	Postfix: var++
+Unary: ++Var
+Multiplicative: * / %
+Additive: + -
+Shift: << >>
+Relational: <= < >= >
+Equality: == !=
+Strict: | &
+Lazy: || &&
+Assignment: = += -= *= /= ...
+
+Output streams	System.in
+System.out
+System.err
+
+System.in	Collects input (scanner)
+
+System.out	Sends values to output
+System.out.println()
+
+System.err	Sends when there is an err,
+sometimes in red
+
+Casting	- changing data types
+Implicit and Explicit
+
+Implicit Type Casting	No loss of precision, E.G. lower to higher precision
+
+Explicit Type Casting	Possible loss of precision - float to an int - more to less precision
+
+Lazy Evaluation	&&/|| This will only execute both sides if necessary - if the first of the two expressions is false, then will not execute second for &&, and For || will not execute second if the first is true
+
+Strict Evaluation	&/|, this is where both sides of the expression will be carried out regardless of the value of one of the sides.
+
+The ternary operator	Can be used when assigning a value to a variable in the form:
+value = (boolCond) ? (valIfTrue) : (valIfFalse)
+- can be nested for code golf
+
+switch statment	Matches the value of the variable to a value, and will then execute the expressions accordingly.
+- Only works with primitive types
+- Will work on enumerated types:
+ Byte
+ Short
+ Integer
+ Character
+ String
+enum Colour{RED,GREEN,BLUE}
+can switch on these colours.
+
+Bounded iteration	You define, where you start, where you end and the iterative step,
+for()
+forEach()
+
+Unbounded	- unsure of how many repetitions are needed, a while loop, and a do while loop
+
+Arrays	They are monomorphic lists- this means you can only store one type of data in it.
+Implementation wise, arrays are allocated on the heap in the JVM. These are contiguous blocks of memory, which means you can access elements by index. This is known as random access.
+You cannot create arrays of generic types. This means that you cannot create an array in Java if you do not yet know what type it stores- you can however store arrays of objects, as long as it is determined at compile-time. Therefore, in an exam, do not create a generic array. You are better off using a built-in collection such as an ArrayList.
+You cannot access elements of an array using pointer syntax, unlike in C. Not that anyone would attempt this when writing code in an exam, nor in practice for Java, but do not attempt it otherwise.
+
+Array decleration	int[] arr
+int arr[]
+
+Array allocation	int[] arr = new int[10];
+
+Copying an array	You can use System.arrayCopy(start)
+JVM will automatically collect garbage
+
+Multidimensional arrays	Arrays can have 2 or more dimensions. For a 2 dimensional array, the first index is the row and 2nd is the column. (ex: myArray[2][3] is row 2 column 3.
+The first is the outer array
+- not a matrix but can be treated like one
+
+Method definition	Access privilege:
+Return type:
+Name:
+Function parameters:
+
+Method Access privilege	Who can access the array - private, protected, public
+
+Method return type	What type is returned
+
+Method name	what is the name of the function
+
+Function parameters	which values and types are inputted into the function, this can be over loaded.
+
+Function over loading	1 Method can have the same name, but different parameter types, the compiler will recognise at compile time
+
+Pass by value / reference	Putting it very concisely, this confusion arises because in Java all non-primitive data types are handled/accessed by references. However, passing is always be value. So for all non-primitive types reference is passed by its value. All primitive types are also passed by value.
+
+Recursion	Where a function calls itself
+Has a base case
+Has recursive calls
+
+Recursive Base Case	Where the function returns a value based on the functions base condition
+
+Recursive Call	A method call in which the method being called is the same as the one making the call
+
+4 Pillars of OOP	Abstraction
+Polymorphism
+Inheritance
+Encapsulation
+
+Encapsulation - basic definition	Bundling data and operations that can be perfored on that data together, leads to data hiding using access modifiers
+
+Abstraction - basic definition	Exposing essential features - hiding irrelevant details
+
+Inheritance - basic definition	Creating new classes from existing ones
+
+Polymorphism - basic definition	Using objects that can take many forms (different to generics) - this allows us to include operation from derived classes while using a base class reference at runtime
+
+Object classes	2 main properties:
+The properties of an object store its state while the methods operate on this data and change its state.
+
+- an object is a specific instance of a class
+
+Constructors	A method which is used to create an object from a class, it is used to define the behaviour or properties of the class.
+- If you do not write one java will
+
+Constructors and Static Classes	They are not needed, when using static classes, and they are not supposed to have instances
+
+Memory Allocation and Classes	- An object requires contiguous memory to store their properties
+- a new keyword is needed
+ == checks if both point to the same memory, so only works on primitive types
+
+Public Access Modifier	access outside the class
+
+Private Access Modifier	access only within class
+
+Protected Access Modifier	Only accessed within the class and subclasses
+
+Package private Access Modifier	Only accessed within the java package
+
+Encapsulation motivations	Encapsulation motivates users to use a class by its external interface (using public/protected methods).
+
+Benefits of interfaces	Interfaces are used to provide the benefits of multiple inheritance without its implementation difficulties. They allow several classes to share a standard set of methods and constants without requiring these methods and constants to be implemented by a common superclass.
+
+From (http://aelinik.online.fr/javaguide/CH6.HTM#:~:text=Interfaces%20are%20used%20to%20provide,implemented%20by%20a%20common%20superclass.)
+
+Benefits of access modifiers	Restrict access to some data and methods (or to control the access of the data in our objects). Unnecessary detail is hidden.
+The implementation can change without ruining dependant applications. Maintains a good interface between programmers.
+Boundaries of responsibility are clear.
+
+Interaction interfaces	The use of static and final to change the way the variable can be accessed
+
+Static variables	We use static mainly when it doesn't make sense to define a particular method/variable for specific instances.
+
+Final variables	The final keyword is used to prefix variables that we want to be constant. A good example would be pi We will not be able to change the value of variables prefixed with final once they are assigned/instantiated with a value.
+
+Inheritance	It is a mechanism where you can to derive a class from another class for a hierarchy of classes that share a set of attributes and methods
+
+Method Overriding	Overriding is a feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its super-classes or parent classes.
+
+Through the use of the protected keyword, we make the methods from the parent class accessible to only its parent class and its child classes
+
+Static polymorphism	- Essentially Method overloading. 
+- It is polymorphism because the name of the method can represent different methods and how Java understands which method to call is based on number/ type of parameters
+- Static because Java will be able to decide at compile-time which method is called
+
+Dynamic polymorphism	- run-time polymorphism - Java determines what class to treat as a specific object when the program is executed
+
+- Coded example on:
+https://arkamnite.github.io/dcs-notes.github.io/cs118/part5.html
+
+Abstract Classes	- a restricted class that cannot be used to create objects (to access it, it must be inherited from another class). (From W3 Schools)
+- they contain a mixture between abstract and concrete methods
+- Cannot be instantiated - they are meant to capture common properties and behaviours at an abstract level
+- Meant to be extended to make a more specific sub - class
+
+Abstract Method	- can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
+- inheriting from an abstract class is the same as a same as a normal class
+
+What type of methods do interfaces contain	No concrete methods and all area abstract
+
+Properties of interfaces	- cannot be instantiated
+Can only contain:
+ - Fields which are public static final
+ - Methods which are not defined/implemented. They must be left empty like abstract methods but should not be declared with the keyword abstract
+
+Multiple inheritance	Java allows you to implement multiple inheritance because interfaces just require a class the implements it to define a particular method.
+
+Why use interfaces	interfaces are used it encapsulate a small subset of functionality/a property.
+
+What do interfaces provide	- gives us concrete classes a certain functionality/property that isn't appropriate to define in a subclass-superclass class hierarchy.
+
+
+- example on https://arkamnite.github.io/dcs-notes.github.io/cs118/part5.html
+
+What is an exception?	An exception is an event, which occurs during the execution of a program, that disrupts the normal flow of the programs instructions.
+
+How does an exception arise and how is it treated	- An error occurs in your method at run-time (for example, you can try and access then 10th index of a length 9 array)
+- The method creates and exception object and hands this off to the runtime system. This object contains important information:
+-- The type of error
+-- The state of the program when the error occurred
+- Creating and exception object and handling it to the runtime system is known as throwing an exception
+
+Alternative error handling methods	This is an alternative to traditional error-handling techniques, such as performing range-checks (with an if...else statement) every time you want to access an element from an array. As your code grows and you create more classes and objects, exceptions are a much more elegant way of stopping any run-time errors from occurring.
+
+Exception classes vs Error classes	In Java, the Throwable class is a superclass of both the Exception and the Error classes. There is an important distinction to make between the two (Java specification):
+An Error is a subclass of Throwable that indicates a serious problem that a reasonable application should not try to catch.
+The Exception class and its subclasses are a form of Throwable that indicates conditions that a reasonable application might want to catch.
+(From https://arkamnite.github.io/dcs-notes.github.io/cs118/part6.html)
+
+How to use exceptions in a try-catch block	- The code in the try block is executed, and the JVM will see if an exception is thrown.
+- If an exception of class BadExceptionClass is thrown, then the code in the first catch block will be executed. This works vice-versa for any specific exceptions that you catch with a catch block- similar to a switch statement.
+- You can query the specific exception with the use of a variable- in this instance, you could use the e symbol to perform operations on the exception that was caught.
+- If an optional finally block exists, the code in this block will always be executed. This is ideally used to tidy up any residual resources, such as Scanner objects.
+
+Exceptions and inheritance	It is important to note that since exceptions are based on classes, the order in which a superclass exception and a subclass exception is caught has significant implications on your code. Specifically, if the first catch block is a superclass of another catch block, then the subclass catch block will never be executed
+
+Checked exceptions	A checked exception is any exception that must be checked at compile time
+
+For example, you may want to use the BufferedReader class to open a file and read the first line, but there are two possible exceptions that could be thrown:
+The file does not exist, and would throw a FileNotFound exception.
+There could be an error when reading a line, which would throw an IOException exception.
+Both of these exceptions are checked and must be 'caught or declared to be thrown'.
+
+Two ways to handle checked errors	- surround the exception in a try-catch block
+- re throw the exception using the throws keyword
+
+Using Throws to handle exceptions	The throws keyword is added to the method signature with the name of the exception, which then handles the error.
+
+Unchecked exceptions	- These are any exceptions that do not need to be checked at compile time 'if they can be thrown by the execution of the method or the constructor and propogate outside the method or constructor boundary'. 
+- Exceptions that are subclasses of Error and RuntimeException
+- for example, trying to divide by 0 will throw the ArithmeticException. It does not make sense to have to catch this at compile time, but you can choose to check and handle it in a graceful manner. A final way to decide between which type of exception to use is this (from the Java documents):
+-"If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception".
+
+How to write your own exceptions	Any exception is a class which extends the Exception class.
+- when writing your own exception, you choose the most specific exception that encapsulates your exceptions - then extend this
+- If extending and unchecked exception, then extend a RuntimeException .
+- it is common to add messages and chain other exceptions together in any custom exceptions: used to add details to previous exceptions
+
+Chaining Exceptions Together	Four constructors for most Exception classes;
+- Default constructor, no parameters
+- Constructor which allows for an error String
+- Two constructors which have space for another Throwable class, which allows you to chain exceptions together.
+
+- You can use the built-in Throwable member methods to find out more about the exception, which will allow you to chain together information and/or exceptions specifically based on the cause of the run-time error
+
+What do generics allow your code to be.	- makes your code safer and more reusable,
+ - stronger type checking at compile-time/
+ - elimination of type casts
+ - implementation of generic algorithms tailored to different types
+
+NOTE: you are less likely to encounter run-time errors because you can catch type related errors at compile-time
+
+Thinking of generics - an analogy	an excellent analogy from the dcs-notes page:
+ - A screwdriver which has swappable heads, and then you create an object, it's like choosing the correct head for the screw.
+ - Defining a generic class is like creating a placeholder which you will fill in later when you instantiate the object.
+
+Implementing Generic classes	The way you implement generics are shown in the image:
+- The first is for a single generic object
+- the second shows how to define multiple
+- the last is how the comparable constraint on the generic objects are given.
+
+Generics Convention Symbols and types	- E for Element
+- K for Key
+- N for Number
+- T for type
+- V for Value
+
+Generic methods	When defining a generic method, you may want to design this so it only works on particular types,
+- for example using a compare method, if the specific generics are not defined, then the code will be valid even though it may now make sense:
+Note: we won't have to specify the generics in the method if the generics that you want to refer to in the parameters of the method are already defined at the class-level
+Example on: https://arkamnite.github.io/dcs-notes.github.io/cs118/part7.html
