@@ -52,5 +52,5 @@ Given the large number of topics, it makes sense to break these down into broade
 
 ### Flash cards
 
-Flash cards for the module by **Leon Chipchase** can be found [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03), which are based off the existing notes on this page.
+Flash cards for the module by **Leon Chipchase** can be found [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](exportedQuizlet118.txt)), which are based off the existing notes on this page.
 
