@@ -40,8 +40,8 @@ Along with topics with odd nuances, again including but not limited to:
 
 Notes by **Edmund Goodman** are linked below:
 
-- [x] Notes covering the entire topic can be found [here](./combined.html)
-- [x] A cut down version of the notes covering only the non-trivial content can be found [here](cribSheet.html)
+[x]  Notes covering the entire topic can be found [here](./combined.html)
+[x]  A cut down version of the notes covering only the non-trivial content can be found [here](cribSheet.html)
 
 *Note that only the cut down version is under active development, but I (Edmund) will irregularly copy across the content from it into the full version*.
 
