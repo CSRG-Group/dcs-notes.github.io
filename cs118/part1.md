@@ -117,7 +117,7 @@ Luckily for our computers, there is also a specification for double-precision nu
 >  (-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 1023</sup>
 
 - **Sign Bit.** No change in bits.
-- **Mantissa.** 64-bits
+- **Mantissa.** 52-bits
 - **Biased Exponent.** 11-bits
 
 ### Special values
