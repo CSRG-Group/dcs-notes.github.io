@@ -38,7 +38,7 @@ Along with topics with odd nuances, again including but not limited to:
 
 ### Complete notes
 
-Notes covering the entire topic by **Edmund Goodman** can be found on [here](./combined.html). A cut down version of the notes covering only the non-trivial content can be found [here](cribSheet.html).
+Notes covering the entire topic by **Edmund Goodman** can be found on [here](./combined.html). A cut down version of the notes covering only the non-trivial content can be found [here](cribSheet.html). *Note that only the cut down version is under active development, but I will irregularly copy across the content from it into the full version*.
 
 Given the large number of topics, it makes sense to break these down into broader topics - each of which having its own page. These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and are linked below by section:
 
@@ -52,5 +52,5 @@ Given the large number of topics, it makes sense to break these down into broade
 
 ### Flash cards
 
-Flash cards for the module by **Leon Chipchase** can be found [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](exportedQuizlet118.txt)), which are based off the existing notes on this page.
+Flash cards for the module by **Leon Chipchase** can be found [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](../media/exportedQuizlet118.txt)), which are based off the existing notes on this page.
 
