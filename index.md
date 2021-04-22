@@ -46,4 +46,4 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 
 Currently, the main contributors to this project are: Akram Ahmad, Edmund Goodman, Justin Tan, Yijun Hu, and Josh Fitzmaurice.
 
-If you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord.
+If you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord (search for our names within the main first year CS group chat, or the grey or cult servers).
