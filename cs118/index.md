@@ -38,7 +38,9 @@ Along with topics with odd nuances, again including but not limited to:
 
 ### Complete notes
 
-Notes covering the entire topic by **Edmund Goodman** can be found on [here](./combined.html). A cut down version of the notes covering only the non-trivial content can be found [here](cribSheet.html). *Note that only the cut down version is under active development, but I will irregularly copy across the content from it into the full version*.
+Notes covering the entire topic by **Edmund Goodman** can be found on [here](./combined.html).
+A cut down version of the notes covering only the non-trivial content can be found [here](cribSheet.html).
+*Note that only the cut down version is under active development, but I will irregularly copy across the content from it into the full version*.
 
 Given the large number of topics, it makes sense to break these down into broader topics - each of which having its own page. These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and are linked below by section:
 
