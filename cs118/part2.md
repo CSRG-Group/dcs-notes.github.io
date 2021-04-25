@@ -1,11 +1,13 @@
+<p>
 <a style="float:left" href="part1.html" title="Variables, Number Systems, and I/O">👈Prev</a>
 <a style="float:right" href="part3.html" title="Arrays, Methods, Scope, and Recursion">Next👉</a>
+</p>
+
 # Conditional Statements
 
 This part of the page covers the `if...else` statement, the ternary operator, and the `switch` statement.
 
-## `if...else` recap
-### The ternary operator
+## if, else, and ternary
 
 There isn't a significant amount of content beyond the basic `if...else` statement; something you may have missed however is the **ternary operator**. This is a shorthand for the `if...else` statement and looks like this:
 
@@ -26,9 +28,14 @@ if (boolCond) {
 value = (boolCond) ? (valueIfTrue) : (valueIfFalse);
 ```
 
-You may be pleased to know that the ternary operator can be nested; this is basically only useful for code-golf, however.
+You may be pleased to know that the ternary operator can be nested; this is basically only useful for code-golf, however. 
 
-### `switch` statements
+Additionally, when explaining the semantics of an `if...else` statement, we can refer to the `{}` (curly brackets) as the **construct**. So we can say:
+
+> If the **boolean expression**, `boolCond`, evaluates to true, then the body of the statement is executed, otherwise control passes to the next **program statement** after the **construct**.
+
+
+## switch
 
 A `switch` statement is a way to simplify the `if...else` statement whilst also providing some additional control over how each `case` can be handled. First, the basic syntax:
 ``` java
@@ -61,16 +68,16 @@ public class Main{
 
   public static void main(String[] args) {
     Colour c = Colour.RED;
-    switch (c){
+    switch (c){ 
       case RED:
         System.out.println("Colour is red");
         break;
       case BLUE:
         System.out.println("Colour is blue");
-        break;
       case GREEN:
         System.out.println("Colour is green");
-        break;
+      default:
+        System.out.println("Default");
     }
   }
 }
@@ -81,6 +88,23 @@ There are a few caveats to take away from this:
 - If a `case` branch matches the `variable`, the expressions in that `case` will be evaluated.
 - The `break` keyword is **optional**. This means that the `switch` statement will continue running top to bottom otherwise, even after satisfying a case. Think about if you would like this behaviour!
 - The `default` statement is also **optional**; it is only evaluated if no cases match the variable expression.
+
+Notably, if there is an **absence** of the `break` keyword and a specific `case` **value** has already matched the **variable**, the `switch` statement will continue running all the remaining *statements* inside each case without checking the **value** of the `case`.
+
+For example, if the colour of our `Colour` enum above is `BLUE`, the output of the switch statement will be:
+
+```
+Colour is blue
+Colour is green
+Default
+```
+
+That is because, after `c` matches with the value `BLUE`, the `switch` statement continues executing all the remaining statements without checking the value `GREEN`. This can be avoided by using `break`.
+
+## switch vs if-else
+In most cases, deciding between using a `switch` or `if...else` statement depends on readability and maintainability. However, for a larger number of cases (5 or more), a `switch` statement is generally faster. This is because the compiler creates a "jump table" based on each of the `case` values. Essentially, these are special byte codes that tell the Java Virtual Machine (JVM) which path of execution to take depending on the **variable** expression. Conversely, the JVM checks the boolean expressions in `if-else` statements one at a time, from top to bottom. This is why when there are many cases, a `switch` statement will run faster than equivalent logic coded `if-else` statements.
+
+The compiler is able to do this because the **values** in a `switch` statement are always constant values at compile time, and can be compared easily with the **variable** expression as they are the same type. For `if-else` statements, they are boolean expressions that may depend on an arbitrary number of variables and conditions and the compiler cannot assume that the values will be constant. 
 
 # Iterative statements
 
