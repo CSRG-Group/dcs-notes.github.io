@@ -6,19 +6,19 @@
 
 ## Complete notes
 
-Detailed typed notes for CS130 by **Yijun Hu** which cover the entire module can be found [here](./content/INDEX.html), with each individual section linked below:
+Detailed typed notes for CS130 by **Yijun Hu** which cover the entire module can be found [here](https://adrakaris.github.io/blog-cs/cs130/index.html), with each individual section linked below:
 
-1. [x] [Sets](./content/INDEX.html#sets)
-2. [x] [Propositional logic](./content/INDEX.html#proplogic)
-3. [x] [Logic of predicates](./content/INDEX.html#predicates)
-4. [x] [Proofs](./content/INDEX.html#proofs)
-5. [x] [Relations](./content/INDEX.html#relations)
-6. [x] [Functions](./content/INDEX.html#functions)
-7. [x] [Set Cardinality](./content/INDEX.html#cardinality)
-8. [x] [Graphs](./content/INDEX.html#graphs)
-9. [x] [Trees](./content/INDEX.html#trees)
-10. [x] [Partial orders](./content/INDEX.html#partorder)
-11. [x] [Probability](./content/INDEX.html#prob)
+1. [x] [Sets](https://adrakaris.github.io/blog-cs/cs130/index.html#sets)
+2. [x] [Propositional logic](https://adrakaris.github.io/blog-cs/cs130/index.html#proplogic)
+3. [x] [Logic of predicates](https://adrakaris.github.io/blog-cs/cs130/index.html#predicates)
+4. [x] [Proofs](https://adrakaris.github.io/blog-cs/cs130/index.html#proofs)
+5. [x] [Relations](https://adrakaris.github.io/blog-cs/cs130/index.html#relations)
+6. [x] [Functions](https://adrakaris.github.io/blog-cs/cs130/index.html#functions)
+7. [x] [Set Cardinality](https://adrakaris.github.io/blog-cs/cs130/index.html#cardinality)
+8. [x] [Graphs](https://adrakaris.github.io/blog-cs/cs130/index.html#graphs)
+9. [x] [Trees](https://adrakaris.github.io/blog-cs/cs130/index.html#trees)
+10. [x] [Partial orders](https://adrakaris.github.io/blog-cs/cs130/index.html#partorder)
+11. [x] [Probability](https://adrakaris.github.io/blog-cs/cs130/index.html#prob)
 
 
 
