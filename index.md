@@ -6,11 +6,11 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ## Notes
 
-### [CS118](cs118/index.md)
+### [CS118: Programming for Computer Scientists](cs118/index.md)
 
-### [CS130](cs130/index.md)
+### [CS130: Mathematics for Computer Scientists I](cs130/index.md)
 
-### [CS140](cs140/index.md)
+### [CS140: Computer Security](cs140/index.md)
 
 More modules will be added as we accumulate notes on them.
 
