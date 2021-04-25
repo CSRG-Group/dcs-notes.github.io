@@ -1,5 +1,8 @@
-<a style="float:left" href="part3.html" title="Arrays, Methods, Scope, and Recursion">👈Prev</a>
-<a style="float:right" href="part5.html" title="Inheritance, Abstract Classes, and Interfaces">Next👉</a>
+<flex style="display:flex; justify-content: space-between;">
+<a href="part3.html" title="Arrays, Methods, Scope, and Recursion">👈Prev</a>
+<a href="index.html" title="CS118 Home">🏡CS118</a>
+<a href="part5.html" title="Inheritance, Abstract Classes, and Interfaces">Next👉</a>
+</flex>
 
 # Object Oriented Programming (OOP)
 

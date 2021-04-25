@@ -1,6 +1,10 @@
-## Welcome to the CS130 revision guide
+<flex style="display:flex; justify-content:space-between;">
+<a href="../index.html">📚Home</a>
+</flex>
 
-### Complete notes
+# Welcome to the CS130 revision guide
+
+## Complete notes
 
 Detailed typed notes for CS130 by **Yijun Hu** which cover the entire module can be found [here](./content/INDEX.html), with each individual section linked below:
 
@@ -33,7 +37,7 @@ Detailed handwritten notes for CS130 by **Edmund Goodman** which cover the entir
 
 
 
-### Additional notes
+## Additional notes
 
 In addition to full notes, there is a condensed "crib sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
 

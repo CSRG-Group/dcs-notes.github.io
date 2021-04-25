@@ -1,5 +1,10 @@
-<a style="float:left" href="part2.html" title="Conditional Statements">👈Prev</a>
-<a style="float:right" href="part4.html" title="Object Oriented Programming">Next👉</a>
+<flex style="display:flex; justify-content: space-between;">
+<a href="part2.html" title="Conditional Statements">👈Prev</a>
+<a href="index.html" title="CS118 Home">🏡CS118</a>
+<a href="part4.html" title="Object Oriented Programming">Next👉</a>
+</flex>
+
+
 # Arrays, Methods, Scope, and Recursion
 
 ## Arrays
@@ -9,7 +14,9 @@ There are several key points to revise when it comes to answering questions abou
 - You cannot create **arrays of generic types**. This means that you cannot create an array in Java if you do not yet know what type it stores- you can however store arrays of objects, as long as it is determined at compile-time. Therefore, in an exam, **do not create a generic array**. You are better off using a built-in collection such as an `ArrayList`.
 - You cannot access elements of an array using pointer syntax, unlike in C. Not that anyone would attempt this when writing code in an exam, nor in practice for Java, but do not attempt it otherwise.
 
-To create an array, you can either use array syntax, or the `new` keyword. Keep in mind that you should use the `new` keyword when you want to **allocate memory as you declare the array**.
+When arrays are **declared** (the name and type are defined), its value will be initialised to the special value `null`. This simply means that no value is assigned to the array **yet**, and Java knows that we want *some* contiguous block of memory to store some values, but this block of memory hasn't been assigned yet.
+
+To **initialise** an array, you can either use array syntax, or the `new` keyword. The `new` keyword essentially reserves a contiguous block of memory. Because arrays have fixed sizes once they are initialised, we also have to state/define the size of the array when we initialise it.
 
 ``` java
 // Declaring an array of type int
@@ -27,9 +34,12 @@ int[] allocatedArray = new int[10]; // We allocated space for 10 integers. This 
 int[] populatedArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 ```
 
-It is also crucial to remember that **the size of an array is fixed**. If you want to resize an array, you'll need to copy across your data from the first array into a **new array variable**, and then reassign the array. The JVM (Java Virtual Machine) will use garbage collection to automagically delete the original array that is no longer in use- unlike languages like C where you must manually clean up the memory.
+Since **the size of an array is fixed**, if you want to resize an array, you'll need to copy across your data from the first array into a **new array variable**, and then reassign the array. 
+
+The JVM (Java Virtual Machine) will use garbage collection to automagically delete the original array that is no longer in use- unlike languages like C where you must manually clean up the memory.
 
 #### Example: Resizing an array
+
 ``` java
 // Our first array of five integers
 int[] smallArray = { 1, 2, 3, 4, 5};
@@ -57,7 +67,8 @@ ICYMI, the `length` property, which is a part of all arrays in Java, was used to
 It is also possible to create multi-dimensional arrays; one must simply add another set of square brackets after the first set.
 
 ```java
-// Initialising a 2D array
+// 1st pair of square brackets refer to the "outer" array and the
+// 2nd pair refers to the "inner" array. 
 int[][] twoDArray = new int[20][20];
 
 // Populating a 2D array
@@ -73,7 +84,9 @@ twoDArrayTwo[0][1] = 2;
 twoDArrayTwo[0][2] = 3;
 ```
 
-It is crucial to keep in mind that **this is not a matrix**. Although you can easily interpret this as a matrix, there is no table being constructed here- it is an array, where each element is also an array type. It would be much better to think of this as a list of vectors, which although would form a matrix, is not a special type like an array is. 
+It is crucial to keep in mind that **this is not a matrix**. Although you can easily interpret this as a matrix, there is no table being constructed here - it is an array, where each element is also an array type. It would be much better to think of this as a list of vectors, which although would form a matrix, is not a special type like an array is. 
+
+#### Irregular array sizes
 
 If you have an **irregularly sized array**, where the length of the rows are not equal to the length of the columns, you must create the **outer array first** and then create each of the inner arrays.
 
@@ -89,13 +102,15 @@ for (int i = 0; i < arrayOfInts.length; i++) {
 
 ## Methods
 
-You are most likely familiar with methods by now, so this section is simply used to describe the _signature_ of a method and the different keywords you can use.
+The `main` method is a special method that is the **entry point** for a Java application.
 
-| Component | Access privileges | Return type | Name | List of function parameters |
+All methods have a _signature_ that defines the access privilege, the return type, the name, and its parameters. 
+
+| Component | Access privilege |Return type | Name | List of function parameters |
 |-----------|-------------------|-------------|------|-----------------------------|
 | Definition | Who can access this method from outside the class? | What type does this method return? | What should the name be? | Which arguments can be provided and used by the method? |
-| Options | `public`, `private`, `protected`. Private means that no other classes can call this method from instances of this class, and `protected` means that only children of the class can call this function. | Any object or primitive type, and `void` for no return. | An ASCII string. | This can be left empty- if you provide arguments, they are in the form `[type] nameOfArgument`. If this is a list, they are comma separated.|
-| Example | `public static`- this can be accessed from outside the class by the compiler, or any other classes. | `void` The main function returns no type. | `main` A special compiler-recognised name that signifies the main entry point. | `(String[] args)` The main method takes an array of strings as an argument. |
+| Options | `public`, `private`, `protected`.<br>Private means that no other classes can call this method from instances of this class, and `protected` means that only children of the class can call this function. | Any object or primitive type, and `void` for no return. | An ASCII string. | This can be left empty- if you provide arguments, they are in the form `[type] nameOfArgument`. If this is a list, they are comma separated.|
+| Example | `public static` - <br>this can be accessed from outside the class by the compiler, or any other classes. | `void`<br>The main function returns no type. | `main`<br>A special compiler-recognised name that signifies the main entry point. | `(String[] args)` The main method takes an array of strings as an argument. |
 
 ### Function overloading
 
@@ -150,15 +165,23 @@ public class Room {
 
 ## Passing by value and passing by reference
 
+When we pass variables to a method, sometimes these variables are passed by value - meaning the value of the variable is passed into the method (not the actual variable itself). Other times, the variables are passed by reference - the memory location of the variable is passed into the method. 
+
+```java
+public void randomMethod(int p) {...}
+```
+
 ### Passing by value
-Only the 8 primitive types are passed by value- and this is always the case. This means that the **value of the variable is copied** when we refer to it. Any changes to the variable do not affect the original variable unless you _assign_ a new value to the _old_ variable, such as `n = n + 1` which increments the value of `n`. When we wrote `n + 1`, this simply copied the value _inside_ `n`, and then returned the incremented value of this. We then had to _assign_ it back to `n`. 
+Only the 8 primitive types are passed by value - and this is always the case. This means that the **value** of the variable is **cloned** in memory and assigned to the corresponding parameter **name** of the method (e.g. `p` in the example above). 
+
+Any changes to the variable within the method's scope do not affect the original variable - it only affects the **cloned** value. If you want to change the value of the original variable you need to  _assign_ a new value to the **original** variable, e.g. `p++` which increments the value of `p`.
 
 ### Passing by reference
-This is not the same for objects, including `String`- objects can be very large and often contain many fields. Therefore, these are passed to functions by passing the _memory address_ of the variable- operating on it will induce changes in the original variable. Therefore, think carefully if you are attempting to **copy a variable** into a new one. (An example of this was when we copied an array previously into a larger one).
+Objects and arrays are passed by **reference**. Because objects can be very large and often contain many fields, the **memory address** of the variable is passed to a method (not cloned like primitives). This means changes made inside a method will directly induce changes in the original variable. Therefore, think carefully if you are attempting to **copy a variable** into a new one. (An example of this was when we copied an array previously into a larger one).
 
 ## Recursion
 A recursive function is any function that **calls itself**. There are common applications for this when calculating a Fibonacci number, or a factorial of a number. All recursive functions are made up of the following two components:
-- Base case(s). These can be seen as values that are returned when an upper or lower limit(s) is reached.
+- Base case(s). These can be seen as values that are returned when an upper or lower limit(s) is reached. These cases can also be thought of as the **terminating** conditions for a recursive method (what condition must be fulfilled to stop the recursion). 
 - Recursive call(s). These are specific calls to the function again. Remember to use the `return` keyword before a recursive call so that you eventually return the series of computations.
 
 #### Example: factorial

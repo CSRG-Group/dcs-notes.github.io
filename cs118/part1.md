@@ -1,4 +1,9 @@
-<a style="float:right" href="part2.html" title="Conditional Statements">Next👉</a>
+<flex style="display:flex; justify-content: space-between;">
+<a href="index.html" title="CS118 Home">🏡CS118</a>
+<a href="part2.html" title="Conditional Statements">Next👉</a>
+</flex>
+
+
 # Variables, Number Systems, and I/O
 
 ## Variables
