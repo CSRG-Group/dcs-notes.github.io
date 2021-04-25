@@ -9,7 +9,7 @@ There are several key points to revise when it comes to answering questions abou
 - You cannot create **arrays of generic types**. This means that you cannot create an array in Java if you do not yet know what type it stores- you can however store arrays of objects, as long as it is determined at compile-time. Therefore, in an exam, **do not create a generic array**. You are better off using a built-in collection such as an `ArrayList`.
 - You cannot access elements of an array using pointer syntax, unlike in C. Not that anyone would attempt this when writing code in an exam, nor in practice for Java, but do not attempt it otherwise.
 
-To create an array, you can either use array syntax, or the `new` keyword. Keep in mind that you should use the `new` keyword when you want to **allocate memory as you declare the array**.
+To create an array, you can either use array syntax, or the `new` keyword. Keep in mind that you should use the `new` keyword when you want to **allocate memory as you initialise the array**.
 
 ``` java
 // Declaring an array of type int
