@@ -45,3 +45,9 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+collections:
+  cs118:
+    label: cs118
+    relative_directory: ./_cs118
+    output: true

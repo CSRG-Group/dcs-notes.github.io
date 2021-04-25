@@ -6,7 +6,7 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ## Notes
 
-### [CS118: Programming for Computer Scientists](cs118/index.md)
+### [CS118: Programming for Computer Scientists](cs118/index.html)
 
 ### [CS130: Mathematics for Computer Scientists I](cs130/index.md)
 

@@ -1,8 +1,10 @@
-<flex style="display:flex; justify-content: space-between;">
-<a href="part4.html" title="Object Oriented Programming">👈Prev</a>
-<a href="index.html" title="CS118 Home">🏡CS118</a>
-<a href="part6.html" title="Error Handling & Exceptions">Next👉</a>
-</flex>
+---
+layout: 118/CS118
+part: true
+title: "Inheritance, Abstract Classes, and Interfaces"
+prev: part4.html
+nextt: part6.html
+---
 
 # Inheritance, Abstract Classes, and Interfaces
 

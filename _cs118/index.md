@@ -1,3 +1,7 @@
+---
+layout: 118/CS118
+title: CS118
+---
 <flex style="display:flex; justify-content:space-between;">
 <a href="../index.html">📚Home</a>
 </flex>
@@ -49,17 +53,17 @@ Notes by **Edmund Goodman** are linked below:
 
 *Note that only the cut down version is under active development, but I (Edmund) will irregularly copy across the content from it into the full version*.
 
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. For the **one page** (`CTRL-f` friendly) version, checkout the [CS118 One Page Notes](118complete.html) version. 
 
+These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and are linked below by section:
 
-Given the large number of topics, it makes sense to break these down into broader topics - each of which having its own page. These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and are linked below by section:
-
-1. [x] [Variables, number systems, and I/O](part1.md) (1 to 4 from above)
-2. [x] [Conditional and iterative statements](part2.md) (5 to 6)
-3. [x] [Arrays, methods, scope and recursion](part3.md) (7 to 9)
-4. [x] [Object oriented programming](part4.md) (10 to 12)
-5. [x] [Abstract classes and inheritance](part5.md) (13 to 16)
-6. [x] [Exceptions](part6.md) (17)
-7. [x] [Generics](part7.md) (18)
+1. [x] [Variables, number systems, and I/O](part1.html) (1 to 4 from above)
+2. [x] [Conditional and iterative statements](part2.html) (5 to 6)
+3. [x] [Arrays, methods, scope and recursion](part3.html) (7 to 9)
+4. [x] [Object oriented programming](part4.html) (10 to 12)
+5. [x] [Abstract classes and inheritance](part5.html) (13 to 16)
+6. [x] [Exceptions](part6.html) (17)
+7. [x] [Generics](part7.html) (18)
 
 
 
