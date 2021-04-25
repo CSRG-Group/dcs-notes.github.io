@@ -1,6 +1,10 @@
-## Welcome to the CS118 revision guide
+<flex style="display:flex; justify-content:space-between;">
+<a href="../index.html">📚Home</a>
+</flex>
 
-### Topics and content
+# Welcome to the CS118 Revision Guide 📖
+
+## Topics and content
 
 There are five broad topics overall which were split into 11 lectures - within these topics, the main sections of content are:
 
@@ -36,7 +40,7 @@ Along with topics with odd nuances, again including but not limited to:
 
 
 
-### Complete notes
+## Complete notes
 
 Notes by **Edmund Goodman** are linked below:
 
@@ -59,7 +63,7 @@ Given the large number of topics, it makes sense to break these down into broade
 
 
 
-### Flash cards
+## Flash cards
 
 Flash cards for the module by **Leon Chipchase** can be found [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](../media/exportedQuizlet118.txt)), which are based off the existing notes on this page.
 

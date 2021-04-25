@@ -1,6 +1,10 @@
-## Welcome to the CS140 revision guide
+<flex style="display:flex; justify-content:space-between;">
+<a href="../index.html">📚Home</a>
+</flex>
 
-### Topics and content
+# Welcome to the CS140 revision guide
+
+## Topics and content
 
 There are nine broad topics in the module, which are as follows:
 
@@ -14,6 +18,6 @@ There are nine broad topics in the module, which are as follows:
 8. Authentication protocols
 9. Virtualisation
 
-### Complete Notes
+## Complete Notes
 
 Detailed handwritten notes for CS140 by **Josh Fitzmaurice** which cover the entire module can be found [here](./cs140-full.pdf).
