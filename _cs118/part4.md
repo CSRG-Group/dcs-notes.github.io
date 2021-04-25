@@ -90,7 +90,7 @@ If we want a variable or method to be shared between instances of a class, we us
 
 We use `static` mainly when it doesn’t make sense to define a particular method/variable for specific instances.
 
-The `final` keyword is used to prefix variables that we want to be constant. A good example would be $\pi$! We will not be able to change the value of variables prefixed with `final` once they are assigned/instantiated with a **value**.
+The `final` keyword is used to prefix variables that we want to be constant. A good example would be <img src="https://render.githubusercontent.com/render/math?math=\pi&mode=inline">! We will not be able to change the value of variables prefixed with `final` once they are assigned/instantiated with a **value**.
 
 ```java
 public static final double PI = 3.1415926543;
