@@ -1,8 +1,10 @@
-<flex style="display:flex; justify-content: space-between;">
-<a href="part1.html" title="Variables, Number Systems, and I/O">👈Prev</a>
-<a href="index.html" title="CS118 Home">🏡CS118</a>
-<a href="part3.html" title="Arrays, Methods, Scope, and Recursion">Next👉</a>
-</flex>
+---
+layout: 118/CS118
+part: true
+title: "Conditional Statements"
+prev: part1.html
+nextt: part3.html
+---
 
 # Conditional Statements
 

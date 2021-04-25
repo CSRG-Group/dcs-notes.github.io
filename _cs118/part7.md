@@ -1,7 +1,9 @@
-<flex style="display:flex; justify-content: space-between;">
-<a href="part6.html" title="Error Handling and Exceptions">👈Prev</a>
-<a href="index.html" title="CS118 Home">🏡CS118</a>
-</flex>
+---
+layout: 118/CS118
+part: true
+title: "Generics and the Java Class Library"
+prev: part6.html
+---
 
 # Generics and the Java Class Library
 
