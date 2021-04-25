@@ -1,5 +1,9 @@
-<a style="float:left" href="part5.html" title="Abstract Classes and Inheritance">👈Prev</a>
-<a style="float:right" href="part7.html" title="Generics">Next👉</a>
+<flex style="display:flex; justify-content: space-between;">
+<a href="part5.html" title="Abstract Classes and Inheritance">👈Prev</a>
+<a href="index.html" title="CS118 Home">🏡CS118</a>
+<a href="part7.html" title="Generics">Next👉</a>
+</flex>
+
 # Error Handling and Exceptions
 
 The original delivery of this content loosely introduced what an exception was, then demonstrated the `try-catch` statement, before explaining more about exceptions, and _then_ demonstrating the `try-catch-finally` statement, before delivering more theory. As a result, I have opted to deliver as much theory as possible at the beginning, before diving into any code examples. If you are looking for the `try-catch` statement and its variant, then this can be found at the bottom of the page.

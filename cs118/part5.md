@@ -1,5 +1,9 @@
-<a style="float:left" href="part4.html" title="Object Oriented Programming">👈Prev</a>
-<a style="float:right" href="part6.html" title="Error Handling & Exceptions">Next👉</a>
+<flex style="display:flex; justify-content: space-between;">
+<a href="part4.html" title="Object Oriented Programming">👈Prev</a>
+<a href="index.html" title="CS118 Home">🏡CS118</a>
+<a href="part6.html" title="Error Handling & Exceptions">Next👉</a>
+</flex>
+
 # Inheritance, Abstract Classes, and Interfaces
 
 _A huge thank you to **Justin Tan** for contributing this post._

@@ -1,5 +1,9 @@
-<a style="float:left" href="part2.html" title="Conditional Statements">👈Prev</a>
-<a style="float:right" href="part4.html" title="Object Oriented Programming">Next👉</a>
+<flex style="display:flex; justify-content: space-between;">
+<a href="part2.html" title="Conditional Statements">👈Prev</a>
+<a href="index.html" title="CS118 Home">🏡CS118</a>
+<a href="part4.html" title="Object Oriented Programming">Next👉</a>
+</flex>
+
 
 # Arrays, Methods, Scope, and Recursion
 
