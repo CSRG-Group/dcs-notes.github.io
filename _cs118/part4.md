@@ -1,8 +1,10 @@
-<flex style="display:flex; justify-content: space-between;">
-<a href="part3.html" title="Arrays, Methods, Scope, and Recursion">👈Prev</a>
-<a href="index.html" title="CS118 Home">🏡CS118</a>
-<a href="part5.html" title="Inheritance, Abstract Classes, and Interfaces">Next👉</a>
-</flex>
+---
+layout: 118/CS118
+part: true
+title: "Object Oriented Programming"
+prev: part3.html
+nextt: part5.html
+---
 
 # Object Oriented Programming (OOP)
 
@@ -88,7 +90,7 @@ If we want a variable or method to be shared between instances of a class, we us
 
 We use `static` mainly when it doesn’t make sense to define a particular method/variable for specific instances.
 
-The `final` keyword is used to prefix variables that we want to be constant. A good example would be $\pi$! We will not be able to change the value of variables prefixed with `final` once they are assigned/instantiated with a **value**.
+The `final` keyword is used to prefix variables that we want to be constant. A good example would be <img src="https://render.githubusercontent.com/render/math?math=\pi&mode=inline">! We will not be able to change the value of variables prefixed with `final` once they are assigned/instantiated with a **value**.
 
 ```java
 public static final double PI = 3.1415926543;

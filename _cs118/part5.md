@@ -1,8 +1,10 @@
-<flex style="display:flex; justify-content: space-between;">
-<a href="part4.html" title="Object Oriented Programming">👈Prev</a>
-<a href="index.html" title="CS118 Home">🏡CS118</a>
-<a href="part6.html" title="Error Handling & Exceptions">Next👉</a>
-</flex>
+---
+layout: 118/CS118
+part: true
+title: "Inheritance, Abstract Classes, and Interfaces"
+prev: part4.html
+nextt: part6.html
+---
 
 # Inheritance, Abstract Classes, and Interfaces
 
@@ -55,13 +57,22 @@ If we call the `eat()` method from the `chocolate` now we will get
 This cake tastes amazing!
 ```
 
+#### The `@Override` annotation
+
+Before overriding the method in the `Cake` example, we write `@Override`, which is called a "method annotation". This indicates to the compiler that method overriding is occurring. This is not required to compile, but it comes with the benefits of:
+
+- Readability, as it is clear when method overriding is occurring
+- Error checking, as the compiler produces a warning if overriding is not occurring, indicating the programmer is not doing what they are intending to
+
+More information is available [here](https://stackoverflow.com/questions/94361/when-do-you-use-javas-override-annotation-and-why), [here](https://stackoverflow.com/questions/4822954/do-we-really-need-override-and-so-on-when-code-java), and [here](https://beginnersbook.com/2014/07/override-annotation-in-java/).
+
 ### Why inheritance?
 
 You probably already know this, but inheritance means that we can reduce repeated code. Another reason to use inheritance is so that **run-time polymorphism** is possible! We will discuss this in further detail below but essentially it allows us to define a general method for a superclass but do something specific to it depending on the eventual subclass that we have no knowledge of at compile time.
 
 ### The `super` and `this` keyword
 
-The `this` keyword is used to refer to the current instance of the class. In a similar way, the `super` keyword is used to refer to the current instance of the superclass.
+The `this` keyword is used to refer to the current instance of the class. In a similar way, the `super` keyword is used to refer to the superclass of the current instance.
 
 ### `super` in the subclass constructor
 
@@ -284,7 +295,7 @@ In fact, it would not make sense to instantiate/define and instance of an abstra
 
 Lets give an example:
 
-Suppose that we want define an abstract **Food** class for an online supermarket. (I tried to come up with a better example...:pensive:)
+Suppose that we want define an abstract **Food** class for an online supermarket. (I tried to come up with a better example... :pensive: )
 
 ```java
 public abstract class Food {

@@ -1,8 +1,10 @@
-<flex style="display:flex; justify-content: space-between;">
-<a href="part5.html" title="Abstract Classes and Inheritance">👈Prev</a>
-<a href="index.html" title="CS118 Home">🏡CS118</a>
-<a href="part7.html" title="Generics">Next👉</a>
-</flex>
+---
+layout: 118/CS118
+part: true
+title: "Error Handling and Exceptions"
+prev: part5.html
+nextt: part7.html
+---
 
 # Error Handling and Exceptions
 
