@@ -19,6 +19,8 @@ In the words of Matt, **all of the above topics are examinable**. However, there
 
 ## Complete notes
 
+Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://adrakaris.github.io/blog-cs/cs132/index.html). (*as of the end of april these are WIP*)
+
 These notes will likely take the same/similar form to the CS118 notes. The primary source for these will be from my (Akram) notes; any other sources or contributions will be duly cited/ attributed.
 
 1. [ ] Data representation

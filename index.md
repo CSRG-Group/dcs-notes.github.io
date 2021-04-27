@@ -10,6 +10,8 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ### [CS130: Mathematics for Computer Scientists I](cs130/index.md)
 
+### [CS132: Computer Systems and Architecture](cs132/index.md)
+
 ### [CS140: Computer Security](cs140/index.md)
 
 More modules will be added as we accumulate notes on them.
