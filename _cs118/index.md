@@ -44,14 +44,7 @@ Along with topics with odd nuances, again including but not limited to:
 
 
 
-## Complete notes
-
-Notes by **Edmund Goodman** are linked below:
-
-1. [x] [Notes covering the entire topic](./combined.html)
-2. [x] [A cut down version of the notes covering only the non-trivial content](cribSheet.html)
-
-*Note that only the cut down version is under active development, but I (Edmund) will irregularly copy across the content from it into the full version*.
+## Notes
 
 Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. For the **one page** (`CTRL-f` friendly) version, checkout the [CS118 One Page Notes](118complete.html) version. 
 
@@ -64,6 +57,14 @@ These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and a
 5. [x] [Abstract classes and inheritance](part5.html) (13 to 16)
 6. [x] [Exceptions](part6.html) (17)
 7. [x] [Generics](part7.html) (18)
+
+
+
+Notes by **Edmund Goodman** acting as a "Crib sheet" for the module, only covering the more complex content are linked below:
+
+- [A cut down version of the notes covering only the non-trivial content](cribSheet.html)
+
+These are based off of a full set of notes covering the entire topic, which could be used in combination with the above notes for different explanations of the same topics, so are linked here: [notes covering the entire topic](./combined.html).
 
 
 
