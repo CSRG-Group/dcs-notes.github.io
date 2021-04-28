@@ -33,4 +33,4 @@ We have a quick request in that you read the following contribution guidelines t
 6. Push your changes to the remote server by running the command `git push -u origin <NEW_BRANCH_NAME>`
 7. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), after the changes have been pushed, a green "Compare & pull request" button will appear. Click on it, then click on the green "Create pull request" button which will appear afterwards. After this is done, we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
 
-If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section to ask us about it.
+If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section of the README file or the websites main page to ask us about it.
