@@ -19,6 +19,9 @@ In the words of Matt, **all of the above topics are examinable**. However, there
 
 ## Complete notes
 
+Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the entire module can be found [here](./CS132_full.pdf).
+
+
 Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://adrakaris.github.io/blog-cs/cs132/index.html). (*as of the end of april these are WIP*)
 
 These notes will likely take the same/similar form to the CS118 notes. The primary source for these will be from my (Akram) notes; any other sources or contributions will be duly cited/ attributed.
@@ -29,8 +32,3 @@ These notes will likely take the same/similar form to the CS118 notes. The prima
 4. [ ] Memory systems
 5. [ ] I/O mechanisms
 6. [ ] Processor architecture
-
-
-## Complete Notes
-
-Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the entire module can be found [here](./CS132_full.pdf).
