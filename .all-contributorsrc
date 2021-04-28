@@ -1,4 +1,14 @@
 {
-  "files": ["README.md"],
-  "contributors": []
+  "projectName": "CRSG-group",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "contributors": [
+  
+  ],
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "contributorsPerLine": 7,
+  "skipCi": "true"
 }
