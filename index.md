@@ -16,6 +16,8 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 More modules will be added as we accumulate notes on them.
 
+Another full revision guidem which also contains engineering modules for CSE students, can be found at <https://joeyh.dev.notes>.
+
 ## Licensing and downloading
 
 This work is licensed under Creative Commons "Attribution-NonCommercial-ShareAlike 4.0 International", and the full license document can be found [here](./LICENSE.txt). Essentially, attribute any content to the people who made it, don't use it to make money, and, even if you change the content, share it under the same license.
