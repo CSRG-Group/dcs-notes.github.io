@@ -36,13 +36,13 @@ If you think you have found a mistake in any of the notes, please tell us! If yo
 
 ### How to make a pull request
 
-1. On the repository's [page on GitHub](https://github.com/arkamnite/dcs-notes.github.io), click the "Fork repository" button
+1. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), click the "Fork repository" button
 2. Clone your fork of the repository to your computer by running the command `git clone https://github.com/<YOUR_GITHUB_USERNAME>/dcs-notes.github.io`
 3. Create a new branch on your local repository by running the command `git checkout -b <NEW_BRANCH_NAME>`. Naming the branch as a very brief description of what the change entails is helpful for us when accepting pull requests.
-4. Set a new remote server for the upstream repository by running the command `git remote add upstream https://github.com/arkamnite/dcs-notes.github.io`
+4. Set a new remote server for the upstream repository by running the command `git remote add upstream https://github.com/csrg-group/dcs-notes.github.io`
 5. Make your changes/contributions, then add and commit your changes to the repository (with `git add -A` and `git commit -m "<COMMIT_MESSAGE>"` respectively)
 6. Push your changes to the remote server by running the command `git push -u origin <NEW_BRANCH_NAME>`
-7. On the repository's [page on GitHub](https://github.com/arkamnite/dcs-notes.github.io), after the changes have been pushed, a green "Compare & pull request" button will appear. Click on it, then click on the green "Create pull request" button which will appear afterwards. After this is done, we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
+7. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), after the changes have been pushed, a green "Compare & pull request" button will appear. Click on it, then click on the green "Create pull request" button which will appear afterwards. After this is done, we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
 
 If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section to ask us about it.
 

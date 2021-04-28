@@ -60,7 +60,8 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-the locations given in the "Contact us" section of the README, i.e. the Warwick first year CS discord servers or WhatsApp group chat.
+the locations given in the "Contact us" section of the README, i.e. the Warwick
+first year CS discord servers or WhatsApp group chat.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
