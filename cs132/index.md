@@ -29,3 +29,8 @@ These notes will likely take the same/similar form to the CS118 notes. The prima
 4. [ ] Memory systems
 5. [ ] I/O mechanisms
 6. [ ] Processor architecture
+
+
+## Complete Notes
+
+Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the entire module can be found [here](./CS132_full.pdf).
