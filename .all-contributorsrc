@@ -1,7 +1,8 @@
 {
   "projectName": "dcs-notes.github.io",
   "files": [
-    "README.md"
+    "README.md",
+    "index.md"
   ],
   "imageSize": 100,
   "contributors": [

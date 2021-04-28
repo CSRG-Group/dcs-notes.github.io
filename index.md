@@ -2,9 +2,11 @@
 
 This website is a collection of notes for the modules in the first year computer science degree at the University of Warwick.
 
-It is entirely student-run, and not affiliated with or endorsed by the University. If at any point we are told this goes against DCS anti-plagiarism guidelines, or any other policy, we will immediately take it down. Additionally, we cannot provide guarantees that all the notes are correct as all content is written by students, however, we will try our hardest to maintain quality.
+It is entirely student-run, and not affiliated with or endorsed by the University. We have communicated with members of the department who have said that this project is acceptable, but if at any point we are told this goes against DCS anti-plagiarism guidelines, or any other policy, we will immediately take it down. Additionally, we cannot provide guarantees that all the notes are correct as all content is written by students, however, we will try our hardest to maintain quality.
 
-## Notes
+
+
+## Module notes
 
 ### [CS118: Programming for Computer Scientists](cs118/index.html)
 
@@ -16,23 +18,40 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 More modules will be added as we accumulate notes on them.
 
-Another full revision guide, which also contains engineering modules for CSE students, can be found at <https://joeyh.dev.notes>.
+Another full revision guide, which also contains engineering modules for CSE students, can be found at <https://joeyh.dev/notes>.
+
+
 
 ## Licensing and downloading
 
-This work is licensed under Creative Commons "Attribution-NonCommercial-ShareAlike 4.0 International", and the full license document can be found [here](./LICENSE.txt). Essentially, attribute any content to the people who made it, don't use it to make money, and, even if you change the content, share it under the same license.
+This work is licensed under Creative Commons "Attribution-NonCommercial-ShareAlike 4.0 International", and [the full license document can be found here](./LICENSE.txt). Essentially, attribute any content to the people who made it, don't use it to make money, and, even if you change the content, share it under the same license.
 
 If you want to take a local download of the repository, please consider taking a fork as opposed to a clone, as that means it is easier for you to both stay up to date, and to contribute later if you want to. Furthermore, it helps us to some extent see how many people are interested in what we are doing.
 
+
+
 ## Contributing
 
-We welcome pull requests from anyone who is happy to share their notes, and would be incredibly grateful for any input of content for the individual pages. We will try to provide any attribution you would like for content you contribute. If you decide you'd like to help contribute, do submit a pull request! This would mean we get full coverage of the content finished faster, and everyone on the course can benefit from high quality shared notes.
+We welcome pull requests from anyone who is happy to share their notes, and would be incredibly grateful for any input of content for the individual pages! We will try to provide any reasonable attribution you would like for content you contribute, and any contributions mean we get a more full coverage of the content finished faster, so everyone on the course can benefit from high quality shared notes.
 
-Currently, most of the notes are in markdown (`.md`) format, but we also support most other file formats, for example static webpages and PDFs. We are also very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (the `ctrl+f` key is going to be used pretty heavily in open book exams).
+Currently, most of the notes are in markdown (`.md`) format, but we also support most other file formats, for example static webpages and PDFs. We are also very happy to add photographs of written notes, but a benefit of electronic formats is that they can be quickly searched (the `ctrl+f` key is going to be used pretty heavily in open book exams). If you would prefer to host notes on your own site, we are also very happy to just link to them, but we would prefer to host a mirror of them here, for future-proofing.
 
 ### Errata
 
-If you think you have found a mistake in any of the notes, please tell us! If you feel comfortable making a pull request, you can make the change yourself by editing the appropriate file (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used) and submit it through GitHub. Otherwise, see the "Contact us" section for how to tell us about it (if you know who made the notes, they're probably the best people to ask to get it fixed).
+If you think you have found a mistake in any of the notes, please tell us!
+
+If you can make the change yourself by editing the appropriate file, consider making a pull request to the repository (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used) and submit it through GitHub. This will also list you as a collaborator on the project :smile:. ​
+
+If there is a bigger issue, or you don't feel comfortable making a pull request, see the "Contact us" section for how to tell us about it (if you know who made the notes, they're probably the best people to ask to get it fixed).
+
+### Guidelines for contributions
+
+We have a quick request in that you read the following contribution guidelines to ensure the smooth-running of this project:
+
+- Please thoroughly research a topic/correction before making a pull request on the matter.
+- If you are directly sourcing content that is not your one, **please add the correct citations**. 
+- Please do not re-host any university owned content, including but not limited to past papers
+  and lecture notes
 
 ### How to make a pull request
 
@@ -46,8 +65,30 @@ If you think you have found a mistake in any of the notes, please tell us! If yo
 
 If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section to ask us about it.
 
+
+
+## Contributors
+
+*We are working on getting the "all-contributors" bot running to automate/prettify acknowledgements*
+
+Thanks to:
+
+- Akram Ahmad, Edmund Goodman, Justin Tan, Yijun Hu, Josh Fitzmaurice, Joey H, and Leon Chipchase for contributing notes and revision material
+- @MxttyV, Bora A, Manas Rawat, Lennon Choong, Sam H, and @ksanganee for reporting mistakes in the notes
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
+
 ## Contact us
 
-Currently, the main contributors to this project are: Akram Ahmad, Edmund Goodman, Justin Tan, Yijun Hu, and Josh Fitzmaurice.
+Currently, the maintainers/admins for this project are: Akram Ahmad, Edmund Goodman, Justin Tan, Yijun Hu (founding members), and Josh Fitzmaurice and Leo Riviera.
 
 If you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord (search for our names within the main first year CS group chat, or the grey or cult servers).
+
