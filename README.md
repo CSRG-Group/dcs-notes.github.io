@@ -27,5 +27,16 @@ If you want to take a local download of the repository, please consider taking a
 Currently, the main contributors to this project are: Akram Ahmad, Edmund Goodman, Justin Tan, Yijun Hu, and Josh Fitzmaurice. If you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord (search for our names within the main first year CS group chat, or the grey or cult servers).
 
 
+## Thanks to
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
 
 Many thanks once again for visiting.
