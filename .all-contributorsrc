@@ -1,22 +1,14 @@
 {
-  "projectName": "CRSG-group"
+  "projectName": "CRSG-group",
   "files": [
     "README.md"
   ],
   "imageSize": 100,
   "contributors": [
-    {
-      "login": "EdmundGoodman",
-      "name": "Edmund Goodman",
-      "avatar_url": "https://avatars.githubusercontent.com/u/37504168?v=4",
-      "profile": "https://github.com/EdmundGoodman",
-      "contributions": [
-        "content"
-      ]
-    }
+  
   ],
   "repoType": "github",
   "repoHost": "https://github.com",
   "contributorsPerLine": 7,
-  "skipCi": "true",
+  "skipCi": "true"
 }
