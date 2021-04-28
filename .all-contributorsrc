@@ -1,14 +1,23 @@
 {
-  "projectName": "CRSG-group",
+  "projectName": "dcs-notes.github.io",
   "files": [
     "README.md"
   ],
   "imageSize": 100,
   "contributors": [
-  
+    {
+      "login": "EdmundGoodman",
+      "name": "EdmundGoodman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37504168?v=4",
+      "profile": "https://github.com/EdmundGoodman",
+      "contributions": [
+        "content"
+      ]
+    }
   ],
   "repoType": "github",
   "repoHost": "https://github.com",
   "contributorsPerLine": 7,
-  "skipCi": "true"
+  "skipCi": true,
+  "projectOwner": "CSRG-Group"
 }
