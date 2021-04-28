@@ -4,6 +4,8 @@ We have a quick request in that you read the following contribution guidelines t
 
 - Please thoroughly research a topic/correction before making a pull request on the matter.
 - If you are directly sourcing content that is not your one, **please add the correct citations**. 
+- Please do not re-host any university owned content, including but not limited to past papers
+  and lecture notes
 - Please read the instructions on the landing page if you are unsure how to create a pull request.
 
 If there are any queries/problems, then please contact us via Discord/WhatsApp.
