@@ -16,7 +16,7 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 More modules will be added as we accumulate notes on them.
 
-Another full revision guidem which also contains engineering modules for CSE students, can be found at <https://joeyh.dev.notes>.
+Another full revision guide, which also contains engineering modules for CSE students, can be found at <https://joeyh.dev.notes>.
 
 ## Licensing and downloading
 
