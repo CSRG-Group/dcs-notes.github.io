@@ -10,18 +10,19 @@ Currently, most of the notes are in markdown (`.md`) format, but we also support
 
 If you think you have found a mistake in any of the notes, please tell us!
 
-If you can make the change yourself by editing the appropriate file, consider making a pull request to the repository (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used) and submit it through GitHub. This will also list you as a collaborator on the project :smile:. ​
+If you can make the change yourself by editing the appropriate file, consider making a pull request to the repository (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used) and submit it through GitHub. This will also list you as a contributor to the project :smile:. 
 
 If there is a bigger issue, or you don't feel comfortable making a pull request, see the "Contact us" section for how to tell us about it (if you know who made the notes, they're probably the best people to ask to get it fixed).
 
 ### Guidelines for contributions
 
-We have a quick request in that you read the following contribution guidelines to ensure the smooth-running of this project:
+To ensure the smooth running of the this project, and avoid any contributions having to be removed, please follow the below guidelines:
 
-- Please thoroughly research a topic/correction before making a pull request on the matter.
-- If you are directly sourcing content that is not your one, **please add the correct citations**. 
-- Please do not re-host any university owned content, including but not limited to past papers
-  and lecture notes
+- Please thoroughly research a topic/correction before making a pull request on the matter, to ensure accuracy
+
+- If you are directly sourcing content that is not your own, **please add the correct citations**. For images or text taken verbatim from a source, please include a link to the site it is taken from, and exercise common sense for other cases
+
+- Please do not re-host any university owned content, including but not limited to past papers and lecture notes
 
 ### How to make a pull request
 
