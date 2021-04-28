@@ -2,7 +2,7 @@
 
 Warwick first year Computer Science revision notes
 
-### [The live site is accessible here](https://arkamnite.github.io/dcs-notes.github.io/)
+### [The live site is accessible here](https://csrg-group.github.io/dcs-notes.github.io/)
 
 ---
 
@@ -29,4 +29,3 @@ Currently, the main contributors to this project are: Akram Ahmad, Edmund Goodma
 
 
 Many thanks once again for visiting.
-
