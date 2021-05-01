@@ -10,11 +10,17 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ### [CS118: Programming for Computer Scientists](cs118/index.html)
 
+### [CS126: Design of Information Structures](cs126/index.md)
+
 ### [CS130: Mathematics for Computer Scientists I](cs130/index.md)
+
+### [CS131: Mathematics for Computer Scientists II](cs131/index.md)
 
 ### [CS132: Computer Systems and Architecture](cs132/index.md)
 
 ### [CS140: Computer Security](cs140/index.md)
+
+### [CS141: Functional Programming](cs141/index.md)
 
 More modules will be added as we accumulate notes on them.
 
