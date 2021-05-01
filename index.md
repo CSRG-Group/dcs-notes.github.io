@@ -20,7 +20,7 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ### [CS140: Computer Security](cs140/index.md)
 
-### [CS141: Functional Programming](cs141/index.md)
+### [CS141: Functional Programming (not yet completed)](cs141/index.md)
 
 More modules will be added as we accumulate notes on them.
 
