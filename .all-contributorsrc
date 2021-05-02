@@ -6,6 +6,12 @@
   ],
   "imageSize": 100,
   "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-<%= contributors.length %>-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)",
+  "types": {
+    "admin": {
+      "symbol": "🔥",
+      "description": "Admins of CSRG"
+    }
+  },
   "contributors": [
     {
       "login": "EdmundGoodman",
@@ -15,10 +21,7 @@
       "contributions": [
         "content",
         "design",
-        "doc",
-        "ideas",
-        "maintenance",
-        "projectManagement"
+        "admin"
       ]
     },
     {
@@ -29,11 +32,7 @@
       "contributions": [
         "content",
         "design",
-        "doc",
-        "ideas",
-        "maintenance",
-        "projectManagement",
-        "bug"
+        "admin"
       ]
     },
     {
@@ -44,10 +43,7 @@
       "contributions": [
         "content",
         "design",
-        "doc",
-        "ideas",
-        "maintenance",
-        "projectManagement"
+        "admin"
       ]
     },
     {
@@ -58,10 +54,7 @@
       "contributions": [
         "content",
         "design",
-        "doc",
-        "ideas",
-        "maintenance",
-        "projectManagement"
+        "admin"
       ]
     },
     {
@@ -71,8 +64,7 @@
       "profile": "https://github.com/jfitz02",
       "contributions": [
         "content",
-        "ideas",
-        "projectManagement"
+        "admin"
       ]
     },
     {
@@ -81,8 +73,7 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/11467778?v=4",
       "profile": "https://github.com/leoriviera",
       "contributions": [
-        "ideas",
-        "projectManagement"
+        "admin"
       ]
     },
     {
