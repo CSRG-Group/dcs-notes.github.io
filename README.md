@@ -1,6 +1,6 @@
 # dcs-notes.github.io
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-3-darkred.svg?style=for-the-badge)](#contributors-)
 
 
 
