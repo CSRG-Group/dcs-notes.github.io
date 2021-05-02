@@ -80,7 +80,7 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 <table>
   <tr>
     <td align="center"><a href="https://github.com/EdmundGoodman"><img src="https://avatars.githubusercontent.com/u/37504168?v=4?s=100" width="100px;" alt=""/><br /><sub><b>EdmundGoodman</b></sub></a><br /><a href="#content-EdmundGoodman" title="Content">🖋</a> <a href="#design-EdmundGoodman" title="Design">🎨</a> <a href="#admin-EdmundGoodman" title="Admins of CSRG">🔥</a></td>
-    <td align="center"><a href="https://github.com/Justanhy"><img src="https://avatars.githubusercontent.com/u/46620327?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Justin Tan</b></sub></a><br /><a href="#content-Justanhy" title="Content">🖋</a> <a href="#admin-Justanhy" title="Admins of CSRG">🔥</a></td>
+    <td align="center"><a href="https://github.com/Justanhy"><img src="https://avatars.githubusercontent.com/u/46620327?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Justin Tan</b></sub></a><br /><a href="#content-Justanhy" title="Content">🖋</a> <a href="#design-Justanhy" title="Design">🎨</a> <a href="#admin-Justanhy" title="Admins of CSRG">🔥</a></td>
     <td align="center"><a href="https://github.com/arkamnite"><img src="https://avatars.githubusercontent.com/u/47830962?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akram Ahmad</b></sub></a><br /><a href="#content-arkamnite" title="Content">🖋</a> <a href="#design-arkamnite" title="Design">🎨</a> <a href="#admin-arkamnite" title="Admins of CSRG">🔥</a></td>
     <td align="center"><a href="https://github.com/Adrakaris"><img src="https://avatars.githubusercontent.com/u/17861497?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yijun Hu</b></sub></a><br /><a href="#content-Adrakaris" title="Content">🖋</a> <a href="#design-Adrakaris" title="Design">🎨</a> <a href="#admin-Adrakaris" title="Admins of CSRG">🔥</a></td>
     <td align="center"><a href="https://github.com/jfitz02"><img src="https://avatars.githubusercontent.com/u/73333523?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Fitz</b></sub></a><br /><a href="#content-jfitz02" title="Content">🖋</a> <a href="#admin-jfitz02" title="Admins of CSRG">🔥</a></td>
@@ -103,7 +103,7 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Generally, "🖋" means contributing notes to the project, "🐛" means making a pull request to fix mistakes in someone else's notes, and all other emojis refer to internal administrative tasks. See [the all-contributors emoji key](https://allcontributors.org/docs/en/emoji-key) for a more comprehensive summary.
+Generally, "🖋" means contributing notes to the project, "🐛" means making a pull request to fix mistakes in someone else's notes, and "🔥" means to be responsible for internal administrative tasks. See [the all-contributors emoji key](https://allcontributors.org/docs/en/emoji-key) for a more comprehensive summary of the available emoji keys. (Note: 🔥 is a custom key named "admin"). 
 
 
 ## Contact us
