@@ -1,6 +1,7 @@
 # dcs-notes.github.io
-
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-3-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-3-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END --> 
 [![Website https://csrg-group.github.io/dcs-notes.github.io/](https://img.shields.io/website-up-down-green-red/https/csrg-group.github.io/dcs-notes.github.io.svg?style=for-the-badge)](https://csrg-group.github.io/dcs-notes.github.io/)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg?style=for-the-badge)](http://commonmark.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
