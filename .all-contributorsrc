@@ -14,8 +14,11 @@
       "profile": "https://github.com/EdmundGoodman",
       "contributions": [
         "content",
+        "design",
         "doc",
-        "maintenance"
+        "ideas",
+        "maintenance",
+        "projectManagement"
       ]
     },
     {
@@ -26,20 +29,139 @@
       "contributions": [
         "content",
         "design",
-        "doc"
+        "doc",
+        "ideas",
+        "maintenance",
+        "projectManagement"
       ]
     },
     {
       "login": "arkamnite",
-      "name": "Akram",
+      "name": "Akram Ahmad",
       "avatar_url": "https://avatars.githubusercontent.com/u/47830962?v=4",
       "profile": "https://github.com/arkamnite",
       "contributions": [
-        "doc",
         "content",
-        "maintenance"
+        "design",
+        "doc",
+        "ideas",
+        "maintenance",
+        "projectManagement"
       ]
-    }
+    },
+    {
+      "login": "Adrakaris",
+      "name": "Yijun Hu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17861497?v=4",
+      "profile": "https://github.com/Adrakaris",
+      "contributions": [
+        "content",
+        "design",
+        "doc",
+        "ideas",
+        "maintenance",
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "jfitz02",
+      "name": "Josh Fitz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/73333523?v=4",
+      "profile": "https://github.com/jfitz02",
+      "contributions": [
+        "content",
+        "ideas",
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "leoriviera",
+      "name": "Leo Riviera",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11467778?v=4",
+      "profile": "https://github.com/leoriviera",
+      "contributions": [
+        "ideas",
+        "projectManagement"
+      ]
+    },
+    
+    
+    {
+      "login": "Joeyh021",
+      "name": "Joe Harrison",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37697107?v=4",
+      "profile": "https://github.com/Joeyh021",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "lchipchase",
+      "name": "Leon Chipchase",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77326474?v=4",
+      "profile": "https://github.com/lchipchase",
+      "contributions": [
+        "content"
+      ]
+    },
+    
+    
+    {
+      "login": "manasrawat",
+      "name": "Manas Rawat",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13320706?v=4",
+      "profile": "https://github.com/manasrawat",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "ksanganee",
+      "name": "ksanganee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20343295?v=4",
+      "profile": "https://github.com/ksanganee",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "Samueljh1",
+      "name": "Sam H",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10816880?v=4",
+      "profile": "https://github.com/Samueljh1",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "lennonchoong",
+      "name": "Lennon Choong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62992865?v=4",
+      "profile": "https://github.com/lennonchoong",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "MxttyV",
+      "name": "MxttyV",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75853467?v=4",
+      "profile": "https://github.com/MxttyV",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "bora-7",
+      "name": "Bora A.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76407294?v=4",
+      "profile": "https://github.com/bora-7",
+      "contributions": [
+        "bug"
+      ]
+    },
+    
+    
   ],
   "repoType": "github",
   "repoHost": "https://github.com",
