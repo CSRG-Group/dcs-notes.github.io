@@ -39,6 +39,15 @@
         "content",
         "maintenance"
       ]
+    },
+    {
+      "login": "Adrakaris",
+      "name": "Yijun H.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17861497?v=4",
+      "profile": "http://yijun.hu",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "repoType": "github",
