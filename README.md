@@ -75,7 +75,7 @@ Many thanks to:
 <table>
   <tr>
     <td align="center"><a href="https://github.com/EdmundGoodman"><img src="https://avatars.githubusercontent.com/u/37504168?v=4?s=100" width="100px;" alt=""/><br /><sub><b>EdmundGoodman</b></sub></a><br /><a href="#content-EdmundGoodman" title="Content">🖋</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=EdmundGoodman" title="Documentation">📖</a> <a href="#maintenance-EdmundGoodman" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://github.com/Justanhy"><img src="https://avatars.githubusercontent.com/u/46620327?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Justin Tan</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=Justanhy" title="Tests">⚠️</a> <a href="#design-Justanhy" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/Justanhy"><img src="https://avatars.githubusercontent.com/u/46620327?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Justin Tan</b></sub></a><br /><a href="#content-Justanhy" title="Content">🖋</a> <a href="#design-Justanhy" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=Justanhy" title="Documentation">📖</a></td>
   </tr>
 </table>
 
