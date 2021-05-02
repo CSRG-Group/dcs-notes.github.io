@@ -32,7 +32,8 @@
         "doc",
         "ideas",
         "maintenance",
-        "projectManagement"
+        "projectManagement",
+        "bug"
       ]
     },
     {
@@ -84,8 +85,6 @@
         "projectManagement"
       ]
     },
-    
-    
     {
       "login": "Joeyh021",
       "name": "Joe Harrison",
@@ -104,8 +103,6 @@
         "content"
       ]
     },
-    
-    
     {
       "login": "manasrawat",
       "name": "Manas Rawat",
@@ -159,7 +156,7 @@
       "contributions": [
         "bug"
       ]
-    }   
+    }
   ],
   "repoType": "github",
   "repoHost": "https://github.com",
