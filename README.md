@@ -1,9 +1,14 @@
 # dcs-notes.github.io
 
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-3-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-3-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors-)
 [![Website https://csrg-group.github.io/dcs-notes.github.io/](https://img.shields.io/website-up-down-green-red/https/csrg-group.github.io/dcs-notes.github.io.svg?style=for-the-badge)](https://csrg-group.github.io/dcs-notes.github.io/)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg?style=for-the-badge)](http://commonmark.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
+
+[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
+[![GitHub issues](https://img.shields.io/github/issues/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/issues/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/pull/)
+
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 
 
