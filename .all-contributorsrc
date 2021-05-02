@@ -28,6 +28,17 @@
         "design",
         "doc"
       ]
+    },
+    {
+      "login": "arkamnite",
+      "name": "Akram",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47830962?v=4",
+      "profile": "https://github.com/arkamnite",
+      "contributions": [
+        "doc",
+        "content",
+        "maintenance"
+      ]
     }
   ],
   "repoType": "github",
