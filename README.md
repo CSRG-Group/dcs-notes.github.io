@@ -101,7 +101,7 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Generally, "📖" means contributing notes to the project, "🐛" means making a pull request to fix mistakes in someone else's notes, and all other emojis refer to internal administrative tasks. See [The all-contributors emoji key](https://allcontributors.org/docs/en/emoji-key) for a more comprehensive summary.
+Generally, "🖋" means contributing notes to the project, "🐛" means making a pull request to fix mistakes in someone else's notes, and all other emojis refer to internal administrative tasks. See [the all-contributors emoji key](https://allcontributors.org/docs/en/emoji-key) for a more comprehensive summary.
 
 
 ## Contact us
