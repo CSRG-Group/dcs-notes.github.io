@@ -3,12 +3,12 @@
 [![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-3-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 [![Website https://csrg-group.github.io/dcs-notes.github.io/](https://img.shields.io/website-up-down-green-red/https/csrg-group.github.io/dcs-notes.github.io.svg?style=for-the-badge)](https://csrg-group.github.io/dcs-notes.github.io/)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg?style=for-the-badge)](http://commonmark.org)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
-[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
-[![GitHub issues](https://img.shields.io/github/issues/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/issues/)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/pull/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
+<!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
+[![GitHub issues](https://img.shields.io/github/issues/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/issues/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/pull/)-->
 
 ### [The live site is accessible here](https://csrg-group.github.io/dcs-notes.github.io/)
 
@@ -63,6 +63,8 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 5. Make your changes/contributions, then add and commit your changes to the repository (with `git add -A` and `git commit -m "<COMMIT_MESSAGE>"` respectively)
 6. Push your changes to the remote server by running the command `git push -u origin <NEW_BRANCH_NAME>`
 7. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), after the changes have been pushed, a green "Compare & pull request" button will appear. Click on it, then click on the green "Create pull request" button which will appear afterwards. After this is done, we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
+
+Further resources for making a pull request can be found [here](http://makeapullrequest.com).
 
 If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section to ask us about it.
 
