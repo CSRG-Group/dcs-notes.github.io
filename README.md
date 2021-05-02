@@ -64,13 +64,6 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 
 ## Contributors
 
-*We are working on getting the "all-contributors" bot running to automate/prettify acknowledgements*
-
-Many thanks to:
-
-- Akram Ahmad, Edmund Goodman, Justin Tan, Yijun Hu, Josh Fitzmaurice, Joey H, and Leon Chipchase for contributing notes and revision material
-- @MxttyV, Bora A, Manas Rawat, Lennon Choong, Sam H, and @ksanganee for reporting mistakes in the notes
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -81,12 +74,11 @@ Many thanks to:
     <td align="center"><a href="https://github.com/arkamnite"><img src="https://avatars.githubusercontent.com/u/47830962?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akram</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=arkamnite" title="Documentation">📖</a> <a href="#content-arkamnite" title="Content">🖋</a> <a href="#maintenance-arkamnite" title="Maintenance">🚧</a></td>
   </tr>
 </table>
-
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+Generally, "📖" means contributing notes to the project, "🐛" means making a pull request to fix mistakes in someone else's notes, and all other emojis refer to internal administrative tasks. See [The all-contributors emoji key](https://allcontributors.org/docs/en/emoji-key) for a more comprehensive summary.
 
 
 ## Contact us
