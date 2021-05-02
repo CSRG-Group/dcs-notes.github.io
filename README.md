@@ -1,5 +1,9 @@
 # dcs-notes.github.io
 
+<div style="display:flex;justify-content:space-between;">
+  ![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)
+</div>
+
 
 
 ### [The live site is accessible here](https://csrg-group.github.io/dcs-notes.github.io/)
