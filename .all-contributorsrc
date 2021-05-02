@@ -5,7 +5,7 @@
     "index.md"
   ],
   "imageSize": 100,
-  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-3-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)",
   "contributors": [
     {
       "login": "EdmundGoodman",
