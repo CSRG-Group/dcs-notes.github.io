@@ -1,10 +1,11 @@
 ---
 layout: notes
+title: Data Representation
 math: true
 ---
 
-# Data Representation
-
+* TOC
+{:toc}
 ## Representation and number systems
 
 In terms of the exam, the most important concept is **value versus representation** of any number. In practice, this means you need to accept that you cannot always represent a value across different bases using the same number of symbols.
@@ -23,6 +24,7 @@ There are four main number systems we will use:
 It is crucial that you learn to distinguish between representations of these numbers – for example, 16<sub>10</sub> = 10000<sub>2</sub> = 20<sub>8</sub> = 10<sub>16</sub>.
 
 For any number system, you can use the following equation to calculate the value of a number: 
+
 $$
 \text{value = (sum from } i = 0\text{ to } i = (N-1))\text{ symbol}(i) \times \text{base}^i
 $$
@@ -51,7 +53,7 @@ In *TTL (transistor-transistor logic)*, we use two voltage ranges to determine w
 | 0V - 0.8V | 0      |
 | 2.4V - 5V | 1      |
 
-> These are ranges are governed by the tolerance of the electrical components and can be affected by *noise* that makes the voltage fluctuate. Hence there is a “divide” between the 2 ranges to provide a separation for the signal, in order to properly distinguish between a $0$ or $1$. 
+> These are ranges are governed by the tolerance of the electrical components and can be affected by *noise* that makes the voltage fluctuate. Hence there is a “divide” between the 2 ranges to provide a separation for the signal, in order to properly distinguish between a 0 or 1. 
 >
 > Otherwise, if the cut-off point was just at a particular voltage, e.g. $$3V$$, then if it is at $$2.9V$$ the transistor will not know if it is a $$0$$ or a $$1$$ because there will be fluctuations (noise).
 
@@ -60,6 +62,7 @@ Now we can carry this information on a wire and usually we have multiple wires r
 ## Bits, Bytes, Words, and Bus sizes
 
 You need to understand and recall the value ranges (or size) of the aforementioned terms:
+
 | Magic word | Explanation | Value range |
 | ---------- | ----------- | ----------- |
 | Bit | Binary digit | Values 0<sub>2</sub> or 1<sub>2</sub> inclusive |
@@ -83,6 +86,7 @@ One disadvantage of binary is that it is **not** a very **compact** way of repre
 
 Repeatedly divide the number by the base required, i.e 2 for binary, and record the remainder for each division. Once you’re done, write out the remainders from quotient 0 to the original number (in this case right to left) and you will arrive at the binary representation of your original number.
 
+
 |   Quotient    | 163  |  81  |  40  |  20  |  10  |  5   |  2   |  1   |  0   |
 | :-----------: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 | **Remainder** |  -   |  1   |  1   |  0   |  0   |  0   |  1   |  0   |  1   |
@@ -94,6 +98,7 @@ $$
 ### Decimal to Octal or Hex
 
 The same division method can be used…but it might be easier to convert to binary first and then into the required base:
+
 $$
 \begin{align}
 23_{10} &= 16 + 4 +2+1\\
@@ -102,6 +107,7 @@ $$
 &= 17_{16} (0001\;0111_2)
 \end{align}
 $$
+
 You can do this unless Matt prohibits it in exam. The best way to get better at this is by doing practice questions.
 
 ## Addition and Negative Numbers
@@ -114,7 +120,7 @@ An alternative is to use **Two's Complement Representation.**
 
 The MSB has the same value as in the binary positional representation but it is negative. This makes the range asymmetric – there are more negative numbers than positive as the MSB is negative. And because of this, it also makes the zero **unique**.
 
-###### The screenshot below shows you how to form Two's Complement:
+The screenshot below shows you how to form Two's Complement:
 
 ![image-20201009150201939](part1.assets/image-20201009150201939-1620061931835.png)
 
