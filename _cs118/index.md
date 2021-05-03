@@ -62,9 +62,9 @@ These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and a
 
 Notes by **Edmund Goodman** acting as a "Crib sheet" for the module, only covering the more complex content are linked below:
 
-- [A cut down version of the notes covering only the non-trivial content](./cribSheet.html)
+- [A cut down version of the notes covering only the non-trivial content](cribSheet.html)
 
-These are based off of a full set of notes covering the entire topic, which could be used in combination with the above notes for different explanations of the same topics, so are linked here: [notes covering the entire topic](./combined.html).
+These are based off of a full set of notes covering the entire topic, which could be used in combination with the above notes for different explanations of the same topics, so are linked here: [notes covering the entire topic](combined.html).
 
 
 
