@@ -1,6 +1,11 @@
+---
+math: true
+title: CS118 Combined Notes - Edmund Goodman
+---
+
 # CS118 Notes - Edmund Goodman
 
-[toc]
+{:toc}
 
 ## Introduction to programming
 

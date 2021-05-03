@@ -1,8 +1,11 @@
+---
+math: true
+title: CS118 Crib Sheet - Edmund Goodman
+---
+
 # CS118 Crib Sheet - Edmund Goodman
 
-[toc]
-
-
+{:toc}
 
 ## Number systems
 
@@ -366,4 +369,3 @@ There is some argument over the number of "pillars", but the four commonly accep
 - Generics allow code to enforce strong type checking at compile time, which helps avoid errors such as invalid casting at runtime. Additionally, they minimise the number of type casts needed, as they automatically return data of the specified type, and they allow writing generic algorithms to be tailored to different types
 - Primitives cannot be provided as generics, as they are not objects. Instead, we need to use their object wrapper (e.g. `int` becomes `Integer`). Then, if an integer is passed in as a parameter, it will be "autoboxed" into its object wrapper to be handled internally.
 - During the process of converting Java code to bytecode, the type information about objects is checked for errors, but ultimately discarded in the bytecode. For generics, the type checking before discarding the types is performed by substituting all of the instances of type variables with the type they are specified with in the instance in the code, so it can be type-checked, raising errors at compile time, not runtime.
-
