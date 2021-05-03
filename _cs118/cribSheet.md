@@ -4,7 +4,7 @@ math: true
 title: CS118 Crib Sheet - Edmund Goodman
 ---
 
-TOC
+1. TOC
 {:toc}
 
 ## Number systems
