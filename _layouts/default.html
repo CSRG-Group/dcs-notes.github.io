@@ -12,6 +12,9 @@
       </script>
     {% endif %}
     <meta charset="UTF-8">
+    {%- if page.math == true -%}
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    {%- endif -%}
 
 {% seo %}
     <link rel="preconnect" href="https://fonts.gstatic.com">
