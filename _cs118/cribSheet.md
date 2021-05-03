@@ -4,8 +4,6 @@ math: true
 title: CS118 Crib Sheet - Edmund Goodman
 ---
 
-# CS118 Crib Sheet - Edmund Goodman
-
 * TOC
 {:toc}
 
@@ -16,7 +14,7 @@ title: CS118 Crib Sheet - Edmund Goodman
 - In order to store negative integer numbers, we don't just add a "sign bit" as we would normally, as then we define both positive and negative values for zero, which wastes space, and can be confusing. Instead, we use "two's complement"
   - Binary representation, but the left-most bit is negative
     ![twosComplement](..\media\twosComplement.png)
-  - With eight bits, the smallest value is $10000000_2 = -128_{10}$, and the largest value is $01111111_2 = 127_{10}$ (this is $-2^n $ to $2^n - 1$)
+  - With eight bits, the smallest value is $$10000000_2 = -128_{10}$$, and the largest value is $$01111111_2 = 127_{10}$$ (this is $$-2^n $$ to $$2^n - 1$$)
 
 ### IEEE-754 floating point
 
@@ -25,15 +23,15 @@ title: CS118 Crib Sheet - Edmund Goodman
 - For single precision `floats` (`double`s use different sized exponents and mantissas, but operate in the same way) the schema for the number is:
   ![IEEE754main](..\media\IEEE754main.png)
   - The "sign bit" denotes whether the number is positive or negative
-  - The "exponent" needs to represent both positive and negative numbers, but it **does not** use two's complement, it instead uses a bias of $127$, meaning you subtract $-127$ from the decimal value to get the exponent. Additionally, $-127_{10} = 00000000_2$ and $128+{10} = 11111111_2$ are reserved special cases. Double precision uses an 11-bit field instead of an 8-bit one, and hence has an offset of $1023$
-  - The "fraction/mantissa" represents the precision bits of the number, with the most significant bit being $\frac{1}{2^1}$, then $\frac{1}{2^2}$, and so on. This is taken as the value after the binary point, and in almost all cases, the value before the binary point is one, however, if the exponent is all $0$s, it is $0$ and said to be denormalised. Double precision uses a 52-bit field instead of a 23-bit one.
+  - The "exponent" needs to represent both positive and negative numbers, but it **does not** use two's complement, it instead uses a bias of $$127$$, meaning you subtract $$-127$$ from the decimal value to get the exponent. Additionally, $$-127_{10} = 00000000_2$$ and $$128+{10} = 11111111_2$$ are reserved special cases. Double precision uses an 11-bit field instead of an 8-bit one, and hence has an offset of $$1023$$
+  - The "fraction/mantissa" represents the precision bits of the number, with the most significant bit being $$\frac{1}{2^1}$$, then $$\frac{1}{2^2}$$, and so on. This is taken as the value after the binary point, and in almost all cases, the value before the binary point is one, however, if the exponent is all $$0$$s, it is $$0$$ and said to be denormalised. Double precision uses a 52-bit field instead of a 23-bit one.
     As a rule of thumb, calculate the value of the fraction from binary with the reciprocal values, the add one to it
   - The fraction represents the value of the number, and is of fixed precision, for example, 23 bits of information. The exponent then specifies the range of the number.
   - Special values
-    - Denormalised, when the exponent is all $0$s, so the number is assumed to have a leading $0$ not a leading $1$ before the binary point, i.e. $0.[fraction]$ not $ 1.[fraction]$
-    - Zero, when both the exponent and fraction are all $0$s, so it resolves to $0.0$ . Due to the sign bit, there are both positive and negative zeroes, but they compare as equal
-    - Infinity, positive and negative infinities are when the exponent is all $1$s, but the fraction is all $0$s, and the sign bit indicates sign. Since they are actual values in the scheme, we can do operations on them
-    - NaN (not a number), when the exponent is all $1$s, and there is a non-zero fraction. These can be used for signalling errors etc.
+    - Denormalised, when the exponent is all $$0$$s, so the number is assumed to have a leading $$0$$ not a leading $$1$$ before the binary point, i.e. $$0.[fraction]$$ not $$ 1.[fraction]$$
+    - Zero, when both the exponent and fraction are all $$0$$s, so it resolves to $$0.0$$ . Due to the sign bit, there are both positive and negative zeroes, but they compare as equal
+    - Infinity, positive and negative infinities are when the exponent is all $$1$$s, but the fraction is all $$0$$s, and the sign bit indicates sign. Since they are actual values in the scheme, we can do operations on them
+    - NaN (not a number), when the exponent is all $$1$$s, and there is a non-zero fraction. These can be used for signalling errors etc.
 - An example of this in practice is:
   ![IEEE754example](..\media\IEEE754example.png)
   Note that the "1.(fraction)" denotes a decimal point, not a multiplication operation
@@ -49,13 +47,13 @@ title: CS118 Crib Sheet - Edmund Goodman
 | Name      | Range                                                        | Size    | Default  |
 | --------- | ------------------------------------------------------------ | ------- | -------- |
 | `boolean` | `true` or `false`                                            | 1 bit   | `false`  |
-| `byte`    | $-128$ to $127$                                              | 1 byte  | `0`      |
-| `short`   | $-32768$ to $+32767$                                         | 2 bytes | `0`      |
-| `char`    | $0$ to $65,535$                                              | 2 bytes | `\u0000` |
-| `int`     | $-2,147,483,648$ to $+2,147,483,647$                         | 4 bytes | `0`      |
-| `long`    | $-2^{63}$ to $2^{63}-1$                                      | 8 bytes | `0L`     |
-| `float`   | $-3.4 \times 10^{38}$ and $3.4 \times 10^{38}$ with 6 to 7 significant digits of accuracy | 4 bytes | `0.0f`   |
-| `double`  | $-1.7 \times 10^{308}$ and $1.7 \times 10^{308}$ with 14 to 15 significant digits of accuracy | 8 bytes | `0.0d`   |
+| `byte`    | $$-128$$ to $$127$$                                              | 1 byte  | `0`      |
+| `short`   | $$-32768$$ to $$+32767$$                                         | 2 bytes | `0`      |
+| `char`    | $$0$$ to $$65,535$$                                              | 2 bytes | `\u0000` |
+| `int`     | $$-2,147,483,648$$ to $$+2,147,483,647$$                         | 4 bytes | `0`      |
+| `long`    | $$-2^{63}$$ to $$2^{63}-1$$                                      | 8 bytes | `0L`     |
+| `float`   | $$-3.4 \times 10^{38}$$ and $$3.4 \times 10^{38}$$ with 6 to 7 significant digits of accuracy | 4 bytes | `0.0f`   |
+| `double`  | $$-1.7 \times 10^{308}$$ and $$1.7 \times 10^{308}$$ with 14 to 15 significant digits of accuracy | 8 bytes | `0.0d`   |
 
 The `char` primitive is essentially an unsigned `short` primitive, which is used to store UTF-16 encoded single characters instead of a number
 
