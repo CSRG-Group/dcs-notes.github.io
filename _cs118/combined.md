@@ -4,7 +4,7 @@ math: true
 title: CS118 Combined Notes - Edmund Goodman
 ---
 
-1. TOC
+* TOC
 {:toc}
 
 ## Introduction to programming
