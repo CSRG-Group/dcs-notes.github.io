@@ -1,5 +1,5 @@
 ---
-layout: notes
+layout: 118/CS118
 math: true
 title: CS118 Combined Notes - Edmund Goodman
 ---
