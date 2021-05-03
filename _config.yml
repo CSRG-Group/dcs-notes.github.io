@@ -46,6 +46,12 @@ markdown: kramdown
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
 
 collections:
   cs118:
