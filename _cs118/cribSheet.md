@@ -1,5 +1,5 @@
 ---
-layout: 118/CS118
+layout: notes
 math: true
 title: CS118 Crib Sheet - Edmund Goodman
 ---
