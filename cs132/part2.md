@@ -134,9 +134,9 @@ These can allow us to create a simpler logic expression. If you take a look at t
 
 # Combinatorial Logic Circuits
 
-Perform as fast as your gates. 
+> A logic circuit whose output is a **logical function** of its input(s).
 
-Logic Circuits whose output is a logical function of their inputs. 
+Perform as fast as your gates. 
 
 ## 1-bit Half-Adder
 
@@ -154,6 +154,8 @@ A 1-bit full adder is capable of adding two bits (A and B) and considering a car
 	<img src="part2.assets/image-20210504131413949.png" alt="image-20210504131413949" style="zoom:67%;" />
 	<img src="part2.assets/image-20210504131435740.png" alt="image-20210504131435740" style="zoom:67%;" />
 </div>
+
+
 To design a circuit of a 1-bit full adder it is helpful to think about the logic gates needed based on the truth table above. Pay attention to how the value of **C<sub>out</sub>** and **S** relate to **C<sub>in</sub>, A, and B** and try to think of the logic gates needed to emulate this behaviour/function. 
 
 It is highly suggested that you try this on your own before clicking to see my own attempt – and also take mine with a pinch of salt and tell me if you think I’m wrong or can be better! 
@@ -167,7 +169,6 @@ It is highly suggested that you try this on your own before clicking to see my o
     </p>
 	<img src="part2.assets/1bit%20full%20adder.jpeg" alt="1bit full adder" style="zoom:37%;border-radius:2%;" class="center growimg" />
 </details>
-
 ## N-bit Full-Adder
 
 Once we know how to design a 1-bit Full Adder (FA) we will be able to build a n-bit full adder which we can use to add 2 n-bit words (A and B) together. We do this by assigning each bit of A and B to each FA, and just like how we do long division we add each bit together, starting from the LSB (where the carry in is obviously 0) and then taking the carry of each FA and feeding it to the next FA until you reach the n<sup>th</sup> FA. 
@@ -188,89 +189,95 @@ You can see that **Z** is fed as the C<sub>in</sub> of the first FA, this has th
 
 Remember that when we are adding, the final C<sub>out</sub> must be the MSB of the sum of **A** and **B**, but if we are subtracting, C<sub>out</sub> should be ignored. 
 
+## Active High or Active Low?
+
+> Transistor-transistor logic floats high – meaning that if you don’t connect it to anything, its value is a logical 1. Hence, it is helpful for **0** to be the **active** state so that you are not accidentally enabling circuits.
+
+In some circuit applications, outputs and inputs have **active** and **inactive** states (you’ll see more of this in Three State Logic) and it is important that your input(s) and output(s) conform to the same standard. 
+
+- **Active high.** 0 is inactive and 1 is active.
+- **Active low.** 0 is active and 1 is inactive. This is sometimes indicated with <span style="text-decoration:overline">Enable</span> – so if you see this bar it means that particular input/output is active low. 
+
 ## Decoders
 
-![image-20201019191349360](part2.assets/image-20201019191349360.png)
+A decoder has **k** input pins and **2<sup>k</sup>** output pins. This is because with **k** inputs can have **2<sup>k</sup>** possible states/combinations and can represent the same number of output values.
 
-This is an active low decoder, which means it is active when it is 0.  You are addressing unique locations -> most often used for addressing systems in the microprocessor system. 
+> Decoders are often used to address unique memory locations in a microprocessor system.
 
+Here we have an example of a truth table for an **active low** decoder on the left. Notice that the distinct value of each Y<sub>i</sub> is 0, which makes sense that because we only want 1 possible output to be **active** for a particular **input state**. The truth table for an **active high** decoder is on the right (notice how the Y<sub>i</sub> bits are all flipped compared to **active low**). 
 
+<div align="center" style="display:flex;justify-content:space-around">
+    <img src="part2.assets/image-20210504183948760.png" alt="image-20210504183948760" style="zoom:40%;" />
+    <img src="part2.assets/image-20210504204625976.png" alt="image-20210504204625976" style="zoom:38%;" />
+</div>
 
-#### Active High or Active Low?
+## Encoder
 
-From the Decoder section, you can see that we've mentioned "active low" this means the circuit is active when the transistor's output is 0. 
+The opposite of a decoder, where you take multiple input values and you **define** it in a more **concise representation**. Here you have 2<sup>k</sup> input(s) and k outputs. However, unlike the decoder where the inputs take all possible states, only one of the input pins should be **active at a time**. 
 
-![image-20201019192013855](part2.assets/image-20201019192013855.png)
+> Encoders usually used in communication because it is more **efficient** and succinct to send a **compressed representation** of certain values. Often used as simple input circuits.
 
-###### Why are circuits sometime active low? 
+<img src="part2.assets/image-20210504210040995.png" alt="image-20210504210040995" style="zoom:67%;" style="center"/>
 
-Transistor-Transistor Logic floats high - meaning that if you don't connect it to anything, it will assume it's a logical 1. Therefore, sometimes you have to enable it to be a active 0, so you don't accidentally enable certain circuits.
+##  Multiplexers (MUX)
 
-#### 
-
-#### Active High Decoder
-
-![image-20201019192115404](part2.assets/image-20201019192115404.png)
-
-#### Encoder
-
-![image-20201019192146548](part2.assets/image-20201019192146548.png)
-
-####  Multiplexers (MUX)
+A very common mechanism for selection.
 
 ![image-20201019192310898](part2.assets/image-20201019192310898.png)
 
-#### De-Multiplexers (DE-MUX)
+> **Common Applications of Multiplexers.**
+>
+> Source selection control - Home stereo, e.g: send iPod, CD or radio to speakers - note that this is analogue not digital
+>
+> Share one communication line between multiple senders - Requires both MUX and DE-MUX
+>
+> Parallel to serial conversion - Parallel input on X, clock signal on S, serial output on Y
+>
+> Circuit that can be configured to produce any truth table relationship between S inputs and Y outputs - Set up the truth table required on X inputs.
+
+## De-Multiplexers (DE-MUX)
 
 ![image-20201019192503304](part2.assets/image-20201019192503304.png)
 
-Homework: what are expressions for y1 y2 y3.
-
-##### Common Applications of Multiplexers
-
-Source selection control - Home stereo, e.g: send iPod, CD or radio to speakers - note that this is analogue not digital
-
-Share one communication line between multiple senders - Requires both MUX and DE-MUX
-
-Parallel to serial conversion - Parallel input on X, clock signal on S, serial output on Y
-
-Circuit that can be configured to produce any truth table relationship between S inputs and Y outputs - Set up the truth table required on X inputs. 
-
-##### Common Applications of De-Multiplexers
-
-Share one communication line between multiple senders -Requires both MUX and DE-MUX
-
-Series to parallel conversion
-
-A control for multiple lights
-
-- in a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.  
+> **Common Applications of De-Multiplexers.**
+>
+> Share one communication line between multiple senders – Requires both MUX and DE-MUX
+>
+> Series to parallel conversion
+>
+> A control for multiple lights – In a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.  
+>
 
 # Sequential Logic Circuits
 
-A logic circuit whose **outputs** are logical functions of its **inputs** and its **current state.**
+>A logic circuit whose **outputs** are logical functions of its **input(s)** and its **current state.**
 
-![image-20201019202858996](part2.assets/image-20201019202858996.png)
+<img src="part2.assets/image-20201019202858996.png" alt="image-20201019202858996"  />
 
-#### Flip-Flops
+## Flip-Flops
 
-A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states.
+A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states (**Q and P** are always opposite). I think the best way to understand the flip flop is to look at the truth table and the timing diagram together.
+
+<div style="display:flex;justify-content:center;" >
+    <img src="part2.assets/image-20210504211149726.png" alt="image-20210504211149726" style="zoom:36%;" />
+    <img src="part2.assets/image-20210504211212581.png" alt="image-20210504211212581" style="zoom:30%" />
+</div>    
+
+Firstly, notice that **Q** and **P** are always different values. Next, see how **Q** only changes from 1 to 0 when **<span style="text-decoration:overline">R</span>** changes from 1 to 0? I think it’s better to think of this as Q is activated when **<span style="text-decoration:overline">R</span>** is activated (remember this is active low). 
+
+Then also notice how when **<span style="text-decoration:overline">R</span>** is made inactive, the value of **Q** is still 0 (activated) – hence, the flip-flop is able to **store** a value when both **<span style="text-decoration:overline">S</span>** and **<span style="text-decoration:overline">R</span>** are inactive. Next when **<span style="text-decoration:overline">S</span>** is now activated, **Q** is **set** from 0 to 1 and **P** changes from 1 to 0. Again, when **<span style="text-decoration:overline">S</span>** is deactivated, the value of **P** and **Q** don’t change. Only if **<span style="text-decoration:overline">R</span>** is activated again, do the values of **P** and **Q** flip.
+
+Now that you have understood that, you can look at the circuit diagram and see how and why having both **<span style="text-decoration:overline">S</span>** and **<span style="text-decoration:overline">R</span>** set to 0 doesn’t quite make sense and is a **hazard condition**.
 
 ![image-20201019203011505](part2.assets/image-20201019203011505.png)
 
-#####  Flip-Flop Operation
+## D-Type Latch
 
-![image-20201019203826486](part2.assets/image-20201019203826486.png)
-
-![image-20201019204039293](part2.assets/image-20201019204039293.png)
-
-
-
-#### D-Type Latch (Sequential x Combinatorial)
+This is more important to understand than flip-flop. The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never be both be 0. (I’ll make a diagram soon).
 
 ![image-20201019204921469](part2.assets/image-20201019204921469.png)
 
-When we want to store data, we have that data at D, and we set enable to 1 (or trigger the "latch"). Only then will data be then go to Q.
+When we want to store data, we have that data at D, and we set enable to 1 (or trigger the "latch"). Only then will the data from D go to Q. Otherwise, you can see that 
 
 ##### D-type latch truth table
 
@@ -304,6 +311,10 @@ An alternative design is...
 
 Once you've understood all the parallel and shift register...
 
+## N-bit Counter
+
+You need to know how to explain this. Always label all the input and outputs of the D-type latch so Q bar and all. 
+
 ![image-20201019211100367](part2.assets/image-20201019211100367.png)
 
 
@@ -322,11 +333,11 @@ Once you've understood all the parallel and shift register...
 
 
 
-## Three State Logic
+# Three State Logic
 
 ![image-20201020100526365](part2.assets/image-20201020100526365.png)
 
-**Why would we want to do this?** To make sure we can provide communications between logical subsystems. 
+**Why would we want to do this?** To make sure we can provide communications between logical subsystems in an efficient way (by sharing buses). 
 
 
 
@@ -344,7 +355,7 @@ Buses are communication paths. The "dash 4" represents that there are 4 communic
 
 
 
-## Physical implementations
+## Physical Implementations
 
 #### Properties of Logic Gates
 
