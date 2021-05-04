@@ -145,3 +145,5 @@ Floating point uses the same principles as scientific notation. You should be fa
 - Single precision (32 bits) – 1bit for the sign, 8bits for the exponent, and 23 bits for the mantissa
 - Double precision (64 bits)
 - Quad precision (128 bits)
+
+<footer style="border-top:none;" class="site-footer" >All diagrams and screenshots were taken from Matthew Leeke's slides available on the module <a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs132/">webpage</a></footer>
