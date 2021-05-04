@@ -1,0 +1,38 @@
+---
+--- 
+
+@import "{{ site.theme }}";
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centeredtable {
+  width: fit-content !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+details {
+  cursor: pointer;
+  padding: 1em;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+summary {
+  display: list-item;
+  font-weight: bold;
+}
+
+.growimg {
+  transition:transform 0.5s ease-in-out;
+  transform-origin: top;
+}
+
+.growimg:hover {
+  -webkit-transform:scale(1.5); /* or some other value */
+  transform:scale(1.5);
+}

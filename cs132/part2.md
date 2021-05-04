@@ -1,30 +1,29 @@
-# Digital Logic
+---
+layout: notes
+math: true
+title: Digital Logic
+---
 
-### Topic Outline
+# Logic Gates, Circuits and Truth tables
 
-- Basic logic functions, expressions & truth tables
-- Logic gates, circuits, & finding the truth table
-- Simplifying logic expressions using Boolean algebra and karnaugh maps
-- Common combinatorial, no memory, logic circuits
-- Sequential, with memory logic circuits
-- Three state logic
-- Physical implementations
-
-## Logic Gates, Circuits and Truth tables
-
-### An Alternative view of the OR circuit
+## An Alternative view of the OR circuit
 
 Why is $$\bar f = \bar A \cdot \bar B$$ an appropriate representation?
 
 We know that $$\bar f = \overline {A+B}$$, this means $$f = A+B$$. Therefore, $$\bar f = \bar A \cdot \bar B$$ (de Morgan's Law)
 
-### Electronic Logic Gates 
-
-![image-20201019100111867](part2.assets/image-20201019100111867.png)
-
-### Functions of Two Binary Variables
+## Functions of Two Binary Variables
 
 16 (2<sup>4</sup>) functions can be found between two binary variables. We can interpret each of these functions algebraically.
+
+|  A   |  B   | $$f_0$$ | $$f_1$$ | $$\cdots$$ | $$f_{14}$$ | $$f_{15}$$ |
+| :--: | :--: | :-----: | :-----: | :--------: | :--------: | :--------: |
+|  0   |  0   |    0    |    0    | $$\cdots$$ |     1      |     1      |
+|  0   |  1   |    0    |    0    | $$\cdots$$ |     1      |     1      |
+|  1   |  0   |    0    |    0    | $$\cdots$$ |     1      |     1      |
+|  1   |  1   |    0    |    1    | $$\cdots$$ |     0      |     1      |
+{: .centeredtable}
+
 $$
 \begin{align}
 f_0 &= 0 \\
@@ -36,138 +35,160 @@ f_{13} &= \overline{A \cdot \overline{B}}
 \end{align}
 $$
 
+## Electronic Logic Gates
 
-### Combinatorial Logic Circuits
+There are 7 electronic logic gates whose function you should understand.
 
-#### EX-OR Gates
+<img src="part2.assets/image-20210504102322015.png" alt="image-20210504102322015" style="zoom:60%;" class="center" />
 
-![image-20201019105344802](part2.assets/image-20201019105344802.png)
+**AND, OR, NOT** are termed the **fundamental gates** because they can be used to build any of the functions that you see in the table above – meaning that they can also be used to build a circuit that fulfils the functions of the other gates you see below (**NAND, NOR etc.**).
 
-#### NAND Gates
+Aside from the fundamental gates, the **NAND and NOR** gates which are termed the **universal gates** are important to understand as well because using either multiple **NAND** gates or multiple **NOR** gates we can build each **fundamental** gate. You either need **NAND** or **NOR**, you don't need the other. 
 
-![image-20201019105447647](part2.assets/image-20201019105447647.png)
+<img src="part2.assets/image-20201019105447647.png" alt="image-20201019105447647" class="center"/>
 
+Additionally, while the **EX-OR** gate is not one of the fundamental or universal gates it is very useful as well.
+<img src="part2.assets/image-20201019105344802.png" alt="image-20201019105344802"/>
 
+# Simplifying Logical Expressions using Boolean Algebra
 
-**NOT AND & OR,** are all the gates you need to make anything. Fundamental Gates
+> The **motivation** for simplifying logical expressions is **economic**. When producing microprocessors, we usually want to optimise (minimise) the amount of materials we use to **reduce cost** – which mean to use a minimum amount of silicon and other resources. Therefore, as much as possible, we will want to reduce the number of logic gates that we require for a particular circuit.
 
-**NAND, NOR** are universal gates. Can be used to implement any function too. You either need the **NAND** or **NOR**, you don't need the other. 
+This leads us to the idea of **circuit equivalence** where a *Boolean function can have many different but equivalent Boolean expressions*, and therefore different combinations of logic gates. What’s important is that given a function we are able to create equivalent circuits that:
 
+1. **Perform the designated function**
+2. **Use the types of gates available** (these are usually dependent on the physical implementation e.g. only want to use **NAND** gates or maybe we have some 4-input gates etc.)
+3. **Minimise the number of gates used and hence cost**.
 
+There are two crucial skills to have
 
-## Simplifying Logical Expressions using Boolean Algebra
-
-#### Logic Circuit to Truth Table
+## Logic Circuit to Truth Table
 
 ![image-20201109133422712](part2.assets/image-20201109133422712.png)
 
-##### Simplifying logical expressions
-
-Why? We do this to reduce complexity so we can reduce the number of gates required for their implementation. 
-
-
-
-#### Circuit Equivalence
-
-![image-20201109133939460](part2.assets/image-20201109133939460.png)
-
-
-
-#### Truth table to Boolean Equation
+## Truth table to Boolean Equation
 
 ![image-20201109134011703](part2.assets/image-20201109134011703.png)
 
+##  Laws of Boolean Algebra
 
+In an exam, it is crucial that you **state** which rules you are applying so that what you are doing is **clear** to the marker.
 
-####  Laws of Boolean Algebra
+|         Name         |                       AND                       |                 OR                  |
+| :------------------: | :---------------------------------------------: | :---------------------------------: |
+|   **Identity Law**   |                     1A = A                      |              0 + A = A              |
+|     **Null Law**     |                     0A = 0                      |              1 + A = 1              |
+|  **Idempotent Law**  |                     AA = A                      |              A + A = A              |
+|   **Inverse Law**    |              $$A\overline{A} = 0$$              |      $$A + \overline{A} = 1 $$      |
+| **Commutative Law**  |                     AB = BA                     |            A + B = B + A            |
+| **Associative Law**  |               (AB)C = A(BC) = ABC               |      (A+B)+C = A+(B+C) = A+B+C      |
+| **Distributive Law** |                A+BC = (A+B)(A+C)                |            A(B+C)=AB+AC             |
+|  **Absorption Law**  |                    A(A+B)=A                     |               A+AB=A                |
+| **De Morgan’s Law**  | $$\overline{AB} = \overline{A} + \overline{B}$$ | $$\overline{A+B} = \bar{A}\bar{B}$$ |
+{:.centeredtable}
 
-![image-20201019111410269](part2.assets/image-20201019111410269.png)
+The best way to get good at this is to **practise.**
 
-### Karnaugh Maps
+![image-20210504115045642](part2.assets/image-20210504115045642.png)
 
-Show unambiguously when a Boolean expression is in its simplest form.
+## Karnaugh Maps / Kmaps
+
+> Using Boolean algebra, it can be difficult to tell whether an equation is in its simplest form or to see the next step to simplifying it. K-maps show unambiguously when a Boolean expression is in its simplest form.
+
+**Grey Coding.** Because sum of products can be simplified by looking for terms that differ by only one variable and its complement, when we draw out a kmap we have to grey code – which mean each cell only differs by 1 variable from its neighbours (horizontally and vertically) as you can see below.
 
 ![image-20201019144459516](part2.assets/image-20201019144459516.png)
 
-#### Adjacency 
+**Karnaugh Map Grouping.**  The **first step** to finding the simplest expression is to form kmap groupings. There are some things/rules/features to note about this.
 
-Adjacent squares differ by exactly one variable, to achieve "grey" coding.
+1. **Wrap-around** is valid. This means the left most-column is adjacent to the right most-column, and the top row is adjacent to the bottom row. So the orange and green cells, and the blue and green cells are adjacent.
+2. **Groupings can overlap**. The cells don’t have to exclusively be in just 1 group.
+3. The minimum logic expression is obtained on **minimum number of groupings**.
+4. Number of elements in the group **must be a power of two** 1,2,4,8 etc..
 
-![image-20201019144801877](part2.assets/image-20201019144801877.png)
+<img src="part2.assets/image-20210504120645814.png" alt="image-20210504120645814" class="center" />
 
-#### Grouping
+The **second and last step** is to look within a particular group and *omit* the **case/variable** that *changes* from the **group’s** logic expression and *include* those that stayed *constant*. This is because those that change are not **definitional** to the group’s logical expression. 
 
-![image-20201019145913305](part2.assets/image-20201019145913305.png)
-
-Make sure your groups must be a power of two!!
-
-##### Example 1
+The **values** of the cases/variables that stayed constant depend on the value within the grouping. In the example below **B** changes within the blue group so it is omitted, and both **A and C** stayed constant with value **0** so the final logic expression for the blue group is $$\overline{A} \cdot \overline{C}$$. 
 
 ![image-20201019150042063](part2.assets/image-20201019150042063.png)
 
- 
+### Multiple equivalent expressions
 
-How did we arrive at $f = \bar B + \bar A. \bar C$ ? 
-
-Look at the orange group... ask yourself if each case changed; if it did, it cannot be part of the logical expression. If it stayed constant, e.g. B stayed constant at 0, hence in the logical expression of the orange group, it is $\bar B$.
-
-
-
-##### Example 2
+In the exams, there will be no penalty if you give either answer but note that in reality sometimes the final choice comes down to the resources you have available like the number of **NOT** gates that you can use.
 
 ![image-20201019181716327](part2.assets/image-20201019181716327.png)
 
-While you can choose either combination, sometimes it comes down to the number of **NOT** gates present. 
+Additionally, there are some expressions that are **impossible to simplify**. This example is just one of the very few logical expression that you cannot simplify because you cannot get any groupings more than 1.
 
+<img src="part2.assets/image-20210504122403732.png" alt="image-20210504122403732" style="zoom:67%;" class="center"/>
 
+### Don't Care Conditions
 
-##### Example 3
+Sometimes a certain combination of inputs either can’t happen or we don’t care what the output is if it happens. We denote this with a ❌ in our kmaps which may be assumed to be either 1 or 0 — we don’t care. 
 
-![image-20201019183029664](part2.assets/image-20201019183029664.png)
+These can allow us to create a simpler logic expression. If you take a look at the left kmap, you can see that there’s an outstanding 1 just below the ❌, and there are multiple ways we can choose to group it. If we do it like in the right kmap, you can see that we arrive at a slightly simpler logic expression – and the only reason we can group it that way is because the 01-00 cell is a **don’t care condition**.
 
-This is one of the very few logical expression that you cannot simplify. 
+<img src="part2.assets/image-20210504123211185.png" alt="image-20210504123211185" style="zoom:67%;" class="center"/>
 
-
-
-##### Don't Care Conditions
-
-![image-20201019183515430](part2.assets/image-20201019183515430.png)
-
-
-
-## Combinatorial Logic Circuits
+# Combinatorial Logic Circuits
 
 Perform as fast as your gates. 
 
 Logic Circuits whose output is a logical function of their inputs. 
 
-#### 1-bit Half-Adder
+## 1-bit Half-Adder
 
-![image-20201019183809333](part2.assets/image-20201019183809333.png)
+This circuit performs the addition of two bits, and can be extended to form a 1-bit full-adder. What’s important is that you recognise that the truth table for **sum** represents that of an **EX-OR** gate, while the **carry** represents that of an **AND** gate.
 
-#### 1-bit Full-Adder
+This important because to derive the layout of the circuit, you can start from thinking about what you want to achieve first, i.e the addition of two bits. The truth table essentially describes this function and from there you can think about which gates you have to use and how they should be arranged according to the 1s and 0s in the truth table.
 
-![image-20201019184622580](part2.assets/image-20201019184622580.png)
+![image-20210504124908090](part2.assets/image-20210504124908090.png)
 
-A Full-Adder is capable of - adding A and B, produce a Carry; add the Carry to A and B if needed; produce a Sum and an output Carry. 
+## 1-bit Full-Adder
 
-### N-bit Full-Adder
+A 1-bit full adder is capable of adding two bits (A and B) and considering a carry<sub>in</sub> from another 1-bit full adder, to produce an output sum and a carry<sub>out</sub>.
 
-![image-20201019185543372](part2.assets/image-20201019185543372.png)
+<div align="center" style="display:flex;justify-content:space-around">
+	<img src="part2.assets/image-20210504131413949.png" alt="image-20210504131413949" style="zoom:67%;" />
+	<img src="part2.assets/image-20210504131435740.png" alt="image-20210504131435740" style="zoom:67%;" />
+</div>
+To design a circuit of a 1-bit full adder it is helpful to think about the logic gates needed based on the truth table above. Pay attention to how the value of **C<sub>out</sub>** and **S** relate to **C<sub>in</sub>, A, and B** and try to think of the logic gates needed to emulate this behaviour/function. 
 
-### Adder to Adder/Subtractor
+It is highly suggested that you try this on your own before clicking to see my own attempt – and also take mine with a pinch of salt and tell me if you think I’m wrong or can be better! 
+
+<details>
+    <summary>My design of a 1-bit Full-Adder</summary>
+    <p>
+    Looking at the truth table shown earlier, I realised that $$Sum = (A \oplus B) \oplus C_{in} \\ C_{out} = A \cdot B + C_{in} \cdot (A \oplus B)$$
+    With these two logic expressions, I was able to decide which logic gates to
+    use to arrive at my final design for the full adder.
+    </p>
+	<img src="part2.assets/1bit%20full%20adder.jpeg" alt="1bit full adder" style="zoom:37%;border-radius:2%;" class="center growimg" />
+</details>
+
+## N-bit Full-Adder
+
+Once we know how to design a 1-bit Full Adder (FA) we will be able to build a n-bit full adder which we can use to add 2 n-bit words (A and B) together. We do this by assigning each bit of A and B to each FA, and just like how we do long division we add each bit together, starting from the LSB (where the carry in is obviously 0) and then taking the carry of each FA and feeding it to the next FA until you reach the n<sup>th</sup> FA. 
+
+The output of each sum (S<sub>k</sub>) and the final C<sub>out</sub> is then “dealt with” to arrive at the sum of A and B. It is important to consider how you would “deal” with all these bits, and also important to note that if C<sub>out</sub> is 1 then it means you have an **overflow**.
+
+<img src="part2.assets/image-20210504162834347.png" alt="image-20210504162834347" style="zoom:67%;" class="center" />
+
+## Adder to Adder/Subtractor
 
 ![image-20201019190232139](part2.assets/image-20201019190232139.png)
 
+### N-bit Adder/Subtractor
 
-
-#### N-bit Adder/Subtractor
+You can see that **Z** is fed as the C<sub>in</sub> of the first FA, this has the effect of adding 1 to arrive at the proper value for the two’s complement **B**. From above, **Z** is **EX-ORed** with each bit of **B** and this has the effect of inverting the bits to get **-B**. When we are adding, then **Z** will be 0 and will have no effect on **B**.
 
 ![image-20201019190334263](part2.assets/image-20201019190334263.png)
 
+Remember that when we are adding, the final C<sub>out</sub> must be the MSB of the sum of **A** and **B**, but if we are subtracting, C<sub>out</sub> should be ignored. 
 
-
-#### Decoders
+## Decoders
 
 ![image-20201019191349360](part2.assets/image-20201019191349360.png)
 
@@ -225,11 +246,7 @@ A control for multiple lights
 
 - in a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.  
 
-
-
-
-
-## Sequential Logic Circuits
+# Sequential Logic Circuits
 
 A logic circuit whose **outputs** are logical functions of its **inputs** and its **current state.**
 
