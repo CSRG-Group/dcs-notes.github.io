@@ -60,10 +60,12 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 Firstly, ensure that the top of the markdown (.md) file has YAML Front Matter containing the key-value pair `math: true`. Otherwise, add it into the front matter.
 Then, make sure you wrap the math in `$$`.
 ```markdown
-For math sections...
+For math sections... (note: ensure that there's a new line before and after the start and end $$ respectively)
+
 $$
 1+1=2
 $$
+
 or just
 $$1+1=2$$ for in-line math
 ```
