@@ -30,6 +30,9 @@ There are fifteen topics in the module, which are as follows:
 
 ## Complete Notes
 
+Typed notes for CS126 by **Edmund Goodman** which cover the whole module can be found below:
+- [Full notes](./cribSheet.html)
+
 Detailed handwritten notes for CS126 by **Josh Fitzmaurice** which cover the entire module split into two parts can be can be found below:
 
 1. [Part 1](./cs126-notes-1.pdf)
