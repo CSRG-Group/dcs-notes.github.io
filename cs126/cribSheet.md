@@ -115,7 +115,7 @@
     - List based implementation
       - $$O(n)$$ lookup and insertion (need to check for duplicates) time
       - $$O(n)$$ space complexity
-    - Hash-map based implementation
+    - Hash table based implementation
       - $$O(1)$$ lookup and insertion time
       - $$O(k \cdot n)$$ space complexity (still linear with number of items, but larger by a big constant factor)
   
@@ -123,18 +123,161 @@
   
 - Hash tables **(Concrete)**
 
+  - Time efficient implementation of the Map abstract data type
+
+  - To look up keys in $$O(1)$$ time, we want essentially want to be able to index an array of them, but the space of keys are far too large to conceivably keep one element in the array for each key
+
+  - Hash functions
+
+    - We use a "hash function" to reduce the size of the keyspace, so we can used the hashed outputs of keys for indices in the array storing the map
+    - A hash function $h : keys \rightarrow indices$ maps keys of a given type to integers in a fixed interval $[0, N-1]$ where $N$ is the size of the array to store the items in
+
+    - Modern implementations of hash functions are very complicated, and often involve two phases, first mapping keys to integers, then reducing the range of those integers, but simpler ones exist, for example $h(x) =  x\ MOD\ N$
+      - We try to pick $N$ such that there are fewer collisions - numbers with few factors are better
+
+  - Collisions are when two different keys are mapped to the same index by the hash function. Since we cannot store duplicate keys unambiguously in a map, we need a protocol to resolve this. Common approaches are
+
+    - Separate chaining
+
+      - Each index in the array can contain a reference to a linked list. Whenever a key is mapped to that index, the key-value pair is added to the linked-list. If there are duplicates, we iterate over the chain till we find the key, or reach the end
+        ![separateChaining](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\separateChaining.png)
+
+        Diagram from: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+      - This has the drawback of requiring additional memory space for each linked list
+
+    - Linear probing
+
+      - When colliding items are placed in different cells in the table, it is called "open addressing"
+      - Linear probing handles collisions by placing the colliding item in the next available table cell, wrapping around if necessary
+      - As with the linked list, searching is done by iterating over the next cells, stopping when the item is found, or an empty cell in the table is reached
+      - This has the drawback of colliding items "lumping together", which can cause many items needed to be iterated over in a probe
+      - To remove an item, we cannot just set it to null again, as that would mean it stops probing, even though there might be subsequent elements. Instead, we replace it with a "DEFUNCT" element, which is just skipped over when probing
+
+    - Double hashing
+
+      - When a collision occurs, the key is re-hashed with a new hash function
+        - Sometimes $$[h(k) + i \cdot f(k)]\ MOD\ N$$ where $h$ and $f$ are hashing functions, and $i \in \Z$ is used
+        - As before, there are many implementations of the hash function, but $f(k)= q-k\ MOD\ q \quad | \quad q<N, q \in primes$
+      - Searching is similar to linear probing, but when iterating we look at the hash value for each $i$, rather than just the next index in the table
+      - This helps avoid the issue of colliding items "lumping together" as in linear probing
+
+  - Resizing a hash table
+
+    - As with arrays, we create a new table of a larger size, then iterate over every index in the table, and apply the standard add operation to add it to the new one (re-hashing)
+
+  - Performance of hash tables
+
+    - The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array $$\alpha = \frac{n}{N}$$
+      - If this approaches $1$, the table becomes inefficient, so we often re-size the table whenever it exceeds a certain value, e.g. $0.75$
+    - Time complexity of insertion/lookup
+      - $$\Theta(1)$$ best case
+      - $$O(n)$$ worst case
+      - "Expected" number of probes with open addressing is $$\frac{1}{1-\alpha}$$
+    - In practice, hash tables are a very efficient implementation of maps assuming the load factor is not very close to $$1$$
+
+
+
 - Sets **(ADT)**
+  - "A set is an unordered collection of elements, without duplicates that typically supports efficient membership tests" *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+  - Fundamental operations
+    - add(e), remove(e), contains(e), size(e), isEmpty(e)
+  - Set operations
+    - union(s1, s2), intersection(s1, s2), difference(s1, s2)
+  - Two concrete implementations
+    - Can be implemented with a linked list (for efficient resizing, and needn't be indexable) storing the elements
+      - Need to iterate over each element in the list to lookup items, $O(n)$ time complexity
+      - Fairly small space complexity
+    - Can be implemented like a hash-table, but using only keys, not key-value pairs, in "hash-sets"
+      - Fast $O(1)$ lookups
+      - Large space complexity
+
+- Trees **(ADT)**
+
+  - "A tree is an abstract model of a hierarchical structure" *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+  - Fundamental methods
+
+    - size(), isEmpty(), root(), parent(n), children(n), numChildren(n)
+
+  - Traversals
+
+    - Pre-order traversal
+
+      - Each node is printed before its descendants, and descendants are taking in ascending order
+
+        ```
+        Let n <- the root node of the graph
+        
+        Function preOrder(n)
+        	Print n
+        	For each child m of n
+        		preOrder(n)
+        ```
+
+    - Post-order traversal
+
+      - Each node is printed after its descendants, and descendants are taking in ascending order
+
+        ```
+        Let n <- the root node of the graph
+        
+        Function preOrder(n)
+        	For each child m of n
+        		preOrder(n)
+        	Print n
+        ```
+
+  - Binary trees **(ADT)**
+
+    - A specialised tree where each node has at most two children, called left and right
+
+    - A binary search tree with $n$ nodes, $e$ external nodes, $i$ internal nodes, and a height $h$ has the properties
+
+      - $e = i + 1$
+      - $n = 2e - 1$
+      - $h \leq i$
+      - $h \leq \frac{(n-1)}{2}$
+      - $e \leq 2^h$
+      - $h \geq log_2 e$
+      - $h \geq log_2 (n+1) - 1$
+
+    - Binary trees support an additional type of traversal, in-order, as they have a discrete middle node
+
+      ```
+      Let n <- the root node of the graph
+      
+      Function preOrder(n)
+      	Print left child of n
+      	Print n
+      	Print right child of n
+      ```
+
+  - Linked structure implementation **(Concrete)**
+
+    - Each node is an object which stores its value, references to its child nodes (and sometimes a reference to its parent)
+
+    - A diagram of such an implementation for a binary tree
+      ![binaryTreeLinkedStructure](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\binaryTreeLinkedStructure.png)
+
+      *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+    - This is a linear space implementation, and has lookup time of $O(log_2n)$ for binary trees, and logarithmic time for general trees
+
+  - Array based implementation of *binary* trees **(Concrete)**
+
+    - Node values are stored in an array, and their children can be found at indices based on arithmetic operations of their own index
+      - $index(root) = 0$
+      - If $l$ is the left child of $n$, then $index(l) = 2 \cdot index(n) + 1$
+      - If $r$ is the right child of $n$, then $index(r) = 2 \cdot index(n) + 2$
+    - This can be very inefficient for unbalanced trees, for example, a tree which is just a "line" of nodes would grow with $O(2^n)$ space, and has lookup time of $O(log_2n)$ 
+
+
 
 - Priority queues **(ADT)**
-
 - Heaps **(ADT)**
-
 - Skip lists **(ADT)**
-
-- Binary search trees **(ADT)**
-
 - Self-balancing trees **(ADT)**
-
 - Graphs **(ADT)**
 
 
@@ -159,9 +302,30 @@
 
 ### Other
 
-- Reversing an array using a stack, by pushing all the items in array to the stack, then popping all the items off the stack into the new reversed array
+- Reversing an array using a stack
 
-- Reversing a linked list, by iterating over the linked list from the head, and for each element in the list to reverse, setting the item as the predecessor of the head in the new reversed list
+  - Push all the items in array to the stack, then pop all the items off the stack into the new reversed array
+
+    ```
+    Let S <- the stack to reverse
+    Let S' <- an empty stack (the output)
+    For each item in S
+    	Pop the head off S into s
+    	Push s to the head of S'
+    ```
+
+- Reversing a linked list
+
+  - Iterate over the linked list from the head, and for each element in the list to reverse, set the item as the predecessor of the head in the new reversed list
+
+    ```
+    Let L <- the linked list to reverse
+    Let L' <- an empty linked list (the output)
+    For each item in S
+    	Let l <- the first item in the linked list
+    	Delete the first item in the linked list
+    	Add l as the head of L'
+    ```
 
 - Computing spans
 
@@ -171,11 +335,36 @@
 
     ```
     Let X <- the array to find spans of
-    Let S <- a stack of indices
+    Let S <- a stack of all the indices in X
     Let i be the current index
     Pop indices from the stack until we find index j such that X[i] < X[j]
     Set S[i] <- i-j
     Push i to the stack
+    ```
+
+- Generic merging
+
+  - Taking the union of two sets, in linear time:
+
+    ```
+    Let A, B <- The lists to merge
+    Let S <- an empty list (the output)
+    While neither A nor B are empty
+    	Let a, b <- The first elements of A and B respectively
+    	If a < b
+    		Add a to the end of S
+    		Remove a from A
+    	Else if b < a
+    		Add b to the end of S
+    		Remove b from B
+    	Else (hence a=b)
+    		Add a to the end of S (both are equal, so it doesn't matter which)
+    		Remove a and b from A and B respectively
+    (Cleaning up the other list when one is empty)
+    While A is not empty
+    	Add all the items left in A to the end of S
+    While B is not empty
+    	Add all the items left in B to the end of S
     ```
 
     
