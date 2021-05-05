@@ -99,6 +99,7 @@
   - Array based implementation **(Concrete)**
     - Uses and array with data wrapping around as it is added and removed. Both the index of the head $$f$$ **and** the size of the queue $$s$$ need to be stored
     - The rear of the queue (index to next insert to) is $$(f + s)\ MOD\ N$$, with $$N$$ as the array size
+      ![queueArrayImplementation](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\queueArrayImplementation.png)
     - $$O(n)$$ space complexity
     - $$O(1)$$ time complexity of fundamental operations
 
