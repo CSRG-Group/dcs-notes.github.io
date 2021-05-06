@@ -7,6 +7,8 @@ prev: part6.html
 nextt: part8.html
 ---
 
+<br\>
+
 * TOC
 {:toc}
 

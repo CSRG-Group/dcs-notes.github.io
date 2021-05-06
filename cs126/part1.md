@@ -6,6 +6,8 @@ title: "Arrays and Lists"
 nextt: part2.html
 ---
 
+<br\>
+
 * TOC
 {:toc}
 

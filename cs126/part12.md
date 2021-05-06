@@ -6,6 +6,8 @@ title: "General algorithms"
 prev: part11.html
 ---
 
+<br\>
+
 * TOC
 {:toc}
 
