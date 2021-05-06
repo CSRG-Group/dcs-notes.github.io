@@ -191,7 +191,7 @@ You can see that **Z** is fed as the C<sub>in</sub> of the first FA, this has th
 ![image-20210505150517019](part2.assets/image-20210505150517019.png)
 
 
-Remember that when we are adding, the final C<sub>out</sub> must be the MSB of the sum of **A** and **B**, but if we are subtracting, C<sub>out</sub> should be ignored. 
+Remember because the numbers are in two's complement form, the final C<sub>out</sub> should be ignored in the calculation. However, it is significant in the Assembler topic because you'll learn that the last bit is indicative of whether there is an overflow from your adder/subtractor. **FYI** If the value of C<sub>out</sub> is different from the carry going into the last FA(the carry from the 2nd last FA), there is an overflow. You can read more about it [here](http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt) or [wikipedia](https://en.wikipedia.org/wiki/Two%27s_complement#Addition).
 
 ## Active High or Active Low?
 
