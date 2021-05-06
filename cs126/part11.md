@@ -7,7 +7,5 @@ prev: part10.html
 nextt: part12.html
 ---
 
-# Graphs
-
 * TOC
 {:toc}

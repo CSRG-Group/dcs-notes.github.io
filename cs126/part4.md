@@ -7,12 +7,10 @@ prev: part3.html
 nextt: part5.html
 ---
 
-# Stacks and Queues
-
 * TOC
 {:toc}
 
-## Stacks (ADT)
+# Stacks (ADT)
 - A "Last in, first out" (LIFO) data structure - both insertions and deletions occur at the front of the stack
 - Two fundamental operations
   - push(e), pop(), size(), isEmpty()
@@ -22,7 +20,7 @@ nextt: part5.html
   - $$O(n)$$ space complexity
   - $$O(1)$$ time complexity of fundamental operations
 
-## Queues (ADT)
+# Queues (ADT)
 - A "First in, first out" (FIFO) data structure - insertions occur at the rear and removals at the front of the queue
 - Fundamental operations
   - enqueue(e), dequeue(), size(), isEmpty()

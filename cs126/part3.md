@@ -7,7 +7,5 @@ prev: part2.html
 nextt: part4.html
 ---
 
-# Recursive algorithms
-
 * TOC
 {:toc}

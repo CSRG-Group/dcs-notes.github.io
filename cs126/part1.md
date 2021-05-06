@@ -6,12 +6,10 @@ title: "Arrays and Lists"
 nextt: part2.html
 ---
 
-# Arrays and Lists
-
 * TOC
 {:toc}
 
-## Arrays (ADT)
+# Arrays (ADT)
 - Indexable fixed length sequence of variables of the type, stored contiguously
   in memory
 - To get/set a value at an index in the array, directly look at the data at a
@@ -27,7 +25,7 @@ nextt: part2.html
   - size(), isEmpty(), get(i), set(i,e)
 
 
-## Lists (ADT)
+# Lists (ADT)
 - A list is called homogenous if it is all of the same type
 - Array based implementation  **(Concrete)**
   - Arrays provide all the required properties, except being able to change
@@ -45,7 +43,7 @@ nextt: part2.html
   - size(), isEmpty(), get(i), set(i,e), add(i,e), remove(i)
 
 
-### Positional lists (ADT)
+## Positional lists (ADT)
 - "General abstraction of a sequence of elements with the ability to identify
   the location of an element, without indices" (*Data Structures and Algorithms
   in Java*, Goodrich, Tamassia, Goldwasser)
@@ -58,14 +56,14 @@ nextt: part2.html
 - Generally implemented as a doubly linked list
 
 
-### Linked lists (ADT)
+## Linked lists (ADT)
 - A collection of elements that can be accessed in a sequential way (not
   indexable)
 - Can more easily implement non-homogenous lists, as opposed to using arrays
 - [Additional
   resource](https://lucasmagnum.medium.com/sidenotes-linked-list-abstract-data-type-and-data-structure-fd2f8276ab53)
 
-#### Singly linked lists (Concrete implementation)
+### Singly linked lists (Concrete implementation)
 - A sequence of nodes, each of which stores both a value and a pointer to the
   next node in the sequence. There is a pointer to the first node in the
   sequence, and the final node in the sequence is a null pointer $$\emptyset$$
@@ -81,7 +79,7 @@ nextt: part2.html
 - Fundamental operations
   - addFirst(e), addAfter(p,e), set(p,e), remove(p)
 
-#### Doubly linked lists (Concrete implementation)
+### Doubly linked lists (Concrete implementation)
 - - A sequence of nodes, each of which stores both a value and a pointer to both
     the next and the previous node in the sequence. At each end there are
     special header and trailer nodes, which are just references to the first and

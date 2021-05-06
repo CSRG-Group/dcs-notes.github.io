@@ -7,7 +7,5 @@ prev: part8.html
 nextt: part10.html
 ---
 
-# Skip lists
-
 * TOC
 {:toc}

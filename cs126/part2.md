@@ -7,7 +7,5 @@ prev: part1.html
 nextt: part3.html
 ---
 
-# Analysis of algorithms
-
 * TOC
 {:toc}

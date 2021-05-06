@@ -6,20 +6,18 @@ title: "General algorithms"
 prev: part11.html
 ---
 
-# General algorithms
-
 * TOC
 {:toc}
 
-## Sorting data structures
+# Sorting data structures
 
-### Insertion sort
-### Selection sort
-### Heap sort
-### Merge sort
+## Insertion sort
+## Selection sort
+## Heap sort
+## Merge sort
 
 
-## Reversing data structures
+# Reversing data structures
 - Reversing an array using a stack
   - Push all the items in array to the stack, then pop all the items off the stack into the new reversed array
     ```
@@ -42,7 +40,7 @@ prev: part11.html
 
 
 
-## Set operations
+# Set operations
 - Generic merging
   - Taking the union of two sets, in linear time:
     ```
@@ -68,7 +66,7 @@ prev: part11.html
 
 
 
-## Misc
+# Misc
 - Computing spans
   - The span of an array is the maximum number of consecutive elements less than a value at an index which precede it
     This can be calculated in linear time by

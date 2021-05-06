@@ -7,7 +7,5 @@ prev: part9.html
 nextt: part11.html
 ---
 
-# Self-balancing trees
-
 * TOC
 {:toc}

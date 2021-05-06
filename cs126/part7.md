@@ -7,13 +7,10 @@ prev: part6.html
 nextt: part8.html
 ---
 
-
-# Priority queues
-
 * TOC
 {:toc}
 
-## Priority queues (ADT)
+# Priority queues (ADT)
 
 - Similar to queues, items are sorted in order of a property "priority", then FIFO across elements of the same "priority" (unlike maps, multiple elements can have the same priority)
   - Fundamental operations
@@ -35,11 +32,11 @@ nextt: part8.html
     - We can sort a set of items by enqueueing them one by one, using the priority as the total ordering to sort by, and then dequeuing them into a list will result in them being sorted
     - When the unsorted concrete implementation is used, this encodes "selection sort"
       - The steps taken in the sort are:
-        1. Enqueue all $n$ elements, each taking $O(1)$ time into the priority queue, taking $O(n)$ time
-        2. Dequeue all the elements into sorted order, with the total calls taking $O(n) + O(n-1) + ... + O(1)$, which is $O(n^2)$ time
-        Hence, the total time complexity is $O(n^2)$
+        1. Enqueue all $$n$$ elements, each taking $$O(1)$$ time into the priority queue, taking $$O(n)$$ time
+        2. Dequeue all the elements into sorted order, with the total calls taking $$O(n) + O(n-1) + ... + O(1)$$, which is $$O(n^2)$$ time
+        Hence, the total time complexity is $$O(n^2)$$
     - When the unsorted concrete implementation is used, this encodes "insertion sort"
       - The steps taken in the sort are:
-        1. Enqueue $n$ elements, with the total calls taking $O(1) + O(2) + ... + O(n)$, which is $O(n^2)$ time
-        2. Dequeue all $n$ items, each taking $O(1)$, taking $O(n)$ time
-        Hence, the total time complexity is $O(n^2)$
+        1. Enqueue $$n$$ elements, with the total calls taking $$O(1) + O(2) + ... + O(n)$$, which is $$O(n^2)$$ time
+        2. Dequeue all $$n$$ items, each taking $$O(1)$$, taking $$O(n)$$ time
+        Hence, the total time complexity is $$O(n^2)$$
