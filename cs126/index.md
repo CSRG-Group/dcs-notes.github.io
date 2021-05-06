@@ -26,7 +26,7 @@ These were written by **Edmund Goodman**:
 12. [ ] [General algorithms](part12.md)
 
 
-A development full version of the notes is available [here](./cribSheet.html)
+A *development* version of the notes containing WIP material is available [here](./cribSheet.md), but will not render correctly in GitHub pages, as it has not been ported across yet.
 
 
 
