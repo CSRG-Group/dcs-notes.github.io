@@ -5,33 +5,30 @@
 # Welcome to the CS126 revision guide
 
 
-
-## Topics and content
-
-There are fifteen topics in the module, which are as follows:
-
-1. Arrays and Linked Lists
-2. Analysis of Algorithms
-3. Recursive Algorithms
-4. Stacks and Queues
-5. Lists
-6. Maps
-7. Hash Tables
-8. Sets
-9. Trees
-10. Priority Queues and Heaps
-11. Skip Lists
-12. Binary Search Trees and Self-balancing Trees
-13. Graphs
-14. Graph Algorithms
-15. Directed Graphs
-
-
-
 ## Complete Notes
 
-Typed notes for CS126 by **Edmund Goodman** which cover the whole module can be found below:
-- [Full notes](./cribSheet.html)
+Given the large number of topics, it makes sense to break these down into
+broader topics when revising - each of which having its own page.
+
+These were written by **Edmund Goodman**:
+
+1. [x] Arrays and Lists
+2. [ ] Analysis of algorithms
+3. [ ] Recursive algorithms
+4. [x] Stacks and Queues
+5. [x] Maps, hash tables and sets
+6. [x] Trees
+7. [x] Priority queues
+8. [x] Heaps
+9. [ ] Skip lists
+10. [ ] Self-balancing trees
+11. [ ] Graphs
+12. [ ] General algorithms
+
+
+A development full version of the notes is available [here](./cribSheet.html)
+
+
 
 Detailed handwritten notes for CS126 by **Josh Fitzmaurice** which cover the entire module split into two parts can be can be found below:
 

@@ -12,44 +12,44 @@
 
 ## Data structures
 
-- Arrays **(ADT)**
+Arrays **(ADT)**
 
-  - Indexable fixed length sequence of variables of the type, stored contiguously in memory
-  - To get/set a value at an index in the array, directly look at the data at a memory address
-    - $O(1)$ operation
-  - To insert/delete an element, all the proceeding elements in the array need to be "shuffled up/down" to accommodate it
-    - $O(n)$ operation
-  - To resize the array, a new, larger contiguous block of memory needs to be allocated, then all the data copied into that
-    - $O(n)$ operation
-  - Fundamental operations
-    - size(), isEmpty(), get(i), set(i,e)
-
-
-
-- Lists **(ADT)**
-  - "An ordered collection of items" [source](http://pages.cs.wisc.edu/~cs400/readings/Lists/), which can change to any arbitrary size, and is indexable
-  - A list is called homogenous if it is all of the same type
-  - Array based implementation  **(Concrete)**
-    - Arrays provide all the required properties, except being able to change size. To "grow" an array, we make a new array of a larger size, and copy all the data across to it.
-    - Need to decide how large the new array should be
-      - Incremental strategy - when the capacity is exceeded, grow it by a constant number of elements $c$
-        - Amortized (average) time of each push is $$\Omega(n^2)$$
-        - Space grows linearly, so quite space efficient
-      - Doubling strategy - when the capacity is exceeded, double it
-        - Amortized (average) time of each push is $$\Omega(n)$$
-        - Space grows exponentially, so less space efficient
-  - Fundamental operations
-    - size(), isEmpty(), get(i), set(i,e), add(i,e), remove(i)
+- Indexable fixed length sequence of variables of the type, stored contiguously in memory
+- To get/set a value at an index in the array, directly look at the data at a memory address
+  - $O(1)$ operation
+- To insert/delete an element, all the proceeding elements in the array need to be "shuffled up/down" to accommodate it
+  - $O(n)$ operation
+- To resize the array, a new, larger contiguous block of memory needs to be allocated, then all the data copied into that
+  - $O(n)$ operation
+- Fundamental operations
+  - size(), isEmpty(), get(i), set(i,e)
 
 
 
-- Positional lists **(ADT)**
-  - "General abstraction of a sequence of elements with the ability to identify the location of an element, without indices" (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
-  - A "position" is a marker within the list, which is unaffected by changes elsewhere
-    - Insertion/deletion of other elements doesn't change it, the only time it changes is when it itself is deleted
-  - Fundamental operations
-    - addFirst(e), addLast(e), addBefore(p,e), addAfter(p,e), set(p,e), remove(p)
-  - Generally implemented as a doubly linked list
+Lists **(ADT)**
+- "An ordered collection of items" [source](http://pages.cs.wisc.edu/~cs400/readings/Lists/), which can change to any arbitrary size, and is indexable
+- A list is called homogenous if it is all of the same type
+- Array based implementation  **(Concrete)**
+  - Arrays provide all the required properties, except being able to change size. To "grow" an array, we make a new array of a larger size, and copy all the data across to it.
+  - Need to decide how large the new array should be
+    - Incremental strategy - when the capacity is exceeded, grow it by a constant number of elements $c$
+      - Amortized (average) time of each push is $$\Omega(n^2)$$
+      - Space grows linearly, so quite space efficient
+    - Doubling strategy - when the capacity is exceeded, double it
+      - Amortized (average) time of each push is $$\Omega(n)$$
+      - Space grows exponentially, so less space efficient
+- Fundamental operations
+  - size(), isEmpty(), get(i), set(i,e), add(i,e), remove(i)
+
+
+
+Positional lists **(ADT)**
+- "General abstraction of a sequence of elements with the ability to identify the location of an element, without indices" (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+- A "position" is a marker within the list, which is unaffected by changes elsewhere
+  - Insertion/deletion of other elements doesn't change it, the only time it changes is when it itself is deleted
+- Fundamental operations
+  - addFirst(e), addLast(e), addBefore(p,e), addAfter(p,e), set(p,e), remove(p)
+- Generally implemented as a doubly linked list
 
 
 
@@ -515,3 +515,4 @@
     While B is not empty
     	Add all the items left in B to the end of S
     ```
+
