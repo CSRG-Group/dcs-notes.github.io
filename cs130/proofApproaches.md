@@ -4,7 +4,6 @@ math: true
 title: "Proof approaches - Edmund Goodman"
 ---
 
-<br\>
 
 * TOC
 {:toc}
@@ -72,11 +71,11 @@ To prove a claim $$P \implies Q$$, we assume the opposite, $$P \implies \neg Q$$
 >
 >*Proof*:
 >
->​		Suppose $$P \and \neg Q$$
+>​		Suppose $$P \land \neg Q$$
 >
 >​			...
 >
->​		Therefore contradiction ($$C \and \neg C$$), hence $$P \implies Q$$
+>​		Therefore contradiction ($$C \land \neg C$$), hence $$P \implies Q$$
 
 ## Non-conditional
 
@@ -90,7 +89,7 @@ To prove a claim $$P$$, we assume the opposite, $$\neg P$$, then show this resul
 >
 >​			...
 >
->​		Therefore contradiction ($$C \and \neg C$$), hence $$P$$
+>​		Therefore contradiction ($$C \land \neg C$$), hence $$P$$
 
 It is often easier to use direct or contrapositive proofs, especially since proofs by contradiction can often be simplified down into contrapositive proofs.
 
@@ -120,7 +119,7 @@ The assumption that $$S_k$$ is true is called the inductive hypothesis
 
 ​		1) Prove that $$S_1$$ (the base case) is true
 
-​		2) Given any integer $$k \geq 1$$, prove that ($$S_1 \and S_2 \and S_3 ... \and S_k \implies S_{k+1}$$)
+​		2) Given any integer $$k \geq 1$$, prove that ($$S_1 \land S_2 \land S_3 ... \land S_k \implies S_{k+1}$$)
 
 ​		Hence, $$S_n$$ is true for all values of $$n$$
 

@@ -4,7 +4,6 @@ math: true
 title: "Crib sheet for CS130 - Edmund Goodman"
 ---
 
-<br\>
 
 * TOC
 {:toc}
@@ -13,7 +12,7 @@ title: "Crib sheet for CS130 - Edmund Goodman"
 
 ## Material implication
 
-Implication is defined as: $$(x \implies y) \iff (\neg x \or y)$$
+Implication is defined as: $$(x \implies y) \iff (\neg x \lor y)$$
 
 It has the truth table:
 
@@ -26,7 +25,7 @@ It has the truth table:
 
 ## Equivalence
 
-Equivalence is defined as: $$(x \equiv y) \iff (x \and y) \or (\neg x \and \neg y) \iff (x$$ XNOR $$y)$$
+Equivalence is defined as: $$(x \equiv y) \iff (x \land y) \lor (\neg x \land \neg y) \iff (x$$ XNOR $$y)$$
 
 It has the truth table:
 
@@ -51,30 +50,30 @@ And it can be proven by:
 
 | Type            | Conjunction ("and" form)                            | Disjunction ("or" form)                            |
 | --------------- | --------------------------------------------------- | -------------------------------------------------- |
-| Associativity   | $$(x \and y) \and z \equiv x \and (y \and z)$$        | $$(x \or y) \or z \equiv x \or (y \or z)$$           |
-| Commutativity   | $$x \and y \equiv y \and x$$                          | $$x \or y \equiv y \or x$$                           |
+| Associativity   | $$(x \land y) \land z \equiv x \land (y \land z)$$        | $$(x \lor y) \lor z \equiv x \lor (y \lor z)$$           |
+| Commutativity   | $$x \land y \equiv y \land x$$                          | $$x \lor y \equiv y \lor x$$                           |
 | Negation        | $$\neg (\neg x) \equiv x$$                            | $$\neg (\neg x) \equiv x$$                           |
-| Identity        | $$x \and T \equiv x$$                                 | $$x \or F \equiv x$$                                 |
-| Annihilation    | $$x \and F \equiv F$$                                 | $$x \or T \equiv T$$                                 |
-| Idempotence     | $$x \and x \equiv x$$                                 | $$x \or x \equiv x$$                                 |
-| Excluded middle | $$x \and \neg x \equiv F$$                            | $$x \or \neg x \equiv T$$                            |
-| De Morgan's     | $$\neg (x \and y) \equiv \neg x \or \neg y$$          | $$\neg (x \or y) \equiv \neg x \and \neg y$$         |
-| Absorption      | $$x \and (x \or y) \equiv x$$                         | $$x \or (x \and y) \equiv x$$                        |
-| Distributivity  | $$x \and (y \or z) \equiv (x \and y) \or (x \and z)$$ | $$x \or (y \and z) \equiv (x \or y) \and (x \or z)$$ |
+| Identity        | $$x \land T \equiv x$$                                 | $$x \lor F \equiv x$$                                 |
+| Annihilation    | $$x \land F \equiv F$$                                 | $$x \lor T \equiv T$$                                 |
+| Idempotence     | $$x \land x \equiv x$$                                 | $$x \lor x \equiv x$$                                 |
+| Excluded middle | $$x \land \neg x \equiv F$$                            | $$x \lor \neg x \equiv T$$                            |
+| De Morgan's     | $$\neg (x \land y) \equiv \neg x \lor \neg y$$          | $$\neg (x \lor y) \equiv \neg x \land \neg y$$         |
+| Absorption      | $$x \land (x \lor y) \equiv x$$                         | $$x \lor (x \land y) \equiv x$$                        |
+| Distributivity  | $$x \land (y \lor z) \equiv (x \land y) \lor (x \land z)$$ | $$x \lor (y \land z) \equiv (x \lor y) \land (x \lor z)$$ |
 
 Note that these laws occur act the similarly for some other binary operators, including:  
 
-- $$(\and) \rightarrow (\cap)$$ and $$(\or) \rightarrow (\cup)$$
-- $$(\and) \rightarrow (\exists)$$ and $$(\or) \rightarrow (\forall)$$
+- $$(\land) \rightarrow (\cap)$$ and $$(\lor) \rightarrow (\cup)$$
+- $$(\land) \rightarrow (\exists)$$ and $$(\lor) \rightarrow (\forall)$$
 
 Proving absorption from other laws:
-$$$$
-x \or (x \and y) \\
-(x \and T) \or (x \or y) \quad\quad (reverse\ identity) \\
-x \and (T \or y) \quad\quad (distibutivity) \quad\quad\quad\quad \\
-x \and T  \quad\quad (annihilation) \quad\quad\quad\quad\quad\quad \\
+$$
+x \lor (x \land y) \\
+(x \land T) \lor (x \lor y) \quad\quad (reverse\ identity) \\
+x \land (T \lor y) \quad\quad (distibutivity) \quad\quad\quad\quad \\
+x \land T  \quad\quad (annihilation) \quad\quad\quad\quad\quad\quad \\
 x \quad\quad (identity) \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
-$$$$
+$$
 
 
 
@@ -84,10 +83,10 @@ $$$$
 
 We can express the main set operations in set builder notation as follows:
 
-- $$A \cap B = \{x : x \in A \and x \in B\}$$
-- $$A \cup B = \{x : x \in A \or x \in B\}$$
-- $$A \setminus B = A \cap \overline{B} = \{x : x \in A \and x \notin B\}$$
-- $$A \times B = \{(x,y) : x \in A, y \in B\}$$
+$$A \cap B = \{x : x \in A \land x \in B\}$$
+$$A \cup B = \{x : x \in A \lor x \in B\}$$
+$$A \setminus B = A \cap \overline{B} = \{x : x \in A \land x \notin B\}$$
+$$A \times B = \{(x,y) : x \in A, y \in B\}$$
 
 ## Proofs on sets
 
@@ -142,8 +141,8 @@ Consider a relation $$R : A \rightarrow B$$
 
 - A relation is reflexive if $$aRa \quad \forall a$$, i.e. every element is related to itself
 - A relation is symmetric if $$aRb \implies bRa \quad \forall a,b$$, i.e. all relations are bi-directional
-- A relation is antisymmetric if $$aRb \and bRa \implies a = b \quad \forall a,b$$, i.e. all bi-directional relations are from an item to itself
-- A relation is transitive if $$aRb \and bRc \implies aRc \quad \forall a,b,c$$
+- A relation is antisymmetric if $$aRb \land bRa \implies a = b \quad \forall a,b$$, i.e. all bi-directional relations are from an item to itself
+- A relation is transitive if $$aRb \land bRc \implies aRc \quad \forall a,b,c$$
 
 ![Relation diagram](../media/relations.png)
 
@@ -154,11 +153,11 @@ Consider a relation $$R : A \rightarrow B$$
 - Equivalence relations are reflexive, symmetric and transitive
 - Partial order relations are reflexive, antisymmetric, and transitive
   - In partial order relations, some elements have named properties, including:
-    - Maximal, an element which relates to no other element ($$\exists x \in P, \forall y \in P \quad | \quad x \nprec y$$)
-    - Minimal, an element which is related to by no other element ($$\exists x \in P, \forall y \in P \quad | \quad y \nprec x$$)
-    - Greatest, an element which is related to by every other element ($$\exists x \in P, \forall y \in P \quad | \quad y \prec x$$)
-    - Least, an element which relates to every other element ($$\exists x \in P, \forall y \in P \quad | \quad x \prec y$$)
-  - Two elements are incomparable if there is no relation between them in either direction ($$x,y \in P \quad | \quad x \nprec y \and y \nprec x$$)
+    - Maximal, an element which relates to no other element ($$\exists x \in P, \forall y \in P \quad \| \quad x \nprec y$$)
+    - Minimal, an element which is related to by no other element ($$\exists x \in P, \forall y \in P \quad \| \quad y \nprec x$$)
+    - Greatest, an element which is related to by every other element ($$\exists x \in P, \forall y \in P \quad \| \quad y \prec x$$)
+    - Least, an element which relates to every other element ($$\exists x \in P, \forall y \in P \quad \| \quad x \prec y$$)
+  - Two elements are incomparable if there is no relation between them in either direction ($$x,y \in P \quad \| \quad x \nprec y \land y \nprec x$$)
 - Total order relations are partial order relations where every element either relates to is or related to by every other element
 - Equivalence classes
   - An equivalence classes is the set of elements within the domain which have all have an equivalence relation to each other
@@ -259,8 +258,8 @@ Consider the relation $$f : A \rightarrow B$$
 Five definitions of a tree $$T = (V, E)$$
 
 - Acyclic and connected
-- Acyclic and $$|E| = |V|-1$$
-- Connected and $$|E| = |V|-1$$
+- Acyclic and $$\|E\| = \|V\|-1$$
+- Connected and $$\|E\| = \|V\|-1$$
 - Connected, but removing any edge makes it disconnected
 - Acyclic, but adding any edge between existing vertices makes it cyclic
 
@@ -281,44 +280,44 @@ Full explanations are given, as sometimes the question requires more than just t
 - Permutations - "The number of ways to order $$r$$ selections from $$n$$ distinct items"
 
   This is similar to arrangements (which are in fact just $$nPn$$), however, only $$r$$ items are selected, not all $$n$$, so we don't multiply the last $$n-r$$ selections into the total number of ways. Hence, the formula is:
-  $$$$
+  $$
   nPr = n \cdot (n-1) \cdot (n-2) ... (n-r) = \frac{n!}{(n-r)!}
-  $$$$
+  $$
 
 - Combinations - "The number of possible unordered selections of length $$r$$ from $$n$$ distinct items"
 
   This is like permutations, however, or does not matter. To account for this, as well as dividing by the $$(n-r)!$$ unselected items as in permutations, we also divide by number of ways the selected items could be arranged to remove the ordering, which we know from arrangements is just $$r!$$ . Hence, the formula is:
-  $$$$
+  $$
   nCr = \frac{n!}{r! \cdot (n-r)!}
-  $$$$
+  $$
   
 - 
 
 - The "stars and bars" technique - Additional sources [here](https://brilliant.org/wiki/integer-equations-star-and-bars/) and [here](https://math.stackexchange.com/a/2416934)
 
   The formula for the number of ways to place $$n$$ indistinguishable items into $$k$$ labelled boxes is:
-  $$$$
+  $$
   {n+k-1 \choose n}
-  $$$$
+  $$
   
 
 # Probability
 
 - The probability an event $$A$$ has of occurring *given* event $$B$$ occurs can be calculated by:
 
-$$$$
+$$
 P(A|B) = \frac{P(A \cap B)}{P(B)}
-$$$$
+$$
 
 - Two events are independent if:
 
-$$$$
+$$
 P(A \cap B) = P(A) . P(B) \\
 P(A|B) = P(A)
-$$$$
+$$
 
 - Bayes theorem is used if we have a hypothesis, and we want to update our evaluation of its likelihood given evidence
-  $$$$
+  $$
   P(H|E) = \frac{P(H) . P(E | H)}{P(E)}
-  $$$$
+  $$
   Where $$H$$ denotes the hypothesis event which might occur, and $$E$$ denotes the "evidence" which affects the probability of the hypothesis event occurring
