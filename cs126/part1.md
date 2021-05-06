@@ -1,11 +1,15 @@
 ---
-layout: 126/CS126 part: true math: true title: "Arrays and Lists" nextt:
-part2.html
+layout: 126/CS126
+part: true
+math: true
+title: "Arrays and Lists"
+nextt: part2.html
 ---
 
 # Arrays and Lists
 
-* TOC {:toc}
+* TOC
+{:toc}
 
 ## Arrays (ADT)
 - Indexable fixed length sequence of variables of the type, stored contiguously
