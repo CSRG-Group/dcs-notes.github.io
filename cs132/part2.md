@@ -192,7 +192,10 @@ You can see that **Z** is fed as the C<sub>in</sub> of the first FA, this has th
 
 
 Remember because the numbers are in two's complement form, the final C<sub>out</sub> should be ignored in the calculation. However, it is significant in the "Assembler" topic because the C<sub>out</sub> goes to your Condition Code Register (CCR) as the **Carry Flag**.
-> **FYI.** If the value of C<sub>out</sub> is different from the carry going into the last FA(the carry from the 2nd last FA), there is an overflow. You can read more about it [here](http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt) or [wikipedia](https://en.wikipedia.org/wiki/Two%27s_complement#Addition).
+<blockquote class="extra" markdown="span">
+    **FYI.** If the value of C<sub>out</sub> is different from the carry going into the last FA (the carry from the 2nd last FA), there is an overflow. You can read more about it [here](http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt) or [wikipedia](https://en.wikipedia.org/wiki/Two%27s_complement#Addition).
+</blockquote>
+
 
 ## Active High or Active Low?
 
