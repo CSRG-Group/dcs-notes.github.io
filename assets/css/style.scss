@@ -27,11 +27,13 @@ summary {
   font-weight: bold;
 }
 
+// Image that grows when hovered
 .growimg {
   transition:transform 0.5s ease-in-out;
   transform-origin: top;
 }
 
+// Hover properties for growimg
 .growimg:hover {
   -webkit-transform:scale(1.5); /* or some other value */
   transform:scale(1.5);
