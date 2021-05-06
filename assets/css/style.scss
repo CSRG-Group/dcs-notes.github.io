@@ -27,11 +27,13 @@ summary {
   font-weight: bold;
 }
 
+// Image that grows when hovered
 .growimg {
   transition:transform 0.5s ease-in-out;
   transform-origin: top;
 }
 
+// Hover properties for growimg
 .growimg:hover {
   -webkit-transform:scale(1.5); /* or some other value */
   transform:scale(1.5);
@@ -47,7 +49,10 @@ summary {
   margin: 1rem 0rem 1.5rem 0rem;
 }
 
+blockquote.extra {
+  border-left: 4px solid  darkgoldenrod;
+}
+
 blockquote blockquote {
   padding-right: 0;
 }
-

@@ -80,7 +80,16 @@ One disadvantage of binary is that it is **not** a very **compact** way of repre
 
 *It is easier to convert from binary to octal or binary to hexadecimal than from binary to decimal* 
 
-<img src="part1.assets/image-20201009131327856-1620061931834.png" alt="image-20201009131327856" style="zoom:67%;" />
+One octal symbol can represent 3 bits 
+$$
+010_2 = 2_8, 100_2 = 4_8,011_2 = 3_8 \\
+010\;100\;011_2 = 243_8
+$$
+One hex can represent 4 bits
+$$
+1010\;0011_2=A3_{16}
+$$
+One decimal symbol requires 3.333… bits, so hex and octal are more convenient.
 
 ## Converting from Decimal to Binary
 
@@ -114,26 +123,35 @@ You can do this unless Matt prohibits it in exam. The best way to get better at 
 
 To do **addition** in binary it's just like long division, sum the numbers, and carry over the 1 if there it adds to 2. 
 
-**Signed Magnitude Representation.** This is 1 way of *representing negative numbers* in bits. The MSB is an indicator of whether the number is negative. 1 is negative, 0 is positive. However, there's a problem when you think about 0. What is +0 vs -0?
+**Signed Magnitude Representation.** This is 1 way of *representing negative numbers* in bits. The MSB is an indicator of whether the number is negative. 1 is negative, 0 is positive. However, there's a problem when you think about 0. What is +0 vs -0? Our solution is to use two’s complement.
 
-An alternative is to use **Two's Complement Representation.** 
+### Two's Complement Representation
 
-The MSB has the same value as in the binary positional representation but it is negative. This makes the range asymmetric – there are more negative numbers than positive as the MSB is negative. And because of this, it also makes the zero **unique**.
+The MSB has the same value as in the binary positional representation but it is negative. This makes the range asymmetric from [-2<sup>n-1</sup>, 2<sup>n-1</sup> - 1] – there are more negative numbers than positive as the MSB is negative. Because of this, it also makes the zero **unique**.
 
-The screenshot below shows you how to form Two's Complement:
+To get a negative number in two’s complement form from its positive number in binary.
 
-![image-20201009150201939](part1.assets/image-20201009150201939-1620061931835.png)
+1. Invert the bits ensuring there are enough bits for the MSB to be the sign
+2. Add 1, ignoring any overflow. 
 
-For **subtraction** you add negative numbers (two's complement) and it is the exact same as addition, just that you ignore any overflow. Matt recommends practising conversion between unsigned binary and two’s complement. 
+Tada, now we can do subtraction by adding negative numbers in two’s complement form. Positive numbers in two’s complement are exactly the same as their binary form just that you have to include an extra bit (the MSB) that is 0. 
+
+The only thing to know for addition and subtraction in two’s complement is to ignore any carry to bits that are beyond the precision of the 2 numbers. 
 
 ## Fractional Numbers
 
 ### Fixed Point Representation
 
 For fractions, we introduce inverse/decimal powers. $$2.75_{10}$$ = $$10.11_2$$.
-
-![image-20201009151009599](part1.assets/image-20201009151009599-1620061931835.png)
-
+$$
+\begin{align}
+&10.11_2&            &=& &1&   &0&   &1&      &1&      \\
+&\text{Position:}& &&  &2^1& &2^0& &2^{-1}& &2^{-1}& \\
+&&                   &=& &2&    &1&    &0.5&       &0.25& \\
+&\text{Value}&     &=& &(1\times 2+&    &0\times1+&    &1\times0.5+&   &1\times0.25)& \\
+&&                   &=& &2.75_{10}&
+\end{align}
+$$
 However, if the number is 2.8​ for example, **Fixed-PR** will not be very efficient because to represent it in binary will require a lot of bits. This means that in a microprocessor, we will need an incredibly large bus to represent such values. And so we use…
 
 ### Floating Point Representation
@@ -145,5 +163,3 @@ Floating point uses the same principles as scientific notation. You should be fa
 - Single precision (32 bits) – 1bit for the sign, 8bits for the exponent, and 23 bits for the mantissa
 - Double precision (64 bits)
 - Quad precision (128 bits)
-
-<footer style="border-top:none;" class="site-footer" >All diagrams and screenshots were taken from Matthew Leeke's slides available on the module <a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs132/">webpage</a></footer>
