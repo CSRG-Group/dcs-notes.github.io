@@ -1,0 +1,8 @@
+# Linguist overrides
+# https://joshuatz.com/posts/2019/how-to-get-github-to-recognize-a-pure-markdown-repo/
+
+# Register markdown in the language breakdown, excluding non-content files
+*.md linguist-detectable=true
+README.md linguist-detectable=false
+CONTRIBUTING.md linguist-detectable=false
+CODE_OF_CONDUCT.md linguist-detectable=false
