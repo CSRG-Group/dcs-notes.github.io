@@ -5,6 +5,7 @@ math: true
 title: Digital Logic
 ---
 
+
 # Logic Gates, Circuits and Truth tables
 
 ## An Alternative view of the OR circuit
