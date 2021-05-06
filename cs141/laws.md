@@ -32,3 +32,12 @@ pure (.) <*> x <*> y <*> z = x <*> (y <*> z)
 
 # Monad Laws
 
+```haskell
+-- Left Identity
+return x >>= f = f x
+-- Right Identity
+m >>= return = m
+-- Associativity
+(m >>= f) >>= g = m >>= (\x -> f x >>= g)
+```
+
