@@ -1,4 +1,6 @@
 ---
+layout: 132/CS132
+slides: true
 layout: notes
 math: true
 title: Digital Logic
@@ -87,9 +89,7 @@ In an exam, it is crucial that you **state** which rules you are applying so tha
 | **De Morgan’s Law**  | $$\overline{AB} = \overline{A} + \overline{B}$$ | $$\overline{A+B} = \bar{A}\bar{B}$$ |
 {:.centeredtable}
 
-The best way to get good at this is to **practise.**
-
-![image-20210504115045642](part2.assets/image-20210504115045642.png)
+The best way to get good at this is to **practise.** 
 
 ## Karnaugh Maps / Kmaps
 
@@ -97,7 +97,9 @@ The best way to get good at this is to **practise.**
 
 **Grey Coding.** Because sum of products can be simplified by looking for terms that differ by only one variable and its complement, when we draw out a kmap we have to grey code – which mean each cell only differs by 1 variable from its neighbours (horizontally and vertically) as you can see below.
 
-![image-20201019144459516](part2.assets/image-20201019144459516.png)
+
+<img src="part2.assets/image-20210505150058486.png" alt="image-20210505150058486" style="zoom: 50%;" class="center"/>
+
 
 **Karnaugh Map Grouping.**  The **first step** to finding the simplest expression is to form kmap groupings. There are some things/rules/features to note about this.
 
@@ -112,13 +114,14 @@ The **second and last step** is to look within a particular group and *omit* the
 
 The **values** of the cases/variables that stayed constant depend on the value within the grouping. In the example below **B** changes within the blue group so it is omitted, and both **A and C** stayed constant with value **0** so the final logic expression for the blue group is $$\overline{A} \cdot \overline{C}$$. 
 
-![image-20201019150042063](part2.assets/image-20201019150042063.png)
+
+![image-20210505150245851](part2.assets/image-20210505150245851.png)
+
 
 ### Multiple equivalent expressions
 
 In the exams, there will be no penalty if you give either answer but note that in reality sometimes the final choice comes down to the resources you have available like the number of **NOT** gates that you can use.
 
-![image-20201019181716327](part2.assets/image-20201019181716327.png)
 
 Additionally, there are some expressions that are **impossible to simplify**. This example is just one of the very few logical expression that you cannot simplify because you cannot get any groupings more than 1.
 
@@ -185,7 +188,9 @@ The output of each sum (S<sub>k</sub>) and the final C<sub>out</sub> is then “
 
 You can see that **Z** is fed as the C<sub>in</sub> of the first FA, this has the effect of adding 1 to arrive at the proper value for the two’s complement **B**. From above, **Z** is **EX-ORed** with each bit of **B** and this has the effect of inverting the bits to get **-B**. When we are adding, then **Z** will be 0 and will have no effect on **B**.
 
-![image-20201019190334263](part2.assets/image-20201019190334263.png)
+
+![image-20210505150517019](part2.assets/image-20210505150517019.png)
+
 
 Remember that when we are adding, the final C<sub>out</sub> must be the MSB of the sum of **A** and **B**, but if we are subtracting, C<sub>out</sub> should be ignored. 
 
@@ -246,7 +251,7 @@ A very common mechanism for selection.
 > Series to parallel conversion
 >
 > A control for multiple lights – In a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.  
->
+
 
 # Sequential Logic Circuits
 
@@ -256,147 +261,124 @@ A very common mechanism for selection.
 
 ## Flip-Flops
 
-A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states (**Q and P** are always opposite). I think the best way to understand the flip flop is to look at the truth table and the timing diagram together.
 
+A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states (**bistable** – **Q and P** are always opposite). I think the best way to understand the flip-flop is to look at the truth table and the timing diagram together.
+
+<div style="display:flex;justify-content:center;" >
+    <img src="part2.assets/image-20210505113338886.png" alt="image-20210505113338886" style="zoom:33%;" />
+    <img src="part2.assets/image-20210505113358425.png" alt="image-20210505113358425" style="zoom:33%;" />
+</div>    
 <div style="display:flex;justify-content:center;" >
     <img src="part2.assets/image-20210504211149726.png" alt="image-20210504211149726" style="zoom:36%;" />
     <img src="part2.assets/image-20210504211212581.png" alt="image-20210504211212581" style="zoom:30%" />
 </div>    
 
-Firstly, notice that **Q** and **P** are always different values. Next, see how **Q** only changes from 1 to 0 when **<span style="text-decoration:overline">R</span>** changes from 1 to 0? I think it’s better to think of this as Q is activated when **<span style="text-decoration:overline">R</span>** is activated (remember this is active low). 
 
-Then also notice how when **<span style="text-decoration:overline">R</span>** is made inactive, the value of **Q** is still 0 (activated) – hence, the flip-flop is able to **store** a value when both **<span style="text-decoration:overline">S</span>** and **<span style="text-decoration:overline">R</span>** are inactive. Next when **<span style="text-decoration:overline">S</span>** is now activated, **Q** is **set** from 0 to 1 and **P** changes from 1 to 0. Again, when **<span style="text-decoration:overline">S</span>** is deactivated, the value of **P** and **Q** don’t change. Only if **<span style="text-decoration:overline">R</span>** is activated again, do the values of **P** and **Q** flip.
-
-Now that you have understood that, you can look at the circuit diagram and see how and why having both **<span style="text-decoration:overline">S</span>** and **<span style="text-decoration:overline">R</span>** set to 0 doesn’t quite make sense and is a **hazard condition**.
-
-![image-20201019203011505](part2.assets/image-20201019203011505.png)
+1. Note that **Q** and **P** are always different values **as long as** **<span style="text-decoration:overline">R</span>** and **<span style="text-decoration:overline">S</span>** are not active (0 because they **<span style="text-decoration:overline">RS</span>** are active low) at the same time.
+2. Next, see how **Q** starts off **active** in the diagram, and changes from 1 to 0 when **<span style="text-decoration:overline">R</span>** changes from 1 to 0? I think it’s better to think of this as **Q** is **reset** when **<span style="text-decoration:overline">R</span>** is activated (or **<span style="text-decoration:overline">R</span>** resets **Q**).
+3. Then also notice how when **<span style="text-decoration:overline">R</span>** is made inactive (goes back to 1), the value of **Q** and **P** don’t change. This is how the flip-flop is able to **store** a value when both **<span style="text-decoration:overline">S</span>** and **<span style="text-decoration:overline">R</span>** are inactive. 
+4. **<span style="text-decoration:overline">S</span>** is activated, and **Q** is **set** to 1, while **P** resets to 0. 
+5. Again, when **<span style="text-decoration:overline">S</span>** is deactivated, the value of **P** and **Q** don’t change. Only if **<span style="text-decoration:overline">R</span>** is activated again, do the values of **P** and **Q** flip. 
+6. Now that you have understood that, you can look at the circuit diagram and see how and why having both **<span style="text-decoration:overline">S</span>** and **<span style="text-decoration:overline">R</span>** set to 0 leads to both **Q** and **P** to be 1 which violates the rule of the flip-flop as a bistable (**P** should be equal to **<span style="text-decoration:overline">Q</span>**) and is a **hazard condition**.
 
 ## D-Type Latch
 
-This is more important to understand than flip-flop. The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never be both be 0. (I’ll make a diagram soon).
+The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never be both be 0 so we won’t have the hazard condition. (I’ll may make a diagram).
 
 ![image-20201019204921469](part2.assets/image-20201019204921469.png)
 
-When we want to store data, we have that data at D, and we set enable to 1 (or trigger the "latch"). Only then will the data from D go to Q. Otherwise, you can see that 
+When we want to store data, we have that data at D, and we set enable to 1 (or trigger the "latch"). Only then will the data from D go to Q. Otherwise, you can see from the truth table that Q and <span style="text-decoration:overline">Q</span> don’t change and behaves like memory. 
 
-##### D-type latch truth table
+> The D-type is a fundamental component, so you should know how to draw it and understand its function. You should also understand how the D-type works with registers, shift registers, and counters.
 
-![image-20201026211009255](part2.assets/image-20201026211009255.png)
+The D-type latch (delay) is a type of clocked flip-flop and there are others like the T-type (toggle) and the JK-type. Clocking and enabling are used fairly interchangeably but the right term is clock. All the "latches" above changes only on the rising edge of the clock input, they only respond to change.
 
-##### Clocked Flip-Flops 
+### Three different kinds of triggers
 
-![image-20201026211241528](part2.assets/image-20201026211241528.png)
+**Level triggered** - 1s and 0s
 
-Clocking and enabling are used fairly interchangeably but the right term is clock. All the "latches" above changes only on the rising edge of the clock input, they only respond to change. 
+**Rising Edge triggered** - transition from 0 to 1
 
+**Falling edge triggered** - from 1 to 0 
 
+## N-bit Register
 
-#### N-bit Register
+The diagram shown below, is a parallel-load register, each bit of **A** is fed to a D-type latch as input and we are storing each bit of A in the corresponding “memory location” of **Q**. 
 
-![image-20201019205644792](part2.assets/image-20201019205644792.png)
+When we provide a clock pulse, we are providing the transition from a 0 to a 1 and 1 to 0 probably afterwards. The D type will only respond to the 0 to 1, when that happens, each bit of A fed into each D type will go to each Q. No change will happen to Q unless we clock it again. This is how we can store data and the stored number appears on the outputs of Q.
 
-A Dtype is a fundamental component, so know how to draw it and know these combinatorial circuit designs. A common clock hints to you that you're dealing with a register. 
+![image-20210505121628382](part2.assets/image-20210505121628382.png)
 
-When we provide a clock pulse, we are providing the transition from a 0 to a 1 and 1 to 0 probably afterwards. The D type will only respond to the 0 to 1, when that happens, each bit on every D type will go to each bit simultaneously and go to Q. 
-
-No change will happen to Q unless we clock it again. This is how we can store data. 
-
-This is what we call a parallel load register, because we load all the bits of A with one clock. 
+Note that this diagram is incomplete – you should always label the D & Clk inputs, and the Q & <span style="text-decoration:overline">Q</span> outputs in an exam.
 
 An alternative design is...
 
-#### N-bit Shift Register
+## N-bit Shift Register
 
-![image-20201019210803167](part2.assets/image-20201019210803167.png)
+The concept here is largely the same as the parallel-load register but is fed serially. This register stores one bit of a word/number **A** at time (starting from LSB of A) and shifts each prior bit to the next Q on the subsequent clocks until we clock the MSB of A into Q<sub>N-1</sub>. 
+
+![image-20210505121914913](part2.assets/image-20210505121914913.png)
+
+> Usually used for serial to parallel conversion, because after feeding all N bits of A into the register each bit can be read in parallel from Q.
+
 
 Once you've understood all the parallel and shift register...
 
 ## N-bit Counter
 
-You need to know how to explain this. Always label all the input and outputs of the D-type latch so Q bar and all. 
+*You need to know how to explain this.* 
 
-![image-20201019211100367](part2.assets/image-20201019211100367.png)
+![image-20210505141644565](part2.assets/image-20210505141644565.png)
 
+Let’s run through the values of the counter. Note that the circles on the flip-flops aside from the first one indicate an inverter, which mean that those flip-flops are clocked only on the falling edge of the previous output.
 
+1. Assuming all Qs start at 0. That means that the value of <span style="text-decoration:overline">Q</span> is 1 and that is fed to D. On the rising edge of the clock (low to high), Q<sub>0</sub> changes from 0 to 1. So now the value stored is `1000`.
+2. On the next clock, Q<sub>0</sub> changes from 1 to 0, thereby also clocking the 2nd D-type which gives Q<sub>1</sub> the value 1 from 0. Now the value stored is `0100`. 
+3. On the next clock, Q<sub>0</sub> goes from 0 to 1, and Q<sub>1</sub> doesn’t change because the Q<sub>0</sub> just transitioned from low to high.
 
+> Since the value of each Q<sub>i</sub> represents a particular power of 2, notably 2<sup>i</sup>, when the counter is clocked…
+>
+> - If Q<sub>0</sub> (which represents 2<sup>0</sup> = 1) is 0, it changes to 1 thereby increasing the count by 1. 
+> - If Q<sub>0</sub> is 1, then it changes from 1 to 0, supplying a falling edge clock to the next D-type which changes the value stored at Q<sub>1</sub>. 
+> - Now we can repeat the same condition for Q<sub>1</sub> as it was for Q<sub>0</sub> and hence for every Q<sub>i</sub>.
+>
+> Because the Q of each falling edge clocked D-type will only change from 0 to 1 when the output Q of the prior D-type changes from 1 to 0, this also means that the Q of all prior D-types until Q<sub>0</sub> changed from 1 to 0.
+>
+> This emulates counting because each clock directly affects the first D-type only, and when all the bits of Q so far are not enough to represent the value of the next count, the clock would change Q<sub>0</sub> from 1 to 0 and the falling edge clocking mechanism of the subsequent D-types will trigger, changing each Q from 1 to 0 until the first Q<sub>i</sub> that is 0 (not 1). Essentially, the counter switches to a higher power of 2 when it needs to.
 
+So the output of the counter on each clock will look like..
 
+```
+0000
+1000
+0100
+1100...
+```
 
+# Three State Logic & Physical Implementations
 
-#### Three different kinds of triggers
+In some logic components, termed a three-state buffer, whose output can be in three states: 1,0, or UNCONNECTED. Looking at the diagram below, when **B** is high the buffer is **unconnected** and vice versa. *It can be thought of as a switch.*
 
-###### Level triggered - 1s and 0s
+![image-20210505142939469](part2.assets/image-20210505142939469.png)
 
-###### Rising Edge triggered - transition from 0 to 1
+> This is useful because we can provide communications between logical subsystems in an efficient way by **sharing communication paths (buses)**. The buffers that share a common bus cannot be active at the same time!
 
-###### Falling edge triggered - from 1 to 0 
+Without three-state buffers, if you connect two outputs together you could be connecting a 1 to a 0 and cause a short circuit.
 
+## Propagation Delay
 
+In practice, logic gates have propagation delay, typically 1x10<sup>-9</sup>s or less. These delays limit the speed at which logic circuits work. While propagation delay can be reduced by putting logic gates close together, ultimately the design of your circuits play a big part as well. You can think of propagation delay as the collective operating speed of the circuit.
 
-# Three State Logic
+> We're usually interested in the maximum propagation delay and we do this to make sure that our circuit doesn't cross the so-called "event horizon" where the change in the input is not registered by the output for a relatively significant amount of time because of propagation delay. If another component relies on this output and another input, this may cause some problems especially for systems that have to respond quickly. 
 
-![image-20201020100526365](part2.assets/image-20201020100526365.png)
+## Logic Integrated Circuits (ICs)
 
-**Why would we want to do this?** To make sure we can provide communications between logical subsystems in an efficient way (by sharing buses). 
+Programmable logic devices allow much larger circuits to be created inside a single chip.
 
+- Programmable Array Logic (PAL) - The first popular programmable device was one-time programmable
+- Programmable Logic Array (PLA) - Device contains an AND array, which feeds an OR array, providing a physical implementation of a sum of products.
+- Field Programmable Gate Array (FPGA) - One of several modern possibilities, which can contain million of gates - enough for an entire processor. 
 
+## PLA
 
-#### Three-state Buses
-
-![image-20201020105018274](part2.assets/image-20201020105018274.png)
-
-
-
-#### Multi-bit Bus
-
-![image-20201020105609515](part2.assets/image-20201020105609515.png)
-
-Buses are communication paths. The "dash 4" represents that there are 4 communication lines. 
-
-
-
-## Physical Implementations
-
-#### Properties of Logic Gates
-
-![image-20201020105727893](part2.assets/image-20201020105727893.png)
-
-Remember that TTL logic floats high, so if you don't specify, it will be a logical 1. 
-
-
-
-#### Propagation Delay
-
-![image-20201020105853812](part2.assets/image-20201020105853812.png)
-
-We're usually interested in the maximum propagation delay and we do this to make sure that our circuit doesn't cross the so-called "event horizon" where the change in the input is not registered by the output for a significantly long time because of propagation delay. 
-
-You can think of propagation delay as the collective operating speed of the circuit.
-
-
-
-#### Logic Integrated Circuits (IC)
-
-![image-20201020110514517](part2.assets/image-20201020110514517.png)
-
-
-
-##### PLA Example
-
-Physical implementation of a sum-of-products.
-
-![image-20201020110616129](part2.assets/image-20201020110616129.png)
-
-
-
-###### PLA Organisation
-
-![image-20201020110648555](part2.assets/image-20201020110648555.png)
-
-
-
-###### PLA Function Implementation
-
-![image-20201020110707485](part2.assets/image-20201020110707485.png)
-
-This is actually an incomplete implementation of PLA. 
+Works by providing links/fuses that can be broken to produce a custom sum of products. As long as you are able to understand circuit diagrams you should be able to understand how you arrive at the sum of products for each output of the PLA. 
