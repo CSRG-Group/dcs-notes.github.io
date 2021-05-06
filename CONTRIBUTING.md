@@ -24,6 +24,29 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 
 - Please do not re-host any university owned content, including but not limited to past papers and lecture notes
 
+### How do I display Math?
+Firstly, ensure that the top of the markdown (.md) file has YAML Front Matter containing the key-value pair `math: true`. Otherwise, add it into the front matter.
+Then, make sure you wrap the math in `$$`.
+```markdown
+For math sections... (note: ensure that there's a new line before and after the start and end $$ respectively)
+
+$$
+1+1=2
+$$
+
+or just
+$$1+1=2$$ for in-line math
+```
+
+If there is no YAML Front Matter you can add it at the top of the file like this:
+```
+---
+math: true
+---
+
+Markdown content...
+```
+
 ### How to make a pull request
 
 1. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), click the "Fork repository" button

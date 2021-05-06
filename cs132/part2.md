@@ -1,10 +1,10 @@
 ---
 layout: 132/CS132
 slides: true
+layout: notes
 math: true
 title: Digital Logic
 ---
-
 
 # Logic Gates, Circuits and Truth tables
 
@@ -97,7 +97,9 @@ The best way to get good at this is to **practise.**
 
 **Grey Coding.** Because sum of products can be simplified by looking for terms that differ by only one variable and its complement, when we draw out a kmap we have to grey code – which mean each cell only differs by 1 variable from its neighbours (horizontally and vertically) as you can see below.
 
+
 <img src="part2.assets/image-20210505150058486.png" alt="image-20210505150058486" style="zoom: 50%;" class="center"/>
+
 
 **Karnaugh Map Grouping.**  The **first step** to finding the simplest expression is to form kmap groupings. There are some things/rules/features to note about this.
 
@@ -112,11 +114,14 @@ The **second and last step** is to look within a particular group and *omit* the
 
 The **values** of the cases/variables that stayed constant depend on the value within the grouping. In the example below **B** changes within the blue group so it is omitted, and both **A and C** stayed constant with value **0** so the final logic expression for the blue group is $$\overline{A} \cdot \overline{C}$$. 
 
+
 ![image-20210505150245851](part2.assets/image-20210505150245851.png)
+
 
 ### Multiple equivalent expressions
 
 In the exams, there will be no penalty if you give either answer but note that in reality sometimes the final choice comes down to the resources you have available like the number of **NOT** gates that you can use.
+
 
 Additionally, there are some expressions that are **impossible to simplify**. This example is just one of the very few logical expression that you cannot simplify because you cannot get any groupings more than 1.
 
@@ -183,7 +188,9 @@ The output of each sum (S<sub>k</sub>) and the final C<sub>out</sub> is then “
 
 You can see that **Z** is fed as the C<sub>in</sub> of the first FA, this has the effect of adding 1 to arrive at the proper value for the two’s complement **B**. From above, **Z** is **EX-ORed** with each bit of **B** and this has the effect of inverting the bits to get **-B**. When we are adding, then **Z** will be 0 and will have no effect on **B**.
 
+
 ![image-20210505150517019](part2.assets/image-20210505150517019.png)
+
 
 Remember that when we are adding, the final C<sub>out</sub> must be the MSB of the sum of **A** and **B**, but if we are subtracting, C<sub>out</sub> should be ignored. 
 
@@ -245,6 +252,7 @@ A very common mechanism for selection.
 >
 > A control for multiple lights – In a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.  
 
+
 # Sequential Logic Circuits
 
 >A logic circuit whose **outputs** are logical functions of its **input(s)** and its **current state.**
@@ -252,6 +260,7 @@ A very common mechanism for selection.
 <img src="part2.assets/image-20201019202858996.png" alt="image-20201019202858996"  />
 
 ## Flip-Flops
+
 
 A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states (**bistable** – **Q and P** are always opposite). I think the best way to understand the flip-flop is to look at the truth table and the timing diagram together.
 
@@ -263,6 +272,7 @@ A basic building block of memory. Level triggered devices (a device that respond
     <img src="part2.assets/image-20210504211149726.png" alt="image-20210504211149726" style="zoom:36%;" />
     <img src="part2.assets/image-20210504211212581.png" alt="image-20210504211212581" style="zoom:30%" />
 </div>    
+
 
 1. Note that **Q** and **P** are always different values **as long as** **<span style="text-decoration:overline">R</span>** and **<span style="text-decoration:overline">S</span>** are not active (0 because they **<span style="text-decoration:overline">RS</span>** are active low) at the same time.
 2. Next, see how **Q** starts off **active** in the diagram, and changes from 1 to 0 when **<span style="text-decoration:overline">R</span>** changes from 1 to 0? I think it’s better to think of this as **Q** is **reset** when **<span style="text-decoration:overline">R</span>** is activated (or **<span style="text-decoration:overline">R</span>** resets **Q**).
@@ -310,6 +320,7 @@ The concept here is largely the same as the parallel-load register but is fed se
 ![image-20210505121914913](part2.assets/image-20210505121914913.png)
 
 > Usually used for serial to parallel conversion, because after feeding all N bits of A into the register each bit can be read in parallel from Q.
+
 
 Once you've understood all the parallel and shift register...
 
