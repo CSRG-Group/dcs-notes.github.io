@@ -125,12 +125,14 @@ Assembly language typically takes the following form:
 ### Assembly Language Conventions
 
 There are several conventions of Assembly language to keep in mind:
+
 | Number Symbol | Meaning |
 |---------|-------------|
 | `#` | A constant value, in base 10. **This is not an address.** |
 | `$` | A **hex** value |
 | `%` | A **binary** value |
 
+<br/>
 
 | Directives | Definition | Convention | Example |
 |------------|------------|------------|---------|
