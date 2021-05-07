@@ -75,8 +75,23 @@ Before we begin organising memory, it's useful to know what the individual memor
 
 > You can think of a memory cell as a means of storing a single bit.
 
-### Storing words
+### Storing single words
 
 In order to store multiple bits together (i.e. words), we will simply store a series of memory cells next to each other. We will need some column selecting I/O to handle selecting the individual bits of the word correctly.
 
 <img src="part4res/4-3.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
+
+### Storing multiple words
+
+Now that we have organised individual words, we want to store multiple words in memory. We can use this grid arrangement to arrange the words in parallel as follows (imagine we wanted to store four of the 4-bit words shown above):
+
+<img src="part4res/4-4.png" alt="Memory cell words diagram" style="zoom: 50%;"/>
+
+In our **address decoder**, we have $$ log_{2} (W) $$ many control pins, where $$ W $$ is the number of words we want to store in memory. (This is because each pin can be high or low, and hence refer to two distinct words). 
+
+**We want to maintain a square grid of cells.** We could simply have a 16-bit word, which we partition into four individual words (it is possible to put smaller words into the registers of larger ones). However, this would require 16 data lines on the column selection IO, with each bit requiring power; this would be rather lopsided and would result in a column selector doing all the work. Maintaining a square grid means that we can balance the number of required pins across two different pieces of IO, each with their own power requirements.
+
+> We are trying to avoid long, narrow arrays when we design our memory cell arrays. We want to **maximise space for memory cells** and minimise space taken up by IO.
+ 
+
+
