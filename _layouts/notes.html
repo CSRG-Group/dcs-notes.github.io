@@ -16,6 +16,8 @@
     {%- if page.math == true -%}
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     {%- endif -%}
+    <!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
 
     {% seo %}
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -38,8 +40,13 @@
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
         {% endif %}
     </header>
-
+    <span id="openbtn" onclick="openNav()">🧾</span>
+    <div id="sidenav" class="sideNav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">❌</a>
+        {%- include toc.html html=content -%}
+    </div>
     <main id="content" class="main-content" role="main">
+        <!-- Main Content of markdown or sub-layouts-->
         {{ content }}
         
 

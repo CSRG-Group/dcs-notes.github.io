@@ -57,3 +57,33 @@ blockquote.extra {
 blockquote blockquote {
   padding-right: 0;
 }
+
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: scroll;
+  padding-top: 1%;
+  transition: 0.5s ease;
+}
+
+.sideNav .closebtn {
+  position: sticky;
+  background-color: black;
+  padding-right: 100%;
+  
+}
+
+#content {
+  transition: margin-left 0.5s ease;
+  padding: 20px;
+}
+
+#openbtn {
+  font-size: 20px;
+  position: fixed;
+}
