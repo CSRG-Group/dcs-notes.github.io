@@ -131,6 +131,7 @@ There are several conventions of Assembly language to keep in mind:
 | `$` | A **hex** value |
 | `%` | A **binary** value |
 
+
 | Directives | Definition | Convention | Example |
 |------------|------------|------------|---------|
 | Label names | You can assign labels to represent bytes or instructions | Label or name followed by `:` | `ANS: DS.B 1` will leave 1 byte of memory empty and name it ANS |
