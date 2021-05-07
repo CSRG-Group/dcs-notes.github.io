@@ -17,6 +17,8 @@ When deciding on a memory technology, you must consider the following factors:
 > The **designer's dilemma** is the conflict that is caused by choosing between low cost, high capacity storage or high cost, low capacity storage.
 > Ideally, we would want our storage access to be frequent, quick, and spatially efficient- the balance of these three leads to the cost of the storage.
 
+<img src="part4res/4-1.png" alt="Memory hierarchy diagram" class="center"/>
+
 We know that roughly **90%** of memory accesses are within +-2KB of the previous program counter position. Therefore, we should only choose expensive memory **when we need it**, which is due to **spatial locality**.
 
 **Temporal locality** refers to the likelihood that a particular memory location will be referenced in the future.
