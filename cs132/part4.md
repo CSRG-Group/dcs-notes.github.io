@@ -62,3 +62,21 @@ DRAM can be organised even further:
 - Rambus DRAM (RDRAM)
 - Double Data Rate Synchronous (DDR SDRAM)
 - Cache DRAM (CDRAM)
+
+## Organising memory 
+
+### Memory cells
+Before we begin organising memory, it's useful to know what the individual memory cells will look like. Think of them as single boxes with the following properties:
+- They only store two states (`1` or `0`).
+- They are capable of being written to as well as read from. This is controlled by a $$R / \barW$$ line which determines which direction the information will flow from.
+- They are enabled when a single pin, such as a `SELECT` line, is powered.
+
+<img src="part4res/4-2.png" alt="Memory cell diagram" class="center" style="zoom: 50%;"/>
+
+> You can think of a memory cell as a means of storing a single bit.
+
+### Storing words
+
+In order to store multiple bits together (i.e. words), we will simply store a series of memory cells next to each other. We will need some column selecting I/O to handle selecting the individual bits of the word correctly.
+
+<img src="part4res/4-3.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
