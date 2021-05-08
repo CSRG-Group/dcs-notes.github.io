@@ -62,8 +62,8 @@ blockquote blockquote {
 .container {
   display: grid;
   width: 100%;
-  grid-template-columns: min-content 1fr;
-  grid-template-areas: "nav content";
+  grid-template-columns: min-content 3em 1fr;
+  grid-template-areas: "nav button content";
   transition: width 0.5s ease;
 }
 
@@ -101,13 +101,16 @@ blockquote blockquote {
 }
 
 // NavBar toggle button 
+.buttonCol {
+  grid-area: button;
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
 #openbtn {
   font-size: 20px;
-  cursor: pointer;
   position: sticky;
-  top: 10px;
-  left: 10px;
-  padding-right: 1px;
+  top: 50vh;
 }
 
 // Contents

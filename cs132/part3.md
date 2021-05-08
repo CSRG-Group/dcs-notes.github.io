@@ -4,6 +4,9 @@ slides: true
 layout: notes
 math: true
 title: Assembler
+part: true
+pre: part2
+nex: part4
 ---
 # Assembler
 

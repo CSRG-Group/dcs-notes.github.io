@@ -47,8 +47,10 @@
                 {%- include toc.html html=content -%}
             </div>
         </div>
+        <div class="buttonCol" onclick="toggleNav()">
+            <span id="openbtn">◀📑</span>
+        </div>
         <div class="contents">
-            <span id="openbtn" onclick="toggleNav();">🧾Contents</span>
             <main id="content" class="main-content" role="main">
                 <div class="partNav">
                     {%- if page.part == true -%}

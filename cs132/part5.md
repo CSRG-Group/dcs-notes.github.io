@@ -1,6 +1,9 @@
 ---
 title: I/O Mechanisms
 layout: CS132
+part: true
+pre: part4
+nex: part6
 ---
 
 <p align="center">
