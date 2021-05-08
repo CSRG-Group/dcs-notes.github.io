@@ -30,7 +30,7 @@ We know that roughly **90%** of memory accesses are within +-2KB of the previous
 > **Moore's Law** is focused on the transistor count within integrated circuits. It states that this count doubles roughly every two years.
 > Currently, single core frewuency is tailing off; this has lead the industry to focus on multicore performance instead.
 > Comparitively, memory access speed is improving much more slowly; access time and capacity can become a huge bottleneck when it comes to creating performant systems.
- 
+
 > Cache concepts are not included in these notes as they are not fully examined, and also do not feature in the revision videos.
 
 ## Memory Cell Organisation
@@ -44,7 +44,6 @@ Semiconductor memory is the most common form of main store memory, otherwise kno
   - For each bit, the **presence or absence of charge** in a capacitor to determine a `1` or `0`.
   - The capacitor charge **leaks away over time**, which requires **periodic refreshing**.
   - DRAM is typically cheaper than SRAM which is why we accommodate for the higher overhead.
-  
 > Refreshing DRAM incurs a **constant overhead**, which means that it **does not increase per bit**.
 
 Both **SRAM and DRAM are volatile** memory storage- therefore, power must continuously be applied. However, the similarities end there and it is crucial to recognise the differences between the two memory cells.
@@ -67,7 +66,7 @@ DRAM can be organised even further:
 ### Memory cells
 Before we begin organising memory, it's useful to know what the individual memory cells will look like. Think of them as single boxes with the following properties:
 - They only store two states (`1` or `0`).
-- They are capable of being written to as well as read from. This is controlled by a $$R / \barW$$ line which determines which direction the information will flow from.
+- They are capable of being written to as well as read from. This is controlled by a $$R / \bar{W}$$ line which determines which direction the information will flow from.
 - They are enabled when a single pin, such as a `SELECT` line, is powered.
 
 <img src="part4res/4-2.png" alt="Memory cell diagram" class="center" style="zoom: 50%;"/>
@@ -91,5 +90,4 @@ In our **address decoder**, we have $$ log_{2} (W) $$ many control pins, where $
 **We want to maintain a square grid of cells.** We could simply have a 16-bit word, which we partition into four individual words (it is possible to put smaller words into the registers of larger ones). However, this would require 16 data lines on the column selection IO, with each bit requiring power; this would be rather lopsided and would result in a column selector doing all the work. Maintaining a square grid means that we can balance the number of required pins across two different pieces of IO, each with their own power requirements.
 
 > We are trying to avoid long, narrow arrays when we design our memory cell arrays. We want to **maximise space for memory cells** and minimise space taken up by IO.
-
 

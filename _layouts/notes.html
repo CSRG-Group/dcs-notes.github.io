@@ -42,13 +42,13 @@
     </header>
     <div id="mainGrid" class="container">
         <div class="navBox">
-            <div id="sidenav" class="sideNav">
+            <div id="sidenav" class="sideNav closedNav">
                 <h2 style="margin-left: 10px;">Table of Contents</h2>
                 {%- include toc.html html=content -%}
             </div>
         </div>
         <div class="contents">
-            <span id="openbtn" onclick="toggleNav(this)">🧾Contents</span>
+            <span id="openbtn" onclick="toggleNav();">🧾Contents</span>
             <main id="content" class="main-content" role="main">
                 <!-- Main Content of markdown or sub-layouts-->
                 {{ content }}
