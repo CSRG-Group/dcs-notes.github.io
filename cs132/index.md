@@ -30,5 +30,5 @@ These notes will likely take the same/similar form to the CS118 notes. The prima
 2. [x] [Digital logic](part2.html)
 3. [x] [Assembler](part3.html)
 4. [ ] Memory systems
-5. [ ] I/O mechanisms
+5. [ ] [I/O mechanisms](part5.html)
 6. [ ] Processor architecture

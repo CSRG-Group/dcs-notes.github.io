@@ -3,7 +3,9 @@ title: I/O Mechanisms
 layout: 132/CS132
 ---
 
-There is no single IO mechanism that is better than the others – it is important to understand the pros and cons of each mechanism.
+<p align="center">
+    There is no single I/O mechanism that is “better” than the others – it is important to understand the pros and cons of each mechanism and the situations where each should be used.
+</p>
 
 # Memory mapped I/O
 
@@ -13,7 +15,7 @@ There is no single IO mechanism that is better than the others – it is importa
 
 *This means that all addressing modes supported by a CPU are available to I/O.* 
 
-> **Advantages.** No need for dedicated instructions, no need for additional hardware.
+> **Advantages.** No need for dedicated instructions, or for additional hardware. Addressing modes supported by the CPU are available to I/O. 
 >
 > **Disadvantages.** We are giving up portions of our memory to I/O devices. This is less of a concern for modern 64-bit processors with more address spaces, but is still relevant when sometimes you have no choice but to use a processor with constrained memory addresses like 16-bit legacy or embedded systems. 
 
