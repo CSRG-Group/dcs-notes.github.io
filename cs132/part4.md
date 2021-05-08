@@ -5,6 +5,8 @@ math: true
 title: Memory Systems
 ---
 
+#### _All diagrams in this page belong to Akram- please contact me directly for the original resources so that you can modify them or distribute them as you need._
+
 # Memory Systems
 ## Memory hierarchy
 When deciding on a memory technology, you must consider the following factors:
@@ -90,4 +92,51 @@ In our **address decoder**, we have $$ log_{2} (W) $$ many control pins, where $
 **We want to maintain a square grid of cells.** We could simply have a 16-bit word, which we partition into four individual words (it is possible to put smaller words into the registers of larger ones). However, this would require 16 data lines on the column selection IO, with each bit requiring power; this would be rather lopsided and would result in a column selector doing all the work. Maintaining a square grid means that we can balance the number of required pins across two different pieces of IO, each with their own power requirements.
 
 > We are trying to avoid long, narrow arrays when we design our memory cell arrays. We want to **maximise space for memory cells** and minimise space taken up by IO.
+
+# Detecting and Correcting Errors
+
+> Although this topic is within the memory systems lecture, it is fundamental to error detection on the whole and hence has its own section here.
+
+Broadly speaking, there are two types of errors:
+- Errors that occur **within a system**, e.g. in a memory system.
+- Errors that occur in the **communication between systems**, e.g., in the transmission of messages or data between systems. This is what we will focus on.
+
+## Noise
+
+- We typically **send information through channels**- when these channels become affected by **unwanted information**, they become **noisy**.
+- Noise will arise from the **physical properties** of devices:
+  - Thermal noise
+  - Noise of electronic components
+  - Noise of transmission circuits
+- **Magnetic media** will also have a "classic form of noise" due to the "random alignment of magnetic fields".
+
+> Noise is **always present**. If it doesn't come from the components themselves, it'll come from external sources such as radiation. Noise is hence one of the **limiting factors** in computer systems.
+> In magnetic stores, when we have **decreased area** to store a bit, **noise gets worse** which increases the likelihood of errors.
+
+### Digital logic devices
+
+> We choose binary systems for our number systems as it provides us a **high degree of noise immunity**.
+> We also need to consider the **tolerances of the components we use**
+
+#### Illustrating noise immunity, a trademarked Akram Analogy™
+
+_If you are comfortable with the idea of noise immunity and transistor-transistor logic voltage levels, you probably won't need to read this._
+
+To illustrate the first point, consider the following thought experiment:
+- You and your friend have found a massive tunnel (assuming CS students step outdoors). **The tunnel has water dripping and some other ambiguous sounds.**
+- You both stand at either end of the tunnel, and you realise now you want to say something to your friend. You have two choices:
+  - You can choose to simply clap your hands to get their attention (a binary communication system), OR
+  - You can choose to say a magic password that only they will respond to (a base-26 communication system).
+
+Given the ambiguous sounds in the tunnel, which do you think your friend will be able to distinguish better? Would they be able to distinguish a clap above a specific volume? Or would they be able to distinguish the spoken magic password? How do you know when a sound is finally loud enough to constitute you communicating with one another?
+
+This idea of a small window where we do not consider a signal high or low is widest when we use a binary system- if we had any more possible values, we would need to find even more ranges which we consider 'nothing' (_**i.e. neither 0 nor anything else)**_. 
+
+> Using binary means that we only focus on two logical values.
+
+In the image below, you can see the illustrated example for the above analogy, with annotated TTL voltage levels for context.
+
+<img src="part4res/4-5.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
+
+<img src="part4res/4-6.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
 
