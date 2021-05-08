@@ -1,11 +1,8 @@
 ---
-slides: true
 layout: 132/CS132
 math: true
 title: Memory Systems
 ---
-
-#### _All diagrams in this page belong to Akram- please contact me directly for the original resources so that you can modify them or distribute them as you need._
 
 # Memory Systems
 ## Memory hierarchy
@@ -140,3 +137,73 @@ In the image below, you can see the illustrated example for the above analogy, w
 
 <img src="part4res/4-6.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
 
+There is a point at which **if there is too much noise**, i.e. a train suddenly passes through the tunnel, your clap will never be heard and is permanently lost- this is known as a **loss/ collapse of immunity**.
+
+## Detecting single errors
+If we _assume_ that errors occur **at random** due to noise, one could naively ask you to clap three times and hope that your friend hears majority of them- i.e., you could send the message several times and take a vote. However, this is a very expensive affair (you would get tired quickly).
+
+We can make the further assumption that **if the probability of one error is low, the probability of two errors close together is even lower**. Using this knowledge, we can add a **parity bit** to the message which can **summarise the property of the message**. We can check that this property is intact to see whether the message has been altered; using a parity bit is typically **cheaper and adequate** in many situations.
+
+### Parity systems
+
+> There are many different types of parity systems, but the two main ones you should be focused on are the **even parity** and the **odd parity** system.
+> Each system will add an extra bit to the message which makes the **number of logical 1's even or odd** depending on the system chosen.
+
+| Non-parity message (7 bits) | Even parity bit added | Odd parity bit added |
+|-----------------------------|-----------------------|----------------------|
+| `100 0001` | `0100 0001` (two `1`'s) | `1100 0001` (three `1`s) |
+
+It is possible to calculate the parity bit using hardware or software.
+
+#### Finite automaton to calculate parity
+
+The lecture slides contain a two-state finite automaton- this diagram shows how, for a message `110` travelling on an **even parity system**, we can use the automaton to reach a parity bit of `0`, so the message to be sent is `0110`.
+
+<img src="part4res/4-7.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
+
+#### Hardware to calculate parity
+
+You can calculate the parity bit for a message by **XORing each bit with one another**. You can achieve this by connecting each pair of bits to an XOR gate; for an odd number of input bits, add a `0` for an **even** parity system and a `1` for an **odd** parity system.
+
+## Detecting multiple errors
+
+> In the real world, it is more likely that **errors will appear in bursts**.
+
+Burst errors can be caused by number of reasons, including but not limited to network or communication dropouts for a few milliseconds.
+In this scenario, there may be errors in multiple bits and single-bit parity will still hold. Therefore, we must move to **checksums** to check entire columns.
+
+### Bit-column parity
+One way in which we can identify errors in multiple columns (i.e. multiple bits) is to use bit-column parity. 
+
+Take the message, `Message`, which is made up of 7 7-bit ASCII characters:
+
+| Character | 7 Bits |
+|-----------|--------|
+| `M` | `100 1101` |
+| `e` | `110 0101` |
+| `s` | `111 0011` |
+| `s` | `111 0011` |
+| `a` | `111 0001` |
+| `g` | `111 0111` |
+| `e` | `111 0101` |
+
+</br>
+By arranging each column into its own message, we can then calculate a parity bit for each message:
+
+| Column number | 7-bit column | Even parity bit |
+|---------------|--------------|-----------------|
+| 1 | `111 1111` | `1` |
+| 2 | `011 1111` | `0` |
+| 3 | `001 1000` | `0` |
+| 4 | `100 0000` | `1` |
+| 5 | `110 0011` | `0` |
+| 6 | `001 1010` | `1` |
+| 7 | `111 1111` | `1` |
+
+We can then take _this_ column and turn it into a 7-bit message: `1001011` spells out ASCII `K`. Now, we can add `K` to the end of our original message, and send the final message `MessageK`.
+
+> This system will detect all burst errors of less than 14 bits; it will fail if an even number of errors occur in a bit-column (i.e., a message equal to 8 characters).
+
+### Error Correcting Codes: row and column parity
+
+The above example only detects errors in columns- but it doesn't stop us from using row correction at the exact same time. If we have both row parity and column parity, then we begin by checking if each column has correct parity. If we find a column with incorrect parity, we immediately begin going through the rows, and checking the parity of each row. If we find a mistake in a row as well, we simply need to invert the bit found in the column with an error. This ECC enables us to detect multiple errors and fix single errors.
