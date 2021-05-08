@@ -61,7 +61,7 @@ blockquote blockquote {
 // Grid
 .container {
   display: grid;
-  width: 100vw;
+  width: 100%;
   grid-template-columns: min-content 1fr;
   grid-template-areas: "nav content";
   transition: width 0.5s ease;
@@ -115,8 +115,14 @@ blockquote blockquote {
   grid-area: content;
 }
 
-body {
-  overflow-x: hidden;
+.partNav {
+  display: flex;
+  z-index: 1;
+  justify-content: space-between;
+  background-color: white;
+  position: sticky;
+  font-size: 20px;
+  top: 0px;
 }
 
 

@@ -50,6 +50,15 @@
         <div class="contents">
             <span id="openbtn" onclick="toggleNav();">🧾Contents</span>
             <main id="content" class="main-content" role="main">
+                <div class="partNav">
+                    {%- if page.part == true -%}
+                    {% capture previous %}{{ page.pre | default: "null" }}{% endcapture %}
+                    {% capture next %}{{ page.nex | default: "null" }}{% endcapture %}
+                    {%- capture mod -%}{{ page.layout | default: "null"}}{%- endcapture -%}
+            
+                    {% include partnav.html nex=next pre=previous mod=mod %}
+                    {%- endif -%}
+                </div>
                 <!-- Main Content of markdown or sub-layouts-->
                 {{ content }}
                 

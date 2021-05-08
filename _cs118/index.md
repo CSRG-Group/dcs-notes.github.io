@@ -1,5 +1,5 @@
 ---
-layout: 118/CS118
+layout: default
 title: CS118
 ---
 <flex style="display:flex; justify-content:space-between;">

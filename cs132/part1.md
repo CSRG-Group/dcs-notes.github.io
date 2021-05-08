@@ -1,11 +1,11 @@
 ---
-layout: notes
+layout: CS132
 title: Data Representation
 math: true
+part: true
+nex: part2
 ---
 
-* TOC
-{:toc}
 ## Representation and number systems
 
 In terms of the exam, the most important concept is **value versus representation** of any number. In practice, this means you need to accept that you cannot always represent a value across different bases using the same number of symbols.

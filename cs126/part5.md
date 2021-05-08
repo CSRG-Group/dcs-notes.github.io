@@ -1,16 +1,12 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Maps, hash tables and sets"
-prev: part4.html
-nextt: part6.html
+pre: part4
+nex: part6
 ---
 
-<br/>
-
-* TOC
-{:toc}
 
 # Maps (ADT)
 - "Searchable collection of key-value entries" (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)

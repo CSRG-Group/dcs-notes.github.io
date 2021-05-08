@@ -1,9 +1,9 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: true
 title: "Inheritance, Abstract Classes, and Interfaces"
-prev: part4.html
-nextt: part6.html
+pre: part4
+nex: part6
 ---
 
 # Inheritance, Abstract Classes, and Interfaces

@@ -1,6 +1,6 @@
 ---
 title: I/O Mechanisms
-layout: 132/CS132
+layout: CS132
 ---
 
 <p align="center">

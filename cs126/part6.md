@@ -1,16 +1,12 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: ""
-prev: part5.html
-nextt: part7.html
+pre: part5
+nex: part7
 ---
 
-<br/>
-
-* TOC
-{:toc}
 
 # Trees (ADT)
 - "A tree is an abstract model of a hierarchical structure" *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser

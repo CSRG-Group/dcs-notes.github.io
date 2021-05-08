@@ -1,6 +1,6 @@
 ---
 slides: true
-layout: 132/CS132
+layout: CS132
 math: true
 title: Memory Systems
 ---

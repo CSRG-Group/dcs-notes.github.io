@@ -1,13 +1,9 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Skip lists"
-prev: part8.html
-nextt: part10.html
+pre: part8
+nex: part10
 ---
 
-<br/>
-
-* TOC
-{:toc}

@@ -1,13 +1,9 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Self-balancing trees"
-prev: part9.html
-nextt: part11.html
+pre: part9
+next: part11
 ---
 
-<br/>
-
-* TOC
-{:toc}

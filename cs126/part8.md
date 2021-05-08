@@ -1,16 +1,12 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Heaps"
-prev: part7.html
-nextt: part9.html
+pre: part7
+nex: part9
 ---
 
-<br/>
-
-* TOC
-{:toc}
 
 # Heaps (ADT)
 - A heap is a binary tree storing keys at its nodes and satisfying the following properties:

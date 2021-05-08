@@ -1,12 +1,9 @@
 ---
-layout: 130/CS130
+layout: CS130
 math: true
 title: "Proof approaches - Edmund Goodman"
 ---
 
-
-* TOC
-{:toc}
 
 # Direct proof
 

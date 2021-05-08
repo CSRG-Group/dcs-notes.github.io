@@ -1,13 +1,9 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Analysis of algorithms"
-prev: part1.html
-nextt: part3.html
+pre: part1
+nex: part3
 ---
 
-<br/>
-
-* TOC
-{:toc}
