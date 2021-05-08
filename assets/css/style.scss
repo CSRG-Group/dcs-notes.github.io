@@ -58,32 +58,53 @@ blockquote blockquote {
   padding-right: 0;
 }
 
+// Grid
+.container {
+  display: grid;
+  grid-template-columns: 0 100%;
+  grid-template-areas: "nav content";
+  transition: 0.5s ease;
+}
+
+.navBox {
+  grid-area: nav;
+}
+
 .sideNav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+  position: sticky;
   top: 0;
-  left: 0;
-  background-color: white;
-  overflow-x: scroll;
+  background-color: whitesmoke;
   padding-top: 1%;
   transition: 0.5s ease;
 }
 
 .sideNav .closebtn {
+  background-color: whitesmoke;
   position: sticky;
-  background-color: black;
+  top: 0;
   padding-right: 100%;
-  
 }
 
-#content {
-  transition: margin-left 0.5s ease;
-  padding: 20px;
-}
-
+// NavBar toggle button 
 #openbtn {
   font-size: 20px;
-  position: fixed;
+  cursor: pointer;
+  position: sticky;
+  top: 10px;
+  left: 10px;
+  padding-right: 1px;
 }
+
+// Contents
+.contents {
+  grid-area: content;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
