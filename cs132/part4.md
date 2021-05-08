@@ -1,7 +1,6 @@
 ---
-layout: 132/CS132
 slides: true
-layout: notes
+layout: 132/CS132
 math: true
 title: Memory Systems
 ---
@@ -92,6 +91,5 @@ In our **address decoder**, we have $$ log_{2} (W) $$ many control pins, where $
 **We want to maintain a square grid of cells.** We could simply have a 16-bit word, which we partition into four individual words (it is possible to put smaller words into the registers of larger ones). However, this would require 16 data lines on the column selection IO, with each bit requiring power; this would be rather lopsided and would result in a column selector doing all the work. Maintaining a square grid means that we can balance the number of required pins across two different pieces of IO, each with their own power requirements.
 
 > We are trying to avoid long, narrow arrays when we design our memory cell arrays. We want to **maximise space for memory cells** and minimise space taken up by IO.
- 
 
 

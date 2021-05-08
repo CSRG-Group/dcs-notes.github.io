@@ -49,6 +49,7 @@ summary {
   margin: 1rem 0rem 1.5rem 0rem;
 }
 
+// Used to signify that a certain blockquote is extra information
 blockquote.extra {
   border-left: 4px solid  darkgoldenrod;
 }
@@ -56,3 +57,54 @@ blockquote.extra {
 blockquote blockquote {
   padding-right: 0;
 }
+
+// Grid
+.container {
+  display: grid;
+  grid-template-columns: 0 100%;
+  grid-template-areas: "nav content";
+  transition: 0.5s ease;
+}
+
+.navBox {
+  grid-area: nav;
+}
+
+.sideNav {
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+  position: sticky;
+  top: 0;
+  background-color: whitesmoke;
+  padding-top: 1%;
+  transition: 0.5s ease;
+}
+
+.sideNav .closebtn {
+  background-color: whitesmoke;
+  position: sticky;
+  top: 0;
+  padding-right: 100%;
+}
+
+// NavBar toggle button 
+#openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  position: sticky;
+  top: 10px;
+  left: 10px;
+  padding-right: 1px;
+}
+
+// Contents
+.contents {
+  grid-area: content;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
