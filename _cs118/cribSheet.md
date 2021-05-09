@@ -1,22 +1,21 @@
 ---
 layout: CS118
+part: true
 math: true
-title: CS118 Crib Sheet - Edmund Goodman
+title: CS118 Crib Sheet
 ---
 
-* TOC
-{:toc}
 
-## Number systems
+# Number systems
 
-### Two's complement
+## Two's complement
 
 - In order to store negative integer numbers, we don't just add a "sign bit" as we would normally, as then we define both positive and negative values for zero, which wastes space, and can be confusing. Instead, we use "two's complement"
   - Binary representation, but the left-most bit is negative
     ![twosComplement](..\media\twosComplement.png)
   - With eight bits, the smallest value is $$10000000_2 = -128_{10}$$, and the largest value is $$01111111_2 = 127_{10}$$ (this is $$-2^n $$ to $$2^n - 1$$)
 
-### IEEE-754 floating point
+## IEEE-754 floating point
 
 - In order to store decimal numbers, we use "floating point notation", which automatically handles the trade-off between precision and range for storing numbers in a fixed number of bits. This is defined in the IEEE-754 specification ([source](https://webstore.iec.ch/preview/info_isoiecfdis60559%7Bed2.0%7Den.pdf)), and explained further [here](https://steve.hollasch.net/cgindex/coding/ieeefloat.html)
 - A tool for checking this is [available](https://www.h-schmidt.net/FloatConverter/IEEE754.html)
@@ -40,9 +39,9 @@ title: CS118 Crib Sheet - Edmund Goodman
 
 
 
-## Data types
+# Data types
 
-### Primitive data types
+## Primitive data types
 
 | Name      | Range                                                        | Size    | Default  |
 | --------- | ------------------------------------------------------------ | ------- | -------- |
@@ -57,7 +56,7 @@ title: CS118 Crib Sheet - Edmund Goodman
 
 The `char` primitive is essentially an unsigned `short` primitive, which is used to store UTF-16 encoded single characters instead of a number
 
-### Passing by reference and by value
+## Passing by reference and by value
 
 - Primitive data types are stored as a value in a place in memory, for example, and `int` would be four consecutive bytes, whose value can be looked up by a variable name
 - However, since objects are not necessarily of a fixed size, we cannot just allocate an amount of memory for them. Instead, we store a "reference" to them on the heap, and the variable name refers to this reference, not the actual data
@@ -66,7 +65,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
   - In practice, in Java primitives are "pass-by-value" (so changing them in the method won't change them outside it), and objects are "pass-by-reference" (so any changes to them in a new method will affect their state outside of it)
 - Autoboxing is an action performed automatically by the compiler, which "boxes" a primitive into its corresponding object (e.g. `int` to `Integer`) if a method requires an object, not just a primitive value.
 
-### Casting
+## Casting
 
 - Casting is the process of changing the data type used to express a piece of information, for example to change the range or the precision used to store a numeric value
 
@@ -109,7 +108,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
 
 
 
-## Operator evaluation and precedence
+# Operator evaluation and precedence
 
 - Lazy and strict operators
   - Lazy operators aren't executed if an earlier operations fully defines the statement, e.g. in an "or" operation, if the first statement is true, the second statement needn't be tested
@@ -136,9 +135,9 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
 
 
 
-## Conditionals
+# Conditionals
 
-### The switch statement
+## The switch statement
 
 - `Switch` statements offer a way to select control flow based off the value of a variable as opposed to a boolean condition. In some cases, this can be more simple, and hence preferred over `if` statements
 
@@ -167,9 +166,9 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
 
 
 
-## Object oriented programming
+# Object oriented programming
 
-### Pillars of object oriented programming
+## Pillars of object oriented programming
 
 There is some argument over the number of "pillars", but the four commonly accepted ones are:
 
@@ -221,14 +220,14 @@ There is some argument over the number of "pillars", but the four commonly accep
 
 
 
-### Access modifiers
+## Access modifiers
 
 - `public` - can be accessed everywhere in the program
 - `private` - can only be accessed from within its own class (including different instances of the same class)
 - `protected` - can only be accessed from within its own class, or any subclasses (like `private`, but including subclasses)
 - Default, `package-private` - can only be accessed from within the same package
 
-### The static and final keywords
+## The static and final keywords
 
 - The `static` keyword denotes something that "belongs to the class not the object", i.e. something which is not dependent on an individual object instances state
   - Static properties are shared across all instances of the class
@@ -239,9 +238,9 @@ There is some argument over the number of "pillars", but the four commonly accep
 
 
 
-## Abstract classes, interfaces
+# Abstract classes, interfaces
 
-### Abstract classes
+## Abstract classes
 
 - When superclasses become so generic they contain methods which are only well-defined for their subclasses, they are called "abstract".
 
@@ -297,7 +296,7 @@ There is some argument over the number of "pillars", but the four commonly accep
   - https://www.journaldev.com/1582/abstract-class-in-java
   - https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html
 
-### Interfaces
+## Interfaces
 
 - If an abstract class contains *only* abstract methods, and no concrete implementations of methods, it is called an "interface"
 
@@ -340,7 +339,7 @@ There is some argument over the number of "pillars", but the four commonly accep
 
 
 
-## Exceptions
+# Exceptions
 
 - The `try..catch..finally` statement
   - The code in the `try` block is executed. If an exception is generated, the appropriate `catch` block is executed
@@ -364,7 +363,7 @@ There is some argument over the number of "pillars", but the four commonly accep
 
 
 
-## Generics
+# Generics
 
 - Generics allow code to enforce strong type checking at compile time, which helps avoid errors such as invalid casting at runtime. Additionally, they minimise the number of type casts needed, as they automatically return data of the specified type, and they allow writing generic algorithms to be tailored to different types
 - Primitives cannot be provided as generics, as they are not objects. Instead, we need to use their object wrapper (e.g. `int` becomes `Integer`). Then, if an integer is passed in as a parameter, it will be "autoboxed" into its object wrapper to be handled internally.

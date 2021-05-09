@@ -6,6 +6,11 @@ title: "General algorithms"
 pre: part11
 ---
 
+# Searching data structures
+
+# Linear search
+# Binary search
+
 
 # Sorting data structures
 
@@ -76,3 +81,6 @@ pre: part11
     Set S[i] <- i-j
     Push i to the stack
     ```
+- Fibonacci
+ - Exponential time
+ - Linear time

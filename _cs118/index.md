@@ -64,7 +64,9 @@ Notes by **Edmund Goodman** acting as a "Crib sheet" for the module, only coveri
 
 - [A cut down version of the notes covering only the non-trivial content](cribSheet.html)
 
-These are based off of a full set of notes covering the entire topic, which could be used in combination with the above notes for different explanations of the same topics, so are linked here: [notes covering the entire topic](combined.html).
+These are based off of a full set of notes covering the entire topic, and whilst the above full notes are preferred, as they provide more robust example, these  could be used in combination for different explanations of the same topics, so are linked below:
+
+- [Notes covering the entire topic](combined.html)
 
 
 
