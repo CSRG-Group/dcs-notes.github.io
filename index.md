@@ -4,6 +4,15 @@ This website is a collection of notes for the modules in the first year computer
 
 It is entirely student-run, and not affiliated with or endorsed by the University. We have communicated with members of the department who have said that this project is acceptable, but if at any point we are told this goes against DCS anti-plagiarism guidelines, or any other policy, we will immediately take it down. Additionally, we cannot provide guarantees that all the notes are correct as all content is written by students, however, we will try our hardest to maintain quality.
 
+### Note from the maintainers
+
+If you've been linked to this site, you've probably also seen us asking for anyone who can to pull request. We know that many people are hesitant to put their notes up on this site, whether it be because they think other people seeing their revision material may indirectly disadvantage them, or that they don't think anything they make is good enough to be hosted on a public site - we were too! However, there are a couple of points we'd like to raise to encourage you to contribute and help this site to be the best it can be:
+
+1. Our course isn't marked on a curve, so others using your notes to get better doesn't detriment you
+2. Making notes is a great way to revise, as it makes sure you properly understand the content, and if you know you’re putting them somewhere it gives you accountability to actually get them done
+3. Having experience collaborating on an open source project through tools like Git is a really useful skill and is a lot more exciting than what we did with it in CS133, and being able give this as an example of where you've done it in practice could be a cool thing to put on your CV
+4. You'll get a neat icon of you in the contributors section of the README and index pages!
+
 
 
 ## Module notes
