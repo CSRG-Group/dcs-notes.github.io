@@ -1,17 +1,12 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Priority queues"
-prev: part6.html
-nextt: part8.html
+pre: part6
+nex: part8
 ---
 
-<br/>
-
-# Table of contents
-* TOC
-{:toc}
 
 # Priority queues (ADT)
 

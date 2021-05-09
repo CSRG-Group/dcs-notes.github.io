@@ -1,17 +1,12 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Stacks and Queues"
-prev: part3.html
-nextt: part5.html
+pre: part3
+nex: part5
 ---
 
-<br/>
-
-# Table of contents
-* TOC
-{:toc}
 
 # Stacks (ADT)
 - A "Last in, first out" (LIFO) data structure - both insertions and deletions occur at the front of the stack

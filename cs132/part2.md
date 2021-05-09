@@ -1,8 +1,11 @@
 ---
-layout: 132/CS132
+layout: CS132
 slides: true
 math: true
 title: Digital Logic
+part: true
+pre: part1
+nex: part3
 ---
 
 # Logic Gates, Circuits and Truth tables

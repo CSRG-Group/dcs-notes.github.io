@@ -1,9 +1,9 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: true
 title: "Error Handling and Exceptions"
-prev: part5.html
-nextt: part7.html
+pre: part5
+nex: part7
 ---
 
 # Error Handling and Exceptions

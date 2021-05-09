@@ -1,18 +1,14 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Analysis of algorithms"
-prev: part1.html
-nextt: part3.html
+pre: part1
+nex: part3
 ---
 
 <br/>
 
-# Table of contents
-
-* TOC
-{:toc}
 # Running time
 
 - To assess how good an algorithm is, we often use the metric of running time compared with the size of the input to the algorithm
@@ -119,4 +115,3 @@ nextt: part3.html
     - $$f(n) \geq g(n)$$ in the limit of $$n \rightarrow \infin$$
   - Big-Theta gives "asymptotically tight" $$\approx$$ average
     - $$f(n) = g(n)$$ in the limit of $$n \rightarrow \infin$$
-

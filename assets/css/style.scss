@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+:root {
+  --buttonCol-width: 2em;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -15,6 +19,7 @@
   margin-right: auto;
 }
 
+/// Custom CSS properties for <details> tag
 details {
   cursor: pointer;
   padding: 1em;
@@ -27,7 +32,7 @@ summary {
   font-weight: bold;
 }
 
-// Image that grows when hovered
+/// Image that grows when hovered
 .growimg {
   transition:transform 0.5s ease-in-out;
   transform-origin: top;
@@ -39,6 +44,7 @@ summary {
   transform:scale(1.5);
 }
 
+/// Overwrite default props for blockquotes
 .main-content blockquote {
   width: 100%;
   color: black;
@@ -49,6 +55,7 @@ summary {
   margin: 1rem 0rem 1.5rem 0rem;
 }
 
+// Used to signify that a certain blockquote is extra information
 blockquote.extra {
   border-left: 4px solid  darkgoldenrod;
 }
@@ -56,3 +63,106 @@ blockquote.extra {
 blockquote blockquote {
   padding-right: 0;
 }
+
+/// Grid outline for notes layout
+.container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: min-content var(--buttonCol-width) 1fr;
+  grid-template-areas: "nav button content";
+  transition: width 0.5s ease;
+}
+
+// Container that contains sidenav menu 
+.navBox {
+  grid-area: nav;
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: width 0.5s ease;
+  -o-transition: width 0.5s ease;
+  transition: width 0.5s ease;
+}
+
+// Actual sidenav menu - separated the 2 to allow for sticky sidenav
+.sideNav {
+  width: 30vw;
+  height: 100vh;
+  overflow: scroll;
+  position: sticky;
+  top: 0;
+  background-color: whitesmoke;
+  padding-top: 1%;
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: width 0.5s ease;
+  -o-transition: width 0.5s ease;
+  transition: width 0.5s ease;
+}
+
+.closedNav {
+  width: 0px;
+}
+
+/// NavBar toggle button 
+.buttonCol {
+  grid-area: button;
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
+// The arrow symbol you see, following css properties are all for the rotation
+.navArrow {
+  position: sticky;
+  top: 50vh;
+  width: var(--buttonCol-width);
+  height: var(--buttonCol-width);
+  display: block;
+}
+
+.navArrow i {
+  position: absolute;
+  --arrow-width: calc(var(--buttonCol-width) * 0.4);
+  left: calc((var(--buttonCol-width) - var(--arrow-width)) / 2); // Align i to the center of navArrow div
+}
+
+.navArrow i::before,
+.navArrow i::after {
+  content: '';
+  position: absolute;
+  width: var(--arrow-width);  // both i and i::after will have length = 0.67 * width of container
+  height: 4px;
+  border-radius: 20px;
+  background-color: grey;
+}
+
+.navArrow i::before {
+  transform: rotate(22.5deg);
+}
+
+.navArrow i::after {
+  top: calc(var(--arrow-width) * 0.34);
+  transform: rotate(-22.5deg);
+}
+
+.open i::before {
+  transform: rotate(-22.5deg);
+}
+
+.open i::after {
+  transform: rotate(22.5deg);
+}
+
+/// Contents of grid -- main content of markdown usually
+.contents {
+  grid-area: content;
+}
+
+.partNav {
+  display: flex;
+  z-index: 1;
+  justify-content: space-between;
+  background-color: white;
+  position: sticky;
+  font-size: 20px;
+  top: 0px;
+}
+
+

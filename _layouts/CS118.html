@@ -2,15 +2,7 @@
 layout: notes
 --- 
 
-{%- if page.part == true -%}
-    {% capture previous %}{{ page.prev | default: "null" }}{% endcapture %}
-
-    {% capture nextp %}{{ page.nextt | default: "null" }}{% endcapture %}
-
-    {% include 118/118nav.html nextt=nextp prev=previous %}
-
-    {{ content }}
-{%- elsif page.part == false -%}
+{%- if page.part == false -%}
 <a href="../../cs118/index.html">🏡CS118 Home</a>
     {%- for page in site.cs118 -%}
         {%- if page.part == true -%}

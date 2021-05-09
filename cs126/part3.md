@@ -1,14 +1,8 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Recursive algorithms"
-prev: part2.html
-nextt: part4.html
+pre: part2
+nex: part4
 ---
-
-<br/>
-
-# Table of contents
-* TOC
-{:toc}

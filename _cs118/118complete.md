@@ -1,5 +1,5 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: false
 title: 118 One Page Notes
 ---

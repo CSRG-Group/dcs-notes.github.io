@@ -1,8 +1,8 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: true
 title: "Generics and the Java Class Library"
-prev: part6.html
+pre: part6
 ---
 
 # Generics and the Java Class Library

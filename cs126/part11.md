@@ -1,14 +1,8 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "Graphs"
-prev: part10.html
-nextt: part12.html
+pre: part10
+nex: part12
 ---
-
-<br/>
-
-# Table of contents
-* TOC
-{:toc}

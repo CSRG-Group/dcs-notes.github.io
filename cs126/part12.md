@@ -1,16 +1,11 @@
 ---
-layout: 126/CS126
+layout: CS126
 part: true
 math: true
 title: "General algorithms"
-prev: part11.html
+pre: part11
 ---
 
-<br/>
-
-# Table of contents
-* TOC
-{:toc}
 
 # Sorting data structures
 

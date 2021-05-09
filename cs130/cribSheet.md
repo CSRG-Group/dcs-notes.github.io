@@ -1,12 +1,9 @@
 ---
-layout: 130/CS130
+layout: CS130
 math: true
 title: "Crib sheet for CS130 - Edmund Goodman"
 ---
 
-
-* TOC
-{:toc}
 
 # Logic and predicates
 
