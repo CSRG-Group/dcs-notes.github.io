@@ -2,7 +2,7 @@
 layout: CS126
 part: true
 math: true
-title: ""
+title: "Trees"
 pre: part5
 nex: part7
 ---

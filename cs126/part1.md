@@ -3,7 +3,7 @@ layout: CS126
 part: true
 math: true
 title: "Arrays and Lists"
-next: part2
+nex: part2
 ---
 
 
