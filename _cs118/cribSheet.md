@@ -1,11 +1,14 @@
 ---
 layout: CS118
+part: true
 math: true
-title: CS118 Crib Sheet - Edmund Goodman
+title: CS118 Crib Sheet
 ---
 
-* TOC
-{:toc}
+<br/>
+
+
+
 
 ## Number systems
 

@@ -1,11 +1,13 @@
 ---
 layout: CS118
+part: true
 math: true
-title: CS118 Combined Notes - Edmund Goodman
+title: CS118 Combined Notes
 ---
 
-* TOC
-{:toc}
+<br/>
+
+
 
 ## Introduction to programming
 
