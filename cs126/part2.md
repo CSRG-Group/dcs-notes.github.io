@@ -71,7 +71,7 @@ nex: part3
 
   - "$$f(n)$$ is  $$O(g(n))$$ if $$g(n)$$ grows as fast or faster than $$f(n)$$ in the limit of $$n \rightarrow \infin$$" [source](https://math.stackexchange.com/a/620150)
 
-- Examples (taken from **insert goldwasser book reference here**)
+- Examples (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
 
   - >  Consider the function $$2n+10$$, to show that it is $$O(n)$$, we take:
     >
@@ -115,3 +115,7 @@ nex: part3
     - $$f(n) \geq g(n)$$ in the limit of $$n \rightarrow \infin$$
   - Big-Theta gives "asymptotically tight" $$\approx$$ average
     - $$f(n) = g(n)$$ in the limit of $$n \rightarrow \infin$$
+
+
+
+[Additional notes](https://courses.cs.washington.edu/courses/cse326/06au/lectures/lect03.pdf)
