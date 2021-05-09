@@ -1,7 +1,6 @@
 ---
 layout: CS132
 slides: true
-layout: notes
 math: true
 title: Assembler
 part: true
@@ -39,10 +38,12 @@ There are several components that make up the FDE cycle:
 
 A typical instruction cycle may look something like this:
 
-| Fetch | Decode | Execute |
-|-------|--------|---------|
-| <ul><li>Instruction Received from memory location in PC</li><li>Retrieved instruction stored in IR</li><li>PC incremented to point to next instruction in memory</li></ul> | <ul><li>Opcode retrieved / instruction decoded</li><li>Read effective address to establish opcode type</li> | <ul><li>CU signals functional CPU components</li><li>Can result in changes to data registers, such as the PC etc.</li><li>PC incremented to point to next instruction in memory</li></ul> |
-  
+| Fetch                                                        | Decode                                                       | Execute                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1. Instruction Received from memory location in PC<br />2. Retrieved instruction stored in IR<br />3. PC incremented to point to next instruction in memory | 1. Opcode retrieved / instruction decoded<br />2. Read effective address to establish opcode type | 1. CU signals functional CPU components<br />2. Can result in changes to data registers, such as the PC etc.<br />3. PC incremented to point to next instruction in memory |
+
+
+
 ## Registers
 
 Now that we have the FDE cycle established, we need **registers** to help store intermediate information- this can either be in the form of memory or system flags. The Motorola 68008 will be used to give context to each type of register:
@@ -66,7 +67,7 @@ Now that we have the FDE cycle established, we need **registers** to help store 
 | 8 bits | Several bits will make up the CCR |
 
 > The CCR is made up of several bits representing statuses such as _extend, negative, zero, overflow, carry_. If you wanted to check the status of the computer in a program, you could use bitwise **AND** against a bitmask (the string of bits you want toggled) and seeing if the final result is the flag you wanted to see.
- 
+
 #### Address register
 - These are used as **pointer registers** in the calculation of operand addresses.
 - Operations on these addresses **do not alter the CCR**.
