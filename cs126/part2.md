@@ -69,7 +69,7 @@ nex: part3
 
 - Informally, this means that means that $$f(n)$$ will be "overtaken" by $g(n)$ for all values above some threshold $$n_0$$, allowing scaling by a linear factor $$c$$
 
-  - "$$f(n)$$ is  $$O(g(n))$$ if $$g(n)$$ grows as fast or faster than $$f(n)$$ in the limit of $$n \rightarrow \infin$$" [source](https://math.stackexchange.com/a/620150)
+  - "$$f(n)$$ is  $$O(g(n))$$ if $$g(n)$$ grows as fast or faster than $$f(n)$$ in the limit of $$n \rightarrow \infty$$" [source](https://math.stackexchange.com/a/620150)
 
 - Examples (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
 
@@ -83,7 +83,7 @@ nex: part3
     >
     > Hence, picking $$c=3$$ and $$n_0 = 10$$, so the condition is satisfied
 
-    ![bigOh](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\bigOh.png)
+    ![bigOh](./images/bigOh.png)
 
 - To prove something is not $$O(n)$$, we show that there is no $$c$$ for any arbitrarily large $$ n_0$$ which satisfies the condition
 
@@ -110,11 +110,11 @@ nex: part3
   - We then express this derived function in Big-O notation
 - There are other "relatives" of Big-O notation
   - Big-O gives the upper bound
-    - $$f(n) \leq g(n)$$ in the limit of $$n \rightarrow \infin$$
+    - $$f(n) \leq g(n)$$ in the limit of $$n \rightarrow \infty$$
   - Big-Omega gives the lower bound
-    - $$f(n) \geq g(n)$$ in the limit of $$n \rightarrow \infin$$
+    - $$f(n) \geq g(n)$$ in the limit of $$n \rightarrow \infty$$
   - Big-Theta gives "asymptotically tight" $$\approx$$ average
-    - $$f(n) = g(n)$$ in the limit of $$n \rightarrow \infin$$
+    - $$f(n) = g(n)$$ in the limit of $$n \rightarrow \infty$$
 
 
 

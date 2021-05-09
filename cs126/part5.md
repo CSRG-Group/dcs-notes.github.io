@@ -32,7 +32,7 @@ nex: part6
 - Collisions are when two different keys are mapped to the same index by the hash function. Since we cannot store duplicate keys unambiguously in a map, we need a protocol to resolve this. Common approaches are
   - Separate chaining
     - Each index in the array can contain a reference to a linked list. Whenever a key is mapped to that index, the key-value pair is added to the linked-list. If there are duplicates, we iterate over the chain till we find the key, or reach the end
-      ![separateChaining](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\separateChaining.png)
+      ![separateChaining](./images/separateChaining.png)
       Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
     - This has the drawback of requiring additional memory space for each linked list
   - Linear probing

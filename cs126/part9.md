@@ -27,11 +27,11 @@ nex: part10
 
 - Skip lists are composed from a number of sub-lists, which act as layers within them, which we denote by the set $$S = \{S_0, S_1, ..., S_h\}$$ where $$h$$ denotes the number of layers in the list, i.e. its "height"
 
-- All lists have a guard values $$+ \infin$$ and $$- \infin$$ at either end, and all the elements are in order between those values
+- All lists have a guard values $$+ \infty$$ and $$- \infty$$ at either end, and all the elements are in order between those values
 
 - The "bottom" list, $$S_0$$ contains all the values in order between the guards
 
-- The "top" list, $$S_h$$, contains only the guard values, $$+ \infin$$ and $$- \infin$$
+- The "top" list, $$S_h$$, contains only the guard values, $$+ \infty$$ and $$- \infty$$
 
 - Each list $$S_i$$ for $$0 < i < h$$ (i.e. everything bar the top list, which contains only the guards, and the bottom list, which contains all elements) contains a random subset of the elements in the list below it, $$S_1$$
 
@@ -39,7 +39,7 @@ nex: part10
 
 - A diagram of the structure of a skip list is shown below
 
-  ![skipLists](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\skipLists.png)
+  ![skipLists](./images/skipLists.png)
 
   (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
 
@@ -68,7 +68,7 @@ nex: part10
   		Stop, since the element is not in the list
   ```
 
-  ![skipListsSearch](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\skipListsSearch.png)
+  ![skipListsSearch](./images/skipListsSearch.png)
 
   (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
 
@@ -85,7 +85,7 @@ nex: part10
   	Insert k into S(j) immediately after the position p(j)
   ```
 
-  ![skipListsInsertion](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\skipListsInsertion.png)
+  ![skipListsInsertion](./images/skipListsInsertion.png)
 
   (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
 
@@ -99,7 +99,7 @@ nex: part10
   Remove any duplicate list layers containing only guards from the top of the skip list
   ```
 
-  ![skipListsDeletion](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\skipListsDeletion.png)
+  ![skipListsDeletion](./images/skipListsDeletion.png)
 
   (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
 
@@ -107,13 +107,13 @@ nex: part10
 
 - We can use "quad-nodes", which are similar to those used in linked lists, but with four pointers, instead of just one
 
-  ![skipListsQuadNode](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\skipListsQuadNode.png)
+  ![skipListsQuadNode](./images/skipListsQuadNode.png)
 
   (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
 
 - This stores the entry, and links to the previous, next, below and above nodes
 
-- Additionally, there are special guard nodes, with the values $$+ \infin$$ and $$- \infin$$
+- Additionally, there are special guard nodes, with the values $$+ \infty$$ and $$- \infty$$
 
 # Performance
 

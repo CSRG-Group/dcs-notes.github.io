@@ -57,7 +57,7 @@ nex: part7
 - Linked structure implementation **(Concrete)**
   - Each node is an object which stores its value, references to its child nodes (and sometimes a reference to its parent)
   - A diagram of such an implementation for a binary tree
-    ![binaryTreeLinkedStructure](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\binaryTreeLinkedStructure.png)
+    ![binaryTreeLinkedStructure](./images/binaryTreeLinkedStructure.png)
     Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
   - This is a linear space implementation, and has lookup time of $$O(log_2n)$$ for binary trees, and logarithmic time for general trees
 

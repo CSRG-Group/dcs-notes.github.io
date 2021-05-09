@@ -16,23 +16,23 @@ nex: part9
     > ​	Every layer of height $$i$$ other than the lowest layer ($$i = h-1$$) has $$2^i$$ nodes
     > ​	In the lowest layer, the all internal nodes are to the left of external nodes
   - The last node of the heap is the rightmost node of maximum depth
-  ![heapDiagram](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\heapDiagram.png)
+  ![heapDiagram](./images/heapDiagram.png)
   Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 - Heaps can be used to implement priority queues
 - Inserting into a heap
   - First, insert the element to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, running in $$O(1)$$ time, if a pointer to the position to insert is maintained
-    ![heapInsertOne](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\heapInsertOne.png)
+    ![heapInsertOne](./images/heapInsertOne.png)
     Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
   - Run the "upheap" algorithm to re-order the heap so that it fulfils the heap properties
     - Repeatedly swap the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node
-    ![heapInsertTwo](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\heapInsertTwo.png)
+    ![heapInsertTwo](./images/heapInsertTwo.png)
     Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
     - Since the heap has a height of $$O(log_2 n)$$, performing a swap takes $$O(1)$$ time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes $$O(log_2 n)$$, time
   - In total, insertion takes $$O(log_2 n)$$, time
 - Removal from a heap
   - The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten
   - First, overwrite the value of the root node with the value of the last node, and remove the last node from the tree
-    ![heapRemoveOne](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\heapRemoveOne.png)
+    ![heapRemoveOne](./images/heapRemoveOne.png)
     Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
   - Run the "downheap" algorithm to re-order the heap so that it fulfils the heap properties
     ```
@@ -44,7 +44,7 @@ nex: part9
     	Swap the values of p and c
     	Run the downheap algorithm again with the root node (p) now as the child node (c)
     ```
-    ![heapRemoveTwo](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\heapRemoveTwo.png)
+    ![heapRemoveTwo](./images/heapRemoveTwo.png)
     Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
   - As with upheap, since the heap has a height of $$O(log_2 n)$$, performing a swap takes $$O(1)$$ time, and the maximum number of swaps is the height of the heap, the downheap algorithm takes $$O(log_2 n)$$, time
 - Since the heap can be used to implement priority queues, it can be used for sorting as with list based implementations, which resulted in selection and insertion sort. This is called a heap sort
