@@ -5,11 +5,9 @@ math: true
 title: CS118 Combined Notes
 ---
 
-<br/>
 
 
-
-## Introduction to programming
+# Introduction to programming
 
  - Ways to classify programming languages
    	- High and low level languages
@@ -35,7 +33,7 @@ title: CS118 Combined Notes
   - Output - what results does the program return
   - Postcondition - what is the state after execution
 
-## Variables, operators and types
+# Variables, operators and types
 
 - Variables store values, associating them with a name so they can be used symbolically
   - Variables require a type and a name, given by `[type] name;`, defined in a process called instantiation
@@ -63,9 +61,9 @@ title: CS118 Combined Notes
     ![IEEE754example](..\media\IEEE754example.png)
     Note that the "1.(fraction)" denotes a decimal point, not a multiplication operation
 
-### Data types
+## Data types
 
-#### Primitive data types
+### Primitive data types
 
 | Name      | Range                                                        | Size    | Default  |
 | --------- | ------------------------------------------------------------ | ------- | -------- |
@@ -80,7 +78,7 @@ title: CS118 Combined Notes
 
 The `char` primitive is essentially an unsigned `short` primitive, which is used to store UTF-16 encoded single characters instead of a number
 
-#### Passing by reference and by value
+### Passing by reference and by value
 
 - Primitive data types are stored as a value in a place in memory, for example, and `int` would be four consecutive bytes, whose value can be looked up by a variable name
 - However, since objects are not necessarily of a fixed size, we cannot just allocate an amount of memory for them. Instead, we store a "reference" to them on the heap, and the variable name refers to this reference, not the actual data
@@ -89,7 +87,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
   - In practice, in Java primitives are "pass-by-value" (so changing them in the method won't change them outside it), and objects are "pass-by-reference" (so any changes to them in a new method will affect their state outside of it)
 - Autoboxing is an action performed automatically by the compiler, which "boxes" a primitive into its corresponding object (e.g. `int` to `Integer`) if a method requires an object, not just a primitive value.
 
-#### Casting
+### Casting
 
 - Casting is the process of changing the data type used to express a piece of information, for example to change the range or the precision used to store a numeric value
 
@@ -128,7 +126,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
 
       Unsafe/unchecked casting will result in an error being thrown by the compiler, unless the `@SuppressWarnings("unchecked")` method annotation is used, which allows the code to be compiled, but this may still fail at runtime
 
-### Operator evaluation and precedence
+## Operator evaluation and precedence
 
 - Types of operators
   
@@ -160,7 +158,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
   | L      | Lazy operators   | `&&`,`||`              |
   | A      | Assignment       | `=`,`+=`,`-=`,`*=`,... |
 
-## Conditionals
+# Conditionals
 
 - The `if..else if..else` statement
 
@@ -212,7 +210,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
 
 - We can reason carefully about what happens in conditionals by writing out the preconditions (similar idea to the explanation above, but easier to do it in boolean expressions to be terse)
 
-## Iteratives
+# Iteratives
 
 - Bounded repetition
 
@@ -247,7 +245,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
   - `break` causes immediate exit from the highest level loop (current scope), moving on to the code after it
   - `continue` skips the current iteration of the highest level loop (current scope), going back to the start of the next iteration at the beginning of the statement
 
-## Arrays and Methods
+# Arrays and Methods
 
 - Arrays
 
@@ -292,7 +290,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
   - We said that primitive variables directly store their values in memory. When they are provided as parameters, they are "passed by value". This means that the value of the variable is cloned in memory to a new variable in the new scope. If the variable is changed in that new scope, it is unaffected outside of it, where it was passed from
   - Non-primitive variables (e.g. objects and arrays) are not store in memory. When they are provided as parameters, they are "passed by reference". This means that if they are mutated in the new scope, they will also change in the old one, since both references point to the same place, and the item is being changed in that place
 
-## Objects
+# Objects
 
 - Paradigm shift from procedural/imperative to object oriented programming
   - Procedural defines a sequence of steps to achieve a goal
@@ -308,7 +306,7 @@ The `char` primitive is essentially an unsigned `short` primitive, which is used
 - Objects are created from classes using the `new` keyword. This reserves space in memory for the default values of the object, and calls the constructor
 - To compare objects, we need to use the `.equals()` method, which compares the state of the all variables within the object (and can be overridden), as opposed to the `==` operator, which compares the actual memory location, so would only return true for two references to the same object instance, not just two objects with the same values
 
-### Pillars of object oriented programming
+## Pillars of object oriented programming
 
 There is some argument over the number of "pillars", but the four commonly accepted ones are:
 
@@ -350,7 +348,7 @@ There is some argument over the number of "pillars", but the four commonly accep
 
 
 
-### SOLID design principles
+## SOLID design principles
 
 - Single Responsibility Principle
   - "A class should have one and only one reason to change, meaning that a class should have only one job."
@@ -377,7 +375,7 @@ Additional resources: [here](https://stackify.com/solid-design-principles/) and 
 
 
 
-## Modifiers
+# Modifiers
 
 - Access modifiers
 
@@ -412,7 +410,7 @@ Additional resources: [here](https://stackify.com/solid-design-principles/) and 
 
   - A special type of class that hold a range of constant values
 
-## Inheritance
+# Inheritance
 
 - Inheritance is properties that a taken from a parent
   - We call the "parent" a base of a super class
@@ -440,9 +438,9 @@ Additional resources: [here](https://stackify.com/solid-design-principles/) and 
 
 
 
-## Abstract classes, interfaces, and enumerated types
+# Abstract classes, interfaces, and enumerated types
 
-### Abstract classes
+## Abstract classes
 
 - When superclasses become so generic they contain methods which are only well-defined for their subclasses, they are called "abstract".
 
@@ -499,7 +497,7 @@ Additional resources: [here](https://stackify.com/solid-design-principles/) and 
   - https://www.journaldev.com/1582/abstract-class-in-java
   - https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html
 
-### Interfaces
+## Interfaces
 
 - If an abstract class contains *only* abstract methods, and no concrete implementations of methods, it is called an "interface"
 
@@ -541,7 +539,7 @@ Additional resources: [here](https://stackify.com/solid-design-principles/) and 
   - https://www.w3schools.com/java/java_interface.asp
   - https://docs.oracle.com/javase/tutorial/java/concepts/interface.html
 
-### Enumerated types
+## Enumerated types
 
 - A special type of class that hold a range of constant values, which can be used instead of defining a large number of final variables
 
@@ -566,7 +564,7 @@ Additional resources: [here](https://stackify.com/solid-design-principles/) and 
 
 
 
-## Exceptions
+# Exceptions
 
 - The `try..catch..finally` statement
   - The code in the `try` block is executed. If an exception is generated, the appropriate `catch` block is executed
@@ -588,7 +586,7 @@ Additional resources: [here](https://stackify.com/solid-design-principles/) and 
       - Any subclass of `Exception` will be checked, and any subclass of `RunTimeException` will be unchecked
     - Normally, they are just defined as inheriting from the superclass exception, then overriding the polymorphic constructors to provide appropriate error messages etc. All methods such as `printStackTrace` are then inherited from the superclass.
 
-## Generics
+# Generics
 
 - Generics allow code to enforce strong type checking at compile time, which helps avoid errors such as invalid casting at runtime. Additionally, they minimise the number of type casts needed, as they automatically return data of the specified type, and they allow writing generic algorithms to be tailored to different types
 - Angle brackets are used to indicate the variables that will be used, e.g. `new MyClass<String>`
