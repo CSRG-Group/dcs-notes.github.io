@@ -24,7 +24,7 @@ Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the ent
 
 Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://adrakaris.github.io/blog-cs/cs132/index.html). (*as of the end of april these are WIP*)
 
-These notes will likely take the same/similar form to the CS118 notes. The primary source for these will be from my (Akram) notes; any other sources or contributions will be duly cited/ attributed.
+These notes will likely take the same/similar form to the CS118 notes. The primary source for these will be from Akram and Justin’s notes; any other sources or contributions will be duly cited/ attributed.
 
 1. [x] [Data representation](part1.html)
 2. [x] [Digital logic](part2.html)
