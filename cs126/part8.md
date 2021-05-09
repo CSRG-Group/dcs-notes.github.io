@@ -13,7 +13,9 @@ nex: part9
   - Heap-order, for every internal node other than the root (as it has no parent), the value of the node is greater than the value of the parent node
   - Complete binary tree, the height of the tree is minimal for the number of the nodes it contains, and is filled from "left to right". This is formally defined as:
     > Let $$h$$ be the height of the heap
+    >
     > ​	Every layer of height $$i$$ other than the lowest layer ($$i = h-1$$) has $$2^i$$ nodes
+    >
     > ​	In the lowest layer, the all internal nodes are to the left of external nodes
   - The last node of the heap is the rightmost node of maximum depth
   ![heapDiagram](./images/heapDiagram.png)

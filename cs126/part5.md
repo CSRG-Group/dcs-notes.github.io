@@ -43,8 +43,8 @@ nex: part6
     - To remove an item, we cannot just set it to null again, as that would mean it stops probing, even though there might be subsequent elements. Instead, we replace it with a "DEFUNCT" element, which is just skipped over when probing
   - Double hashing
     - When a collision occurs, the key is re-hashed with a new hash function
-      - Sometimes $$[h(k) + i \cdot f(k)]\ MOD\ N$$ where $$h$$ and $$f$$ are hashing functions, and $$i \in \Z$$ is used
-      - As before, there are many implementations of the hash function, but $$f(k)= q-k\ MOD\ q \quad | \quad q<N, q \in primes$$
+      - Sometimes $$[h(k) + i \cdot f(k)]\ MOD\ N$$ where $$h$$ and $$f$$ are hashing functions, and $$i \in \mathbb{Z}$$ is used
+      - As before, there are many implementations of the hash function, but $$f(k)= q-k\ MOD\ q \quad \| \quad q<N, q \in primes$$
     - Searching is similar to linear probing, but when iterating we look at the hash value for each $$i$$, rather than just the next index in the table
     - This helps avoid the issue of colliding items "lumping together" as in linear probing
 - Resizing a hash table

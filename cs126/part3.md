@@ -16,7 +16,7 @@ nex: part4
 - Recursion can be defined in various ways:
   - "When a method calls itself" (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
   - "A method which is expressed in terms of calls to simpler cases of itself, and a base case" (*crsg-guide*, Edmund Goodman)
-    - It's a recursive reference, get it? :upside_down_face:
+    - It's a recursive reference, get it? :upside_down_face: 
 - Recursive functions contain two main components
   - Base cases
     - Simple input values where the return value is a known constant, so no recursive calls are made
