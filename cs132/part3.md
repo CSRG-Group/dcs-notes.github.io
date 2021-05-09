@@ -1,5 +1,5 @@
 ---
-layout: CS132
+ layout: CS132
 math: true
 title: Assembler
 part: true
@@ -248,13 +248,13 @@ Typically when a subroutine is called (with `JSR <subroutine label>`), the curre
 When `RTS` is called, the stack is **popped** and the **popped address** is put into the PC; the stack pointer points to the next address at the top of the stack.
 
 # Addressing modes
-As mentioned earlier, there are several ways for the CPU to access memory; you should be familiar with the following, and they are found on many CPUs (not just the 68008):
+As mentioned earlier, there are several ways for the CPU to access memory; you should be familiar with the following, and they are found on many CPUs (not just the 68008): 
 
 | Address type | Definition | Example |
 |--------------|------------|---------|
 | Direct address | Explicitly specifying two registers in the same command | `move D3, D2` |
 | Immediate address | The **operand** forms part of the instruction and **remains constant** | `move.b #$42, D5` |
 | Absolute address | This **specifies the destination location explicitly** | `move.l D2, $7FFF0` which moves the long value held in D2 to address `$7FFF0` |
-| Relative address | These all **relate to the program counter** to write **position independent code** | |
+| Relative address | These all **relate to the program counter** to write **position independent code** | `move d16(PC), D3` move contents that are located in the address +16 addresses from PC to `D3` |
 
-> Indirect addressing is never on the exam; however, this is where we add offsets, increments, or indexed addressing to access memory or data.
+> Indirect addressing is never on the exam; however, this is where we add offsets, increments, or indexed addressing to access memory or data. 
