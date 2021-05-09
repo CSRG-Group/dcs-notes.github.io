@@ -88,6 +88,7 @@ We are already familiar with what the PC does – it is a **32 bit** register on
 |-------------|---------|
 | `[MAR] ⬅ [PC]` | _Transfer_ the contents of the PC **to** the MAR |
 | `[MS(12345)]` | The _contents_ of memory _location_ 12345 in the _main store_ |
+| `[D1(0:7)] <- [D0(0:7)]` | <i>Transfer</i> the contents of the 1st 8bits of `D0` to the 1st 8bits of `D1` |
 
 ### Example: Instruction fetching
 Given a series of instructions in words, we can find a way to represent this in RTL. Consider the following example:
@@ -111,33 +112,43 @@ As you can see, RTL describes how we can specifically set values in registers an
 
 # Assembly Language
 
-You should be able to explain the motivations, applications, and characteristics of high-level and low-level programming languages.
+*You should be able to explain the motivations, applications, and characteristics of high-level and low-level programming languages.* 
 
-|                     High-level Language                      |                           Assembly                           |                Machine Code                |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------: |
-| Human readable. Difficult to translate into performant machine code whilst retaining original intention. | Middle-ground. More readable than machine code but more precise than high-level languages. | Very precise and performant. Not readable. |
+Code written in high-level programming languages typically go through a compiler, or for some languages like Python an [interpreter](https://www.computerscience.gcse.guru/theory/translators) (FYI only), and is eventually **translated** into machine code that your microprocessor understands. Low-level assembly code is **assembled** by an assembler into machine code.
 
-![image-20210509115201462](part3.assets/image-20210509115201462.png)
+<blockquote class="extra" markdown="span">
+    Sometimes, the compilation process first compiles code into a lower-level assembly language and then the assembler assembles it into machine code, but in other cases high-level languages can be translated directly to machine code.
+    I previously had the misunderstanding that high-level languages are
+    **always** compiled to some kind of assembler language and is then 
+    assembled to machine code, but this is not the case.
+</blockquote>
 
-> Assembly language saves us from machine code by using **mnemonics**.
-> We can provide **memory locations** and **constants**, as well as **symbolic names**.
-> These features are not afforded to us by RTL!
+The **motivation** for low-level languages is to give programmers more **control** of how the microprocessor executes a particular program, as it allows you to define the exact sequence of instructions that will be executed by the microprocessor. High-level programming languages don’t have the capability to provide such specific instructions. Sometimes, this means that the resultant machine code has **greater performance** than one that was compiled from a high-level language.
+
+|                     High-level Language                      | Machine Code  |                      Assembler Language                      |
+| :----------------------------------------------------------: | :-----------: | :----------------------------------------------------------: |
+| Human readable. <br />Difficult to translate into performant machine code whilst retaining original intention. | Not readable. | More readable than machine code but more precise than high-level languages. |
+
+> Assembly language saves us from machine code by using **mnemonics**. We can provide **memory locations** and **constants**, as well as **symbolic names**. These features are not afforded to us by RTL!
+
+## Assembler Format
 
 Assembly language typically takes the following form:
 
-|  | Label | Opcode | Operand | Comment |
+|  | Label (Optional) | Opcode | Operand | Comment |
 |:-----:|:------:|:-------:|:-------:|:-------:|
 | **Example** | `START:` | `move.b` | `#5, D0` | `|load D0 with 5` |
+{: .centeredtable}
 
-### Assembly Language Conventions
+## Assembly Language Conventions
 
 There are several conventions of Assembly language to keep in mind:
 
 | Number Symbol | Meaning |
 |---------|-------------|
-| `#` | A constant value, in base 10. **This is not an address.** |
-| `$` | A **hex** value |
-| `%` | A **binary** value |
+| `#` | Indicates a constant. A number without `#` is an address. By default, numbers are in base 10. |
+| `$` | A **hex** value. E.g. `ORG $4B0 | this program starts at hex 4B0` |
+| `%` | A **binary** value. E.g. `add.b #%11, D0 | add 3 to D0` |
 
 <br/>
 
@@ -150,7 +161,7 @@ There are several conventions of Assembly language to keep in mind:
 If you want to string together an assembler instruction, you typically write them in the form
 `operation.datatype`  `source,`   `destination`
 
-### Data types and assembler instructions
+## Data types and assembler instructions
 
 Previously, we saw how the `DS` directive requires a data type and then an amount of data to set aside; Assembler language defines three types of data type:
 - **8 bits / byte**: `.b`
@@ -173,16 +184,68 @@ Generally speaking, there are two aspects to a CPU instruction set:
 > Addressing modes can provide data, specify where it is, and how to go find it.
 > You may describe direct addresses, or relative addresses where you compare one address to another to find it.
 
-#### Logical instructions
-- We can often use **bitmasks** to achieve our goals in conjunction with **bitwise operations**.
+## Data Movement Instructions
+
+The `move` operations are similar to RTL, just pay attention to the data type.
+
+```
+move.b D0,D1  | [D1(0:7)] <- [D0(0:7)]
+moveb  D0,D1  | same
+exg.b  D4,D5  | exchange contents of two registers
+swap   D2     | swap lower and upper words of D2
+lea  $F20,A3  | load effective address [A3] <- [$F20]
+```
+
+## Arithmetic Instructions
+
+Depending on your processor architecture, you may or may not have floating point support.
+
+```
+add.l  Di,Dj  | [Dj] <- [Di] + [Dj]
+addx.w Di,Dj  | also add in x bit from CCR
+mulu.w Di,Dj  | [Dj(0:31)] <- [Di(0:15)] * [Dj(0:15)] signed multiplication
+```
+
+You also have `sub` (subtract), `mulu` (unsigned mult), `divu` and `divs`. You don’t have to memorise or know these very well but the key takeaways are 
+
+- The “variables” (around the comma `,`) are operated on sequentially (left to right). 
+- The result of the operation is stored in the second variable (after the comma `,`).
+- You can add or subtract bits from the CCR
+- Division and multiplication use the first half of the bits available (unless specified) because the resultant register has a fixed bit length (32 bits in the above example).
+
+## Logical instructions
+
+We can often use **bitmasks** to achieve our goals in conjunction with **bitwise operations**.
+
+```
+AND.B #%11110000, D3 | bitwise AND on 1111 0000 and first 8bits of D3
+```
+
+Additional pointers:
+
 - **Shift operations** are fundamental; for example, you can multiply by 2 using left shift operations.
 - Other operations such as rotations also exist.
 
-#### Branch instructions
+## Branch instructions
 These are crucial for **control flow statements**; we typically branch based on **conditions set in the CCR**.
 
-#### Subroutines
-Subroutines (`JSR`; jump, `RTS`; return)  let you use the **same code repeatedly**. You will **push and pop the stack** to return to the PC.
+```
+LDA NumA | Read the value "NumA"
+CMP NumB | Compare against "NumB"
+BCC Loc  | Go to label "Loc" if "NumA" < "NumB", or in RTL: [PC] <- Loc
+```
+
+[Example](https://www.c64-wiki.com/wiki/BCC) for illustration purposes (we don’t need to know what `LDA` or `CMP` is exactly just roughly understand the syntax). Branch instructions cause the processor to branch (jump) to a labelled address.
+
+- CCR flags are set by the previous instruction
+- The current instruction can test the state of the CCR bits and branch if a certain **condition** is met.
+
+## Subroutines and Stacks
+Subroutines (`JSR`; jump, `RTS`; return) let you use the **same code repeatedly** reducing program size and improving readability. It is similar to functions.
+
+Typically when a subroutine is called (with `JSR <subroutine label>`), the current address in the PC is **pushed** to a stack and your stack pointer points to the newly pushed address (current address). The address of the subroutine is “loaded” into the PC and the instructions in the subroutine is executed.
+
+When `RTS` is called, the stack is **popped** and the **popped address** is put into the PC; the stack pointer points to the next address at the top of the stack.
 
 # Addressing modes
 As mentioned earlier, there are several ways for the CPU to access memory; you should be familiar with the following, and they are found on many CPUs (not just the 68008):
