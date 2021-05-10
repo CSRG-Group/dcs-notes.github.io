@@ -38,7 +38,7 @@ notes; any other sources or contributions will be duly cited/attributed.
 3. [x] [Assembler](part3.html)
 4. [x] [Memory systems](part4.html)
 5. [x] [I/O mechanisms](part5.html)
-6. [ ] Processor architecture
+6. [x] Processor architecture
 
 
 ## Unofficial worksheet solutions
