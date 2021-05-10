@@ -3,6 +3,8 @@ layout: CS132
 title: CSS
 math: true
 part: true
+pre: Lang1
+nex: Lang3
 ---
 
 
@@ -199,4 +201,3 @@ sizing | width
 
 # Table styling
     TO DO
-    

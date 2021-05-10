@@ -3,6 +3,8 @@ layout: CS139
 title: History of the Internet
 math: true
 part: true
+pre: Lang5
+nex: Theory2
 ---
 
 # History of the internet

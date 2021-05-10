@@ -3,32 +3,30 @@ layout: CS132
 title: HTML
 math: true
 part: true
+nex: Lang2
 ---
 
-This document is split into two parts theory and practical
-
 # Introduction
-Stands for HyperText Markup Language
+Stands for HyperText Markup Language.
 
-HTML is a __semantic__ language it describes the structure of the document and not the content
+HTML is a __semantic__ language it describes the structure of the document and not the content.
 
 # HTML Nesting structure
 ## parent 
-A tag is a parent of another if it immediately encloses the tag
+A tag is a parent of another if it immediately encloses the tag.
 ## child
-A tag is a child of another if it is immediately enclosed by the tag
+A tag is a child of another if it is immediately enclosed by the tag.
 ## ancestor
-A tag is an ancestor if it the parent or the parent of an ancestor of a tag
+A tag is an ancestor if it is the parent or the parent of an ancestor of a tag.
 ## ancestor
-A tag is an descendant if it the child or the child of an descendant of a tag
+A tag is an descendant if it is the child or the child of a descendant of a tag.
 ## Sibling
-Two tags are siblings if they share a parent
+Two tags are siblings if they share a parent.
 
 # Syntax
-HTML uses code tags for opening and closing to give information about the content inside
-opening use `<>` and closing starts with a backslash `</>`
+HTML uses code tags for opening and closing to give information about the content inside, opening use `<>` and closing starts with a backslash `</>`
 
-the tags can also contain attributes additional information likes to other pages or ids
+The tags can also contain attributes with additional information like the class or ids.
 
 Desc| Code
 ----|-------
@@ -43,22 +41,22 @@ combined:
 
 ## empty tags
 
-Some tags have no content and so are empty, a closing tag is not needed
+Some tags have no content and so are empty, a closing tag is not needed.
 `<meta charset="utf-8">`
 
 # HTML Nesting
-all closing tags should occur int he reverse order they were opened e.g
+All closing tags should occur in the reverse order they were opened. e.g
 
-`<h1> Chare your <strong> Travels </strong><h1>`
+`<h1> Share your <strong> Travels </strong><h1>`
 
 is correct
 
-`<h1> Chare your <strong> Travels <h1></strong>`
+`<h1> Share your <strong> Travels <h1></strong>`
 
 is incorrect
 
 # Character Entities
-some symbols have special characters
+some symbols have special characters.
 
 Entity | Description
 ---|---
@@ -70,7 +68,7 @@ Entity | Description
 
 
 # block vs inline
-Some elements are blocks these start and end with a new line
+Some elements are blocks these start and end with a new line.
 including:
 * `<h1>`
 * `<p>`
@@ -78,7 +76,7 @@ including:
 * `<table>`
 * `<div>`
 
-Other elements are inline and can normally be integrated into a line of text without breaking it up
+Other elements are inline and can normally be integrated into a line of text without breaking it up.
 * `<a>`
 * `<img>`
 * `<span>`
@@ -90,38 +88,38 @@ for validation visit
 
 ## Doctypes (R)
 Every HTML document has a doctype definition 
-Variations of HTML, tells the browser what to expect
+Variations of HTML, tells the browser what to expect.
 
 `<!DOCTYPE html>`
 
 ## HTML (R)
-Specifies content as html
+Specifies content as html.
 
 `<html> Content </html>`
 
 ## head (R)
-typically contains information about the page title etc
+Typically contains information about the page title etc.
 
 `<head>  </head>`
 
 ## title
-Title of the page shown in the browser tab 
+Title of the page shown in the browser tab.
 
 `<title> Title of the page </title>`
 
 ## meta / text encoding
-character encoding can be declared using the meta tag
+character encoding can be declared using the meta tag.
 
 `<meta charset="utf-8">`
 
 ## body (R)
-contains the main page of information
+contains the main page of information.
 
 `<body> content </body>`
 
 
 ## Headings 
-uses h1 through h6 in decreasing size
+uses h1 through h6 in decreasing size.
 
 * `<h1>Welcome to cs136</h1>`
 * `<h2>Welcome to cs136</h2>`
@@ -130,22 +128,22 @@ uses h1 through h6 in decreasing size
 
 ## a (Links)
 produces a link that whn clicking on the content redirects to another page
-uses attribute href to specify page
+uses attribute href to specify page.
 
 `<a href="www.google.com"> a search engine </a>`
 
-href can link to external sites but can also link to within the page e.g `href="#top"` will move the page to a tag with id top
+href can link to external sites but can also link to within the page e.g `href="#top"` will move the page to a tag with id top.
 
 ## img (Image)
-Displays an image on the page
+Displays an image on the page.
 
-uses attribute src to specify location
+Uses attribute src to specify location.
 
-alt attribute is a description for software to interpret the image
+`alt` attribute is a description for software to interpret the image.
 
 `<img src="file.gif" alt="file">`
 
-## Strong
+## strong
 makes any content bold
 
 `<strong> content </strong>`
@@ -207,7 +205,7 @@ used to specify text for specific font and color changes
 
 
 # Tables
-allows displaying data in rows and columns uses 3 tags
+Allows displaying data in rows and columns uses 3 tags.
 * `<table> </table>`  overall table
 * `<tr> </tr>` table row
 * `<td> </td>` table data
@@ -233,7 +231,7 @@ example:
 <tr>
 ```
 
-Tables default to no lines to include lines they should be specified in css
+Tables default to no lines. To include lines they should be specified in css.
 
 ## Modifying tables
 ### table header
@@ -241,7 +239,7 @@ using `<thead>` around the first `<tr>` specifies it as a header row
 ### table footer
 using `<tfoot>` around the last `<tr>` specifies it as a footer row
 ### caption
-Just inside the table a caption can be added using 
+Just inside the table a caption can be added using
 `<caption> </caption>`
 
 ### rowspan
@@ -275,7 +273,7 @@ used to select data form the user can have many different types
 * text - text input
 * password - input only shows dots
 * submit - a button the user can use to submit the form
-* radio - a circular checkbox can only select one in a group ,grouped by the attribute `name`, need attribute `value`, use `checked` for the defualt
+* radio - a circular checkbox can only select one in a group ,grouped by the attribute `name`, need attribute `value`, use `checked` for the default
 
 other types 
 * color
@@ -320,6 +318,3 @@ A label can be created with the attribute `for`, by making it equal to an elemen
 <label for=first_name>First Name:</label>
 <input type="text" name="fname" id="first_name">
 ```
-where=United States
-
-where=United States

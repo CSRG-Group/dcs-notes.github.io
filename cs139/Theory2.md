@@ -1,6 +1,6 @@
 ---
 layout: CS139
-title: WebServers
+title: Web Servers
 math: true
 part: true
 pre: Theory1
