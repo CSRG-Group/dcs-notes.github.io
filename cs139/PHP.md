@@ -10,11 +10,11 @@ nex: Lang4
 
 PHP is a server side scripting language 
 
-stands for PHP hypertext programing (go and figure what that stands for)
+Stands for PHP hypertext programing (go and figure what that stands for)
 
-released in 1995
+Released in 1995
 
-has its issues:
+Has some issues:
 
 * 30% of vulnerabilities are related to PHP
 * Sloppy code leads to errors.
@@ -53,14 +53,14 @@ $product= box;
 $weight = 1.756723;
 printf("the %s is %.2f kilos",$product,$weight);
 ```
-specifier | type
+
+Specifier | Type
 --|--
-%f| float
-%s| string
-%d| decimal
+%f | float
+%s | string
+%d | decimal
 
 [more here](https://www.php.net/manual/en/function.printf.php)
-
 
 # Variables
 * Variable prefixed with $
@@ -123,7 +123,7 @@ Two types
 Creation:
 `$courses=("CS139","CS132","CS133");`
 
-alternatively
+You can also do:
 
 ``` php
 $courses[0]="CS139";
@@ -139,53 +139,59 @@ alternatively
 ata Representation
 # Operators
 
-Arithmetic Operators
-Operator | Name
---|--
-+|addition
--|Subtraction
-*|Multiplication
-/|Division
-%|Modulus
-++| Pre/Post increment
---| Pre/Post decrement
-
-Comparison Operators
-Operator | Name
---|--
-==| Equal
-===| Identical
-!= | Not Equal
-!===| Not identical
-<| Less than
->| Greater than
-<=| Less than or equal
->=| Greater than or equal
-
-identical same value __and__ same type 5 is not identical to "5"
-
-Logical Operators
+## Arithmetic Operators
 
 Operator | Name
 --|--
-&&| AND
-\|\||OR
-!| NOT
+`+` | Addition
+`-` | Subtraction
+`*` | Multiplication
+`/` | Division
+`%` | Modulus
+`++` | Pre/Post increment
+`--` | Pre/Post decrement
 
-Array | Operators
+## Comparison Operators
+Operator | Name
 --|--
-$arr1 +$arr2 | Union
-$arr1 == $arr2| Equal
-$arr1 === $arr2| Identical
+`==` | Equal
+`===` | Identical
+`!=` | Not Equal
+`!===` | Not identical
+`<` | Less than
+`>` | Greater than
+`<=` | Less than or equal
+`>=` | Greater than or equal
+
+Identical same value __and__ same type 5 is not identical to "5"
+
+## Logical Operators
+
+Operator | Name
+--|--
+`&&` | AND
+`||` |OR
+`!` | NOT
+
+## Array Operators
+
+Operator | Name
+--|--
+`$arr1 +$arr2` | Union
+`$arr1 == $arr2` | Equal
+`$arr1 === $arr2` | Identical
+
 # Branching
+
 ## IF
+
 similar to Java
 ``` php
-if($course == "CS139"){
+if ($course == "CS139") {
     echo "Web Dev";
 } elseif ($course =="CS132"){
     echo "not a cult";
-}else{
+} else{
     echo "Not Web Dev and not not a cult";
 }
 ```
