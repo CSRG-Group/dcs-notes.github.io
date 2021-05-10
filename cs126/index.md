@@ -26,11 +26,12 @@ These were written by **Edmund Goodman**:
 12. [ ] [General algorithms](part12.md)
 
 
-A *development* version of the notes containing WIP material is available [here](./cribSheet.md), but will not render correctly in GitHub pages, as it has not been ported across yet.
-
-
 
 Detailed handwritten notes for CS126 by **Josh Fitzmaurice** which cover the entire module split into two parts can be can be found below:
 
 1. [Part 1](./cs126-notes-1.pdf)
 2. [Part 2](./cs126-notes-2.pdf)
+
+Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
+
+- [Flash cards](https://quizlet.com/_99y5l2?x=1jqt&i=18al03)

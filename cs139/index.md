@@ -6,18 +6,18 @@
 
 ## Topics and content
 
-There are 5 pages for languages:
+The content for this module can be split up into sections as follows:
 
-1. [] [HTML](Lang1.md)
-2. [] [CSS](Lang2.md)
-3. [] [PHP](Lang3.md)
-4. [] [JavaScript](Lang4.md)
-4. [] [SQL](Lang5.md)
+### Languages
 
-There are N pages for theory
+1. [x] [HTML](HTML.html)
+2. [x] [CSS](CSS.html)
+3. [x] [PHP](PHP.html)
+4. [x] [JavaScript](JavaScript.html)
+4. [x] [SQL](SQL.html)
 
-1. [] [History of the Internet](Theory1.md)
-2. [] [Web Servers](Theory2.md)
-3. [] [GET and POST](Theory2.md)
-4. 
-5. 
+### Theory (work in progress)
+
+1. [x] [History of the Internet](Theory1.html)
+2. [x] [Web Servers](Theory2.html)
+3. [x] [GET and POST](Theory2.html)
