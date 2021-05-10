@@ -156,6 +156,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "David-Sangojinmi",
+      "name": "David Sangojinmi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26884019?v=4",
+      "profile": "http://davidsangojinmi.ml/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github",

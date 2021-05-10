@@ -135,6 +135,7 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a></td>
+    <td align="center"><a href="http://davidsangojinmi.ml/"><img src="https://avatars.githubusercontent.com/u/26884019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Sangojinmi</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ADavid-Sangojinmi" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
