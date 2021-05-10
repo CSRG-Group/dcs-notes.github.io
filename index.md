@@ -18,6 +18,8 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ### [CS132: Computer Systems and Architecture](cs132/index.md)
 
+### [CS139: Web Development Technologies](cs139/index.md)
+
 ### [CS140: Computer Security](cs140/index.md)
 
 ### [CS141: Functional Programming (not yet completed)](cs141/index.md)
