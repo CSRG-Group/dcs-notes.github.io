@@ -153,6 +153,7 @@ Operator | Name
 `--` | Pre/Post decrement
 
 ## Comparison Operators
+
 Operator | Name
 --|--
 `==` | Equal
