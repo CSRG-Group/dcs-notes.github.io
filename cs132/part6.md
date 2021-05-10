@@ -2,6 +2,7 @@
 layout: CS132
 title: Processor Architecture
 part: true
+math: true
 pre: part5
 ---
 
