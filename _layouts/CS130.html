@@ -4,7 +4,7 @@ layout: notes
 
 {%- if page.part == false -%}
 <a href="../../cs130/index.html">🏡CS130 Home</a>
-    {%- for page in site.cs118 -%}
+    {%- for page in site.cs130 -%}
         {%- if page.part == true -%}
             <p>{{ page.content | markdownify }}</p><br>
             {%- if page.nextt != null -%}

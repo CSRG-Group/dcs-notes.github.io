@@ -1,5 +1,5 @@
 ---
- layout: CS132
+layout: CS132
 math: true
 title: Assembler
 part: true

@@ -28,6 +28,8 @@ If you've been linked to this site, you've probably also seen us asking for anyo
 
 ### [CS132: Computer Systems and Architecture](cs132/index.md)
 
+### [CS139: Web Development Technologies](cs139/index.md)
+
 ### [CS140: Computer Security](cs140/index.md)
 
 ### [CS141: Functional Programming (not yet completed)](cs141/index.md)
@@ -130,6 +132,10 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
     <td align="center"><a href="https://github.com/lennonchoong"><img src="https://avatars.githubusercontent.com/u/62992865?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lennon Choong</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Alennonchoong" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/MxttyV"><img src="https://avatars.githubusercontent.com/u/75853467?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MxttyV</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3AMxttyV" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/bora-7"><img src="https://avatars.githubusercontent.com/u/76407294?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bora A.</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Abora-7" title="Bug reports">🐛</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a></td>
+    <td align="center"><a href="http://davidsangojinmi.ml/"><img src="https://avatars.githubusercontent.com/u/26884019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Sangojinmi</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ADavid-Sangojinmi" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

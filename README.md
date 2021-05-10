@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-14-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-16-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
@@ -126,6 +126,10 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
     <td align="center"><a href="https://github.com/lennonchoong"><img src="https://avatars.githubusercontent.com/u/62992865?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lennon Choong</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Alennonchoong" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/MxttyV"><img src="https://avatars.githubusercontent.com/u/75853467?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MxttyV</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3AMxttyV" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/bora-7"><img src="https://avatars.githubusercontent.com/u/76407294?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bora A.</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Abora-7" title="Bug reports">🐛</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a></td>
+    <td align="center"><a href="http://davidsangojinmi.ml/"><img src="https://avatars.githubusercontent.com/u/26884019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Sangojinmi</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ADavid-Sangojinmi" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
