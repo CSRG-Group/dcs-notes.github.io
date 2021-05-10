@@ -3,7 +3,7 @@ layout: CS139
 title: HTML
 math: true
 part: true
-nex: Lang2
+nex: CSS
 ---
 
 # Introduction

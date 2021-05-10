@@ -2,8 +2,8 @@
 layout: CS139
 title: PHP
 part: true
-pre: Lang3
-nex: Lang4
+pre: CSS
+nex: JavaScript
 ---
 
 # Introductions
@@ -130,13 +130,14 @@ $courses[0]="CS139";
 $courses[1]="CS132";
 $courses[2]="CS133";
 ```
+
 ### Associative array
 Creation:
 
 `$courses=("CS139"=>"Web Dev","CS132"=>"Not A Cult","CS133"=>"Professional Skills");`
 
-alternatively
-ata Representation
+You can also do Representation:
+
 # Operators
 
 ## Arithmetic Operators
