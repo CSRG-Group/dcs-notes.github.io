@@ -1,5 +1,5 @@
 ---
-layout: CS118
-part: false
+layout: combined
+mod: CS118
 title: 118 One Page Notes
 ---

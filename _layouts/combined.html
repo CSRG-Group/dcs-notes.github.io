@@ -1,0 +1,18 @@
+---
+layout: notes
+---
+
+{%- for p in site[page.mod] -%}
+    {%- if p.part == true -%}        
+        <p>{{ p.content | markdownify }}</p>
+        {%- if p.nex != null -%}
+            <br/>
+            <hr style="
+                border-top: 1px solid whitesmoke;
+                border-bottom: 1px solid whitesmoke;
+                background-color: whitesmoke;
+            ">
+            <br/>
+        {%- endif -%}
+    {%- endif -%}
+{%- endfor -%}

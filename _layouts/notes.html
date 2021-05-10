@@ -59,8 +59,11 @@
                     {% capture previous %}{{ page.pre | default: "null" }}{% endcapture %}
                     {% capture next %}{{ page.nex | default: "null" }}{% endcapture %}
                     {%- capture mod -%}{{ page.layout | default: "null"}}{%- endcapture -%}
-            
+
                     {% include partnav.html nex=next pre=previous mod=mod %}
+                    {%- else -%}
+                    {%- capture mod -%}{{ page.mod | default: "Module Home"}}{%- endcapture -%}
+                    <a href="./">🏡{{ mod }}</a>
                     {%- endif -%}
                 </div>
                 <!-- Main Content of markdown or sub-layouts-->

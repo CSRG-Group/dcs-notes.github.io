@@ -8,7 +8,6 @@ nex: part6
 
 # Inheritance, Abstract Classes, and Interfaces
 
-_A huge thank you to **Justin Tan** for contributing this post._
 
 ## Inheritance
 

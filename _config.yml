@@ -54,7 +54,16 @@ defaults:
       layout: "default"
 
 collections:
-  cs118:
-    label: cs118
-    relative_directory: ./_cs118
+  CS118:
+    part: true
+    label: CS118
+    relative_directory: ./_CS118
     output: true
+    order:
+      - part1.md
+      - part2.md
+      - part3.md
+      - part4.md
+      - part5.md
+      - part6.md
+      - part7.md

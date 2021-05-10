@@ -1,10 +1,7 @@
 ---
-layout: default
+layout: modhome
 title: CS118
 ---
-<flex style="display:flex; justify-content:space-between;">
-<a href="../index.html">📚Home</a>
-</flex>
 
 # Welcome to the CS118 Revision Guide 📖
 
