@@ -3,7 +3,7 @@ layout: CS139
 title: HTML
 math: true
 part: true
-nex: Lang2
+nex: CSS
 ---
 
 # Introduction
@@ -12,18 +12,18 @@ Stands for HyperText Markup Language.
 HTML is a __semantic__ language it describes the structure of the document and not the content.
 
 # HTML Nesting structure
-## parent 
+## Parent 
 A tag is a parent of another if it immediately encloses the tag.
-## child
+## Child
 A tag is a child of another if it is immediately enclosed by the tag.
-## ancestor
+## Ancestor
 A tag is an ancestor if it is the parent or the parent of an ancestor of a tag.
-## ancestor
+## Descendant
 A tag is an descendant if it is the child or the child of a descendant of a tag.
 ## Sibling
 Two tags are siblings if they share a parent.
 
-# Syntax
+# Basic Syntax
 HTML uses code tags for opening and closing to give information about the content inside, opening use `<>` and closing starts with a backslash `</>`
 
 The tags can also contain attributes with additional information like the class or ids.
@@ -36,10 +36,9 @@ Attribute   | `href="www.google.com"`
 content     | `a search engine`
 closing tag | `</a>`
 
-combined:
-`<a href="www.google.com"> a search engine </a>`
+Example of a HTML tag: `<a href="www.google.com"> a search engine </a>`
 
-## empty tags
+## Empty tags
 
 Some tags have no content and so are empty, a closing tag is not needed.
 `<meta charset="utf-8">`
@@ -56,7 +55,7 @@ is correct
 is incorrect
 
 # Character Entities
-some symbols have special characters.
+Some symbols need to be represented with special characters so they are formatted correctly.
 
 Entity | Description
 ---|---
@@ -67,9 +66,8 @@ Entity | Description
 `&trade;`| &trade;
 
 
-# block vs inline
-Some elements are blocks these start and end with a new line.
-including:
+# Block vs Inline
+Some elements are blocks these start and end with a new line. Examples are:
 * `<h1>`
 * `<p>`
 * `<ul>`
@@ -81,10 +79,11 @@ Other elements are inline and can normally be integrated into a line of text wit
 * `<img>`
 * `<span>`
 
-# validation
+# Validation
 for validation visit 
 [W3c](https://validator.w3.org/)
-# Tags
+
+# Common Tags
 
 ## Doctypes (R)
 Every HTML document has a doctype definition 
@@ -97,26 +96,25 @@ Specifies content as html.
 
 `<html> Content </html>`
 
-## head (R)
+## Head (R)
 Typically contains information about the page title etc.
 
 `<head>  </head>`
 
-## title
+## Title
 Title of the page shown in the browser tab.
 
 `<title> Title of the page </title>`
 
-## meta / text encoding
+## Meta / Text encoding
 character encoding can be declared using the meta tag.
 
 `<meta charset="utf-8">`
 
-## body (R)
+## Body (R)
 contains the main page of information.
 
 `<body> content </body>`
-
 
 ## Headings 
 uses h1 through h6 in decreasing size.
@@ -126,7 +124,7 @@ uses h1 through h6 in decreasing size.
 * .....
 * `<h6>Welcome to cs136</h6>`
 
-## a (Links)
+## A (Links)
 produces a link that whn clicking on the content redirects to another page
 uses attribute href to specify page.
 
@@ -134,7 +132,7 @@ uses attribute href to specify page.
 
 href can link to external sites but can also link to within the page e.g `href="#top"` will move the page to a tag with id top.
 
-## img (Image)
+## Img (Image)
 Displays an image on the page.
 
 Uses attribute src to specify location.
@@ -143,52 +141,52 @@ Uses attribute src to specify location.
 
 `<img src="file.gif" alt="file">`
 
-## strong
+## Strong
 makes any content bold
 
 `<strong> content </strong>`
 
-## p
+## P
 specifies a paragraph of text
 
 `<p> paragraph </p>`
 
-## div 
+## Div (Division)
 defines site structure
 
 `<div> content </div>`
 
-## abbr
+## Abbr (Abbreviation)
 used to define an abbreviation 
 
 `<abbr title="World Health Organization">WHO</abbr> was founded in 1948`
 
-## br break
+## Br break
 a break similar to newline no content
 
 `<br>`
 
-## code 
+## Code 
 give content a code like look
 
 `<code> this is code </code>`
 
-## em emphasis
+## Em (emphasis)
 provides emphasis usually italics
 
 `<em> no </em>`
 
-## mark
+## Mark
 highlights the content
 
 `<mark> highlight </mark>`
 
-## small
+## Small
 makes text small
 
 `<small> small text </small>`
 
-## span 
+## Span 
 used to specify text for specific font and color changes
 
 `the sky is <span style="color:blue;font-weight:bold">blue</span>`

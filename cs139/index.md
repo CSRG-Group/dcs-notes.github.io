@@ -8,11 +8,11 @@
 
 There are 5 pages for languages:
 
-1. [ ] [HTML](Lang1.html)
-2. [ ] [CSS](Lang2.html)
-3. [ ] [PHP](Lang3.html)
-4. [ ] [JavaScript](Lang4.html)
-4. [ ] [SQL](Lang5.html)
+1. [ ] [HTML](HTML.html)
+2. [ ] [CSS](CSS.html)
+3. [ ] [PHP](PHP.html)
+4. [ ] [JavaScript](JavaScript.html)
+4. [ ] [SQL](SQL.html)
 
 There are N pages for theory
 

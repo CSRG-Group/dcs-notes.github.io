@@ -3,31 +3,34 @@ layout: CS139
 title: CSS
 math: true
 part: true
-pre: Lang1
-nex: Lang3
+pre: HTML
+nex: PHP
 ---
 
 
 # Introduction
-Stands for Cascading Style Sheets
+CSS stands for Cascading Style Sheets
 
 Intended to modify the appearance of HTML documents
 
-# location of styles
-on an html page a style can be in 3 locations
+# Placement of styles
+The code for the stylesheet can be placed in 3 possible locations.
 
-## in the tag (discouraged)
+## Inside respective tags
+This method is often discouraged because it causes HTML code to be very messy and if you want to change the styling, you have to go to individual HTML tags.
 `<h1 style ="color:blue"> content </h1>`
 
 ## In a special style tag
-in `<head>`:
+Inside the `<head>` tag:
 ``` html
 <style>
  h1 {color:blue;}
 </style>
 ```
-## in a separate file
-linked in head
+This method is used for certain styles.
+
+## In a separate file
+The file containing the stylesheet is then linked in the `<head>` tag. This method is most commonly used.
 `<link rel="stylesheet" href="styles.css">`
 
 
@@ -39,7 +42,7 @@ There are 3 types of stylesheet
 * User created style sheets
 * Browser style sheets
 
-these are in decreasing importance the browser will always look for the most
+These are in decreasing importance the browser will always look for the most
 immediate style sheet for any definition 
 
 The browser will __Cascade__ onto the next style sheet up in the hierarchy if
@@ -49,9 +52,10 @@ one there is no definition for the current style sheet
 2. External Stylesheet
 3. internal stylesheet (`<head>`)
 4. inline styling
-# syntax
 
-css is formed from Selectors and decelerations
+# Syntax
+
+CSS is formed from selectors and declarations.
 
 Name | example
 --|--
@@ -60,7 +64,7 @@ Declaration | `{color:blue;  ....}`
 property | `color:`
 value | `blue;`
 
-together:
+Example:
 ``` css
 h1 {
     color:blue;
@@ -68,7 +72,7 @@ h1 {
 }
 ```
 
-# box model
+# Box model
 
 Every element is made form boxes and contains
 1. Content
@@ -89,22 +93,22 @@ Other ways include __fixed__ and __floating__
 
 There are 3 ways of specifying a html element
 
-## using the tag name
+## Using the tag name
 This will modify all tags of that type
 
 `h1 {color:blue;}`
 
-## using a class selector
+## Using a class selector
 uses to modify just some elements uses `.`
 
 `.large {color:blue;}`
 
-## using an id
+## Using an id
 id is unique used to modify a single element
 
 `#page_title {color:blue;}`
 
-## attribute selectors
+## Attribute selectors
 
 attribute selectors style HTML elements that contain an attribute
 use `[]` to specify an attribute
@@ -118,7 +122,7 @@ Selector | Matches
 `[*=]`| A specific attribute whose value contains a substring
 `[$=]`| A specific attribute whose value ends with a specified value
 
-e.g
+Example:
 
 `[title=main]` would match `<h1 title="main">`
 
@@ -142,62 +146,60 @@ A pseudo-class selector targets a particular state or relationship
 ## Contextual Selectors
 A contextual selector targets other tags within the document hierarchy
 
-Selector | matches | Example
+Selector | Matches | Example
 --|--|--
 Descendant | A specified element contained within another specified element| div p
 Child | A specified element that is a direct child of the specified element | div>p
 Adjacent Sibling| A specified element that is the next sibling of the specified element | h3+p
 General Sibling | A specified element that shares the same parent as the other specified element | h3~p
 
-# properties
+# Properties
 
-There are hundreds of properties a few key ones:
+There are hundreds of properties, some key ones you should know are:
 
 Property-type | Property
 --|--
-fonts| font
-fonts | font-family
-fonts|font-size
-fonts|font-style
-fonts|font-weight
-text| letter-spacing
-text| line-height
-text| text-align
-text| text-decoration
-text|text-indent
-color and bg| background
-color and bg| background-color
-color and bg| background-image
-color and bg| background-position
-color and bg| background-repeat
-color and bg| box-shadow
-color and bg| color
-color and bg| opacity
-borders | border
-borders | border-color
-borders | border-width
-borders | border-style
-borders | border-top , border-left .....
-borders | border-image
-borders | border-radius
-spacing | padding
-spacing | padding-bottom , padding-left ....
-spacing | margin
-spacing | margin-bottom, marin-left.....
-sizing | height
-sizing | max-height
-sizing | max-width
-sizing | min-height
-sizing | min-width
-sizing | width
+Fonts| font
+Fonts | font-family
+Fonts | font-size
+Fonts | font-style
+Fonts | font-weight
+Text | letter-spacing
+Text | line-height
+Text | text-align
+Text | text-decoration
+Text | text-indent
+Text color | color
+Background | background
+Background | background-color
+Background | background-image
+Background | background-position
+Background | background-repeat
+Color | opacity
+Borders | border
+Borders | border-color
+Borders | border-width
+Borders | border-style
+Borders | border-top , border-left .....
+Borders | border-image
+Borders | border-radius
+Borders | box-shadow
+Spacing | padding
+Spacing | padding-bottom , padding-left ....
+Spacing | margin
+Spacing | margin-bottom, marin-left.....
+Sizing | height
+Sizing | max-height
+Sizing | max-width
+Sizing | min-height
+Sizing | min-width
+Sizing | width
 
+Different properties take different values.
+* Color properties can use RGB, hex, RGBa .. values
+* Size based properties can use px, em , % , in , cm , pt
 
-    different properties take different values
-
-    colors use RGB, hex, RGBa .. 
-    Sizes use px, em , % , in , cm , pt
-
-
+Know the different value types for the main properties
 
 # Table styling
     TO DO

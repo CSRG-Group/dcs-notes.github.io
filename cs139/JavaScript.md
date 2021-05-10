@@ -1,8 +1,8 @@
 ---
 layout: CS139
-title: SQL
+title: JavaScript
 math: true
 part: true
-pre: Lang4
-nex: Theory1
+pre: PHP
+nex: SQL
 ---
