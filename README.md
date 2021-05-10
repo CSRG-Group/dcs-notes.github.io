@@ -28,7 +28,7 @@ If you've been linked to this site, you've probably also seen us asking for anyo
 
 1. Our course isn't marked on a curve, so others using your notes to get better doesn't detriment you
 2. Making notes is a great way to revise, as it makes sure you properly understand the content, and if you know you’re putting them somewhere it gives you accountability to actually get them done
-3. Any content that is contributed is great to have - it doesn't have to be perfect! The beauty of this type of projects is that it inherently allows collaboration, so we can work together to improve any problems you think might be present
+3. Any content that is contributed is great to have - it doesn't have to be perfect! The beauty of these type of projects is that it inherently allows collaboration, so we can work together to improve any problems you think might be present
 4. Having experience collaborating on an open source project through tools like Git is a really useful skill and is a lot more exciting than what we did with it in CS133, and being able give this as an example of where you've done it in practice could be a cool thing to put on your CV
 5. You'll get a neat icon of you in the contributors section of the README and index pages!
 
