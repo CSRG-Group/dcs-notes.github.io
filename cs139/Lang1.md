@@ -7,33 +7,24 @@ part: true
 
 This document is split into two parts theory and practical
 
-# Theory
-
-## Introduction
+# Introduction
 Stands for HyperText Markup Language
 
 HTML is a __semantic__ language it describes the structure of the document and not the content
 
-## HTML Nesting structure
-### parent 
-A tag is a parent of another if it is immediately encloses the inner tag
-### child
-A tag is a child of another if it is immediately inside the tag
-### ancestor
+# HTML Nesting structure
+## parent 
+A tag is a parent of another if it immediately encloses the tag
+## child
+A tag is a child of another if it is immediately enclosed by the tag
+## ancestor
 A tag is an ancestor if it the parent or the parent of an ancestor of a tag
-### ancestor
+## ancestor
 A tag is an descendant if it the child or the child of an descendant of a tag
-### Sibling
+## Sibling
 Two tags are siblings if they share a parent
-![alt text](Lang1.assets/01.png)
 
-
-
-# Practical
-While not always strictly necessary and browsers may show pages without these virtually every good page contains the required tags specified by (R)
-
-
-## Syntax
+# Syntax
 HTML uses code tags for opening and closing to give information about the content inside
 opening use `<>` and closing starts with a backslash `</>`
 
@@ -50,12 +41,12 @@ closing tag | `</a>`
 combined:
 `<a href="www.google.com"> a search engine </a>`
 
-### empty tags
+## empty tags
 
 Some tags have no content and so are empty, a closing tag is not needed
 `<meta charset="utf-8">`
 
-## HTML Nesting
+# HTML Nesting
 all closing tags should occur int he reverse order they were opened e.g
 
 `<h1> Chare your <strong> Travels </strong><h1>`
@@ -66,7 +57,7 @@ is correct
 
 is incorrect
 
-## Character Entities
+# Character Entities
 some symbols have special characters
 
 Entity | Description
@@ -77,7 +68,22 @@ Entity | Description
 `&copy;`| &copy;
 `&trade;`| &trade;
 
-## validation
+
+# block vs inline
+Some elements are blocks these start and end with a new line
+including:
+* `<h1>`
+* `<p>`
+* `<ul>`
+* `<table>`
+* `<div>`
+
+Other elements are inline and can normally be integrated into a line of text without breaking it up
+* `<a>`
+* `<img>`
+* `<span>`
+
+# validation
 for validation visit 
 [W3c](https://validator.w3.org/)
 # Tags
@@ -198,3 +204,122 @@ used to specify text for specific font and color changes
 * descriptive list `<dl>`
     * list terms `<dt>`
     * List descriptions `<dd>`
+
+
+# Tables
+allows displaying data in rows and columns uses 3 tags
+* `<table> </table>`  overall table
+* `<tr> </tr>` table row
+* `<td> </td>` table data
+
+example:
+``` html
+<table>
+<tr>
+    <td>Name</td>
+    <td>Age </td>
+<tr>
+<tr>
+    <td>Kate</td>
+    <td>24 </td>
+<tr>
+<tr>
+    <td>James</td>
+    <td>35 </td>
+<tr>
+<tr>
+    <td>John</td>
+    <td>56 </td>
+<tr>
+```
+
+Tables default to no lines to include lines they should be specified in css
+
+## Modifying tables
+### table header
+using `<thead>` around the first `<tr>` specifies it as a header row
+### table footer
+using `<tfoot>` around the last `<tr>` specifies it as a footer row
+### caption
+Just inside the table a caption can be added using 
+`<caption> </caption>`
+
+### rowspan
+
+Data can cross multiple rows through the use of rowspan 
+
+`<td rowspan="3"> Data </td>`
+
+### column span
+Data can cross multiple columns through the use of colspan 
+
+`<td colspan="2"> Data </td>`
+
+# HTML Forms
+
+These are a way of gathering data form the user specified by `<form>` and providing them to the server
+has attributes:
+* action - what to do when the data is submitted
+* method - The way the data is sent Get or Set
+* accept-charset - The charset accepted by the form
+
+`<form method ="post" action="auth.php"`
+## Form elements
+A form element allows the user to add information to the form for submission there are several types
+
+The element can also have a name attribute this can be used to reference the data the user entered
+
+### Input
+used to select data form the user can have many different types
+
+* text - text input
+* password - input only shows dots
+* submit - a button the user can use to submit the form
+* radio - a circular checkbox can only select one in a group ,grouped by the attribute `name`, need attribute `value`, use `checked` for the defualt
+
+other types 
+* color
+* date
+* datetime
+* datetime-local
+* email
+* month
+* number
+* range
+* search
+* tel
+* time
+* url
+* week
+support is patchy and not uniform across browsers
+#### other attributes
+
+* value - the default value needed to be deleted before entering info 
+* placeholder - the suggested value is a ghost value
+
+`<input type="text", name="name">`
+
+### Select
+Allows the user to select from pre-chosen options uses option
+
+``` html
+<select name="location">
+    <option> Choose a country</option>
+    <option> France</option>
+    <option> United Kingdom </option>
+    <option> Germany </option>
+</select>
+```
+in options
+
+attribute `value` can be used but defaults to the content
+attribute `selected` can be used to select the default 
+## Accessibility
+A label can be created with the attribute `for`, by making it equal to an element software can interpret it to aid in accessability for people with assistive tools.
+``` html
+<label for=first_name>First Name:</label>
+<input type="text" name="fname" id="first_name">
+```
+where=United States
+
+where=United States
