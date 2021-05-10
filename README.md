@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-15-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-16-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
@@ -28,7 +28,7 @@ If you've been linked to this site, you've probably also seen us asking for anyo
 
 1. Our course isn't marked on a curve, so others using your notes to get better doesn't detriment you
 2. Making notes is a great way to revise, as it makes sure you properly understand the content, and if you know you’re putting them somewhere it gives you accountability to actually get them done
-3. Any content that is contributed is great to have - it doesn't have to be perfect! The beauty of this type of projects is that it inherently allows collaboration, so we can work together to improve any problems you think might be present
+3. Any content that is contributed is great to have - it doesn't have to be perfect! The beauty of these type of projects is that it inherently allows collaboration, so we can work together to improve any problems you think might be present
 4. Having experience collaborating on an open source project through tools like Git is a really useful skill and is a lot more exciting than what we did with it in CS133, and being able give this as an example of where you've done it in practice could be a cool thing to put on your CV
 5. You'll get a neat icon of you in the contributors section of the README and index pages!
 
@@ -129,6 +129,7 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a></td>
+    <td align="center"><a href="http://davidsangojinmi.ml/"><img src="https://avatars.githubusercontent.com/u/26884019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Sangojinmi</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ADavid-Sangojinmi" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
