@@ -75,7 +75,7 @@ nex: part11
 - AVL trees are a concrete implementation of self-balancing binary search tree
 
   - Insertion and deletion operations re-arrange the tree to ensure it remains balanced
-  - Named after its creators, Adelson, Velsky and Landis
+  - Named after its creators, Adelson-Velsky and Landis
   - Other self-balancing binary search trees exist, such as red-black trees, but this is a common approach to implementing such an ADT
 
 - Requirements to be a self-balancing binary search tree
@@ -98,7 +98,6 @@ nex: part11
 
 - Deletion
   
-
 - Performance
 
   - In all cases, the space complexity is $$O(n)$$
