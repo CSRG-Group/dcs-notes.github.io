@@ -206,11 +206,11 @@ You basically list the possible events that can occur , and list the possible ca
 # otherwise an AND relationship is explicitly stated (last line)
 # Usually, this is a drawn diagram but I'm lazy.
 Car Won't Start:
-	Electrical Fault:
-		- Broken Wire
-		- Starter Faulty
-    Control Status:
-    	- Foot on brake & In Park
+  Electrical Fault:
+    - Broken Wire
+    - Starter Faulty
+  Control Status:
+    - Foot on brake & In Park
 ```
 
 This can only tell us the probability an attack will occur. Afterwards, we still have to determine the amount of harm that it will cause, and we will get some form of **measurable risk**.
