@@ -50,7 +50,7 @@ The general intention of computer security is to prevent unauthorised access and
     - But the average user has 6.5 different passwords.
 
 <blockquote class="extra" markdown="span">
-    Edmund shared an [XKCD](https://xkcd.com/936/) the other day that summarises the problem with passwords.
+    Edmund shared an <a href="https://xkcd.com/936/">XKCD</a> the other day that summarises the problem with passwords.
 </blockquote>
 
 # Password Cracking
