@@ -21,3 +21,7 @@ The content for this module can be split up into sections as follows:
 1. [x] [History of the Internet](Theory1.html)
 2. [x] [Web Servers](Theory2.html)
 3. [x] [GET and POST](Theory2.html)
+
+Here are a set of flashcards for the module by Leon Chipchase (they still need to be refined), and please message me if there is something incorrect on there.
+
+[Flash Cards](https://quizlet.com/_99cgos?x=1jqt&i=18al03)
