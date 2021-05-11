@@ -24,3 +24,8 @@ The content for this module can be split up into sections as follows:
 4. [x] [Web Protocols](Theory4.html)
 5. [x] [Web Browsers, servers and state](Theory5.html)
 6. [x] [Security](Theory6.html)
+
+## Flash Cards
+Here are a set of flashcards for the module by Leon Chipchase (they still need to be refined), and please message me if there is something incorrect on there.
+
+[Flash Cards](https://quizlet.com/_99cgos?x=1jqt&i=18al03)

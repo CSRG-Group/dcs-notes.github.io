@@ -38,12 +38,27 @@ notes; any other sources or contributions will be duly cited/attributed.
 3. [x] [Assembler](part3.html)
 4. [x] [Memory systems](part4.html)
 5. [x] [I/O mechanisms](part5.html)
-6. [x] Processor architecture
+6. [ ] Processor architecture
 
 
 ## Unofficial worksheet solutions
 
 We are in the process of compiling student-written solutions to the worksheets
 provided for 132. Please note that these do not necessarily hit all the marking
-points, nor are guaranteed to be correct. Solutions by **Josh Fitzmaurice**
-with contributions from **Edmund Goodman**.
+points, nor are guaranteed to be correct.
+
+Handwritten solutions by **Clara Ramsay-Gray**:
+
+1. [x] [Digital logic](worksheets/assemblerHandwritten.pdf)
+2. [x] [Assembler](worksheets/digitalLogicHandwritten.pdf)
+3. [ ] Memory systems
+4. [ ] I/O mechanisms
+5. [ ] Processor architecture
+
+Typed solutions by **Josh Fitzmaurice** with contributions from **Edmund Goodman** *work in progress*:
+
+Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
+
+[Flash Cards](https://quizlet.com/_9pgkq4?x=1jqt&i=18al03)
+
+
