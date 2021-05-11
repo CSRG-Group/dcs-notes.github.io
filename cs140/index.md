@@ -8,7 +8,7 @@
 
 There are nine broad topics in the module, which are as follows:
 
-1. [x] [Introductory concepts](part1.html)
+1. [x] [Introductory concepts](part1)
 2. [ ] Authentication
 3. [ ] Password cracking
 4. [ ] Cryptography
