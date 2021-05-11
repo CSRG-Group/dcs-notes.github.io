@@ -53,12 +53,12 @@ When given a hash, it looks up the table for the matching password - basically d
 
 # Reverse Lookup Tables
 
-###### Problem with Dictionary Attack and Lookup Tables
+Problem with Dictionary Attack and Lookup Tables
 
 - Stores all password possibilities in a large database
 - Not efficient for long passwords (too much storage)
 
-###### What Reverse Lookup Tables do
+What Reverse Lookup Tables do
 
 - sacrifice time for storage
 - works better for long passwords
@@ -193,7 +193,7 @@ It is likely that you won’t need the below information for your exam, they wer
 
 When you create a new user in Linux, Linux creates an entry in the `/etc/passwd` and the `/etc/shadow` files:
 
-###### Entry in `/etc/passwd`
+**Entry in `/etc/passwd`**
 
 This file can be read by an user. The entry created in passwd file, it contains a number of fields which are separated by colon (:).
 
@@ -207,7 +207,7 @@ This file can be read by an user. The entry created in passwd file, it contains 
 6. Home directory - The absolute path to the directory the user will be in when they log in. If this directory does not exist then user’s directory becomes `/`
 7. Command/shell - The absolute path of a command or shell (`/bin/bash`). Typically, this is a shell. Please note that it does note have to be a shell. For e.g., `sysadmin` can use the `nologin` shell, which acts as a replacement shell for the user accounts. If shell is set to `/sbin/nologin` and the user tries to log in to the Linux system directly, the `/sbin/nologin` shell closes the connection. 
 
-###### Entry in `/etc/shadow`
+**Entry in `/etc/shadow`**
 
 Shadow can only be read by root user. This is how the hash looks like:
 
