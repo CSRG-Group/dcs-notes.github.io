@@ -4,6 +4,7 @@ title: Web Protocols
 math: true
 part: true
 pre: Theory3
+nex: Theory5
 ---
 
 # Protocols
@@ -158,31 +159,5 @@ No guarantee of a response
 Requests a portion of a page.
 
 Browser will usually jump to the location in the page
-
-
-# Web browsers
-Web browsers interprets data into one in a recognized form
-
-converting HTML page and rendering as a readable web page
-
-Each browser behaved differently and __loosely__ conform to standards
-
-Each page makes multiple requests
-
-Local caching can reduce load times
-
-Most offer additional features, Search engine auto complete etc...
-
-# Web servers
-
-Typically powerful computer to respond to HTTP requests.
-
-Often running NGINX or Apache
-
-Also contains
-* Operating System (Linux, Windows....)
-* Database Software (MySQL , MongoDB)
-* Scripting Language (PHP, python..)
-
 
 

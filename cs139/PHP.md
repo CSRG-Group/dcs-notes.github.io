@@ -60,6 +60,10 @@ Specifier | Type
 %s | string
 %d | decimal
 
+### NUll Coalescing operator
+`??` can be used to assign a value if a variable is null
+`$username= $GET_["username"]??default`
+
 [more here](https://www.php.net/manual/en/function.printf.php)
 
 # Variables
@@ -323,6 +327,9 @@ to call a method
 ## Constructor
 the constructor function is always  `__construct()`
 
+Objects can be created through the `new` keyword
+
+`$James= new Person();`
 ## Access Modifier
 * public
 * private 
@@ -337,3 +344,146 @@ parent class method id called by
 
 `parent::method();`
 
+
+# Cookies
+Cookies can be added with the `setcookie()` function
+``` php
+$expiry = time()+60*60*24*7;
+$name="Username";
+$value="James";
+setcookie($name,$value,$expiry);
+```
+cookies can be fetched using `$_COOKIE[value]`
+``` php
+if (isset($_COOKIE["Username"])){
+    echo $_COOKIE["Username"];
+}
+```
+
+# Sessions
+To create a session use `session_start()` this must occur
+at the start of the file
+
+can be used with `$_SESSION[]`
+
+set with `$_SESSION['Key'] = $value;`
+
+and retrieve with  `$value =$_SESSION['Key'];`
+
+values can be checked with `isset($_SESSION['Key'])`
+
+`session_destroy()` can be used for logging out and removing all values
+
+example to check if a user is logged in
+
+``` php
+<?php
+session_start();
+if (isset($_SESSION['UserID'])){
+    // show page content here
+}
+else{
+    header(`location:HomePage.php`);
+}
+?>
+```
+
+# Password Hashing
+Passwords should be hashed for storing to ensure security the hashes can be created with ``password_hash()`
+and verified with `password_verify($password,$hashedPassword)`
+
+``` php
+if (isset($_POST['username']) and isset($_POST['password'])){
+    $password = $_POST['password'];
+    $hashedPassword = getHashedPassword($_POST['username']);
+    if (password_verify($password ,$hashedPassword)){
+        header(`location:restrictedPage.php`);
+    }else{
+        header(`location:HomePage.php`);
+    }
+}else{
+    header(`location:HomePage.php`);
+}
+```
+# SQL
+first a database connection must be established
+
+`$db =  new SQLite3('database.db');`
+
+the database can then be queried
+
+`$db.exec(<SQL>)` for result less queries
+
+`$db.query(<SQL>)` which returns a result
+
+handing a query result
+
+``` php
+$result = $de.query("SELECT * FROM Users");
+
+while ($row = $result.fetchArray()){
+    echo $row['username'];
+}
+```
+
+# Serialization
+can be sued for storing objects and complex data as a string
+`$string = serialize($object);`
+
+the text can then be un-serialized 
+`$object= unserialize($string);`
+
+# Reading and Writing files
+two types oif access stream access, will read a small portion at a time. All-in-Memory access can read the entire file to memory.
+
+## Stream Access
+similar to 'C'
+
+* `fopen()` - opens the file
+* `fgets()` - gets a portion of the file
+* `fclose()`- closes the file
+
+## In-memory Access
+
+* `file()` Reads the entire file and returns an array of each line in the file
+* `file_get_contents()` Read the entire file and return a string
+* `file_put_contents()` Writes the contents of a string variable to a file
+
+# Errors
+3 types if errors
+* Expected Errors - typing in the wrong name 
+* Warnings - thing to warn the user about, start before end dates
+* Fatal Errors - things that stop the process, should still be recoverable
+
+## Reporting
+error reporting can be done with 
+``` php
+error_reporting(E_ALL);
+ini_set("display_errors",1);
+```
+
+# Superglobals
+Name | Description
+--|--
+$Globals | Array For storing data that needs the superglobal scope
+$_Cookies | Array of cookie data passed via HTTP request
+$_ENV | Array of server environment data
+$_FILES | Array of files uploaded to the server
+$_GET | Array fo query string data passed to the server via the URL
+$_POST | Array fo query string data passed to the server via the HTTP header
+$_REQUEST | Array containing the contents of $_GET, $_POST, $_COOKIES
+$_SESSION | Array containing session data
+$_SERVER | Array containing information about the request and the server
+
+
+`$_SERVER["HTTP_REFERRER"]` information about where the user came from
+
+`$_FILES` used with post requests HTTP should have a file input type for a form
+* `$_FILES["File1"]["name"]` - anme fo the file
+* `$_FILES["File1"]["type"]` - e.g img.png
+* `$_FILES["File1"]["tmp_name"]` where is was upladed to
+* `$_FILES["File1"]["error"]` "UPLOAD_ERR_OK" if no error
+* `$_FILES["File1"]["size"]` in bytes
+
+then 
+`move_uploaded_file($tmp_file,$new_file);`

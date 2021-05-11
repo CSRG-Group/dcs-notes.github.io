@@ -25,6 +25,9 @@ this has the values in the query string of
 * `q=cs1391`
 * `page=1`
 
+The query sting is limited to 2048 characters
+
+Typically used to request specific data from the server
 ## Response
 Responds with 3 sections
 * Header - status fo the request
@@ -51,3 +54,7 @@ Common codes
 
 # POST
 This request is encoded within the header for the request the query string can can't be seen within the URL browser
+
+Has a longer Data alowance
+
+Typically used to send data to the server forms etc.
