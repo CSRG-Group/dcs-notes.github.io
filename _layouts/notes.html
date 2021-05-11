@@ -44,7 +44,7 @@
         <div class="navBox">
             <div id="sidenav" class="sideNav closedNav">
                 <h2 style="margin-left: 10px;">Table of Contents</h2>
-                {%- include toc.html html=content -%}
+                {%- include toc.html html=content sanitize=true -%}
             </div>
         </div>
         <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
