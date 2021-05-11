@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-17-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-18-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
@@ -127,6 +127,7 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
     <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a></td>
     <td align="center"><a href="http://davidsangojinmi.ml/"><img src="https://avatars.githubusercontent.com/u/26884019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Sangojinmi</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ADavid-Sangojinmi" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/clara-ramsay"><img src="https://avatars.githubusercontent.com/u/77890048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>clara-ramsay</b></sub></a><br /><a href="#content-clara-ramsay" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/mariosbf"><img src="https://avatars.githubusercontent.com/u/40693811?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mariosbf</b></sub></a><br /><a href="#content-mariosbf" title="Content">🖋</a></td>
   </tr>
 </table>
 
