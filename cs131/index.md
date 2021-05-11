@@ -47,3 +47,5 @@ There are four broad topics in the module, which are as follows:
 
 Detailed handwritten notes for CS131 by **Josh Fitzmaurice** which cover the entire module can be found [here](./cs131-notes.pdf)
 
+## Flashcards
+Anki flashcards can be found [here](./CS131-ankideck.apkg).
