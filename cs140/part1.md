@@ -1,5 +1,6 @@
 ---
 part: true
+nex: part2
 layout: CS140
 title: Introduction to Computer Security
 ---

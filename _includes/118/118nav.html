@@ -1,9 +1,0 @@
-<flex style="display:flex; justify-content: space-between;">
-    {%- if include.prev != "null" -%}
-    <a href="{{ include.prev }}" title="{{ include.ntitle }}">👈Prev</a>
-    {%- endif -%}
-    <a href="index.html" title="CS118 Home">🏡CS118 {{ layout.home }} </a>
-    {%- if include.nextt != "null" -%}
-    <a href="{{ include.nextt }}" title="{{ include.ptitle }}">Next👉</a>
-    {%- endif -%}
-</flex>
