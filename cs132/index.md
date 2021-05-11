@@ -57,5 +57,8 @@ Handwritten solutions by **Clara Ramsay-Gray**:
 
 Typed solutions by **Josh Fitzmaurice** with contributions from **Edmund Goodman** *work in progress*:
 
+Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
+
+[Flash Cards](https://quizlet.com/_9pgkq4?x=1jqt&i=18al03)
 
 
