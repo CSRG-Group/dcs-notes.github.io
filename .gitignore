@@ -3,7 +3,6 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
-Gemfile
 Gemfile.lock
 404.html
 node_modules
