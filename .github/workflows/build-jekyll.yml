@@ -20,7 +20,7 @@ jobs:
             ${{ runner.os }}-gems-
 
       # Use GitHub Deploy Action to build and deploy to Github
-      - uses: helaili/jekyll-action@v2.2
+      - uses: helaili/jekyll-action@v2
         with:
           token: ${{ secrets.GH_TOKEN }}
           target_branch: 'gh-pages'
