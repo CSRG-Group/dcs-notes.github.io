@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Welcome to the Warwick first year Computer Science revision guide
 
 This website is a collection of notes for the modules in the first year computer science degree at the University of Warwick.
