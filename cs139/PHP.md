@@ -389,11 +389,11 @@ else{
 ```
 
 # Password Hashing
-Passwords should be hashed for storing to ensure security the hashes can be created with ``password_hash()`
+Passwords should be hashed for storing to ensure security the hashes can be created with `password_hash()`
 and verified with `password_verify($password,$hashedPassword)`
 
 ``` php
-if (isset($_POST['username']) and isset($_POST['password'])){
+if (isset($_POST['username']) && isset($_POST['password'])){
     $password = $_POST['password'];
     $hashedPassword = getHashedPassword($_POST['username']);
     if (password_verify($password ,$hashedPassword)){
@@ -412,22 +412,22 @@ first a database connection must be established
 
 the database can then be queried
 
-`$db.exec(<SQL>)` for result less queries
+`$db->exec(<SQL>)` for result less queries
 
-`$db.query(<SQL>)` which returns a result
+`$db->query(<SQL>)` which returns a result
 
 handing a query result
 
 ``` php
-$result = $de.query("SELECT * FROM Users");
+$result = $db->query("SELECT * FROM Users");
 
-while ($row = $result.fetchArray()){
+while ($row = $result->fetchArray()){
     echo $row['username'];
 }
 ```
 
 # Serialization
-can be sued for storing objects and complex data as a string
+can be used for storing objects and complex data as a string
 `$string = serialize($object);`
 
 the text can then be un-serialized 
@@ -450,7 +450,7 @@ similar to 'C'
 * `file_put_contents()` Writes the contents of a string variable to a file
 
 # Errors
-3 types if errors
+3 types of errors
 * Expected Errors - typing in the wrong name 
 * Warnings - thing to warn the user about, start before end dates
 * Fatal Errors - things that stop the process, should still be recoverable
