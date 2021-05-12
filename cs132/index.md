@@ -25,14 +25,14 @@ omitted (for example, specific operations of the circuit).
 Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the
 entire module can be found [here](./CS132_full.pdf).
 
-Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://yijun.hu/blog-cs/cs132/index.html).
+Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://www.yijun.hu/blog-cs/cs132/index.html).
 
-1. [x] [Data representation](https://yijun.hu/blog-cs/cs132/index.html#)
-2. [x] [Digital logic](https://yijun.hu/blog-cs/cs132/index.html#)
-3. [x] [Assembler](https://yijun.hu/blog-cs/cs132/index.html#)
-4. [x] [Memory systems](https://yijun.hu/blog-cs/cs132/index.html#)
-5. [x] [I/O mechanisms](https://yijun.hu/blog-cs/cs132/index.html#)
-6. [x] [Processor architecture](https://yijun.hu/blog-cs/cs132/index.html#)
+1. [x] [Data representation](https://www.yijun.hu/blog-cs/cs132/index.html#)
+2. [x] [Digital logic](https://www.yijun.hu/blog-cs/cs132/index.html#)
+3. [x] [Assembler](https://www.yijun.hu/blog-cs/cs132/index.html#)
+4. [x] [Memory systems](https://www.yijun.hu/blog-cs/cs132/index.html#)
+5. [x] [I/O mechanisms](https://www.yijun.hu/blog-cs/cs132/index.html#)
+6. [x] [Processor architecture](https://www.yijun.hu/blog-cs/cs132/index.html#)
 
 The following notes will likely take the same/similar form to the CS118 notes. The
 primary source for these will be from **Akram Ahmad** and **Justin Tan**’s
