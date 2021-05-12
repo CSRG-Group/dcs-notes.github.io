@@ -2,7 +2,6 @@
 layout: CS118
 part: true
 title: Variables, Number Systems, and I/O
-nex: part2
 ---
 
 # Variables

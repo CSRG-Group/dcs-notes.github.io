@@ -2,6 +2,14 @@
 layout: notes
 ---
 
+<!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Have part: true
+    - Are defined as a collection in _config.yml
+    - The folder name is "_[Module Code]"
+-->
+
 {%- for p in site[page.mod] -%}
     {%- if p.part == true -%}
         {%- capture title -%}# {{ p.title }}{%- endcapture -%}

@@ -2,8 +2,6 @@
 layout: CS118
 part: true
 title: "Conditionals & Iteratives"
-pre: part1
-nex: part3
 ---
 
 # Conditional Statements

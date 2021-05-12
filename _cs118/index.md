@@ -1,6 +1,7 @@
 ---
 layout: modhome
 title: CS118
+description: Programming for Computer Scientists
 ---
 
 # Welcome to the CS118 Revision Guide 📖
@@ -43,7 +44,7 @@ Along with topics with odd nuances, again including but not limited to:
 
 ## Notes
 
-Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. For the **one page** (`CTRL-f` friendly) version, checkout the [CS118 One Page Notes](118complete.html) version. 
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. For the **one page** (`CTRL-f` friendly) version, checkout the [CS118 One Page Notes](./opnotes) version. 
 
 These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and are linked below by section:
 

@@ -2,8 +2,6 @@
 layout: CS118
 part: true
 title: "Arrays, Methods, Scope, and Recursion"
-pre: part2
-nex: part4
 ---
 
 # Arrays

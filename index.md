@@ -18,21 +18,21 @@ If you've been linked to this site, you've probably also seen us asking for anyo
 
 ## Module notes
 
-### [CS118: Programming for Computer Scientists](cs118/index.html)
+### [CS118: Programming for Computer Scientists](cs118/)
 
-### [CS126: Design of Information Structures](cs126/index.md)
+### [CS126: Design of Information Structures](cs126/)
 
-### [CS130: Mathematics for Computer Scientists I](cs130/index.md)
+### [CS130: Mathematics for Computer Scientists I](cs130/)
 
-### [CS131: Mathematics for Computer Scientists II](cs131/index.md)
+### [CS131: Mathematics for Computer Scientists II](cs131/)
 
-### [CS132: Computer Systems and Architecture](cs132/index.md)
+### [CS132: Computer Systems and Architecture](cs132/)
 
-### [CS139: Web Development Technologies](cs139/index.md)
+### [CS139: Web Development Technologies](cs139/)
 
-### [CS140: Computer Security](cs140/index.md)
+### [CS140: Computer Security](cs140/)
 
-### [CS141: Functional Programming (not yet completed)](cs141/index.md)
+### [CS141: Functional Programming (not yet completed)](cs141/)
 
 More modules will be added as we accumulate notes on them.
 

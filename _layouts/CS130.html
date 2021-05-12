@@ -2,22 +2,7 @@
 layout: notes
 --- 
 
-{%- if page.part == false -%}
-<a href="../../cs130/index.html">🏡CS130 Home</a>
-    {%- for page in site.cs130 -%}
-        {%- if page.part == true -%}
-            <p>{{ page.content | markdownify }}</p><br>
-            {%- if page.nextt != null -%}
-                <hr 
-                style="
-                    border-top: 1px solid gray;
-                    border-bottom: 1px solid gray;
-                    background-color: gray;
-                ">
-            {%- endif -%}
-            
-        {%- endif -%}
-    {%- endfor -%}
-{%- else -%}
-    {{ content }}
-{%- endif -%}
+<!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+{{ content }}
