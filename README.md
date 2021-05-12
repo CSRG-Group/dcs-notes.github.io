@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-14-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-18-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
@@ -22,7 +22,15 @@ First of all, thank you for visiting this site! This website is a collection of 
 
 It is entirely student-run, and not affiliated with or endorsed by the University. We have communicated with members of the department who have said that this project is acceptable, but if at any point we are told this goes against DCS anti-plagiarism guidelines, or any other policy, we will immediately take it down. Additionally, we cannot provide guarantees that all the notes are correct as all content is written by students, however, we will try our hardest to maintain quality.
 
+## Note from the maintainers
 
+If you've been linked to this site, you've probably also seen us asking for anyone who can to pull request. We know that many people are hesitant to put their notes up on this site, whether it be because they think other people seeing their revision material may indirectly disadvantage them, or that they don't think anything they make is good enough to be hosted on a public site - we were too! However, there are a couple of points we'd like to raise to encourage you to contribute and help this site to be the best it can be:
+
+1. Our course isn't marked on a curve, so others using your notes to get better doesn't detriment you
+2. Making notes is a great way to revise, as it makes sure you properly understand the content, and if you know you’re putting them somewhere it gives you accountability to actually get them done
+3. Any content that is contributed is great to have - it doesn't have to be perfect! The beauty of these types of projects is that they inherently allow collaboration, so we can work together to improve any problems you think might be present
+4. Having experience collaborating on an open source project through tools like Git is a really useful skill and is a lot more exciting than what we did with it in CS133, and being able give this as an example of where you've done it in practice could be a cool thing to put on your CV
+5. You'll get a neat icon of you in the contributors section of the README and index pages!
 
 ## Licensing and downloading
 
@@ -56,6 +64,25 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 
 - Please do not re-host any university owned content, including but not limited to past papers and lecture notes
 
+### How do I display Math?
+Firstly, ensure that the top of the markdown (.md) file has YAML Front Matter containing the key-value pair `math: true`. If it's not there, add it into the front matter.
+
+For math sections (ensure that there's a new line before and after the start and end `$$` respectively):
+```
+$$
+1+1=2
+$$
+```
+
+or `$$1+1=2$$` for in-line math
+
+If there is no YAML Front Matter you can add it at the top of the file like this:
+```
+---
+math: true
+---
+```
+
 ### How to make a pull request
 
 1. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), click the "Fork repository" button
@@ -79,12 +106,12 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/EdmundGoodman"><img src="https://avatars.githubusercontent.com/u/37504168?v=4?s=100" width="100px;" alt=""/><br /><sub><b>EdmundGoodman</b></sub></a><br /><a href="#content-EdmundGoodman" title="Content">🖋</a> <a href="#design-EdmundGoodman" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=EdmundGoodman" title="Documentation">📖</a> <a href="#ideas-EdmundGoodman" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-EdmundGoodman" title="Maintenance">🚧</a> <a href="#projectManagement-EdmundGoodman" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/Justanhy"><img src="https://avatars.githubusercontent.com/u/46620327?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Justin Tan</b></sub></a><br /><a href="#content-Justanhy" title="Content">🖋</a> <a href="#design-Justanhy" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=Justanhy" title="Documentation">📖</a> <a href="#ideas-Justanhy" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-Justanhy" title="Maintenance">🚧</a> <a href="#projectManagement-Justanhy" title="Project Management">📆</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3AJustanhy" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/arkamnite"><img src="https://avatars.githubusercontent.com/u/47830962?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akram Ahmad</b></sub></a><br /><a href="#content-arkamnite" title="Content">🖋</a> <a href="#design-arkamnite" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=arkamnite" title="Documentation">📖</a> <a href="#ideas-arkamnite" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-arkamnite" title="Maintenance">🚧</a> <a href="#projectManagement-arkamnite" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/Adrakaris"><img src="https://avatars.githubusercontent.com/u/17861497?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yijun Hu</b></sub></a><br /><a href="#content-Adrakaris" title="Content">🖋</a> <a href="#design-Adrakaris" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/commits?author=Adrakaris" title="Documentation">📖</a> <a href="#ideas-Adrakaris" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-Adrakaris" title="Maintenance">🚧</a> <a href="#projectManagement-Adrakaris" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/jfitz02"><img src="https://avatars.githubusercontent.com/u/73333523?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Fitz</b></sub></a><br /><a href="#content-jfitz02" title="Content">🖋</a> <a href="#ideas-jfitz02" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-jfitz02" title="Project Management">📆</a></td>
-    <td align="center"><a href="https://github.com/leoriviera"><img src="https://avatars.githubusercontent.com/u/11467778?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leo Riviera</b></sub></a><br /><a href="#ideas-leoriviera" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-leoriviera" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://github.com/EdmundGoodman"><img src="https://avatars.githubusercontent.com/u/37504168?v=4?s=100" width="100px;" alt=""/><br /><sub><b>EdmundGoodman</b></sub></a><br /><a href="#content-EdmundGoodman" title="Content">🖋</a> <a href="#design-EdmundGoodman" title="Design">🎨</a> <a href="#admin-EdmundGoodman" title="Admins of CSRG">🔥</a></td>
+    <td align="center"><a href="https://github.com/Justanhy"><img src="https://avatars.githubusercontent.com/u/46620327?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Justin Tan</b></sub></a><br /><a href="#content-Justanhy" title="Content">🖋</a> <a href="#design-Justanhy" title="Design">🎨</a> <a href="#admin-Justanhy" title="Admins of CSRG">🔥</a></td>
+    <td align="center"><a href="https://github.com/arkamnite"><img src="https://avatars.githubusercontent.com/u/47830962?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akram Ahmad</b></sub></a><br /><a href="#content-arkamnite" title="Content">🖋</a> <a href="#design-arkamnite" title="Design">🎨</a> <a href="#admin-arkamnite" title="Admins of CSRG">🔥</a></td>
+    <td align="center"><a href="https://github.com/Adrakaris"><img src="https://avatars.githubusercontent.com/u/17861497?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yijun Hu</b></sub></a><br /><a href="#content-Adrakaris" title="Content">🖋</a> <a href="#design-Adrakaris" title="Design">🎨</a> <a href="#admin-Adrakaris" title="Admins of CSRG">🔥</a></td>
+    <td align="center"><a href="https://github.com/jfitz02"><img src="https://avatars.githubusercontent.com/u/73333523?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Fitz</b></sub></a><br /><a href="#content-jfitz02" title="Content">🖋</a> <a href="#admin-jfitz02" title="Admins of CSRG">🔥</a></td>
+    <td align="center"><a href="https://github.com/leoriviera"><img src="https://avatars.githubusercontent.com/u/11467778?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leo Riviera</b></sub></a><br /><a href="#admin-leoriviera" title="Admins of CSRG">🔥</a></td>
     <td align="center"><a href="https://github.com/Joeyh021"><img src="https://avatars.githubusercontent.com/u/37697107?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joe Harrison</b></sub></a><br /><a href="#content-Joeyh021" title="Content">🖋</a></td>
   </tr>
   <tr>
@@ -96,6 +123,12 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
     <td align="center"><a href="https://github.com/MxttyV"><img src="https://avatars.githubusercontent.com/u/75853467?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MxttyV</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3AMxttyV" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/bora-7"><img src="https://avatars.githubusercontent.com/u/76407294?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bora A.</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Abora-7" title="Bug reports">🐛</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a></td>
+    <td align="center"><a href="http://davidsangojinmi.ml/"><img src="https://avatars.githubusercontent.com/u/26884019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Sangojinmi</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ADavid-Sangojinmi" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/clara-ramsay"><img src="https://avatars.githubusercontent.com/u/77890048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>clara-ramsay</b></sub></a><br /><a href="#content-clara-ramsay" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/mariosbf"><img src="https://avatars.githubusercontent.com/u/40693811?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mariosbf</b></sub></a><br /><a href="#content-mariosbf" title="Content">🖋</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
@@ -103,7 +136,12 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Generally, "🖋" means contributing notes to the project, "🐛" means making a pull request to fix mistakes in someone else's notes, and all other emojis refer to internal administrative tasks. See [the all-contributors emoji key](https://allcontributors.org/docs/en/emoji-key) for a more comprehensive summary.
+This table is generated by the [all-contributors bot](https://allcontributors.org). The emojis mean the following in this project:
+- "🐛" means making a pull request to fix mistakes in someone else's notes
+- "🖋" means contributing notes to the project (this supersedes 🐛)
+- "🎨" means doing design work for the website
+- "🔥" means being responsible for internal administrative tasks (note: 🔥 is a custom key named "admin")
+
 
 
 ## Contact us
@@ -115,4 +153,3 @@ If you have any additional questions, or want to become more involved in contrib
 
 
 **Many thanks once again for visiting.**
-

@@ -1,9 +1,9 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: true
 title: "Arrays, Methods, Scope, and Recursion"
-prev: part2.html
-nextt: part4.html
+pre: part2
+nex: part4
 ---
 
 # Arrays, Methods, Scope, and Recursion

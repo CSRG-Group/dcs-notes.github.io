@@ -39,9 +39,8 @@ Detailed handwritten notes for CS130 by **Edmund Goodman** which cover the entir
 
 In addition to full notes, there is a condensed "crib sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
 
-- [General crib sheet](./cribSheet)
+- [General crib sheet](./cribSheet.html)
 
 
 Since the exam is held online this year (2021), questions are likely to be more proof than solution based, so a document on standard proof techniques is also likely to prove useful:
-- [Proof approaches](./proofApproaches)
-
+- [Proof approaches](./proofApproaches.html)

@@ -1,8 +1,8 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: true
 title: Variables, Number Systems, and I/O
-nextt: part2.html
+nex: part2
 ---
 
 # Variables, Number Systems, and I/O

@@ -1,9 +1,9 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: true
 title: "Conditional Statements"
-prev: part1.html
-nextt: part3.html
+pre: part1
+nex: part3
 ---
 
 # Conditional Statements

@@ -1,9 +1,9 @@
 ---
-layout: 118/CS118
+layout: CS118
 part: true
 title: "Object Oriented Programming"
-prev: part3.html
-nextt: part5.html
+pre: part3
+nex: part5
 ---
 
 # Object Oriented Programming (OOP)

@@ -25,6 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
+markdown: kramdown
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -45,6 +46,12 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
 
 collections:
   cs118:
