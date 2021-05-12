@@ -246,3 +246,83 @@ $i \leftarrow i + 1$
 
 **END ALGORITHM**
 
+
+## Directed graphs
+
+- This algorithm is the Floyd Warshall algorithm, which is used to compute the transitive closure on a directed graph.
+
+**Algorithm** $FloydWarshall(G)$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**Input** digraph $G$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**Output** transitive closure $G^*$ of $G$ <br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$i \leftarrow 1$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**for all** $v \in G.vertices()$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+denote $v$ as $v_i$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$i \leftarrow i + 1$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$G_0 \leftarrow G$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**for** $k \leftarrow 1$ **to** $n$ **do**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$G_k \leftarrow G_{k-1}$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**for** $i\leftarrow 1$ **to** $n(i\neq k)$ **do** <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**for** $j \leftarrow 1$ **to** $n(j\neq i, k)$ **do** <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**if** $G_{k-1}.areAdjacent(v_i,v_k)$  $\&$ $G_{k-1}.areAdjacent(v_k,v_j)$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**if** $¬G_{k-1}.areAdjacent(v_i,v_j)$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$G_k.insertDirectedEdge(v_i,v_j,k)$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**return** $G_n$
+<br><br><br>
+
+### Topological ordering using DFS 
+
+**Algorithm** $topologicalDFS(G)$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**Input** dag $G$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**Output** topotlogical ordering of G <br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$n \leftarrow G.numVertices()$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**for all** $u\in G.vertices()$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$setLabel(,UNEXPLORED)$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**for all** $v\in G.vertices()$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**if** $getLabel(v) = UNEXPLORED$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$topologicalDFS(G,v)$
+<br><br><br>
+**Algorithm** $topologicalDFS(G,v)$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**Input** graph $G$ and start a vertex $v$ of $G$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**Output** labeling of the vertices of G in the connected component of $v$ <br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$setLabel(v, VISITED)$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**for all** $e\in G.outEdges(v)$  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$w\in opposite(v,e)$ // Outgoing edges <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**if** $getLabel(w) = UNEXPLORED$  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$topologicalDFS(G,w)$ // $e$ is a discovery edge<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**else** <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Label $v$ with topological number $n$ // $e$ is a forward or cross edge<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$n\leftarrow n - 1$ <br>
+
