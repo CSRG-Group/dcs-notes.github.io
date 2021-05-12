@@ -27,9 +27,14 @@ omitted (for example, specific operations of the circuit).
 Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the
 entire module can be found [here](./CS132_full.pdf).
 
-Detailed typed notes for CS132 by **Yijun Hu** can be found
-[here](https://adrakaris.github.io/blog-cs/cs132/index.html). (*as of the end of
-april these are WIP*)
+Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://www.yijun.hu/blog-cs/cs132/index.html).
+
+1. [x] [Data representation](https://www.yijun.hu/blog-cs/cs132/index.html#)
+2. [x] [Digital logic](https://www.yijun.hu/blog-cs/cs132/index.html#)
+3. [x] [Assembler](https://www.yijun.hu/blog-cs/cs132/index.html#)
+4. [x] [Memory systems](https://www.yijun.hu/blog-cs/cs132/index.html#)
+5. [x] [I/O mechanisms](https://www.yijun.hu/blog-cs/cs132/index.html#)
+6. [x] [Processor architecture](https://www.yijun.hu/blog-cs/cs132/index.html#)
 
 These notes will likely take the same/similar form to the CS118 notes. The
 primary source for these will be from **Akram Ahmad** and **Justin Tan**’s
@@ -63,5 +68,3 @@ Typed solutions by **Josh Fitzmaurice** with contributions from **Edmund Goodman
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
 
 [Flash Cards](https://quizlet.com/_9pgkq4?x=1jqt&i=18al03)
-
-
