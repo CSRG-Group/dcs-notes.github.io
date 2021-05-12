@@ -183,6 +183,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "nianyii-teh",
+      "name": "Nian Yii Teh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64478251?v=4",
+      "profile": "https://github.com/nianyii-teh",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github",
