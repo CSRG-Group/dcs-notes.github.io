@@ -22,7 +22,14 @@ In the words of Matt, **all of the above topics are examinable**. However, there
 Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the entire module can be found [here](./CS132_full.pdf).
 
 
-Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://adrakaris.github.io/blog-cs/cs132/index.html). (*as of the end of april these are WIP*)
+Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://yijun.hu/blog-cs/cs132/index.html).
+
+1. [x] [Data representation](https://yijun.hu/blog-cs/cs132/index.html#)
+2. [x] [Digital logic](https://yijun.hu/blog-cs/cs132/index.html#)
+3. [x] [Assembler](https://yijun.hu/blog-cs/cs132/index.html#)
+4. [x] [Memory systems](https://yijun.hu/blog-cs/cs132/index.html#)
+5. [x] [I/O mechanisms](https://yijun.hu/blog-cs/cs132/index.html#)
+6. [x] [Processor architecture](https://yijun.hu/blog-cs/cs132/index.html#)
 
 These notes will likely take the same/similar form to the CS118 notes. The primary source for these will be from my (Akram) notes; any other sources or contributions will be duly cited/ attributed.
 
