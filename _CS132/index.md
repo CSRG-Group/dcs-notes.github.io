@@ -54,15 +54,20 @@ We are in the process of compiling student-written solutions to the worksheets
 provided for 132. Please note that these do not necessarily hit all the marking
 points, nor are guaranteed to be correct.
 
-Handwritten solutions by **Clara Ramsay-Gray**:
+## Unofficial worksheet solutions
 
-1. [x] [Digital logic](worksheets/assemblerHandwritten.pdf)
-2. [x] [Assembler](worksheets/digitalLogicHandwritten.pdf)
-3. [ ] Memory systems
-4. [ ] I/O mechanisms
-5. [ ] Processor architecture
+We are in the process of compiling student-written solutions to the worksheets
+provided for 132. Please note that these do not necessarily hit all the marking
+points, nor are guaranteed to be correct.
 
-Typed solutions by **Josh Fitzmaurice** with contributions from **Edmund Goodman** *work in progress*:
+| Topic                      | Josh Fitzmaurice | Edmund Goodman | Clara Ramsay-Gray                                     |
+| -------------------------- | ---------------- | -------------- | ----------------------------------------------------- |
+| [x] Data representation    | [Typed](#)       | -              | [Handwritten](worksheets/assemblerHandwritten.pdf)    |
+| [x] Digital logic          | [Typed](#)       | -              | [Handwritten](worksheets/digitalLogicHandwritten.pdf) |
+| [x] Assembler              | -                | [Typed](#)     | -                                                     |
+| [x] Memory Systems         | -                | [Typed](#)     | -                                                     |
+| [x] I/O mechanisms         | [Typed](#)       | -              | -                                                     |
+| [ ] Processor architecture | -                | -              | -                                                     |
 
 ## Flash Cards
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
