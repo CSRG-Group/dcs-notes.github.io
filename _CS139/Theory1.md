@@ -3,8 +3,6 @@ layout: CS139
 title: History of the Internet
 math: true
 part: true
-pre: SQL
-nex: Theory2
 ---
 
 # History of the internet

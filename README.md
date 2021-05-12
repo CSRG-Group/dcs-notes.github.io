@@ -38,8 +38,6 @@ This work is licensed under Creative Commons "Attribution-NonCommercial-ShareAli
 
 If you want to take a local download of the repository, please consider taking a fork as opposed to a clone, as that means it is easier for you to both stay up to date, and to contribute later if you want to. Furthermore, it helps us to some extent see how many people are interested in what we are doing.
 
-
-
 ## Contributing
 
 We welcome pull requests from anyone who is happy to share their notes, and would be incredibly grateful for any input of content for the individual pages! We will try to provide any reasonable attribution you would like for content you contribute, and any contributions mean we get a more full coverage of the content finished faster, so everyone on the course can benefit from high quality shared notes.
@@ -63,6 +61,30 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 - If you are directly sourcing content that is not your own, **please add the correct citations**. For images or text taken verbatim from a source, please include a link to the site it is taken from, and exercise common sense for other cases
 
 - Please do not re-host any university owned content, including but not limited to past papers and lecture notes
+
+### How do I order/re-order the pages for each topic?
+If you're contributing to notes that are split into parts and want to change the order or insert something in between topics, and have the navbar navigate to it you can reorder the files in the _config.yml file.
+
+```yaml
+
+collections:
+  CS118:
+    label: CS118
+    relative_directory: ./_CS118
+    output: true
+    # Just reorder the files here in anyway or insert your 
+    # new file in between or after. Remember, you'll need to define 
+    # part: true in the front-matter of your .md file for this to work
+    order:
+      - part1.md  
+      - part2.md  
+      - part3.md  
+      - part4.md
+      - part5.md
+      - part6.md
+      - part7.md
+
+```
 
 ### How do I display Math?
 Firstly, ensure that the top of the markdown (.md) file has YAML Front Matter containing the key-value pair `math: true`. If it's not there, add it into the front matter.

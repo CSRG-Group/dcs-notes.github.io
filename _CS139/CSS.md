@@ -3,8 +3,6 @@ layout: CS139
 title: CSS
 math: true
 part: true
-pre: HTML
-nex: PHP
 ---
 
 

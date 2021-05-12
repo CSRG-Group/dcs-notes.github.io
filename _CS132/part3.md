@@ -3,8 +3,6 @@ layout: CS132
 math: true
 title: Assembler
 part: true
-pre: part2
-nex: part4
 ---
 # Microprocessor Fundamentals
 

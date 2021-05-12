@@ -3,8 +3,6 @@ layout: CS126
 part: true
 math: true
 title: "Binary search and self-balancing trees"
-pre: part9
-nex: part11
 ---
 
 

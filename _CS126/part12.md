@@ -3,7 +3,6 @@ layout: CS126
 part: true
 math: true
 title: "General algorithms"
-pre: part11
 ---
 
 # Searching data structures

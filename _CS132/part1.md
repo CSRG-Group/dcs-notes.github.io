@@ -3,7 +3,6 @@ layout: CS132
 title: Data Representation
 math: true
 part: true
-nex: part2
 ---
 
 ## Representation and number systems

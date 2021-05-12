@@ -4,8 +4,6 @@ slides: true
 math: true
 title: Digital Logic
 part: true
-pre: part1
-nex: part3
 ---
 
 # Logic Gates, Circuits and Truth tables

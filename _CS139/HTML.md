@@ -3,7 +3,6 @@ layout: CS139
 title: HTML
 math: true
 part: true
-nex: CSS
 ---
 
 # Introduction

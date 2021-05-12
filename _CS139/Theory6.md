@@ -3,7 +3,6 @@ layout: CS139
 title: Security
 math: true
 part: true
-pre: Theory5
 ---
 # Hashing algorithms
 

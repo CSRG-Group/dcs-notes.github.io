@@ -3,8 +3,6 @@ layout: CS132
 math: true
 title: Memory Systems
 part: true
-pre: part3
-nex: part5
 ---
 
 # Memory hierarchy

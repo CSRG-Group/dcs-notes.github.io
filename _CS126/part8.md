@@ -3,8 +3,6 @@ layout: CS126
 part: true
 math: true
 title: "Heaps"
-pre: part7
-nex: part9
 ---
 
 
