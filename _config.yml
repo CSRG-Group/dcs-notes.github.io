@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 repository: CSRG-Group/dcs-notes.github.io
 baseurl: "/dcs-notes.github.io"
 # Build settings
-theme: jekyll-theme-cayman
+# theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 markdown: kramdown
