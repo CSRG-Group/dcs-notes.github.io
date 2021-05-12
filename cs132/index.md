@@ -38,7 +38,7 @@ notes; any other sources or contributions will be duly cited/attributed.
 3. [x] [Assembler](part3.html)
 4. [x] [Memory systems](part4.html)
 5. [x] [I/O mechanisms](part5.html)
-6. [ ] Processor architecture
+6. [x] [Processor architecture](part6.html)
 
 
 ## Unofficial worksheet solutions
@@ -57,6 +57,7 @@ Handwritten solutions by **Clara Ramsay-Gray**:
 
 Typed solutions by **Josh Fitzmaurice** with contributions from **Edmund Goodman** *work in progress*:
 
+## Flash Cards
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
 
 [Flash Cards](https://quizlet.com/_9pgkq4?x=1jqt&i=18al03)
