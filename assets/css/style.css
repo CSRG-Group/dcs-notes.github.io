@@ -366,7 +366,7 @@ blockquote blockquote { padding-right: 0; }
 
 .partNav { display: flex; z-index: 1; justify-content: space-between; background-color: white; position: sticky; font-size: 20px; top: 0px; }
 
-// Point of no return
+/* // Point of no return */
 
 :root {
   --buttonCol-width: 2em;
@@ -384,7 +384,7 @@ blockquote blockquote { padding-right: 0; }
   margin-right: auto;
 }
 
-/// Custom CSS properties for <details> tag
+/* /// Custom CSS properties for <details> tag */
 details {
   cursor: pointer;
   padding: 1em;
@@ -397,19 +397,19 @@ summary {
   font-weight: bold;
 }
 
-/// Image that grows when hovered
+/* /// Image that grows when hovered */
 .growimg {
   transition:transform 0.5s ease-in-out;
   transform-origin: top;
 }
 
-// Hover properties for growimg
+/* // Hover properties for growimg */
 .growimg:hover {
   -webkit-transform:scale(1.5); /* or some other value */
   transform:scale(1.5);
 }
 
-/// Overwrite default props for blockquotes
+/* /// Overwrite default props for blockquotes */
 .main-content blockquote {
   width: 100%;
   color: black;
@@ -420,7 +420,7 @@ summary {
   margin: 1rem 0rem 1.5rem 0rem;
 }
 
-// Used to signify that a certain blockquote is extra information
+ /* // Used to signify that a certain blockquote is extra information */
 blockquote.extra {
   border-left: 4px solid  darkgoldenrod;
 }
@@ -429,7 +429,7 @@ blockquote blockquote {
   padding-right: 0;
 }
 
-/// Grid outline for notes layout
+/* /// Grid outline for notes layout */
 .container {
   display: grid;
   width: 100%;
@@ -438,7 +438,7 @@ blockquote blockquote {
   transition: width 0.5s ease;
 }
 
-// Container that contains sidenav menu 
+/* // Container that contains sidenav menu  */
 .navBox {
   grid-area: nav;
   -webkit-transition: width 0.5s ease;
@@ -447,7 +447,7 @@ blockquote blockquote {
   transition: width 0.5s ease;
 }
 
-// Actual sidenav menu - separated the 2 to allow for sticky sidenav
+/* // Actual sidenav menu - separated the 2 to allow for sticky sidenav */
 .sideNav {
   width: 30vw;
   height: 100vh;
@@ -466,14 +466,14 @@ blockquote blockquote {
   width: 0px;
 }
 
-/// NavBar toggle button 
+/* /// NavBar toggle button  */
 .buttonCol {
   grid-area: button;
   cursor: pointer;
   background-color: whitesmoke;
 }
 
-// The arrow symbol you see, following css properties are all for the rotation
+/* // The arrow symbol you see, following css properties are all for the rotation */
 .navArrow {
   position: sticky;
   top: 50vh;
@@ -485,14 +485,14 @@ blockquote blockquote {
 .navArrow i {
   position: absolute;
   --arrow-width: calc(var(--buttonCol-width) * 0.4);
-  left: calc((var(--buttonCol-width) - var(--arrow-width)) / 2); // Align i to the center of navArrow div
+  left: calc((var(--buttonCol-width) - var(--arrow-width)) / 2); /* Align i to the center of navArrow div */
 }
 
 .navArrow i::before,
 .navArrow i::after {
   content: '';
   position: absolute;
-  width: var(--arrow-width);  // both i and i::after will have length = 0.67 * width of container
+  width: var(--arrow-width);  /* both i and i::after will have length = 0.67 * width of container */
   height: 4px;
   border-radius: 20px;
   background-color: grey;
@@ -515,7 +515,7 @@ blockquote blockquote {
   transform: rotate(22.5deg);
 }
 
-/// Contents of grid -- main content of markdown usually
+/* /// Contents of grid -- main content of markdown usually */
 .contents {
   grid-area: content;
 }
