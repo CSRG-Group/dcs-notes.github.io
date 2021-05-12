@@ -21,6 +21,7 @@
 title: Computer Science Revision Guides
 description: >- # this means to ignore newlines until "baseurl:"
   A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick
+repository: CSRG-Group/dcs-notes.github.io
 # Build settings
 theme: jekyll-theme-cayman
 plugins:
