@@ -55,7 +55,6 @@ defaults:
 
 collections:
   CS118:
-    part: true
     label: CS118
     relative_directory: ./_CS118
     output: true

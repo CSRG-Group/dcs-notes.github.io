@@ -1,7 +1,7 @@
 ---
 layout: CS118
 part: true
-title: "Conditional Statements"
+title: "Conditionals & Iteratives"
 pre: part1
 nex: part3
 ---
@@ -115,7 +115,7 @@ Whilst you are most likely familiar with `while` and `for` loops, it is importan
 
 ## Bounded repetition
 
-#### Bounded repetition criteria
+### Bounded repetition criteria
 We use bounded repetition when we know all of the following:
 - Where to start
 - Where to end

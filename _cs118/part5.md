@@ -6,10 +6,7 @@ pre: part4
 nex: part6
 ---
 
-# Inheritance, Abstract Classes, and Interfaces
-
-
-## Inheritance
+# Inheritance
 
 Just like how we inherit certain traits from our parents, *subclasses* (children classes) inherit **all** methods and fields from their *superclass* (parent class) at first. After which, we can override or add features to the subclass. This is how we would do it in Java:
 
@@ -56,7 +53,7 @@ If we call the `eat()` method from the `chocolate` now we will get
 This cake tastes amazing!
 ```
 
-#### The `@Override` annotation
+## The `@Override` annotation
 
 Before overriding the method in the `Cake` example, we write `@Override`, which is called a "method annotation". This indicates to the compiler that method overriding is occurring. This is not required to compile, but it comes with the benefits of:
 
@@ -65,21 +62,21 @@ Before overriding the method in the `Cake` example, we write `@Override`, which 
 
 More information is available [here](https://stackoverflow.com/questions/94361/when-do-you-use-javas-override-annotation-and-why), [here](https://stackoverflow.com/questions/4822954/do-we-really-need-override-and-so-on-when-code-java), and [here](https://beginnersbook.com/2014/07/override-annotation-in-java/).
 
-### Why inheritance?
+## Why inheritance?
 
 You probably already know this, but inheritance means that we can reduce repeated code. Another reason to use inheritance is so that **run-time polymorphism** is possible! We will discuss this in further detail below but essentially it allows us to define a general method for a superclass but do something specific to it depending on the eventual subclass that we have no knowledge of at compile time.
 
-### The `super` and `this` keyword
+## The `super` and `this` keyword
 
 The `this` keyword is used to refer to the current instance of the class. In a similar way, the `super` keyword is used to refer to the superclass of the current instance.
 
-### `super` in the subclass constructor
+## `super` in the subclass constructor
 
 The superclass’s constructor should be the first thing that you call when defining the subclass constructor - especially if there are parameters that the `super` constructor must take. Otherwise, Java will call the default (no argument) `super ` constructor `super()` - and if it is meant to take parameters you will get a compile-time error.
 
 If your subclass happens to have 2 constructors then one of them should call the other constructor with `this()` and the other should have `super()` in it.
 
-### Method overriding
+## Method overriding
 
 From the example on the `Cake` class above, you have seen how we can override a method from a superclass. How about if we just want to extend the method but we don’t want to change anything in the super method? That’s right, we can call the `super` method in the subclass method:
 
@@ -127,9 +124,9 @@ public class Cake extends Food {
 
 We would have to use the getter method `getName()` to get the String value of the `name` field in `Food`. However, it is **valid** if we set *private* to *protected*.
 
-## Polymorphism
+# Polymorphism
 
-### Static Polymorphism
+## Static Polymorphism
 
 **Static polymorphism** is essentially method overloading. It is polymorphism because the name of the method can represent different methods and how Java understands which method to call is based on the **type** and/or **number** of parameters!
 
@@ -156,7 +153,7 @@ Hi!
 Hi cake!
 ```
 
-### Dynamic Polymorphism
+## Dynamic Polymorphism
 
 On the other hand, **Dynamic Polymorphism** is run-time polymorphism - Java will determine what class to treat a specific object when the program is executed.
 
@@ -256,7 +253,7 @@ public static void main(String[] args) {
 }
 ```
 
-#### Something to note:
+### Something to note:
 
 If you’re on Java SE 15 or newer and try this line of code below - you will get an error.
 
@@ -266,15 +263,15 @@ System.out.println(cheeseCake instanceof Hungryboi)
 
 That’s because at compile-time, Java knows casting fails so `instanceof ` comparison will fail as well and it tries to warn you to save you time. Click [here](https://stackoverflow.com/questions/2551337/instanceof-incompatible-conditional-operand-types) for a better explanation.
 
-## Quick Recap
+# Quick Recap
 
-### Static vs Dynamic Polymorphism
+## Static vs Dynamic Polymorphism
 
 **Static polymorphism** has to deal with polymorphism at compile-time. This usually refers to method overloading where a single method name can refer to a range of methods that differ by either the **type** of their parameters or the **number** of parameters they have. The Java compiler identifies this at compile-time and it is converted into byte-code for the JVM (Java Virtual Machine) to interpret, which then converts the byte-code to the native machine code and executes the program.
 
 **Dynamic polymorphism** refers to polymorphism at run-time, this is because the JVM decides which method is to be called only at run-time. At compile-time, calling a method is considered by its reference type (e.g. `Food somefood` is of type food where `somefood` is the reference). At run-time, the specific method that is called will be decided by the type of the object that the reference is pointing to/holding (e.g. `Food somefood = new Cake()`, so the methods that will be called will be from the `Cake` class). Here we say that it is resolved at run-time because the compiler does not know if the method has been overridden or not ([N. Joshi, 2019](https://dzone.com/articles/how-does-jvm-handle-polymorphism-method-overloadin#logical-way:~:text=considered from the reference type. But,object which the reference is holding.)).
 
-### Method overloading vs overriding
+## Method overloading vs overriding
 
 Two methods are **overloaded** when they have the same name but different types/number of arguments (essentially their list of arguments must look different). Other than that, overloaded methods can return different types, do different things or throw different exceptions. Method overloading can happen in the same class or in subclasses.
 
@@ -282,11 +279,11 @@ A method from a subclass **overrides** a method from a superclass when it has th
 
 Check out [this](https://dzone.com/articles/everything-about-method-overloading-vs-method-overriding) article by Naresh Joshi for a more in-depth explanation.
 
-## Abstract Classes
+# Abstract Classes
 
 If we recall, the motivation behind inheritance is to reduce repeated code and to allow for run-time polymorphism. By now you should realise that each subclass becomes more specific than its superclass, and eventually superclasses become so general that they seem abstract. We can call these general classes **abstract classes**.
 
-### Properties of abstract classes
+## Properties of abstract classes
 
 Firstly, abstract classes **cannot** be instantiated. The reason is that they are meant to capture common properties and behaviours at an abstract level and are meant to be **extended** (or inherited from) to make a subclass that is more specific. Therefore, there should not be a need to instantiate abstract classes.
 
@@ -324,7 +321,7 @@ Just in case there’s confusion: Inheriting from an abstract class is the same 
 public class NewYorkCheeseCake extends Food {...}
 ```
 
-## Interfaces
+# Interfaces
 
 Now that you have an idea of what an **abstract class** is, what its properties are, and what it is kind of used for, interfaces become really easy to understand. Just think of interfaces as the most abstract class in a hierarchy of classes. This is where there are no **concrete methods** at all and all methods are **abstract**.
 
@@ -340,7 +337,7 @@ and this is how we *implement* an interface (I sincerely apologise for my lack o
 public class Hi2 implements Hi {...}
 ```
 
-### Properties of interfaces
+## Properties of interfaces
 
 As mentioned earlier, interfaces have no **concrete methods** and all methods are **abstract**.
 
@@ -362,17 +359,17 @@ public interface Hi {
 }
 ```
 
-## Multiple inheritance
+# Multiple inheritance
 
 While Java doesn’t allow multiple inheritance (meaning that we can’t extend from two different superclasses - only 1 superclass per subclass!), Java allows you to implement multiple inheritance because interfaces just require a class that implements it to define a particular method - there is no “inheritance” of a particular definition of a method.
 
-### Why interfaces?
+## Why interfaces?
 
 This all seems pretty useless doesn’t it? If we aren’t defining anything concrete, why bother with interfaces at all? (That’s what I thought too until I was enlightened 🤯).
 
 *We bother because interfaces are used to **encapsulate** a small subset of functionality/a property.*
 
-#### What does that mean?
+### What does that mean?
 
 Interfaces allow us to give **concrete classes** a certain functionality/property that perhaps isn’t appropriate to define in a subclass-superclass class hierarchy. Lets give an example to explain:
 

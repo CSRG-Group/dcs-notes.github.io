@@ -5,8 +5,6 @@ title: Variables, Number Systems, and I/O
 nex: part2
 ---
 
-# Variables, Number Systems, and I/O
-
 # Variables
 
 **Variables** are what we store _values_ in. A value can be anything from a primitive value, all the way up to an object instance. They're declared like this:

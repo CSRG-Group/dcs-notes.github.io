@@ -5,9 +5,9 @@ title: "Generics and the Java Class Library"
 pre: part6
 ---
 
-# Generics and the Java Class Library
+By this point, you're most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour.
 
-By this point, you're most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour. 
+## Why Generics
 
 Using **generics** in your code makes it **safer** and **more reusable**, notably it allows
 

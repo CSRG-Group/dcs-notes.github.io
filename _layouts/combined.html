@@ -3,8 +3,10 @@ layout: notes
 ---
 
 {%- for p in site[page.mod] -%}
-    {%- if p.part == true -%}        
-        <p>{{ p.content | markdownify }}</p>
+    {%- if p.part == true -%}
+        {%- capture title -%}# {{ p.title }}{%- endcapture -%}
+        {{ title | markdownify }}       
+        {{ p.content | markdownify }}
         {%- if p.nex != null -%}
             <br/>
             <hr style="
