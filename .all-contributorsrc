@@ -165,6 +165,24 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "clara-ramsay",
+      "name": "clara-ramsay",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77890048?v=4",
+      "profile": "https://github.com/clara-ramsay",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "mariosbf",
+      "name": "mariosbf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40693811?v=4",
+      "profile": "https://github.com/mariosbf",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "repoType": "github",
