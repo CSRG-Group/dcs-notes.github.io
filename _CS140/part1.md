@@ -4,7 +4,7 @@ layout: CS140
 title: Introduction to Computer Security
 ---
 
-# 2 Features of Computer Security
+## 2 Features of Computer Security
 
 **There is no such thing as absolute computer security.** If we want to know whether a system is secure, there are many questions to ask.
 
@@ -32,7 +32,7 @@ title: Introduction to Computer Security
 
 > Beautiful cryptography can be regularly compromised by bad implementations (human error).
 
-# CIA Triangle
+## CIA Triangle
 
 A security model that defines three key aspects that should be guaranteed at all times
 
@@ -40,13 +40,13 @@ A security model that defines three key aspects that should be guaranteed at all
 2. **Integrity.** No unauthorised change
 3. **Availability.** Users are not denied access to resources or have unwarranted delay.
 
-# Case studies
+## Case studies
 
-## Malware - The Morris worm
+### Malware - The Morris worm
 
 Robert Morris tried to measure the size of the Internet. The worm could get into a computer through rsh, generate a process and invoke the OS commands to obtain certain information about the network. 
 
-### Worm vs Virus
+#### Worm vs Virus
 
 Both self-replicate and likely to achieve rapid population growth
 
@@ -54,17 +54,17 @@ Both self-replicate and likely to achieve rapid population growth
 - Worm - standalone, doesn't need a host program.
 - Sometimes they are used interchangeably 
 
-## Denial of service - takes on Georgian blogger
+### Denial of service - takes on Georgian blogger
 
 Attackers sends a massive number of requests to access the service sites so that the sites are too busy to serve the requests from the genuine users
 
-## Hacktivism
+### Hacktivism
 
 Used as a protest action against governments/institutions. 
 
 Anonymous took down US government websites: White House, Department of Justice and FBI. Music sites like Universal Music was targeted too. Coordinated, decentralized, very effective.
 
-## Social engineering
+### Social engineering
 
 Hacking a system doesn't involve technical skills
 
@@ -73,17 +73,17 @@ Hacking a system doesn't involve technical skills
   - No technical skill, just social skills
 - Kevin Mitnick - notorious hacker in the 80s to 90s, wrote the Art of Deception book.
 
-## Physical security
+### Physical security
 
 Russian programmer taken hostage in 2010. People can be threatened, physical locations can be breached, dumpsters can be dived!
 
 > **This is why we say there is no such thing as 100% Com Sec.**
 
-# Basic Terminology
+## Basic Terminology
 
 Before we dive into risk analysis methods, we will cover basic terminology in security.
 
-## Asset
+### Asset
 
 > Anything we value enough so that we want to protect it
 
@@ -93,7 +93,7 @@ Before we dive into risk analysis methods, we will cover basic terminology in se
 - Laptop, mobile phone, staff, customers, consultants. 
 - Company reputation
 
-## Vulnerability
+### Vulnerability
 
 > A flaw or weakness in a system's design, implementation, or operation and management that could be exploited to violate the system's security policy. 
 
@@ -103,7 +103,7 @@ Before we dive into risk analysis methods, we will cover basic terminology in se
 - Program bug
 - New employee doesn't understand the security policy
 
-## Threat
+### Threat
 
 > A potential for violation of security, which exists when the attacker has the capability and intention to breach security 
 
@@ -124,7 +124,7 @@ Evaluation models of threat (Microsoft STRIDE)
 | **Denial of Service**      | Availability                                                 |
 | **Elevation of Privilege** | Authorisation                                                |
 
-## Risk
+### Risk
 
 > An expectation of loss expressed as the **probability** of an actual attack a threat will exploit a vulnerability with a harmful result. 
 
@@ -137,7 +137,7 @@ Evaluation models of threat (Microsoft STRIDE)
 
 Here is a [case study](https://www.pilgrimsgroup.com/news.php?id=94) for analysing the threat and risk.
 
-## Attack
+### Attack
 
 > An assault on security that derives from a threat. A threat that has been realised
 
@@ -147,7 +147,7 @@ Here is a [case study](https://www.pilgrimsgroup.com/news.php?id=94) for analysi
 
 Social engineering attack is another type of attack that just requires social skills, no technical skills.
 
-## Countermeasure
+### Countermeasure
 
 > An action that reduces a threat, vulnerability, harm, or by eliminating or preventing the attack or by detecting the attack and reacting with corrective action. Anything that will reduce the violation of the security. 
 
@@ -157,7 +157,7 @@ Social engineering attack is another type of attack that just requires social sk
 - Detection: Intrusion detection system
 - Reaction: Login systems that lock users out after 3 failed attempts. 
 
-## Trust
+### Trust
 
 > "It is impossible to design a security system that is devoid of trust; we have to trust something. Even the person who writes his own security software has to trust his compiler and computer." 
 >
@@ -171,7 +171,7 @@ Social engineering attack is another type of attack that just requires social sk
 - Affects our view of threat and thus the countermeasures we employ
 - Trust is also a valuable business asset - it is something that a business would want to protect and maintain. 
 
-# Risk Analysis
+## Risk Analysis
 
 **Informal risk analysis.**
 
@@ -179,9 +179,9 @@ Social engineering attack is another type of attack that just requires social sk
 - Identify vulnerabilities
 - Identify threats
 
-## Qualitative analysis
+### Qualitative analysis
 
-### Checklist Method
+#### Checklist Method
 
 Examples: the **DREAD** model by Microsoft:
 
@@ -195,7 +195,7 @@ Examples: the **DREAD** model by Microsoft:
 
 **Discoverability** - how easy is it to discover the threat?
 
-### Mathematical Method
+#### Mathematical Method
 
 One example of a mathematical method of analysis is **Fault Tree Analysis.** 
 
@@ -215,7 +215,7 @@ Car Won't Start:
 
 This can only tell us the probability an attack will occur. Afterwards, we still have to determine the amount of harm that it will cause, and we will get some form of **measurable risk**.
 
-# Analysing Security Incidents
+## Analysing Security Incidents
 
 Key questions to ask are: 
 
