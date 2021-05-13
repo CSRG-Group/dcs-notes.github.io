@@ -21,8 +21,10 @@
 title: Computer Science Revision Guides
 description: >- # this means to ignore newlines until "baseurl:"
   A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick
+repository: CSRG-Group/dcs-notes.github.io
+baseurl: "/dcs-notes.github.io"
 # Build settings
-theme: jekyll-theme-cayman
+# theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 markdown: kramdown
@@ -54,7 +56,79 @@ defaults:
       layout: "default"
 
 collections:
-  cs118:
-    label: cs118
-    relative_directory: ./_cs118
+  CS118:
+    label: CS118
+    relative_directory: ./_CS118
     output: true
+    order:
+      - part1.md
+      - part2.md
+      - part3.md
+      - part4.md
+      - part5.md
+      - part6.md
+      - part7.md
+  CS126:
+    label: CS126
+    relative_directory: ./_CS126
+    output: true
+    order:
+      - part1.md
+      - part2.md
+      - part3.md
+      - part4.md
+      - part5.md
+      - part6.md
+      - part7.md
+      - part8.md
+      - part9.md
+      - part10.md
+      - part11.md
+      - part12.md
+      - pseudoCodes.md
+  CS130:
+    output: true
+  CS131:
+    output: true
+  CS132:
+    output: true
+    order:
+      - part1.md
+      - part2.md
+      - part3.md
+      - part4.md
+      - part5.md
+      - part6.md
+  CS139:
+    output: true
+    order:
+      - HTML.md
+      - CSS.md
+      - PHP.md
+      - JavaScript.md
+      - SQL.md
+      - Theory1.md
+      - Theory2.md
+      - Theory3.md
+      - Theory4.md
+      - Theory5.md
+      - Theory6.md
+  CS140:
+    label: CS140
+    relative_directory: ./_CS140
+    output: true
+    order:
+      - part1.md
+      - part2.md
+      - part3.md
+      - part4.md
+      - part5.md
+      - part6.md
+      - part7.md
+      - part8.md
+  CS141: 
+    label: CS141
+    relative_directory: ./_CS141
+    output: true
+    order:
+      - laws.md
