@@ -3,11 +3,9 @@ layout: CS132
 math: true
 title: Memory Systems
 part: true
-pre: part3
-nex: part5
 ---
 
-# Memory hierarchy
+## Memory hierarchy
 When deciding on a memory technology, you must consider the following factors:
 - Frequency of access
 - Access time
@@ -23,7 +21,7 @@ We know that roughly **90%** of memory accesses are within +-2KB of the previous
 
 **Temporal locality** refers to the likelihood that a particular memory location will be referenced in the future.
 
-# Cache Memory
+## Cache Memory
 - Cache is **kept small to limit cost**; it is also **transparent to the programmer**. However, this does allow _some_ control over what is stored in it. 
 - A cache access is known as a **'cache hit'**.
 - Cache speed is incredibly important – moving down the memory hierarchy will take orders of magnitude more time for similar memory hits.
@@ -34,10 +32,10 @@ We know that roughly **90%** of memory accesses are within +-2KB of the previous
 
 > Cache concepts are not included in these notes as they are not fully examined, and also do not feature in the revision videos.
 
-# Memory Cell Organisation
+## Memory Cell Organisation
 Now that we're familiar with different parts of the memory hierarchy, it's crucial that we understand how this memory is actually constructed (down to the metal almost). 
 
-## Semiconductor Memory (main store)
+### Semiconductor Memory (main store)
 Semiconductor memory is the most common form of main store memory, otherwise known as **RAM**. It can be broken up into several groups:
 - **Static RAM** (SRAM)
   - SRAM uses a **flip-flop** as storage element for each bit.
@@ -63,9 +61,9 @@ DRAM can be organised even further:
 - Double Data Rate Synchronous (DDR SDRAM)
 - Cache DRAM (CDRAM)
 
-# Organising memory 
+## Organising memory 
 
-## Memory cells
+### Memory cells
 Before we begin organising memory, it's useful to know what the individual memory cells will look like. Think of them as single boxes with the following properties:
 - They only store two states (`1` or `0`).
 - They are capable of being written to as well as read from. This is controlled by a $$R / \bar{W}$$ line which determines which direction the information will flow from.
@@ -75,13 +73,13 @@ Before we begin organising memory, it's useful to know what the individual memor
 
 > You can think of a memory cell as a means of storing a single bit.
 
-## Storing single words
+### Storing single words
 
 In order to store multiple bits together (i.e. words), we will simply store a series of memory cells next to each other. We will need some column selecting I/O to handle selecting the individual bits of the word correctly.
 
 <img src="part4res/4-3.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
 
-## Storing multiple words
+### Storing multiple words
 
 Now that we have organised individual words, we want to store multiple words in memory. We can use this grid arrangement to arrange the words in parallel as follows (imagine we wanted to store four of the 4-bit words shown above):
 
@@ -93,7 +91,7 @@ In our **address decoder**, we have $$ log_{2} (W) $$ many control pins, where $
 
 > We are trying to avoid long, narrow arrays when we design our memory cell arrays. We want to **maximise space for memory cells** and minimise space taken up by IO.
 
-# Detecting and Correcting Errors
+## Detecting and Correcting Errors
 
 > Although this topic is within the memory systems lecture, it is fundamental to error detection on the whole and hence has its own section here.
 
@@ -101,7 +99,7 @@ Broadly speaking, there are two types of errors:
 - Errors that occur **within a system**, e.g. in a memory system.
 - Errors that occur in the **communication between systems**, e.g., in the transmission of messages or data between systems. This is what we will focus on.
 
-## Noise
+### Noise
 
 - We typically **send information through channels**- when these channels become affected by **unwanted information**, they become **noisy**.
 - Noise will arise from the **physical properties** of devices:
@@ -113,12 +111,12 @@ Broadly speaking, there are two types of errors:
 > Noise is **always present**. If it doesn't come from the components themselves, it'll come from external sources such as radiation. Noise is hence one of the **limiting factors** in computer systems.
 > In magnetic stores, when we have **decreased area** to store a bit, **noise gets worse** which increases the likelihood of errors.
 
-### Digital logic devices
+#### Digital logic devices
 
 > We choose binary systems for our number systems as it provides us a **high degree of noise immunity**.
 > We also need to consider the **tolerances of the components we use**
 
-#### Illustrating noise immunity, a trademarked Akram Analogy™
+##### Illustrating noise immunity, a trademarked Akram Analogy™
 
 _If you are comfortable with the idea of noise immunity and transistor-transistor logic voltage levels, you probably won't need to read this._
 
@@ -142,12 +140,12 @@ In the image below, you can see the illustrated example for the above analogy, w
 
 There is a point at which **if there is too much noise**, i.e. a train suddenly passes through the tunnel, your clap will never be heard and is permanently lost- this is known as a **loss/ collapse of immunity**.
 
-## Detecting single errors
+### Detecting single errors
 If we _assume_ that errors occur **at random** due to noise, one could naively ask you to clap three times and hope that your friend hears majority of them- i.e., you could send the message several times and take a vote. However, this is a very expensive affair (you would get tired quickly).
 
 We can make the further assumption that **if the probability of one error is low, the probability of two errors close together is even lower**. Using this knowledge, we can add a **parity bit** to the message which can **summarise the property of the message**. We can check that this property is intact to see whether the message has been altered; using a parity bit is typically **cheaper and adequate** in many situations.
 
-### Parity systems
+#### Parity systems
 
 > There are many different types of parity systems, but the two main ones you should be focused on are the **even parity** and the **odd parity** system.
 > Each system will add an extra bit to the message which makes the **number of logical 1's even or odd** depending on the system chosen.
@@ -158,24 +156,24 @@ We can make the further assumption that **if the probability of one error is low
 
 It is possible to calculate the parity bit using hardware or software.
 
-#### Finite automaton to calculate parity
+##### Finite automaton to calculate parity
 
 The lecture slides contain a two-state finite automaton- this diagram shows how, for a message `110` travelling on an **even parity system**, we can use the automaton to reach a parity bit of `0`, so the message to be sent is `0110`.
 
 <img src="part4res/4-7.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
 
-#### Hardware to calculate parity
+##### Hardware to calculate parity
 
 You can calculate the parity bit for a message by **XORing each bit with one another**. You can achieve this by connecting each pair of bits to an XOR gate; for an odd number of input bits, add a `0` for an **even** parity system and a `1` for an **odd** parity system.
 
-## Detecting multiple errors
+### Detecting multiple errors
 
 > In the real world, it is more likely that **errors will appear in bursts**.
 
 Burst errors can be caused by number of reasons, including but not limited to network or communication dropouts for a few milliseconds.
 In this scenario, there may be errors in multiple bits and single-bit parity will still hold. Therefore, we must move to **checksums** to check entire columns.
 
-### Bit-column parity
+#### Bit-column parity
 One way in which we can identify errors in multiple columns (i.e. multiple bits) is to use bit-column parity. 
 
 Take the message, `Message`, which is made up of 7 7-bit ASCII characters:
@@ -207,7 +205,7 @@ We can then take _this_ column and turn it into a 7-bit message: `1001011` spell
 
 > This system will detect all burst errors of less than 14 bits; it will fail if an even number of errors occur in a bit-column (i.e., a message equal to 8 characters).
 
-### Error Correcting Codes: row and column parity
+#### Error Correcting Codes: row and column parity
 
 The above example only detects errors in columns- but it doesn't stop us from using row correction at the exact same time. If we have both row parity and column parity, then we begin by checking if each column has correct parity. If we find a column with incorrect parity, we immediately begin going through the rows, and checking the parity of each row. If we find a mistake in a row as well, we simply need to invert the bit found in the column with an error. This ECC enables us to detect multiple errors and fix single errors.
 

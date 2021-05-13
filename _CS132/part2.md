@@ -4,19 +4,17 @@ slides: true
 math: true
 title: Digital Logic
 part: true
-pre: part1
-nex: part3
 ---
 
-# Logic Gates, Circuits and Truth tables
+## Logic Gates, Circuits and Truth tables
 
-## An Alternative view of the OR circuit
+### An Alternative view of the OR circuit
 
 Why is $$\bar f = \bar A \cdot \bar B$$ an appropriate representation?
 
 We know that $$\bar f = \overline {A+B}$$, this means $$f = A+B$$. Therefore, $$\bar f = \bar A \cdot \bar B$$ (de Morgan's Law)
 
-## Functions of Two Binary Variables
+### Functions of Two Binary Variables
 
 16 (2<sup>4</sup>) functions can be found between two binary variables. We can interpret each of these functions algebraically.
 
@@ -39,7 +37,7 @@ f_{13} &= \overline{A \cdot \overline{B}}
 \end{align}
 $$
 
-## Electronic Logic Gates
+### Electronic Logic Gates
 
 There are 7 electronic logic gates whose function you should understand.
 
@@ -54,7 +52,7 @@ Aside from the fundamental gates, the **NAND and NOR** gates which are termed th
 Additionally, while the **EX-OR** gate is not one of the fundamental or universal gates it is very useful as well.
 <img src="part2.assets/image-20201019105344802.png" alt="image-20201019105344802"/>
 
-# Simplifying Logical Expressions using Boolean Algebra
+## Simplifying Logical Expressions using Boolean Algebra
 
 > The **motivation** for simplifying logical expressions is **economic**. When producing microprocessors, we usually want to optimise (minimise) the amount of materials we use to **reduce cost** – which mean to use a minimum amount of silicon and other resources. Therefore, as much as possible, we will want to reduce the number of logic gates that we require for a particular circuit.
 
@@ -66,15 +64,15 @@ This leads us to the idea of **circuit equivalence** where a *Boolean function c
 
 There are two crucial skills to have
 
-## Logic Circuit to Truth Table
+### Logic Circuit to Truth Table
 
 ![image-20201109133422712](part2.assets/image-20201109133422712.png)
 
-## Truth table to Boolean Equation
+### Truth table to Boolean Equation
 
 ![image-20201109134011703](part2.assets/image-20201109134011703.png)
 
-##  Laws of Boolean Algebra
+###  Laws of Boolean Algebra
 
 In an exam, it is crucial that you **state** which rules you are applying so that what you are doing is **clear** to the marker.
 
@@ -93,7 +91,7 @@ In an exam, it is crucial that you **state** which rules you are applying so tha
 
 The best way to get good at this is to **practise.** 
 
-## Karnaugh Maps / Kmaps
+### Karnaugh Maps / Kmaps
 
 > Using Boolean algebra, it can be difficult to tell whether an equation is in its simplest form or to see the next step to simplifying it. K-maps show unambiguously when a Boolean expression is in its simplest form.
 
@@ -120,7 +118,7 @@ The **values** of the cases/variables that stayed constant depend on the value w
 ![image-20210505150245851](part2.assets/image-20210505150245851.png)
 
 
-### Multiple equivalent expressions
+#### Multiple equivalent expressions
 
 In the exams, there will be no penalty if you give either answer but note that in reality sometimes the final choice comes down to the resources you have available like the number of **NOT** gates that you can use.
 
@@ -129,7 +127,7 @@ Additionally, there are some expressions that are **impossible to simplify**. Th
 
 <img src="part2.assets/image-20210504122403732.png" alt="image-20210504122403732" style="zoom:67%;" class="center"/>
 
-### Don't Care Conditions
+#### Don't Care Conditions
 
 Sometimes a certain combination of inputs either can’t happen or we don’t care what the output is if it happens. We denote this with a ❌ in our kmaps which may be assumed to be either 1 or 0 — we don’t care. 
 
@@ -137,13 +135,13 @@ These can allow us to create a simpler logic expression. If you take a look at t
 
 <img src="part2.assets/image-20210504123211185.png" alt="image-20210504123211185" style="zoom:67%;" class="center"/>
 
-# Combinatorial Logic Circuits
+## Combinatorial Logic Circuits
 
 > A logic circuit whose output is a **logical function** of its input(s).
 
 Perform as fast as your gates. 
 
-## 1-bit Half-Adder
+### 1-bit Half-Adder
 
 This circuit performs the addition of two bits, and can be extended to form a 1-bit full-adder. What’s important is that you recognise that the truth table for **sum** represents that of an **EX-OR** gate, while the **carry** represents that of an **AND** gate.
 
@@ -151,7 +149,7 @@ This important because to derive the layout of the circuit, you can start from t
 
 ![image-20210504124908090](part2.assets/image-20210504124908090.png)
 
-## 1-bit Full-Adder
+### 1-bit Full-Adder
 
 A 1-bit full adder is capable of adding two bits (A and B) and considering a carry<sub>in</sub> from another 1-bit full adder, to produce an output sum and a carry<sub>out</sub>.
 
@@ -174,7 +172,8 @@ It is highly suggested that you try this on your own before clicking to see my o
     </p>
 	<img src="part2.assets/1bit%20full%20adder.jpeg" alt="1bit full adder" style="zoom:37%;border-radius:2%;" class="center growimg" />
 </details>
-## N-bit Full-Adder
+
+### N-bit Full-Adder
 
 Once we know how to design a 1-bit Full Adder (FA) we will be able to build a n-bit full adder which we can use to add 2 n-bit words (A and B) together. We do this by assigning each bit of A and B to each FA, and just like how we do long division we add each bit together, starting from the LSB (where the carry in is obviously 0) and then taking the carry of each FA and feeding it to the next FA until you reach the n<sup>th</sup> FA. 
 
@@ -182,11 +181,11 @@ The output of each sum (S<sub>k</sub>) and the final C<sub>out</sub> is then “
 
 <img src="part2.assets/image-20210504162834347.png" alt="image-20210504162834347" style="zoom:67%;" class="center" />
 
-## Adder to Adder/Subtractor
+### Adder to Adder/Subtractor
 
 ![image-20201019190232139](part2.assets/image-20201019190232139.png)
 
-### N-bit Adder/Subtractor
+#### N-bit Adder/Subtractor
 
 You can see that **Z** is fed as the C<sub>in</sub> of the first FA, this has the effect of adding 1 to arrive at the proper value for the two’s complement **B**. From above, **Z** is **EX-ORed** with each bit of **B** and this has the effect of inverting the bits to get **-B**. When we are adding, then **Z** will be 0 and will have no effect on **B**.
 
@@ -200,7 +199,7 @@ Remember because the numbers are in two's complement form, the final C<sub>out</
 </blockquote>
 
 
-## Active High or Active Low?
+### Active High or Active Low?
 
 > Transistor-transistor logic floats high – meaning that if you don’t connect it to anything, its value is a logical 1. Hence, it is helpful for **0** to be the **active** state so that you are not accidentally enabling circuits.
 
@@ -209,7 +208,7 @@ In some circuit applications, outputs and inputs have **active** and **inactive*
 - **Active high.** 0 is inactive and 1 is active.
 - **Active low.** 0 is active and 1 is inactive. This is sometimes indicated with <span style="text-decoration:overline">Enable</span> – so if you see this bar it means that particular input/output is active low. 
 
-## Decoders
+### Decoders
 
 A decoder has **k** input pins and **2<sup>k</sup>** output pins. This is because with **k** inputs can have **2<sup>k</sup>** possible states/combinations and can represent the same number of output values.
 
@@ -222,7 +221,7 @@ Here we have an example of a truth table for an **active low** decoder on the le
     <img src="part2.assets/image-20210504204625976.png" alt="image-20210504204625976" style="zoom:38%;" />
 </div>
 
-## Encoder
+### Encoder
 
 The opposite of a decoder, where you take multiple input values and you **define** it in a more **concise representation**. Here you have 2<sup>k</sup> input(s) and k outputs. However, unlike the decoder where the inputs take all possible states, only one of the input pins should be **active at a time**. 
 
@@ -230,7 +229,7 @@ The opposite of a decoder, where you take multiple input values and you **define
 
 <img src="part2.assets/image-20210504210040995.png" alt="image-20210504210040995" style="zoom:67%;" style="center"/>
 
-##  Multiplexers (MUX)
+###  Multiplexers (MUX)
 
 A very common mechanism for selection.
 
@@ -246,7 +245,7 @@ A very common mechanism for selection.
 >
 > Circuit that can be configured to produce any truth table relationship between S inputs and Y outputs - Set up the truth table required on X inputs.
 
-## De-Multiplexers (DE-MUX)
+### De-Multiplexers (DE-MUX)
 
 ![image-20201019192503304](part2.assets/image-20201019192503304.png)
 
@@ -259,13 +258,13 @@ A very common mechanism for selection.
 > A control for multiple lights – In a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.  
 
 
-# Sequential Logic Circuits
+## Sequential Logic Circuits
 
 >A logic circuit whose **outputs** are logical functions of its **input(s)** and its **current state.**
 
 <img src="part2.assets/image-20201019202858996.png" alt="image-20201019202858996"  />
 
-## Flip-Flops
+### Flip-Flops
 
 
 A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states (**bistable** – **Q and P** are always opposite). I think the best way to understand the flip-flop is to look at the truth table and the timing diagram together.
@@ -287,7 +286,7 @@ A basic building block of memory. Level triggered devices (a device that respond
 5. Again, when **<span style="text-decoration:overline">S</span>** is deactivated, the value of **P** and **Q** don’t change. Only if **<span style="text-decoration:overline">R</span>** is activated again, do the values of **P** and **Q** flip. 
 6. Now that you have understood that, you can look at the circuit diagram and see how and why having both **<span style="text-decoration:overline">S</span>** and **<span style="text-decoration:overline">R</span>** set to 0 leads to both **Q** and **P** to be 1 which violates the rule of the flip-flop as a bistable (**P** should be equal to **<span style="text-decoration:overline">Q</span>**) and is a **hazard condition**.
 
-## D-Type Latch
+### D-Type Latch
 
 The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never be both be 0 so we won’t have the hazard condition. (I’ll may make a diagram).
 
@@ -299,7 +298,7 @@ When we want to store data, we have that data at D, and we set enable to 1 (or t
 
 The D-type latch (delay) is a type of clocked flip-flop and there are others like the T-type (toggle) and the JK-type. Clocking and enabling are used fairly interchangeably but the right term is clock. All the "latches" above changes only on the rising edge of the clock input, they only respond to change.
 
-### Three different kinds of triggers
+#### Three different kinds of triggers
 
 **Level triggered** - 1s and 0s
 
@@ -307,7 +306,7 @@ The D-type latch (delay) is a type of clocked flip-flop and there are others lik
 
 **Falling edge triggered** - from 1 to 0 
 
-## N-bit Register
+### N-bit Register
 
 The diagram shown below, is a parallel-load register, each bit of **A** is fed to a D-type latch as input and we are storing each bit of A in the corresponding “memory location” of **Q**. 
 
@@ -319,7 +318,7 @@ Note that this diagram is incomplete – you should always label the D & Clk inp
 
 An alternative design is...
 
-## N-bit Shift Register
+### N-bit Shift Register
 
 The concept here is largely the same as the parallel-load register but is fed serially. This register stores one bit of a word/number **A** at time (starting from LSB of A) and shifts each prior bit to the next Q on the subsequent clocks until we clock the MSB of A into Q<sub>N-1</sub>. 
 
@@ -330,7 +329,7 @@ The concept here is largely the same as the parallel-load register but is fed se
 
 Once you've understood all the parallel and shift register...
 
-## N-bit Counter
+### N-bit Counter
 
 *You need to know how to explain this.* 
 
@@ -361,7 +360,7 @@ So the output of the counter on each clock will look like..
 1100...
 ```
 
-# Three State Logic & Physical Implementations
+## Three State Logic & Physical Implementations
 
 In some logic components, termed a three-state buffer, whose output can be in three states: 1,0, or UNCONNECTED. Looking at the diagram below, when **B** is high the buffer is **unconnected** and vice versa. *It can be thought of as a switch.*
 
@@ -371,13 +370,13 @@ In some logic components, termed a three-state buffer, whose output can be in th
 
 Without three-state buffers, if you connect two outputs together you could be connecting a 1 to a 0 and cause a short circuit.
 
-## Propagation Delay
+### Propagation Delay
 
 In practice, logic gates have propagation delay, typically 1x10<sup>-9</sup>s or less. These delays limit the speed at which logic circuits work. While propagation delay can be reduced by putting logic gates close together, ultimately the design of your circuits play a big part as well. You can think of propagation delay as the collective operating speed of the circuit.
 
 > We're usually interested in the maximum propagation delay and we do this to make sure that our circuit doesn't cross the so-called "event horizon" where the change in the input is not registered by the output for a relatively significant amount of time because of propagation delay. If another component relies on this output and another input, this may cause some problems especially for systems that have to respond quickly. 
 
-## Logic Integrated Circuits (ICs)
+### Logic Integrated Circuits (ICs)
 
 Programmable logic devices allow much larger circuits to be created inside a single chip.
 
@@ -385,6 +384,6 @@ Programmable logic devices allow much larger circuits to be created inside a sin
 - Programmable Logic Array (PLA) - Device contains an AND array, which feeds an OR array, providing a physical implementation of a sum of products.
 - Field Programmable Gate Array (FPGA) - One of several modern possibilities, which can contain million of gates - enough for an entire processor. 
 
-## PLA
+### PLA
 
 Works by providing links/fuses that can be broken to produce a custom sum of products. As long as you are able to understand circuit diagrams you should be able to understand how you arrive at the sum of products for each output of the PLA. 

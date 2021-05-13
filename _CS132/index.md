@@ -36,9 +36,8 @@ Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://www.y
 5. [x] [I/O mechanisms](https://www.yijun.hu/blog-cs/cs132/index.html#)
 6. [x] [Processor architecture](https://www.yijun.hu/blog-cs/cs132/index.html#)
 
-These notes will likely take the same/similar form to the CS118 notes. The
-primary source for these will be from **Akram Ahmad** and **Justin Tan**’s
-notes; any other sources or contributions will be duly cited/attributed.
+Another source of type notes (from **Akram Ahmad** and **Justin Tan**’s notes) can be found below in parts or
+here for [CS132 One Page Notes](opnotes):
 
 1. [x] [Data representation](part1)
 2. [x] [Digital logic](part2)
