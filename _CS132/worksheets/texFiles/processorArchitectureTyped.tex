@@ -29,6 +29,8 @@ of micro instructions that achieve the desired result mentioned earlier.
 
 \section{Relate the fetch-execute cycle to the execution of macro and micro instructions}
 
+Before each macro instruction is received as an opcode, the control unit has to fetch it. The contents of the program counter are passed to the MAR, the MAR sends this to Main store to retrieve the data from the address. This data is typically passed to the MDR and then the IR, and the opcode is then sent to the control unit. \\
+This opcode is translated to a sequence of control signals by the control unit, and each of these signals is a micro instruction. When carried out in the right sequence, these micro instructions compute a result which is the desired result of the macro instruction. To execute the next macro instruction, the control unit has to fetch the next set of instructions and then execute it.
 
 
 \section{Give a detailed explanation of the hardwired approach to control unit design}
