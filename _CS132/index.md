@@ -47,11 +47,6 @@ here for [CS132 One Page Notes](opnotes):
 6. [x] [Processor architecture](part6)
 
 
-## Unofficial worksheet solutions
-
-We are in the process of compiling student-written solutions to the worksheets
-provided for 132. Please note that these do not necessarily hit all the marking
-points, nor are guaranteed to be correct.
 
 ## Unofficial worksheet solutions
 
