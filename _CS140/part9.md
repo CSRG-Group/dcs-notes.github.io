@@ -148,7 +148,7 @@ A VM has lower privilege than the hypervisor.
   - The latter is preferred method since it helps keep the hypervisor simple
   - The hypervisor gives the dedicated VM the permission to view resources allocated to the monitored VM.
 
-##### Security Patch
+#### Security Patch
 
 In physical machines, when a new security patch is applied, the machines remain patched ,
 

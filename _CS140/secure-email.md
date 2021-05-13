@@ -4,16 +4,33 @@ title: Secure Email
 part: true
 ---
 
+***Some terminology.***
+
+- **Email domain:** Warwick domain, cambridge domain, google domain. e.g. “@warwick.ac.uk”
+- **Email client**: Thunderbird, Outlook etc.
+- **Email Servers:** 
+  - SMTP – responsible for sending email to their 	destinations
+  - IMAP or PoP3 servers – responsible for retrieving emails sent by the sender.
+
 ## How email is delivered
 
-**Email domain:** Warwick domain, cambridge domain, google domain. e.g. “@warwick.ac.uk”
+1. User begins by using the **email client**, which connects to the SMTP server and sends the server the email address of the recipient, the name of the sender, and the body of the message.
+   - SMTP breaks down the recipient’s email into 2 parts: the name (before the @) and the domain (after the @)
+2. If the domain of recipient and sender are **identical**, the SMTP server hands the message to the PoPe or IMAP server for that particular domain.
+3. Otherwise, SMTP communicates with the Domain Name Server (DNS) for the IP address of the SMTP server in the other domain.
+4. The SMTP server at the senders side sends the email message to the SMTP server at the recipient’s end, which then hands the message to the PoP3 server for the recipient’s domain.
 
-**Email client**: Thunderbird, Outlook etc.
+> If SMTP server cannot connect to the other SMTP server, the message goes into a **sendmail queue**.
+>
+> - The server will periodically try to resend messages in the queue. 
+> - After several failures, the server will give up and return the mail undelivered.
 
-**Email Servers:** 
+The PoP3 server for each domain maintains a list of email accounts and a text file for each account. 
 
-- SMTP – responsible for sending email to their destinations
-- IMAP or PoP3 servers – responsible for retrieving emails sent by the sender.
+- When the server receives an email addressed to someone, it formats the email and appends the formatted email to the account’s text file.
+- When the recipient checks their email with the email client, the email client
+  - queries the PoP3 server to send a copy of their text file and tells the server to erase and reset the text file.
+  - This copy is saved on their local message and the text file is parsed into the separate messages.
 
 ## General Security Issues in Emails
 
@@ -21,13 +38,11 @@ part: true
 2. Email can carry payloads (viruses)
 3. Email is easy to spoof (if there is no authentication)
 
-## Email servers
+### Email servers
 
-Email servers contain email information of all email accounts – these will be known to the attacker if the server is compromised.
+Email servers contain email information of **all** email accounts – these will be known to the attacker if the server is compromised.
 
-Additionally, there is no **guarantee for delivery** if SMTP cannot connect to SMTP at receivers domain, the message will be placed in a queue.
-
-- If it still fails after several tries, the email will be returned to the sender.
+Additionally, there is no **guarantee for delivery** if SMTP cannot connect to SMTP at receiver’s end. (Access in CIA)
 
 People have **poor passwords**. 
 
@@ -73,8 +88,16 @@ A straightforward solution
 
 However we do not use this method because it is slow to encrypt the whole email using public key encryption.
 
-> A **faster solution** is to use a shared secret key to encrypt the message. This is done with a server that issues a session key.
+> A **faster solution** is to use a shared secret key to encrypt the message. This is done with a session key.
 >
 > - Session key is used to encrypt the email message.
-> - Public key is used to encrypt only the session key – hence faster.
+> - Public key (RSA) is used to encrypt only the session key – hence faster.
+> - The encrypted key and the email message is sent to the recipient as an encrypted message.
+> - Recipient’s private key is used to decrypt the secret key which is then used to decrypt the message.
+
+**Products that provide this solution.**
+
+- PGP (Pretty Good Privacy) – paid
+- GnuPG (Gnu Privacy Guard) – open source implementation of OpenPGP
+- Windows version Gpg4Win
 
