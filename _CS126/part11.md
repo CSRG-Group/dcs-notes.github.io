@@ -52,13 +52,13 @@ title: "Graphs"
     - One list of vertices
     - One list of edges, each of which contain references to their endpoint vertices
 
-    ![edgeListGraph](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\edgeListGraph.png)
+    ![edgeListGraph](images\edgeListGraph.png)
 
   - Adjacency list
 
     - Array containing a all of the nodes, each of which have a pointer to a list of the other nodes they connect to
 
-    ![adjacencyListGraph](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\adjacencyListGraph.png)
+    ![adjacencyListGraph](images\adjacencyListGraph.png)
 
   - Adjacency matrix
 
@@ -66,7 +66,7 @@ title: "Graphs"
     - Square matrix, with each dimension being the number of vertices in the graph
     - Undirected graphs are symmetrical along the leading diagonal
 
-    ![adjacencyMatrixGraph](C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\adjacencyMatrixGraph.png)
+    ![adjacencyMatrixGraph](images\adjacencyMatrixGraph.png)
 
 
 
@@ -74,320 +74,302 @@ title: "Graphs"
 
 # Depth-first search
 
+> **Algorithm** $$DFS(G, v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp; **Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp; **Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges 
+> &nbsp;&nbsp;&nbsp;&nbsp; 
+> $$setLabel(v, VISITED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp; 
+> **for all** $$e \in G.incidentEdges(v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+> **if** $$getLabel(e) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$w \leftarrow opposite(v,e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(w) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e, DISCOVERY)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$DFS(G, w)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **else**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e,BACK)$$
+> **END ALGORITHM**
 
-**Algorithm** $DFS(G, v)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp; **Input**  graph $G$ and start at vertex $v$ of $G$<br>
-&nbsp;&nbsp;&nbsp;&nbsp; **Output** labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
-<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 
-$setLabel(v, VISITED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 
-**for all** $e \in G.incidentEdges(v)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-**if** $getLabel(e) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$w \leftarrow opposite(v,e)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(w) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e, DISCOVERY)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$DFS(G, w)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**else** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e,BACK)$ <br>
 
-**END ALGORITHM**
-
-<br>
-<br>
-<br>
 
 ### DFS for an entire graph: 
 The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.
-  
-**Algorithm** $DFS(G)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp; **Input**  graph $G$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp; **Output** labelling of the edges of $G$ as discovery and back edges
-<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp; **for all** $u \in G.vertices()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **$setLabel(u, UNEXPLORED)$** <br>
 
-&nbsp;&nbsp;&nbsp;&nbsp; **for all** $e \in G.edges()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **$setLabel(e, UNEXPLORED)$** <br>
+> **Algorithm** $$DFS(G)$$
+> &nbsp;&nbsp;&nbsp;&nbsp; **Input**  graph $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp; **Output** labelling of the edges of $$G$$ as discovery and back edges
+> &nbsp;&nbsp;&nbsp;&nbsp; **for all** $$u \in G.vertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **$$setLabel(u, UNEXPLORED)$$**
+> &nbsp;&nbsp;&nbsp;&nbsp; **for all** $$e \in G.edges()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **$$setLabel(e, UNEXPLORED)$$**
+> &nbsp;&nbsp;&nbsp;&nbsp; **for all** $$u \in G.vertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **if $$getLabel(u, UNEXPLORED)$$**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $$DFS(G, v)$$
+> **END ALGORITHM**
+>
+> **Algorithm** $$DFS(G, v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp; **Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp; **Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges 
+> &nbsp;&nbsp;&nbsp;&nbsp; 
+> $$setLabel(v, VISITED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp; 
+> **for all** $$e \in G.incidentEdges(v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+> **if** $$getLabel(e) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$w \leftarrow opposite(v,e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(w) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e, DISCOVERY)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$DFS(G, w)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **else**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e,BACK)$$
+> **END ALGORITHM**
 
-&nbsp;&nbsp;&nbsp;&nbsp; **for all** $u \in G.vertices()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **if $getLabel(u, UNEXPLORED)$** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $DFS(G, v)$ <br>
 
-**END ALGORITHM**
-<br>
-
-**Algorithm** $DFS(G, v)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp; **Input**  graph $G$ and start at vertex $v$ of $G$<br>
-&nbsp;&nbsp;&nbsp;&nbsp; **Output** labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
-<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 
-$setLabel(v, VISITED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 
-**for all** $e \in G.incidentEdges(v)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-**if** $getLabel(e) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$w \leftarrow opposite(v,e)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(w) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e, DISCOVERY)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$DFS(G, w)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**else** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e,BACK)$ <br>
-
-**END ALGORITHM**
-<br><br><br>
 
 ### Path Finding with DFS
 
 By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the **template method pattern**
 
-**Algorithm**
-$pathDFS(G,v,z)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(v, VISITED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$S.push(v)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $v=z$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**return** $S.elements()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $e \in G.incidentEdges(v)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(e) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$w \leftarrow opposite(v,e)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(w) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e,DISCORVERY)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$S.push(e)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$pathDFS(G,w,z)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$S.pop(e)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**else**<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e, BACK)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$S.pop(v)$<br>
+> **Algorithm**
+> $$pathDFS(G,v,z)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(v, VISITED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.push(v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$v=z$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **return** $$S.elements()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$e \in G.incidentEdges(v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(e) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$w \leftarrow opposite(v,e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(w) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e,DISCORVERY)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.push(e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$pathDFS(G,w,z)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.pop(e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **else**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e, BACK)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.pop(v)$$
+> **END ALGORITHM**
 
-**END ALGORITHM**
 
-<br><br><br>
+
+
 
 ### Cycle Finding with DFS
 
-- The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.
+The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.
 
-**Algorithm** $cycleDFS(G,v)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(v,VISITED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$S.push(v)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $e \in G.incidentEdges(v)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(e) = UNEXPLORED$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$w \leftarrow opposite(v,e)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$S.push(e)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(w)= UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $setLabel(e,DISCOVERY)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$cycleDFS(G,w)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$S.pop(e)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**else** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**T** $\leftarrow$ new empty stack <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**repeat**<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$o \leftarrow S.pop()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$T.push(o)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**until** $o=w$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**return** $T.elements()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$S.pop(v)$<br>
-
-**END ALGORITHM**
+> **Algorithm** $$cycleDFS(G,v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(v,VISITED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.push(v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$e \in G.incidentEdges(v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(e) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$w \leftarrow opposite(v,e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.push(e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(w)= UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$setLabel(e,DISCOVERY)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$cycleDFS(G,w)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.pop(e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **else**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **T** $$\leftarrow$$ new empty stack
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **repeat**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$o \leftarrow S.pop()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$T.push(o)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **until** $$o=w$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **return** $$T.elements()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$S.pop(v)$$
+> **END ALGORITHM**
 
 
 
 # Breadth-first search
 
+> **Algorithm** $$BFS(G)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Input** graph $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Output** labeling of the edges and partition of the vertices of G
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$e \in G.vertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(u, UNEXPLORED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$e \in G.edges()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e, UNEXPLORED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$v \in G.vertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(v) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$BFS(G,v)$$
+> **END ALGORITHM**
 
 
-**Algorithm** $BFS(G)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Input** graph $G$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Output** labeling of the edges and partition of the vertices of G<br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $e \in G.vertices()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(u, UNEXPLORED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $e \in G.edges()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e, UNEXPLORED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $v \in G.vertices()$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(v) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$BFS(G,v)$
-<br>
 
-**END ALGORITHM**
-<br><br><br>
-**Algorithm** $BFS(G, s)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$L_0 \leftarrow$ new empty sequence <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$L_0 .addLast(s)$  <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(s, VISITED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$i \leftarrow 0$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**while** $¬L_i .isEmpty()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$L_i+1 \leftarrow$ new empty sequence <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $v\in L_i .elements()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $e \in G.incidentEdges(v)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(e) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$w \leftarrow opposite(v,e)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(w) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e) = (e, DISCOVERY)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(w,VISITED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$L_i+1 .addLast(w)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**else** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(e,CROSS)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$i \leftarrow i + 1$
-<br>
+> **Algorithm** $$BFS(G, s)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$L_0 \leftarrow$$ new empty sequence
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$L_0 .addLast(s)$$ 
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(s, VISITED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$i \leftarrow 0$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **while** $$¬L_i .isEmpty()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$L_i+1 \leftarrow$$ new empty sequence
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$v\in L_i .elements()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$e \in G.incidentEdges(v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(e) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$w \leftarrow opposite(v,e)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(w) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e) = (e, DISCOVERY)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(w,VISITED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$L_i+1 .addLast(w)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **else**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(e,CROSS)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$i \leftarrow i + 1$$
+> **END ALGORITHM**
 
-**END ALGORITHM**
+
 
 
 # Directed graphs
 
-
-
-**Algorithm** $FloydWarshall(G)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Input** digraph $G$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Output** transitive closure $G^*$ of $G$ <br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$i \leftarrow 1$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $v \in G.vertices()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-denote $v$ as $v_i$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$i \leftarrow i + 1$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$G_0 \leftarrow G$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for** $k \leftarrow 1$ **to** $n$ **do**<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$G_k \leftarrow G_{k-1}$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**for** $i\leftarrow 1$ **to** $n(i\neq k)$ **do** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**for** $j \leftarrow 1$ **to** $n(j\neq i, k)$ **do** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $G_{k-1}.areAdjacent(v_i,v_k)$  $\&$ $G_{k-1}.areAdjacent(v_k,v_j)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $¬G_{k-1}.areAdjacent(v_i,v_j)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$G_k.insertDirectedEdge(v_i,v_j,k)$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**return** $G_n$
-<br><br><br>
-
-### Topological ordering using DFS 
-
-**Algorithm** $topologicalDFS(G)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Input** dag $G$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Output** topotlogical ordering of G <br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$n \leftarrow G.numVertices()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $u\in G.vertices()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(,UNEXPLORED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $v\in G.vertices()$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(v) = UNEXPLORED$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$topologicalDFS(G,v)$
-<br><br><br>
-**Algorithm** $topologicalDFS(G,v)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Input** graph $G$ and start a vertex $v$ of $G$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**Output** labeling of the vertices of G in the connected component of $v$ <br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-$setLabel(v, VISITED)$ <br>
-&nbsp;&nbsp;&nbsp;&nbsp;
-**for all** $e\in G.outEdges(v)$  <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$w\in opposite(v,e)$ // Outgoing edges <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**if** $getLabel(w) = UNEXPLORED$  <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$topologicalDFS(G,w)$ // $e$ is a discovery edge<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**else** <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Label $v$ with topological number $n$ // $e$ is a forward or cross edge<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$n\leftarrow n - 1$ <br>
+> **Algorithm** $$FloydWarshall(G)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Input** digraph $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Output** transitive closure $$G^*$$ of $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$i \leftarrow 1$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$v \in G.vertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> denote $$v$$ as $$v_i$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$i \leftarrow i + 1$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$G_0 \leftarrow G$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for** $$k \leftarrow 1$$ **to** $$n$$ **do**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$G_k \leftarrow G_{k-1}$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **for** $$i\leftarrow 1$$ **to** $$n(i\neq k)$$ **do**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **for** $$j \leftarrow 1$$ **to** $$n(j\neq i, k)$$ **do**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$G_{k-1}.areAdjacent(v_i,v_k)$$  $$\&$$ $$G_{k-1}.areAdjacent(v_k,v_j)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$¬G_{k-1}.areAdjacent(v_i,v_j)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$G_k.insertDirectedEdge(v_i,v_j,k)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **return** $$G_n$$
+> **END ALGORITHM**
 
 
 
+### Topological ordering using DFS
+
+> **Algorithm** $$topologicalDFS(G)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Input** dag $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Output** topotlogical ordering of G
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$n \leftarrow G.numVertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$u\in G.vertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(,UNEXPLORED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$v\in G.vertices()$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(v) = UNEXPLORED$$
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$topologicalDFS(G,v)$$
+> **END ALGORITHM**
 
 
 
+> **Algorithm** $$topologicalDFS(G,v)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Input** graph $$G$$ and start a vertex $$v$$ of $$G$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **Output** labeling of the vertices of G in the connected component of $$v$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> $$setLabel(v, VISITED)$$
+> &nbsp;&nbsp;&nbsp;&nbsp;
+> **for all** $$e\in G.outEdges(v)$$ 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$w\in opposite(v,e)$$ // Outgoing edges
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **if** $$getLabel(w) = UNEXPLORED$$ 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$topologicalDFS(G,w)$$ // $$e$$ is a discovery edge
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> **else**
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> Label $$v$$ with topological number $$n$$ // $$e$$ is a forward or cross edge
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> $$n\leftarrow n - 1$$
+> **END ALGORITHM**
