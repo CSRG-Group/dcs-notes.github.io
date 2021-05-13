@@ -8,7 +8,7 @@ part: true
     There is no single I/O mechanism that is “better” than the others – it is important to understand the pros and cons of each mechanism and the situations where each should be used.
 </p>
 
-# Memory mapped I/O
+## Memory mapped I/O
 
 - Same address bus is used to address both memory and I/O devices. 
 - Memory addresses are associated with particular I/O devices – when we want to send data to an I/O device, we send it to that memory address; when we want to receive data, we just read from that memory address.
@@ -20,7 +20,7 @@ part: true
 >
 > **Disadvantages.** We are giving up portions of our memory to I/O devices. This is less of a concern for modern 64-bit processors with more address spaces, but is still relevant when sometimes you have no choice but to use a processor with constrained memory addresses like 16-bit legacy or embedded systems. 
 
-# Polled I/O
+## Polled I/O
 
 > **Synchronising I/O devices** with our CPUs is one of the biggest challenges associated with I/O systems, as most of our I/O devices operate at much slower speeds than the CPU.
 
@@ -34,7 +34,7 @@ Our CPUs **operate much faster** than IO devices, so while IO devices are doing 
 >
 > **Disadvantages.** Busy-wait polling – waste of CPU time and power. If you have a power constrained device, this may not be good. Interleaving can still lead to significantly delayed responses to a particular I/O device – not a problem in most cases but is a serious issue if you’re working in a hard real-time context.
 
-# Handshaking
+## Handshaking
 
 **Handshaking** is another way of solving synchronisation problems with I/O devices. There are 3 kinds of handshaking:
 
@@ -46,7 +46,7 @@ Our CPUs **operate much faster** than IO devices, so while IO devices are doing 
 
 Handshaking can be implemented with software or specialised hardware, which often requires fewer CPU instructions. Hardware solutions are usually used in embedded systems when software is not available for you to use. 
 
-# Interrupts
+## Interrupts
 
 Another way to target synchronisation problems. CPU normally executes instructions sequentially, unless a jump or branch is made – an interrupt input can force a CPU to jump to a service routine. The key difference between interrupts and handshaking or polling is that it is **asynchronous.** 
 
@@ -58,7 +58,7 @@ When an interrupt is serviced, typically the CPU will finish the current instruc
 
 Maskable interrupts can be interrupted as well, provided that the **new** interrupt is of a higher priority than the current interrupt. This is why popping the PC and registers onto a stack is useful so we can keep track and sequentially process different set of instructions based on priority.
 
-## Interrupts for IO examples
+### Interrupts for IO examples
 
 Some IO devices can generate interrupts themselves.
 
@@ -72,7 +72,7 @@ A printer can generate an interrupt when it is ready to receive the next charact
 >
 > **Disadvantages.** But, all data transfers still controlled by CPU (DMA addresses this). Interrupts also make hardware and software more complex.
 
-# Direct Memory Access (DMA)
+## Direct Memory Access (DMA)
 
 Interrupts rely on the microprocessor (CPU) to do everything and this makes it the bottleneck for I/O if there are **large amounts of data** that must be transferred at high speed.
 
@@ -85,7 +85,7 @@ DMA fixes this by giving control of the system buses from the CPU to the DMA Con
 >
 > **Disadvantages.** Additional hardware cost.
 
-## DMA Modes of Operation
+### DMA Modes of Operation
 
 > **Cycle Stealing.** DMAC uses the system buses when they are not being used by the CPU – usually by using available memory access cycles not used by the CPU. This is less effective and less common then the next mode of operation.
 >

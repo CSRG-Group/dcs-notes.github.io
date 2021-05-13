@@ -9,7 +9,7 @@ math: true
     <b>Computer architecture</b> concerns the structure and properties of a computer system, as viewed from perspective of a software engineer while <b>computer organisation</b> is the same but as viewed from the perspective of a hardware engineer.
 </p>
 
-# Microprocessor Organisation
+## Microprocessor Organisation
 
 Considerations:
 
@@ -21,19 +21,19 @@ Considerations:
 - Your subsystems will have to communicate – we do this with shared busses and three-state buffers.
 - How many arithmetic instructions do you have? This directly affects the number of function selects your CU must have. E.g. Lets say your processor has 4 arithmetic instructions: `CLEAR`, `DEC1`(decrement), `INC1`, `ADD#somevalue`. Then you will need 2 function selects from your CU to your ALU to specify which arithmetic instruction the ALU is executing.
 
-# Micro and Macro Instructions
+## Micro and Macro Instructions
 
 > **Macro instructions** are the set of mnemonics that each represent a specific instruction that your processor understands. These are assembled into opcodes that your CU can take to “know” which sequence of **micro instructions** to carry out. 
 >
 > Each **micro instruction** corresponds to a specific signal that your CU can assert (we call these control actions), and when carried out in the right sequence, the final result/effect is that of the **macro instruction**.
 
-## Clock cycles
+### Clock cycles
 
 The number of clocks a **macro instruction** takes in total is technically the time the CU takes to execute the instruction. Since the value of the data at the in our registers/certain outputs don’t change unless there is a clock supplied, we can further categorise macro instructions into the number of **clock cycles or control steps** needed.
 
 What this implies is that certain micro instructions can be **executed simultaneously**, as long as their control actions are independent of one another (so their inputs/outputs don’t depend on each other and hence a clock/enable signal).
 
-## Representation of Instructions
+### Representation of Instructions
 
 We know that instructions have an **opcode**, may have an **operand**, and stored at a particular address in memory which the PC points to. The example below shows how instructions may look like in memory for a processor with a 32x8-bit Main Store, 5-bit PC, 3-bit opcode:
 
@@ -47,7 +47,6 @@ We know that instructions have an **opcode**, may have an **operand**, and store
 It is important to note that this is **just an example**; the key takeaway is to a better idea of how **instructions are represented in memory**. 
 
 > ❗❕ Remember that before and in between each instruction shown in the example above, there is an **implicit fetch step** (recall FDE cycle). 
->
 
 In RTL this would be:
 
@@ -58,7 +57,7 @@ In RTL this would be:
 
 Note that the 4<sup>th</sup> step is actually a macro-step because the processor will have to have some mechanism of incrementing the PC, which can be done using the ALU or something else – it all depends on the processor architecture. What’s **crucial** is that you are **aware of all these nuances** and have them in mind when dealing with this topic.
 
-# Control Unit Design
+## Control Unit Design
 
 **Macro design of the CU** – concerning its inputs and outputs.
 
@@ -78,7 +77,7 @@ The CU executes micro instructions by asserting a sequence of enable and clock s
 >
 > **Microprogrammed.** Each machine instruction is turned into a sequence of primitive microinstructions, which form a microprogram, stored in a ROM called the microprogram memory.
 
-## Hardwired CU
+### Hardwired CU
 
 The dominant technique, since roughly 1980s, for implementing control units in RISC processors.
 
@@ -96,7 +95,12 @@ The dominant technique, since roughly 1980s, for implementing control units in R
 > - Inflexible as it is difficult to change the design if new instructions are added.
 > - Long design time.
 
-## Microprogrammed
+<figure align="center">
+    <figcaption style="text-align: center:">Diagram of hardwired CU by Matthew Leeke</figcaption>
+    <img src="part6.assets/image-20210513110831502.png" alt="image-20210513110831502" style="zoom:50%;" />
+</figure>
+
+### Microprogrammed
 
 The dominant technique for implementing CUs, peaking in 1970s, for CISC processors.
 
@@ -119,7 +123,23 @@ The dominant technique for implementing CUs, peaking in 1970s, for CISC processo
 >
 > - Slower than hardwired implementations.
 
-# CISC vs RISC
+<figure align="center">
+    <figcaption style="text-align: center:">Diagram of micro-programmed CU by Matthew Leeke</figcaption>
+    <img src="part6.assets/image-20210513110735926.png" alt="image-20210513110735926" style="zoom:50%;" />
+</figure>
+
+#### Standard operation description
+
+1. When the microPC is powered, it initialises to **micro-address 0** which corresponds to the **fetch micro-program**. 
+2. The micro-instruction register (microIR) **receives microinstructions** and this is where the CU **output values** are set to the values **recorded in each micro-instruction** of the program. Hence, the CU is able to generate the **appropriate control signals**, as the micro-program executes, which correspond to the **macro fetch operation**. 
+3. After each microinstruction has generated CU outputs, the microPC is **typically** incremented to the next microinstruction by a +1 circuit, **except** for the last fetch microinstruction.
+4. At this point the processor’s IR has been populated with the next opcode and this is **fed as opcode inputs** into the CU. 
+5. There is a component in the microIR we can call the “**next microPC calc type**” (I don’t think this is the actual name) that is set to make sure that the microPC is **not** incremented with the +1 circuit but **instead** is set to the **output of an OTOA circuit** (which is essentially a lookup table of opcodes to micro-program addresses). 
+   - This enables the microPC to **jump to the microaddress** of the microprogram **specified** by the opcode and the CU can execute that microprogram based on the values set by the micro-instructions inside the program.
+6. When it is finally the **last microinstruction**, the “next microPC calc type” is set such that the microPC is now set to the microIR “**next microaddress**” field. 
+   - Opcode microprograms use this facility/mechanism to **set** the microPC **back** to the fetch microprogram address.
+
+## CISC vs RISC
 
 *Complex Instruction Set Computers vs Reduced Instruction Set Computers.*
 
