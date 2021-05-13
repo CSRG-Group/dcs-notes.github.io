@@ -66,6 +66,9 @@ title: "General algorithms"
     	Add all the items left in B to the end of S
     ```
 
+# Graph algorithms
+
+See the [graph notes page](./part11#graph-algorithms)
 
 
 # Misc
