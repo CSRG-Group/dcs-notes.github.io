@@ -46,7 +46,7 @@ The idea is that each communication party generates a pair of keys, one private 
 - Sender of a message uses receiver’s public key to encrypt
 - Receiver uses their own private key to decrypt.
 
-## RSA Encryption
+### RSA Encryption
 
 *RSA is a type of public key encryption scheme. One of the oldest.*
 
@@ -70,7 +70,7 @@ The idea is that each communication party generates a pair of keys, one private 
 
 All receivers have to do is to keep the private key **safe.**
 
-### Finding the private key
+#### Finding the private key
 
 There is a formal method of finding the [private key](https://people.csail.mit.edu/rivest/Rsapaper.pdf) (it’s a 15 page paper).
 
