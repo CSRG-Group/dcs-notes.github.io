@@ -77,7 +77,7 @@ Make sure sections follow an appropriate hierarchy - skipping from h3 to h1 is a
 # Heading 1.1
 ```
 
-Lastly, the title of the topic should be set in the front-matter of each markdown file, `part:` should be set `true`, and please begin your first section with heading level 2 (\#\# or <h2>).
+Lastly, the title of the topic should be set in the front-matter of each markdown file, `part:` should be set `true`, and please begin your first section with heading level 2 (## or h2).
 
 ```markdown
 ---
