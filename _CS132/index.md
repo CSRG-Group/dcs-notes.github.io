@@ -60,16 +60,17 @@ We are in the process of compiling student-written solutions to the worksheets
 provided for 132. Please note that these do not necessarily hit all the marking
 points, nor are guaranteed to be correct.
 
-| Topic                      | Josh Fitzmaurice | Edmund Goodman | Clara Ramsay-Gray                                     |
-| -------------------------- | ---------------- | -------------- | ----------------------------------------------------- |
-| [x] Data representation    | [Typed](#)       | -              | [Handwritten](worksheets/assemblerHandwritten.pdf)    |
-| [x] Digital logic          | [Typed](#)       | -              | [Handwritten](worksheets/digitalLogicHandwritten.pdf) |
-| [x] Assembler              | -                | [Typed](#)     | -                                                     |
-| [x] Memory Systems         | -                | [Typed](#)     | -                                                     |
-| [x] I/O mechanisms         | [Typed](#)       | -              | -                                                     |
-| [ ] Processor architecture | -                | -              | -                                                     |
+| Topic                  | Josh Fitzmaurice | Edmund Goodman | Clara Ramsay-Gray                                     |
+| ---------------------- | ---------------- | -------------- | ----------------------------------------------------- |
+| Data representation    | Typed            | -              | [Handwritten](worksheets/assemblerHandwritten.pdf)    |
+| Digital logic          | Typed            | -              | [Handwritten](worksheets/digitalLogicHandwritten.pdf) |
+| Assembler              | -                | Typed          | -                                                     |
+| Memory Systems         | -                | Typed          | -                                                     |
+| I/O mechanisms         | Typed            | -              | -                                                     |
+| Processor architecture | Typed            | -              | -                                                     |
 
 ## Flash Cards
+
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
 
 [Flash Cards](https://quizlet.com/_9pgkq4?x=1jqt&i=18al03)
