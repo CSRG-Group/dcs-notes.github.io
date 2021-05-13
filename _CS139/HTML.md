@@ -81,6 +81,7 @@ Other elements are inline and can normally be integrated into a line of text wit
 # Validation
 for validation visit 
 [W3c](https://validator.w3.org/)
+There is also a live html validation extension in VSCODE called: VS Code W3C Validation extention.
 
 # Common Tags
 
