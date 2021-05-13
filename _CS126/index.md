@@ -11,7 +11,7 @@ title: CS126
 Given the large number of topics, it makes sense to break these down into
 broader topics when revising - each of which having its own page.
 
-These were written by **Edmund Goodman**:
+These were written by **Edmund Goodman** with contributions from **Leon Chipchase**:
 
 1. [x] [Arrays and Lists](part1)
 2. [ ] [Analysis of algorithms](part2)
