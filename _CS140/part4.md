@@ -11,7 +11,7 @@ Some terminology
 - Ciphertext - the result of encrypting the message
 - Encryption/decryption - process of transforming plaintext to ciphertext (or reverse)
 
-# Different types of encryption
+## Different types of encryption
 
 **Secret key**: 
 
@@ -26,7 +26,7 @@ Some terminology
 - The decryption key is kept private
 - Clever maths are used
 
-# Encryption Technique Properties
+## Encryption Technique Properties
 
 Good encryption techniques should have 4 properties
 
@@ -51,7 +51,7 @@ Good encryption techniques should have 4 properties
 
    - Long key may be very secure - but how can it be manged?
 
-# Secret key encryption
+## Secret key encryption
 
 Also known as symmetric key, shared key, single key encryption.
 
@@ -67,11 +67,11 @@ Modern “standard algorithm”:
 3.  The ciphertext is transmitted 
 4.  The receivers decrypt the ciphertext with the known algorithm and the secret key to get plaintext.
 
-# Techniques of Encryption
+## Techniques of Encryption
 
 There are many different encryption techniques, some better than others.
 
-## Steganography
+### Steganography
 
 > Steganography is a means of hiding an encrypted message. 
 >
@@ -88,7 +88,7 @@ There are many different encryption techniques, some better than others.
 
 The **cover medium** (and thus **stegano medium**) are typically image or audio files. 
 
-### Hiding data in an image
+#### Hiding data in an image
 
 Images typically used either 8-bit or 24-bit colour
 
@@ -99,7 +99,7 @@ Lets take 24-bit colour as an example:
 
 Using Least Significant Bit (LSB) insertion - we can hide data in the image.
 
-#### LSB Insertion
+##### LSB Insertion
 
 Uses binary representation of the *hidden_data* to overwrite the LSB of each byte in the *cover_image*
 
@@ -121,11 +121,11 @@ We can hide the 9 bits of data in the above three pixels:
 
 Hidden message is: **101101101**
 
-## Code Words
+### Code Words
 
 Define code for each vocabulary in a code book which is like a dictionary. You lookup the dictionary to decipher the code word.
 
-## Transposition/Permutation Cipher
+### Transposition/Permutation Cipher
 
 ***Confusion***
 
@@ -151,7 +151,7 @@ Number:   2 5 1 4 3         2 5 1 4 3
           S R M S E         S S E C R
 ```
 
-## Monoalphabetic Substitution Cipher
+### Monoalphabetic Substitution Cipher
 
 ***Confusion***
 
@@ -174,7 +174,7 @@ Ciphertext alphabet: ZEBRASCDFGHIJKLMNOPQTUVWXY
 
 To prevent this, multiple ciphertext alphabets are used…
 
-## Polyalphabetic Substitution Cipher
+### Polyalphabetic Substitution Cipher
 
 ***Confusion***
 
@@ -198,13 +198,13 @@ Ciphertext: EYAFITW
 
 > **Disadvantage.** Still has the same statistical flaw for the letters that use the same key alphabet. This can be mitigated by using a longer keyword and is the most secure (in theory) if the key is the same length as the plaintext.
 
-## One time pad
+### One time pad
 
 This is where each letter in the message is encrypted with a different alphabet set. This is as secure as you can get but the **problem** lies with how the key is **shared** as both parties have to know the key which is as long as the plaintext.
 
 > **Disadvantage.** As a result, one time pad is not a practical solution because of key generation, key distribution, key protection.
 
-## Combining message and key
+### Combining message and key
 
 In a computer, **plaintext** and the **key** are an arrangement of bits. The best way to combine them is to use bitwise **XOR**. 
 
@@ -213,7 +213,7 @@ In a computer, **plaintext** and the **key** are an arrangement of bits. The bes
 
 **XOR** on the other hand produces a unique encryption - using XOR, ciphertext can be decrypted by performing XOR over ciphertext and key. So it is very easy to encrypt and to decrypt, you just need the **key**. 
 
-# Data Encryption Standard (DES)
+## Data Encryption Standard (DES)
 
 *The first standardised encryption method. Is based on the Feistal approach.*
 
@@ -228,7 +228,7 @@ In a computer, **plaintext** and the **key** are an arrangement of bits. The bes
 >
 > **Stream Cipher.** Encrypts each input element (bit or byte etc.) one at a time, producing the machine output element as the process goes along.
 
-## Fiestal Approach Overview
+### Fiestal Approach Overview
 
 <figure align="center">
     <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Feistel_cipher_diagram_en.svg" style="width:328px;height:480px;" class="center">
@@ -248,7 +248,7 @@ $$
 L_{i+1} = R_i, \; R_{i+1} = L_i \oplus F(R_i,K_i)
 $$
 
-## The Round Function
+### The Round Function
 
 There are 4 operations in the function
 
@@ -275,13 +275,13 @@ In each row, the lookup table cell values will are unique – meaning row-wise t
 | 1xxxx0 | 4      | …    | 0      |
 | 1xxxx1 | 15     | …    | 13     |
 
-## Subkey Generation (Key Schedule)
+### Subkey Generation (Key Schedule)
 
 We said that the DES takes 1 64-bit key, but from the [Feistal Diagram](#fiestal-approach-overview) above we see that each round function takes a different key – this is because subkeys are generated with permutation functions.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/DES-key-schedule.png" class="center">
 
-### Permuted Choice 1
+#### Permuted Choice 1
 
 This function has 2 purposes:
 
@@ -295,7 +295,7 @@ After PC1 is done, the generation of the DES round keys (keys for each round fun
 3. The shifted halves are permuted with PC2 – shuffle and select 48-bits from 56-bits (28 &times; 2)
 4. The shifted halves are also transferred to the next round where they are shifted again (the shifts are cumulative).
 
-### Permuted Choice 2
+#### Permuted Choice 2
 
 As mentioned above, the algorithm takes a 56-bit subkey as input and produces a 48-bit round key for each round function. 
 
@@ -303,7 +303,7 @@ As mentioned above, the algorithm takes a 56-bit subkey as input and produces a 
     <b>FYI.</b> Each bit of the initial 56-bit key is used in an average of 14 of 16 round keys.
 </blockquote>
 
-# Advanced Encryption Standard (AES)
+## Advanced Encryption Standard (AES)
 
 The DES is now considered to be insecure due to the short key – it has been broken by brute-force methods.
 
@@ -311,7 +311,7 @@ The **AES** is chosen as the new standard. Compared to DES it has a longer block
 
 Similar block cipher features but uses a substitution-permutation network (SPN) – **mainly operations over matrices** which is designed for more **inherent parallelism** and hence **faster**.
 
-## Sub-Operations
+### Sub-Operations
 
 Encryption in AES uses 4 main operations. In the main rounds (not every round but most rounds) of encryption they are applied in the following order:
 
@@ -321,7 +321,7 @@ input -> SubBytes -> ShiftRows -> MixColumns -> AddRoundKey -> ouput
 
 There are additional details, like the key scheduler for AES, which are not covered in the lectures and further reading can be done [here](https://www.commonlounge.com/discussion/e32fdd267aaa4240a4464723bc74d0a5). [Wikipedia](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#The_SubBytes_step) is a good resource too.
 
-### SubBytes
+#### SubBytes
 
 This involved splitting the input into bytes and passing each through a Substitution Box (S-box). Unlike the DES, the AES uses the same S-box for all bytes. 
 
@@ -329,7 +329,7 @@ Each byte from the input is replaced by a SubByte using an 8-bit substitution bo
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/AES-SubBytes.svg" style="width:320px;height:166px" class="center">
 
-### ShiftRows
+#### ShiftRows
 
 Here, each row of the 128-bit internal state (input of `ShiftRows` which is output of `SubBytes`) of the cipher is shifted by a certain offset. In AES the top row is not shifted at all, the next row is shifted by 1 and 2 then 3 for the next two rows. This results in each column of the output state composed of bytes from each column of the input state. 
 
@@ -337,13 +337,13 @@ Here, each row of the 128-bit internal state (input of `ShiftRows` which is outp
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/AES-ShiftRows.svg" style="width:320px;height:119px;" class="center">
 
-### MixColumns
+#### MixColumns
 
 Here the output matrix of the `ShiftRows` step is pre-multiplied with a fixed matrix – this helps with diffusion because if you change a<sub>0,1</sub> (even by 1-bit) the entire output column will change (as you know from matrix multiplication).
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/AES-MixColumns.svg" style="width:320px;height:170px;" class="center">
 
-### AddRoundKey
+#### AddRoundKey
 
 The only operation in AES that directly operates on the AES round key. In this operation, the input to the round is **XORed** with the round key.
 
@@ -351,7 +351,7 @@ The only operation in AES that directly operates on the AES round key. In this o
 
 
 
-## AES is secure
+### AES is secure
 
 A computer that can break DES in 8 seconds will take 1.3 &times; 10<sup>15</sup> years to break AES-128. 
 

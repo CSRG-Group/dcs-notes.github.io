@@ -7,18 +7,18 @@ title: CS140 Computer Security
 
 ## Topics and content
 
-There are nine broad topics in the module. You can access them from the [CS140 One Page Notes](opnotes) or the respective topic links below:
+There are nine broad topics in the module. You can access them from the [CS140 One Page Notes](opnotes) or the respective topic links below. Author(s): **Justin Tan**
 
 1. [x] [Introductory concepts](part1)
 2. [x] [Authentication](part2)
 3. [x] [Password cracking](part3)
 4. [x] [Cryptography](part4)
-5. [ ] [Public key cryptography](part5)
-6. [ ] [Digital Signatrure & Certificates](part6)
-7. [ ] Secure email ()
-8. [ ] [Security & Authentication protocols](part7)
-9. [ ] [Web Server Security Issues](part8)
-10. [ ] Virtualisation
+5. [x] [Public key cryptography](part5)
+6. [x] [Digital Signatrure & Certificates](part6)
+7. [ ] Secure email
+8. [x] [Security & Authentication protocols](part7)
+9. [x] [Web Server Security Issues](part8)
+10. [x] [Virtualisation](part9)
 
 ## Complete Notes
 
