@@ -76,27 +76,27 @@ title: "Graphs"
 
 > **Algorithm** $$DFS(G, v)$$
 >
->     **Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
+> 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
 >
->     **Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
+> 		**Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
 >
->     $$setLabel(v, VISITED)$$
+> 		$$setLabel(v, VISITED)$$
 >
->     **for all** $$e \in G.incidentEdges(v)$$
+> 		**for all** $$e \in G.incidentEdges(v)$$
 >
->         **if** $$getLabel(e) = UNEXPLORED$$
+> 		    **if** $$getLabel(e) = UNEXPLORED$$
 >
->             $$w \leftarrow opposite(v,e)$$
+> 		 		   $$w \leftarrow opposite(v,e)$$
 >
->             **if** $$getLabel(w) = UNEXPLORED$$
+> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
 >
->                 $$setLabel(e, DISCOVERY)$$
+> 		 		 		  $$setLabel(e, DISCOVERY)$$
 >
->                 $$DFS(G, w)$$
+> 		 		 		  $$DFS(G, w)$$
 >
->             **else**
+> 		 		   **else**
 >
->                 $$setLabel(e,BACK)$$
+> 		 		 		  $$setLabel(e,BACK)$$
 > **END ALGORITHM**
 
 
@@ -106,48 +106,48 @@ The following algorithm is pseudocode for Depth First Search - as displayed by t
 
 > **Algorithm** $$DFS(G)$$
 >
->     **Input**  graph $$G$$
+> 		**Input**  graph $$G$$
 >
->     **Output** labelling of the edges of $$G$$ as discovery and back edges
+> 		**Output** labelling of the edges of $$G$$ as discovery and back edges
 >
->     **for all** $$u \in G.vertices()$$
+> 		**for all** $$u \in G.vertices()$$
 >
->         **$$setLabel(u, UNEXPLORED)$$**
+> 		    **$$setLabel(u, UNEXPLORED)$$**
 >
->     **for all** $$e \in G.edges()$$
+> 		**for all** $$e \in G.edges()$$
 >
->         **$$setLabel(e, UNEXPLORED)$$**
+> 		    **$$setLabel(e, UNEXPLORED)$$**
 >
->     **for all** $$u \in G.vertices()$$
+> 		**for all** $$u \in G.vertices()$$
 >
->         **if $$getLabel(u, UNEXPLORED)$$**
+> 		    **if $$getLabel(u, UNEXPLORED)$$**
 >
->             $$DFS(G, v)$$
+> 		 		   $$DFS(G, v)$$
 > **END ALGORITHM**
 >
 > **Algorithm** $$DFS(G, v)$$
 >
->     **Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
+> 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
 >
->     **Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
+> 		**Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
 >
->     $$setLabel(v, VISITED)$$
+> 		$$setLabel(v, VISITED)$$
 >
->     **for all** $$e \in G.incidentEdges(v)$$
+> 		**for all** $$e \in G.incidentEdges(v)$$
 >
->         **if** $$getLabel(e) = UNEXPLORED$$
+> 		    **if** $$getLabel(e) = UNEXPLORED$$
 >
->             $$w \leftarrow opposite(v,e)$$
+> 		 		   $$w \leftarrow opposite(v,e)$$
 >
->             **if** $$getLabel(w) = UNEXPLORED$$
+> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
 >
->                 $$setLabel(e, DISCOVERY)$$
+> 		 		 		  $$setLabel(e, DISCOVERY)$$
 >
->                 $$DFS(G, w)$$
+> 		 		 		  $$DFS(G, w)$$
 >
->             **else**
+> 		 		   **else**
 >
->                 $$setLabel(e,BACK)$$
+> 		 		 		  $$setLabel(e,BACK)$$
 > **END ALGORITHM**
 
 
@@ -159,35 +159,35 @@ By using an alteration of the depth first search algorithm, we can use it to fin
 > **Algorithm**
 > $$pathDFS(G,v,z)$$
 >
->     $$setLabel(v, VISITED)$$
+> 		$$setLabel(v, VISITED)$$
 >
->     $$S.push(v)$$
+> 		$$S.push(v)$$
 >
->     **if** $$v=z$$
+> 		**if** $$v=z$$
 >
->         **return** $$S.elements()$$
+> 		    **return** $$S.elements()$$
 >
->     **for all** $$e \in G.incidentEdges(v)$$
+> 		**for all** $$e \in G.incidentEdges(v)$$
 >
->         **if** $$getLabel(e) = UNEXPLORED$$
+> 		    **if** $$getLabel(e) = UNEXPLORED$$
 >
->             $$w \leftarrow opposite(v,e)$$
+> 		 		   $$w \leftarrow opposite(v,e)$$
 >
->             **if** $$getLabel(w) = UNEXPLORED$$
+> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
 >
->                 $$setLabel(e,DISCORVERY)$$
+> 		 		 		  $$setLabel(e,DISCORVERY)$$
 >
->                 $$S.push(e)$$
+> 		 		 		  $$S.push(e)$$
 >
->                 $$pathDFS(G,w,z)$$
+> 		 		 		  $$pathDFS(G,w,z)$$
 >
->                 $$S.pop(e)$$
+> 		 		 		  $$S.pop(e)$$
 >
->             **else**
+> 		 		   **else**
 >
->                 $$setLabel(e, BACK)$$
+> 		 		 		  $$setLabel(e, BACK)$$
 >
->         $$S.pop(v)$$
+> 		    $$S.pop(v)$$
 > **END ALGORITHM**
 
 
@@ -200,41 +200,41 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 
 > **Algorithm** $$cycleDFS(G,v)$$
 >
->     $$setLabel(v,VISITED)$$
+> 		$$setLabel(v,VISITED)$$
 >
->     $$S.push(v)$$
+> 		$$S.push(v)$$
 >
->     **for all** $$e \in G.incidentEdges(v)$$
+> 		**for all** $$e \in G.incidentEdges(v)$$
 >
->         **if** $$getLabel(e) = UNEXPLORED$$
+> 		    **if** $$getLabel(e) = UNEXPLORED$$
 >
->             $$w \leftarrow opposite(v,e)$$
+> 		 		   $$w \leftarrow opposite(v,e)$$
 >
->             $$S.push(e)$$
+> 		 		   $$S.push(e)$$
 >
->             **if** $$getLabel(w)= UNEXPLORED$$
+> 		 		   **if** $$getLabel(w)= UNEXPLORED$$
 >
->                 **if** $$setLabel(e,DISCOVERY)$$
+> 		 		 		  **if** $$setLabel(e,DISCOVERY)$$
 >
->                 $$cycleDFS(G,w)$$
+> 		 		 		  $$cycleDFS(G,w)$$
 >
->                 $$S.pop(e)$$
+> 		 		 		  $$S.pop(e)$$
 >
->             **else**
+> 		 		   **else**
 >
->                 **T** $$\leftarrow$$ new empty stack
+> 		 		 		  **T** $$\leftarrow$$ new empty stack
 >
->                 **repeat**
+> 		 		 		  **repeat**
 >
->                     $$o \leftarrow S.pop()$$
+> 		 		 		 		 $$o \leftarrow S.pop()$$
 >
->                     $$T.push(o)$$
+> 		 		 		 		 $$T.push(o)$$
 >
->                 **until** $$o=w$$
+> 		 		 		  **until** $$o=w$$
 >
->                 **return** $$T.elements()$$
+> 		 		 		  **return** $$T.elements()$$
 >
->     $$S.pop(v)$$
+> 		$$S.pop(v)$$
 > **END ALGORITHM**
 
 
@@ -243,62 +243,62 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 
 > **Algorithm** $$BFS(G)$$
 >
->     **Input** graph $$G$$
+> 		**Input** graph $$G$$
 >
->     **Output** labeling of the edges and partition of the vertices of G
+> 		**Output** labeling of the edges and partition of the vertices of G
 >
->     **for all** $$e \in G.vertices()$$
+> 		**for all** $$e \in G.vertices()$$
 >
->         $$setLabel(u, UNEXPLORED)$$
+> 		    $$setLabel(u, UNEXPLORED)$$
 >
->     **for all** $$e \in G.edges()$$
+> 		**for all** $$e \in G.edges()$$
 >
->         $$setLabel(e, UNEXPLORED)$$
+> 		    $$setLabel(e, UNEXPLORED)$$
 >
->     **for all** $$v \in G.vertices()$$
+> 		**for all** $$v \in G.vertices()$$
 >
->         **if** $$getLabel(v) = UNEXPLORED$$
+> 		    **if** $$getLabel(v) = UNEXPLORED$$
 >
->             $$BFS(G,v)$$
+> 		 		   $$BFS(G,v)$$
 > **END ALGORITHM**
 
 
 
 > **Algorithm** $$BFS(G, s)$$
 >
->     $$L_0 \leftarrow$$ new empty sequence
+> 		$$L_0 \leftarrow$$ new empty sequence
 >
->     $$L_0 .addLast(s)$$
+> 		$$L_0 .addLast(s)$$
 >
->     $$setLabel(s, VISITED)$$
+> 		$$setLabel(s, VISITED)$$
 >
->     $$i \leftarrow 0$$
+> 		$$i \leftarrow 0$$
 >
->     **while** $$¬L_i .isEmpty()$$
+> 		**while** $$¬L_i .isEmpty()$$
 >
->         $$L_i+1 \leftarrow$$ new empty sequence
+> 		    $$L_i+1 \leftarrow$$ new empty sequence
 >
->         **for all** $$v\in L_i .elements()$$
+> 		    **for all** $$v\in L_i .elements()$$
 >
->             **for all** $$e \in G.incidentEdges(v)$$
+> 		 		   **for all** $$e \in G.incidentEdges(v)$$
 >
->                 **if** $$getLabel(e) = UNEXPLORED$$
+> 		 		 		  **if** $$getLabel(e) = UNEXPLORED$$
 >
->                     $$w \leftarrow opposite(v,e)$$
+> 		 		 		 		 $$w \leftarrow opposite(v,e)$$
 >
->                     **if** $$getLabel(w) = UNEXPLORED$$
+> 		 		 		 		 **if** $$getLabel(w) = UNEXPLORED$$
 >
->                         $$setLabel(e) = (e, DISCOVERY)$$
+> 		 		 		 		 		$$setLabel(e) = (e, DISCOVERY)$$
 >
->                         $$setLabel(w,VISITED)$$
+> 		 		 		 		 		$$setLabel(w,VISITED)$$
 >
->                         $$L_i+1 .addLast(w)$$
+> 		 		 		 		 		$$L_i+1 .addLast(w)$$
 >
->                     **else**
+> 		 		 		 		 **else**
 >
->                         $$setLabel(e,CROSS)$$
+> 		 		 		 		 		$$setLabel(e,CROSS)$$
 >
->         $$i \leftarrow i + 1$$
+> 		    $$i \leftarrow i + 1$$
 > **END ALGORITHM**
 
 
@@ -308,35 +308,35 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 
 > **Algorithm** $$FloydWarshall(G)$$
 >
->     **Input** digraph $$G$$
+> 		**Input** digraph $$G$$
 >
->     **Output** transitive closure $$G^*$$ of $$G$$
+> 		**Output** transitive closure $$G^*$$ of $$G$$
 >
->     $$i \leftarrow 1$$
+> 		$$i \leftarrow 1$$
 >
->     **for all** $$v \in G.vertices()$$
+> 		**for all** $$v \in G.vertices()$$
 >
->         denote $$v$$ as $$v_i$$
+> 		    denote $$v$$ as $$v_i$$
 >
->         $$i \leftarrow i + 1$$
+> 		    $$i \leftarrow i + 1$$
 >
->     $$G_0 \leftarrow G$$
+> 		$$G_0 \leftarrow G$$
 >
->     **for** $$k \leftarrow 1$$ **to** $$n$$ **do**
+> 		**for** $$k \leftarrow 1$$ **to** $$n$$ **do**
 >
->         $$G_k \leftarrow G_{k-1}$$
+> 		    $$G_k \leftarrow G_{k-1}$$
 >
->             **for** $$i\leftarrow 1$$ **to** $$n(i\neq k)$$ **do**
+> 		 		   **for** $$i\leftarrow 1$$ **to** $$n(i\neq k)$$ **do**
 >
->                 **for** $$j \leftarrow 1$$ **to** $$n(j\neq i, k)$$ **do**
+> 		 		 		  **for** $$j \leftarrow 1$$ **to** $$n(j\neq i, k)$$ **do**
 >
->                     **if** $$G_{k-1}.areAdjacent(v_i,v_k)$$  $$\&$$ $$G_{k-1}.areAdjacent(v_k,v_j)$$
+> 		 		 		 		 **if** $$G_{k-1}.areAdjacent(v_i,v_k)$$  $$\&$$ $$G_{k-1}.areAdjacent(v_k,v_j)$$
 >
->                         **if** $$¬G_{k-1}.areAdjacent(v_i,v_j)$$
+> 		 		 		 		 		**if** $$¬G_{k-1}.areAdjacent(v_i,v_j)$$
 >
->                             $$G_k.insertDirectedEdge(v_i,v_j,k)$$
+> 		 		 		 		 		    $$G_k.insertDirectedEdge(v_i,v_j,k)$$
 >
->         **return** $$G_n$$
+> 		    **return** $$G_n$$
 > **END ALGORITHM**
 
 
@@ -345,44 +345,44 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 
 > **Algorithm** $$topologicalDFS(G)$$
 >
->     **Input** dag $$G$$
+> 		**Input** dag $$G$$
 >
->     **Output** topotlogical ordering of G
+> 		**Output** topotlogical ordering of G
 >
->     $$n \leftarrow G.numVertices()$$
+> 		$$n \leftarrow G.numVertices()$$
 >
->     **for all** $$u\in G.vertices()$$
+> 		**for all** $$u\in G.vertices()$$
 >
->         $$setLabel(,UNEXPLORED)$$
+> 		    $$setLabel(,UNEXPLORED)$$
 >
->     **for all** $$v\in G.vertices()$$
+> 		**for all** $$v\in G.vertices()$$
 >
->         **if** $$getLabel(v) = UNEXPLORED$$
+> 		    **if** $$getLabel(v) = UNEXPLORED$$
 >
->             $$topologicalDFS(G,v)$$
+> 		 		   $$topologicalDFS(G,v)$$
 > **END ALGORITHM**
 
 
 
 > **Algorithm** $$topologicalDFS(G,v)$$
 >
->     **Input** graph $$G$$ and start a vertex $$v$$ of $$G$$
+> 		**Input** graph $$G$$ and start a vertex $$v$$ of $$G$$
 >
->     **Output** labeling of the vertices of G in the connected component of $$v$$
+> 		**Output** labeling of the vertices of G in the connected component of $$v$$
 >
->     $$setLabel(v, VISITED)$$
+> 		$$setLabel(v, VISITED)$$
 >
->     **for all** $$e\in G.outEdges(v)$$
+> 		**for all** $$e\in G.outEdges(v)$$
 >
->         $$w\in opposite(v,e)$$ // Outgoing edges
+> 		    $$w\in opposite(v,e)$$ // Outgoing edges
 >
->         **if** $$getLabel(w) = UNEXPLORED$$
+> 		    **if** $$getLabel(w) = UNEXPLORED$$
 >
->             $$topologicalDFS(G,w)$$ // $$e$$ is a discovery edge
+> 		 		   $$topologicalDFS(G,w)$$ // $$e$$ is a discovery edge
 >
->         **else**
+> 		    **else**
 >
->             Label $$v$$ with topological number $$n$$ // $$e$$ is a forward or cross edge
+> 		 		   Label $$v$$ with topological number $$n$$ // $$e$$ is a forward or cross edge
 >
->         $$n\leftarrow n - 1$$
+> 		    $$n\leftarrow n - 1$$
 > **END ALGORITHM**
