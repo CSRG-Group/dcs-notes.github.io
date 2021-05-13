@@ -74,6 +74,56 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 - If you are directly sourcing content that is not your own, **please add the correct citations**. For images or text taken verbatim from a source, please include a link to the site it is taken from, and exercise common sense for other cases
 - Please do not re-host any university owned content, including but not limited to past papers and lecture notes
 
+### Formatting
+Most modules are split into separate topics, and we have also included a one page (ctrl-f) version for modules that are arranged this way. To ensure that the table of contents in the one page versions are displayed correctly there are a few things we would like contributors to note:
+
+```markdown
+Firstly don't skip heading levels - Don't do this
+## Heading 1
+#### Heading 2
+
+Make sure sections follow an appropriate hierarchy - skipping from h3 to h1 is alright, h1 to h3 is not.
+# Heading 1
+## Heading 2
+### Heading 3
+# Heading 1.1
+```
+
+Lastly, the title of the topic should be set in the front-matter of each markdown file, `part:` should be set `true`, and please begin your first section with heading level 2 (## or <h2>).
+
+```markdown
+---
+title: Generics 
+part: true
+---
+
+## Starting
+```
+
+We will appreciate if contributors abide by these formatting guidelines, as it ensures that the layout of the website is perfect. That said, nothing will break if you don't do so, just certain things (table of contents) won't be as user friendly as it should be.
+
+### How do I order/re-order the pages for each topic?
+If you're contributing to notes that are split into parts and want to change the order or insert something in between topics, and have the navbar navigate to it you can reorder the files in the _config.yml file.
+
+```yaml
+collections:
+  CS118:
+    label: CS118
+    relative_directory: ./_CS118
+    output: true
+    # Just reorder the files here in anyway or insert your 
+    # new file in between or after. Remember, you'll need to define 
+    # part: true in the front-matter of your .md file for this to work
+    order:
+      - part1.md  
+      - part2.md  
+      - part3.md  
+      - part4.md
+      - part5.md
+      - part6.md
+      - part7.md
+```
+
 ### How do I display Math?
 Firstly, ensure that the top of the markdown (.md) file has YAML Front Matter containing the key-value pair `math: true`. If it's not there, add it into the front matter.
 
