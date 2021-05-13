@@ -85,166 +85,130 @@ There are three main concrete implementations of the graph ADT
 # Depth-first search
 
 > **Algorithm** $$DFS(G, v)$$
->
 > 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
->	
 > 		**Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
->	
 > 		$$setLabel(v, VISITED)$$
->	
 > 		**for all** $$e \in G.incidentEdges(v)$$
->	
 > 		    **if** $$getLabel(e) = UNEXPLORED$$
->	
 > 		 		   $$w \leftarrow opposite(v,e)$$
->	
 > 		 		   **if** $$getLabel(w) = UNEXPLORED$$
->	
 > 		 		 		  $$setLabel(e, DISCOVERY)$$
->	
 > 		 		 		  $$DFS(G, w)$$
->	
 > 		 		   **else**
->	
 > 		 		 		  $$setLabel(e,BACK)$$
 > **END ALGORITHM**
 
 
 
-### DFS for an entire graph:
+## DFS for an entire graph:
 The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.
 
 > **Algorithm** $$DFS(G)$$
->
-> 		**Input**  graph $$G$$
->	
+> 		**Input** graph $$G$$
 > 		**Output** labelling of the edges of $$G$$ as discovery and back edges
->	
 > 		**for all** $$u \in G.vertices()$$
->	
 > 		    **$$setLabel(u, UNEXPLORED)$$**
->	
 > 		**for all** $$e \in G.edges()$$
->	
 > 		    **$$setLabel(e, UNEXPLORED)$$**
->	
 > 		**for all** $$u \in G.vertices()$$
->	
 > 		    **if $$getLabel(u, UNEXPLORED)$$**
->	
 > 		 		   $$DFS(G, v)$$
 > **END ALGORITHM**
->
+
+Along with starting at a given vertex:
+
 > **Algorithm** $$DFS(G, v)$$
->
 > 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
->	
 > 		**Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
->	
 > 		$$setLabel(v, VISITED)$$
->	
 > 		**for all** $$e \in G.incidentEdges(v)$$
->	
 > 		    **if** $$getLabel(e) = UNEXPLORED$$
->	
 > 		 		   $$w \leftarrow opposite(v,e)$$
->	
 > 		 		   **if** $$getLabel(w) = UNEXPLORED$$
->	
 > 		 		 		  $$setLabel(e, DISCOVERY)$$
->	
 > 		 		 		  $$DFS(G, w)$$
->	
 > 		 		   **else**
->	
 > 		 		 		  $$setLabel(e,BACK)$$
 > **END ALGORITHM**
 
 
 
-### Path Finding with DFS
+## Path Finding with DFS
 
 By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the **template method pattern**
 
 > **Algorithm**
 > $$pathDFS(G,v,z)$$
->
 > 		$$setLabel(v, VISITED)$$
->	
 > 		$$S.push(v)$$
->	
 > 		**if** $$v=z$$
->	
 > 		    **return** $$S.elements()$$
->	
 > 		**for all** $$e \in G.incidentEdges(v)$$
->	
 > 		    **if** $$getLabel(e) = UNEXPLORED$$
->	
 > 		 		   $$w \leftarrow opposite(v,e)$$
->	
 > 		 		   **if** $$getLabel(w) = UNEXPLORED$$
->	
 > 		 		 		  $$setLabel(e,DISCORVERY)$$
->	
 > 		 		 		  $$S.push(e)$$
->	
 > 		 		 		  $$pathDFS(G,w,z)$$
->	
 > 		 		 		  $$S.pop(e)$$
->	
 > 		 		   **else**
->	
 > 		 		 		  $$setLabel(e, BACK)$$
->	
 > 		    $$S.pop(v)$$
 > **END ALGORITHM**
 
 
 
-
-
-### Cycle Finding with DFS
+## Cycle Finding with DFS
 
 The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.
 
 > **Algorithm** $$cycleDFS(G,v)$$
->
 > 		$$setLabel(v,VISITED)$$
->	
 > 		$$S.push(v)$$
->	
 > 		**for all** $$e \in G.incidentEdges(v)$$
->	
 > 		    **if** $$getLabel(e) = UNEXPLORED$$
->	
 > 		 		   $$w \leftarrow opposite(v,e)$$
->	
 > 		 		   $$S.push(e)$$
->	
 > 		 		   **if** $$getLabel(w)= UNEXPLORED$$
->	
 > 		 		 		  **if** $$setLabel(e,DISCOVERY)$$
->	
 > 		 		 		  $$cycleDFS(G,w)$$
->	
 > 		 		 		  $$S.pop(e)$$
->	
 > 		 		   **else**
->	
 > 		 		 		  **T** $$\leftarrow$$ new empty stack
->	
 > 		 		 		  **repeat**
->	
 > 		 		 		 		 $$o \leftarrow S.pop()$$
->	
 > 		 		 		 		 $$T.push(o)$$
->	
 > 		 		 		  **until** $$o=w$$
->	
 > 		 		 		  **return** $$T.elements()$$
->	
 > 		$$S.pop(v)$$
+> **END ALGORITHM**
+
+
+## Topological ordering using DFS
+
+> **Algorithm** $$topologicalDFS(G)$$
+> 		**Input** dag $$G$$
+> 		**Output** topotlogical ordering of G
+> 		$$n \leftarrow G.numVertices()$$
+> 		**for all** $$u\in G.vertices()$$
+> 		    $$setLabel(,UNEXPLORED)$$
+> 		**for all** $$v\in G.vertices()$$
+> 		    **if** $$getLabel(v) = UNEXPLORED$$
+> 		 		   $$topologicalDFS(G,v)$$
+> **END ALGORITHM**
+
+
+> **Algorithm** $$topologicalDFS(G,v)$$
+> 		**Input** graph $$G$$ and start a vertex $$v$$ of $$G$$
+> 		**Output** labeling of the vertices of G in the connected component of $$v$$
+> 		$$setLabel(v, VISITED)$$
+> 		**for all** $$e\in G.outEdges(v)$$
+> 		    $$w\in opposite(v,e)$$ // Outgoing edges
+> 		    **if** $$getLabel(w) = UNEXPLORED$$
+> 		 		   $$topologicalDFS(G,w)$$ // $$e$$ is a discovery edge
+> 		    **else**
+> 		 		   Label $$v$$ with topological number $$n$$ // $$e$$ is a forward or cross edge
+> 		    $$n\leftarrow n - 1$$
 > **END ALGORITHM**
 
 
@@ -252,62 +216,36 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 # Breadth-first search
 
 > **Algorithm** $$BFS(G)$$
->
 > 		**Input** graph $$G$$
->	
 > 		**Output** labeling of the edges and partition of the vertices of G
->	
 > 		**for all** $$e \in G.vertices()$$
->	
 > 		    $$setLabel(u, UNEXPLORED)$$
->	
 > 		**for all** $$e \in G.edges()$$
->	
 > 		    $$setLabel(e, UNEXPLORED)$$
->	
 > 		**for all** $$v \in G.vertices()$$
->	
 > 		    **if** $$getLabel(v) = UNEXPLORED$$
->	
 > 		 		   $$BFS(G,v)$$
 > **END ALGORITHM**
 
 
 
 > **Algorithm** $$BFS(G, s)$$
->
 > 		$$L_0 \leftarrow$$ new empty sequence
->	
 > 		$$L_0 .addLast(s)$$
->	
 > 		$$setLabel(s, VISITED)$$
->	
 > 		$$i \leftarrow 0$$
->	
 > 		**while** $$¬L_i .isEmpty()$$
->	
 > 		    $$L_i+1 \leftarrow$$ new empty sequence
->	
 > 		    **for all** $$v\in L_i .elements()$$
->	
 > 		 		   **for all** $$e \in G.incidentEdges(v)$$
->	
 > 		 		 		  **if** $$getLabel(e) = UNEXPLORED$$
->	
 > 		 		 		 		 $$w \leftarrow opposite(v,e)$$
->	
 > 		 		 		 		 **if** $$getLabel(w) = UNEXPLORED$$
->	
 > 		 		 		 		 		$$setLabel(e) = (e, DISCOVERY)$$
->	
 > 		 		 		 		 		$$setLabel(w,VISITED)$$
->	
 > 		 		 		 		 		$$L_i+1 .addLast(w)$$
->	
 > 		 		 		 		 **else**
->	
 > 		 		 		 		 		$$setLabel(e,CROSS)$$
->	
 > 		    $$i \leftarrow i + 1$$
 > **END ALGORITHM**
 
@@ -317,82 +255,19 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 # Directed graphs
 
 > **Algorithm** $$FloydWarshall(G)$$
->
 > 		**Input** digraph $$G$$
->	
 > 		**Output** transitive closure $$G^*$$ of $$G$$
->	
 > 		$$i \leftarrow 1$$
->	
 > 		**for all** $$v \in G.vertices()$$
->	
 > 		    denote $$v$$ as $$v_i$$
->	
 > 		    $$i \leftarrow i + 1$$
->	
 > 		$$G_0 \leftarrow G$$
->	
 > 		**for** $$k \leftarrow 1$$ **to** $$n$$ **do**
->	
 > 		    $$G_k \leftarrow G_{k-1}$$
->	
 > 		 		   **for** $$i\leftarrow 1$$ **to** $$n(i\neq k)$$ **do**
->	
 > 		 		 		  **for** $$j \leftarrow 1$$ **to** $$n(j\neq i, k)$$ **do**
->	
 > 		 		 		 		 **if** $$G_{k-1}.areAdjacent(v_i,v_k)$$  $$\&$$ $$G_{k-1}.areAdjacent(v_k,v_j)$$
->	
 > 		 		 		 		 		**if** $$¬G_{k-1}.areAdjacent(v_i,v_j)$$
->	
 > 		 		 		 		 		    $$G_k.insertDirectedEdge(v_i,v_j,k)$$
->	
 > 		    **return** $$G_n$$
-> **END ALGORITHM**
-
-
-
-### Topological ordering using DFS
-
-> **Algorithm** $$topologicalDFS(G)$$
->
-> 		**Input** dag $$G$$
->	
-> 		**Output** topotlogical ordering of G
->	
-> 		$$n \leftarrow G.numVertices()$$
->	
-> 		**for all** $$u\in G.vertices()$$
->	
-> 		    $$setLabel(,UNEXPLORED)$$
->	
-> 		**for all** $$v\in G.vertices()$$
->	
-> 		    **if** $$getLabel(v) = UNEXPLORED$$
->	
-> 		 		   $$topologicalDFS(G,v)$$
-> **END ALGORITHM**
-
-
-
-> **Algorithm** $$topologicalDFS(G,v)$$
->
-> 		**Input** graph $$G$$ and start a vertex $$v$$ of $$G$$
->	
-> 		**Output** labeling of the vertices of G in the connected component of $$v$$
->	
-> 		$$setLabel(v, VISITED)$$
->	
-> 		**for all** $$e\in G.outEdges(v)$$
->	
-> 		    $$w\in opposite(v,e)$$ // Outgoing edges
->	
-> 		    **if** $$getLabel(w) = UNEXPLORED$$
->	
-> 		 		   $$topologicalDFS(G,w)$$ // $$e$$ is a discovery edge
->	
-> 		    **else**
->	
-> 		 		   Label $$v$$ with topological number $$n$$ // $$e$$ is a forward or cross edge
->	
-> 		    $$n\leftarrow n - 1$$
 > **END ALGORITHM**
