@@ -128,6 +128,7 @@ collections:
       - part6.md
       - part7.md
       - part8.md
+      - part9.md
   CS141: 
     label: CS141
     relative_directory: ./_CS141
