@@ -18,7 +18,7 @@ There are nine broad topics in the module. You can access them from the [CS140 O
 7. [ ] Secure email
 8. [x] [Security & Authentication protocols](part7)
 9. [x] [Web Server Security Issues](part8)
-10. [ ] Virtualisation
+10. [x] [Virtualisation](part9)
 
 ## Complete Notes
 
