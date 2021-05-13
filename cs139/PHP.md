@@ -405,6 +405,31 @@ if (isset($_POST['username']) and isset($_POST['password'])){
     header(`location:HomePage.php`);
 }
 ```
+
+# Login verification
+It is important to verify that a user is logged in before they can access a page
+
+``` php
+<?php
+require `access.php`;
+require_login();
+?>
+```
+can be put at the top of pages to check if the user is logged in.
+
+inside access.php:
+``` php
+<?php
+function require_login(){
+    if (!isset($_SESSION['id'])){
+        header("Location:index.php");
+        exit();
+    }
+}
+?>
+```
+if `$_SESSION['id']` is set when the user logs in this will prevent users
+from accessing pages unless they have logged in
 # SQL
 first a database connection must be established
 

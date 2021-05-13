@@ -23,6 +23,11 @@ A tag is an descendant if it is the child or the child of a descendant of a tag.
 ## Sibling
 Two tags are siblings if they share a parent.
 
+# Document Object Model
+The HTML document object Model is a tree of the objects within a documet
+
+starts with the document ant root element `<html>` includes all the tags in a structured tree to allow for navigation.
+
 # Basic Syntax
 HTML uses code tags for opening and closing to give information about the content inside, opening use `<>` and closing starts with a backslash `</>`
 

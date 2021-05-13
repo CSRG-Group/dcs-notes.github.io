@@ -4,6 +4,7 @@ title: Security
 math: true
 part: true
 pre: Theory5
+nex: Theory7
 ---
 # Hashing algorithms
 
@@ -167,3 +168,4 @@ another option allows the setting of variables this could allow variable and var
                     should be off
 `allow_url_include` - indicated wether scripts can include/ require remote files
 turn off if not needed
+
