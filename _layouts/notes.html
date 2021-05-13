@@ -17,16 +17,16 @@
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     {%- endif -%}
     <!-- Include tocNAV javascript -->
-    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/tocNav.js"></script>
 
-    {% seo %}
+    <!-- seo used to be here -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
         type="text/css" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
         <div class="navBox">
             <div id="sidenav" class="sideNav closedNav">
                 <h2 style="margin-left: 10px;">Table of Contents</h2>
-                {%- include toc.html html=content -%}
+                {%- include toc.html html=content sanitize=true -%}
             </div>
         </div>
         <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
@@ -56,11 +56,20 @@
             <main id="content" class="main-content" role="main">
                 <div class="partNav">
                     {%- if page.part == true -%}
-                    {% capture previous %}{{ page.pre | default: "null" }}{% endcapture %}
-                    {% capture next %}{{ page.nex | default: "null" }}{% endcapture %}
-                    {%- capture mod -%}{{ page.layout | default: "null"}}{%- endcapture -%}
-            
-                    {% include partnav.html nex=next pre=previous mod=mod %}
+                        {%- if page.previous.part == true -%}
+                            {% capture previous %}{{ page.previous.url }}{% endcapture %}
+                            {%- capture ptitle -%}{{ page.previous.title }}{%- endcapture -%}
+                        {%- endif -%}
+                        {%- if page.next.part == true -%}
+                            {% capture next %}{{ page.next.url }}{% endcapture %}
+                            {%- capture ntitle -%}{{ page.next.title }}{%- endcapture -%}
+                        {%- endif -%}
+                        {%- capture mod -%}{{ page.layout | default: "null"}}{%- endcapture -%}
+
+                        {% include partnav.html nex=next pre=previous mod=mod ptitle=ptitle ntitle=ntitle %}
+                    {%- else -%}
+                    {%- capture mod -%}{{ page.mod | default: "Module Home"}}{%- endcapture -%}
+                    <a href="./">🏡{{ mod }}</a>
                     {%- endif -%}
                 </div>
                 <!-- Main Content of markdown or sub-layouts-->
