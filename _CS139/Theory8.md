@@ -13,7 +13,7 @@ Users will have a poor experience and they won't use the site again
 
 Should consider usability for all users not just the developer 
 
-## Rules of interaction Design
+## Rules of Interaction Design
 
 * Understand the Computer - Limitations, capacities tools and platforms
 * Understand People - Phycology, social aspects and human error
@@ -26,7 +26,7 @@ User centered design
 2. Keep the user in the centre
 2. Remember the user at the end
 
-# Software development Lifecycle
+# Software Development Lifecycle
 1. Requirements capture
 2. Design
 3. implementation
@@ -41,7 +41,7 @@ Interviews and Questionnaires - ask users
 Ethnography - observe users
 Scenarios & stories - real life examples
 
-### Types of requirements
+### Types of Requirements
 * Functional
     * A service provided by the system
     * What it should not do
@@ -79,30 +79,30 @@ When you first see something how do you know what to do with it?
 * Icons
 * Instructions
 
-Dont make non-working buttons or things that dont look like buttons
+Don't make non-working buttons or things that don't look like buttons
 
 ## Constraints
-Limitng the cations the user can take at any one time
+Limiting the cations the user can take at any one time
 
 Common is deactivating certain menu options by shading and restricting use
 
-* Physical - DVDs , USB, Keyboard : can only be pressed
-* Logical - The users understanding of how the world works and allows the user to deduce what happens next
-* Cultural - Cultural conventions: A red light means stop / warning almost anywhere it is shown in the western world but in China celebrates new year and brings good luck. This is a result of culture and fairly arbitrary not any form of logical process. 
+* __Physical__ - DVDs , USB, Keyboard : can only be pressed
+* __Logical__ - The users understanding of how the world works and allows the user to deduce what happens next
+* __Cultural__ - Cultural conventions: A red light means stop / warning almost anywhere it is shown in the western world but in China celebrates new year and brings good luck. This is a result of culture and fairly arbitrary not any form of logical process. 
 
 ## Feedback
 Gives the user a response to an action and what has been accomplished could be
-* Visual - hourGlass , new page load
-* Auditory - Beep on mistake
-* Tactile - Keyboard , vibration
-* verbal - warnings or welcome messages
+* __Visual__ - hourGlass , new page load
+* __Auditory__ - Beep on mistake
+* __Tactile__ - Keyboard , vibration
+* __Verbal__ - Warnings or welcome messages
 
 ## Mapping 
 Relationship between the controls and their effect
 
-Good- Steering Wheels, Slider Bars
+__Good__ - Steering Wheels, Slider Bars
 
-Poor- Taps: which side , Light switch: Which light?
+__Poor__ - Taps: which side , Light switch: Which light?
 
 ## Consistency 
 Similar operations for similar tasks
@@ -113,23 +113,23 @@ File Menu top left
 Similar both within systems and cross systems / applications (Xbox controller and PlayStation are similar)
 
 # Usability Heuristics
-* Visibility of System Status - keep users informed of status by providing feedback e.g 1/10 
-* Match Between system and Real World- Use user's language rather than systems terms
-* User Control and Freedom = Provide "escape routes" for users (undo)
-* Consistency and Standards - avoid making users wonder if deferent terms mean the same thing (apply / save)
-* Error prevention - Prevent users form making errors (Do you want to save)
-* Recognition rather then recall - Make objects ,actions and objects visible
-* Flexibility and Efficiency of use - Provide accelerators that allow experts to do things faster
-* Aesthetic and Minimalist Design - Avoid irrelevant functions or information
-* Help users recognize, diagnose and recover from error - user Plain language to describe the error. Be informative and non-technical
-* Help and Documentation - Provide information that is easily searched and provides solutions
+* __Visibility of System Status__ - Keep users informed of status by providing feedback e.g 1/10 
+* __Match Between system and Real World__- Use user's language rather than systems terms
+* __User Control and Freedom__ = Provide "escape routes" for users (undo)
+* __Consistency and Standards__ - Avoid making users wonder if deferent terms mean the same thing (apply / save)
+* __Error prevention__ - Prevent users form making errors (Do you want to save)
+* __Recognition rather then recall__ - Make objects ,actions and objects visible
+* __Flexibility and Efficiency of use__ - Provide accelerators that allow experts to do things faster
+* __Aesthetic and Minimalist Design__ - Avoid irrelevant functions or information
+* __Help users recognize, diagnose and recover from error__ - Use Plain language to describe the error. Be informative and non-technical
+* __Help and Documentation__ - Provide information that is easily searched and provides solutions
 
-# Accessibility and the WEb
+# Accessibility and the Web
 Inclusive practice of making websites usable for all abilities
 
 Required by Equality Act 2010
 * Meet level AA of the web content Accessibility Guidelines (WCAG 2.1)
-* otherwise: you could be sued for discrimination
+* Otherwise: you could be sued for discrimination
 
 The site should
 * Programed using semantically meaningful HTML
@@ -137,11 +137,11 @@ The site should
 * Meaningful link names
 
 ## Needs
-Visual - Blindness, poor vision , colour Blindness
-Motor - Fine motor control , tremors, slowness
-Auditory - Deafness
-Seizures - Epilepsy form flashing lights
-Cognitive - Learning difficulties (dyslexia,dyscalculia) memory problems
+__Visual__ - Blindness, poor vision , colour Blindness
+__Motor__ - Fine motor control , tremors, slowness
+__Auditory__ - Deafness
+__Seizures__ - Epilepsy form flashing lights
+__Cognitive__ - Learning difficulties (dyslexia,dyscalculia) memory problems
 
 ## Examples
 * Making images/ text enlargeable with functionality or browser CSS
@@ -149,22 +149,22 @@ Cognitive - Learning difficulties (dyslexia,dyscalculia) memory problems
 * Make clickable areas large - Helps users with poor motor control
 
 ## Assistive Technologies
-* Screen Reading Software - Reads to the user with synthesized speech
-* Braille Terminals - Outputs text as Braille
-* Screen Magnification
-* Speech Recognition
-* Large TrackBalls 
+* __Screen Reading Software__ - Reads to the user with synthesized speech
+* __Braille Terminals__ - Outputs text as Braille
+* __Screen Magnification__
+* __Speech Recognition__
+* __Large TrackBalls__
 
 ## WCAG
 Web content accessibility Guidelines (WCAG) are published by the Web Accessibility initiative 
 WCAG 2.0 published in 2008 and became an ISO standard in 2012
 WCAG 2.1 published in 2018
 
-## Principles behind the Quidlines
-* Perceivable - Information should pe presented to users in ways they can perceive
-* Operable - User interface components and navigation must be operable
-* Understandable - Information and the operation of user interface must be understandable 
-* Robust - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
+## Principles Behind the Quidlines
+* __Perceivable__ - Information should pe presented to users in ways they can perceive
+* __Operable__ - User interface components and navigation must be operable
+* __Understandable__ - Information and the operation of user interface must be understandable 
+* __Robust__ - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
 
 # Evaluation and Testing
 
@@ -173,15 +173,15 @@ WCAG 2.1 published in 2018
     * what the user does
     * The characteristics of the user
     * The environment and the context where the evaluation will take place
-    * the nature of the artefact being examined
+    * The nature of the artefact being examined
 
 Types of evaluation
-* Formative Evaluation - Evaluation of an existing product, Predictive evaluation
-* Summative Evaluation - Evaluation at the completion of a product
+* __Formative Evaluation__ - Evaluation of an existing product, Predictive evaluation
+* __Summative Evaluation__ - Evaluation at the completion of a product
 
 Evaluation should be done regularly and after each step in the product design development and testing.
 
-## Analytical Evalutiaon
+## Analytical Evaluation
 Include Keystroke Model
 Measure
 * k (Key-stroking)
@@ -198,16 +198,16 @@ Measure
 * Their thoughts are analysed later
 * Assess the extent of System functionality
 * Assess the effect of the interface on the user
-* identify specific problems
+* Identify specific problems
 
 ## Usability Testing
 * Introduce a list of tasks
 * Watch Quietly
-* record behavior (take notes, recorded)
+* Record behavior (take notes, recorded)
 
 ## Measuring Usability
-* ratio of successes to failures
-* time to compete a task
+* Ratio of successes to failures
+* Time to compete a task
 * Number of errors made
 * Number fo times the user expresses frustration
 

@@ -28,7 +28,7 @@ CAn be used to access the device
 * Resolution
 
 `media` can be used
-* in the CSS files
+* In the CSS files
 * To add different css files in the head element
 
 Adding to the CSS file example
@@ -50,7 +50,7 @@ These also override any other styles specified elsewhere
 
 Easier then rewriting pages
 
-## Separate mobile layout
+## Separate Mobile Layout
 Previously common not so anymore
 
 Redirects can be done based on the browsers user agent based in the header
@@ -67,7 +67,7 @@ however needs updating as new devices come out
     * Can be a lot of work to double the number of pages
     * Two sets of pages need updating
 
-# best?
+# Best?
 Each has its merits
 
-some content can work best with different designs
+Some content can work best with different designs

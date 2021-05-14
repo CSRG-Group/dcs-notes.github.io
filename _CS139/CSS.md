@@ -11,14 +11,14 @@ CSS stands for Cascading Style Sheets
 
 Intended to modify the appearance of HTML documents
 
-# Placement of styles
+# Placement of Styles
 The code for the stylesheet can be placed in 3 possible locations.
 
-## Inside respective tags
+## Inside Respective Tags
 This method is often discouraged because it causes HTML code to be very messy and if you want to change the styling, you have to go to individual HTML tags.
 `<h1 style ="color:blue"> content </h1>`
 
-## In a special style tag
+## In a Style Tag
 Inside the `<head>` tag:
 ``` html
 <style>
@@ -27,12 +27,12 @@ Inside the `<head>` tag:
 ```
 This method is used for certain styles.
 
-## In a separate file
+## In a Separate File
 The file containing the stylesheet is then linked in the `<head>` tag. This method is most commonly used.
 `<link rel="stylesheet" href="styles.css">`
 
 
-# Types of stylesheet
+# Types of Stylesheet
 
 There are 3 types of stylesheet
 
@@ -70,7 +70,7 @@ h1 {
 }
 ```
 
-# Box model
+# Box Model
 
 Every element is made form boxes and contains
 1. Content
@@ -91,22 +91,22 @@ Other ways include __fixed__ and __floating__
 
 There are 3 ways of specifying a html element
 
-## Using the tag name
+## Using the Tag Name
 This will modify all tags of that type
 
 `h1 {color:blue;}`
 
-## Using a class selector
+## Using a Class Selector
 uses to modify just some elements uses `.`
 
 `.large {color:blue;}`
 
-## Using an id
+## Using an Id
 id is unique used to modify a single element
 
 `#page_title {color:blue;}`
 
-## Attribute selectors
+## Attribute Selectors
 
 attribute selectors style HTML elements that contain an attribute
 use `[]` to specify an attribute
@@ -199,5 +199,42 @@ Different properties take different values.
 
 Know the different value types for the main properties
 
-# Table styling
-    TO DO
+# Table Styling
+## Table Borders
+Borders around tables can increase readability
+
+``` css
+table, th, td {
+  border: 1px solid black;
+}
+```
+The border collapse property collapses the borders into a single line over 2 in parallel
+``` css
+table {
+  border-collapse: collapse;
+}
+```
+## Text Alignment
+Text in Tabels can be aligned within the cells
+``` css
+td {
+  text-align: center;
+  text-align: left;
+  text-align: right;
+}
+```
+
+## Styling
+Tables can be stripted usin `nth-child()`
+``` css
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+```
+color can be altered 
+``` css
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+```

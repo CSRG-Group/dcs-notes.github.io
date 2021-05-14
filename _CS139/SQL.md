@@ -16,7 +16,7 @@ Structures Query Language
 
 interact with a relational database
 
-## Relational database
+## Relational Database
 Data is linked to other data through the use of, unique id and links/ references
 
 ## Database Management
@@ -34,7 +34,7 @@ Similar to accusative arrays
 Fast retrieval through hash functions
 Uses HAsh functions rather ehn 
 
-## ACID compliance
+## ACID Compliance
 ensures transactions are robust
 * atomicity - each transaction is a single unit
 * consistency - only take the database from one valid state to another
@@ -53,7 +53,7 @@ Rows are data that is entered
 Unlimited number of rows are available but fixed number of columns.
 
 ## Links
-### One to one
+### One to One
 One record is associated with one and only one record.
 
 * one person has one passport
@@ -72,12 +72,12 @@ Many records are related to many records.
 ## Identifiers
 Each data row has an ID that can be used to reference the data.
 
-## schema
+## Schema
 A script used to create a database from scratch, used to define tables.
 
 The script may also contain default/ demo values
 
-# Detailed commands
+# Detailed Commands
 
 ## Data Types
 
@@ -114,7 +114,7 @@ DROP TABLE table1;
 ``` SQL
 INSERT INTO table1 VALUES (value1,value2,value3,....);
 ```
-## Updating records
+## Updating Records
 ``` SQL
 UPDATE table1 SET column1 = value1 WHERE column2=value2;
 
@@ -122,7 +122,7 @@ Multiple records
 UPDATE table1 SET column1 = value1,column2 = value2 WHERE column3=value3;
 ```
 
-## Deleting records
+## Deleting Records
 ``` SQL
 DELETE FROM table1 WHERE <column1=value1;
 ```

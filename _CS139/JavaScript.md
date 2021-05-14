@@ -81,7 +81,7 @@ animals[3]=2;
 ```
 Arrays can sore different object types
 
-### common methods
+### Common Methods
 
 * length - `animals.length`
 * index  - `animals.indexOf("Cat")`
@@ -97,7 +97,7 @@ function Name(args){
 ```
 can return a value using the `return` keyword
 
-# Control flow
+# Control Flow
 ## IF
 ```javaScript
 if (course==`cs139`){
@@ -108,7 +108,7 @@ if (course==`cs139`){
     alert("Something else");
 }
 ```
-## switch
+## Switch
 ```Javascript
 switch (course){
     case 'cs139':
@@ -128,7 +128,7 @@ for (i=0;i<10,i++){
     alert(i);
 }
 ```
-## While loop
+## While Loop
 ``` javascript
 var x =0;
 while (x<5){
@@ -242,7 +242,7 @@ JQuery can be added in the same was as an external javaScript program
 `<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf=8"></script>`
 
 jQuery uses the $ function
-## starting scripts
+## Starting Scripts
 Typically it is desirable for scripts to start after the while file has loaded
 this can be achieved using the DOM ready event.
 
@@ -250,12 +250,12 @@ this can be achieved using the DOM ready event.
 
 When using the jQuery function a jQuery object is crated this wraps the HTML and provided it with additional functionality.
 
-## Magical objects
+## Magical Objects
 * `$('H1')` - all of the H1 elements on a a page
 * `$("#header")` - element with id header
 * `$('.title')` - elements with a class of title
 
-### Many items
+### Many Items
 There are also several ways fo obtainging the first itme of sevveral
 * `$('H1')[0]`
 * `$('H1:first')`
@@ -343,7 +343,7 @@ This monitors the parent for events then checks the chid it check if it matches
 no updated events are needed for newly created elements
 
 
-## Event bubbling
+## Event Bubbling
 DOM elements are nested
 
 When an event is triggered on an element is it is triggered on the parent

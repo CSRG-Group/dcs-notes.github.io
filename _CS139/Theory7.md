@@ -26,8 +26,8 @@ XML element is everything form the start tot he end tag
 
 No standard for names aside form the software creating and interpreting the data
 
-* Structure - Defining appropriate tag names
-* Content - The data contained within the structure
+* __Structure__ - Defining appropriate tag names
+* __Content__ - The data contained within the structure
 
 
 Element may contain
@@ -53,8 +53,8 @@ an Example Food Menu:
     </drink>
 </menu>
 ```
-### valid names
-* can contain Letter, Numbers, and other characters
+### Valid Names
+* Can contain Letter, Numbers, and other characters
 Names cannot
 * Start with a number or punctuation
 * Start with the letters XML (case insensitive)
@@ -71,7 +71,7 @@ Can be used to help parse the data
 XML is well formed if ti meets the following requirements
 * The document contains only unicode characters
 * None of the special characters appear (e.g < and &)
-* begin, end and empty tags are correctly nested
+* Begin, end and empty tags are correctly nested
 * Element tags are case-sensitive
 * A single root element contains all the other elements
 
@@ -101,7 +101,7 @@ rating data may be empty under some structures an null under others is is import
 * Data is comma seperated
 * `{ }` hold objects
 * `[ ]` hold arrays
-* whitespace is not relevant can make it more readable
+* Whitespace is not relevant can make it more readable
 
 ## Example
 ``` JSON

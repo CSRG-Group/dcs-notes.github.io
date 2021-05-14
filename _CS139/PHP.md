@@ -35,7 +35,7 @@ comments are:
 * `//single line`
 * `/* multi-line */`
 
-## simple commands
+## Simple Commands
 
 `echo` inserts the output into the larger html page including any tags
 
@@ -58,7 +58,7 @@ Specifier | Type
 %s | string
 %d | decimal
 
-### NUll Coalescing operator
+### NUll Coalescing Operator
 `??` can be used to assign a value if a variable is null
 `$username= $GET_["username"]??default`
 
@@ -85,7 +85,7 @@ define("PI",3.141592653);
 $pi=PI;
 ```
 
-# Data types
+# Data Types
 Scalar types
 * integer
 * float / double (these are the same)
@@ -133,7 +133,7 @@ $courses[1]="CS132";
 $courses[2]="CS133";
 ```
 
-### Associative array
+### Associative Array
 Creation:
 
 `$courses=("CS139"=>"Web Dev","CS132"=>"Not A Cult","CS133"=>"Professional Skills");`
@@ -187,7 +187,7 @@ Operator | Name
 
 # Branching
 
-## IF
+## If
 
 similar to Java
 ``` php
@@ -201,7 +201,7 @@ if ($course == "CS139") {
 ```
 can use `:` instead of {}
 
-## switch
+## Switch
 ``` php
 switch($course){
     case "CS139":
@@ -239,7 +239,7 @@ do {
     $x++;
 } while ($x<=10);
 ```
-## array iteration
+## Array Iteration
 iterate over an array obtaining the value at each location
 ``` php
 foreach($array as $item){
@@ -261,8 +261,8 @@ function FunctionName ($arg1,$arg2):string{
 }
 ```
 
-## pass by reference
-adding an `&` in front passes by reference
+## Pass by Reference
+Adding an `&` in front passes by reference, a variable
 change in a function is reflected outside the function scope
 ```php
 function add(&$arg){
@@ -270,8 +270,8 @@ function add(&$arg){
 }
 ```
 
-## global
-global scoped variables can be included in functions with global
+## Global
+Global scoped variables can be included in functions with global
 
 SHOULD BE AVOIDED
 
@@ -290,7 +290,7 @@ In PHP the data is converted from the requests to associative arrays.
 Post requests are `$_POST` get requests are `$_GET`
 
 
-# PHP from another file
+# PHP From Another File
 Php can insert the contents of another file
 
 `require <script.php>`, script stops if file can't be found
@@ -303,7 +303,7 @@ also
 
 Elements such as header or nav bar only need to be made once then can be copied over
 
-# Objects and classes
+# Objects and Classes
 ```php
 
 class Person{
@@ -316,14 +316,14 @@ class Person{
     }
 }
 ```
-all object variables need to be specified through `$this->`
+All object variables need to be specified through `$this->`
 
-## Call methods
-to call a method 
+## Call Methods
+To call a method 
 `$object->method(<args>)`
 
 ## Constructor
-the constructor function is always  `__construct()`
+The constructor function is always  `__construct()`
 
 Objects can be created through the `new` keyword
 
@@ -404,7 +404,7 @@ if (isset($_POST['username']) && isset($_POST['password'])){
 }
 ```
 
-# Login verification
+# Login Verification
 It is important to verify that a user is logged in before they can access a page
 
 ``` php
@@ -456,7 +456,7 @@ can be used for storing objects and complex data as a string
 the text can then be un-serialized 
 `$object= unserialize($string);`
 
-# Reading and Writing files
+# Reading and Writing Files
 two types oif access stream access, will read a small portion at a time. All-in-Memory access can read the entire file to memory.
 
 ## Stream Access

@@ -10,7 +10,7 @@ Stands for HyperText Markup Language.
 
 HTML is a __semantic__ language it describes the structure of the document and not the content.
 
-# HTML Nesting structure
+# HTML Nesting Structure
 ## Parent 
 A tag is a parent of another if it immediately encloses the tag.
 ## Child
@@ -42,7 +42,7 @@ closing tag | `</a>`
 
 Example of a HTML tag: `<a href="www.google.com"> a search engine </a>`
 
-## Empty tags
+## Empty Tags
 
 Some tags have no content and so are empty, a closing tag is not needed.
 `<meta charset="utf-8">`
@@ -265,7 +265,7 @@ has attributes:
 * accept-charset - The charset accepted by the form
 
 `<form method ="post" action="auth.php"`
-## Form elements
+## Form Elements
 A form element allows the user to add information to the form for submission there are several types
 
 The element can also have a name attribute this can be used to reference the data the user entered
@@ -293,7 +293,7 @@ other types
 * url
 * week
 support is patchy and not uniform across browsers
-#### other attributes
+#### Other Attributes
 
 * value - the default value needed to be deleted before entering info 
 * placeholder - the suggested value is a ghost value

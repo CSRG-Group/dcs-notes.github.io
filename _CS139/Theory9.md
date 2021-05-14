@@ -6,7 +6,7 @@ part: true
 pre: Theory8
 nex: Theory10
 ---
-# Three tier Architecture
+# Three Tier Architecture
 * Web Tier
     * Handles requests 
     * Serves static assets
@@ -40,7 +40,7 @@ Fairly practical
 * Replacing the machine leads to downtime
 * Harder to scale down
 
-## Horizontal scaling
+## Horizontal Scaling
 Separate the database to a separate computer
 
 Multiple servers can be setup to communicate with the single database computer
@@ -50,19 +50,19 @@ Load cam be spread across the servers
 Any requests are sorted by a __Load Balancer__ to ensure that all server are equally loaded
 
 Load balancing algorithms 
-* Round Robin - requests sent to each server in turn
-* Weighted round robin - Request sent to each server in turn but also determined by a weighting for each server
-* Least active sessions - requests are sent to the most lightly loaded server
+* __Round Robin__ - requests sent to each server in turn
+* __Weighted round robin__ - Request sent to each server in turn but also determined by a weighting for each server
+* __Least active sessions__ - requests are sent to the most lightly loaded server
 ### Advantages
 * The individual computers are cheaper
 * Built in redundancy if a server breaks the others can continue
 *  Easily add more servers
 
 ### Disadvantages
-* higher upfront costs
+* Higher upfront costs
 * More complex systems, More Maintenance needed
 
-## Cloud Based infrastructure
+## Cloud Based Infrastructure
 Cloud computing can allow users to rent servers
 
 Servers can be leased by the hour

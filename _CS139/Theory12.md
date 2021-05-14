@@ -44,7 +44,7 @@ pre: Theory11
 ## Software Stack Choices
 Database options include
 * mySQL
-* PosrgreSQL
+* PostgreSQL
 
 Many different versions __Don't use SQLite3__
 
@@ -62,7 +62,7 @@ After the OS is installed the software stack can be installed form the source or
 Installing mysql
 
 1. `apt-get install mysql-server`
-2. secure the basic installation `mysql_secure_installation`
+2. Secure the basic installation `mysql_secure_installation`
 3. Start a database session `mysql -u root -p`
 4. Create a user for the application
 5. Create a database for you application
@@ -85,14 +85,14 @@ Additional Software
 4. It can take some time for any changes to propagate
 
 ## Securing the Server
-As a minumun allways
+As a minimum always
 * Install `fail2ban` blocks ssh users form an IP for failed logins
 * Configure the firewall to only accept SSH and HTTP(s) traffic
 * Modify SSH to only accept key based logins from non designated IPs
 
 ## Maintenance
-* keep an eye ont he server
+* Keep an eye on the server
 * Need to install monitoring Software to alert you to issues
 * Check logs on a daily basis
-    * setup an email script
+    * Setup an email script
 * Monitor usage to ensure everyone can use the site

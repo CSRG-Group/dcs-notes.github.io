@@ -77,10 +77,10 @@ Many Technologies are combined to build a web application
 * Large software library
 ## Rails
 Collection of libraries that work together
-* Active Record - Object relational mapping for database entities
-* ActiveResource - For web services
-* ActionMailer - Manages Email Functionality
-* ActionPack - Manages mapping URLs to correct applications
+* __Active Record__ - Object relational mapping for database entities
+* __ActiveResource__ - For web services
+* __ActionMailer__ - Manages Email Functionality
+* __ActionPack__ - Manages mapping URLs to correct applications
 
 # Front end
 
