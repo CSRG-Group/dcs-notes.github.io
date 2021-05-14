@@ -27,6 +27,7 @@ baseurl: "/dcs-notes.github.io"
 # theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
+  - jekyll-github-metadata
 markdown: kramdown
 github:
   repository_url: https://github.com/CSRG-Group/dcs-notes.github.io
@@ -92,6 +93,11 @@ collections:
     output: true
   CS131:
     output: true
+    order:
+     - part1.md
+     - part2.md
+     - part3.md
+     - part4.md
   CS132:
     output: true
     order:
