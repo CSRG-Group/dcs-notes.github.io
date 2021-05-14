@@ -13,7 +13,11 @@ Detailed typed notes for CS131 are in the process of being written, with the hea
 
 
 
-*This should be a good place to start contributing if you want to begin making notes. The general intention here is essentially just making a list of key results and definitions, as the main notes in the online material provide very good coverage, along with examples*.
+*This should be a good place to start contributing if you want to begin making notes.*
+
+*The general intention here is essentially just making a list of key results and definitions, as the main notes in the online material provide very good coverage, along with examples.*
+
+*The notes already filled in for integer number systems should be representative of the end goal here.*
 
 
 

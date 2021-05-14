@@ -74,6 +74,22 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 - If you are directly sourcing content that is not your own, **please add the correct citations**. For images or text taken verbatim from a source, please include a link to the site it is taken from, and exercise common sense for other cases
 - Please do not re-host any university owned content, including but not limited to past papers and lecture notes
 
+
+### How to make a pull request
+
+1. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), click the "Fork repository" button
+2. Clone your fork of the repository to your computer by running the command `git clone https://github.com/<YOUR_GITHUB_USERNAME>/dcs-notes.github.io`
+3. Create a new branch on your local repository by running the command `git checkout -b <NEW_BRANCH_NAME>`. Naming the branch as a very brief description of what the change entails is helpful for us when accepting pull requests.
+4. Set a new remote server for the upstream repository by running the command `git remote add upstream https://github.com/csrg-group/dcs-notes.github.io`
+5. Make your changes/contributions, then add and commit your changes to the repository (with `git add -A` and `git commit -m "<COMMIT_MESSAGE>"` respectively)
+6. Push your changes to the remote server by running the command `git push -u origin <NEW_BRANCH_NAME>`
+7. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), after the changes have been pushed, a green "Compare & pull request" button will appear. Click on it, then click on the green "Create pull request" button which will appear afterwards. After this is done, we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
+
+Further resources for making a pull request can be found [here](http://makeapullrequest.com).
+
+If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section to ask us about it.
+
+
 ### Formatting
 Most modules are split into separate topics, and we have also included a one page (ctrl-f) version for modules that are arranged this way. To ensure that the table of contents in the one page versions are displayed correctly there are a few things we would like contributors to note:
 
@@ -142,21 +158,6 @@ If there is no YAML Front Matter you can add it at the top of the file like this
 math: true
 ---
 ```
-
-### How to make a pull request
-
-1. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), click the "Fork repository" button
-2. Clone your fork of the repository to your computer by running the command `git clone https://github.com/<YOUR_GITHUB_USERNAME>/dcs-notes.github.io`
-3. Create a new branch on your local repository by running the command `git checkout -b <NEW_BRANCH_NAME>`. Naming the branch as a very brief description of what the change entails is helpful for us when accepting pull requests.
-4. Set a new remote server for the upstream repository by running the command `git remote add upstream https://github.com/csrg-group/dcs-notes.github.io`
-5. Make your changes/contributions, then add and commit your changes to the repository (with `git add -A` and `git commit -m "<COMMIT_MESSAGE>"` respectively)
-6. Push your changes to the remote server by running the command `git push -u origin <NEW_BRANCH_NAME>`
-7. On the repository's [page on GitHub](https://github.com/csrg-group/dcs-notes.github.io), after the changes have been pushed, a green "Compare & pull request" button will appear. Click on it, then click on the green "Create pull request" button which will appear afterwards. After this is done, we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
-
-Further resources for making a pull request can be found [here](http://makeapullrequest.com).
-
-If you are still confused, try Google-Fu on how to make a pull request, or see the "Contact us" section to ask us about it.
-
 
 
 ## Contributors
