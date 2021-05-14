@@ -28,31 +28,31 @@ The query sting is limited to 2048 characters
 Typically used to request specific data from the server
 ## Response
 Responds with 3 sections
-* Header - status fo the request
-* Body - (optional) response to the request
+* __Header__ - status fo the request
+* __Body__ - (optional) response to the request
 
 Response codes
 
-* 2## codes for successful response
-* 3## redirection response
-* 4## codes for client errors e.g bad request
-* 5## codes for server errors
+* __2##__ codes for successful response
+* __3##__ redirection response
+* __4##__ codes for client errors e.g bad request
+* __5##__ codes for server errors
 
 Common codes
 
-* 200 Ok
-* 301 Moved Permanently
-* 304 Not Modified
-* 307 Temporary redirect
-* 400 Bad request
-* 401 Unauthorized
-* 404 Not5 found
-* 414 Request URI too long
-* 500 InternalServer Error
+* __200__ Ok
+* __301__ Moved Permanently
+* __304__ Not Modified
+* __307__ Temporary redirect
+* __400__ Bad request
+* __401__ Unauthorized
+* __404__ Not found
+* __414__ Request URI too long
+* __500__ InternalServer Error
 
 # POST
 This request is encoded within the header for the request the query string can can't be seen within the URL browser
 
-Has a longer Data alowance
+Has a longer Data allowance
 
 Typically used to send data to the server forms etc.

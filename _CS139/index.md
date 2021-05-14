@@ -15,8 +15,8 @@ You can access them from the [CS139 One Page Notes](opnotes) or the respective t
 1. [x] [HTML](HTML)
 2. [x] [CSS](CSS)
 3. [x] [PHP](PHP)
-4. [ ] [JavaScript](JavaScript)
-4. [x] [SQL](SQL)
+4. [X] [JavaScript](JavaScript)
+5. [x] [SQL](SQL)
 
 ### Theory (work in progress)
 
@@ -26,6 +26,12 @@ You can access them from the [CS139 One Page Notes](opnotes) or the respective t
 4. [x] [Web Protocols](Theory4)
 5. [x] [Web Browsers, servers and state](Theory5)
 6. [x] [Security](Theory6)
+7. [x] [XML and JSON](Theory7)
+8. [x] [Usability](Theory8)
+9. [x] [Web Architectures and Performance](Theory9)
+10. [x] [Designing For Mobile](Theory10)
+11. [x] [Being A Web Developer](Theory11)
+12. [x] [Setting up a Real Website](Theory12)
 
 ## Flash Cards
 Here are a set of flashcards for the module by Leon Chipchase (they still need to be refined), and please message me if there is something incorrect on there.

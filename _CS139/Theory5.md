@@ -5,10 +5,10 @@ math: true
 part: true
 ---
 
-# Web browsers
+# Web Browsers
 Web browsers interprets data into one in a recognized form
 
-converting HTML page and rendering as a readable web page
+Converting HTML page and rendering as a readable web page
 
 Each browser behaved differently and __loosely__ conform to standards
 
@@ -18,7 +18,7 @@ Local caching can reduce load times
 
 Most offer additional features, Search engine auto complete etc...
 
-# Web servers
+# Web Servers
 
 Typically powerful computer to respond to HTTP requests.
 

@@ -3,12 +3,14 @@ layout: CS139
 title: Security
 math: true
 part: true
+pre: Theory5
+nex: Theory7
 ---
-# Hashing algorithms
+# Hashing Algorithms
 
-* md5 - easily calculated but clashes have been found
-* sha1 - (160 bits) easily calculated
-* Bcrypt - current best recommendation
+* __md5__ - easily calculated but clashes have been found
+* __sha1__ - (160 bits) easily calculated
+* __Bcrypt__ - current best recommendation
 
 Passwords are still susceptible to dictionary attacks
 
@@ -26,9 +28,9 @@ only needed for SHA1 php `password_hash` adds salt automatically
 # Redirect
 When submitting a from the page should redirect to a confirmation page to prevent re entry , and prevent re-submit through refreshing the page. causing a double submit.
 
-# Query Stings
-Query stings can be modified by the user
-query strings should be checked for validity nothing should be assumed 
+# Query Strings
+Query strings can be modified by the user
+and should be checked for validity nothing should be assumed 
 
 known as sanitizing / validating input
 
@@ -59,32 +61,32 @@ Now all services opt for HTTPS and HTTP is rarely used.
 ### Public Key 
 These are the keys that are used to encrypt data asymmetrically.
 They are distributed with a certificate signed by a certificate authority.
-### Certificate authority
+### Certificate Authority
 These are 3rd parties and the public keys are installed with OS/ browser establishing trust and sign certificates to verify identity.
 
 Signatures can be compared with the public key to ensure identity.
 
 Issuing a certificate is done when a domain registrant can prove they own the domain
 
-## drawbacks
+## Drawbacks
 Encryption algorithms can be computationally intensive
 
 Dedicated and faster hardware generally now makes this negligible
 
-## Man in the middle
+## Man in the Middle
 a machine sits in the middle and read the messages
 
 even if keys are transmitted fake keys can be made can can be decrypted in the middle
 
 By signing certificated fake keys cannot be made
 
-# SQL injection
+# SQL Injection
 Transmitting SQL strings to modify the database request
 
-consider the defaut request
+Consider the defaut request
 `"SELECT * FROM users WHERE name ='"+UserName+"';"`
 
-by adding ``or '1'=1` to a username entry box
+By adding ``or '1'=1` to a username entry box
 the query becomes 
 
 `"SELECT * FROM users WHERE name = '' or '1'=1;"`
@@ -101,9 +103,9 @@ $stmt= $db->prepare("Select bar FORM foo WHERE id=;id");
 $stmt->bindValue(";id",1,SQLITE3_INTEGER);
 $result = $stmt-> execute();
 ```
-this treats all data as data and never as instructions.
+This treats all data as data and never as instructions.
 
-alternatively `addslashes()` can be used to escape any characters but is not a preferred method
+Alternatively `addslashes()` can be used to escape any characters but is not a preferred method
 
 Other additional ensures can be database access management such as limits on deletion
 
@@ -140,7 +142,7 @@ $name= filter_input(INPUT_GET,'name',FILTER_SANITIZE_STRING);
 echo 'Hi '.htmlspecialchars($name,ENT_COMPAT,'UTF-8')
 ```
 
-recommendation is to store the data in as raw form as possible and only convert when it is time to output it.
+The recommendation is to store the data in as raw form as possible and only convert when it is time to output it.
 
 ## Persistent-XSS
 When data is stored to a database then redisplayed later for a user, e.g a comment.
@@ -155,14 +157,16 @@ Restrict access to only some directories (whitelisting)
 
 Convert paths to absolute and ensure they are in the correct directory
 
-# PHP-CGI vulnerabilites
+# PHP-CGI Vulnerabilities
 
 PHP-CGI  had the option to server the php source 
 
 another option allows the setting of variables this could allow variable and variable manipulation this should be disable d in sever settings
 
-## other configuration advice
+## Other Configuration Advice
 `allow_url_fopen` - indicates wether remote files can be downloaded
                     should be off
+                    
 `allow_url_include` - indicated wether scripts can include/ require remote files
 turn off if not needed
+

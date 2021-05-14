@@ -20,9 +20,9 @@ The user makes a page request the sever runs a script and returns the requested 
 The JavaScript then may make additional requests to the server and updates
 the web page accordingly.
 
-# Client server Model
+# Client Server Model
 
-## Client server Model
+## Client Server Model
     
 The client requests data from a server that then then responds
 
@@ -30,11 +30,11 @@ The client requests data from a server that then then responds
 
 Devices are both requesting an serving data concurrently 
 
-# Data centers
+# Data Centers
 
 ## Servers
 
-server's can have many different uses
+Server's can have many different uses
 
 * Web
 * Application
@@ -48,17 +48,17 @@ server's can have many different uses
 Data centers contain hardware to support and maintain the servers:
 
 * Server racks
-* backup servers
+* Backup servers
 * Air conditioning
 * Backup generators
 * UPS (uninterruptible power supply (Batteries))
 
-## Data duplication
+## Data Duplication
 
 In data centers data is duplicated so that if a server breaks then another
 server can take over and continue to provide the data
 
-# The internet
+# The Internet
 
 ## Communication
 The majority of data traves through wires and cables.
@@ -81,10 +81,10 @@ Routing involves checking if the destination is known to a computer and then dir
 # Mobile Web applications
 
 Phone and tablets have many constraints
-* lacks hover
-* lack processing power
-* lack screen sizes
-* variety of screen sizes
+* Lacks hover
+* Lack processing power
+* Lack screen sizes
+* Variety of screen sizes
 
 However rather than having a dedicated web app browser apps can be made 
 to run in small browsers on the phone and websites can be converted over.

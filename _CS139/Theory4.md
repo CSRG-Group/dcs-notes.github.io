@@ -40,7 +40,7 @@ An IP address is needed by every computer on the internet
 
 ### IPV4
 
-uses 4x8-bit numbers so 4,294,967,296 addresses
+Uses 4x8-bit numbers so 4,294,967,296 addresses
 they are now gone.
 
 > Reserved Addresses
@@ -50,7 +50,7 @@ they are now gone.
 >
 > There are other reserved addresses
 
-#### NAT Network address Translation
+#### NAT Network Address Translation
 Used in part to overcome the shortage of IPV4 addresses
 
 * A device connects to a router
@@ -83,10 +83,10 @@ The Domain Name is Linked to an IP address, e.g `www.google.com` would be given 
 
 can be broken down 
 
-* Server1.  Fourth level
-* www.      Third-Level
-* FunCode.  Second Level
-* com       Top-Level Domain (TLD)
+* `Server1.` -  Fourth level
+* `www.`     - Third-Level
+* `FunCode.` - Second Level
+* `com`      - Top-Level Domain (TLD)
 
 `Server1.www.FunCode.com`
 
@@ -98,7 +98,7 @@ Different registrars assign domain names beneath this
 
 Registrars check with interNIC for the names
 
-domain names are case insensitive
+Domain names are case insensitive
 
 ## Resolving A Domain Name
 Default Base
@@ -109,15 +109,15 @@ When Resolving a domain name
 * The computer asks the root server
 * The root server provides the top level domain
 * The top level domain which provides a sub domain server
-* repeat until the address is found
+* Repeat until the address is found
 
 ### Caching
 The previous steps are extensive so DNS caching is used.
 * The computer points to a caching server
 * The caching server checks if it has the address in memory
-    * if it does return the memory
-    * if not perform the other steps
-* any requests are saved to memory for next time.
+    * If it does return the memory
+    * If not perform the other steps
+* Any requests are saved to memory for next time.
 
 DNS records have a TTL (time to live) which dictates how ling they are valid for
 
@@ -149,7 +149,7 @@ No guarantee of a response
 
     path is case sensitive
 
-## query string : 
+## Query String : 
 [SEE GET](Theory3.html)
 
 ## Fragment
