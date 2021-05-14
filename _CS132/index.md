@@ -65,6 +65,13 @@ points, nor are guaranteed to be correct.
 
 A document containing all of the typed solutions linked above concatenated together is available [here](worksheets/combinedTyped.pdf)
 
+## Past Exam Solutions
+
+Below are a set of student written exam solutions for the past exam papers:
+
+| Year | Answers|
+|------|--------|
+
 ## Flash Cards
 
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
