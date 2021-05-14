@@ -7,7 +7,7 @@ title: CS140 Computer Security
 
 ## Topics and content
 
-There are nine broad topics in the module. You can access them from the [CS140 One Page Notes](opnotes) or the respective topic links below. Author(s): **Justin Tan**
+There are nine broad topics in the module. You can access them from the [CS140 One Page Notes](opnotes) or the respective topic links below. Author(s): **Justin Tan**, with contributions from **Edmund Goodman**
 
 1. [x] [Introductory concepts](part1)
 2. [x] [Authentication](part2)

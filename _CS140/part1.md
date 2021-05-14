@@ -36,9 +36,13 @@ title: Introduction to Computer Security
 
 A security model that defines three key aspects that should be guaranteed at all times
 
-1. **Confidentiality.** No unauthorised disclosure.
+1. **Confidentiality.** No unauthorised disclosure
 2. **Integrity.** No unauthorised change
-3. **Availability.** Users are not denied access to resources or have unwarranted delay.
+3. **Availability.** Users are not denied access to resources or have unwarranted delay
+
+![ciaTriad](C:\Users\egood\Desktop\projects\written\cs-yr1-revision-notes\dcs-notes.github.io\_CS140\part1.assets\ciaTriad.png)
+
+[Image source](http://panmore.com/the-cia-triad-confidentiality-integrity-availability)
 
 ## Case studies
 
