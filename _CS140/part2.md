@@ -126,3 +126,4 @@ Here are some statistics on the various  non-password authentication methods
 | Keystrokes    | 7%        | 0.1%           |
 | Voices        | 2%        | 10%            |
 {:.centeredtable}	
+

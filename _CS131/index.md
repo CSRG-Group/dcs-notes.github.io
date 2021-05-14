@@ -11,7 +11,7 @@ title: CS131
 
 Detailed typed notes for CS131 are in the process of being written, with the headings listed here, and being filled up over time. Since the provided notes by the module leader are so in depth, these will mostly just summarise key results.
 
-
+You can access the materials through [CS131 One Page Notes](opnotes) or from the main topics shown below.
 
 *This should be a good place to start contributing if you want to begin making notes.*
 
