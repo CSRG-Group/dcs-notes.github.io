@@ -1,6 +1,6 @@
 ---
 layout: modhome
-title: CS140 Functional Programming
+title: CS141 Functional Programming
 ---
 
 # Welcome to the CS141 revision guide

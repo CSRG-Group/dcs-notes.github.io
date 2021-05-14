@@ -189,6 +189,7 @@ If you are still confused, try Google-Fu on how to make a pull request, or see t
     <td align="center"><a href="https://github.com/clara-ramsay"><img src="https://avatars.githubusercontent.com/u/77890048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>clara-ramsay</b></sub></a><br /><a href="#content-clara-ramsay" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/mariosbf"><img src="https://avatars.githubusercontent.com/u/40693811?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mariosbf</b></sub></a><br /><a href="#content-mariosbf" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/nianyii-teh"><img src="https://avatars.githubusercontent.com/u/64478251?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nian Yii Teh</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Anianyii-teh" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://joshdavies.tech"><img src="https://avatars.githubusercontent.com/u/30526591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Davies</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Ajoshdavies14" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

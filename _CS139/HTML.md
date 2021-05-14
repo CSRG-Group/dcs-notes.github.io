@@ -10,7 +10,7 @@ Stands for HyperText Markup Language.
 
 HTML is a __semantic__ language it describes the structure of the document and not the content.
 
-# HTML Nesting structure
+# HTML Nesting Structure
 ## Parent 
 A tag is a parent of another if it immediately encloses the tag.
 ## Child
@@ -21,6 +21,11 @@ A tag is an ancestor if it is the parent or the parent of an ancestor of a tag.
 A tag is an descendant if it is the child or the child of a descendant of a tag.
 ## Sibling
 Two tags are siblings if they share a parent.
+
+# Document Object Model
+The HTML document object Model is a tree of the objects within a documet
+
+starts with the document ant root element `<html>` includes all the tags in a structured tree to allow for navigation.
 
 # Basic Syntax
 HTML uses code tags for opening and closing to give information about the content inside, opening use `<>` and closing starts with a backslash `</>`
@@ -37,7 +42,7 @@ closing tag | `</a>`
 
 Example of a HTML tag: `<a href="www.google.com"> a search engine </a>`
 
-## Empty tags
+## Empty Tags
 
 Some tags have no content and so are empty, a closing tag is not needed.
 `<meta charset="utf-8">`
@@ -260,7 +265,7 @@ has attributes:
 * accept-charset - The charset accepted by the form
 
 `<form method ="post" action="auth.php"`
-## Form elements
+## Form Elements
 A form element allows the user to add information to the form for submission there are several types
 
 The element can also have a name attribute this can be used to reference the data the user entered
@@ -288,7 +293,7 @@ other types
 * url
 * week
 support is patchy and not uniform across browsers
-#### other attributes
+#### Other Attributes
 
 * value - the default value needed to be deleted before entering info 
 * placeholder - the suggested value is a ghost value

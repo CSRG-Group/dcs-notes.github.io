@@ -5,17 +5,17 @@ math: true
 part: true
 ---
 
-# History of the internet
+# History of the Internet
 
-## Telephone and circuit switching
+## Telephone and Circuit Switching
 
 Circuit switching uses a physical connection for the duration of the connection, a dedicate line is needed for each connection.
 
-## Packet network
+## Packet Network
 
 The information is slit up into small chunks and then sent across many different line the line switches between many different packets from deferent sources, allows many people to use a single line for data transmission.
 
-## Internet vs World wide web
+## Internet vs World Wide Web
 
 * Email
 * The Word Wide Web
@@ -39,7 +39,7 @@ Invented 3 technologies
 * Hypertext Markup Language (HTML)
 * HyperText Transfer Protocol (HTTP)
 
-# Web vs Desktop applications
+# Web vs Desktop Applications
 
 ## Web advantages
 
@@ -49,9 +49,9 @@ Invented 3 technologies
 * Fewer security issues with local storage
 
 ##  Web disadvantages
-* need an internet connection
+* Need an internet connection
 * Data is transmitted over the internet
-* issues over storage licencing use od data
+* Issues over storage licencing use od data
 * Websites many not have identical appearance across browsers
-* restrictions to OS resources
-* possible interference form additional plugins
+* Restrictions to OS resources
+* Possible interference form additional plugins
