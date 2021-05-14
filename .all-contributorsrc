@@ -192,6 +192,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "joshdavies14",
+      "name": "Josh Davies",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30526591?v=4",
+      "profile": "http://joshdavies.tech",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github",
