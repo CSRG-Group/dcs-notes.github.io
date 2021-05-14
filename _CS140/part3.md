@@ -5,7 +5,7 @@ math: true
 title: Password Cracking
 ---
 
-# Methods
+## Methods
 
 There are a few different methods for cracking a password hash:
 
@@ -17,7 +17,7 @@ There are a few different methods for cracking a password hash:
 
 We will go through each method
 
-# Brute Force and Dictionary Attacks
+## Brute Force and Dictionary Attacks
 
 The simplest way to crack a hash, here are the steps/outline:
 
@@ -29,19 +29,19 @@ The simplest way to crack a hash, here are the steps/outline:
 
 As you can tell this is the slowest method but easiest to implement. 
 
-## Brute Force Attacks
+### Brute Force Attacks
 
 - try every possible combination of characters
 - very computationally expensive, the least efficient
 - will eventually find the password after a long time (longer if passwords are more complex and longer)
 
-## Dictionary attacks
+### Dictionary attacks
 
 - Uses a file containing words, phrases, common passwords, and other string that are likely to be used as a password
 - Theses dictionary files are constructed by extracting words from large bodies of text, and even from real databases of passwords. 
 - Further processing is often applied to dictionary files, such as replacing words with their “leet speak: equivalents (hello = h3110)
 
-# Lookup Tables
+## Lookup Tables
 
 In Brute force/dictionary cracking a password is hashed every single time before being guessed. 
 
@@ -49,7 +49,7 @@ What look-up tables do is that it pre-computes the hashes of the passwords, stor
 
 When given a hash, it looks up the table for the matching password - basically dictionary but precomputes hashes. More efficient. 
 
-# Reverse Lookup Tables
+## Reverse Lookup Tables
 
 Problem with Dictionary Attack and Lookup Tables
 
@@ -63,7 +63,7 @@ What Reverse Lookup Tables do
 
 Does this using a technique called **hash chain**. 
 
-## Hash Chain
+### Hash Chain
 
 Firstly, we have to define a **reduction function**, ***R***, that maps hash values back into **a** password, **not** the original password (it isn’t an inverse of the hash function) but just some other password that fits a certain criteria. 
 
@@ -81,7 +81,7 @@ Hash: "ienw3"                            -> "b9322e367ad002d5adf7ca60b8b61e86"
 Hash: "o1gti"                            -> "27aa4cbd3653a4617e0aec76ba3af9a4"
 ```
 
-### How RLT saves space
+#### How RLT saves space
 
 Many passwords and hashes are generated in the hash chain, but because we have the R function and H function we **only store** the *start* and *end* passwords (lecture notes). Some sources online say that the start **password** and the end **hash** is stored.
 
@@ -103,7 +103,7 @@ If at any point we observe a match:
 - There is a good chance that the chain will contain the given hash *h*
 - If so, the password immediately preceding *h* in the chain is the matching password
 
-### False Alarms
+#### False Alarms
 
 The reduction function we have defined does not represent a 1 to 1 relation between the hash and the password – 2 different hashes when going through the (***R***) may give the same output. 
 
@@ -119,7 +119,7 @@ Chain collision wastes space for the attacker
 - this is because after a certain $p_n$all following passwords in both chains will be the same
 - if this chain was in the 10,000, a majority will be the same (wastes space!)
 
-# Rainbow Table
+## Rainbow Table
 
 > Rainbow tables are designed to **reduce** chain collisions or false alarms. It does this by using **different R functions** in different reduction stages when generating the hash chain to reduce the probability of chain collisions.
 
@@ -129,7 +129,7 @@ The collision between chain 1 and chain 2 is reduced.
 
 *Chain 2: p’1 -> h’1 –(R1)-> p’2 -> h’2 –(R2)-> p’’2 –> h’’2 –(R3)-> p’3*
 
-## Cracking passwords in Rainbow Table
+### Cracking passwords in Rainbow Table
 
 Given a hash, $h$, the reduction functions must be applied in the right order when creating the chain. 
 
@@ -149,13 +149,13 @@ $$R_1, R_2, R_3, …, R_{k-1}, R_k$$
 
 If the password still cannot be found after this, we say that the password of the given hash is not embedded in the rainbow table, and we are not able to find it.
 
-# Defence
+## Defence
 
 There is no way to prevent brute-force or dictionary attacks. 
 
 But we can use **password salts** to make lookup table, reverse lookup and rainbow tables attacks less effective. 
 
-## Password Salt
+### Password Salt
 
 Salt is a randomly generated number. The salt and the password are connected and used by the hash function to generate hash:
 $$
@@ -169,7 +169,7 @@ When a user enters a password during the login
 - Connect the input password with the **salt**​
 - Generate the hash of this input and compare it with the stored hash.  
 
-### How does salt help defend against table attacks?
+#### How does salt help defend against table attacks?
 
 In order for the lookup table attack to succeed, an attacker needs to precompute the tables
 
@@ -183,7 +183,7 @@ When the **salt** is large (e.g. 48bits), the required storage space will be too
 
 - Because **salt** is not user generated - makes it more unpredictable as well.
 
-# How are hashes stored in Linux?
+## How are hashes stored in Linux?
 
 > **TLDR.** When a user is created their info is stored in the `/etc/passwd` file and their hash + salt is stored in the `etc/shadow` file. Only the user can read `passwd` and only root can read `shadow`.
 
@@ -236,7 +236,7 @@ Last part (after the colon)
 3. The maximum number of days a password can last for (compulsory to change after the set number of days)
 4. The number of days in advance the system will give you a warning to change password 
 
-## Unix password protection
+### Unix password protection
 
 Unix system may set the local rules for setting passwords.  For example, it can set the length that password must have, number of upper or lower cases, or even symbols. 
 

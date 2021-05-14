@@ -3,10 +3,8 @@ layout: CS132
 math: true
 title: Assembler
 part: true
-pre: part2
-nex: part4
 ---
-# Microprocessor Fundamentals
+## Microprocessor Fundamentals
 
 Before diving into assembler, we need to be familiar with the **key components of all CPUs**. No matter how complex a CPU is, they always have the two following components.
 
@@ -22,7 +20,7 @@ Before diving into assembler, we need to be familiar with the **key components o
 
 The instruction cycle takes place over **several CPU clock cycles** – the same clock cycles we saw in **sequential logic circuits**. The FDE cycle relies on several CPU components interacting with one another.
 
-## FDE Components
+### FDE Components
 There are several components that make up the FDE cycle:
 - ALU
 - CU
@@ -39,19 +37,19 @@ A typical instruction cycle may look something like this:
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1. Instruction Received from memory location in PC<br />2. Retrieved instruction stored in IR<br />3. PC incremented to point to next instruction in memory | 1. Opcode retrieved / instruction decoded<br />2. Read effective address to establish opcode type | 1. CU signals functional CPU components<br />2. Can result in changes to data registers, such as the PC etc.<br />3. PC incremented to point to next instruction in memory |
 
-# Registers
+## Registers
 
 Now that we have the FDE cycle established, we need **registers** to help store intermediate information- this can either be in the form of memory or system flags. The Motorola 68008 will be used to give context to each type of register:
 
 > You can think of a register as a parallel set of bits which can be toggled on or off.
 
-## Data registers
+### Data registers
 - These are useful for storing **frequently used values** or **intermediate results** of calculations.
 - You typically **only need one** data register **on chip** – however, the advantage of having many registers is that **fewer references to external memory are needed**.
 
 > The 68008 has 32 bit data registers. This is a _long_ register; 16 bits form a _word_, and 8 bits form a _byte_.
 
-## Status registers
+### Status registers
 - These have various status bits that are set or reset by the **ALU**.
 - They are a _set of flags_:
   -  Half are for the **system** (CU)
@@ -63,23 +61,23 @@ Now that we have the FDE cycle established, we need **registers** to help store 
 
 > The CCR is made up of several bits representing statuses such as _extend, negative, zero, overflow, carry_. If you wanted to check the status of the computer in a program, you could use bitwise **AND** against a bitmask (the string of bits you want toggled) and seeing if the final result is the flag you wanted to see.
 
-## Address register
+### Address register
 - These are used as **pointer registers** in the calculation of operand addresses.
 - Operations on these addresses **do not alter the CCR**.
 - Only the **ALU** has the capacity to incur changes in status (through operations on non-addresses).
 
-### Stack pointer
+#### Stack pointer
 - This is an **address register** that points to the **next free location**; it can hold **subroutine return addresses**.
 
 > The 68008 has pointer registers `A0-A6` whilst `A7` is used as a system stack pointer.
 
-## Program counter
+### Program counter
 We are already familiar with what the PC does – it is a **32 bit** register on the 68008 that keeps track of the address at which the next instruction will be found. 
 
 > If you were writing a software emulator, think of the memory as an array of strings (each string is an opcode). The PC would be an integer; your code would access `memory[PC]` to find out which opcode to pull from the memory and decode. Therefore, by incrementing the PC (an 8-bit, 16-bit, or 32-bit integer in your code) you can increment through the memory array. You can sometimes increment the PC by multiple amounts.
 > Generally speaking, if you were to be writing an emulator for any CPU, you _could_ represent each register as an n-bit unsigned integer as you can toggle bits and perform bitwise operations, including bitshifts, on each integer variable. You would typically want to implement memory as a simple array of m-bit integers, where m is the word length of your CPU.
 
-# Register Transfer Language
+## Register Transfer Language
 
 > RTL is used to describe the operations of the microprocessor as it is executing program instructions.
 > It is also a way of making sure we access the correct parts of the microprocessor – **do not confuse it with assembler instructions**.
@@ -110,7 +108,7 @@ ALU ⬅ [MBR] + D0
 ```
 As you can see, RTL describes how we can specifically set values in registers and interact with components in a standardised language.
 
-# Assembly Language
+## Assembly Language
 
 *You should be able to explain the motivations, applications, and characteristics of high-level and low-level programming languages.* 
 
@@ -131,7 +129,7 @@ The **motivation** for low-level languages is to give programmers more **control
 
 > Assembly language saves us from machine code by using **mnemonics**. We can provide **memory locations** and **constants**, as well as **symbolic names**. These features are not afforded to us by RTL!
 
-## Assembler Format
+### Assembler Format
 
 Assembly language typically takes the following form:
 
@@ -140,7 +138,7 @@ Assembly language typically takes the following form:
 | **Example** | `START:` | `move.b` | `#5, D0` | `|load D0 with 5` |
 {: .centeredtable}
 
-## Assembly Language Conventions
+### Assembly Language Conventions
 
 There are several conventions of Assembly language to keep in mind:
 
@@ -161,7 +159,7 @@ There are several conventions of Assembly language to keep in mind:
 If you want to string together an assembler instruction, you typically write them in the form
 `operation.datatype`  `source,`   `destination`
 
-## Data types and assembler instructions
+### Data types and assembler instructions
 
 Previously, we saw how the `DS` directive requires a data type and then an amount of data to set aside; Assembler language defines three types of data type:
 - **8 bits / byte**: `.b`
@@ -170,7 +168,7 @@ Previously, we saw how the `DS` directive requires a data type and then an amoun
 
 > You can typically omit the data type and `.` if you are working with a **word**.
 
-# Instruction set aspects
+## Instruction set aspects
 
 Generally speaking, there are two aspects to a CPU instruction set:
 - **Instructions** which tell the processor which operations to perform
@@ -184,7 +182,7 @@ Generally speaking, there are two aspects to a CPU instruction set:
 > Addressing modes can provide data, specify where it is, and how to go find it.
 > You may describe direct addresses, or relative addresses where you compare one address to another to find it.
 
-## Data Movement Instructions
+### Data Movement Instructions
 
 The `move` operations are similar to RTL, just pay attention to the data type.
 
@@ -196,7 +194,7 @@ swap   D2     | swap lower and upper words of D2
 lea  $F20,A3  | load effective address [A3] <- [$F20]
 ```
 
-## Arithmetic Instructions
+### Arithmetic Instructions
 
 Depending on your processor architecture, you may or may not have floating point support.
 
@@ -213,7 +211,7 @@ You also have `sub` (subtract), `mulu` (unsigned mult), `divu` and `divs`. You d
 - You can add or subtract bits from the CCR
 - Division and multiplication use the first half of the bits available (unless specified) because the resultant register has a fixed bit length (32 bits in the above example).
 
-## Logical instructions
+### Logical instructions
 
 We can often use **bitmasks** to achieve our goals in conjunction with **bitwise operations**.
 
@@ -226,7 +224,7 @@ Additional pointers:
 - **Shift operations** are fundamental; for example, you can multiply by 2 using left shift operations.
 - Other operations such as rotations also exist.
 
-## Branch instructions
+### Branch instructions
 These are crucial for **control flow statements**; we typically branch based on **conditions set in the CCR**.
 
 ```
@@ -240,14 +238,14 @@ BCC Loc  | Go to label "Loc" if "NumA" < "NumB", or in RTL: [PC] <- Loc
 - CCR flags are set by the previous instruction
 - The current instruction can test the state of the CCR bits and branch if a certain **condition** is met.
 
-## Subroutines and Stacks
+### Subroutines and Stacks
 Subroutines (`JSR`; jump, `RTS`; return) let you use the **same code repeatedly** reducing program size and improving readability. It is similar to functions.
 
 Typically when a subroutine is called (with `JSR <subroutine label>`), the current address in the PC is **pushed** to a stack and your stack pointer points to the newly pushed address (current address). The address of the subroutine is “loaded” into the PC and the instructions in the subroutine is executed.
 
 When `RTS` is called, the stack is **popped** and the **popped address** is put into the PC; the stack pointer points to the next address at the top of the stack.
 
-# Addressing modes
+## Addressing modes
 As mentioned earlier, there are several ways for the CPU to access memory; you should be familiar with the following, and they are found on many CPUs (not just the 68008): 
 
 | Address type | Definition | Example |

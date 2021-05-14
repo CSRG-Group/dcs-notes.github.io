@@ -7,46 +7,25 @@ title: CS131
 
 
 
-## Topics and content
-
-There are four broad topics in the module, which are as follows:
-
-1. Number systems
-   1. Integers
-   2. Real numbers
-   3. Complex numbers
-2. Linear algebra and matrices
-   1. Vectors
-   2. Linear independence
-   3. Basis and dimension
-   4. Matrix algebra
-   5. Matrix inverse
-   6. Determinants
-   7. Linear equations
-   8. Linear transformations
-   9. Eigenvalues and eigenvectors
-3. Sequences and series
-   1. Sequences
-   2. Recurrences
-   3. Series
-   4. Representation of real numbers
-4. Calculus
-   1. Limits and continuity
-   2. Differentiation
-   3. L'Hopitals rule
-   4. Implicit differentiation
-   5. Differentation of inverses
-   6. Integration
-   7. Logarithms and exponents
-   8. Taylor's theorem
-   9. First order ODE's
-   10. Second order ODE's
-
-
-
 ## Complete Notes
+
+Detailed typed notes for CS131 are in the process of being written, with the headings listed here, and being filled up over time. Since the provided notes by the module leader are so in depth, these will mostly just summarise key results.
+
+
+
+*This should be a good place to start contributing if you want to begin making notes. The general intention here is essentially just making a list of key results and definitions, as the main notes in the online material provide very good coverage, along with examples*.
+
+
+
+1. [ ] [Number Systems](part1.html)
+2. [ ] [Linear algebra and Matrices](part2.html)
+3. [ ] [Sequence and Series](part3.html)
+4. [ ] [Calculus](part4.html)
+
+
 
 Detailed handwritten notes for CS131 by **Josh Fitzmaurice** which cover the entire module can be found [here](./cs131-notes.pdf)
 
 ## Flashcards
 Anki flashcards can be found [here](./CS131-ankideck.apkg).
+

@@ -5,7 +5,7 @@ math: true
 title: Authentication
 ---
 
-# Why Authentication?
+## Why Authentication?
 
 The general intention of computer security is to prevent unauthorised access and to ensure authorised users can access systems quickly.
 
@@ -14,7 +14,7 @@ The general intention of computer security is to prevent unauthorised access and
 > - Identification: Identity by username
 > - Authentication: a process of verifying if the users are really who they claim they are
 
-# Passwords
+## Passwords
 
 > A basic but very useful authentication method
 >
@@ -23,7 +23,7 @@ The general intention of computer security is to prevent unauthorised access and
 > - easy to use and implement
 
 
-## The Problem with Passwords
+### The Problem with Passwords
 
 - Weak passwords (People set weak passwords)
 - People often repeat passwords for different accounts
@@ -31,7 +31,7 @@ The general intention of computer security is to prevent unauthorised access and
 - Some sites allow unlimited login attempts
 - Some sites/systems don’t salt passwords – makes it easy to crack with computers.
 
-### People's tendency in setting passwords
+#### People's tendency in setting passwords
 
 - According to one survey, 12% of employees used "password" as their password
 - Password length is short 
@@ -39,7 +39,7 @@ The general intention of computer security is to prevent unauthorised access and
 - Around 12% use dictionary words
 - 81% use alphanumeric passwords
 
-### User Overload
+#### User Overload
 
 - On one hand, we should not set simple passwords but should set different passwords for different accounts
 - On the other hand, we have many different accounts
@@ -51,7 +51,7 @@ The general intention of computer security is to prevent unauthorised access and
     Edmund shared an <a href="https://xkcd.com/936/">XKCD</a> the other day that summarises the problem with passwords.
 </blockquote>
 
-# Password Cracking
+## Password Cracking
 
 The time taken to crack a password with brute force depends on the number of combinations,
 $$
@@ -66,7 +66,7 @@ $$
 | 94 characters - length 8 | 94<sup>8</sup> = 6.1 &times; 10<sup>15</sup> |
 {:.centeredtable}
 
-## Cracking Speed
+### Cracking Speed
 
 Indicative speeds using current tools like **hashcat** or **John the Ripper**
 
@@ -82,7 +82,7 @@ With a GPU cluster, passwords can be cracked even faster – heavily depends on 
 
 Expected time to crack a password, $$Time = (Total\; Combinations)/Speed$$
 
-## Password Strength
+### Password Strength
 
 Often expressed as an entropy value, *x* – the number of bits needed to represent W<sup>L</sup>. 
 
@@ -94,11 +94,11 @@ $$Entropy = 2 \times log_226 \approx 2 \times 4.7 = 9$$
 
 $$Entropy = 4 \times log_252 \approx 4\times 5.7 = 22.8$$
 
-### Human Generated Passwords
+#### Human Generated Passwords
 
 While entropy measures the “uncertainty” of a password - it is the maximum level of uncertainty. However, humans don’t choose random passwords; they use words or a pattern of characters - much less uncertainty in user-generated password. This leads to some reasons behind certain password cracking techniques like look-up tables, which we will look at in the next chapter. 
 
-## Password Hashing
+### Password Hashing
 
 We should never store passwords in plaintext. Instead we store the hash:
 
@@ -108,7 +108,7 @@ We should never store passwords in plaintext. Instead we store the hash:
   - If the input changes by even a bit - the resulting hash should be completely different
   - Hash function types: MD5, SHA256, SHA512 etc...
 
-# Other Authentication Methods
+## Other Authentication Methods
 
 Passwords are just one way of providing authentication, what other methods are there?
 

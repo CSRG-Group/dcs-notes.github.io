@@ -3,7 +3,6 @@ layout: CS126
 part: true
 math: true
 title: "General algorithms"
-pre: part11
 ---
 
 # Searching data structures
@@ -67,6 +66,9 @@ pre: part11
     	Add all the items left in B to the end of S
     ```
 
+# Graph algorithms
+
+See the [graph notes page](./part11#graph-algorithms)
 
 
 # Misc

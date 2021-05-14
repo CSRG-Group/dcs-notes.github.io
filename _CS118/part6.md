@@ -2,8 +2,6 @@
 layout: CS118
 part: true
 title: "Error Handling and Exceptions"
-pre: part5
-nex: part7
 ---
 
 The original delivery of this content loosely introduced what an exception was, then demonstrated the `try-catch` statement, before explaining more about exceptions, and _then_ demonstrating the `try-catch-finally` statement, before delivering more theory. As a result, I have opted to deliver as much theory as possible at the beginning, before diving into any code examples. If you are looking for the `try-catch` statement and its variant, then this can be found at the bottom of the page.

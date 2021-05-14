@@ -2,8 +2,6 @@
 layout: CS118
 part: true
 title: "Object Oriented Programming"
-pre: part3
-nex: part5
 ---
 
 Before this, we have been discussing the von Neumann type architecture of programming (Imperative programming). Now we will move on to OOP. Here I will assume that you know most of the practical stuff like how to create a class and what constructors, fields/properties, and methods are. We will focus more on the “theoretical” part of it like what an object or class is formally and what are the motivations for OOP.

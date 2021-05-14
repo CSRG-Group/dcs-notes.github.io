@@ -3,8 +3,6 @@ layout: CS139
 title: Web Protocols
 math: true
 part: true
-pre: Theory3
-nex: Theory5
 ---
 
 # Protocols

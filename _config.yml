@@ -28,6 +28,8 @@ baseurl: "/dcs-notes.github.io"
 plugins:
   - jekyll-feed
 markdown: kramdown
+github:
+  repository_url: https://github.com/CSRG-Group/dcs-notes.github.io
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -124,8 +126,10 @@ collections:
       - part4.md
       - part5.md
       - part6.md
+      - secure-email.md
       - part7.md
       - part8.md
+      - part9.md
   CS141: 
     label: CS141
     relative_directory: ./_CS141

@@ -36,9 +36,8 @@ Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://www.y
 5. [x] [I/O mechanisms](https://www.yijun.hu/blog-cs/cs132/index.html#)
 6. [x] [Processor architecture](https://www.yijun.hu/blog-cs/cs132/index.html#)
 
-These notes will likely take the same/similar form to the CS118 notes. The
-primary source for these will be from **Akram Ahmad** and **Justin Tan**’s
-notes; any other sources or contributions will be duly cited/attributed.
+Another source of type notes (from **Akram Ahmad** and **Justin Tan**’s notes) can be found below in parts or
+here for [CS132 One Page Notes](opnotes):
 
 1. [x] [Data representation](part1)
 2. [x] [Digital logic](part2)
@@ -48,26 +47,23 @@ notes; any other sources or contributions will be duly cited/attributed.
 6. [x] [Processor architecture](part6)
 
 
-## Unofficial worksheet solutions
-
-We are in the process of compiling student-written solutions to the worksheets
-provided for 132. Please note that these do not necessarily hit all the marking
-points, nor are guaranteed to be correct.
 
 ## Unofficial worksheet solutions
 
-We are in the process of compiling student-written solutions to the worksheets
+We have compiled a set of student-written solutions to the worksheets
 provided for 132. Please note that these do not necessarily hit all the marking
 points, nor are guaranteed to be correct.
 
-| Topic                  | Josh Fitzmaurice | Edmund Goodman | Clara Ramsay-Gray                                     |
-| ---------------------- | ---------------- | -------------- | ----------------------------------------------------- |
-| Data representation    | Typed            | -              | [Handwritten](worksheets/assemblerHandwritten.pdf)    |
-| Digital logic          | Typed            | -              | [Handwritten](worksheets/digitalLogicHandwritten.pdf) |
-| Assembler              | -                | Typed          | -                                                     |
-| Memory Systems         | -                | Typed          | -                                                     |
-| I/O mechanisms         | Typed            | -              | -                                                     |
-| Processor architecture | Typed            | -              | -                                                     |
+| Topic                  | Josh Fitzmaurice                                | Edmund Goodman                             | Justin Tan                                         | Clara Ramsay-Gray                                     |
+| ---------------------- | ----------------------------------------------- | ------------------------------------------ | -------------------------------------------------- | ----------------------------------------------------- |
+| Data representation    | [Typed](worksheets/dataRepresentationTyped.pdf) | -                                          | -                                                  | [Handwritten](worksheets/assemblerHandwritten.pdf)    |
+| Digital logic          | [Typed](worksheets/digitalLogicTyped.pdf)       | -                                          | -                                                  | [Handwritten](worksheets/digitalLogicHandwritten.pdf) |
+| Assembler              | -                                               | [Typed](worksheets/assemblerTyped.pdf)     | -                                                  | -                                                     |
+| Memory Systems         | -                                               | [Typed](worksheets/memorySystemsTyped.pdf) | -                                                  | -                                                     |
+| I/O mechanisms         | [Typed](worksheets/IOmechanismsTyped.pdf)       | -                                          | -                                                  | -                                                     |
+| Processor architecture | -                                               | -                                          | [Typed](worksheets/processorArchitectureTyped.pdf) | -                                                     |
+
+A document containing all of the typed solutions linked above concatenated together is available [here](worksheets/combinedTyped.pdf)
 
 ## Flash Cards
 

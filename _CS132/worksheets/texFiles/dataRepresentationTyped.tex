@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+
+\title{CS132 Quizzes - Data Representation}
+\begin{document}
+\begin{center}
+    \Huge\textbf{CS132 Quizzes - Data Representation}\\
+    \huge\textit{May 2021}\\
+    \medskip
+    \Large\textit{Josh Fitzmaurice}
+\end{center}
+
+
+
+
+\section{Briefly describe why binary code is commonly used in computer hardware}
+Computer use electricity to send signals around the components. These signals
+can be of varying voltages. There are levels of voltage that determine whether
+the signal is high or low. We only have a high and a low because noise can make
+the voltage amount vary slightly. Having binary code where the voltage is either
+high or low limits the affect of noise in a system.
+
+\section{How many bits in a byte}
+8
+
+\section{In the binary number $10101010_2$ what is the value of the MSB?}
+1
+\newpage
+\section{Make a table counting upwards from 0 to $16_{10}$ in decimal, binary,
+octal and hexadecimal.}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        Binary & Octal & Decimal & Hexadecimal \\
+        0 & 0 & 0 & 0 \\
+        1 & 1 & 1 & 1 \\
+        10 & 2 & 2 & 2 \\
+        11 & 3 & 3 & 3 \\
+        100 & 4 & 4 & 4 \\
+        101 & 5 & 5 & 5 \\
+        110 & 6 & 6 & 6 \\
+        111 & 7 & 7 & 7 \\
+        1000 & 10 & 8 & 8 \\
+        1001 & 11 & 9 & 9 \\
+        1010 & 12 & 10 & A \\
+        1011 & 13 & 11 & B \\
+        1100 & 14 & 12 & C \\
+        1101 & 15 & 13 & D \\
+        1110 & 16 & 14 & E \\
+        1111 & 17 & 15 & F \\
+        10000 & 20 & 16 & 10
+    \end{tabular}
+    \caption{numbers from 1 - 16}
+    \label{tab:my_label}
+\end{table}
+
+\section{Briefly explain the difference between value and representation, giving an example.}
+Representation is how we show values and can change with different
+representations. Whereas the value is set and even though you can represent a
+value in different ways the value will remain constant. E.g. 13 in decimal is
+1101 in binary or 15 in Octal.
+
+\section{Which of the following are not valid hex values?}
+a - valid\\
+b - valid\\
+c - invalid\\
+d - valid\\
+e - invalid
+
+\section{What is $2742_8$ in binary?}
+010 111 100 010
+
+\section{Convert $1011 0010 1111 1001_2$ to hex}
+B2F9
+
+\section{Convert $42_{10}$ to binary} 101010
+
+\section{Convert $73_8$ to hex.}
+111
+
+\section{Convert $1101100100_2$ to decimal.}
+868
+
+\section{Convert $4000_{10}$ to octal.} $111 110 100 000_2$\\
+$7640_8$
+
+\section{Calculate the following binary sum: 10100111+01110001}
+100011000\\
+assuming we are allowing an overflow
+
+\section{Calculate the following binary sum: 10111+11011}
+110010\\
+assuming we are allowing an overflow
+
+\section{Show the binary representations for $–13_{10}$ in\\
+a. signed magnitude and\\
+b. two’s complement. } a. 11101 b. 13 = 01101 Flip the bits\\
+10010\\
+add 1\\
+10011
+
+\section{a. Find the binary two’s complement representations of $+12_{10}$ and
+$–10_{10}$.\\
+b. Use your answers to subtract 10 from 12. Show your working} 12 = 01100\\
+10 = 01010\\
+flip bits\\
+   = 10101\\
+add 1\\
+-10 = 10110\\
+\\
+$12-10 = 12 + (-10)  = 01100 + 10110 = 00010$\\
+Remember we remove the overflow.
+
+\section{Do the following statements describe fixed or floating point
+representations, both or neither?\\
+a. It’s fast\\
+b. Provides the best resolution\\
+c. Copes with a wide range of numbers\\
+d. Implementation is complicated\\
+e. Can’t represent some values\\
+f. Is described by an international standard\\
+g. Can represent any value\\
+h. Allows simple multiplication by two} a - fixed b - fixed c - floating d -
+floating e - both f - floating g - neither h - both
+
+\section{Using 4 bit binary arithmetic, illustrate overflow error with an example. }
+1101 + 0100 = 10001\\
+the MSB is an overflow error in this example.
+\newpage
+\section{Describe IEEE 754 single precision floating point representation using a labelled diagram.}
+The MSB represents the sign of the number 1 for negative 0 for positive (we'll
+denote this as s).\\
+The next 8 MSB's are the exponent (we'll denote as e)\\
+The final 23 bits are the fraction (we'll denote as f)\\
+We then calculate the value using the following formula:\\
+$(-1)^s \times 1.f \times 2^{e - 127}$\\
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        Sign bit & Exponent & Fraction \\
+        1 & 10001010 & 1101000000000000000000\\
+        \hline
+        1 & 11 & 0.8125
+    \end{tabular}
+    \caption{example}
+    \label{tab:my_label}
+\end{table}
+
+$(-1)^1 \times 1.8125 \times 2^{11} = -3712$\\
+There are also some special values.
+
+
+\end{document}

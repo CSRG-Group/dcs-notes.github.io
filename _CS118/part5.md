@@ -2,8 +2,6 @@
 layout: CS118
 part: true
 title: "Inheritance, Abstract Classes, and Interfaces"
-pre: part4
-nex: part6
 ---
 
 # Inheritance

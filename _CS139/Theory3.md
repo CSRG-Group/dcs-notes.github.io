@@ -3,8 +3,6 @@ layout: CS139
 title: GET and POST
 math: true
 part: true
-pre: Theory2
-nex: Theory4
 ---
 # GET
 A get request is a more simple request with a combination of variables and values

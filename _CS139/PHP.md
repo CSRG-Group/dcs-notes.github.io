@@ -2,8 +2,6 @@
 layout: CS139
 title: PHP
 part: true
-pre: CSS
-nex: JavaScript
 ---
 
 # Introductions

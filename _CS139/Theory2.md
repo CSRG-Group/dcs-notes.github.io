@@ -3,8 +3,6 @@ layout: CS139
 title: Web Servers
 math: true
 part: true
-pre: Theory1
-nex: Theory3
 ---
 
 # Static Websites vs Dynamic Websites

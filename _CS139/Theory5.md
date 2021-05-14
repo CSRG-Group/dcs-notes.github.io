@@ -3,8 +3,6 @@ layout: CS139
 title: Web Browsers, servers and state
 math: true
 part: true
-pre: Theory4
-nex: Theory6
 ---
 
 # Web browsers

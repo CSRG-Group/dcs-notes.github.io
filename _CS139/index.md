@@ -7,7 +7,8 @@ title: CS139
 
 ## Topics and content
 
-The content for this module can be split up into sections as follows:
+The content for this module can be split up into sections shown below.
+You can access them from the [CS139 One Page Notes](opnotes) or the respective topic links below:
 
 ### Languages
 
