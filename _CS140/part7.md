@@ -92,7 +92,7 @@ We saw the public key encryption protocol by NS, they also proposed a secret key
 4. B &rightarrow; A: { R<sub>A2</sub> – 1, R<sub>B</sub>}<sub>K<sub>AB</sub></sub>
 5. A &rightarrow; B: { R<sub>B</sub> – 1 }<sub>K<sub>AB</sub></sub>
 
-![needhamSchroeder](C:\Users\egood\Desktop\projects\written\cs-yr1-revision-notes\dcs-notes.github.io\_CS140\part7.assets\needhamSchroeder.png)
+![needhamSchroeder](.\part7.assets\needhamSchroeder.png)
 
 > **Disadvantages.** Server needs to distribute secret key directly to B, and since B does not ask for a key, but receives one, if B is not responsive (AFK) or the server somehow can’t reach B then there will be no communication.
 

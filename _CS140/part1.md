@@ -40,7 +40,7 @@ A security model that defines three key aspects that should be guaranteed at all
 2. **Integrity.** No unauthorised change
 3. **Availability.** Users are not denied access to resources or have unwarranted delay
 
-![ciaTriad](C:\Users\egood\Desktop\projects\written\cs-yr1-revision-notes\dcs-notes.github.io\_CS140\part1.assets\ciaTriad.png)
+![ciaTriad](.\part1.assets\ciaTriad.png)
 
 [Image source](http://panmore.com/the-cia-triad-confidentiality-integrity-availability)
 
@@ -261,4 +261,3 @@ What should system security encompass? - Service provider should have resources 
 - Attack: Robert ran the worm, and it replicated itself rapidly across the Arpanet
 - Risk: (*probability x harm*) *(10% of all machines) x (Money loss)* because of computer slowdown.
 - Countermeasure: Robert was charged in court. Applied security patch for the rsh loophole.
-
