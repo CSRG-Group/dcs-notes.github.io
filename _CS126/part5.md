@@ -46,6 +46,41 @@ We can use a "hash function" to reduce the size of the keyspace, so we can used 
 Modern implementations of hash functions are very complicated, and often involve two phases, first mapping keys to integers, then reducing the range of those integers, but simpler ones exist, for example $$h(x) =  x\ MOD\ N$$
 - We try to pick $$N$$ such that there are fewer collisions - numbers with few factors are better
 
+### Memory address
+
+Java implements hash functions for all objects with the `.hashCode()` method, giving a convenient way to implement hashing.
+
+The `.hashCode()` method is dependent on the memory address of the object storing the key, which is then cast to an integer. This then may be resized using a reduction function to map it to the correct size of the table may still be required.
+
+### Integer cast
+
+Taking the bits encoding the object storing the key, and re-interpreting them as an integer. This is only suitable for keys of fewer or equal to the number of bits in the integer type (i.e. primitives: `byte`, `short`, `int`, `float`)
+
+### Component sum
+
+The process is:
+
+1. Partition the bits of the key into a number of fixed length components (e.g. 8 bits)
+2. Sum together the components, discarding overflows
+
+This is suitable for keys of a greater number of bits than the integer type (e.g. `long` and `double`)
+
+### Polynomial accumulation
+
+The process is:
+
+1. Partition the bits of the key into a number of fixed length components (e.g. 8 bits), and name them $$a_0, a_1, ..., a_{n-1}$$ respectively
+
+2. Evaluate the polynomial:
+   $$
+   p(z) = a_0 + a_1 \cdot z + a_2 \cdot z_2 + ... + a_{n-1} \cdot z^{n-1}
+   $$
+   at a fixed value $$z$$, ignoring overflows
+
+   This can be evaluated quickly using Horner's rule
+
+This is especially suitable for strings, with $$z=33$$ giving at most $$6$$ collisions from $$50,000$$ English words
+
 ### Java hash implementations
 
 Java implements hash functions for all objects with the `.hashCode()` method, giving a convenient way to implement hashing, but a reduction function to map it to the correct size of the table may still be required.
