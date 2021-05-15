@@ -116,13 +116,14 @@ Passwords are just one way of providing authentication, what other methods are t
 
 Here are some statistics on the various  non-password authentication methods 
 
-|               | False Pos | False Negative |
+| Biometric     | False Pos | False Negative |
 | ------------- | --------- | -------------- |
-| Biometric     | 1%        | 10%            |
-| Face          | 1%        | 0.1%           |
-| Fingerprint   | 2%        | 0.1%           |
-| Hand Geometry | 0.94%     | 0.99%          |
-| Iris          | 0.0001%   | 0.2%           |
+| Face          | 1%        | 10%            |
+| Fingerprint   | 1%        | 0.1%           |
+| Hand Geometry | 2%        | 0.1%           |
+| Iris          | 0.94%     | 0.99%          |
+| Retina        | 0.0001%   | 0.2%           |
 | Keystrokes    | 7%        | 0.1%           |
 | Voices        | 2%        | 10%            |
 {:.centeredtable}	
+

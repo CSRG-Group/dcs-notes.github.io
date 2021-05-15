@@ -39,7 +39,7 @@ Recall how public keys can be used to ensure integrity and non-repudiation, prov
 
 > Let’s say A sends B a message encrypted by KU<sub>A</sub>, B acknowledges that A is in fact A. However E also stores this message but does not touch it. After the communication with A and B is over, E can **replay** the message to B and B would accept E as A.
 
-**Solution 1.** B generates a token R, which is a random number (also called a *nonce*), that A needs to sign for authentication. The interaction can be formalised with the notation below. The final authenticated token, if encrypted with A’s private key can only mean it was authenticated by A.
+**Solution 1.** B generates a token R, which is a random number (also called a *nonce* :eyes: ), that A needs to sign for authentication. The interaction can be formalised with the notation below. The final authenticated token, if encrypted with A’s private key can only mean it was authenticated by A.
 
 1. A –> B : A
 2. B –> A : R
@@ -61,7 +61,9 @@ Our above examples are a **unilateral authentication**: A authenticates B
 
 > There’s still a problem with our protocol. A could communicate with E, but E could be malicious and decide to pass on the message to B. Now B will pass the token to E and E passes it to A and then passes the encrypted token back to B from A.
 >
-> As a result, B thinks that they are communicating with A. 
+> As a result, B thinks that they are communicating with A.
+>
+> This is often referred to as a "man-in-the-middle" (MITM) attack
 
 **Solution 1.** Include the identity of the intended recipient encrypted along with the token from the recipient.
 
@@ -89,6 +91,8 @@ We saw the public key encryption protocol by NS, they also proposed a secret key
 3. A –> B: { K<sub>AB</sub>, A }<sub>K<sub>SB</sub></sub>, { R<sub>A2</sub> }<sub>K<sub>AB</sub></sub>
 4. B &rightarrow; A: { R<sub>A2</sub> – 1, R<sub>B</sub>}<sub>K<sub>AB</sub></sub>
 5. A &rightarrow; B: { R<sub>B</sub> – 1 }<sub>K<sub>AB</sub></sub>
+
+![needhamSchroeder](C:\Users\egood\Desktop\projects\written\cs-yr1-revision-notes\dcs-notes.github.io\_CS140\part7.assets\needhamSchroeder.png)
 
 > **Disadvantages.** Server needs to distribute secret key directly to B, and since B does not ask for a key, but receives one, if B is not responsive (AFK) or the server somehow can’t reach B then there will be no communication.
 
