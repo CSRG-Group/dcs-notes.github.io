@@ -117,7 +117,7 @@ An example of this being formally calculated, taken from *Data Structures and Al
 > Hence, picking $$c=3$$ and $$n_0 = 10$$, so the condition is satisfied
 
 ![bigOh](./images/bigOh.png)
-
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 
 

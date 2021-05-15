@@ -16,7 +16,7 @@ part: true
 
 1. User begins by using the **email client**, which connects to the SMTP server and sends the server the email address of the recipient, the name of the sender, and the body of the message.
    - SMTP breaks down the recipient’s email into 2 parts: the name (before the @) and the domain (after the @)
-2. If the domain of recipient and sender are **identical**, the SMTP server hands the message to the PoPe or IMAP server for that particular domain.
+2. If the domain of recipient and sender are **identical**, the SMTP server hands the message to the PoP3 or IMAP server for that particular domain.
 3. Otherwise, SMTP communicates with the Domain Name Server (DNS) for the IP address of the SMTP server in the other domain.
 4. The SMTP server at the senders side sends the email message to the SMTP server at the recipient’s end, which then hands the message to the PoP3 server for the recipient’s domain.
 

@@ -41,8 +41,7 @@ For fast searching, we need the list to be sorted, and we have come across two c
 A diagram of the structure of a skip list is shown below
 
 ![skipLists](./images/skipLists.png)
-
-(*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 
 
@@ -70,8 +69,7 @@ Repeat
 ```
 
 ![skipListsSearch](./images/skipListsSearch.png)
-
-(*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 ## Inserting
 
@@ -87,8 +85,7 @@ For each j from 0 to i
 ```
 
 ![skipListsInsertion](./images/skipListsInsertion.png)
-
-(*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 
 
@@ -103,8 +100,7 @@ Remove any duplicate list layers containing only guards from the top of the skip
 ```
 
 ![skipListsDeletion](./images/skipListsDeletion.png)
-
-(*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 
 
@@ -113,8 +109,7 @@ Remove any duplicate list layers containing only guards from the top of the skip
 We can use "quad-nodes", which are similar to those used in linked lists, but with four pointers, instead of just one to store the entry, and links to the previous, next, below and above nodes:
 
 ![skipListsQuadNode](./images/skipListsQuadNode.png)
-
-(*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 Additionally, there are special guard nodes, with the values $$+ \infty$$ and $$- \infty$$, and fewer pointers, as they don't have adjacencies on one side
 
