@@ -1,7 +1,7 @@
 {%- if include.pre -%}
-<a href="{{ site.baseurl }}{{ include.pre }}" title="{{ include.ntitle }}">👈Prev</a>
+<a href="{{ include.pre | relative_url }}" title="{{ include.ptitle }}">👈Prev</a>
 {%- endif -%}
 <a href="./" title="{{ include.mod }} Home">🏡{{ include.mod }}</a>
 {%- if include.nex -%}
-<a href="{{ site.baseurl }}{{ include.nex }}" title="{{ include.ptitle }}">Next👉</a>
+<a href="{{ include.nex | relative_url }}" title="{{ include.ntitle }}">Next👉</a>
 {%- endif -%}

@@ -78,11 +78,15 @@ O=University of Warwick, OU=Department of Computer Science, CN=Ligang He (O: org
 
 This is one way authentication, where A **can authenticate** B’s identity.
 
+![authenticationWithCertificates](.\part6.assets\authenticationWithCertificates.png)
+
 ### Strong Authentication with Certificate
 
 1. A’s cert proves that public key belongs to A
 2. Use A’s public key to verify the message is really signed by A’s private key
 3. If so, the message must come from A
+
+![strongAuthenticationWithCertificates](.\part6.assets\strongAuthenticationWithCertificates.png)
 
 ### Authentication Chain
 
@@ -91,6 +95,8 @@ This is one way authentication, where A **can authenticate** B’s identity.
 > - CA1 can also issue certs to users
 > - The certs issued by CA1 are signed by CA1
 > - CA1 also issues a root cert to itself
+
+![authenticationChains](.\part6.assets\authenticationChains.png)
 
 **Using the authentication chain**
 
@@ -157,3 +163,5 @@ A -> C(V: full, T: ultimate) ✅
 In the first example even if all users are of full trust on the chain from A to C, C’s key is not considered valid by A if the distance (number of arrows/links) between the 2 users is bigger than a pre-set threshold (i.e 4).
 
 **However**, if the trust level is ultimate throughout, it breaks the restriction of threshold distance.
+
+![webOfTrust](.\part6.assets\webOfTrust.png)

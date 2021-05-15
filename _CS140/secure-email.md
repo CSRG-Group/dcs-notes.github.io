@@ -50,6 +50,8 @@ Emails can also be **intercepted** on insecure networks (packet sniffers)
 
 - Poor key-generation (if email is not correctly encrypted) – this compromises email confidentiality.
 
+<img src=".\secure-email.assets\emailServers.png" alt="emailServers" style="zoom:67%;" />
+
 ## Solutions to problems
 
 ### Spam
@@ -101,3 +103,4 @@ However we do not use this method because it is slow to encrypt the whole email 
 - GnuPG (Gnu Privacy Guard) – open source implementation of OpenPGP
 - Windows version Gpg4Win
 
+![pgpEncryption](.\secure-email.assets\pgpEncryption.png)

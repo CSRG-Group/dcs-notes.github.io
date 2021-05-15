@@ -98,5 +98,6 @@ Another implication of a longer key length, k, is encryption and decryption time
 | Secret                                                       | Public                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Uses XOR, substitution, permutation – **fast**               | Uses a one-way function – **slower**                         |
-| Key is secret – requires shorter key for **same** level of security<br />Also means its, again, **faster**. | Only relies on the length of public key to prevent the crack with brute force<br />Long key –> **slower** |
+| Key is secret – requires shorter key for **same** level of security<br />Also means its, again, **faster**. | Only relies on the length of public key to prevent the crack with brute force<br />Long key – **slower** |
+| Key distribution is **complicated**                          | Key distribution is **easy**                                 |
 

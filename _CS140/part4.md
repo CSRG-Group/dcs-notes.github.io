@@ -5,11 +5,11 @@ math: true
 title: Cryptography
 ---
 
-Some terminology 
+## Terminology 
 
-- Plaintext - original message
-- Ciphertext - the result of encrypting the message
-- Encryption/decryption - process of transforming plaintext to ciphertext (or reverse)
+- Plaintext, the original message
+- Ciphertext , the result of encrypting the message
+- Encryption/decryption , the process of transforming plaintext to ciphertext (or reverse)
 
 ## Different types of encryption
 
@@ -43,7 +43,7 @@ Good encryption techniques should have 4 properties
 
 3. Cipher text is hard to break even with the most generous assumptions
 
-   - Know the encryption process
+   - Know the encryption process - so no "security through obscurity"
    - know the initial settings (e.g. key length, block length)
    - as long as the key is secret the ciphertext is still secure
 
@@ -236,12 +236,12 @@ In a computer, **plaintext** and the **key** are an arrangement of bits. The bes
 </figure>
 
 1. Plaintext block is split into two equal parts (L<sub>0</sub> and R<sub>0</sub>), each of 32 bits.
-2. Run one side of  (i.e R<sub>0</sub>) through a round function that is fed a key, K<sub>0</sub>.
+2. Run one side of  (i.e R<sub>0</sub>) through a "feistal" function that is fed a key, K<sub>0</sub>.
 3. The output of the function, R<sub>0</sub>K<sub>0</sub>, is **XORed** with the other half (L<sub>0</sub>).
 4. The output of this **XOR** is used as the input for the round function of the **next round**, while the initial R<sub>0</sub> will be **XORed** with this 2nd round function output.
 5. This continues for a total of 16 rounds, where the final blocks are the ciphertext.
 
-> A characteristic of all **Feistel ciphers** is that the process for **decryption** follows the exact same steps as encryption – **only thing** is that the round keys need to be used in the reverse order.
+> A characteristic of all **Feistal ciphers** is that the process for **decryption** follows the exact same steps as encryption – **only thing** is that the round keys need to be used in the reverse order.
 
 Each round this is computed:
 $$
@@ -257,9 +257,9 @@ There are 4 operations in the function
      - 32 bits organised into 8 pieces each with 4 bits
      - Duplicate the first and fourth bit in each piece
 2. **Key Combination**
-   - The output of the expansion is EX-OR with the current round key, K<sub>i</sub>
+   - The output of the expansion is **XORed** with the current round key, K<sub>i</sub>
 3. **Substitution**
-   - The result of the EX-OR is broken into 8 6-bit pieces and each is passed through a unique substitution box or S-Box
+   - The result of the **XOR** is broken into 8 6-bit pieces and each is passed through a unique substitution box or S-Box
    - This uses the vectorial boolean function to convert 6-bit input to a 4-bit output
      - There is a lookup table to store the mapping from 6-bit input to 4-bit output
      - E.g. **1**0110**0**. The bits in bold is the row name and the bits in between is the column. The cells in the lookup table specify the final substitution value that becomes the output. Refer to the table below.
@@ -279,7 +279,10 @@ In each row, the lookup table cell values will are unique – meaning row-wise t
 
 We said that the DES takes 1 64-bit key, but from the [Feistal Diagram](#fiestal-approach-overview) above we see that each round function takes a different key – this is because subkeys are generated with permutation functions.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/06/DES-key-schedule.png" class="center">
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/DES-key-schedule.png" class="center">
+        <figcaption style="text-align:center;">DES key schedule, <a href="https://commons.wikimedia.org/wiki/File:DES-key-schedule.png">Wikimedia Commons</a></figcaption>
+</figure>
 
 #### Permuted Choice 1
 
@@ -327,7 +330,10 @@ This involved splitting the input into bytes and passing each through a Substitu
 
 Each byte from the input is replaced by a SubByte using an 8-bit substitution box (essentially a lookup table). Because we are dealing with a 128-bit block size, so each cell in the table is a byte (128/16 = 8).
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/AES-SubBytes.svg" style="width:320px;height:166px" class="center">
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/AES-SubBytes.svg" class="center">
+        <figcaption style="text-align:center;">AES sub bytes, <a href="https://commons.wikimedia.org/wiki/File:AES-SubBytes.svg">Wikimedia Commons</a></figcaption>
+</figure>
 
 #### ShiftRows
 
@@ -335,21 +341,28 @@ Here, each row of the 128-bit internal state (input of `ShiftRows` which is outp
 
 > This is important to avoid the columns being encrypted independently, because that would make AES into 4 independent block ciphers.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/66/AES-ShiftRows.svg" style="width:320px;height:119px;" class="center">
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/AES-ShiftRows.svg" class="center">
+        <figcaption style="text-align:center;">AES shift rows, <a href="https://commons.wikimedia.org/wiki/File:AES-ShiftRows.svg">Wikimedia Commons</a></figcaption>
+</figure>
 
 #### MixColumns
 
 Here the output matrix of the `ShiftRows` step is pre-multiplied with a fixed matrix – this helps with diffusion because if you change a<sub>0,1</sub> (even by 1-bit) the entire output column will change (as you know from matrix multiplication).
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/76/AES-MixColumns.svg" style="width:320px;height:170px;" class="center">
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/AES-MixColumns.svg" class="center">
+        <figcaption style="text-align:center;">AES mix columns, <a href="https://commons.wikimedia.org/wiki/File:AES-MixColumns.svg">Wikimedia Commons</a></figcaption>
+</figure>
 
 #### AddRoundKey
 
 The only operation in AES that directly operates on the AES round key. In this operation, the input to the round is **XORed** with the round key.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/AES-AddRoundKey.svg" style="width:309px;height:240px;" class="center">
-
-
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/AES-AddRoundKey.svg" class="center">
+        <figcaption style="text-align:center;">AES add round key, <a href="https://commons.wikimedia.org/wiki/File:AES-AddRoundKey.svg">Wikimedia Commons</a></figcaption>
+</figure>
 
 ### AES is secure
 
