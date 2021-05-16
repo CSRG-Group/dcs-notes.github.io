@@ -44,7 +44,7 @@ Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldw
 
 ## Searching
 
-To search for an value $$v$$ in a skip list, we follow the algorithm
+To search for an value `v​` in a skip list, we follow the algorithm
 
 ```java
 Algorithm search(k):
@@ -66,73 +66,75 @@ Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldw
 
 ## Inserting
 
-To insert a value $$v$$ into a skip list, we follow the algorithm.
+To insert a value `v`​ into a skip list, we follow the algorithm.
 
 ```java
 i <- number of flips of a fair coin before a head comes up
 If i >= height of skip list
   Add new, empty, sub-lists {S(h+1), ..., S(i+1)} to S 
-Find the positions p(1), ..., p(i) in all the the lists of the largest element less than v, using the search algorithm
-For each j from 0 to i
-	Insert k into S(j) immediately after the position p(j)
+Using the search algorithm, we find v //even though we know it is not inserted
+  For every dropdown step, store the position of the element in an array
+	// This array stores the positions p(0) to p(i) of the 
+  // largest element lesser than v of each sublist S(j)
+For each sublist from 0 to i
+	Insert v into S(j) immediately after the position p(j) in array
 ```
 
 ![skipListsInsertion](./images/skipListsInsertion.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
-
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 ## Deleting
 
-To delete a value $$v$$ from a skip list, we follow the algorithm
+To delete a value `v`​ from a skip list, we follow the algorithm
 
-```
-Find the positions p(1), ..., p(i) in all the the lists of the largest element less than v, using the search algorithm
-Remove the postions  p(1), ..., p(i) from the lists S(0), ..., S(i)
-Remove any duplicate list layers containing only guards from the top of the skip list
+```java
+Using search algorithm, find v in skiplist
+  Once found at position p,
+    while p.below() != null
+      hold <- p
+      delete(p) // Delete v from sublists below
+      p <- hold
+Remove all but one list containing only guards from the top of the skip list
 ```
 
 ![skipListsDeletion](./images/skipListsDeletion.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
-
-# Implementation
+## Implementation
 
 We can use "quad-nodes", which are similar to those used in linked lists, but with four pointers, instead of just one to store the entry, and links to the previous, next, below and above nodes:
 
-![skipListsQuadNode](./images/skipListsQuadNode.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+<img src="./images/skipListsQuadNode.png" alt="skipListsQuadNode" class="center" />
 
-Additionally, there are special guard nodes, with the values $$+ \infty$$ and $$- \infty$$, and fewer pointers, as they don't have adjacencies on one side
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
+Additionally, there are special guard nodes, with the values $$+ \infty$$ and $$- \infty$$, and fewer pointers, as they don't have adjacencies on one side.
 
+## Performance
 
-# Performance
+### Space usage
 
-## Space usage
+Dependent on randomly generated numbers for how many elements are in high layers, and how high the layers are.
 
-Dependent on randomly generated numbers for how many elements are in high layers, and how high the layers are
+We can find the **expected number of nodes** for a skip list of $$n$$ elements:
 
-We can find the expected number of node for a skip list of $$n$$ elements:
-
->The probability of having $$i$$ layers in the skip list is $$\frac{1}{2^i}$$
+> The probability of having $$i$$ layers in the skip list is $$\frac{1}{2^i}$$.
 >
->The probability of having $$i$$ layers in the skip list is $$\frac{1}{2^i}$$
+> If the probability of any one of $$n$$ entries being in a set is $$p$$, the **expected size** of the set is $$n \cdot p$$
 >
->If the probability of any one of $$n$$ entries being in a set is $$p$$, the expected size of the set is $$n \cdot p$$
+> Hence, the expected size of a list $$S_i$$ is $$\frac{n}{2^i}$$
 >
->Hence, the expected size of a list $$S_i$$ is $$\frac{n}{2^i}$$
+> This gives the expected number of elements in the list as $$\sum_{i=0}^{h}(\frac{n}{2^i}),$$ where $$h$$ is the height.
 >
->This gives the expected number of elements in the list as $$\sum_{i=0}^{h}(\frac{n}{2^i})$$
->
->We can express this is $$n \cdot \sum_{i=0}^{h}(\frac{1}{2^i})$$, and with the sum converging to a constant factor, so the space complexity is $$O(n)$$
+> We can express this as $$n \cdot \sum_{i=0}^{h}(\frac{1}{2^i}) \lt 2n$$, and with the sum **converging** to a **constant factor**, so the **space complexity** is $$O(n)$$.
 
+### Height
 
+The height of a skip list of $$n$$ items is **likely** to (since it is generated randomly) have a height of order $$O(log\ n)$$.
 
-The height of a skip list of $$n$$ items is **likely** to (since it is generated randomly) have a height of order $$O(log\ n)$$
-
-We show this by taking a height logarithmically related to the number of elements, and showing that the probability of the skip list having a height greater than that is very small
+We show this by taking a height logarithmically related to the number of elements, and showing that the probability of the skip list having a height greater than that is very small.
 
 > The probability that a layer $$S_i$$ has at least one item is at most $$\frac{n}{2^i}$$
 >
@@ -140,11 +142,9 @@ We show this by taking a height logarithmically related to the number of element
 >
 > The probability of the layer $$S_i$$ has at least one entry is at most $$\frac{n}{2^{3 \cdot log\ n}} = \frac{n}{n^3} = \frac{1}{n^2}$$
 >
-> Hence, the probability of a skip list of $$n$$ items having a height of more than $$3 \cdot log\ n$$ is at most $$\frac{1}{n^2}$$, which tends to a negligibly small number very quickly
+> Hence, the probability of a skip list of $$n$$ items having a height of more than $$3 \cdot log\ n$$ is at most $$\frac{1}{n^2}$$, which tends to a negligibly small number very quickly.
 
-
-
-## Search time
+### Search time
 
 The search time is dependent on the number of steps (both scan forward and drop down) that need to be taken to find or verify the absence of the item. We can find it as follows
 
