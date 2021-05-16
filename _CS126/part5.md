@@ -199,9 +199,43 @@ There are two common concrete implementations. These are essentially the same as
 
 ### List based
 
-Generally, the **space complexity** is $$O(n)$$, without overhead of empty cells. Since sets are not indexable, linked lists can be used, offering efficient re-sizing.
+> In the list implementation we store elements **sorted** according to some canonical ordering. This is **important** for the set operations to be more time efficient.
+
+Generally, the **space complexity** is $$O(n)$$, without overhead of empty cells. Since sets are not indexable, linked lists can be used, **offering efficient re-sizing**.
 
 We need to iterate over each element in the list to lookup items, $$O(n)$$ time complexity, which is not efficient, but for most more complex set operations, this becomes less of a drawback.
+
+#### Generic Merging Algorithm
+
+Set operations can be implemented using a generic **merge** algorithm.
+
+```c++
+Algorithm genericMerge(A,B)
+    S <- empty set // Set S to be an empty set
+    while !A.isEmpty() and !B.isEmpty() // until either 1 is empty
+        a <- A.first().element(); b <-  B.first().element
+        if a < b
+            aIsLess(a, S); A.remove(A.first())
+        else if b < a
+            bIsLess(b, S); B.remove(B.first())
+        else // b == a
+            bothAreEqual(a, S)
+            A.remove(A.first()); B.remove(B.first())
+    // By this point either A is empty or B is empty
+    while !A.isEmpty() // populate S with remaining elements in A, if any
+        aIsLess(a, S); A.remove(A.first())
+    while !B.isEmpty() // Same for B as with A
+        bIsLess(b, S); B.remove(B.first())
+    return S
+```
+
+❕❗ This merging algorithm is used in **merge sort** as well! You may have noticed that we have 3 auxiliary methods in this algorithm: `aIsLess`, `bIsLess`, and `bothAreEqual`.
+
+> Depending on the set operation (or any operation you are using this generic merge for), you define these methods **differently**. 
+>
+> For example, for **set intersection**, we only want the algorithm to merge when `b == a`, so `aIsLess` and `bIsLess` should do **nothing** and `bothAreEqual` should add either one into ***S***. 
+
+**Set union** is trivial (just add everything), and for **set subtraction** you do nothing if the elements are equal! This means that the method runs in linear time (i.e $$O(n_A + n_B)$$ time), provided that the auxiliary methods run in *O(1)* time. This is **possible**, as we know that the **elements are sorted**.
 
 ### Hash-set based
 
