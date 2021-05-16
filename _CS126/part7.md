@@ -49,7 +49,7 @@ This is covered in the section on heaps
 
 ## Comparators
 
-**Comparators** are used to "encapsulate[...] the action of comparing two objects from a given total order" (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+**Comparators** are used to "encapsulate[...] the action of comparing two objects from a given total order" (*Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*)
 
 The comparator is an object external to the keys being compared, not a property of the keys. See the 118 notes for a more full description.
 

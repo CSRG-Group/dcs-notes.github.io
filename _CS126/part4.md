@@ -48,6 +48,7 @@ Queues have the fundamental operations
 Uses and array with data wrapping (so like using an array in a `Queue` class with extra fields/properties) around as it is added and removed. Both the index of the head ***f*** **and** the size of the queue ***s*** need to be stored.
 
 The rear of the queue (index to insert to next) is *(f + s)* mod *N*, with *N* as the array size
+
 ![queueArrayImplementation](./images/queueArrayImplementation.png)
 
 *Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*

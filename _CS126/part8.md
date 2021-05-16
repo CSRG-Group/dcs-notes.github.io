@@ -23,8 +23,10 @@ The properties a binary tree must fullfil to be a heap are:
   >
   > ​	In the lowest layer, the all internal nodes are to the left of external nodes
 - The last node of the heap is the rightmost node of maximum depth
+
 ![heapDiagram](./images/heapDiagram.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -33,8 +35,10 @@ Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Gold
 ### Inserting into a heap
 
 First, the element is inserted to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, with a running time of $$O(1)$$ time, if a pointer to the position to insert is maintained
+
 ![heapInsertOne](./images/heapInsertOne.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 Then, the "upheap" algorithm is run to re-order the heap so that it fulfils the heap properties. This algorithm repeatedly swaps the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node:
 
@@ -47,7 +51,8 @@ While k is smaller than its parent, and k is not the root node
 
 
 ![heapInsertTwo](./images/heapInsertTwo.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -58,8 +63,10 @@ Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Gold
 The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten.
 
 First, the value of the root node is overwritten with the value of the last node, and the last node is removed from the tree:
+
 ![heapRemoveOne](./images/heapRemoveOne.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -73,8 +80,10 @@ Else
 	Swap the values of p and c
 	Run the downheap algorithm again with the root node (p) now as the child node (c)
 ```
+
 ![heapRemoveTwo](./images/heapRemoveTwo.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 As with upheap, since the heap has a height of $$O(log_2\ n)$$, performing a swap takes $$O(1)$$ time, and the maximum number of swaps is the height of the heap, the downheap algorithm takes $$O(log_2\ n)$$, time
 

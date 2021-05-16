@@ -63,14 +63,16 @@ There are three main concrete implementations of the graph ADT
   - One list of edges, each of which contain references to their endpoint vertices
 
   ![edgeListGraph](images\edgeListGraph.png)
-  Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+  Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 - Adjacency list
 
   - Array containing a all of the nodes, each of which have a pointer to a list of the other nodes they connect to
 
   ![adjacencyListGraph](images\adjacencyListGraph.png)
-  Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+  Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 - Adjacency matrix
 
@@ -79,7 +81,8 @@ There are three main concrete implementations of the graph ADT
   - Undirected graphs are symmetrical along the leading diagonal
 
   ![adjacencyMatrixGraph](images\adjacencyMatrixGraph.png)
-  Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+  
+  Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -117,7 +120,7 @@ Informally, it can be described as always proceeding to its first adjacency, the
 
 ![dfsExample](\images\dfsExample.png)
 
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -150,7 +153,7 @@ Informally, it can be described as exploring every one of its adjacencies, then 
 
 ![bfsExample](\images\bfsExample.png)
 
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -193,7 +196,7 @@ Informally, this means that every pair of vertices with a path between them is a
 
 ![transitiveClosure](\images\transitiveClosure.png)
 
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -205,7 +208,7 @@ Instead, we can use the Floyd-Warshall algorithm, which is a dynamic programming
 
 ![floydWarshall](\images\floydWarshall.png)
 
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 

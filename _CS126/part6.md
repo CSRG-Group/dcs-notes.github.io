@@ -7,7 +7,7 @@ title: "Trees"
 
 
 # Trees (ADT)
-**Trees** are "an abstract model of a hierarchical structure" *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+**Trees** are "an abstract model of a hierarchical structure" *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 
 
@@ -101,8 +101,10 @@ There are two common concrete implementations of binary trees
 ### Linked structure
 
 In the linked structure implementation, each node is an object which stores its value, references to its child nodes (and sometimes a reference to its parent), as shown in the diagram below:
+
 ![binaryTreeLinkedStructure](./images/binaryTreeLinkedStructure.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 This has a linear space complexity irrespective of the balance of the tree, and has a lookup time of $$O(log_2n)$$ for lookup operations.
 
