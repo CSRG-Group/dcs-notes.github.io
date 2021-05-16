@@ -2,14 +2,14 @@
 layout: CS126
 part: true
 math: true
-title: "Skip lists"
+title: "Skip Lists"
 ---
 
 
 
-# Motivations for skip lists
+## Motivations for skip lists
 
-We want to be able to efficiently implement  both searching, and insertion and deletion
+We want to be able to efficiently implement both searching, and insertion and deletion
 
 For fast searching, we need the list to be sorted, and we have come across two concrete implementations of lists, but neither of which fulfil both of  these goals.
 
@@ -20,9 +20,7 @@ For fast searching, we need the list to be sorted, and we have come across two c
   - Easy to insert/delete from, assuming the position is known, needs $$O(1)$$ time
   - Difficult to search, since they are not indexable, needs $$O(n)$$ time
 
-
-
-# Skip lists as an ADT
+## Skip Lists (ADT)
 
 **Skip lists** are composed from a number of sub-lists, which act as layers within them, which we denote by the set $$S = \{S_0, S_1, ..., S_h\}$$ where $$h$$ denotes the number of layers in the list, i.e. its "height"
 
@@ -44,29 +42,22 @@ A diagram of the structure of a skip list is shown below
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
-
-
 ## Searching
 
-To search for an value $$v$$ in a skip list, we follow the algorithm
+To search for an value `v​` in a skip list, we follow the algorithm
 
-```
-Start at the first position in the top list (the top minus infinity guard)
-
-Repeat
-	//Scan forward step
-	Repeat
-		If the value of the right adjacent position is greater than that of the current position
-			Break out of the loop
-		Else if the value of the right adjacent position is equal to the current position
-			Stop, since the element has been found
-		Move to the right adjacent position
-		
-	//Drop down step
-	If there is a below adjacent position (you're not in the bottom list)
-		Move to the below adjacent position
-	Else (you're in the bottom list)
-		Stop, since the element is not in the list
+```java
+Algorithm search(k):
+  p <- skiplist.first() // this is the minus-infinity guard of the top list
+  Repeat
+    e <- p.next().element()
+    if e.key() == k
+      return e
+    else if e.key() > k // next element is greater than v
+      p <- p.below()    // Drop Down Step
+      if p == null then return null
+    else                // next element's key is smaller than v
+      p <- p.next()     // Scan Forward Step
 ```
 
 ![skipListsSearch](./images/skipListsSearch.png)
@@ -75,76 +66,75 @@ Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldw
 
 ## Inserting
 
-To insert a value $$v$$ into a skip list, we follow the algorithm
+To insert a value `v`​ into a skip list, we follow the algorithm.
 
-```
-Let i <- the number of flips of a fair coin before a head comes up
-If i >= h
-	Add the new skip lists {S(h+1), ..., S(i+1)} to S, all by default only containing the guards
-Find the positions p(1), ..., p(i) in all the the lists of the largest element less than v, using the search algorithm
-For each j from 0 to i
-	Insert k into S(j) immediately after the position p(j)
+```java
+i <- number of flips of a fair coin before a head comes up
+If i >= height of skip list
+  Add new, empty, sub-lists {S(h+1), ..., S(i+1)} to S 
+Using the search algorithm, we find v //even though we know it is not inserted
+  For every dropdown step, store the position of the element in an array
+	// This array stores the positions p(0) to p(i) of the 
+  // largest element lesser than v of each sublist S(j)
+For each sublist from 0 to i
+	Insert v into S(j) immediately after the position p(j) in array
 ```
 
 ![skipListsInsertion](./images/skipListsInsertion.png)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
-
-
 ## Deleting
 
-To delete a value $$v$$ from a skip list, we follow the algorithm
+To delete a value `v`​ from a skip list, we follow the algorithm
 
-```
-Find the positions p(1), ..., p(i) in all the the lists of the largest element less than v, using the search algorithm
-Remove the postions  p(1), ..., p(i) from the lists S(0), ..., S(i)
-Remove any duplicate list layers containing only guards from the top of the skip list
+```java
+Using search algorithm, find v in skiplist
+  Once found at position p,
+    while p.below() != null
+      hold <- p
+      delete(p) // Delete v from sublists below
+      p <- hold
+Remove all but one list containing only guards from the top of the skip list
 ```
 
 ![skipListsDeletion](./images/skipListsDeletion.png)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
-
-
-# Implementation
+## Implementation
 
 We can use "quad-nodes", which are similar to those used in linked lists, but with four pointers, instead of just one to store the entry, and links to the previous, next, below and above nodes:
 
-![skipListsQuadNode](./images/skipListsQuadNode.png)
+<img src="./images/skipListsQuadNode.png" alt="skipListsQuadNode" class="center" />
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
-Additionally, there are special guard nodes, with the values $$+ \infty$$ and $$- \infty$$, and fewer pointers, as they don't have adjacencies on one side
+Additionally, there are special guard nodes, with the values $$+ \infty$$ and $$- \infty$$, and fewer pointers, as they don't have adjacencies on one side.
 
+## Performance
 
+### Space usage
 
-# Performance
+Dependent on randomly generated numbers for how many elements are in high layers, and how high the layers are.
 
-## Space usage
+We can find the **expected number of nodes** for a skip list of $$n$$ elements:
 
-Dependent on randomly generated numbers for how many elements are in high layers, and how high the layers are
-
-We can find the expected number of node for a skip list of $$n$$ elements:
-
->The probability of having $$i$$ layers in the skip list is $$\frac{1}{2^i}$$
+> The probability of having $$i$$ layers in the skip list is $$\frac{1}{2^i}$$.
 >
->The probability of having $$i$$ layers in the skip list is $$\frac{1}{2^i}$$
+> If the probability of any one of $$n$$ entries being in a set is $$p$$, the **expected size** of the set is $$n \cdot p$$
 >
->If the probability of any one of $$n$$ entries being in a set is $$p$$, the expected size of the set is $$n \cdot p$$
+> Hence, the expected size of a list $$S_i$$ is $$\frac{n}{2^i}$$
 >
->Hence, the expected size of a list $$S_i$$ is $$\frac{n}{2^i}$$
+> This gives the expected number of elements in the list as $$\sum_{i=0}^{h}(\frac{n}{2^i}),$$ where $$h$$ is the height.
 >
->This gives the expected number of elements in the list as $$\sum_{i=0}^{h}(\frac{n}{2^i})$$
->
->We can express this is $$n \cdot \sum_{i=0}^{h}(\frac{1}{2^i})$$, and with the sum converging to a constant factor, so the space complexity is $$O(n)$$
+> We can express this as $$n \cdot \sum_{i=0}^{h}(\frac{1}{2^i}) \lt 2n$$, and with the sum **converging** to a **constant factor**, so the **space complexity** is $$O(n)$$.
 
+### Height
 
+The height of a skip list of $$n$$ items is **likely** to (since it is generated randomly) have a height of order $$O(log\ n)$$.
 
-The height of a skip list of $$n$$ items is **likely** to (since it is generated randomly) have a height of order $$O(log\ n)$$
-
-We show this by taking a height logarithmically related to the number of elements, and showing that the probability of the skip list having a height greater than that is very small
+We show this by taking a height logarithmically related to the number of elements, and showing that the probability of the skip list having a height greater than that is very small.
 
 > The probability that a layer $$S_i$$ has at least one item is at most $$\frac{n}{2^i}$$
 >
@@ -152,26 +142,52 @@ We show this by taking a height logarithmically related to the number of element
 >
 > The probability of the layer $$S_i$$ has at least one entry is at most $$\frac{n}{2^{3 \cdot log\ n}} = \frac{n}{n^3} = \frac{1}{n^2}$$
 >
-> Hence, the probability of a skip list of $$n$$ items having a height of more than $$3 \cdot log\ n$$ is at most $$\frac{1}{n^2}$$, which tends to a negligibly small number very quickly
+> Hence, the probability of a skip list of $$n$$ items having a height of more than $$3 \cdot log\ n$$ is at most $$\frac{1}{n^2}$$, which tends to a negligibly small number very quickly.
 
+### Search time
 
+The search time is **proportional** to the number of steps scan forward and drop down steps. 
 
-## Search time
-
-The search time is dependent on the number of steps (both scan forward and drop down) that need to be taken to find or verify the absence of the item. We can find it as follows
-
-> In the worst case, the both dimensions have to be totally traversed, if the item is both bigger than all other items, and not present
+> In the worst case, both dimensions have to be totally traversed, if the item is both bigger than all other items, or not present.
 >
-> The number of drop down steps is bounded by the height ($$\approx O(log\ n)$$ with high probability)
+> The number of **drop down steps** is **bounded** by the height ($$\approx O(log\ n)$$ with high probability), therefore it is **trivial** to analyse it.
 >
-> The expected number of scan forward steps in each list is $$2$$, so the expected number of scan forward steps in total is $$O(log\ n)$$
+> To analyse the scan-forward step, firstly [recall](#inserting) that the number of sub-lists an item appears in is the number of times our flipped fair coin gives us a **success condition** (as above we use **heads** as the success condition and tails as failure – you can choose either).
 >
-> ​		**If you can word a better explanation of this, please pull request**
+> A probabilistic fact is that the **expected** number of coin tosses to get heads is 2. [Why?](#coin-toss-expectation-explanation)
 >
-> Hence, the total search time is $$O(log\ n)$$
+> When we scan forward, the element we scan forward to does not belong to a higher sub-list. Therefore a scan forward step is associated with a **success condition**, i.e coin giving us heads. So, the **expected number of scan-forward** steps for **each sub-list** is 2.
+>
+> Hence, the expected number of scan forward steps in **total** is $$O(log\ n)$$
 
+Hence, the total **search time** is $$O(log\ n)$$.
 
-
-## Update time
+### Update time
 
 Since the insert and delete operations are both essentially wrappers around the search operation, and all of their additional functionality is of $$O(log\ n)$$ or better, the time complexity is the same as the search function
+
+### Coin Toss Expectation Explanation
+
+*FYI ONLY.* The source of this explanation is by [JMoravitz on Stack Exchange](https://math.stackexchange.com/questions/1196452/expected-value-of-the-number-of-flips-until-the-first-head) (Accessed 16 May 2021)
+
+> Let X be a **discrete random variable** with possible outcomes: 
+>
+> $$x1,x2,x3,…,xi,…$$ with associated probabilities $$p1,p2,p3,…,pi,…$$
+>
+> The **expected value** of $$f(X)$$ is given as: $$E[f(X)] = \sum\limits_{i\in\Delta} f(x_i)p_i$$
+
+For a coin toss, $$X$$ could be $$1,2,3,\ldots,i,\ldots$$ with corresponding probabilities $$\frac{1}{2},\frac{1}{4},\frac{1}{8},\dots,\frac{1}{2^i},\dots$$
+
+So, the expected value of $$X$$ is: $$\sum\limits_{i=1}^\infty i(\frac{1}{2})^i=\frac{1}{0.5}=2$$
+
+This is a well known infinite sum of the form $$\sum\limits_{i=1}^\infty i p (1-p)^{i-1}=\frac1p$$
+
+To prove this:
+
+$$
+\sum\limits_{i=1}^\infty i p (1-p)^{i-1} = p\sum\limits_{i=1}^\infty i (1-p)^{i-1}\\
+= p\left(\sum\limits_{i=1}^\infty (1-p)^{i-1} + \sum\limits_{i=2}^\infty (1-p)^{i-1} + \sum\limits_{i=3}^\infty (1-p)^{i-1} + \dots\right)\\
+= p\left[(1/p)+(1-p)/p+(1-p)^2/p+\dots\right]\\
+= 1 + (1-p)+(1-p)^2+\dots\\
+=\frac{1}{p}
+$$
