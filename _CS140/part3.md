@@ -149,6 +149,8 @@ $$R_1, R_2, R_3, …, R_{k-1}, R_k$$
 
 If the password still cannot be found after this, we say that the password of the given hash is not embedded in the rainbow table, and we are not able to find it.
 
+[Additional resources on reverse lookup tables and rainbow tables](https://www.royvanrijn.com/blog/2011/01/rainbow-tables/)
+
 ## Defence
 
 There is no way to prevent brute-force or dictionary attacks. 

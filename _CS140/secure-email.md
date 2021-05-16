@@ -16,7 +16,7 @@ part: true
 
 1. User begins by using the **email client**, which connects to the SMTP server and sends the server the email address of the recipient, the name of the sender, and the body of the message.
    - SMTP breaks down the recipient’s email into 2 parts: the name (before the @) and the domain (after the @)
-2. If the domain of recipient and sender are **identical**, the SMTP server hands the message to the PoPe or IMAP server for that particular domain.
+2. If the domain of recipient and sender are **identical**, the SMTP server hands the message to the PoP3 or IMAP server for that particular domain.
 3. Otherwise, SMTP communicates with the Domain Name Server (DNS) for the IP address of the SMTP server in the other domain.
 4. The SMTP server at the senders side sends the email message to the SMTP server at the recipient’s end, which then hands the message to the PoP3 server for the recipient’s domain.
 
@@ -49,6 +49,8 @@ People have **poor passwords**.
 Emails can also be **intercepted** on insecure networks (packet sniffers)
 
 - Poor key-generation (if email is not correctly encrypted) – this compromises email confidentiality.
+
+<img src=".\secure-email.assets\emailServers.png" alt="emailServers" style="zoom:67%;" />
 
 ## Solutions to problems
 
@@ -101,3 +103,4 @@ However we do not use this method because it is slow to encrypt the whole email 
 - GnuPG (Gnu Privacy Guard) – open source implementation of OpenPGP
 - Windows version Gpg4Win
 
+![pgpEncryption](.\secure-email.assets\pgpEncryption.png)

@@ -114,6 +114,8 @@ To prove something is $$O(f(n))$$, we need to show that we can pick a $$c$$ and 
 
 ![bigOh](./images/bigOh.png)
 
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+
 ## Relatives of Big-O
 
 There are other “relatives” of Big-O
@@ -126,4 +128,3 @@ There are other “relatives” of Big-O
   - $$f(n)= g(n)$$ in the limit of $$n\rightarrow \infty$$
 
 [Additional notes](https://courses.cs.washington.edu/courses/cse326/06au/lectures/lect03.pdf)
-

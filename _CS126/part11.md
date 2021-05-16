@@ -43,7 +43,7 @@ Directed and undirected graphs
 
 2. An undirected graph with no self loops nor parallel edges, with number of edges $$m$$ and number of vertices $$n$$ fulfils the property $$m \leq \frac{n \cdot (n-1)}{2}$$
 
-   - Pigeonhole principle - every vertex can connect to at most $$n-1$$ vertices (all the rest of the vertices in the graph), then sum this for $$n$$ vertices
+   - The first vertex can connect to $$n-1$$ vertices (all vertices bar itself), then the second can connect to $$n-2$$ (all the vertices bar itself and the first vertex, which it is already connected to), and so on, giving the sum $$1+2+...+n$$ , which is known to be $$\frac{n \cdot (n-1)}{2}$$
 
    - Fully connected graphs fulfil the property $$m = \frac{n \cdot (n-1)}{2}$$
 
@@ -63,12 +63,14 @@ There are three main concrete implementations of the graph ADT
   - One list of edges, each of which contain references to their endpoint vertices
 
   ![edgeListGraph](images\edgeListGraph.png)
+  Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 - Adjacency list
 
   - Array containing a all of the nodes, each of which have a pointer to a list of the other nodes they connect to
 
   ![adjacencyListGraph](images\adjacencyListGraph.png)
+  Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 - Adjacency matrix
 
@@ -77,45 +79,27 @@ There are three main concrete implementations of the graph ADT
   - Undirected graphs are symmetrical along the leading diagonal
 
   ![adjacencyMatrixGraph](images\adjacencyMatrixGraph.png)
+  Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 
 
+## More terminology
 
+### Subgraphs
+
+A subgraph of the graph $$G$$ fulfils the two properties:
+
+- Its vertices are a subset of the vertices of $$G$$
+
+- Its edges are a subset of the edges of $$G$$
+
+A spanning subgraph contains all of the vertices in $$G$$. This then gives rise to spanning trees, which are spanning subgraphs which are connected and acyclic
 
 # Depth-first search
 
-> **Algorithm** $$DFS(G, v)$$
-> 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
-> 		**Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
-> 		$$setLabel(v, VISITED)$$
-> 		**for all** $$e \in G.incidentEdges(v)$$
-> 		    **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		   $$w \leftarrow opposite(v,e)$$
-> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		 		  $$setLabel(e, DISCOVERY)$$
-> 		 		 		  $$DFS(G, w)$$
-> 		 		   **else**
-> 		 		 		  $$setLabel(e,BACK)$$
-> **END ALGORITHM**
+Depth-first search is a technique to traverse graphs. It takes $$O(n + m)$$ time to search a graph of $$n$$ vertices and $$m$$ edges.
 
-
-
-## DFS for an entire graph:
-The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.
-
-> **Algorithm** $$DFS(G)$$
-> 		**Input** graph $$G$$
-> 		**Output** labelling of the edges of $$G$$ as discovery and back edges
-> 		**for all** $$u \in G.vertices()$$
-> 		    **$$setLabel(u, UNEXPLORED)$$**
-> 		**for all** $$e \in G.edges()$$
-> 		    **$$setLabel(e, UNEXPLORED)$$**
-> 		**for all** $$u \in G.vertices()$$
-> 		    **if $$getLabel(u, UNEXPLORED)$$**
-> 		 		   $$DFS(G, v)$$
-> **END ALGORITHM**
-
-Along with starting at a given vertex:
+Informally, it can be described as always proceeding to its first adjacency, then backtracking when it reaches a vertex with no adjacencies which it has not explored already
 
 > **Algorithm** $$DFS(G, v)$$
 > 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
@@ -131,89 +115,26 @@ Along with starting at a given vertex:
 > 		 		 		  $$setLabel(e,BACK)$$
 > **END ALGORITHM**
 
+![dfsExample](\images\dfsExample.png)
 
-
-## Path Finding with DFS
-
-By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the **template method pattern**
-
-> **Algorithm**
-> $$pathDFS(G,v,z)$$
-> 		$$setLabel(v, VISITED)$$
-> 		$$S.push(v)$$
-> 		**if** $$v=z$$
-> 		    **return** $$S.elements()$$
-> 		**for all** $$e \in G.incidentEdges(v)$$
-> 		    **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		   $$w \leftarrow opposite(v,e)$$
-> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		 		  $$setLabel(e,DISCORVERY)$$
-> 		 		 		  $$S.push(e)$$
-> 		 		 		  $$pathDFS(G,w,z)$$
-> 		 		 		  $$S.pop(e)$$
-> 		 		   **else**
-> 		 		 		  $$setLabel(e, BACK)$$
-> 		    $$S.pop(v)$$
-> **END ALGORITHM**
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 
 
-## Cycle Finding with DFS
+It has the following properties
 
-The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.
+- It visits all vertices and edges in any connected component of a graph
+- The discovery edges form a spanning tree of any graph it traverses
 
-> **Algorithm** $$cycleDFS(G,v)$$
-> 		$$setLabel(v,VISITED)$$
-> 		$$S.push(v)$$
-> 		**for all** $$e \in G.incidentEdges(v)$$
-> 		    **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		   $$w \leftarrow opposite(v,e)$$
-> 		 		   $$S.push(e)$$
-> 		 		   **if** $$getLabel(w)= UNEXPLORED$$
-> 		 		 		  **if** $$setLabel(e,DISCOVERY)$$
-> 		 		 		  $$cycleDFS(G,w)$$
-> 		 		 		  $$S.pop(e)$$
-> 		 		   **else**
-> 		 		 		  **T** $$\leftarrow$$ new empty stack
-> 		 		 		  **repeat**
-> 		 		 		 		 $$o \leftarrow S.pop()$$
-> 		 		 		 		 $$T.push(o)$$
-> 		 		 		  **until** $$o=w$$
-> 		 		 		  **return** $$T.elements()$$
-> 		$$S.pop(v)$$
-> **END ALGORITHM**
+It can be used for path-finding by performing the traversal until the target node is found, then backtracking along the discovery edges to find the reverse of the path
 
-
-## Topological ordering using DFS
-
-> **Algorithm** $$topologicalDFS(G)$$
-> 		**Input** dag $$G$$
-> 		**Output** topotlogical ordering of G
-> 		$$n \leftarrow G.numVertices()$$
-> 		**for all** $$u\in G.vertices()$$
-> 		    $$setLabel(,UNEXPLORED)$$
-> 		**for all** $$v\in G.vertices()$$
-> 		    **if** $$getLabel(v) = UNEXPLORED$$
-> 		 		   $$topologicalDFS(G,v)$$
-> **END ALGORITHM**
-
-
-> **Algorithm** $$topologicalDFS(G,v)$$
-> 		**Input** graph $$G$$ and start a vertex $$v$$ of $$G$$
-> 		**Output** labeling of the vertices of G in the connected component of $$v$$
-> 		$$setLabel(v, VISITED)$$
-> 		**for all** $$e\in G.outEdges(v)$$
-> 		    $$w\in opposite(v,e)$$ // Outgoing edges
-> 		    **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		   $$topologicalDFS(G,w)$$ // $$e$$ is a discovery edge
-> 		    **else**
-> 		 		   Label $$v$$ with topological number $$n$$ // $$e$$ is a forward or cross edge
-> 		    $$n\leftarrow n - 1$$
-> **END ALGORITHM**
-
-
+It can be used to identify cycles, as if it ever finds an adjacency to a vertex which it has already explored, (a back edge), the graph must contain a cycle
 
 # Breadth-first search
+
+Breadth-first search is a technique to traverse graphs. It takes $$O(n + m)$$ time to search a graph of $$n$$ vertices and $$m$$ edges.
+
+Informally, it can be described as exploring every one of its adjacencies, then proceeding to the first adjacency, then backtracking when it reaches a vertex with no adjacencies which it has not explored already
 
 > **Algorithm** $$BFS(G)$$
 > 		**Input** graph $$G$$
@@ -227,32 +148,74 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 > 		 		   $$BFS(G,v)$$
 > **END ALGORITHM**
 
+![bfsExample](\images\bfsExample.png)
 
-
-> **Algorithm** $$BFS(G, s)$$
-> 		$$L_0 \leftarrow$$ new empty sequence
-> 		$$L_0 .addLast(s)$$
-> 		$$setLabel(s, VISITED)$$
-> 		$$i \leftarrow 0$$
-> 		**while** $$¬L_i .isEmpty()$$
-> 		    $$L_i+1 \leftarrow$$ new empty sequence
-> 		    **for all** $$v\in L_i .elements()$$
-> 		 		   **for all** $$e \in G.incidentEdges(v)$$
-> 		 		 		  **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		 		 		 $$w \leftarrow opposite(v,e)$$
-> 		 		 		 		 **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		 		 		 		$$setLabel(e) = (e, DISCOVERY)$$
-> 		 		 		 		 		$$setLabel(w,VISITED)$$
-> 		 		 		 		 		$$L_i+1 .addLast(w)$$
-> 		 		 		 		 **else**
-> 		 		 		 		 		$$setLabel(e,CROSS)$$
-> 		    $$i \leftarrow i + 1$$
-> **END ALGORITHM**
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
 
 
+It has the following properties
+
+- It visits all vertices and edges in any connected component of a graph
+- The discovery edges form a spanning tree of any graph it traverses
+- The path between any two vertices in the spanning tree of discovery edges it creates is the shortest path between them in the graph
+
+It can be used for path-finding by performing the traversal until the target node is found, then backtracking along the discovery edges to find the reverse of the path
+
+It can be used to identify cycles, as if it ever finds an adjacency to a vertex which it has already explored, (a back edge), the graph must contain a cycle
 
 # Directed graphs
+
+Directed graphs (digraphs) are graphs where every edge is directed. It can be applied to dependency and scheduling problems. When representing it in concrete implementations, we tend to keep in and out edges separately
+
+It has the following properties:
+
+- If a simple directed graph has $$m$$ edges and $n$ vertices, then $$m \leq n \cdot (n-1)$$, since every vertex can connect to every other vertex bar itself
+
+There is more terminology specifically about digraphs:
+
+- One vertex is said to be reachable from the other if there exists a directed path from the other to it
+
+- A digraph is said to be strongly connected if each vertex is reachable from every other vertex
+  - We can identify strong connectivity by running DFS or BFS, and seeing if the vertex is ever reached in the traversal. This has a running time of $$O(n+m)$$
+  - It is also possible to create maximal subgraphs with every vertex being reachable in $$O(n+m)$$ time, but this is more involved
+
+## Transitive closure
+
+The transitive closure provides reachability information about a digraph
+
+Given a digraph $$G$$, the transitive closure of $$G$$ is the digraph $$G*$$ such that
+
+- $$G*$$ has the same vertices as $$G$$
+- If $$G$$ has a directed path from $$u$$ to $$v$$, and $$u \neq v$$, then $$G*$$ has a directed edge from $$u$$ to $$v$$
+
+Informally, this means that every pair of vertices with a path between them is adjacent
+
+![transitiveClosure](\images\transitiveClosure.png)
+
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+
+
+We can naively compute this by performing DFS for each vertex in graph to identify every reachable edge from it, then setting edges between them. However, this is very slow, being $$O(n \cdot (n+m))$$ time.
+
+
+
+Instead, we can use the Floyd-Warshall algorithm, which is a dynamic programming solution:
+
+![floydWarshall](\images\floydWarshall.png)
+
+Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+
+
+We build up from $$1$$ to $$k$$, starting with the base case of the initial graph, which only has the initial adjacencies. We then add edges between any included nodes with path length two between them.
+
+With each iteration, we introduce a new node considered in the temporary graph, and ensure that all edges within this temporary graph are transitively closed.
+
+Since at the end of every step, every node is transitively closed, when all nodes are included, the entire graph is transitively closed
+
+
 
 > **Algorithm** $$FloydWarshall(G)$$
 > 		**Input** digraph $$G$$
@@ -271,3 +234,14 @@ The algorithm for DFS can be adapted slightly in order to find a simply cycle ba
 > 		 		 		 		 		    $$G_k.insertDirectedEdge(v_i,v_j,k)$$
 > 		    **return** $$G_n$$
 > **END ALGORITHM**
+
+Running time is $$O(n^3)$$, which is better than $$O(n \cdot (n+m))$$ for non-sparse graphs (often graphs have many more edges than nodes)
+
+## Topological ordering
+
+A graph has a topological ordering if it is directed and acyclic
+
+- Having cycles would informally be self-dependencies
+- This can be done in $$O(m+n)$$ time using DFS
+
+Topological ordering means the same thing as a total relation in CS130, if the graph is considered as a set of relations

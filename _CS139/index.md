@@ -5,10 +5,12 @@ title: CS139
 
 # Welcome to the CS139 revision guide
 
-## Topics and content
+## Complete notes
 
-The content for this module can be split up into sections shown below.
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page.
 You can access them from the [CS139 One Page Notes](opnotes) or the respective topic links below:
+
+These were written by **Joseph Evans**:
 
 ### Languages
 
@@ -34,6 +36,6 @@ You can access them from the [CS139 One Page Notes](opnotes) or the respective t
 12. [x] [Setting up a Real Website](Theory12)
 
 ## Flash Cards
-Here are a set of flashcards for the module by Leon Chipchase (they still need to be refined), and please message me if there is something incorrect on there.
+Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
 
 [Flash Cards](https://quizlet.com/_99cgos?x=1jqt&i=18al03)

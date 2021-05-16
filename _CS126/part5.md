@@ -55,6 +55,12 @@ But simpler ones exist, for example $$h(x) =  x \!\!\mod \!N$$
 
 - We try to pick $$N$$ such that there are fewer collisions – numbers like primes with few factors are better
 
+### Java hash implementations
+
+Java implements hash functions for all objects with the `.hashCode()` method, giving a convenient way to implement hashing, but a reduction function to map it to the correct size of the table may still be required.
+
+Additionally: "You must override `hashCode()` in every class that overrides `equals()`.  Failure to do so will result in a violation of the general contract for `Object.hashCode()`, which will prevent your class from functioning  properly in conjunction with all hash-based collections, including  `HashMap`, `HashSet`, and `Hashtable`." (*Effective Java*, Joshua Bloch)
+
 ## Collisions
 
 > Collisions are when two **different** keys are **mapped to** the **same index** by the hash function. Since we cannot store duplicate keys unambiguously in a map, we need a protocol to resolve this. 

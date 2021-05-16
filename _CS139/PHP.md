@@ -266,7 +266,7 @@ Adding an `&` in front passes by reference, a variable
 change in a function is reflected outside the function scope
 ```php
 function add(&$arg){
-    arg+=100;
+    $arg+=100;
 }
 ```
 

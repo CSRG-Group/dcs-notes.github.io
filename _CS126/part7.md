@@ -67,7 +67,7 @@ When the unsorted concrete implementation is used, this encodes "selection sort"
 2. Dequeue all the elements into sorted order, with the total calls taking $$O(n) + O(n-1) + ... + O(1)$$, which is $$O(n^2)$$ time
 Hence, the total time complexity is $$O(n^2)$$
 
-When the unsorted concrete implementation is used, this encodes "insertion sort". The steps taken in the sort are:
+When the sorted concrete implementation is used, this encodes "insertion sort". The steps taken in the sort are:
 
 1. Enqueue $$n$$ elements, with the total calls taking $$O(1) + O(2) + ... + O(n)$$, which is $$O(n^2)$$ time
 2. Dequeue all $$n$$ items, each taking $$O(1)$$, taking $$O(n)$$ time

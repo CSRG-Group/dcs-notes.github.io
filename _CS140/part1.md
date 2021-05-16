@@ -36,9 +36,13 @@ title: Introduction to Computer Security
 
 A security model that defines three key aspects that should be guaranteed at all times
 
-1. **Confidentiality.** No unauthorised disclosure.
+1. **Confidentiality.** No unauthorised disclosure
 2. **Integrity.** No unauthorised change
-3. **Availability.** Users are not denied access to resources or have unwarranted delay.
+3. **Availability.** Users are not denied access to resources or have unwarranted delay
+
+![ciaTriad](.\part1.assets\ciaTriad.png)
+
+[Image source](http://panmore.com/the-cia-triad-confidentiality-integrity-availability)
 
 ## Case studies
 
@@ -257,4 +261,3 @@ What should system security encompass? - Service provider should have resources 
 - Attack: Robert ran the worm, and it replicated itself rapidly across the Arpanet
 - Risk: (*probability x harm*) *(10% of all machines) x (Money loss)* because of computer slowdown.
 - Countermeasure: Robert was charged in court. Applied security patch for the rsh loophole.
-
