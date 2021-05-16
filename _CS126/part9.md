@@ -2,27 +2,25 @@
 layout: CS126
 part: true
 math: true
-title: "Skip lists"
+title: "Skip Lists"
 ---
 
 
 
-# Motivations for skip lists
+## Motivations for skip lists
 
-We want to be able to efficiently implement  both searching, and insertion and deletion
+We want to be able to efficiently implement both searching, and insertion and deletion
 
 For fast searching, we need the list to be sorted, and we have come across two concrete implementations of lists, but neither of which fulfil both of  these goals.
 
 - Sorted arrays
-  - Easy to search using binary search, since they are not indexable, needs $O(log\ n)$ time
-  - Difficult insert/delete from, as elements need to be "shuffled up" to maintain ordering, needs $O(n)$ time
+  - Easy to search using binary search, since they are not indexable, needs $$O(log\ n)$$ time
+  - Difficult insert/delete from, as elements need to be "shuffled up" to maintain ordering, needs $$O(n)$$ time
 - Sorted lists
-  - Easy to insert/delete from, assuming the position is known, needs $O(1)$ time
-  - Difficult to search, since they are not indexable, needs $O(n)$ time
+  - Easy to insert/delete from, assuming the position is known, needs $$O(1)$$ time
+  - Difficult to search, since they are not indexable, needs $$O(n)$$ time
 
-
-
-# Skip lists as an ADT
+## Skip Lists (ADT)
 
 **Skip lists** are composed from a number of sub-lists, which act as layers within them, which we denote by the set $$S = \{S_0, S_1, ..., S_h\}$$ where $$h$$ denotes the number of layers in the list, i.e. its "height"
 
@@ -41,44 +39,39 @@ For fast searching, we need the list to be sorted, and we have come across two c
 A diagram of the structure of a skip list is shown below
 
 ![skipLists](./images/skipLists.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
-
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 ## Searching
 
 To search for an value $$v$$ in a skip list, we follow the algorithm
 
-```
-Start at the first position in the top list (the top minus infinity guard)
-
-Repeat
-	//Scan forward step
-	Repeat
-		If the value of the right adjacent position is greater than that of the current position
-			Break out of the loop
-		Else if the value of the right adjacent position is equal to the current position
-			Stop, since the element has been found
-		Move to the right adjacent position
-		
-	//Drop down step
-	If there is a below adjacent position (you're not in the bottom list)
-		Move to the below adjacent position
-	Else (you're in the bottom list)
-		Stop, since the element is not in the list
+```java
+Algorithm search(k):
+  p <- skiplist.first() // this is the minus-infinity guard of the top list
+  Repeat
+    e <- p.next().element()
+    if e.key() == k
+      return e
+    else if e.key() > k // next element is greater than v
+      p <- p.below()    // Drop Down Step
+      if p == null then return null
+    else                // next element's key is smaller than v
+      p <- p.next()     // Scan Forward Step
 ```
 
 ![skipListsSearch](./images/skipListsSearch.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 ## Inserting
 
-To insert a value $$v$$ into a skip list, we follow the algorithm
+To insert a value $$v$$ into a skip list, we follow the algorithm.
 
-```
-Let i <- the number of flips of a fair coin before a head comes up
-If i >= h
-	Add the new skip lists {S(h+1), ..., S(i+1)} to S, all by default only containing the guards
+```java
+i <- number of flips of a fair coin before a head comes up
+If i >= height of skip list
+  Add new, empty, sub-lists {S(h+1), ..., S(i+1)} to S 
 Find the positions p(1), ..., p(i) in all the the lists of the largest element less than v, using the search algorithm
 For each j from 0 to i
 	Insert k into S(j) immediately after the position p(j)
