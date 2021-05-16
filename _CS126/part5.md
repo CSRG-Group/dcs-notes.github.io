@@ -118,7 +118,7 @@ Searching is similar to linear probing, but when iterating we look at the hash v
 
 
 
-When colliding items are placed in different cells in the table, it is called "open addressing", and when they are put in a separate data structure it is called closed addressing (with linear probing and separate chaining being examples of both respectively)
+When colliding items are placed in different cells in the table, it is called **open addressing**, or **closed hashing**, and when they are put in a separate data structure it is called **closed addressing**, or **separate chaining** (with linear probing and separate chaining being examples of both respectively) [additional link](http://www.iro.umontreal.ca/~nie/IFT1020/Watt/12/tsld009.htm)
 
 ## Resizing a hash table
 
@@ -128,7 +128,10 @@ Again, similarly to arrays, the new size of the table can be picked from various
 
 ## Performance
 
-The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array $$\alpha = \frac{n}{N}$$. If this approaches $$1$$, the table becomes inefficient, so we often re-size the table whenever it exceeds a certain value, e.g. $$0.75$$
+The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array $$\alpha = \frac{n}{N}$$.
+
+- If this approaches $$1$$, the table becomes time inefficient to lookup in, so we often re-size the table whenever it exceeds a certain value, e.g. $$0.75$$
+- If this approaches $$0$$, then the table is mostly empty, so is space inefficient, so we try to avoid tables of less than a certain value, e.g. $$0.5$$
 
 The time complexity of insertion and lookup is:
 - $$\Theta(1)$$ best case
