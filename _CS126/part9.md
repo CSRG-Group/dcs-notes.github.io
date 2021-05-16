@@ -146,20 +146,48 @@ We show this by taking a height logarithmically related to the number of element
 
 ### Search time
 
-The search time is dependent on the number of steps (both scan forward and drop down) that need to be taken to find or verify the absence of the item. We can find it as follows
+The search time is **proportional** to the number of steps scan forward and drop down steps. 
 
-> In the worst case, the both dimensions have to be totally traversed, if the item is both bigger than all other items, and not present
+> In the worst case, both dimensions have to be totally traversed, if the item is both bigger than all other items, or not present.
 >
-> The number of drop down steps is bounded by the height ($$\approx O(log\ n)$$ with high probability)
+> The number of **drop down steps** is **bounded** by the height ($$\approx O(log\ n)$$ with high probability), therefore it is **trivial** to analyse it.
 >
-> The expected number of scan forward steps in each list is $$2$$, so the expected number of scan forward steps in total is $$O(log\ n)$$
+> To analyse the scan-forward step, firstly [recall](#inserting) that the number of sub-lists an item appears in is the number of times our flipped fair coin gives us a **success condition** (as above we use **heads** as the success condition and tails as failure – you can choose either).
 >
-> ​		**If you can word a better explanation of this, please pull request**
+> A probabilistic fact is that the **expected** number of coin tosses to get heads is 2. [Why?](#coin-toss-expectation-explanation)
 >
-> Hence, the total search time is $$O(log\ n)$$
+> When we scan forward, the element we scan forward to does not belong to a higher sub-list. Therefore a scan forward step is associated with a **success condition**, i.e coin giving us heads. So, the **expected number of scan-forward** steps for **each sub-list** is 2.
+>
+> Hence, the expected number of scan forward steps in **total** is $$O(log\ n)$$
 
+Hence, the total **search time** is $$O(log\ n)$$.
 
-
-## Update time
+### Update time
 
 Since the insert and delete operations are both essentially wrappers around the search operation, and all of their additional functionality is of $$O(log\ n)$$ or better, the time complexity is the same as the search function
+
+### Coin Toss Expectation Explanation
+
+*FYI ONLY.* The source of this explanation is by [JMoravitz on Stack Exchange](https://math.stackexchange.com/questions/1196452/expected-value-of-the-number-of-flips-until-the-first-head) (Accessed 16 May 2021)
+
+> Let X be a **discrete random variable** with possible outcomes: 
+>
+> $$x1,x2,x3,…,xi,…$$ with associated probabilities $$p1,p2,p3,…,pi,…$$
+>
+> The **expected value** of $$f(X)$$ is given as: $$E[f(X)] = \sum\limits_{i\in\Delta} f(x_i)p_i$$
+
+For a coin toss, $$X$$ could be $$1,2,3,\ldots,i,\ldots$$ with corresponding probabilities $$\frac{1}{2},\frac{1}{4},\frac{1}{8},\dots,\frac{1}{2^i},\dots$$
+
+So, the expected value of $$X$$ is: $$\sum\limits_{i=1}^\infty i(\frac{1}{2})^i=\frac{1}{0.5}=2$$
+
+This is a well known infinite sum of the form $$\sum\limits_{i=1}^\infty i p (1-p)^{i-1}=\frac1p$$
+
+To prove this:
+
+$$
+\sum\limits_{i=1}^\infty i p (1-p)^{i-1} = p\sum\limits_{i=1}^\infty i (1-p)^{i-1}\\
+= p\left(\sum\limits_{i=1}^\infty (1-p)^{i-1} + \sum\limits_{i=2}^\infty (1-p)^{i-1} + \sum\limits_{i=3}^\infty (1-p)^{i-1} + \dots\right)\\
+= p\left[(1/p)+(1-p)/p+(1-p)^2/p+\dots\right]\\
+= 1 + (1-p)+(1-p)^2+\dots\\
+=\frac{1}{p}
+$$
