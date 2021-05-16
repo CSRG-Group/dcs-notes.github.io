@@ -70,7 +70,7 @@ Function preOrder(n)
       preOrder(n)
 ```
 
-## Post-order traversal
+### Post-order traversal
 
 Each node is printed after its descendants, and descendants are taking in ascending order
 ```java
