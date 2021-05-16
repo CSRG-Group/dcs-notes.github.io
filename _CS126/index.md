@@ -13,19 +13,19 @@ broader topics when revising - each of which having its own page.
 
 Or access the [CS126 One Page Notes](opnotes).
 
-These were written by **Edmund Goodman** with contributions from **Leon Chipchase**:
+These were written by **Edmund Goodman** with contributions from **Justin Tan** and **Leon Chipchase**:
 
 1. [x] [Arrays and Lists](part1)
-2. [ ] [Analysis of algorithms](part2)
-3. [ ] [Recursive algorithms](part3)
+2. [x] [Analysis of algorithms](part2)
+3. [x] [Recursive algorithms](part3)
 4. [x] [Stacks and Queues](part4)
 5. [x] [Maps, hash tables and sets](part5)
 6. [x] [Trees](part6)
 7. [x] [Priority queues](part7)
 8. [x] [Heaps](part8)
-9. [ ] [Skip lists](part9)
+9. [x] [Skip lists](part9)
 10. [ ] [Self-balancing trees](part10)
-11. [ ] [Graphs](part11)
+11. [x] [Graphs](part11)
 12. [ ] [General algorithms](part12)
 
 

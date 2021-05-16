@@ -55,6 +55,41 @@ But simpler ones exist, for example $$h(x) =  x \!\!\mod \!N$$
 
 - We try to pick $$N$$ such that there are fewer collisions – numbers like primes with few factors are better
 
+### Memory address
+
+Java implements hash functions for all objects with the `.hashCode()` method, giving a convenient way to implement hashing.
+
+The `.hashCode()` method is dependent on the memory address of the object storing the key, which is then cast to an integer. This then may be resized using a reduction function to map it to the correct size of the table may still be required.
+
+### Integer cast
+
+Taking the bits encoding the object storing the key, and re-interpreting them as an integer. This is only suitable for keys of fewer or equal to the number of bits in the integer type (i.e. primitives: `byte`, `short`, `int`, `float`)
+
+### Component sum
+
+The process is:
+
+1. Partition the bits of the key into a number of fixed length components (e.g. 8 bits)
+2. Sum together the components, discarding overflows
+
+This is suitable for keys of a greater number of bits than the integer type (e.g. `long` and `double`)
+
+### Polynomial accumulation
+
+The process is:
+
+1. Partition the bits of the key into a number of fixed length components (e.g. 8 bits), and name them $$a_0, a_1, ..., a_{n-1}$$ respectively
+
+2. Evaluate the polynomial:
+   $$
+   p(z) = a_0 + a_1 \cdot z + a_2 \cdot z_2 + ... + a_{n-1} \cdot z^{n-1}
+   $$
+   at a fixed value $$z$$, ignoring overflows
+
+   This can be evaluated quickly using Horner's rule
+
+This is especially suitable for strings, with $$z=33$$ giving at most $$6$$ collisions from $$50,000$$ English words
+
 ### Java hash implementations
 
 Java implements hash functions for all objects with the `.hashCode()` method, giving a convenient way to implement hashing, but a reduction function to map it to the correct size of the table may still be required.
@@ -81,6 +116,7 @@ In **separate chaining**, each index in the array can contain a reference to a l
 - If there are duplicates, we iterate over the chain till we find the key, or reach the end. 
 
 This has the **drawback** of requiring additional memory space for each linked list
+
 ![separateChaining](./images/separateChaining.png)
 
 *Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
@@ -125,6 +161,8 @@ This has the **drawback** of colliding items "lumping together", which can cause
 - If ***k*** is found, we replace it with `DEFUNCT` and we return the **value** of the item with key ***k***
 - Else we return **null**
 
+When colliding items are placed in different cells in the table, it is called **open addressing**, or **closed hashing**, and when they are put in a separate data structure it is called **closed addressing**, or **separate chaining** (with linear probing and separate chaining being examples of both respectively) [additional link](http://www.iro.umontreal.ca/~nie/IFT1020/Watt/12/tsld009.htm)
+
 ### Double Hashing
 
 > **Double hashing** handles collisions by re-hashing the key with a new hash function
@@ -148,9 +186,10 @@ Again, similarly to arrays, the new size of the table can be picked from various
 
 ## Performance of Hashing
 
-> The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array $$\alpha = \frac{n}{N}$$. $$\alpha$$ is the **average** number of elements that are stored in each position of the hash table.
+The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array $$\alpha = \frac{n}{N}$$.
 
-If this approaches $$1$$, the table becomes inefficient, so we often re-size the table whenever it exceeds a certain value, e.g. $$0.75$$
+- If this approaches $$1$$, the table becomes time inefficient to lookup in, so we often re-size the table whenever it exceeds a certain value, e.g. $$0.75$$
+- If this approaches $$0$$, then the table is mostly empty, so is space inefficient, so we try to avoid tables of less than a certain value, e.g. $$0.5$$
 
 The time complexity of insertion and lookup is:
 - $$\Theta(1)$$ best case

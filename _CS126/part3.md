@@ -11,7 +11,7 @@ Recursion can be defined in various ways:
 
 > “When a method calls itself” 
 >
-> – *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+> – *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 >
 > “A method which is expressed in terms of calls to simpler cases of itself, and a base case”
 >
@@ -37,11 +37,10 @@ We can often express many functions both iteratively and recursively, such as a 
 - The recursive call being the half of the list the search has been narrowed down to
 - The base cases being a single item, returning the index of that item if it is the item being searched for, or an indicator of absence if not
 
-*if you want to pull request pseudocode for both here, please do*
+See the page on general algorithms for the [pseudocode for a recursive binary search](https://csrg-group.github.io/dcs-notes.github.io/CS126/part12.html#recursive-algorithm)
 
 ## Types of recursion
 
 **Linear recursion.** Each functional call makes only one recursive call (there may be multiple different possible calls, but only one is selected), or none if it is a base case.
 
 **Binary and multiple recursion.** Each functional call makes two or multiple recursive calls, unless it is a base case.
-

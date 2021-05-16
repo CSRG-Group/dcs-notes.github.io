@@ -85,8 +85,10 @@ Else
 	Swap the values of p and c
 	Run the downheap algorithm again with the root node (p) now as the child node (c)
 ```
+
 ![heapRemoveTwo](./images/heapRemoveTwo.png)
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
+
+Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 As with `upheap`, since the heap has a height of $$O(log_2\ n)$$, the `downheap` algorithm takes $$O(log_2\ n)$$ time.
 
