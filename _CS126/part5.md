@@ -2,7 +2,7 @@
 layout: CS126
 part: true
 math: true
-title: "Maps, hash tables and sets"
+title: "Maps, Hash tables and Sets"
 ---
 
 
@@ -158,30 +158,31 @@ In practice, hash tables are a very efficient implementation of maps assuming th
     However, for $$\alpha \gt 0.9$$ the number of collisions increase and becomes slower.
 </blockquote>
 
-# Sets (ADT)
+## Sets (ADT)
 
-**Sets** are "an unordered collection of elements, without duplicates that typically supports efficient membership tests" (*Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser)
+> **Sets** are "an **unordered** collection of elements, **without duplicates** that typically supports **efficient membership tests**." 
+>
+> *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
-
+These are the same as sets in mathematics.
 
 *If you want to pull request more stuff here, please do - but I'm not too sure how much more depth is needed*
 
+| Fundamental Operations | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| `add(e)`               | Adds the element *e* to *S* (if not already present)         |
+| `remove(e)`            | Removes the element *e* from *S* (if it is present).         |
+| `contains(e)`          | Returns whether *e* is an element of *S*                     |
+| `iterator()`           | Returns an iterator of the elements of *S*                   |
+| `union(s2)`            | Updates *S* to also include all elements of set *T*. This effectively replaces *S* with *S* &bigcup; *T* |
+| `intersection(s2)`     | Replace/Update *S* with *S* &bigcap; *T*                     |
+| `difference(s2)`       | Replace/Update *S* with *S* – *T*  (set minus)               |
 
-
-Sets have the fundamental operations
-- add(e)
-- remove(e)
-- contains(e)
-- size(e)
-- isEmpty(e)
-
-And the more specific operations (defined same as normal set theory)
+And alternate definition for set operations can instead define a third set structure and fill it with the result of *S* \*set operation\* *T* – this way we don’t alter *S*
 
 - union(s1, s2)
 - intersection(s1, s2)
 - difference(s1, s2)
-
-
 
 ## Implementations
 
@@ -192,10 +193,10 @@ There are two common concrete implementations. These are essentially the same as
 
 ### List based
 
-Generally, the space complexity if $$O(n)$$, without overhead of empty cells. Since sets are not indexable, linked lists can be used, offering efficient re-sizing.
+Generally, the **space complexity** is $$O(n)$$, without overhead of empty cells. Since sets are not indexable, linked lists can be used, offering efficient re-sizing.
 
-We need to iterate over each element in the list to lookup items, $$O(n)$$ time complexity, which is not efficient, but for most more complex set operations, this becomes less of a drawback
+We need to iterate over each element in the list to lookup items, $$O(n)$$ time complexity, which is not efficient, but for most more complex set operations, this becomes less of a drawback.
 
 ### Hash-set based
 
-Hash-sets are implemented like a hash-table, but using only keys, not key-value pairs. This gives fast $$O(1)$$ lookups, and an $$O(n)$$ space complexity, but with large overheads 
+Hash-sets are implemented like a hash-table, but using only keys, not key-value pairs. This gives fast $$O(1)$$ lookups, and an $$O(n)$$ space complexity, but with large overheads.
