@@ -180,8 +180,8 @@ These are the same as sets in mathematics.
 | `remove(e)`            | Removes the element *e* from *S* (if it is present).         |
 | `contains(e)`          | Returns whether *e* is an element of *S*                     |
 | `iterator()`           | Returns an iterator of the elements of *S*                   |
-| `union(s2)`            | Updates *S* to also include all elements of set *T*. This effectively replaces *S* with *S* &bigcup; *T* |
-| `intersection(s2)`     | Replace/Update *S* with *S* &bigcap; *T*                     |
+| `union(s2)`            | Updates *S* to also include all elements of set *T*. This effectively replaces *S* with *S* &cup; *T* |
+| `intersection(s2)`     | Replace/Update *S* with *S* &cap; *T*                        |
 | `difference(s2)`       | Replace/Update *S* with *S* – *T*  (set minus)               |
 
 And alternate definition for set operations can instead define a third set structure and fill it with the result of *S* \*set operation\* *T* – this way we don’t alter *S*

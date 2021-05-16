@@ -15,7 +15,7 @@ Recursion can be defined in various ways:
 >
 > “A method which is expressed in terms of calls to simpler cases of itself, and a base case”
 >
-> – CSRG, Edmund Goodman (It’s a recursive reference, get it?) 🙃
+> – *CSRG, Edmund Goodman* (It’s a recursive reference, get it?) 🙃
 
 ## Structure
 
