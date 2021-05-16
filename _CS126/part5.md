@@ -233,9 +233,16 @@ Algorithm genericMerge(A,B)
 
 > Depending on the set operation (or any operation you are using this generic merge for), you define these methods **differently**. 
 >
-> For example, for **set intersection**, we only want the algorithm to merge when `b == a`, so `aIsLess` and `bIsLess` should do **nothing** and `bothAreEqual` should add either one into ***S***. 
 
-**Set union** is trivial (just add everything), and for **set subtraction** you do nothing if the elements are equal! This means that the method runs in linear time (i.e $$O(n_A + n_B)$$ time), provided that the auxiliary methods run in *O(1)* time. This is **possible**, as we know that the **elements are sorted**.
+**Example.**
+
+For **set intersection** – we only want the algorithm to merge when `b == a`, so `aIsLess` and `bIsLess` should do **nothing** and `bothAreEqual` should add either one into ***S***. 
+
+**Set union** is trivial (just add everything).
+
+For **set subtraction** you do nothing if the elements are equal! 
+
+This means that each **set operation** runs in **linear time** (i.e $$O(n_A + n_B)$$ time), provided that the auxiliary methods run in *O(1)* time. This is **possible**, as we know that the **elements are sorted**.
 
 ### Hash-set based
 
