@@ -5,16 +5,17 @@ title: CS141 Functional Programming
 
 # Welcome to the CS141 revision guide
 
-Each question number corresponds to a particular topic
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page.
 
-1. General Functional Programming
-2. Recursive and higher-order functions
-3. Data types
-4. Equational reasoning
-5. Functors, Applicatives, Monads
-6. Type-level programming
+*These are in progress of being written, if you can, please submit a pull request!*
 
-## Tips
+1. [ ] General Functional Programming
+2. [ ] Recursive and higher-order functions
+3. [ ] Data types
+4. [x] [Equational reasoning](equationalReasoning.md)
+5. [ ] Functors, Applicatives, Monads
+6. [ ] Type-level programming
+
+## Crib Sheets
 
 - Know and understand the [laws](laws)
-- 
