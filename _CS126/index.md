@@ -21,11 +21,11 @@ These were written by **Edmund Goodman** with contributions from **Justin Tan** 
 4. [x] [Stacks and Queues](part4)
 5. [x] [Maps, hash tables and sets](part5)
 6. [x] [Trees](part6)
-7. [x] [Priority queues](part7)
-8. [x] [Heaps](part8)
-9. [x] [Skip lists](part9)
-10. [ ] [Self-balancing trees](part10)
-11. [x] [Graphs](part11)
+7. [x] [Priority queues & Heaps](part7)
+8. [x] [Skip lists](part9)
+9.  [x] [Self-balancing trees](part10)
+10. [x] [Graphs](part11)
+11. [x] [Directed Graphs](digraphs)
 12. [ ] [General algorithms](part12)
 
 
