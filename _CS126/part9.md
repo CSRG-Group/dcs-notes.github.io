@@ -150,15 +150,15 @@ The search time is **proportional** to the number of steps scan forward and drop
 
 > In the worst case, both dimensions have to be totally traversed, if the item is both bigger than all other items, or not present.
 >
-> The number of **drop down steps** is **bounded** by the height ($$\approx O(log\ n)$$ with high probability), therefore it is **trivial** to analyse it.
+> The number of **drop down steps** is **bounded** by the height so it is **trivial** to see that it is $$\approx O(log\ n)$$ with high probability, 
 >
-> To analyse the scan-forward step, firstly [recall](#inserting) that the number of sub-lists an item appears in is the number of times our flipped fair coin gives us a **success condition** (as above we use **heads** as the success condition and tails as failure – you can choose either).
+> To analyse the scan-forward step, firstly [recall](#skip-lists-adt) that given an item in sub-list $$i$$, its probability of being in sub-list $$(i-1)$$ as well is &frac12;. 
 >
-> A probabilistic fact is that the **expected** number of coin tosses to get heads is 2. [Why?](#coin-toss-expectation-explanation)
+> Let’s say that we scanned $$n_i$$ keys at sub-list $$i$$ before we dropped down a level to $$(i -1)$$. Each subsequent key that we **scan forward to** cannot exist in $$(i-1)$$, otherwise we would have already seen it.
 >
-> When we scan forward, the element we scan forward to does not belong to a higher sub-list. Therefore a scan forward step is associated with a **success condition**, i.e coin giving us heads. So, the **expected number of scan-forward** steps for **each sub-list** is 2.
+> A probabilistic fact is that the **expected** number of keys we will encounter at $$(i-1)$$ is 2 which is an $$O(1)$$ operation per sub-list. [Why?](#expectation-explanation)
 >
-> Hence, the expected number of scan forward steps in **total** is $$O(log\ n)$$
+> Hence, the expected number of scan forward steps in **total** is $$O(log\ n)$$ because the number of sub-list is the height of the skiplist.
 
 Hence, the total **search time** is $$O(log\ n)$$.
 
@@ -166,7 +166,7 @@ Hence, the total **search time** is $$O(log\ n)$$.
 
 Since the insert and delete operations are both essentially wrappers around the search operation, and all of their additional functionality is of $$O(log\ n)$$ or better, the time complexity is the same as the search function
 
-### Coin Toss Expectation Explanation
+### Expectation Explanation
 
 *FYI ONLY.* The source of this explanation is by [JMoravitz on Stack Exchange](https://math.stackexchange.com/questions/1196452/expected-value-of-the-number-of-flips-until-the-first-head) (Accessed 16 May 2021)
 
@@ -176,9 +176,11 @@ Since the insert and delete operations are both essentially wrappers around the 
 >
 > The **expected value** of $$f(X)$$ is given as: $$E[f(X)] = \sum\limits_{i\in\Delta} f(x_i)p_i$$
 
-For a coin toss, $$X$$ could be $$1,2,3,\ldots,i,\ldots$$ with corresponding probabilities $$\frac{1}{2},\frac{1}{4},\frac{1}{8},\dots,\frac{1}{2^i},\dots$$
+For our example, we are examining the number of items we expect to see in both sub-list $$i$$ and $$(i-1)$$. 
 
-So, the expected value of $$X$$ is: $$\sum\limits_{i=1}^\infty i(\frac{1}{2})^i=\frac{1}{0.5}=2$$
+Hence, $$X$$ could be $$1,2,3,\ldots,n$$ with corresponding probabilities $$\frac{1}{2},\frac{1}{4},\frac{1}{8},\dots,\frac{1}{2^n}$$
+
+So, the expected value of $$X$$ is: $$E[X] = \sum\limits_{i=1}^n i(\frac{1}{2})^i$$. As $$n\rightarrow \infty$$, $$E[X] \rightarrow 2$$. 
 
 This is a well known infinite sum of the form $$\sum\limits_{i=1}^\infty i p (1-p)^{i-1}=\frac1p$$
 
