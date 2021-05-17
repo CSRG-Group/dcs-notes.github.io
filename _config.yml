@@ -83,12 +83,11 @@ collections:
       - part5.md
       - part6.md
       - part7.md
-      - part8.md
       - part9.md
       - part10.md
       - part11.md
+      - digraphs.md
       - part12.md
-      - pseudoCodes.md
   CS130:
     output: true
   CS131:
