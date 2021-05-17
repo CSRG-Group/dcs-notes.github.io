@@ -13,7 +13,7 @@ broader topics when revising - each of which having its own page.
 
 Or access the [CS126 One Page Notes](opnotes).
 
-These were written by **Edmund Goodman** with contributions from **Justin Tan** and **Leon Chipchase**:
+These were written by **Edmund Goodman** and **Justin Tan** with contributions from **Leon Chipchase**:
 
 1. [x] [Arrays and Lists](part1)
 2. [x] [Analysis of algorithms](part2)
