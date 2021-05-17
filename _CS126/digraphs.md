@@ -91,26 +91,58 @@ If, the **adjacency matrix** structure is used then it will be $$O(1)$$ which is
 
 ## Topological ordering
 
-> A digraph has a **topological ordering** if it is a **directed acyclic graph** (DAG – has no directed cycles)
->
-> - Having cycles would informally be self-dependencies
-> - This can be done in $$O(m+n)$$ time using DFS
+> **Theorem.** A digraph has a **topological ordering** if it is a **directed acyclic graph** (DAG – has no directed cycles). Having cycles would informally be self-dependencies
 
 Topological ordering means the same thing as a total relation in CS130, if the graph is considered as a set of relations.
 
-### Topological Sorting
+To prove the theorem above, we need to prove both ways. Showing that a digraph with a topological ordering contains no directed cycles is **trivial**. We will employ DFS to prove the other way. 
+
+### Topological Sorting with DFS
+
+> This DFS implementation of **topological sorting** consists of two functions that are overloaded. 
+>
+> - The first function takes a graph `G` and starts labelling all vertices as `unexplored`. 
+> - Then for every vertex, if the label is `unexplored` we call the **second** function.
 
 ```java
-Algorithm TopologicalSort(H) // H is a DAG
-  i <- number of vertices in H
-  while H is not empty do
-    v <- vertex with no outgoing edges
-    Label of v <- i
-    i <- i - 1
-    Remove v from H
+Algorithm topologicalDFS(G) // First function
+  Input: DAG G
+  Output: Topological ordering of G
+  n <- G.numVertices()
+  for all u in G.vertices()
+    setLabel(u, "unexplored")
+  for all v in G.vertices()
+    if getLabel(v) == "unexplored"
+      topologicalDFS(G,v)   // 2nd Function
 ```
 
+```java
+Algorithm topologicalDFS(G,v)
+  Input: graph G and a start vertex v of G
+  Output: Labelling of the vertices of G in the connected component of v
+  setLabel(v, "visited")
+  for all e in G.outEdges(v)
+    w <- opposite(v,e)
+    if getLabel(w) == "unexplored" // e is a discovery edge
+      topologicalDFS(G,w)
+      setLabel(e, "cross")
+    // else we do nothing
+  Label v with topological number n
+  n <- n - 1
+```
 
+Here we set the starting vertex `v` to `visited`, and then for all edges that originate from `v` we check if the destination vertex `w` is `unexplored`. 
 
+- If so, then the edge has **not been traversed** before and we call the 2nd function on the vertex `w` recursively. This will continue until we arrive at a vertex $$d_n$$ with **no outgoing unexplored edge**.
+  - When this happens, we label $$d_n$$ with the current number for the topological ordering (this number starts at $$n = \text{number of vertices in G}$$). Decrement n.
+  - Then as **an effect** of the recursive calls, the algorithm **backtracks** to the previous vertex $$d_x$$
+    - All remaining outgoing edges of $$d_x$$ are checked there will be **further recursive calls** to the 2nd function **if possible**. 
+    - The next vertex with no outgoing edge $$d_{n-1}$$ will be labelled with `n-1`. 
+- This goes on, and we will notice that after every exit from a recursive call, there will always be a **unique** vertex with no outgoing unexplored edge.
 
+Hence, we will be able to arrive at a topological ordering of $$G$$.
+
+<img src="./images/toposort1.svg" class="center"/>
+
+You may find it beneficial to **visualise** the algorithm with this diagram. If you start from vertex `2` and if the loop starts from edges from **bottom to top** (so the first edge that the loop will process is `2 -> 3`), then you will find that $$d_n$$ I talk about above is `9`, $$d_x$$ and $$d_{n-1}$$ both refer to the same vertex `8`, and so on. 
 
