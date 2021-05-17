@@ -176,7 +176,7 @@ math: true
     <td align="center"><a href="https://github.com/Joeyh021"><img src="https://avatars.githubusercontent.com/u/37697107?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joe Harrison</b></sub></a><br /><a href="#content-Joeyh021" title="Content">🖋</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/lchipchase"><img src="https://avatars.githubusercontent.com/u/77326474?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leon Chipchase</b></sub></a><br /><a href="#content-lchipchase" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/lchipchase"><img src="https://avatars.githubusercontent.com/u/77326474?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leon Chipchase</b></sub></a><br /><a href="#content-lchipchase" title="Content">🖋</a> <a href="#admin-lchipchase" title="Admins of CSRG">🔥</a></td>
     <td align="center"><a href="https://github.com/manasrawat"><img src="https://avatars.githubusercontent.com/u/13320706?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Manas Rawat</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Amanasrawat" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/ksanganee"><img src="https://avatars.githubusercontent.com/u/20343295?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ksanganee</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aksanganee" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/Samueljh1"><img src="https://avatars.githubusercontent.com/u/10816880?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sam H</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ASamueljh1" title="Bug reports">🐛</a></td>
@@ -191,6 +191,7 @@ math: true
     <td align="center"><a href="https://github.com/mariosbf"><img src="https://avatars.githubusercontent.com/u/40693811?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mariosbf</b></sub></a><br /><a href="#content-mariosbf" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/nianyii-teh"><img src="https://avatars.githubusercontent.com/u/64478251?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nian Yii Teh</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Anianyii-teh" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://joshdavies.tech"><img src="https://avatars.githubusercontent.com/u/30526591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Davies</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Ajoshdavies14" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://cjminecraft.theclever.me"><img src="https://avatars.githubusercontent.com/u/13885569?v=4?s=100" width="100px;" alt=""/><br /><sub><b>CJMinecraft</b></sub></a><br /><a href="#content-CJMinecraft01" title="Content">🖋</a></td>
   </tr>
 </table>
 
