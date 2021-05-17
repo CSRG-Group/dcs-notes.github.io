@@ -1,6 +1,11 @@
-# Equational Reasoning about Haskell
+---
+layout: CS141
+part: true
+math: true
+title: "Equational Reasoning in Haskell"
+---
 
-[toc]
+
 
 ## Techniques
 
@@ -87,11 +92,21 @@ We can then apply cases to simplify expressions, as follows:
 
 #### Applying an assumption
 
-If an assumption, e.g. a function definition or inductive hypothesis fits the pattern of a part of the proof, it can be re-written with it
+If an assumption, e.g. a function definition or inductive hypothesis fits the pattern of a part of the proof, it can be re-written with it - this is fairly self-explanatory
 
 #### Eta-conversion
 
+Eta conversion is the "adding or dropping of abstraction over a function" [source](https://wiki.haskell.org/Eta_conversion).
 
+This means that we can say the following are equivalent:
+
+- ```haskell
+  \x -> abs x
+  ```
+
+- ```haskell
+  abs
+  ```
 
 
 
