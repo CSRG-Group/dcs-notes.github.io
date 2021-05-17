@@ -91,9 +91,26 @@ If, the **adjacency matrix** structure is used then it will be $$O(1)$$ which is
 
 ## Topological ordering
 
-A graph has a topological ordering if it is directed and acyclic
+> A digraph has a **topological ordering** if it is a **directed acyclic graph** (DAG – has no directed cycles)
+>
+> - Having cycles would informally be self-dependencies
+> - This can be done in $$O(m+n)$$ time using DFS
 
-- Having cycles would informally be self-dependencies
-- This can be done in $$O(m+n)$$ time using DFS
+Topological ordering means the same thing as a total relation in CS130, if the graph is considered as a set of relations.
 
-Topological ordering means the same thing as a total relation in CS130, if the graph is considered as a set of relations
+### Topological Sorting
+
+```java
+Algorithm TopologicalSort(H) // H is a DAG
+  i <- number of vertices in H
+  while H is not empty do
+    v <- vertex with no outgoing edges
+    Label of v <- i
+    i <- i - 1
+    Remove v from H
+```
+
+
+
+
+
