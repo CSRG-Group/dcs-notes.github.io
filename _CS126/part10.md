@@ -97,7 +97,7 @@ Other self-balancing binary search trees exist, such as red-black trees, but thi
 
 *These are also properties of balanced binary trees in general.*
 
-> For every internal node in the tree, the heights of the child subtrees can differ by at most one.
+> For every internal node in the tree, the **heights of the child subtrees** can differ by **at most 1**.
 >
 > This ensure that the height of the balanced tree storing $$n$$ keys is $$O(log\ n)$$.
 
@@ -111,22 +111,70 @@ Other self-balancing binary search trees exist, such as red-black trees, but thi
 
 Thus height of AVL Tree is $$O(log\ n)$$.
 
-## Operations
+### Operations
 
-Searching is approached as it is in a normal binary search tree
+**Searching**, **insertion** and **deletion** is approached as it is in a normal binary search tree. However, after every **insertion** and **deletion** the AVL Tree is **restructured** to make sure it is **balanced**. This is because insertions and deletions change the number of nodes in the tree and this **may** make it unbalanced.
 
-### Tri-node restructuring
+### Trinode Restructuring 
 
-### Re-balancing VS restructuring
+We will refer to the height of a node $$n$$, as the height of the **subtree** that $$n$$ is the **root** of. Whenever a particular node $$p$$, we know that it’s children nodes $$l$$ and $$r$$ have heights that differ by **at least 2**.
 
-### Insertion
+<div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode1.svg"/>
+  <img src="./part10.assets/trinode2.svg"/>
+</div>
 
-### Deletion
 
+To rebalance $$p$$, we have to make the **”taller”** child the new **parent**. To do this
 
+- If $$p$$ is smaller than the “taller” child (means $$r$$ is taller), then we set $$p$$ **new** right child to $$r$$‘s **current** left child and set $$p$$ as $$r$$’s **new** left child. Otherwise, we set $$p$$ **new** left child to $$l$$‘s **current** right child, and set $$p$$ as $$l$$’s **new** right child.
+
+<figure>
+  <div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode2.svg"/>
+  <img src="./part10.assets/rightarrow.svg"/>
+  <img src="./part10.assets/trinode2.1.svg"/>
+  <img src="./part10.assets/rightarrow.svg"/>
+  <img src="./part10.assets/trinode2.2.svg"/>
+</div>
+    <figcaption>Left Child is Taller</figcaption>
+</figure>
+
+This is known as a **single rotation**. There is another case where, a **double rotation** is required to properly rebalance $$p$$. 
+
+<figure>
+  <div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode4.svg"/>
+  <img src="./part10.assets/trinode5.svg"/>
+</div>
+  <figcaption>Double Rotation Cases</figcaption>
+</figure>
+
+#### Double Rotation
+
+The idea behind it is the same, the only thing is that we have to rotate the “taller” child left or right for $$l$$ and $$r$$ respectively, to arrive at the **single rotation case**.
+
+<figure>
+  <div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode5.svg"/>
+  <img src="./part10.assets/rightarrow.svg"/>
+    <img src="./part10.assets/trinode5.1.svg"/>
+    <img src="./part10.assets/rightarrow.svg"/>
+    <img src="./part10.assets/trinode5.2.svg"/>
+</div>
+    <figcaption>Double Rotation when Right Child is Taller</figcaption>
+</figure>
+
+#### Rebalancing
+
+> The reason I have used the `..` and `...` symbols in the diagram above is to emphasise that the sub-trees **extend** by an **arbitrary amount**, but as long as they were previously **rebalanced** we only need to consider the few nodes shown in the diagram to **rebalance** node $$p$$. 
+
+Consequently, after the **insertion** or **deletion** of a node, the tree may be unbalanced somewhere higher up in the tree. If $$p$$ is not the **overall** root node, we will have to continue scanning upwards to check if any nodes are unbalanced.
 
 ## Performance
 
-In all cases, the space complexity is $$O(n)$$, and searching takes $$O(log\ n)$$ time -  as with any balanced binary tree
+In all cases, the **space complexity** is $$O(n)$$, and **searching** takes $$O(log\ n)$$ time -  as with any balanced binary tree.
 
-Insertion and deletion are also $$O(log\ n)$$, as searching for the element is $$O(log\ n)$$, and then restructuring the tree to maintain the balance property is $$O(log\ n)$$, so the total is also $$O(log\ n)$$
+**Insertion** and **deletion** are also $$O(log\ n)$$. This is because searching for the element is $$O(log\ n)$$, and then restructuring the tree to maintain the balance property is $$O(log\ n)$$ because scanning upwards from an external node to the root is proportional to the height of the tree
+
+So the total time complexity for these 2 operations is also $$O(log\ n)$$.
