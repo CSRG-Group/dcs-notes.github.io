@@ -284,6 +284,7 @@ a:hover { text-decoration: underline; }
 .main-content { 
   word-wrap: break-word;
   min-width: 0;
+  margin: 0 auto;
 }
 
 .main-content :first-child { margin-top: 0; }
@@ -503,8 +504,6 @@ header.notes-header {
 /* /// Contents of grid -- main content of markdown usually */
 .contents {
   grid-area: content;
-  display: flex;
-  justify-content: center;
 }
 
 .partNav {
