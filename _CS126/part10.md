@@ -167,7 +167,7 @@ The idea behind it is the same, the only thing is that we have to rotate the “
 
 #### Rebalancing
 
-> The reason I have used the `..` and `...` symbols in the diagram above is to emphasise that the sub-trees **extend** by an **arbitrary amount**, but as long as they were previously **rebalanced** we only need to consider the few nodes shown in the diagram to **rebalance** node $$p$$. 
+> The reason I have used the `..` and `...` symbols in the diagram above is to emphasise that the sub-trees may **extend** by an **arbitrary amount**, but as long as they were previously **rebalanced** we only need to consider the few nodes shown in the diagram to **rebalance** node $$p$$. 
 
 Consequently, after the **insertion** or **deletion** of a node, the tree may be unbalanced somewhere higher up in the tree. If $$p$$ is not the **overall** root node, we will have to continue scanning upwards to check if any nodes are unbalanced.
 
