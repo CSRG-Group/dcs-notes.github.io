@@ -15,7 +15,7 @@ math: true
     {%- if p.part == true -%}
         {%- capture title -%}# {{ p.title }}{%- endcapture -%}
         {{ title | markdownify }}       
-        {{ p.content | markdownify }}
+        {{ p.content }}
         {%- if p.nex != null -%}
             <br/>
             <hr style="
