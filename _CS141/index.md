@@ -12,7 +12,7 @@ Given the large number of topics, it makes sense to break these down into broade
 1. [ ] General Functional Programming
 2. [ ] Recursive and higher-order functions
 3. [ ] Data types
-4. [x] [Equational reasoning](equationalReasoning.md)
+4. [x] [Equational reasoning](equationalReasoning)
 5. [ ] Functors, Applicatives, Monads
 6. [ ] Type-level programming
 

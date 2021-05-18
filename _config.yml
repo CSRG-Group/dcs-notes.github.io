@@ -60,8 +60,6 @@ defaults:
 
 collections:
   CS118:
-    label: CS118
-    relative_directory: ./_CS118
     output: true
     order:
       - part1.md
@@ -72,8 +70,6 @@ collections:
       - part6.md
       - part7.md
   CS126:
-    label: CS126
-    relative_directory: ./_CS126
     output: true
     order:
       - part1.md
@@ -121,8 +117,6 @@ collections:
       - Theory5.md
       - Theory6.md
   CS140:
-    label: CS140
-    relative_directory: ./_CS140
     output: true
     order:
       - part1.md
@@ -135,9 +129,7 @@ collections:
       - part7.md
       - part8.md
       - part9.md
-  CS141: 
-    label: CS141
-    relative_directory: ./_CS141
+  CS141:
     output: true
     order:
       - laws.md

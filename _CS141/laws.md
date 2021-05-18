@@ -4,7 +4,7 @@ title: Laws
 part: true
 ---
 
-# Functor Laws
+## Functor Laws
 
 A type `f` is a functor if there is a function
 
@@ -21,7 +21,7 @@ and the following laws hold for it:
 
 > These laws imply that a data structure’s “shape” does not change when we use `fmap` - we are just operating/changing the elements inside the data structure.
 
-# Applicative Laws
+## Applicative Laws
 
 ```haskell
 class Functor f => Applicative f where
@@ -36,7 +36,7 @@ class Functor f => Applicative f where
 pure (.) <*> x <*> y <*> z = x <*> (y <*> z)
 ```
 
-# Monad Laws
+## Monad Laws
 
 ```haskell
 -- Left Identity
@@ -47,3 +47,12 @@ m >>= return = m
 (m >>= f) >>= g = m >>= (\x -> f x >>= g)
 ```
 
+## Associativity
+
+> **Function** associativity binds the strongest.
+
+|   Haskell   |        Maths        |
+| :---------: | :-----------------: |
+| `f x * g y` | *f(x) &times; g(y)* |
+
+{:.centeredtable}
