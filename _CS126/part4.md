@@ -28,6 +28,8 @@ Index of head stored, and incremented/decremented on pushing/popping operations
 
 - *O(1)* time complexity of fundamental operations
 
+![stackArrayImplementation](./images/stackArrayImplementation.png)
+
 ## Queues (ADT)
 
 > **Queues** are a "First in, first out" (FIFO) data structure, with insertions occurring at the rear and removals at the front of the queue. 
@@ -49,9 +51,7 @@ Uses and array with data wrapping (so like using an array in a `Queue` class wit
 
 The rear of the queue (index to insert to next) is *(f + s)* mod *N*, with *N* as the array size
 
-![queueArrayImplementation](./images/placeholder.jpg)
-
-*Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+![queueArrayImplementation](./images/queueArrayImplementation.png)
 
 - *O(n)* space complexity
 - *O(1)* time complexity of fundamental operations
