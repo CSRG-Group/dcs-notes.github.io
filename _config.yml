@@ -132,4 +132,6 @@ collections:
   CS141:
     output: true
     order:
+      - part1.md
+      - equationalReasoning.md
       - laws.md
