@@ -434,4 +434,3 @@ Function fibonacci(k)
 		Let i,j <- fibonacci(k - 1)
 		Return (i-j, i)
 ```
-

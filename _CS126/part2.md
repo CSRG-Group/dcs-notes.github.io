@@ -112,7 +112,7 @@ To prove something is $$O(f(n))$$, we need to show that we can pick a $$c$$ and 
 >
 >  Hence, picking *c = 3* and *n<sub>0</sub> = 10* the condition is **satisfied**.
 
-![bigOh](./images/bigOh.png)
+![bigOh](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 

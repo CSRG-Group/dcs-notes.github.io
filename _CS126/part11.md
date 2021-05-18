@@ -119,7 +119,7 @@ Algorithm DFS(G,v):
           setLabel(e, "back")
 ```
 
-![dfsExample](./images/dfsExample.png)
+![dfsExample](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 

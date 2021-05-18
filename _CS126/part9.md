@@ -38,7 +38,7 @@ For fast searching, we need the list to be sorted, and we have come across two c
 
 A diagram of the structure of a skip list is shown below
 
-![skipLists](./images/skipLists.png)
+![skipLists](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
@@ -60,7 +60,7 @@ Algorithm search(k):
       p <- p.next()     // Scan Forward Step
 ```
 
-![skipListsSearch](./images/skipListsSearch.png)
+![skipListsSearch](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
@@ -80,7 +80,7 @@ For each sublist from 0 to i
 	Insert v into S(j) immediately after the position p(j) in array
 ```
 
-![skipListsInsertion](./images/skipListsInsertion.png)
+![skipListsInsertion](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
@@ -98,7 +98,7 @@ Using search algorithm, find v in skiplist
 Remove all but one list containing only guards from the top of the skip list
 ```
 
-![skipListsDeletion](./images/skipListsDeletion.png)
+![skipListsDeletion](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
@@ -106,7 +106,7 @@ Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldw
 
 We can use "quad-nodes", which are similar to those used in linked lists, but with four pointers, instead of just one to store the entry, and links to the previous, next, below and above nodes:
 
-<img src="./images/skipListsQuadNode.png" alt="skipListsQuadNode" class="center" />
+<img src="./images/placeholder.jpg" alt="skipListsQuadNode" class="center" />
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 

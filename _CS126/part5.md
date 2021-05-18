@@ -117,7 +117,7 @@ In **separate chaining**, each index in the array can contain a reference to a l
 
 This has the **drawback** of requiring additional memory space for each linked list
 
-![separateChaining](./images/separateChaining.png)
+![separateChaining](./images/placeholder.jpg)
 
 *Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 

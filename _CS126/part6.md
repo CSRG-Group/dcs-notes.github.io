@@ -116,7 +116,7 @@ There are two common concrete implementations of binary trees
 
 In the linked structure implementation, each node is an object which stores its value, references to its child nodes (and sometimes a reference to its parent), as shown in the diagram below:
 
-<img src="./images/binaryTreeLinkedStructure.png" alt="binaryTreeLinkedStructure" class="center" />
+<img src="./images/placeholder.jpg" alt="binaryTreeLinkedStructure" class="center" />
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 

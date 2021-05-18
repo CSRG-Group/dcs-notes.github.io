@@ -49,7 +49,7 @@ Uses and array with data wrapping (so like using an array in a `Queue` class wit
 
 The rear of the queue (index to insert to next) is *(f + s)* mod *N*, with *N* as the array size
 
-![queueArrayImplementation](./images/queueArrayImplementation.png)
+![queueArrayImplementation](./images/placeholder.jpg)
 
 *Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 

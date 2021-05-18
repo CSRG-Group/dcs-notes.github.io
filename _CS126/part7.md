@@ -91,7 +91,7 @@ The properties a binary tree must fulfil to be a heap are:
 
 The **last node** of the heap is the rightmost node of maximum depth
 
-<img src="./images/heapDiagram.png" alt="heapDiagram" class="center" />
+<img src="./images/placeholder.jpg" alt="heapDiagram" class="center" />
 
 Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
@@ -111,7 +111,7 @@ Thus, $$n \ge 2^h \Rightarrow h \le log_{2}\ n$$.
 
 First, the element is inserted to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, with a running time of $$O(1)$$ time, if a pointer to the position to insert is maintained
 
-<img src="./images/heapInsertOne.png" alt="heapInsertOne" class="center" />
+<img src="./images/placeholder.jpg" alt="heapInsertOne" class="center" />
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
@@ -123,7 +123,7 @@ While k is smaller than its parent, and k is not the root node
 	Swap the values of k and its parent node
 ```
 
-![heapInsertTwo](./images/heapInsertTwo.png)
+![heapInsertTwo](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
@@ -135,7 +135,7 @@ The smallest item in the heap is the root node, so this value is stored and retu
 
 First, the value of the root node is overwritten with the value of the last node, and the last node is removed from the tree:
 
-<img src="./images/heapRemoveOne.png" class="center"/>
+<img src="./images/placeholder.jpg" class="center"/>
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
@@ -150,7 +150,7 @@ Else
 	Run the downheap algorithm again with the root node (p) now as the child node (c)
 ```
 
-![heapRemoveTwo](./images/heapRemoveTwo.png)
+![heapRemoveTwo](./images/placeholder.jpg)
 
 Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
