@@ -23,7 +23,25 @@ Stop, since the item is not in the array
 
 ## Binary search
 
-Must be performed on a sorted list
+This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1.
+
+```{java}
+Let arr <- the array to search
+Let k <- the iterm to search for
+if !(arr.isSorted())
+	arr.mergeSort()
+binarySearch(arr, k, int lowerBound, upperBound)
+	middle <- (lowerBound + upperBound) / 2
+	if upperBound < lowerBound
+		return - 1
+	if k == arr[middle]
+    		return middle
+	else if k < arr[middle]
+    		return binarySearch(arr, k, lowerBound, middle -1)
+    	else 
+        	return binarySearch(arr, k, middle + 1, upperBound)
+      
+```
 
 ### Iterative algorithm
 
@@ -204,19 +222,18 @@ While B is not empty
 
 ## Depth-first search
 
-> **Algorithm** $$DFS(G, v)$$
-> 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
-> 		**Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
-> 		$$setLabel(v, VISITED)$$
-> 		**for all** $$e \in G.incidentEdges(v)$$
-> 		    **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		   $$w \leftarrow opposite(v,e)$$
-> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		 		  $$setLabel(e, DISCOVERY)$$
-> 		 		 		  $$DFS(G, w)$$
-> 		 		   **else**
-> 		 		 		  $$setLabel(e,BACK)$$
-> **END ALGORITHM**
+```java
+DFS(G, v)
+	setLabel(v, VISITED)
+	for each (Edge e : G.incidentEdges(v))
+        	if getLabel(e) = UNEXPLORED
+			w = opposite(v,e)  	
+            		if getLabel(w) = UNEXPLORED
+                		setLabel(e, DISCOVERY)
+                		DFS(G,w)
+            		else 
+               			setLabel(e, BACK)
+```
 
 
 
@@ -224,58 +241,55 @@ While B is not empty
 
 The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.
 
-> **Algorithm** $$DFS(G)$$
-> 		**Input** graph $$G$$
-> 		**Output** labelling of the edges of $$G$$ as discovery and back edges
-> 		**for all** $$u \in G.vertices()$$
-> 		    **$$setLabel(u, UNEXPLORED)$$**
-> 		**for all** $$e \in G.edges()$$
-> 		    **$$setLabel(e, UNEXPLORED)$$**
-> 		**for all** $$u \in G.vertices()$$
-> 		    **if $$getLabel(u, UNEXPLORED)$$**
-> 		 		   $$DFS(G, v)$$
-> **END ALGORITHM**
+```java
+// For the entire graph
+DFS(G)
+    	for each (Vertex u : G.vertices())
+        	setLabel(u, UNEXPLORED)
+    	for each (Edge e : G.edges())
+        	setLabel(e, UNEXPLORED)
+    	for each (Vertex u : G.vertices())
+        	if getLabel(u, UNEXPLORED)
+            		DFS(G, u)
+            
+// For each vertex individually      
+DFS(G, v)
+	setLabel(v, VISITED)
+	for each (Edge e : G.incidentEdges(v))
+        	if getLabel(e) = UNEXPLORED
+			w = opposite(v,e)  	
+            		if getLabel(w) = UNEXPLORED
+                		setLabel(e, DISCOVERY)
+                		DFS(G,w)
+            		else 
+               			setLabel(e, BACK)
+```
 
-Along with starting at a given vertex:
-
-> **Algorithm** $$DFS(G, v)$$
-> 		**Input**  graph $$G$$ and start at vertex $$v$$ of $$G$$
-> 		**Output** labeling of the edges of $$G$$ in the connected component of v as discovery edges and back edges
-> 		$$setLabel(v, VISITED)$$
-> 		**for all** $$e \in G.incidentEdges(v)$$
-> 		    **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		   $$w \leftarrow opposite(v,e)$$
-> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		 		  $$setLabel(e, DISCOVERY)$$
-> 		 		 		  $$DFS(G, w)$$
-> 		 		   **else**
-> 		 		 		  $$setLabel(e,BACK)$$
-> **END ALGORITHM**
 
 
 
 ### Path Finding with DFS
 
 By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the **template method pattern**
-
-> **Algorithm**
-> $$pathDFS(G,v,z)$$
-> 		$$setLabel(v, VISITED)$$
-> 		$$S.push(v)$$
-> 		**if** $$v=z$$
-> 		    **return** $$S.elements()$$
-> 		**for all** $$e \in G.incidentEdges(v)$$
-> 		    **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		   $$w \leftarrow opposite(v,e)$$
-> 		 		   **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		 		  $$setLabel(e,DISCORVERY)$$
-> 		 		 		  $$S.push(e)$$
-> 		 		 		  $$pathDFS(G,w,z)$$
-> 		 		 		  $$S.pop(e)$$
-> 		 		   **else**
-> 		 		 		  $$setLabel(e, BACK)$$
-> 		    $$S.pop(v)$$
-> **END ALGORITHM**
+where **S** is an initially empty stack
+```java
+pathDFS(G, v, z)
+    	setLabel(v, VISITED)
+   	S.push(v)
+    	if v = z
+        	return S.elements()
+    	for each (Edge e : G.incidentEdges(v))
+        	if getLbel(e) = UNEXPLORED
+            		w = opposite(v,e)
+            		if getLabel(w) = UNEXPLORED
+                		setLabel(e, DISCOVERY)
+                		S.push(e)
+                		pathDFS(G,w,z)
+                		S.pop(e)
+           		else 
+                		setLabel(e, BACK)
+		S.pop(v)
+```
 
 
 
@@ -283,26 +297,27 @@ By using an alteration of the depth first search algorithm, we can use it to fin
 
 The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.
 
-> **Algorithm** $$cycleDFS(G,v)$$
-> 		$$setLabel(v,VISITED)$$
-> 		$$S.push(v)$$
-> 		**for all** $$e \in G.incidentEdges(v)$$
-> 		    **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		   $$w \leftarrow opposite(v,e)$$
-> 		 		   $$S.push(e)$$
-> 		 		   **if** $$getLabel(w)= UNEXPLORED$$
-> 		 		 		  **if** $$setLabel(e,DISCOVERY)$$
-> 		 		 		  $$cycleDFS(G,w)$$
-> 		 		 		  $$S.pop(e)$$
-> 		 		   **else**
-> 		 		 		  **T** $$\leftarrow$$ new empty stack
-> 		 		 		  **repeat**
-> 		 		 		 		 $$o \leftarrow S.pop()$$
-> 		 		 		 		 $$T.push(o)$$
-> 		 		 		  **until** $$o=w$$
-> 		 		 		  **return** $$T.elements()$$
-> 		$$S.pop(v)$$
-> **END ALGORITHM**
+```java	
+cycleDFS(G, v)
+   	setLabel(v, VISITED)
+    	S.push(v)
+    	for each (Edge e : G.incidentEdges(v))
+        	if getLabel(e) = UNEXPLORED
+            		w = opposite(v, e)
+            		S.push(e)
+            		if getLabel(w) = UNEXPLORED
+                		setLabel(e, DISCOVERY)
+                		cycleDFS(G, w)
+               			S.pop(e)
+           		 else 
+               			T = new empty Stack
+                		repeat
+                			o = S.pop
+                			T.push(o)
+                		until o = w
+                		return T.elements()
+	S.pop(v)
+```
 
 ### Topological ordering using DFS
 
