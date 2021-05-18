@@ -11,7 +11,7 @@ title: Sequences and Series
 
 ## Sequences
 
-[Notes #15](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note15.pdf)
+[Notes #15](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note15.pdf)
 
 - Definition
 - convergent sequences
@@ -24,7 +24,7 @@ title: Sequences and Series
 
 ## Recurrences
 
-[Notes #16](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note16.pdf)
+[Notes #16](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
 
 - Linear recurrences
 - Solving $$x_n + a \cdot x_{n-1} + b \cdot x_{n-2} = 0$$
@@ -36,7 +36,7 @@ title: Sequences and Series
 
 ## Series
 
-[Notes #17.1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/_part1.pdf) [Notes #17.2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note17_part2.pdf)
+[Notes #17.1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part1.pdf) [Notes #17.2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part2.pdf)
 
 - Definition
 - Geometric series

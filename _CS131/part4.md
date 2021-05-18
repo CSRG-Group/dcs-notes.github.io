@@ -8,7 +8,7 @@ title: Calculus
 
 ## Limits and continuity
 
-[Notes #19](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note19.pdf)
+[Notes #19](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note19.pdf)
 
 - Definition
   - Left and right limits
@@ -22,7 +22,7 @@ title: Calculus
 
 ### Introduction
 
-[Notes #20](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note20.pdf)
+[Notes #20](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf)
 
 - Definition/differentiability
 - Chain rule
@@ -58,13 +58,13 @@ title: Calculus
 
 ### Partial differentiation (optional)
 
-[Notes #20](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note20.pdf)
+[Notes #20](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf)
 
 - Definition
 
 ## L'Hopital's rule
 
-[Notes #22](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf)
+[Notes #22](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf) [Notes #23](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note23.pdf)
 
 - Definition
 
