@@ -133,8 +133,11 @@ collections:
     output: true
     order:
       - part1.md
+      - part2.md
+      - datatypes.md
       - equationalReasoning.md
       - laws.md
+      - FAM.md
 
 algolia:
   application_id: 'APP_ID'
