@@ -15,7 +15,7 @@ Given the large number of topics, it makes sense to break these down into broade
 4. [x] [Data types](datatypes)
 5. [x] [Equational reasoning](equationalReasoning)
 6. [ ] Functors, Applicatives, Monads
-7. [ ] Type-level programming
+7. [ ] [Type-level programming](typeLevelProgramming)
 
 ## Crib Sheets
 

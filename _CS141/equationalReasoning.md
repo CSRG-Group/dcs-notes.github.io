@@ -6,7 +6,6 @@ title: "Equational Reasoning in Haskell"
 ---
 
 
-
 ## Techniques
 
 ### Direct proof

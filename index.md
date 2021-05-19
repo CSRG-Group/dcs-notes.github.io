@@ -36,7 +36,7 @@ If you've been linked to this site, you've probably also seen us asking for anyo
 
 ### [CS140: Computer Security](CS140/)
 
-### [CS141: Functional Programming (not yet completed)](CS141/)
+### [CS141: Functional Programming](CS141/)
 
 More modules will be added as we accumulate notes on them.
 
