@@ -10,7 +10,7 @@ Given the large number of topics, it makes sense to break these down into broade
 *These are in progress of being written, if you can, please submit a pull request!*
 
 1. [x] [General Functional Programming](part1)
-2. [ ] Recursive and higher-order functions
+2. [ ] [Lazy Evaluation, Recursion, and Higher-Order Functions](part2)
 3. [ ] Data types
 4. [x] [Equational reasoning](equationalReasoning)
 5. [ ] Functors, Applicatives, Monads
