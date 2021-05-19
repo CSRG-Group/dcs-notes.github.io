@@ -155,7 +155,7 @@ However, if the number is 2.8​ for example, **Fixed-PR** will not be very effi
 
 ### Floating Point Representation
 
-Floating point uses the same principles as scientific notation. You should be familiar with **Floating-PR** from [CS118](https://csrg-group.github.io/dcs-notes.github.io/cs118/part1.html).
+Floating point uses the same principles as scientific notation. You should be familiar with **Floating-PR** from [CS118](https://csrg-group.github.io/dcs-notes.github.io/CS118/part1.html).
 
 **IEEE Floating Point.** IEEE standard 754 is widely used and specifies levels of binary precision
 
