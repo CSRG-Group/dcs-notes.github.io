@@ -9,34 +9,26 @@ title: Linear algebra and Matrices
 
 # Linear algebra
 
-## Vectors
-
-[Notes #4](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note4.pdf)
+## [Vectors4](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note4.pdf)
 
 - Definition as vector spaces as sets of tuples
 - Modulus (length) properties
 - Dot product
   - For finding orthogonal/angles
 
-## Linear combinations and subspaces
-
-[Notes #5](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
+## [Linear combinations and subspaces](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
 
 - Linear combination definition
 - Span definition
 - Subspace definition
   - Properties
 
-## Linear independence
-
-[Notes #6](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note6.pdf)
+## [Linear independence](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note6.pdf)
 
 - Linear dependence
 - Linear independence
 
-## Basis and dimension
-
-[Notes #7](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note7.pdf)
+## [Basis and dimension](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note7.pdf)
 
 - Basis definition
   - Properties
@@ -47,9 +39,7 @@ title: Linear algebra and Matrices
 
 # Matrices
 
-## Matrix algebra
-
-[Notes #8](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
+## [Matrix algebra](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
 
 - Properties of scalar multiplication and addition
 - Matrix multiplication
@@ -59,23 +49,17 @@ title: Linear algebra and Matrices
   - Identity
 - Matrix transposes
 
-## Matrix inverses
-
-[Notes #8](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
+## [Matrix inverses](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
 
 - Definition
 
-## Linear equations
-
-[Notes #9](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf)
+## [Linear equations](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf)
 
 - Expressing sets of linear equations as matrices
 - Elementary row operations
   - Use to find inverses
 
-## Determinants
-
-[Notes #10](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf) [Notes #11](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf)
+## Determinants ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf), [Notes #2]ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf))
 
 - Definition
 - Elementary row operations effect on determinants
@@ -84,9 +68,7 @@ title: Linear algebra and Matrices
 - Inverse from determinant and adjugant
 - Linear independence from matrix determinant
 
-## Linear transformations
-
-[Notes #12](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf) [Notes #13](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf)
+## Linear transformations  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf), [Notes #2]ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf))
 
 - Definition
   - Properties
@@ -94,11 +76,8 @@ title: Linear algebra and Matrices
 - Change of basis
 - 
 
-## Eigenvalues and eigenvectors
-
-[Notes #14](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf)
+## [Eigenvalues and eigenvectors](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf)
 
 - Definitions
 - Complex values
 - Diagonalising matrices
-

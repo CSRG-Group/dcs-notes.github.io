@@ -6,9 +6,7 @@ title: Number systems
 
 # Number systems
 
-## Integers
-
-[Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note1.pdf)
+## [Integers](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note1.pdf)
 
 ### Base conversion algorithms
 
@@ -71,9 +69,7 @@ Let $$n$$ be an integer greater than $$1$$. We say that two integers $$a$$ and $
 
 *Add properties of modular arithmetic - possibly copy from 140*
 
-## Real numbers
-
-[Notes #2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note2.pdf)
+## [Real numbers](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note2.pdf)
 
 ### Axioms of the real number system
 
@@ -142,13 +138,10 @@ This has the consequences:
 - Between two distinct real numbers, there are always both rational and irrational numbers
 - Every real number can be expressed as a (possibly infinite) decimal expansion
 
-## Complex numbers
-
-[Notes #3](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note3.pdf)
+## [Complex numbers](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note3.pdf)
 
 - Complex conjugation
 - Modulus (length) properties
 - De Moivre's
 - Fundamental theorem of algebra
 - Discrimants
-

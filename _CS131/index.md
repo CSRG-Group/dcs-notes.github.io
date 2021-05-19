@@ -13,6 +13,8 @@ Detailed typed notes for CS131 are in the process of being written, with the hea
 
 You can access the materials through [CS131 One Page Notes](opnotes) or from the main topics shown below.
 
+
+
 *This should be a good place to start contributing if you want to begin making notes.*
 
 *The general intention here is essentially just making a list of key results and definitions, as the main notes in the online material provide very good coverage, along with examples.*
@@ -21,10 +23,18 @@ You can access the materials through [CS131 One Page Notes](opnotes) or from the
 
 
 
+**At the top of each section, links are made to the module organiser's notes, which are not hosted here, and which are only accessible using a Warwick ITS account**
+
 1. [ ] [Number Systems](part1.html)
 2. [ ] [Linear algebra and Matrices](part2.html)
 3. [ ] [Sequence and Series](part3.html)
 4. [ ] [Calculus](part4.html)
+
+
+
+Additionally, summary notes of key results, again made by the module organiser (not hosted here, and only accessible using a Warwick ITS account) are linked below:
+
+- [Summary of key results](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/revision_summary.pdf)
 
 
 

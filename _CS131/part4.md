@@ -6,9 +6,7 @@ title: Calculus
 
 # Calculus
 
-## Limits and continuity
-
-[Notes #19](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note19.pdf)
+## [Limits and continuity](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note19.pdf)
 
 - Definition
   - Left and right limits
@@ -20,9 +18,7 @@ title: Calculus
 
 ## Differentiation
 
-### Introduction
-
-[Notes #20](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf)
+### [Introduction](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf)
 
 - Definition/differentiability
 - Chain rule
@@ -31,9 +27,7 @@ title: Calculus
   - Trig functions
 - Differentiation of power series
 
-### Properties of differentiable functions
-
-[Notes #21](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note21.pdf)
+### [Properties of differentiable functions](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note21.pdf)
 
 - Turning point theorem
 - Stationary points and POI
@@ -42,52 +36,38 @@ title: Calculus
   - Consequences
 - (Curve sketching)
 
-### Implicit differentiation
-
-[Notes #22](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf)
+### [Implicit differentiation](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf)
 
 - Definition
 
-### Differentiation of inverses
-
-[Notes #23](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note23.pdf)
+### [Differentiation of inverses](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note23.pdf)
 
 - Definition
 - Range limiting
 - Example functions
 
-### Partial differentiation (optional)
-
-[Notes #20](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf)
+### [Partial differentiation (optional)](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf)
 
 - Definition
 
-## L'Hopital's rule
-
-[Notes #22](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf) [Notes #23](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note23.pdf)
+## L'Hopital's rule ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf), [Notes #2]ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note23.pdf))
 
 - Definition
 
-## Integration
-
-[Notes #24](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note24.pdf)
+## [Integration](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note24.pdf)
 
 - Definition
 - Integrable functions
 - Properties of definite integrals
 - Fundamental theorems of calculus
 
-## Logarithms and exponential functions
-
-[Notes #25](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note25.pdf)
+## [Logarithms and exponential functions](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note25.pdf)
 
 - Properties of logs/exponentials
 - Relation between the two
 - Change of base
 
-## Taylor's theorem
-
-[Notes #26](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note26.pdf)
+## [Taylor's theorem](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note26.pdf)
 
 - Definition
 - Test for stationary points
@@ -98,16 +78,16 @@ title: Calculus
 
 - Definition
 
-### First order
-
-[Notes #27](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note27.pdf)
+### [First order](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note27.pdf)
 
 - Separable approach
 - Homogeneous approach
 - Linear approach
   - Integrating factor
 
-### Second order
+### [Second order](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note28.pdf)
 
-[Notes #28](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note28.pdf)
-
+ - Homogeneous equations
+    - Three cases to solve
+ - Non-homogeneous equations
+    - Forms to "guess"

@@ -9,9 +9,7 @@ title: Sequences and Series
 
 # Sequences and Series
 
-## Sequences
-
-[Notes #15](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note15.pdf)
+## [Sequences](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note15.pdf)
 
 - Definition
 - convergent sequences
@@ -22,9 +20,7 @@ title: Sequences and Series
 - Divergent sequences
 - Big-O
 
-## Recurrences
-
-[Notes #16](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
+## [Recurrences](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
 
 - Linear recurrences
 - Solving $$x_n + a \cdot x_{n-1} + b \cdot x_{n-2} = 0$$
@@ -34,9 +30,7 @@ title: Sequences and Series
   - Non-homogenous recurrences
   - general and particular solutions
 
-## Series
-
-[Notes #17.1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part1.pdf) [Notes #17.2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part2.pdf)
+## Series  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part1.pdf), [Notes #2]ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part2.pdf))
 
 - Definition
 - Geometric series
@@ -51,4 +45,3 @@ title: Sequences and Series
 - Decimal numbers as a geometric series
 
 ### Partial fractions (optional)
-
