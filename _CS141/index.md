@@ -19,4 +19,4 @@ Given the large number of topics, it makes sense to break these down into broade
 
 ## Crib Sheets
 
-- Know and understand the [laws](laws)
+Refer to the [crib sheet](cribsheet) for laws and associativity in Haskell syntax!
