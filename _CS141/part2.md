@@ -306,3 +306,4 @@ What this does is that the result of earlier calls to `fac` is evaluated and “
 ```
 
 As you can see, `fac'` **forces** the evaluation of the first argument at **every step** by pattern-matching on it. While the second argument will build up into a long list of closures if is evaluated **lazily**, the difference with **naive recursion** is that it **can** be **forced** to be evaluated because all arguments are present for **multiplication**.
+
