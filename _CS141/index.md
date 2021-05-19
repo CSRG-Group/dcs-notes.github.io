@@ -12,7 +12,11 @@ Given the large number of topics, it makes sense to break these down into broade
 1. [x] [General Functional Programming](part1)
 2. [x] [Lazy Evaluation & Recursion](part2)
 3. [ ] Higher-Order Functions
+<<<<<<< HEAD
 4. [ ] Data types
+=======
+4. [x] [Data types](datatypes)
+>>>>>>> master
 5. [x] [Equational reasoning](equationalReasoning)
 6. [ ] Functors, Applicatives, Monads
 7. [ ] Type-level programming

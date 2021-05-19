@@ -74,6 +74,7 @@ In **call-by-name**, the 2nd last `=>` to the last `=>` is the only time an expr
 | Reduce function arguments to normal forms before calling the function | Only reduce expressions when their value is needed           |
 | We may evaluate arguments even if they are **never needed**. | We may end up reducing the same expression **over and over**. |
 
+<<<<<<< HEAD
 Both have flaws. Haskell’s fix is to use **lazy evaluation.**
 
 ### Lazy evaluation
@@ -81,6 +82,15 @@ Both have flaws. Haskell’s fix is to use **lazy evaluation.**
 > This is essentially **call-by-name + sharing**, where we avoid duplicate evaluation but also only ever evaluate expressions that are needed.
 
 Lazy evaluation is the default evaluation strategy in Haskell, sometimes it can be strict, if the **compiler** (the compiler does everything for us 🥳) thinks its better. 
+=======
+### Lazy evaluation
+
+From above, we see that call-by-name and call-by-value each have its flaws.
+
+> This is essentially **call-by-name + sharing**, where we avoid duplicate evaluation but also only ever evaluate expressions that are needed.
+
+Lazy evaluation is the default evaluation strategy in Haskell. Since Haskell is a **non-strict programming language**, it can be strict if the **compiler** (the compiler does everything for us 🥳) thinks its better or if we force it to be strict with the `$!` operator.
+>>>>>>> master
 
 #### Sharing
 
@@ -305,4 +315,9 @@ What this does is that the result of earlier calls to `fac` is evaluated and “
    ...
 ```
 
+<<<<<<< HEAD
 As you can see, `fac'` **forces** the evaluation of the first argument at **every step** by pattern-matching on it. While the second argument will build up into a long list of closures if is evaluated **lazily**, the difference with **naive recursion** is that it **can** be **forced** to be evaluated because all arguments are present for **multiplication**.
+=======
+As you can see, `fac'` **forces** the evaluation of the first argument at **every step** by pattern-matching on it. While the second argument will build up into a long list of closures if is evaluated **lazily**, the difference with **naive recursion** is that it **can** be **forced** to be evaluated because all arguments are present for **multiplication**.
+
+>>>>>>> master
