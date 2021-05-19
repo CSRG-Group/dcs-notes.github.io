@@ -1,7 +1,7 @@
 ---
 layout: CS141
 part: true
-title: Recursive & Higher-Order Functions
+title: Lazy Evaluation & Recursion
 ---
 
 ## Evaluation Strategies
@@ -181,6 +181,66 @@ map f (x:xs) = f x : map f xs
 
 Questions may ask about call-by-value and call-by-name too, so know this topic well.
 
+## Closures
+
+> A structure in memory at runtime that represents a function and its environments (i.e scope).
+
+We can think of it as an array of pointers 
+
+- 1st pointer points to some code
+- other pointers point to other closures.
+
+**Example.**
+
+```haskell
+not :: Bool -> Bool
+not True = False
+not False = True
+```
+
+In memory, you have a particular memory location/address that stores a pointer to the code (we don’t have to worry about where the code is.)
+
+- Every usage of `not` in the code is a pointer to this memory location.
+
+> Functions in Haskell (and other functional programming languages) are first class values, which means they can be returned by other functions or given to functions as arguments (higher-order-functions).
+
+**Example.**
+
+```haskell
+f :: Int -> a -> Int
+f x = let g y = x + 5
+      in g
+```
+
+In memory, we have a static closure of `f` as mentioned above for `not`
+
+- Initially when the program is started, there is no closure for `g`. Only have closures for top-level definitions like `f` here when program starts.
+- When we start evaluating `f`, every call to `f` will dynamically allocate a closure to `g` on the heap (this is only for that particular invocation of `f`)
+  - This closure is comprised of a pointer to code for `g` and a pointer to `x`
+  - The reason for this is because the body of `g` refers to `x`, which is a parameter of `f`.
+  - Because `g` is defined within the scope of `f`, it has access to whatever is in scope of `f`, which `x` is.
+- It doesn’t matter if the stack frame for `f` is removed because `g` still has a reference to what `x` **was**.
+
+**Example.**
+
+```haskell
+length (take 2 (map even [1,2,3,4])) 
+-- is translated into
+let zs4 = 4 : []
+    zs3 = 3 : zs4
+    zs2 = 2 : zs3
+    zs  = 1 : zs2
+    ys  = map even zs
+    xs  = take 2 ys
+in length xs
+-- by the compiler
+```
+
+When this evaluation gets evaluated at runtime, a dynamically allocated closure for each of these “variables” (so zs4, zs3, … , xs) is made.
+
+- `length` is really just a pointer to the static closure for the `length` function.
+- `xs` is just a pointer to the closure that is dynamically allocated for `xs` shown above.
+
 ## Optimised Recursive Functions
 
 In C, Java, and most imperative languages, function calls push frames onto the stack which is where local variables are stored. Each recursive function call is evaluated before the final value is calculated. To illustrate take the `factorial` function as an example:
@@ -202,11 +262,11 @@ In C, each value of `n-1` for each call to `fac` is evaluated before, the multip
 => 500 * (499 * (498 * fac (498-1)))
 	 ...
 => 500 * 499 * ... * fac 0
-=> 500 * 499 * ... * 1
+=> 500 * 499 * ... * 1 -- multiplication can finally be evaluated
 => multiplication is evaluated
 ```
 
-And because of that we have 500 frames on the stack for each call to `fac`. Hence, **deep recursion** in imperative languages could cause your program to run out of memory, which is called a **stack overflow.**
+This **naive way** of evaluating recursion builds up large expressions (with lots closures) because **nothing forces** the expressions to get evaluated at intermediate steps. The multiplication can never be reduced until the end because at **no** point do we have the **second argument** until we reach the base case. Hence, **deep recursion** in imperative languages could cause your program to run out of memory, which is called a **stack overflow.**
 
 The Haskell compiler optimises this for us by recreating the function we call (i.e `fac`) with another function that has an **accumulating parameter**.
 
@@ -245,7 +305,4 @@ What this does is that the result of earlier calls to `fac` is evaluated and “
    ...
 ```
 
-As you can see, the compiler prevents long expressions (you saw from earlier) that will take up many frames on the stack. 
-
-## Higher Order Functions
-
+As you can see, `fac'` **forces** the evaluation of the first argument at **every step** by pattern-matching on it. While the second argument will build up into a long list of closures if is evaluated **lazily**, the difference with **naive recursion** is that it **can** be **forced** to be evaluated because all arguments are present for **multiplication**.
