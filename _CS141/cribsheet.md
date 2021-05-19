@@ -1,7 +1,6 @@
 ---
 layout: CS141
 title: Crib Sheet
-part: true
 ---
 
 ## Functor Laws
@@ -23,11 +22,15 @@ and the following laws hold for it:
 
 ## Applicative Laws
 
+In Haskell, a type `f` is an applicative functor if there are functions `pure` and `<*>`
+
 ```haskell
 class Functor f => Applicative f where
 	pure  :: a -> f a
 	(<*>) :: f (a -> b) -> f a -> f b
 ```
+
+and the following laws apply for them:
 
 ```haskell
              pure id <*> x = x
@@ -37,6 +40,16 @@ pure (.) <*> x <*> y <*> z = x <*> (y <*> z)
 ```
 
 ## Monad Laws
+
+In Haskell, a type `m` is a monad if there are functions `return` and `>>=`
+
+```haskell
+class Monad m where
+  (>>=)  :: m a -> (a -> m b) -> m b
+  return ::   a -> m a
+```
+
+and the following laws apply for them:
 
 ```haskell
 -- Left Identity
