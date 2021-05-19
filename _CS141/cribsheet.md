@@ -1,6 +1,6 @@
 ---
 layout: CS141
-title: Laws
+title: Crib Sheet
 part: true
 ---
 

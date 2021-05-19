@@ -133,5 +133,7 @@ collections:
     output: true
     order:
       - part1.md
+      - part2.md
+      - datatypes.md
       - equationalReasoning.md
-      - laws.md
+      - cribsheet.md
