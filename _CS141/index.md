@@ -10,11 +10,12 @@ Given the large number of topics, it makes sense to break these down into broade
 *These are in progress of being written, if you can, please submit a pull request!*
 
 1. [x] [General Functional Programming](part1)
-2. [ ] Recursive and higher-order functions
-3. [ ] Data types
-4. [x] [Equational reasoning](equationalReasoning)
-5. [ ] Functors, Applicatives, Monads
-6. [ ] Type-level programming
+2. [x] [Lazy Evaluation & Recursion](part2)
+3. [ ] Higher-Order Functions
+4. [x] [Data types](datatypes)
+5. [x] [Equational reasoning](equationalReasoning)
+6. [ ] Functors, Applicatives, Monads
+7. [ ] Type-level programming
 
 ## Crib Sheets
 
