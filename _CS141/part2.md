@@ -96,7 +96,7 @@ fac' n m = case n of            0 -> m
                                      in fac' x y
 ```
 
-This ensures that functions are always applied to either **values** or a **variable** defined in a `let` (or `where`) bound. This means that if a variable (e.g. `x0 = 2-1`) has to be evaluated, its RHS is evaluated (so `2-1=1`) and `x0` is updated with the value of the expression, so `x0 = 1`. 
+This ensures that functions are always applied to either **values** or a **variable** defined in a `let` (or `where`) bound. This means that if a variable (e.g. `x0 = 2-1`) has to be evaluated, its RHS is evaluated (so `2-1=1`) and `x0` is updated with the value of the expression, so `x0 = 1`. Also see [dynamic closures](#dynamic-closures).
 
 ```haskell
    fac 2
