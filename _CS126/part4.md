@@ -28,7 +28,7 @@ Index of head stored, and incremented/decremented on pushing/popping operations
 
 - *O(1)* time complexity of fundamental operations
 
-![stackArrayImplementation](./images/stackArrayImplementation.png)
+<img src="./images/stackArrayImplementation.png" alt="stackArrayImplementation" class="center"/>
 
 ## Queues (ADT)
 
@@ -51,7 +51,7 @@ Uses and array with data wrapping (so like using an array in a `Queue` class wit
 
 The rear of the queue (index to insert to next) is *(f + s)* mod *N*, with *N* as the array size
 
-![queueArrayImplementation](./images/queueArrayImplementation.png)
+<img src="./images/queueArrayImplementation.png" alt="queueArrayImplementation" class="center"/>
 
 - *O(n)* space complexity
 - *O(1)* time complexity of fundamental operations

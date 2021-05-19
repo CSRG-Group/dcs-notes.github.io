@@ -61,15 +61,13 @@ Consists of
 
 <img src="images\edgeListGraph.png" alt="edgeListGraph" class="center"/>
 
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
-
 #### Adjacency list
 
 Consists of 
 
 - 1 list containing all of the vertices. Each of which have a pointer to a list edge objects of incident edges.
 
-![adjacencyListGraph](images\adjacencyListGraph.png)
+<img src="./images/adjacencyListGraph.png" alt="adjacencyListGraph" class="center"/>
 
 #### Adjacency matrix
 
@@ -79,7 +77,7 @@ Consists of
 - Square matrix, with each dimension being the number of vertices in the graph
 - Undirected graphs are symmetrical along the leading diagonal
 
-![adjacencyMatrixGraph](images\adjacencyMatrixGraph.png)
+<img src="./images/adjacencyMatrixGraph.png" alt="adjacencyMatrixGraph" class="center"/>
 
 ## Subgraphs
 

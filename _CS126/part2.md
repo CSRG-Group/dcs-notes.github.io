@@ -37,7 +37,7 @@ This has the benefits of:
 
 ## Common functions of running time
 
-![Complexity chart](https://miro.medium.com/max/2928/1*5ZLci3SuR0zM_QlZOADv8Q.jpeg)
+<img src="https://miro.medium.com/max/2928/1*5ZLci3SuR0zM_QlZOADv8Q.jpeg" alt="Complexity chart" class="center"/>
 
 [Image source](https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7)
 
@@ -112,7 +112,7 @@ To prove something is $$O(f(n))$$, we need to show that we can pick a $$c$$ and 
 >
 >  Hence, picking *c = 3* and *n<sub>0</sub> = 10* the condition is **satisfied**.
 
-![bigOh](./images/bigOh.png)
+<img src="./images/bigOh.png" alt="bigOh" class="center"/>
 
 ## Relatives of Big-O
 

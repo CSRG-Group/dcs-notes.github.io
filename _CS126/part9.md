@@ -38,7 +38,7 @@ For fast searching, we need the list to be sorted, and we have come across two c
 
 A diagram of the structure of a skip list is shown below
 
-![skipLists](./images/skipLists.png)
+<img src="./images/skipLists.png" alt="skipLists" class="center"/>
 
 ## Searching
 
@@ -58,7 +58,7 @@ Algorithm search(k):
       p <- p.next()     // Scan Forward Step
 ```
 
-![skipListsSearch](./images/skipListsSearch.png)
+<img src="./images/skipListsSearch.png" alt="skipListsSearch" class="center"/>
 
 ## Inserting
 
@@ -76,7 +76,7 @@ For each sublist from 0 to i
 	Insert v into S(j) immediately after the position p(j) in array
 ```
 
-![skipListsInsertion](./images/skipListsInsertion.png)
+<img src="./images/skipListsInsertion.png" alt="skipListsInsertion" class="center"/>
 
 ## Deleting
 
@@ -92,13 +92,13 @@ Using search algorithm, find v in skiplist
 Remove all but one list containing only guards from the top of the skip list
 ```
 
-![skipListsDeletion](./images/skipListsDeletion.png)
+<img src="./images/skipListsDeletion.png" alt="skipListsDeletion" class="center"/>
 
 ## Implementation
 
 We can use "quad-nodes", which are similar to those used in linked lists, but with four pointers, instead of just one to store the entry, and links to the previous, next, below and above nodes:
 
-![skipListsQuadNode](./images/skipListsQuadNode.png)
+<img src="./images/skipListsQuadNode.png" alt="skipListsQuadNode" class="center"/>
 
 Additionally, there are special guard nodes, with the values $$+ \infty$$ and $$- \infty$$, and fewer pointers, as they don't have adjacencies on one side.
 

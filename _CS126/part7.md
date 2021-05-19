@@ -119,7 +119,7 @@ While k is smaller than its parent, and k is not the root node
 	Swap the values of k and its parent node
 ```
 
-![heapInsertion](./images/heapInsertion.png)
+<img src="./images/heapInsertion.png" alt="heapInsertion" class="center"/>
 
 Since the heap has a height of $$O(log_2\ n)$$, performing a swap takes $$O(1)$$ time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes $$O(log_2\ n)$$, time. In total, insertion takes $$O(log_2\ n)$$ time.
 
@@ -140,7 +140,7 @@ Else
 	Run the downheap algorithm again with the root node (p) now as the child node (c)
 ```
 
-![heapDeletion](./images/heapDeletion.png)
+<img src="./images/heapDeletion.png" alt="heapDeletion" class="center"/>
 
 As with `upheap`, since the heap has a height of $$O(log_2\ n)$$, the `downheap` algorithm takes $$O(log_2\ n)$$ time.
 
