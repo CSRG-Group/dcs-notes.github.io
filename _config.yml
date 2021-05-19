@@ -135,3 +135,7 @@ collections:
       - part1.md
       - equationalReasoning.md
       - laws.md
+
+algolia:
+  application_id: 'APP_ID'
+  index_name: 'csrg_index'
