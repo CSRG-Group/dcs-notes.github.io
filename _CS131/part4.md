@@ -26,6 +26,8 @@ Limits do not depend on the value evaluated at the point - the point can not be 
 
 Essentially act as you expect - same operations on inside as outside
 
+### Squeeze rule for limits
+
 ### Continuity
 
 Essentially act as you expect - same operations on inside as outside

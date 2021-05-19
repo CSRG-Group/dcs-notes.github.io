@@ -30,7 +30,7 @@ title: Sequences and Series
   - Non-homogenous recurrences
   - general and particular solutions
 
-## Series  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part1.pdf), [Notes #2]ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part2.pdf))
+## Series  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part1.pdf), [Notes #2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part2.pdf))
 
 - Definition
 - Geometric series
@@ -40,6 +40,7 @@ title: Sequences and Series
 - Ration test
 - Examples of series
 - Radius of convergence
+  - The range of values in which the sequence converges
 - Properties of power series
 - Binomial theorem
 - Decimal numbers as a geometric series
