@@ -69,9 +69,7 @@ Consists of
 
 - 1 list containing all of the vertices. Each of which have a pointer to a list edge objects of incident edges.
 
-<img src="images\adjacencyListGraph.png" alt="adjacencyListGraph" class="center" />
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+![adjacencyListGraph](images\adjacencyListGraph.png)
 
 #### Adjacency matrix
 
@@ -82,8 +80,6 @@ Consists of
 - Undirected graphs are symmetrical along the leading diagonal
 
 ![adjacencyMatrixGraph](images\adjacencyMatrixGraph.png)
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 ## Subgraphs
 
@@ -118,10 +114,6 @@ Algorithm DFS(G,v):
         else
           setLabel(e, "back")
 ```
-
-![dfsExample](./images/placeholder.jpg)
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 > It has the following properties
 >
@@ -159,9 +151,6 @@ Algorithm BFS(G)
       BFS(G,v)
 ```
 
-![bfsExample](.\images\bfsExample.png)
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 > It has the following properties
 >

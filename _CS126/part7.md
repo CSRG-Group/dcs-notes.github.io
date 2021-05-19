@@ -91,7 +91,7 @@ The properties a binary tree must fulfil to be a heap are:
 
 The **last node** of the heap is the rightmost node of maximum depth
 
-<img src="./images/placeholder.jpg" alt="heapDiagram" class="center" />
+<img src="./images/placeholder.png" alt="heapDiagram" class="center" />
 
 Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
 
@@ -111,10 +111,6 @@ Thus, $$n \ge 2^h \Rightarrow h \le log_{2}\ n$$.
 
 First, the element is inserted to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, with a running time of $$O(1)$$ time, if a pointer to the position to insert is maintained
 
-<img src="./images/placeholder.jpg" alt="heapInsertOne" class="center" />
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
-
 Then, the `upheap` algorithm is run to re-order the heap so that it fulfils the heap properties. This algorithm repeatedly swaps the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node:
 
 ```
@@ -123,9 +119,7 @@ While k is smaller than its parent, and k is not the root node
 	Swap the values of k and its parent node
 ```
 
-![heapInsertTwo](./images/placeholder.jpg)
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+![heapInsertion](./images/heapInsertion.png)
 
 Since the heap has a height of $$O(log_2\ n)$$, performing a swap takes $$O(1)$$ time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes $$O(log_2\ n)$$, time. In total, insertion takes $$O(log_2\ n)$$ time.
 
@@ -134,10 +128,6 @@ Since the heap has a height of $$O(log_2\ n)$$, performing a swap takes $$O(1)$$
 The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten.
 
 First, the value of the root node is overwritten with the value of the last node, and the last node is removed from the tree:
-
-<img src="./images/placeholder.jpg" class="center"/>
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
 
 Then the `downheap` algorithm is run to re-order the heap so that it fulfils the heap properties:
 ```
@@ -150,9 +140,7 @@ Else
 	Run the downheap algorithm again with the root node (p) now as the child node (c)
 ```
 
-![heapRemoveTwo](./images/placeholder.jpg)
-
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+![heapDeletion](./images/heapDeletion.png)
 
 As with `upheap`, since the heap has a height of $$O(log_2\ n)$$, the `downheap` algorithm takes $$O(log_2\ n)$$ time.
 
