@@ -181,3 +181,37 @@ In Haskell, **type class constraints** is called ad-hoc polymorphism as you can 
 ### Subtype polymorphism
 
 A synonym of this is [dynamic polymorphism](https://csrg-group.github.io/dcs-notes.github.io/CS118/part5.html#dynamic-polymorphism) in Java.
+
+## Associativity
+
+> **Function** associativity binds the strongest.
+
+|   Haskell   |        Maths        |
+| :---------: | :-----------------: |
+| `f x * g y` | *f(x) &times; g(y)* |
+
+{:.centeredtable}
+
+> Function **expressions** associates to the right.
+
+```haskell
+xor = \a -> \b -> (a || b) && not (a && b)
+-- is the same as 
+xor = \a -> (\b -> (a || b) && not (a && b))
+```
+
+> Function **application** associates to the left.
+
+```haskell
+xor True True
+-- is the same as
+(xor True) True
+```
+
+> Function **types** associates to the right.
+
+```haskell
+xor :: Bool -> Bool -> Bool
+-- is the same as 
+xor :: Bool -> (Bool -> Bool)
+```

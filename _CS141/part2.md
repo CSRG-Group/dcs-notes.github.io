@@ -10,7 +10,7 @@ title: Lazy Evaluation & Recursion
 
 ### Strictness
 
-> A programming language is **strict** if the arguments of a function are evaluated before the function is called.
+> A programming language is **strict** if only strict functions (functions whose parameters must be evaluated completely before they may be called) may be defined by the user.
 
 ### Call-by-value
 
@@ -65,7 +65,7 @@ fac' n m = fac' (n-1) (n*m)
      _ -> fac' ((2-1)-1) ((2-1)*(2*1))
 ```
 
-In **call-by-name**, the 2nd last `=>` to the last `=>` is the only time an expression was evaluated, as the value of the redex `2-1` was needed to continue.
+When `2-1` (from the 2nd last step) is **reduced** to `1`, it is the first time in the example that an expression is **reduced**. This only happens because the value of the redex `2-1` is needed for the case expression to continue.
 
 ### CBN vs CBV
 
@@ -96,7 +96,7 @@ fac' n m = case n of            0 -> m
                                      in fac' x y
 ```
 
-This ensures that functions are always applied to either **values** or a **variable** defined in a `let` (or `where`) bound. This means that if a variable (e.g. `x0 = 2-1`) has to be evaluated, its RHS is evaluated (so `2-1=1`) and `x0` is updated with the value of the expression, so `x0 = 1`. 
+This ensures that functions are always applied to either **values** or a **variable** defined in a `let` (or `where`) bound. This means that if a variable (e.g. `x0 = 2-1`) has to be evaluated, its RHS is evaluated (so `2-1=1`) and `x0` is updated with the value of the expression, so `x0 = 1`. Also see [dynamic closures](#dynamic-closures).
 
 ```haskell
    fac 2
@@ -221,7 +221,7 @@ In memory, we have a static closure of `f` as mentioned above for `not`
   - Because `g` is defined within the scope of `f`, it has access to whatever is in scope of `f`, which `x` is.
 - It doesn’t matter if the stack frame for `f` is removed because `g` still has a reference to what `x` **was**.
 
-**Example.**
+### Dynamic Closures
 
 ```haskell
 length (take 2 (map even [1,2,3,4])) 
@@ -236,22 +236,42 @@ in length xs
 -- by the compiler
 ```
 
-When this evaluation gets evaluated at runtime, a dynamically allocated closure for each of these “variables” (so zs4, zs3, … , xs) is made.
+When this expression gets evaluated at runtime, a closure is **dynamically allocated** for each of these “variables” (so `zs4`, `zs3`, … , `xs`).
 
-- `length` is really just a pointer to the static closure for the `length` function.
-- `xs` is just a pointer to the closure that is dynamically allocated for `xs` shown above.
+- `length` is just a pointer to the static closure for the `length` function.
+- `xs` is a pointer to the closure that is dynamically allocated for `xs` shown above.
 
-## Optimised Recursive Functions
+## Recursive Functions
 
 In C, Java, and most imperative languages, function calls push frames onto the stack which is where local variables are stored. Each recursive function call is evaluated before the final value is calculated. To illustrate take the `factorial` function as an example:
+
+```C
+int fac (int n) {
+  if (n == 0) return 1;
+  int r = fac(n - 1);
+  return n * r;
+}
+```
+
+In C, each value of `n-1` for each call to `fac` is evaluated before the multiplication of `n` and `r`, so we get something like this in the stack:
+
+```haskell
+-- The Stack
+fac(0)  : int r = 1
+...
+fac(497): int r = 0
+fac(498): int r = 0
+fac(499): int r = 0
+fac(500): int r = 0
+```
+
+Only when we get to the **base case** `n==0`, we get a value for `r` which is 1. Then the stack is popped and the next call to `fac` at the top will be evaluated until the initial call to `fac(500)`. If we defined this in Haskell, this would probably look like:
 
 ```haskell
 fac :: Int -> Int 
 fac 0 = 1
 fac n = n * fac (n-1)
 ```
-
-In C, each value of `n-1` for each call to `fac` is evaluated before, the multiplication of `n` and `fac(n-1)`, so we get some thing like:
 
 ```haskell
    fac 500
@@ -266,7 +286,16 @@ In C, each value of `n-1` for each call to `fac` is evaluated before, the multip
 => multiplication is evaluated
 ```
 
-This **naive way** of evaluating recursion builds up large expressions (with lots closures) because **nothing forces** the expressions to get evaluated at intermediate steps. The multiplication can never be reduced until the end because at **no** point do we have the **second argument** until we reach the base case. Hence, **deep recursion** in imperative languages could cause your program to run out of memory, which is called a **stack overflow.**
+This **naive way** of evaluating recursion builds up large expressions (with lots of closures) because **nothing forces** the expressions to get evaluated at intermediate steps. 
+
+- The multiplication can never be reduced until the end because at **no** point do we have the **second argument** until we reach the base case. 
+- Hence, **deep recursion** in imperative languages could cause your program to run out of memory, which is called a **stack overflow.**
+
+<blockquote class="extra"><b>FYI.</b> There is a “trick” called <a href="https://en.wikipedia.org/wiki/Tail_call" >tail-call optimisation</a> that programming languages can use to prevent a stack overflow for certain kinds of recursive functions. 
+  <br/><br/>In functional programming languages, tail call optimisation is often guaranteed by the language standard, as it allows tail recursion to use a similar amount of memory as a loop in an imperative language. If you are interested, read more <a href="https://www.codurance.com/publications/2017/12/05/on-tail-call-optimisation" >here</a>.</blockquote>
+
+
+### Optimised Recursive Functions in Haskell
 
 The Haskell compiler optimises this for us by recreating the function we call (i.e `fac`) with another function that has an **accumulating parameter**.
 
