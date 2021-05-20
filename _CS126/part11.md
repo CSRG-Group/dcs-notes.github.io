@@ -168,3 +168,7 @@ We can specialise the BFS algorithm to solve the following problems in $$O(n+m)$
 - Compute a spanning forest of G
 - Find a simple cycle in G, or report that G is a forest
 - Given two vertices of G, find a path in G between them with the minimum number of edges, or report that no such path exists.
+
+### DFS and BFS visualization
+
+The site linked [here](https://www.cs.usfca.edu/~galles/visualization/DFS.html) traces the steps of DFS either or BFS, and one can specify whether each node is connected, as well as whether the graphs are directed or undirected
