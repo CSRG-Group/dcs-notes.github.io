@@ -93,8 +93,6 @@ The **last node** of the heap is the rightmost node of maximum depth
 
 <img src="./images/heapDiagram.png" alt="heapDiagram" class="center" />
 
-Image source: *Data Structures and Algorithms in Java*, Goodrich, Tamassia, Goldwasser
-
 ### Height of a Heap
 
 > A heap storing ***n*** keys has height = log<sub>2</sub>n. 
