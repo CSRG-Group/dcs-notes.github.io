@@ -321,46 +321,34 @@ cycleDFS(G, v)
 
 ### Topological ordering using DFS
 
-> **Algorithm** $$topologicalDFS(G)$$
-> 		**Input** dag $$G$$
-> 		**Output** topotlogical ordering of G
-> 		$$n \leftarrow G.numVertices()$$
-> 		**for all** $$u\in G.vertices()$$
-> 		    $$setLabel(,UNEXPLORED)$$
-> 		**for all** $$v\in G.vertices()$$
-> 		    **if** $$getLabel(v) = UNEXPLORED$$
-> 		 		   $$topologicalDFS(G,v)$$
-> **END ALGORITHM**
+
+```java	
+topologicalDFS(G)
+    	z = G.getVertices()
+    	for each (Vertex u : G.vertices)
+        	setLabel(u, UNEXPLORED)
+    	for each (Vertex v : G.vertices)
+        	if getLabel(v) = UNEXPLORED
+            		topologicalDFS(G, v)
 
 
-> **Algorithm** $$topologicalDFS(G,v)$$
-> 		**Input** graph $$G$$ and start a vertex $$v$$ of $$G$$
-> 		**Output** labeling of the vertices of G in the connected component of $$v$$
-> 		$$setLabel(v, VISITED)$$
-> 		**for all** $$e\in G.outEdges(v)$$
-> 		    $$w\in opposite(v,e)$$ // Outgoing edges
-> 		    **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		   $$topologicalDFS(G,w)$$ // $$e$$ is a discovery edge
-> 		    **else**
-> 		 		   Label $$v$$ with topological number $$n$$ // $$e$$ is a forward or cross edge
-> 		    $$n\leftarrow n - 1$$
-> **END ALGORITHM**
+topologicalDFS(G, v)
+	setLabel(v, VISITED)
+    	for each (Edge e : outgoingEdges(v))
+        	w = opposite(v, e)
+        	if getLabel(w) = UNEXPLORED	
+            		topologicalDFS(G, w)
+        	else
+            		Label v with topological number n
+        	n = n - 1
+```
+
+
 
 
 
 ## Breadth-first search
 
-> **Algorithm** $$BFS(G)$$
-> 		**Input** graph $$G$$
-> 		**Output** labeling of the edges and partition of the vertices of G
-> 		**for all** $$e \in G.vertices()$$
-> 		    $$setLabel(u, UNEXPLORED)$$
-> 		**for all** $$e \in G.edges()$$
-> 		    $$setLabel(e, UNEXPLORED)$$
-> 		**for all** $$v \in G.vertices()$$
-> 		    **if** $$getLabel(v) = UNEXPLORED$$
-> 		 		   $$BFS(G,v)$$
-> **END ALGORITHM**
 
 
 
