@@ -4,6 +4,15 @@ part: true
 title: "General Functional Programming"
 ---
 
+## Imperative vs Functional
+
+| Imperative                                     | Functional                                                   |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Mutation of state                              | Reduction of expressions                                     |
+| Tell the computer how you want to do something | Tell the computer what you want to compute and let it work out how to do it |
+| Statements executed in order specified         | Sub-expressions can often be evaluated in an arbitrary order |
+| Loops                                          | Recursion                                                    |
+
 ## The Compiler
 
 > Haskell is a statically typed functional programming language. This means that types are known at compile-time instead of run-time.
@@ -12,7 +21,7 @@ This allows the GHC compiler to help us write better programs. When our code is 
 
 - It first goes through a parser that converts ASCII source code into data in memory.
 - Then the GHC checks types and infers missing ones. 
-- Types are then discarded after type checking, and the compiler will generate binaries. (Types are not available at runtime.)
+- Types are then **erased** after the type checking phase, and the compiler will generate binaries for the CPU to be able to run the program. (Types are not available at runtime – this is **type erasure**)
 
 ## Currying
 
