@@ -27,17 +27,40 @@ instance Monad Either where ...
 
 In this example, it is easy to see why we get an error, because `Monad` is a type class that takes a type of kind `* -> *` (basically a type constructor) and gives a `Constraint`. So giving it a type of kind `* -> * -> *` violates this constraint. 
 
-You can think of type classes as a constraint constructor although this isn’t a standard term so don’t use it!
+You can think of type classes as a constraint constructor, although this isn’t a standard term so don’t use it!
+
+### Finding the kind
+
+In the Haskell repl, we have seen we can use `:t <VALUE>` to find the type of a given value or variable. Similarly, we can find the kind of a type using `:k <TYPE>`, and additionally reduce the type to a normal form with `:kind! <TYPE>`.
 
 ## Type promotion
 
-Using Haskell language extensions, we are able to create our own **kinds** of types. There are three ways to add language extensions
+Using Haskell language extensions, we are able to create our own **kinds** of types. This feature is not in Haskell by default, so we need to add a language extension to use it. We can use the Haskell extension `XDataKinds` in three ways:
 
-- Using a Language Pragma at the beginning of modules
-- Editing the Cabal File
-- Command Lind (Probably don’t use this)
+1. Writing the following at the top of our source file, as *language pragma*:
 
-Search up about each way to learn more, but usually we use Language Pragmas.
+   ```haskell
+   {-# LANGUAGE XDataKinds #-}
+   
+   module Program where
+   ```
+
+2. Modifying the `.cabal` file for the entire target
+
+   ```
+   library
+           ...
+       default-extensions: DataKinds
+   ```
+
+3. With flags on the command line (requires specification every time)
+
+   ```bash
+   $ ghc Program.hs -XDataKinds
+   ```
+
+
+Usually we use Language Pragmas.
 
 > **DataKinds** is the language extension that allows us to create our own **kinds**.
 
