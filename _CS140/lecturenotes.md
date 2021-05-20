@@ -1,4 +1,7 @@
-#CS140 Revision Lecture: Summary Notes
+---
+layout: CS140
+title: "CS140 Revision Lecture: Summary Notes"
+--- 
 
 ## Format of examinations this year
 The rubric will be similar to previous years but it will contain online AEP information. It is confirmed that the exam will have more application types of questions compared to simple bookwork. Do not use bullet points for answers- Ligang is expecting prose answers to confirm that we actually understand the content.
