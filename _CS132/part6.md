@@ -85,7 +85,8 @@ The dominant technique, since roughly 1980s, for implementing control units in R
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | **Sequencer** – takes clock input of our microprocessor | Regulates/aligns the operation of the combinatorial logic circuit in the CU with the control steps/rounds we have for each macro instruction. These regulated signals should ideally match the clock frequency. |
 | **Instruction Decoder**                                 | Depending on the opcode, send a signal to a certain path that corresponds to a particular macro instruction. |
-| **Fetch/Execute flip-flop**                             | Works together with the sequencer to regulate control rounds. It asserts when a control round starts and ends, essentially ensuring that the sequencer is in sync. |
+| **Fetch/Execute flip-flop**                             | Depending on the `START_FETCH` and `START_EXECUTE` signals, the flip-flop ensures that the CPU is only ever **fetching** or carrying out an opcode instruction (XOR relationship). |
+| `START_FETCH` & `START_EXECUTE`                         | When high, these two signals reset the sequencer so that it is in sync with the fetch/execute flip-flop’s signals (either the Enable signal to the opcode decoder or the fetch signal). |
 
 > **Advantages.** Fast (operates as fast as logic gates).
 >
