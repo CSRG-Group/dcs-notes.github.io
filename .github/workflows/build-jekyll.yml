@@ -19,6 +19,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      # Update search index
+      - name: Update search index
+        env:
+          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API }}
+        run: |
+          bundle exec jekyll algolia
+
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: helaili/jekyll-action@v2
         with:

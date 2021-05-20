@@ -136,4 +136,9 @@ collections:
       - part2.md
       - datatypes.md
       - equationalReasoning.md
+      - laws.md
       - FAM.md
+
+algolia:
+  application_id: 'APP_ID'
+  index_name: 'csrg_index'
