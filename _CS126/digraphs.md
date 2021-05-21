@@ -13,7 +13,7 @@ title: "Directed Graphs"
 
 ### Properties
 
-If a **simple** directed graph has $$m$$ edges and $n$ vertices, then $$m \leq n \cdot (n-1)$$, since every vertex can connect to every other vertex bar itself
+If a **simple** directed graph has $$m$$ edges and $$n$$ vertices, then $$m \leq n \cdot (n-1)$$, since every vertex can connect to every other vertex bar itself
 
 There is more terminology specifically about digraphs:
 
