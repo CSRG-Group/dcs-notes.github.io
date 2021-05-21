@@ -58,6 +58,13 @@ A subspace of $$\mathbb{R}^n$$ is a non-empty subset $$S$$ of $$\mathbb{R}^n$$ w
 1. **Closure under addition:** $$\underline{u}, \underline{v} \in S \implies \underline{u} + \underline{v} \in S$$
 2. **Closure under scalar multiplication:** $$\underline{u} \in S, \lambda \in \mathbb{R} \implies \lambda \underline{u} \in S$$
 
+
+
+They then follow the properties:
+
+1. Every subspace in $$\mathbb{R}^n$$ contains the zero vector
+2. If $$U$$ is a non-empty finite subset of $$\mathbb{R}^n$$ then the span of $$U$$ is a subspace of $$\mathbb{R}^n$$ and is called a subspace "spanned" by $$U$$
+
 ## [Linear independence](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note6.pdf)
 
 ### Linear independence definition
