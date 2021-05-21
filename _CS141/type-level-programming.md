@@ -1,3 +1,9 @@
+---
+layout: CS141
+part: true
+title: Type Level Programming
+---
+
 ## Kinds
 
 > Just like how expressions have **types**, types have **kinds**.

@@ -7,15 +7,6 @@ title: CS132
 
 ## Topics and content
 
-There are five broad topics in the module, which are as follows:
-
-1. Data representation
-2. Digital logic
-3. Assembler
-4. Memory systems
-5. I/O mechanisms
-6. Processor architecture
-
 In the words of Matt, **all of the above topics are examinable**. However, there
 are varying degrees of usefulness for each of the topics - if something is not
 deemed overly useful, it will typically be omitted in the notes. For example,
@@ -24,19 +15,7 @@ omitted (for example, specific operations of the circuit).
 
 ## Complete notes
 
-Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the
-entire module can be found [here](./CS132_full.pdf).
-
-Detailed typed notes for CS132 by **Yijun Hu** can be found [here](https://www.yijun.hu/blog-cs/cs132/index.html).
-
-1. [x] [Data representation](https://www.yijun.hu/blog-cs/cs132/index.html#)
-2. [x] [Digital logic](https://www.yijun.hu/blog-cs/cs132/index.html#)
-3. [x] [Assembler](https://www.yijun.hu/blog-cs/cs132/index.html#)
-4. [x] [Memory systems](https://www.yijun.hu/blog-cs/cs132/index.html#)
-5. [x] [I/O mechanisms](https://www.yijun.hu/blog-cs/cs132/index.html#)
-6. [x] [Processor architecture](https://www.yijun.hu/blog-cs/cs132/index.html#)
-
-Another source of type notes (from **Akram Ahmad** and **Justin Tan**’s notes) can be found below in parts or
+Detailed typed notes for CS132 by **Akram Ahmad** and **Justin Tan**’s can be found below in parts or
 here for [CS132 One Page Notes](opnotes):
 
 1. [x] [Data representation](part1)
@@ -46,7 +25,17 @@ here for [CS132 One Page Notes](opnotes):
 5. [x] [I/O mechanisms](part5)
 6. [x] [Processor architecture](part6)
 
+Another source of type notes by **Yijun Hu** can be found [here](https://www.yijun.hu/blog-cs/cs132/index.html).
 
+1. [x] [Data representation](https://www.yijun.hu/blog-cs/cs132/index.html#)
+2. [x] [Digital logic](https://www.yijun.hu/blog-cs/cs132/index.html#)
+3. [x] [Assembler](https://www.yijun.hu/blog-cs/cs132/index.html#)
+4. [x] [Memory systems](https://www.yijun.hu/blog-cs/cs132/index.html#)
+5. [x] [I/O mechanisms](https://www.yijun.hu/blog-cs/cs132/index.html#)
+6. [x] [Processor architecture](https://www.yijun.hu/blog-cs/cs132/index.html#)
+
+Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the
+entire module can be found [here](./CS132_full.pdf).
 
 ## Unofficial worksheet solutions
 
