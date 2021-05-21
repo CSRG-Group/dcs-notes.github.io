@@ -7,15 +7,6 @@ title: CS132
 
 ## Topics and content
 
-There are five broad topics in the module, which are as follows:
-
-1. Data representation
-2. Digital logic
-3. Assembler
-4. Memory systems
-5. I/O mechanisms
-6. Processor architecture
-
 In the words of Matt, **all of the above topics are examinable**. However, there
 are varying degrees of usefulness for each of the topics - if something is not
 deemed overly useful, it will typically be omitted in the notes. For example,
