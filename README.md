@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-22-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-23-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
@@ -182,6 +182,7 @@ math: true
   </tr>
   <tr>
     <td align="center"><a href="http://fbcf.xyz"><img src="https://avatars.githubusercontent.com/u/46428367?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felix</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aefbicief" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://tomff.com"><img src="https://avatars.githubusercontent.com/u/15079464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tomás F.</b></sub></a><br /><a href="#design-tomasff" title="Design">🎨</a></td>
   </tr>
 </table>
 
