@@ -5,6 +5,8 @@ title: CS140 Computer Security
 
 # Welcome to the CS140 revision guide
 
+## [Exam advice (revision lecture notes)](lecturenotes.md)
+
 ## Topics and content
 
 There are nine broad topics in the module. You can access them from the [CS140 One Page Notes](opnotes) or the respective topic links below. Author(s): **Justin Tan**, with contributions from **Edmund Goodman**
