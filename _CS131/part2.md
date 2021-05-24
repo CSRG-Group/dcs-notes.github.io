@@ -115,40 +115,198 @@ The dimension of a subspace is the minimum number of vectors needed for a basis 
 
 ## [Matrix algebra](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
 
-- Properties of scalar multiplication and addition
-- Matrix multiplication
-  - Properties
-- Types of matrix
-  - Diagonal
-  - Identity
-- Matrix transposes
+### Simple operations
 
-## [Matrix inverses](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
+#### Addition
 
-- Definition
+Matrices are added elementwise - with each cell being added to the corresponding one at the same row and column. Hence, the two matrices must have the same dimensions
+
+#### Scalar multiplication
+
+All elements in the matrix are multiplied by a scalar factor
+
+#### Matrix multiplication
+
+Each element (i,j) in the resultant matrix is the sum of the products of the ith row and the jth column in the first and second matrices respectively
+
+The number of columns in the first matrix must equal the number of rows in the second matrix
+
+![](https://www.geeksforgeeks.org/wp-content/uploads/strassen_new.png)
+
+[Image source](https://www.geeksforgeeks.org/strassens-matrix-multiplication/)
+
+Matrix multiplication is **not commutative**
+
+#### Matrix transpose
+
+Reflection in the leading diagonal
+
+
+
+### Types of matrix
+
+#### Zero
+
+A zero matrix is one containing only zeros, for example the following 2x2 matrix:
+$$
+0_{m \times n} = 
+\begin{bmatrix}
+	0 & 0 \\
+	0 & 0
+\end{bmatrix}
+$$
+
+#### Diagonal
+
+Matrices containing only values on their leading diagonals, for example the following 2x2 matrix:
+$$
+diag[a_{11}, a_{22}] = 
+\begin{bmatrix}
+	a_{11} & 0 \\
+	0 & a_{22}
+\end{bmatrix}
+$$
+
+##### Identity
+
+A special case of diagonal matrices, where all non-zero values are one, for example the following 2x2 matrix:
+$$
+I_{m \times n} = 
+\begin{bmatrix}
+	1 & 0 \\
+	0 & 1
+\end{bmatrix}
+$$
+Matrix multiplication by the identity matrix gives the initial matrix
 
 ## [Linear equations](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf)
 
-- Expressing sets of linear equations as matrices
-- Elementary row operations
-  - Use to find inverses
+### Expressing linear equations as matrices
 
-## Determinants ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf), [Notes #2]ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf))
+We can write linear equations as matrices:
+$$
+a_{11}x_1 + a_{12}x_2 = b_1
+$$
 
-- Definition
-- Elementary row operations effect on determinants
+$$
+a_{21}x_1 + a_{22}x_2 = b_2
+$$
+
+is equivalent to
+$$
+\begin{bmatrix}
+	a_{11} & a_{12} \\
+	a_{21} & a_{22}
+\end{bmatrix}
+
+\begin{bmatrix}
+	x_1 \\
+	x_2
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+	b_1 \\
+	b_2
+\end{bmatrix}
+$$
+Which we often write as:
+$$
+A \underline{x} = \underline{b}
+$$
+
+
+As we can see the matrix multiplication of the LHS will give a 1x2 matrix of the LHS of the linear equations, and then each row equates to one equation.
+
+Hence, by finding the matrix inverse of  $$A$$, we can pre-multiply it with $$\underline{b}$$, to get a matrix with each of the values of $$\underline{x}$$, which is what we are solving for
+
+
+
+### Elementary row operations to solve linear equations
+
+#### Augmented matrices
+
+Taking the first example of linear equations, we can re-write it as an "augmented matrix", to simplify row operations we will apply to it:
+
+
+$$
+a_{11}x_1 + a_{12}x_2 = b_1
+$$
+
+$$
+a_{21}x_1 + a_{22}x_2 = b_2
+$$
+
+Can be written as the augmented matrix
+$$
+\begin{bmatrix}
+	a_{11} & a_{12} & |\  b_1 \\
+	a_{21} & a_{22} & |\ b_2
+\end{bmatrix}
+$$
+
+### Elementary row operations
+
+There are three elementary row operations:
+
+1. Interchange rows
+2. Multiply a row by a non-zero scalar factor
+3. Add a multiple of one row to another
+
+### Row equivalence
+
+Two matrices are row equivalent when they can be transformed into each other using elementary row operations
+
+### Row echelon form
+
+A matrix is in row echelon form if the first non-zero entry in each row is further to the right than that in the previous row
+
+### Calculation of inverses
+
+If a sequence of elementary row operations transforms a square matrix $$A$$ into $$I$$, then $$A$$ is invertible and the same sequence transforms $$I$$ into $$A^{−1}$$
+
+## Determinants ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf), [Notes #2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf))
+
+### Definition
+
+*Pull request if you want to complete this*
+
+### Elementary row operations effect on determinants
+
+*Pull request if you want to complete this*
+
+
+
+## [Matrix inverses](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
+
+A matrix $$B$$ is the inverse of a matrix $$A$$ if $$AB = I = BA$$. Hence, they must both be square matrices of the same dimension
+
+### Requirements for invertibility
+
+The matrix must have a non-zero determinant to be invertible
+
 - [Adjoint/adjugant matrices](https://www.wikiwand.com/en/Adjugate_matrix)
 - Matrix inverse only well-defined if determinant is non-zero
 - Inverse from determinant and adjugant
 - Linear independence from matrix determinant
 
-## Linear transformations  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf), [Notes #2]ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf))
 
-- Definition
-  - Properties
-- Matrix define linear transformations
-- Change of basis
-- 
+
+## Linear transformations  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf), [Notes #2](https://warwickac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf))
+
+A function $$T : \mathbb{R}^m \rightarrow \mathbb{R}^n$$ is called a linear transformation if, for all $$\underline{u}, \underline{v} \in  \mathbb{R}^m$$ and all $$\lambda \in \mathbb{R}$$, we have:
+
+- Preservation of addition - $$T(\underline{u}) + \underline{v}) = T(\underline{u}) + T(\underline{v})$$
+- Preservation of multiplication - $$T(\lambda \underline{u}) = \lambda T(\underline{u})$$
+
+Hence, all linear transformations map $$T(\underline{0})$$ to $\underline{0}$
+
+### Matrix definitions of linear transformations
+
+Every matrix defines a linear transformation
+
+### Change of basis
 
 ## [Eigenvalues and eigenvectors](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf)
 
