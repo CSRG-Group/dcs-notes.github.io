@@ -212,6 +212,24 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "efbicief",
+      "name": "Felix",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46428367?v=4",
+      "profile": "http://fbcf.xyz",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "tomasff",
+      "name": "Tomás F.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15079464?v=4",
+      "profile": "https://tomff.com",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "repoType": "github",

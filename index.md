@@ -62,7 +62,7 @@ Currently, most of the notes are in markdown (`.md`) format, but we also support
 
 If you think you have found a mistake in any of the notes, please tell us!
 
-If you can make the change yourself by editing the appropriate file, consider making a pull request to the repository (for pdf files, annotations by tools such as [Xournal](https://github.com/xournalpp/xournalpp) should be used) and submit it through GitHub. This will also list you as a contributor to the project :smile:. ​
+If you can make the change yourself by editing the appropriate file, consider making a pull request to the repository (for pdf files, annotations by tools such as [xournal++](https://github.com/xournalpp/xournalpp) should be used) and submit it through GitHub. This will also list you as a contributor to the project :smile:. ​
 
 If there is a bigger issue, or you don't feel comfortable making a pull request, see the "Contact us" section for how to tell us about it (if you know who made the notes, they're probably the best people to ask to get it fixed).
 
@@ -192,6 +192,10 @@ math: true
     <td align="center"><a href="https://github.com/nianyii-teh"><img src="https://avatars.githubusercontent.com/u/64478251?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nian Yii Teh</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Anianyii-teh" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://joshdavies.tech"><img src="https://avatars.githubusercontent.com/u/30526591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josh Davies</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Ajoshdavies14" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://cjminecraft.theclever.me"><img src="https://avatars.githubusercontent.com/u/13885569?v=4?s=100" width="100px;" alt=""/><br /><sub><b>CJMinecraft</b></sub></a><br /><a href="#content-CJMinecraft01" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://fbcf.xyz"><img src="https://avatars.githubusercontent.com/u/46428367?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felix</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aefbicief" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://tomff.com"><img src="https://avatars.githubusercontent.com/u/15079464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tomás F.</b></sub></a><br /><a href="#design-tomasff" title="Design">🎨</a></td>
   </tr>
 </table>
 

@@ -35,7 +35,7 @@ A typical instruction cycle may look something like this:
 
 | Fetch                                                        | Decode                                                       | Execute                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. Instruction Received from memory location in PC<br />2. Retrieved instruction stored in IR<br />3. PC incremented to point to next instruction in memory | 1. Opcode retrieved / instruction decoded<br />2. Read effective address to establish opcode type | 1. CU signals functional CPU components<br />2. Can result in changes to data registers, such as the PC etc.<br />3. PC incremented to point to next instruction in memory |
+| 1. Instruction Received from memory location in PC<br />2. Retrieved instruction stored in IR<br />3. PC incremented to point to next instruction in memory | 1. Opcode retrieved / instruction decoded<br />2. Read effective address to establish opcode type | 1. CU signals functional CPU components<br />2. Can result in changes to data registers, such as the PC etc. |
 
 ## Registers
 
@@ -252,7 +252,7 @@ As mentioned earlier, there are several ways for the CPU to access memory; you s
 |--------------|------------|---------|
 | Direct address | The address to act on is **held within a specified register** (in this case `D2` and `D3`) | `move D3, D2` |
 | Immediate address | The **operand** forms part of the instruction and **remains constant** - no fetch from memory is made | `move.b #$42, D5` |
-| Absolute address | The **operand** contains the address as an **explicit constant** | `move.l D2, $7FFF0` which moves the long value held in D2 to address `$7FFF0` |
+| Absolute address | The **operand** contains the address as an **explicit constant** – not useful because programs are stored at different addresses at each run-time. | `move.l D2, $7FFF0` which moves the long value held in D2 to address `$7FFF0` |
 | Relative address | These all **relate to the program counter** to write **position independent code** | `move d16(PC), D3` move contents that are located in the address +16 addresses from PC to `D3` |
 
 > Indirect addressing is never on the exam; however, this is where we add offsets, increments, or indexed addressing to access memory or data. 
