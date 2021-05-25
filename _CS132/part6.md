@@ -59,7 +59,7 @@ Note that the 4<sup>th</sup> step is actually a macro-step because the processor
 
 ## Control Unit Design
 
-**Macro design of the CU** – concerning its inputs and outputs.
+Before we concern ourselves with the internal design of the CU, let’s analyse it with a **black box approach** which is to analyse it based on its **requirements** and how that affects what inputs and outputs the CU needs.
 
 | Requirements of CU                                           | Implication                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
