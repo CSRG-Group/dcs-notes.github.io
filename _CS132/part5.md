@@ -8,6 +8,11 @@ part: true
     There is no single I/O mechanism that is “better” than the others – it is important to understand the pros and cons of each mechanism and the situations where each should be used.
 </p>
 
+> Note that although these mechanisms all deal with I/O, they have different objectives.
+>
+> In particular, memory mapped I/O and DMA are mechanisms which are used to communicate with peripherals/devices.
+> Polled I/O, interrupt driven I/O and handshaking are used for synchronization and would be used **together** with DMA or memory mapped I/O.
+
 ## Memory mapped I/O
 
 - Same address bus is used to address both memory and I/O devices. 
