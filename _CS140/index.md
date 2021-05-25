@@ -5,7 +5,7 @@ title: CS140 Computer Security
 
 # Welcome to the CS140 revision guide
 
-## [Exam advice (revision lecture notes)](lecturenotes.md)
+## [Exam advice (revision lecture notes)](lecturenotes)
 
 ## Topics and content
 
