@@ -45,18 +45,18 @@ And it can be proven by:
 
 ## Logic laws
 
-| Type            | Conjunction ("and" form)                            | Disjunction ("or" form)                            |
-| --------------- | --------------------------------------------------- | -------------------------------------------------- |
-| Associativity   | $$(x \land y) \land z \equiv x \land (y \land z)$$        | $$(x \lor y) \lor z \equiv x \lor (y \lor z)$$           |
-| Commutativity   | $$x \land y \equiv y \land x$$                          | $$x \lor y \equiv y \lor x$$                           |
-| Negation        | $$\neg (\neg x) \equiv x$$                            | $$\neg (\neg x) \equiv x$$                           |
-| Identity        | $$x \land T \equiv x$$                                 | $$x \lor F \equiv x$$                                 |
-| Annihilation    | $$x \land F \equiv F$$                                 | $$x \lor T \equiv T$$                                 |
-| Idempotence     | $$x \land x \equiv x$$                                 | $$x \lor x \equiv x$$                                 |
-| Excluded middle | $$x \land \neg x \equiv F$$                            | $$x \lor \neg x \equiv T$$                            |
-| De Morgan's     | $$\neg (x \land y) \equiv \neg x \lor \neg y$$          | $$\neg (x \lor y) \equiv \neg x \land \neg y$$         |
-| Absorption      | $$x \land (x \lor y) \equiv x$$                         | $$x \lor (x \land y) \equiv x$$                        |
-| Distributivity  | $$x \land (y \lor z) \equiv (x \land y) \lor (x \land z)$$ | $$x \lor (y \land z) \equiv (x \lor y) \land (x \lor z)$$ |
+| Type            | Conjunction ("and" form)                                  | Disjunction ("or" form)                                    |
+| --------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
+| Associativity   | $$(x \land y) \land z \equiv x \land (y \land z)$$        | $$(x \lor y) \lor z \equiv x \lor (y \lor z)$$             |
+| Commutativity   | $$x \land y \equiv y \land x$$                            | $$x \lor y \equiv y \lor x$$                               |
+| Negation        | $$\neg (\neg x) \equiv x$$                                | $$\neg (\neg x) \equiv x$$                                 |
+| Identity        | $$x \land T \equiv x$$                                    | $$x \lor F \equiv x$$                                      |
+| Annihilation    | $$x \land F \equiv F$$                                    | $$x \lor T \equiv T$$                                      |
+| Idempotence     | $$x \land x \equiv x$$                                    | $$x \lor x \equiv x$$                                      |
+| Excluded middle | $$x \land \neg x \equiv F$$                               | $$x \lor \neg x \equiv T$$                                 |
+| De Morgan's     | $$\neg (x \land y) \equiv \neg x \lor \neg y$$            | $$\neg (x \lor y) \equiv \neg x \land \neg y$$             |
+| Absorption      | $$x \land (x \lor y) \equiv x$$                           | $$x \lor (x \land y) \equiv x$$                            |
+| Distributivity  | $$x \lor (y \land z) \equiv (x \lor y) \land (x \lor z)$$ | $$x \land (y \lor z) \equiv (x \land y) \lor (x \land z)$$ |
 
 Note that these laws occur act the similarly for some other binary operators, including:  
 
@@ -296,7 +296,6 @@ Full explanations are given, as sometimes the question requires more than just t
   $$
   {n+k-1 \choose n}
   $$
-  
 
 # Probability
 
