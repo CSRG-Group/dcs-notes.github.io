@@ -76,18 +76,21 @@ There are two crucial skills to have
 
 In an exam, it is crucial that you **state** which rules you are applying so that what you are doing is **clear** to the marker.
 
-|         Name         |                       AND                       |                 OR                  |
-| :------------------: | :---------------------------------------------: | :---------------------------------: |
-|   **Identity Law**   |                     1A = A                      |              0 + A = A              |
-|     **Null Law**     |                     0A = 0                      |              1 + A = 1              |
-|  **Idempotent Law**  |                     AA = A                      |              A + A = A              |
-|   **Inverse Law**    |              $$A\overline{A} = 0$$              |      $$A + \overline{A} = 1 $$      |
-| **Commutative Law**  |                     AB = BA                     |            A + B = B + A            |
-| **Associative Law**  |               (AB)C = A(BC) = ABC               |      (A+B)+C = A+(B+C) = A+B+C      |
-| **Distributive Law** |                A+BC = (A+B)(A+C)                |            A(B+C)=AB+AC             |
-|  **Absorption Law**  |                    A(A+B)=A                     |               A+AB=A                |
-| **De Morgan’s Law**  | $$\overline{AB} = \overline{A} + \overline{B}$$ | $$\overline{A+B} = \bar{A}\bar{B}$$ |
+| Name            | Conjunction ("and" form)                                     | Disjunction ("or" form)                                      |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Identity        | $$x \cdot 1 \equiv x$$                                       | $$x + 0 \equiv x$$                                           |
+| Null            | $$x \cdot 0 \equiv 0$$                                       | $$x + 1 \equiv 1$$                                           |
+| Negation        | $$\overline{\overline{x}} \equiv x$$                         | $$\overline{\overline{x}} \equiv x$$                         |
+| Idempotence     | $$x \cdot x \equiv x$$                                       | $$x + x \equiv x$$                                           |
+| Inverse         | $$x \cdot \overline{x} = 0$$                                 | $$x + \overline{x} = 1$$                                     |
+| Commutativity   | $$x \cdot y \equiv y \cdot x$$                               | $$x + y \equiv y + x$$                                       |
+| Associativity   | $$(x \cdot y) \cdot z \equiv x \cdot (y \cdot z)$$           | $$(x + y) + z \equiv x + (y + z)$$                           |
+| Distributivity  | $$x + (y \cdot z) \equiv (x + y) \cdot (x + z)$$             | $$x \cdot (y + z) \equiv (x \cdot y) + (x \cdot z)$$         |
+| Absorption      | $$x \cdot (x + y) \equiv x$$                                 | $$x + (x \cdot y) \equiv x$$                                 |
+| De Morgan's     | $$\overline{(x \cdot y)} \equiv \overline{x} + \overline{y}$$ | $$\overline{(x + y)} \equiv \overline{x} \cdot \overline{y}$$ |
+| Excluded middle | $$x \cdot \overline{x} \equiv 0$$                            | $$x + \overline{x} \equiv 1$$                                |
 {:.centeredtable}
+
 
 The best way to get good at this is to **practise.** 
 
