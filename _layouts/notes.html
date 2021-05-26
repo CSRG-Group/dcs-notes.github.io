@@ -27,6 +27,13 @@
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <title>
+        {%- if page.layout != "combined" -%}
+            {{ page.layout }} {{ page.title }}
+        {%- else -%}
+            {{ page.title | default: site.title }}
+        {%- endif -%}
+    </title>
 </head>
 
 <body>
