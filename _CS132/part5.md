@@ -8,6 +8,11 @@ part: true
     There is no single I/O mechanism that is “better” than the others – it is important to understand the pros and cons of each mechanism and the situations where each should be used.
 </p>
 
+> Note that although these mechanisms all deal with I/O, they have different objectives.
+>
+> In particular, memory mapped I/O and DMA are mechanisms which are used to communicate with peripherals/devices.
+> Polled I/O, interrupt driven I/O and handshaking are used for synchronization and would be used **together** with DMA or memory mapped I/O.
+
 ## Memory mapped I/O
 
 - Same address bus is used to address both memory and I/O devices. 
@@ -48,9 +53,11 @@ Handshaking can be implemented with software or specialised hardware, which ofte
 
 ## Interrupts
 
-Another way to target synchronisation problems. CPU normally executes instructions sequentially, unless a jump or branch is made – an interrupt input can force a CPU to jump to a service routine. The key difference between interrupts and handshaking or polling is that it is **asynchronous.** 
+> Another way to target synchronisation problems. CPU normally executes instructions sequentially, unless a jump or branch is made – an interrupt input can force a CPU to jump to a service routine. The key difference between interrupts and handshaking or polling is that it is **asynchronous.** 
 
 **Interrupt requests** may be ignored depending on the current task that the CPU is working on. The CPU compares the “priority” of the tasks and decides which tasks supersedes the other. **Non-maskable Interrupts** cannot be ignored and the CPU will have to service the interrupt. 
+
+<img src="part5.assets/image-20210524180858554.png" alt="image-20210524180858554" style="zoom:67%;" class="center" />
 
 When an interrupt is serviced, typically the CPU will finish the current instruction it is working on and, save the state of the working registers and the program counter (usually saving this state on a **stack**). It will then process the interrupt service routine. Once complete, it will remove the program counter from the stack and start processing instructions again from where it left off.
 

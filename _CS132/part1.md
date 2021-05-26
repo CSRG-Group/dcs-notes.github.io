@@ -120,7 +120,17 @@ You can do this unless Matt prohibits it in exam. The best way to get better at 
 
 ## Addition and Negative Numbers
 
-To do **addition** in binary it's just like long division, sum the numbers, and carry over the 1 if there it adds to 2. 
+> To do **addition** in binary we just do it normally, sum the numbers, and carry over the 1 if it adds to 2. 
+>
+> It is helpful to include the **carry row** in your working for clarity. (also remember hearing Matt saying to do it)
+
+```
+  0100 0101
++ 1110 1101
+------------
+  0011 0010  <- Sum Row
+  1100 1101  <- Carry Row
+```
 
 **Signed Magnitude Representation.** This is 1 way of *representing negative numbers* in bits. The MSB is an indicator of whether the number is negative. 1 is negative, 0 is positive. However, there's a problem when you think about 0. What is +0 vs -0? Our solution is to use two’s complement.
 

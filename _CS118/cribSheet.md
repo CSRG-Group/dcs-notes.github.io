@@ -11,7 +11,7 @@ title: CS118 Crib Sheet
 
 - In order to store negative integer numbers, we don't just add a "sign bit" as we would normally, as then we define both positive and negative values for zero, which wastes space, and can be confusing. Instead, we use "two's complement"
   - Binary representation, but the left-most bit is negative
-    ![twosComplement](..\media\twosComplement.png)
+    ![twosComplement](.\media\twosComplement.png)
   - With eight bits, the smallest value is $$10000000_2 = -128_{10}$$, and the largest value is $$01111111_2 = 127_{10}$$ (this is $$-2^n $$ to $$2^n - 1$$)
 
 ## IEEE-754 floating point
@@ -19,7 +19,7 @@ title: CS118 Crib Sheet
 - In order to store decimal numbers, we use "floating point notation", which automatically handles the trade-off between precision and range for storing numbers in a fixed number of bits. This is defined in the IEEE-754 specification ([source](https://webstore.iec.ch/preview/info_isoiecfdis60559%7Bed2.0%7Den.pdf)), and explained further [here](https://steve.hollasch.net/cgindex/coding/ieeefloat.html)
 - A tool for checking this is [available](https://www.h-schmidt.net/FloatConverter/IEEE754.html)
 - For single precision `floats` (`double`s use different sized exponents and mantissas, but operate in the same way) the schema for the number is:
-  ![IEEE754main](..\media\IEEE754main.png)
+  ![IEEE754main](.\media\IEEE754main.png)
   - The "sign bit" denotes whether the number is positive or negative
   - The "exponent" needs to represent both positive and negative numbers, but it **does not** use two's complement, it instead uses a bias of $$127$$, meaning you subtract $$-127$$ from the decimal value to get the exponent. Additionally, $$-127_{10} = 00000000_2$$ and $$128+{10} = 11111111_2$$ are reserved special cases. Double precision uses an 11-bit field instead of an 8-bit one, and hence has an offset of $$1023$$
   - The "fraction/mantissa" represents the precision bits of the number, with the most significant bit being $$\frac{1}{2^1}$$, then $$\frac{1}{2^2}$$, and so on. This is taken as the value after the binary point, and in almost all cases, the value before the binary point is one, however, if the exponent is all $$0$$s, it is $$0$$ and said to be denormalised. Double precision uses a 52-bit field instead of a 23-bit one.
@@ -31,7 +31,7 @@ title: CS118 Crib Sheet
     - Infinity, positive and negative infinities are when the exponent is all $$1$$s, but the fraction is all $$0$$s, and the sign bit indicates sign. Since they are actual values in the scheme, we can do operations on them
     - NaN (not a number), when the exponent is all $$1$$s, and there is a non-zero fraction. These can be used for signalling errors etc.
 - An example of this in practice is:
-  ![IEEE754example](..\media\IEEE754example.png)
+  ![IEEE754example](.\media\IEEE754example.png)
   Note that the "1.(fraction)" denotes a decimal point, not a multiplication operation
 
 
@@ -347,7 +347,7 @@ There is some argument over the number of "pillars", but the four commonly accep
 - The `throws` keyword can be added to a method declaration to indicate that it might "throw" a checked exception of a given type
 - The `throw` keyword is used to throw a new exception from a method, and must be followed by an object that is an instance of the Throwable class (e.g. `throw new ArithmeticError`)
 - The "Exceptions hierarchy" (image credit [GeeksForGeeks](https://www.geeksforgeeks.org/exceptions-in-java/))
-  ![exceptionsDiagram](C:\Users\egood\Desktop\dcs-notes.github.io\media\exceptionsDiagram.png)
+  ![exceptionsDiagram](.\media\exceptionsDiagram.png)
   - In Java all errors and exceptions are subclasses of the `Throwable` class
     - Errors are "serious problem that a reasonable application should not try to catch". These are rare, so we will largely ignore them
     - Exceptions are "conditions that a reasonable application might want to catch"
