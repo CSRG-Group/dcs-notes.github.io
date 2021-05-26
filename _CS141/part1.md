@@ -33,7 +33,7 @@ Currying allows us to partially apply functions, which is very useful to e.g. de
 -- Lets say for some reason i want to add 5 to a lot of things
 add = \x -> \y -> x + y
 -- We can define addFive with just add
-addFive = add 5 x
+addFive = add 5
 ```
 
 ### Uncurry
