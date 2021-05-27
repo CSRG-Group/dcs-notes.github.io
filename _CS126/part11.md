@@ -151,7 +151,7 @@ Algorithm DFS(G,v):
         w <- opposite(v,e)
         if getLabel(w) = "unexplored"
           setLabel(e, "discovery")
-          DFS(G,w)
+          DFS(G,w) // Recursive call to DFS on this "unexplored" vertex w
         else
           setLabel(e, "back")
 ```
