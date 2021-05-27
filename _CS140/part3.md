@@ -159,11 +159,11 @@ But we can use **password salts** to make lookup table, reverse lookup and rainb
 
 ### Password Salt
 
-Salt is a randomly generated number. The salt and the password are connected and used by the hash function to generate hash:
-$$
-h = Hash(password+salt)
-$$
-**Both** ***h***​ and the corresponding **salt** are stored in the password file
+> A salt is a randomly generated number. The salt and the password are connected and used by the hash function to generate hash:
+> $$
+> h = Hash(password+salt)
+> $$
+> **Both** ***h*** and the corresponding **salt** are stored in the password file.
 
 When a user enters a password during the login
 
@@ -171,19 +171,21 @@ When a user enters a password during the login
 - Connect the input password with the **salt**​
 - Generate the hash of this input and compare it with the stored hash.  
 
-#### How does salt help defend against table attacks?
+#### How does salting help defend against table attacks?
 
-In order for the lookup table attack to succeed, an attacker needs to precompute the tables
+> In order for the lookup table attack to **succeed**, an attacker **needs to precompute** the tables.
 
-Since **salt** is used, we precompute and store the hash of a password for each possible *salt* value, which increases the possible combination of passwords + salts that we have to pre-compute in our lookup tables **a lot**.
+Since **salt** is used, we precompute and store the hash of a password for **each possible** *salt* value, which increases the possible combination of passwords + salts that we have to pre-compute in our lookup tables by **a lot**.
+
+Additionally because the **salt** is not user generated it is more **unpredictable** as well.
 
 For password p, precompute and store:
 $$
 Hash(p+salt_1), Hash(p+salt_2),..., Hash(p+salt_n)
 $$
-When the **salt** is large (e.g. 48bits), the required storage space will be too big for the attack to be worthwhile. In order to precompute reverse and rainbow tables, an attacker needs to generate a chain for a password and each possible *salt*. 
-
-- Because **salt** is not user generated - makes it more unpredictable as well.
+> When the **salt** is large (e.g. 48bits), the required storage space will be **too big** for the **attack to be worthwhile**. 
+>
+> In order to **precompute** reverse and rainbow tables, an attacker needs to **generate many chains** for the **same password** because it has to **consider each possible *salt***. 
 
 ## How are hashes stored in Linux?
 

@@ -103,4 +103,12 @@ However we do not use this method because it is slow to encrypt the whole email 
 - GnuPG (Gnu Privacy Guard) – open source implementation of OpenPGP
 - Windows version Gpg4Win
 
-![pgpEncryption](.\secure-email.assets\pgpEncryption.png)
+#### PGP Encryption
+
+Below is a diagram depicting how PGP Encryption works. 
+
+<figure>
+  <figcaption>PGP Encryption Diagram, <a href="https://en.wikipedia.org/wiki/File:PGP_diagram.svg">Wikimedia Commons</a></figcaption>
+  <img src="./secure-email.assets/PGP_diagram.svg"/>
+</figure>
+
