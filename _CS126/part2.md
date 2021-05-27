@@ -77,6 +77,7 @@ We most commonly conduct worst case analysis, $$O(n)$$, but there is also $$\Ome
 > && &\text{constants } c \text{ and } n_0
 > \end{align}
 > $$
+> 
 > Informally, this means that $$f(n)$$ is “overtaken” by $$g(n)$$ for all values above **some threshold** $$n _0$$ usually we consider $$n \rightarrow \infty$$, **allowing scaling** by a linear factor $$c$$.
 
  This can be phrased as “$$f(n)$$ is $$O(g(n))$$ if $$g(n)$$ grows as fast or faster than $$f(n)$$ in the limit of $$n \rightarrow \infty$$” ([Source](https://math.stackexchange.com/questions/620145/understanding-definition-of-big-o-notation/620150#620150))
@@ -123,7 +124,7 @@ To analyse
 
 <img src="./images/bigOh.png" alt="bigOh" class="center"/>
 
-### Big-Omega 
+### Big-Omega $$\Omega(n)$$
 
 > $$\Omega(n)$$ looks at **best cases.** $$f(n) = \Omega(g(n))$$ if 
 > 
@@ -134,19 +135,22 @@ To analyse
 > && &\text{constants } c \text{ and } n_0
 > \end{align}
 > $$
+> 
 > This means that $$g(n)\cdot c$$ will always be lesser than or equals to $$f(n)$$ after a certain threshold $$n_0$$. You can think of it as a lower bound to $$f(n)$$, where you’re saying that $$f(n)$$ cannot get any “better/faster” than this.
 
+### Big-Theta $$\Theta(n)$$
 
-
-## Relatives of Big-O
-
-There are other “relatives” of Big-O
-
-- Big-O gives the upper bound
-  - $$f(n)\le g(n)$$ in the limit of $$n\rightarrow \infty$$
-- Big-&Omega; gives the lower bound
-  - $$f(n)\ge g(n)$$ in the limit of $$n\rightarrow \infty$$
-- Big-&Theta; gives “asymptotically tight” &asymp; average
-  - $$f(n)= g(n)$$ in the limit of $$n\rightarrow \infty$$
+> $$\Theta(n)$$ looks at **average cases.** We say that $$f(n) = \Theta(g(n))$$ when $$f(n)$$ is asymptotically **equal to** $$g(n)$$, this happens if and only if 
+>
+> $$
+> f(n) = \Theta(g(n)) \iff f(n) = O(g(n)) \land f(n) = \Omega(g(n)) \\
+> \begin{align}\\
+> &g(n)\cdot c_\Omega \le f(n) \le g(n) \cdot c_O,& &\text{for all } n \geq n_0, n \in \mathbb{N}& \\
+> && &\text{with some positive} \\ 
+> && &\text{constants } c_O, c_\Omega, \text{ and } n_0
+> \end{align}
+> $$
+>
+> Here this means that for a specific $$g(n)$$, we can scale it by two variables $$c_O$$ and $$c_\Omega$$ and $$f$$ will be always “fit in-between” the two scaled $$g$$s after a certain threshold $$n_0$$. 
 
 [Additional notes](https://courses.cs.washington.edu/courses/cse326/06au/lectures/lect03.pdf)

@@ -40,11 +40,11 @@ To look up keys in $$O(1)$$ time, we want essentially want to be able to index a
 
 ### Hash functions
 
-We can use a "hash function" to reduce the size of the keyspace, so we can used the hashed outputs of keys for indices in the array storing the map.
-$$
-h : keys \rightarrow indices
-$$
-$$h$$ maps keys of a given type to integers in a fixed interval $$[0, N-1]$$ where $$N$$ is the size of the array to store the items in.
+> We can use a "hash function" to reduce the size of the keyspace, so we can used the hashed outputs of keys for indices in the array storing the map.
+> $$
+> h : keys \rightarrow indices
+> $$
+> $$h$$ maps keys of a given type to integers in a fixed interval $$[0, N-1]$$ where $$N$$ is the size of the array to store the items in.
 
 Modern implementations of hash functions are **very complicated**, and often involve two phases
 
@@ -271,7 +271,6 @@ Algorithm genericMerge(A,B)
 ❕❗ This merging algorithm is used in **merge sort** as well! You may have noticed that we have 3 auxiliary methods in this algorithm: `aIsLess`, `bIsLess`, and `bothAreEqual`.
 
 > Depending on the set operation (or any operation you are using this generic merge for), you define these methods **differently**. 
->
 
 **Example.**
 
