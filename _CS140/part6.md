@@ -25,19 +25,24 @@ As a result if a ciphertext can be decrypted by my public key, it must mean that
 
 ## Digital Signatures (DS)
 
-**One problem however,** encrypting an entire message may be costly (time-wise), for the purpose of integrity we don’t actually need to encrypt the entire message.
+**One problem however,** encrypting an entire message may be **costly** (time-wise), for the purpose of integrity **we don’t actually need to encrypt the entire message**.
 
-We calculate the hash of the message (also called digest) and then encrypt the hash using the private key. 
+> What we do is
+>
+> 1. Calculate the hash of the message (also called digest)
+> 2. Encrypt the hash using the private key. This will be our **digital signature**.
+>
+> Digital signatures are **attached to plain text message**, and are used to **verify integrity**. 
+>
+> The final message is: **e + [hash(e)]<sub>ku</sub>**
 
-> Digital signatures are **attached to plain text message**, and are used to **verify integrity**. The final message is: e + [hash(e)]<sub>ku</sub>
-
-To do so, the receiver has to
+On the receiver’s end, to **verify integrity**..
 
 - Use the sender’s public key to decrypt the digital signature to recover the hash.
 - Generate a hash of the received plaintext using the same hash algorithm used by the sender.
 - Compare the two hashes.
 
-We often denote with square brackets, [hash(e)]<sub>ku</sub>, that something is encrypted and the subscript states whether it is a private (u) or public (p) key.
+<blockquote class='extra'>We often denote with square brackets, <b>[hash(e)]<sub>ku</sub></b>, that something is encrypted and the subscript states whether it is a private (u) or public (p) key.</blockquote>
 
 ### Differences between Encryption and DS
 

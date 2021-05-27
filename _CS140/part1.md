@@ -52,11 +52,12 @@ Robert Morris tried to measure the size of the Internet. The worm could get into
 
 #### Worm vs Virus
 
-Both self-replicate and likely to achieve rapid population growth
-
-- Virus - replicate into other executable code and infect it
-- Worm - standalone, doesn't need a host program.
-- Sometimes they are used interchangeably 
+> **Similarities.** Both self-replicate rapidly and negatively affect a computer.
+>
+> **Differences.** 
+>
+> - Virus – has to replicate into a host program/other executable code to infect a computer and have an impact
+> - Worm – standalone, doesn't need a host program.
 
 ### Denial of service - takes on Georgian blogger
 

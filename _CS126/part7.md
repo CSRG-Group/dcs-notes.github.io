@@ -158,4 +158,16 @@ This is one of the fastest classes of sorting algorithm, and is much more effici
 
 Any **tree implementation** can be used for a heap, as it merely modifies the way getters and setters work, not the internal data structures.
 
-The main draw-back of **array based implementations** of space inefficiency for unbalanced trees is a **non-issue for heaps**, as they are implicitly balanced, so they are often used.
+The main draw-back of **array based implementations** of space inefficiency for unbalanced trees is a **non-issue for heaps**, as they are **implicitly balanced**, so they are often used.
+
+### Array-based Heap Implementation
+
+Given $$n$$ elements, an element at position $$p$$ is stored at index/cell $$f(p)$$ where
+
+- If $$p$$ is the root, then $$f(p) = 0$$ (index 0)
+- If $$p$$ is the left child of another position $$q$$, $$f(p) = 2f(q) + 1$$. 
+- For the right child this is, $$f(p) = 2f(q) + 2$$. 
+
+> The **last node** corresponds to the last occupied index. **Insertion** will insert a new element into the first free cell (unoccupied index) and **remove_min** will remove cell 0. 
+
+Usually we use an Array List so that the array can grow.

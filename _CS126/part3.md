@@ -24,9 +24,9 @@ Recursive functions tend to include two main components:
 1. Base cases
 2. Recursive calls
 
-**Base cases** tend to be simple input values where the return value is a known constant, so no recursive calls are made. They are **required** for a recursive function **to finish evaluating**, so there must be **at least** one
-
-**Recursive calls** are ones to the same recursive function making the call, with a simpler input (since it must "**move towards**" the base case for it to ever finish evaluating)
+> **Base cases** tend to be simple input values where the return value is a known constant, so no recursive calls are made. They are **required** for a recursive function **to finish evaluating**, so there must be **at least** one
+>
+> **Recursive calls** are ones to the same recursive function making the call, with a simpler input (since it must "**move towards**" the base case for it to ever finish evaluating)
 
 We can visualise recursion by drawing diagrams of functions, with functions as boxes and arrows indicating calls and return values. This is fairly self-explanatory.
 
