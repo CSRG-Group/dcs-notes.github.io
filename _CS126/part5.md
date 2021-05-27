@@ -44,7 +44,7 @@ To look up keys in $$O(1)$$ time, we want essentially want to be able to index a
 > $$
 > h : keys \rightarrow indices
 > $$
-> $$h$$ maps keys of a given type to integers in a fixed interval $$[0, N-1]$$ where $$N$$ is the size of the array to store the items in.
+> $$h$$ maps keys of a given type to integers in a fixed interval $$[0, N-1]$$ where $$N$$ is the size of the array to store the items in (**bucket** size).
 
 Modern implementations of hash functions are **very complicated**, and often involve two phases
 
@@ -53,7 +53,11 @@ Modern implementations of hash functions are **very complicated**, and often inv
 
 But simpler ones exist, for example $$h(x) =  x \!\!\mod \!N$$
 
-- We try to pick $$N$$ such that there are fewer collisions – numbers like primes with few factors are better
+#### Choosing $$N$$
+
+> In general, every key $$x$$ that shares a **common factor** with $$N$$ (the number of buckets) will be hashed to a multiple of this **factor**.
+
+Therefore, to minimise **collisions** it is best to choose a $$N$$ such that it has very few factors. Hence **large prime numbers** are often used for this very reason.
 
 ### Memory address
 

@@ -14,21 +14,22 @@ Directed and undirected graphs
 
 - In directed graphs, the edge pair indicates that the first vertex is connected to the second, but not vice versa
 
-| Term                        | Description                                                  |
-| --------------------------- | ------------------------------------------------------------ |
-| Adjacent Vertices           | Vertices with an edge between them                           |
-| Edges incident on a vertex  | Edges which both connect to the same vertex                  |
-| End vertices/endpoints      | The two vertices in the pair that an edge connects to        |
-| Degree of a vertex          | The number of edges that connect to a pair                   |
-| Parallel edges              | Two edges both connecting the same nodes (This is the reason why edges are an unordered collection, not a **set**) |
-| Self-loop                   | An edge whose vertices are both the same                     |
-| Path                        | A sequence of alternating vertices and edges, starting and ending in a vertex |
-| Simple paths                | Paths containing no repeating vertices (hence are acyclic)   |
-| Cycle                       | A path starting and ending at the same vertex                |
-| Acyclic                     | A graph containing no cycles                                 |
-| Simple cycle                | A path where the only repeated vertex is the starting/ending one |
-| Length (of a path of cycle) | The number of edges in the path/cycle                        |
-| Tree                        | A connected acyclic graph                                    |
+| Term                            | Description                                                  |
+| ------------------------------- | ------------------------------------------------------------ |
+| **Adjacent Vertices**           | Vertices with an edge between them                           |
+| **Edges incident on a vertex**  | Edges which both connect to the same vertex                  |
+| **End vertices/endpoints**      | The two vertices in the pair that an edge connects to        |
+| **Degree of a vertex**          | The number of edges that connect to a pair                   |
+| **Parallel edges**              | Two edges both connecting the same nodes (This is the reason why edges are an unordered collection, not a **set**) |
+| **Self-loop**                   | An edge whose vertices are both the same                     |
+| **Path**                        | A sequence of alternating vertices and edges, starting and ending in a vertex |
+| **Simple paths**                | Paths containing no repeating vertices (hence are acyclic)   |
+| **Cycle**                       | A path starting and ending at the same vertex                |
+| **Acyclic**                     | A graph containing no cycles                                 |
+| **Simple cycle**                | A path where the only repeated vertex is the starting/ending one |
+| **Length (of a path of cycle)** | The number of edges in the path/cycle                        |
+| **Tree**                        | A connected acyclic graph                                    |
+| **Weight**                      | A weight is a numerical value attached to each edge. In weighted graphs relationships between vertices have a magnitude. |
 {: .centeredtable}
 
 ### Graph properties
@@ -53,31 +54,73 @@ They have a large number of fundamental operations, to the extent it is unnecess
 
 #### Edge List Structure
 
+<img src="images\edgeListGraph.png" alt="edgeListGraph" class="center" style="zoom:50%;" />
+
 Consists of
 
-- 1 list of vertices
+- A list of vertices – contains references to **vertex objects**
+- A list of edges – contains references to **edge objects**
+- **Vertex Object**
+  - Contains the element that it stores
+  - Also has a reference to its **position** in the vertex list.
+- **Edge Object**
+  - Contains the element it stores
+  - Reference to origin vertex
+  - Reference to destination vertex
+  - Reference to **position** in edge list
 
-- 1 list of edges, each of which contain references to their endpoint vertices
-
-<img src="images\edgeListGraph.png" alt="edgeListGraph" class="center"/>
+> **Advantage of Reference to Position.** Allows faster removal of vertices from the vertex list because vertex objects already have a reference to their position.
+>
+> **Limitations.** As you can see, the vertex objects has no information about the incident edges. Therefore, if we wanted to remove a vertex object, call it ***w***, from the list we will have to scan the entire **edge list** to check which edges point to ***w***. 
 
 #### Adjacency list
+
+<img src="./images/adjacencyListGraph.png" alt="adjacencyListGraph" class="center" style="zoom:50%;" />
 
 Consists of 
 
 - 1 list containing all of the vertices. Each of which have a pointer to a list edge objects of incident edges.
 
-<img src="./images/adjacencyListGraph.png" alt="adjacencyListGraph" class="center"/>
+
 
 #### Adjacency matrix
 
+This is an extension of the **edge list structure** – we extend/add-on to the **vertex object**.
+
+<img src="./images/adjacencyMatrixGraph.png" alt="adjacencyMatrixGraph" class="center" style="zoom:50%;" />
+
 Consists of
 
-- 2D array acts a lookup table for whether vertices have an edge connecting them
-- Square matrix, with each dimension being the number of vertices in the graph
-- Undirected graphs are symmetrical along the leading diagonal
+- Extended/augmented **Vertex Object**
+  - Integer key (index) associated with each vertex. A graph with $$n$$ vertices then their keys go from 0 to $$(n-1)$$.
+- **Adjacency Matrix** – 2D Array
+  - Square matrix, with each dimension being the number of vertices $$n$$
+  - Let $$C_{ij}$$ represent a particular cell in the matrix. $$C_{ij}$$ either has a reference to an **edge object** for adjacent vertices or **null** for **non**-adjacent vertices. 
+    - If a reference to an edge object, $$k$$, is stored at cell $$C_{ij}$$ it means that $$k$$ is an edge **from** the vertex with index $$i$$ **to** the vertex with index $$j$$.
+    - If our graph is **undirected** then the matrix will be **symmetrical** across the **main diagonal**, meaning $$C_{ij} = C_{ji}$$ (as shown in the diagram above).
 
-<img src="./images/adjacencyMatrixGraph.png" alt="adjacencyMatrixGraph" class="center"/>
+> **Advantage of 2D Adjacency Array.** We are able to lookup edges between vertices in $$O(1)$$ time.
+>
+> **Limitations.** 
+>
+> - Not easy to change the size of the array
+> - Space Complexity is $$O(n^2)$$ and in many practical applications the graphs we are considering do not have many edges, so using an adjacency matrix might not be so space efficient.
+
+#### Performance
+
+Given a graph with **n** vertices and **m** edges (no parallel edges and no self-loops).
+
+|                     | Edge List |         Adjacency List         |  Adjacency Matrix  |
+| :------------------ | :-------: | :----------------------------: | :----------------: |
+| **Space**           |  O(n+m)   |             O(n+m)             | O(n<sup>2</sup>) 💩 |
+| `incidentEdges(v)`  |   O(m)    |          O(deg(v)) ⭐           |        O(n)        |
+| `areAdjacent(v,w)`  |   O(m)    | O(min(**deg(v)**, **deg(w)**)) |       O(1) ⭐       |
+| `insertVertex(o)`   |   O(1)    |              O(1)              | O(n<sup>2</sup>) 💩 |
+| `insertEdge(v,w,o)` |   O(1)    |              O(1)              |        O(1)        |
+| `removeVertex(v)`   |   O(m)    |          O(deg(v)) ⭐           |  O(n<sup>2</sup>)  |
+| `removeEdge(e)`     |   O(1)    |              O(1)              |        O(1)        |
+{:.centeredtable}
+
 
 ## Subgraphs
 
@@ -171,4 +214,4 @@ We can specialise the BFS algorithm to solve the following problems in $$O(n+m)$
 
 ### DFS and BFS visualization
 
-The site linked [here](https://www.cs.usfca.edu/~galles/visualization/DFS.html) traces the steps of DFS either or BFS, and one can specify whether each node is connected, as well as whether the graphs are directed or undirected
+The site linked [here](https://www.cs.usfca.edu/~galles/visualization/DFS.html) traces the steps of DFS either or BFS, and one can specify whether each node is connected, as well as whether the graphs are directed or undirected 
