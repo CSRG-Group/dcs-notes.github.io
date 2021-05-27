@@ -5,6 +5,16 @@ math: true
 title: "Arrays and Lists"
 ---
 
+## Abstract Data Type (ADT)
+
+> An abstract data type (ADT) is an **abstraction** of a data structure that specifies 
+>
+> - The data that is stored.
+> - The operations that can be performed on said data.
+> - The error conditions associated with said operations.
+>
+> The ADT does not define the implementation of the data structure but **seeks to describe** what it does.
+
 ## Arrays (ADT)
 
 > Arrays are **indexable**, **fixed length**, sequence of variables of a **single type** (homogenous).
@@ -28,9 +38,7 @@ The operations in `code` blocks are the **fundamental operations** of arrays.
 Arrays can be **concretely** implemented by **allocating** a **contiguous section** of memory, with cells being indexable by memory location, as the data at an index can be found at 
 
 $$
-
 S + D \cdot I
-
 $$
 
 where $$S$$ is the pointer to the start of the array, $$D$$ is the size of the data type, and $$I$$ is the index.
