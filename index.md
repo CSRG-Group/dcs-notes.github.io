@@ -185,7 +185,7 @@ math: true
     <td align="center"><a href="https://github.com/bora-7"><img src="https://avatars.githubusercontent.com/u/76407294?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bora A.</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Abora-7" title="Bug reports">🐛</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/LoudShadow"><img src="https://avatars.githubusercontent.com/u/72259471?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Joseph Evans</b></sub></a><br /><a href="#content-LoudShadow" title="Content">🖋</a> <a href="#admin-LoudShadow" title="Admins of CSRG">🔥</a></td>
     <td align="center"><a href="http://davidsangojinmi.ml/"><img src="https://avatars.githubusercontent.com/u/26884019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David Sangojinmi</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ADavid-Sangojinmi" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/clara-ramsay"><img src="https://avatars.githubusercontent.com/u/77890048?v=4?s=100" width="100px;" alt=""/><br /><sub><b>clara-ramsay</b></sub></a><br /><a href="#content-clara-ramsay" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/mariosbf"><img src="https://avatars.githubusercontent.com/u/40693811?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mariosbf</b></sub></a><br /><a href="#content-mariosbf" title="Content">🖋</a></td>
@@ -196,6 +196,7 @@ math: true
   <tr>
     <td align="center"><a href="http://fbcf.xyz"><img src="https://avatars.githubusercontent.com/u/46428367?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felix</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aefbicief" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://tomff.com"><img src="https://avatars.githubusercontent.com/u/15079464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tomás F.</b></sub></a><br /><a href="#design-tomasff" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Atomasff" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/to"><img src="https://avatars.githubusercontent.com/u/9795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>to</b></sub></a><br /><a href="#admin-to" title="Admins of CSRG">🔥</a></td>
   </tr>
 </table>
 
