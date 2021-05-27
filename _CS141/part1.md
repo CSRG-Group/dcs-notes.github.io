@@ -23,18 +23,69 @@ This allows the GHC compiler to help us write better programs. When our code is 
 - Then the GHC checks types and infers missing ones. 
 - Types are then **erased** after the type checking phase, and the compiler will generate binaries for the CPU to be able to run the program. (Types are not available at runtime – this is **type erasure**)
 
-## Currying
 
-> The process of applying arguments to a function one by one. 
 
-Currying allows us to partially apply functions, which is very useful to e.g. define new functions in terms of partially-applied functions:
+## Expressions and definitions
+
+Haskell evaluates programs by "reducing" expressions to a "normal" (simplest) form in a lazy manner. This is when a complicated statement has the rules defined by the language and the rest of the program applied to it to reduce its complexity, as it is a declarative language, for example `2+2` would be reduced to `4` by applying the definition of the `+` function.
+
+Definitions are when expressions are assigned to named variables, so they can be referenced elsewhere without having to be defined again inline
+
+
+
+## Anonymous functions
+
+The `\` is used to resemble the Lambda character from Lambda calculus, and it denotes a function without a name, which is just a transformation on an argument. For example, a function to multiply a parameter by two can be written as:
 
 ```haskell
--- Lets say for some reason i want to add 5 to a lot of things
-add = \x -> \y -> x + y
--- We can define addFive with just add
-addFive = add 5
+\x -> x * 2
 ```
+
+All functions in Haskell are actually just anonymous functions, which are assigned to variables, as functions are treated as first class objects, but for simplicity and neatness, we needn't define them this way in code, we can instead use syntactic sugar
+
+## Syntactic sugar for functions
+
+Haskell syntax can be verbose if they are written using only anonymous nomenclature, so there is "syntactic sugar", which can be used to simplify how things are written, for example, the following statements are equivalent
+
+Function definitions can be expressed in various ways. Internally, they are allocating anonymous functions names, but syntactic sugar can be used to make this prettier. For example, the following two functions are equivalent:
+
+```{haskell}
+x = \a -> a + 1
+x a = a + 1
+```
+
+
+
+## Currying
+
+> The process of converting a function which takes multiple arguments into a sequence of functions, each of which take one argument
+
+In Haskell, we fundamentally only create functions which apply an operation to a single input value, and generate a single output value.
+
+We can make functions which look like they take multiple arguments by having a function which takes a parameter, and returns another function, which is specialised based on that parameter. Then, the second (or nth) parameter can be applied to this returned function, yielding the final value.
+
+For example, to write a function to add two numbers, we can say:
+
+```haskell
+add :: Int -> Int -> Int
+add = \x -> \y -> x + y
+```
+
+When this is evaluated, the first parameter would "specialise" the function, giving:
+
+```haskell
+(add 5) :: Int -> Int
+add 5 = \x -> x + 5
+```
+
+So we can see when the first parameter is evaluated, another function is returned, which can then be evaluated with the next parameter. Then, with the second parameter, it just resolves to a single value:
+
+```haskell
+(add 5 6) :: Int
+add 5 6 = 6 + 5
+```
+
+This process is called "partial application", as each parameter is "partially applied" to the function
 
 ### Uncurry
 
@@ -52,25 +103,108 @@ f (a,b) = a + b
 f = \a -> \b -> a + b
 ```
 
-## List comprehension
 
-The general syntax for list comprehension is
 
-```haskell
-[expression | generators-and-predicates]
+## Conditionals
+
+
+
+## Lists
+
+In Haskell, the list data type is implemented as a linked list. This effects how they should be used efficiently, for example, indexing inefficient, but looking at the first item is very efficient
+
+Lists are homogenous, meaning all elements must have the same data type. As a result of this, the type of a list is the polymorphic type signature `[] :: [a]`, since they can store any type, but each element must have the same type
+
+Lists are almost always written with their syntactic sugar, but they are in fact constructed by prepending elements to an empty list
+
+```{haskell}
+x = [1,2,3]
+x = 3 : (2 : (1 : []))
 ```
 
-> Variables introduced in the RHS of the list comprehension are in scope in the expression on the LHS. Additionally, variables from generators are in scope in later ones.
+The `:` or "cons" is used as an infix operator to prepend elements to the list, building it up from an empty list
 
-**Example.**
+- This relates to how list data type is implemented as a linked list, as it encodes the fact that items are added as the head of the linked list sequentially
+- The type of the "cons" operator is `(:) :: a -> [a] -> [a]`, as it takes an element to prepend, and a list containing the same type, and returns a list of that type
 
-```haskell
-[n*m | n <- [0..2], m <- [0..n]] 
-=> [0*0,1*0,1*1,2*0,2*1,2*2] 
-=  [0,0,1,0,2,4]
+
+
+## Ranges
+
+Ranges are a way of generating lists, rather than having to explicitly enumerate them. Haskell can handle ranges for many data types, and will infer patterns from them. For example
+
+```{haskell}
+> [1..4]
+[1,2,3,4]
+> ['a'..'c']
+['a','b','c']
+> [1,3..10]
+[1,3,5,7,9]
 ```
 
-Here we have two generators, `m <- [0..n]` appears after `n <- [0..4]`. Hence, the `n` is in scope in the generator `m <- [0..n]`. Both `m` and `n` are also used in the expression, so they are in scope on the LHS.
+The last example shows the way the compiler can infer patterns - it is effective, but can only handle fairly simple patterns.
+
+Since Haskell is lazily evaluated, it can store ranges of infinite length, and the data will only be used as it is needed
+
+```{haskell}
+> [0..]
+[0,1,2,3,4,5,...]		-- takes infinite time to print all numbers out
+> take 3 [0..]
+[0,1,2]					-- takes finite time to pull numbers off the front of an infinite array
+```
+
+
+
+## List comprehensions
+
+List comprehensions are a further way to generate lists, and offer a greater ability to select and filter the data. They have the general form:
+
+```{text}
+[expression | generator(s) (predicate)]
+```
+
+
+
+They have a large number of variations, including:
+
+- Expressions can be applied to the values being iterated over
+
+  ```{haskell}
+  [even n | n <- [0..5]]
+  => [True,False,True,False,True,False]
+  ```
+
+- Multiple generators can be used
+
+  ```{haskell}
+  [n * m | n <- [0..2], m <- [0..2]]
+  => [0,0,0, 0,1,2, 0,2,3]
+  ```
+
+  where every `m` is iterated over for each `n`
+
+- Variables to the left are in scope of those to the right, so the following is also valid
+
+  ```{haskell}
+  [n * m | n <- [0..2], m <- [0..n]]
+  => [0,0,1,0,2,4]
+  ```
+
+- The left hand side of a generator can be pattern matched on
+
+  ```{haskell}
+  [x | (x:xs) <- [[1,2,3], [4,5,6,7]]]
+  => [1,4]
+  ```
+
+- Finally, predicates can be used along with generators to select whether a value being iterated over should be included in the list
+
+  ```{haskell}
+  [x | x <- [0..5], even x]=> [0,2,4]
+  ```
+
+
+
 
 ## Type Classes
 
@@ -195,9 +329,9 @@ A synonym of this is [dynamic polymorphism](https://csrg-group.github.io/dcs-not
 
 > **Function** associativity binds the strongest.
 
-|   Haskell   |        Maths        |
-| :---------: | :-----------------: |
-| `f x * g y` | *f(x) &times; g(y)* |
+|   Haskell   |        Maths         |
+| :---------: | :------------------: |
+| `f x * g y` | $$f(x) \times g(y)$$ |
 
 {:.centeredtable}
 
