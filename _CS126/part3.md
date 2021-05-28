@@ -44,3 +44,13 @@ See the page on general algorithms for the [pseudocode for a recursive binary se
 **Linear recursion.** Each functional call makes only one recursive call (there may be multiple different possible calls, but only one is selected), or none if it is a base case.
 
 **Binary and multiple recursion.** Each functional call makes two or multiple recursive calls, unless it is a base case.
+
+## Divide and Conquer
+
+> A **design pattern** that enables efficient problem solving. It consists of the following 3 steps:
+>
+> 1. **Divide:** Divide input data into 2 or more disjoint subsets **unless** the input size is smaller than a certain threshold – if it is smaller then solve the problem directly using a straightforward method and return the solution obtained.
+> 2. **Conquer:** Recursively solve the **subproblems** associated with each subset.
+> 3. **Combine:** Take the solutions to the **subproblems** and **merge** them into a solution to the original problem.
+
+This design pattern is widely used in algorithms like **merge sort** and **quick sort**.
