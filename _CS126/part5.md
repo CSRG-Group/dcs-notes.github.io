@@ -98,7 +98,9 @@ This is especially suitable for strings, with $$z=33$$ giving at most $$6$$ coll
 
 Java implements hash functions for all objects with the `.hashCode()` method, giving a convenient way to implement hashing, but a reduction function to map it to the correct size of the table may still be required.
 
-Additionally: "You must override `hashCode()` in every class that overrides `equals()`.  Failure to do so will result in a violation of the general contract for `Object.hashCode()`, which will prevent your class from functioning  properly in conjunction with all hash-based collections, including  `HashMap`, `HashSet`, and `Hashtable`." (*Effective Java*, Joshua Bloch)
+Additionally, "You must override `hashCode()` in every class that overrides `equals()`.  Failure to do so will result in a violation of the general contract for `Object.hashCode()`, which will prevent your class from functioning  properly in conjunction with all hash-based collections, including  `HashMap`, `HashSet`, and `Hashtable`." (*Effective Java*, Joshua Bloch)
+
+This is because the default `.hashcode()` method is dependent on the object's location on memory, which is the same as the default implementation of the `.equals()` method. Then, if the .`equals()` method is changed to be dependent on an object's internal state, two objects could be equal, but have different hash codes, which violates the property of hashing that two equal objects must have the same hash code, as otherwise it is non-deterministic. Hence, the `.hashcode()` method should always be updated to hash equal objects to the same hash code to maintain consistency and avoid difficult to debug conceptual errors. This is not a *requirement*, and the code will still compile if it is not done, but it is very inadvisable not to do so.
 
 ## Collisions
 
