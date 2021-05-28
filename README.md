@@ -181,7 +181,7 @@ math: true
     <td align="center"><a href="http://cjminecraft.theclever.me"><img src="https://avatars.githubusercontent.com/u/13885569?v=4?s=100" width="100px;" alt=""/><br /><sub><b>CJMinecraft</b></sub></a><br /><a href="#content-CJMinecraft01" title="Content">🖋</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://fbcf.xyz"><img src="https://avatars.githubusercontent.com/u/46428367?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felix</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aefbicief" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://fbcf.xyz"><img src="https://avatars.githubusercontent.com/u/46428367?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felix</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aefbicief" title="Bug reports">🐛</a> <a href="#content-efbicief" title="Content">🖋</a></td>
     <td align="center"><a href="https://tomff.com"><img src="https://avatars.githubusercontent.com/u/15079464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tomás F.</b></sub></a><br /><a href="#design-tomasff" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Atomasff" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/to"><img src="https://avatars.githubusercontent.com/u/9795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>to</b></sub></a><br /><a href="#admin-to" title="Admins of CSRG">🔥</a></td>
   </tr>
