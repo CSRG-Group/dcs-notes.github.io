@@ -123,8 +123,6 @@ This has the **drawback** of requiring additional memory space for each linked l
 
 <img src="./images/separateChaining.png" alt="separateChaining" class="center"/>
 
-*Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
-
 ### Linear Probing
 
 > **Linear probing** handles collisions by placing the colliding item in the next available table cell, wrapping around if necessary. 

@@ -4,14 +4,27 @@ title: Public Key Cryptography
 part: true
 ---
 
-## Modular Arithmetic
+## Congruence
 
-1. (A+B) mod n = ((A mod n) + B) mod n
-2. (A+B) mod n = ((A mod n) + (B mod n)) mod n
-3. (A*B) mod n = ((A mod n) * B) mod n
-4. (A*B) mod n = ((A mod n) * (B mod n)) mod n
-5. x<sup>A*B</sup> mod n = (x<sup>A</sup> mod n)<sup>B</sup> mod n
-6. (x<sup>A</sup> mod n)<sup>B</sup> mod n = (x<sup>B</sup> mod n)<sup>A</sup> mod n
+Two numbers $$a$$ and $$b$$ are called **congruent** if they have the same remainder when divided by an arbitrary third number $$n$$. We write this as
+$$
+a \equiv b\ MOD\ n
+$$
+Congruence mod $$n$$ forms $$n$$ equivalence classes of values $$[0; n-1]$$ on the integer numbers, with each class having infinitely many elements, of the form $$\{c + kn\ \|\ \forall k \in \mathbb{Z}\}$$, with $$c \in [0; n-1]$$
+
+## Modular arithmetic identities
+
+The following are equivalent to each other:
+
+- $$(a + b)\ MOD\ n$$
+  - $$((a\ MOD\ n) + b)\ MOD\ n$$
+  - $$((a\ MOD\ n) + (b\ MOD\ n))\ MOD\ n$$
+- ($$a \cdot b)\ MOD\ n$$
+  - $$((a\ MOD\ n) \cdot b)\ MOD\ n$$
+  - $$((a\ MOD\ n) \cdot (b\ MOD\ n))\ MOD\ n$$
+- $$x^{ab}\ MOD\ n$$
+  - $$(x^a\ MOD\ n)^b\ MOD\ n$$
+  - $$(x^b\ MOD\ n)^a\ MOD\ n$$
 
 ## The Primitive Root
 
