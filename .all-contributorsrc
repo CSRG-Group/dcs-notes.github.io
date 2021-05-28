@@ -232,15 +232,6 @@
         "design",
         "bug"
       ]
-    },
-    {
-      "login": "to",
-      "name": "to",
-      "avatar_url": "https://avatars.githubusercontent.com/u/9795?v=4",
-      "profile": "https://github.com/to",
-      "contributions": [
-        "admin"
-      ]
     }
   ],
   "repoType": "github",
