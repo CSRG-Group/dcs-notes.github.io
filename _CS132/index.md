@@ -37,6 +37,8 @@ Another source of type notes by **Yijun Hu** can be found [here](https://www.yij
 Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the
 entire module can be found [here](./CS132_full.pdf).
 
+**Felix Bowyer** has made a cheat sheet for logic circuits, which can be found [here](http://fbcf.xyz/resources/doc/cheatsheet.pdf) [(mirror)](./logiccircuitsheet.pdf).
+
 ## Unofficial worksheet solutions
 
 We have compiled a set of student-written solutions to the worksheets
