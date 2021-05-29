@@ -118,7 +118,7 @@ $$
 
 You can do this unless Matt prohibits it in exam. The best way to get better at this is by doing practice questions.
 
-## Addition and Negative Numbers
+## Addition
 
 > To do **addition** in binary we just do it normally, sum the numbers, and carry over the 1 if it adds to 2. 
 >
@@ -132,9 +132,17 @@ You can do this unless Matt prohibits it in exam. The best way to get better at 
   1100 1101  <- Carry Row
 ```
 
-**Signed Magnitude Representation.** This is 1 way of *representing negative numbers* in bits. The MSB is an indicator of whether the number is negative. 1 is negative, 0 is positive. However, there's a problem when you think about 0. What is +0 vs -0? Our solution is to use two’s complement.
+## Negative Numbers
 
-### Two's Complement Representation
+### Signed Magnitude Representation
+
+One way we can represent negative binary numbers if by adding considering the most significant bit as a flag for whether the number is negative. Normally, the MSB being one means the number is negative.
+
+However, using this representation, there are two representations of zero: $$+0$$ and $$-0$$. This can lead to confusion when using equality operations and other conceptual errors, however, it can be less complex to implement.
+
+Additionally, it reduces the range of the representation by one number, since an additional one is used up to represent the second zero value. This leaves signed magnitude being able to encode the range of numbers $$[-2^{n-1} + 1, 2^{n-1} -1]$$
+
+### Two's complement representation
 
 The MSB has the same value as in the binary positional representation but it is negative. This makes the range asymmetric from [-2<sup>n-1</sup>, 2<sup>n-1</sup> - 1] – there are more negative numbers than positive as the MSB is negative. Because of this, it also makes the zero **unique**.
 
@@ -146,6 +154,12 @@ To get a negative number in two’s complement form from its positive number in 
 Tada, now we can do subtraction by adding negative numbers in two’s complement form. Positive numbers in two’s complement are exactly the same as their binary form just that you have to include an extra bit (the MSB) that is 0. 
 
 The only thing to know for addition and subtraction in two’s complement is to ignore any carry to bits that are beyond the precision of the 2 numbers. 
+
+## Subtraction
+
+Two subtract two numbers, we convert the number to subtract into a negative value, either by flipping the sign bit, or inverting the bits and adding one, dependent on representation. Then we can just add as usual.
+
+This is intuitively clear, as $$a - b \equiv a + (-b)$$
 
 ## Fractional Numbers
 
@@ -165,10 +179,57 @@ However, if the number is 2.8​ for example, **Fixed-PR** will not be very effi
 
 ### Floating Point Representation
 
-Floating point uses the same principles as scientific notation. You should be familiar with **Floating-PR** from [CS118](https://csrg-group.github.io/dcs-notes.github.io/CS118/part1.html).
+Floating point uses the same principles as scientific notation. You should be familiar with **Floating-PR** from [CS118](https://csrg-group.github.io/dcs-notes.github.io/CS118/part1.html). A duplicate of the content their is mirrored here for completeness:
 
-**IEEE Floating Point.** IEEE standard 754 is widely used and specifies levels of binary precision
+IEEE standard 754 is widely used and specifies levels of binary precision
 
 - Single precision (32 bits) – 1bit for the sign, 8bits for the exponent, and 23 bits for the mantissa
 - Double precision (64 bits)
 - Quad precision (128 bits)
+
+#### Components of the IEEE 754 Floating Point Number
+
+Before diving into the components, it's much better to look at an example. Therefore, take the decimal number `43.625`; this has binary representation `101011.101`. However, we would represent this as `1.01011101` x 2<sup>5</sup>. 
+
+In general the value of a floating point number is determined by
+
+> (-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 127</sup>
+
+
+There are three basic components which make up the IEEE 754 floating point number:
+
+1. The **Sign Bit**: this is a _single bit_ where a `0` represents a positive number, whilst a `1` represents a negative number.
+2. The **Biased Exponent**: this is an _eight bit_ exponent field which represents both positive and negative exponents. It is **biased** because it is a fixed positive value that is then subtracted by 127 to represent either a positive or negative exponent. For example, given the exponent bits 10000100<sub>2</sub> = 132<sub>10</sub>. We arrive at the index 2<sup>5</sup> because 2<sup>132-127</sup> = 2<sup>5</sup>. 
+3. The **Mantissa**: this is a _twenty-three bit_ field which makes up the numbers to right of the decimal point `.` (as shown in the formula above). The most significant bit (the left most) is 1/2<sup>1</sup>, then 1/2<sup>2</sup>, and so on. In most cases, the value before the `.` is 1, however in some cases which we will explain in the **special** cases section below, it may be 0 (this is when it is renormalised). 
+
+With these components established, we can rewrite our previous example, `43.625`, `1.01011101` x 2<sup>5</sup> in IEEE 754 notation:
+
+| Sign (1 bit) | Exponent (8 bits) | Mantissa (23 bits)        |
+| ------------ | ----------------- | ------------------------- |
+| `0`          | `10000100`        | `01011101000000000000000` |
+
+**Complete representation:** `0 10000100 01011101000000000000000`
+
+#### IEEE 754 Double-precision Number
+
+Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.
+
+>  (-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 1023</sup>
+
+- **Sign Bit.** No change in bits.
+- **Mantissa.** 52-bits
+- **Biased Exponent.** 11-bits
+
+#### Special values
+
+IEEE 754 also has some special values you need to keep in mind:
+
+When the **exponent bits** = `0000 0000`
+
+- If the _fraction_ is `0`, the value is `0` or `-0`.
+- Otherwise, renormalise the number with this form: (`-1`)<sup>sign bit</sup> x `0.(fraction)` x 2<sup>-127</sup>
+
+The **exponent bits** = `1111 1111`
+
+- If the _fraction_ is `0`, the value is `+- infinity`.
+- Otherwise, the value is `NaN`, otherwise known as **not a number**.
