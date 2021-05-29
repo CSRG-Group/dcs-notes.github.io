@@ -107,6 +107,39 @@ f = \a -> \b -> a + b
 
 ## Conditionals
 
+In function definitions, we often want to be able to write conditional statements. For example, if we want to implement the "not" boolean operator, we might say "if the argument is True, then False, otherwise, True". This can be written in Haskell in a number of ways:
+
+- If..then..else statements
+
+  ```{haskell}
+  not' = \x -> if True
+  				then False
+  				else True
+  ```
+
+  This can then be re-written using syntactic sugar to an in-line expression
+
+  ```{haskell}
+  not' x = if True then False else True
+  ```
+
+  It is worth noting that if an if..then..else statement returns a boolean value, we should always try to replace it with just a simple expression, for example, `if x==5 then True else False` should be written as `x==5`.
+
+- Guards, which similarly act like syntactic sugar for conditional expressions
+
+  ```{haskell}
+  min x y | x < y		= x
+  		| otherwise	= y
+  ```
+
+- Case statements
+
+  ```{haskell}
+  not' = \x -> case x of
+  				True -> False
+  				False -> True
+  ```
+
 
 
 ## Lists

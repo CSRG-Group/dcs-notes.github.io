@@ -135,6 +135,7 @@ collections:
     order:
       - part1.md
       - part2.md
+      - part3.md
       - datatypes.md
       - equationalReasoning.md
       - FAM.md
