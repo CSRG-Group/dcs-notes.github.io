@@ -68,7 +68,7 @@ $$0 < r_1 < r_0$$.
     write this last nonzero remainder, thus
     $$\gcd(r_1, r_0) = xr_1 + yr_0 \textrm{ for some integers } x, y.$$
 
-A python implementation of this algorithm is as follows:
+A python implementation of this algorithm is as follows, and can be downloaded [here](./gcd.py):
 
 ```python
 #!/usr/bin/python3
