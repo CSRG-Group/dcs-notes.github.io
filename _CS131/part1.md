@@ -5,8 +5,6 @@ math: true
 title: "Number Systems"
 ---
 
-[toc]
-
 ## Integers
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note1.pdf)

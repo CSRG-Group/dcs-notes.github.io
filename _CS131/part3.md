@@ -5,20 +5,9 @@ math: true
 title: "Matrices"
 ---
 
-Introduction
-------------
+## Matrix Algebra
 
-1.  [Matrix Algebra](#mat-1)
-2.  [Matrix Inverse, Linear Equations](#mat-2)
-3.  [Matrix Inverse, Determinants](#mat-3)
-4.  [Linear Transformations](#mat-4)
-5.  [Matrices and Linear Transformations](#mat-5)
-
-Matrix Algebra
---------------
-
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
 
 Matrices are rectangular arrays of elements. It\'s order is its
 $$\textrm{row } \times \textrm{ column}$$. Note that an $$m \times 1$$
@@ -26,12 +15,17 @@ matrix is called a **column matrix/vector**, and $$1 \times n$$ matrices
 are similarly named as rows. Elements are referred to with subscript row
 column: $$a_{ij}$$.
 
+### Matrix operations
+
+#### Addition and scalar multiplication
+
 Sum of two matrices is only defined if they have the same order, and is
-*elementwise* addition. Scalar multiplication is also done elementwise.
+*elementwise* addition.
 
-The Zero matrix, denoted $$O_{m \times n}$$ is a matrix of all zeros.
+Scalar multiplication is also done elementwise.
 
-***Properties of addition and scalar multiplication.***
+##### Properties of addition and scalar multiplication
+
 $$\forall m \times n$$ matrices $$A, B, C$$,
 $$\forall \lambda, \mu \in \mathbb{R}$$:
 
@@ -43,15 +37,50 @@ $$\forall \lambda, \mu \in \mathbb{R}$$:
 6.  $$\lambda (A+B) = \lambda A + \lambda B$$
 7.  $$\lambda(\mu A) = (\lambda \mu ) A$$
 
+#### Matrix multiplication
+
 Matrix multiplication can only happen between an
 $$A_{m \times \mathbfit{n}}$$ and a $$B_{\mathbfit{n} \times p}$$ (note the
 highlighted dimensions) and will produce a matrix $$C_{m \times p}$$.
 
 Matrix multiplication is hard to explain in text, so [see this
 video](https://www.youtube.com/watch?v=as8C8w-Nz94) if you\'re not sure
-(by blackpenredpen).
+(by blackpenredpen)
 
-A square matrix $$A_{n \times n}$$ is said to be of *order $$n$$*
+##### Properties of matrix multiplication
+
+Whenever the products exist, matrix multiplication has the properties:
+
+1.  $$(AB)C = A(BC)$$ (associativity)
+2.  $$A(B+C) = AB + AC$$, $$(A+B)C = AC + BC$$
+3.  $$IA = A = AI$$
+4.  $$OA = O = AO$$
+5.  $$A^p A^q = A^{p+q} = A^q A^p$$, $$(A^p)^q = A^{pq}$$
+
+Note that matrix multiplication is **not commutative**: $$AB \neq BA$$
+(for all but specific circumstances).
+
+#### Matrix transposition
+
+The **transpose** $$A^T$$ of a matrix is obtained by swapping rows and
+columns (i.e. reflecting on leading diagonal).
+
+##### Properties of transposition
+
+1.  $$(A^T)^T=A$$
+2.  $$(A+B)^T = A^T + B^T$$ if $$A+B$$ exists
+3.  $$(\lambda A)^T = \lambda A^T$$ for any $$\lambda \in \mathbb{R}$$
+4.  $$(AB)^T = B^T A^T$$ if $$AB$$ exists.
+
+For same order square matrices $$A, B$$, $$B$$ is the inverse of $$A$$ if and
+only if $$AB = I = BA$$. The inverse (should it exist) is **unique** and
+denoted $$A^{-1}$$.
+
+### Types of matrices
+
+A ***square matrix*** $$A_{n \times n}$$ is said to be of *order $$n$$*
+
+The ***zero matrix***, denoted $$O_{m \times n}$$ is a matrix of all zeros.
 
 **Diagonal matrices** only have elements on the leading diagonal;
 $$a_{ii}$$ for some $$i : [1..n]$$.
@@ -63,30 +92,7 @@ For a square matrix $$A$$, $$A, AA, AAA, ...$$ are defined as
 $$A, A^2, A^3,...$$ respectively. $$A^0 = I$$. Functions
 $$\exp(A), \cos(A), \sin(A)$$ can also be defined *(hint: taylor series)*.
 
-***Properties of matrix multiplication.*** whenever the products exist:
-
-1.  $$(AB)C = A(BC)$$ (associativity)
-2.  $$A(B+C) = AB + AC$$, $$(A+B)C = AC + BC$$
-3.  $$IA = A = AI$$
-4.  $$OA = O = AO$$
-5.  $$A^p A^q = A^{p+q} = A^q A^p$$, $$(A^p)^q = A^{pq}$$
-
-Note that matrix multiplication is **not commutative**: $$AB \neq BA$$
-(for all but specific circumstances).
-
-The **transpose** $$A^T$$ of a matrix is obtained by swapping rows and
-columns (i.e. reflecting on leading diagonal).
-
-***Properties of transposition.***
-
-1.  $$(A^T)^T=A$$
-2.  $$(A+B)^T = A^T + B^T$$ if $$A+B$$ exists
-3.  $$(\lambda A)^T = \lambda A^T$$ for any $$\lambda \in \mathbb{R}$$
-4.  $$(AB)^T = B^T A^T$$ if $$AB$$ exists.
-
-For same order square matrices $$A, B$$, $$B$$ is the inverse of $$A$$ if and
-only if $$AB = I = BA$$. The inverse (should it exist) is **unique** and
-denoted $$A^{-1}$$.
+### Determinant of a 2x2 matrix
 
 The **determinant** of a $$2 \times 2$$ matrix
 $$A = \begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix}$$ is $$ad-bc$$ and
@@ -100,11 +106,9 @@ The inverse of $$A = \begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix}$$ is
 $$A^{-1} = \frac{1}{\det A} \begin{bmatrix} d  &  -b \\ -c  &  a \end{bmatrix}$$
 (a particular case of a general result)
 
-Matrix Inverse, Linear Equations
---------------------------------
+## Matrix Inverse, Linear Equations
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf)
 
 A system of linear equations can be written in matrix form.
 
@@ -112,9 +116,10 @@ A system of linear equations can be written in matrix form.
 $$\begin{align} ax\_1 + bx\_2  & = y\_1 \\ cx\_1 + dx\_2  & = y\_2
 \end{align}$$
 
-
 $$\equiv \begin{bmatrix} a  &  b \ c  &  d \end{bmatrix} \begin{bmatrix} x_1 \ x_2 \end{bmatrix} = \begin{bmatrix} y_1 \ y_2 \end{bmatrix}.$$
 Which can be extrapolated to general form.
+
+### Elementary row operations
 
 The following operations can be performed to solve a system (**Gaussian
 Elimination**):
@@ -122,6 +127,8 @@ Elimination**):
 -   Swap two rows (equations)
 -   Multiply a row (both sides of an equation) by a nonzero number
 -   Add a multiple of one row (equation) to another
+
+### Augmented matrices
 
 Which can be done over the *augmented matrix*, which is gotten by
 combining $$\begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix}$$ and
@@ -140,7 +147,7 @@ See the pdf for sample problems. *Note: there also exists **reduced row
 echelon form**, where each leading entry is a 1, and each column with a
 1 in has 0s for all other entries.*
 
-Elementary row ops can be done by multiplying by so-called *elementary
+Elementary row operations can be done by multiplying by so-called *elementary
 matrices*. These are defined for (\E\_{n \times n}\):
 
 -   $$E_{ij}$$ obtained from $$I$$ by exchanging rows $$i, j$$
@@ -157,13 +164,12 @@ then $$A^{-1}$$ exists and the same sequence transforms $$I$$ into $$A$$.
 This is best done with an augmented matrix, like
 $$\left[\begin{array}{cc|cc} a  &  b  &  1  &  0 \\ c  &  d  &  0  &  1 \end{array}\right]$$
 
-Matrix Inverse, Determinants
-----------------------------
+## Matrix Inverse, Determinants
 
-[Link to first
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf)\
-[Link to second
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf)
+[Link to first PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf) 
+[Link to second PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf)
+
+### Determinant of a 3x3 matrix and the cofactor matrix
 
 The determinant of a $$3 \times 3$$ matrix is denoted the same way, and is
 defined 
@@ -184,11 +190,15 @@ $$\begin{bmatrix}+ & - & + \\ - & + & - \\ + & - & +\end{bmatrix}$$
 
 This can be done with any row or column.
 
+### Elementary row operations on determinants
+
 On elementary row operations and determinants ($$B$$ obtained from $$A$$):
 
 1.  Multiplying a row in A by a $$\lambda$$: $$|B| = \lambda|A|$$
 2.  Swapping 2 rows of A: $$|B| = -|A|$$
 3.  Adding a multiple of one row to another: $$|B| = |A|$$
+
+### Cramer's rule to invert matrices
 
 A square matrix is inversible *iff* its determinant is not 0. If $$A$$ is
 invertible, $$A^{-1} = \frac{1}{|A|} \textrm{adj}(A)$$ where
@@ -204,7 +214,9 @@ $$\begin{align}
  Where the column vector x are the variables, and column
 vector y are the values of the equations.
 
-***Linear independence via determinants.*** A set of $$n$$ vectors in
+### Linear independence via determinants
+
+A set of $$n$$ vectors in
 $$\mathbb{R}^n$$ is linearly independent *if and only if* it is the set of
 column vectors of a matrix with nonzero determinant.
 
@@ -212,11 +224,9 @@ Basically, bang $$n$$ $$\mathbb{R}^n$$ vectors into a square matrix, compute
 the determinant, and if it is 0, then those vectors are linearly
 dependent.
 
-Linear Transformations
-----------------------
+## Linear Transformations
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf)
 
 A function $$T : \textrm{R}^m \longrightarrow \mathbb{R}^n$$ is a **linear
 transformation** if,
@@ -256,11 +266,9 @@ $$R_\theta (x, y) = (x\cos\theta - y\sin\theta, x\sin\theta - y\cos\theta).$$
 Or alternatively in matrix form (let $$(x', y')$$ be $$R_\theta (x, y)$$) as
 $$\begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix}\ \cos\theta  &  -\sin\theta \\ \sin\theta  &  \cos\theta \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}.$$
 
-Linear Transformations and Matrices
------------------------------------
+## Linear Transformations and Matrices
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf)
 
 Referring back to the last example in the last section, it is further
 true that **every** $$M_{m \times n}$$ matrix can act as a linear
@@ -301,11 +309,9 @@ called a **transition matrix**.
 The definition on the notes is uh, just do the same thing as above but
 the matrix will be square.
 
-Eigenvalues and Eigenvectors
-----------------------------
+## Eigenvalues and Eigenvectors
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf)
 
 Relating to matrices multiplying vectors, and especially where the
 vectors don\'t change direction.
@@ -323,7 +329,9 @@ eigenvalues. Eigenvalues can also be $$\in \mathbb{C}$$.
 Recall that diagonal matrices are written
 $$\textrm{diag}[a_{11}, a_{22}, ..., a_{nn}]$$.
 
-***Diagonalisation of Matrices.*** For an order $$n$$ matrix A:
+### Diagonalisation of Matrices
+
+For an order $$n$$ matrix A:
 $$A = UDU^{-1}$$ Where
 $$D = \textrm{diag}[\lambda_1, \lambda_2, ..., \lambda_n]$$ (the eigen
 values), and $$U = [\vec{v}_1, \vec{v}_2, \dots, \vec{v}_n]$$ are the
