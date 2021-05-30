@@ -32,20 +32,20 @@ down and up respectively to the nearest integer.
 
 $$\forall k \in \mathbb{Z}$$: 
 
-$$\begin{align}  &  \lim\_{x \rightarrow k-}
-\left \lfloor{x}\right \rfloor = k-1,  &  \lim\_{x \rightarrow k+}
+$$\begin{align}  &  \lim_{x \rightarrow k-}
+\left \lfloor{x}\right \rfloor = k-1,  &  \lim_{x \rightarrow k+}
 \left \lfloor{x}\right \rfloor = k; \end{align}$$
 
  
 
 $$\begin{align}  & 
-\lim\_{x \rightarrow k-} \left \lceil{x}\right \rceil = k,  & 
-\lim\_{x \rightarrow k+} \left \lceil{x}\right \rceil = k+1.
+\lim_{x \rightarrow k-} \left \lceil{x}\right \rceil = k,  & 
+\lim_{x \rightarrow k+} \left \lceil{x}\right \rceil = k+1.
 \end{align}$$
 
 #### Exercise
 
-***Example.*** Prove that $$\lim_x \rightarrow 0 \frac{1}{x}$$ does not
+Prove that $$\lim_x \rightarrow 0 \frac{1}{x}$$ does not
 exist.
 
 ***Proof.*** We need to find a sequence $$x_n \rightarrow 0$$ where
@@ -119,12 +119,12 @@ If
 $$f : [a, b] \longrightarrow \mathbb{R}$$ is continuous, $$f(a), f(b)$$ have
 opposite signs, then there is a point $$c$$ between $$: f(c) = 0$$.
 
-#### Problem
+#### Exercise
 
-***Problem.*** Show that there is a number
+Show that there is a number
 $$x : x^{179} + \frac{163}{1 + x^2} = 119$$.
 
-***Answer.*** Rearrange, let
+***Proof.*** Rearrange, let
 $$f(x) = x^{179} + \frac{163}{1 + x^2} - 119$$.
 
 $$f(0) > 0,\; f(1) < 0$$ thus by intermediate value theorem
@@ -206,11 +206,11 @@ and $$f'(x) = \sum_{n=1}^\infty na_nx^{n-1}$$
 The exponential function $$\exp(x)$$ or $$e^x$$ can be defined as a power
 series (its Maclaurin series) and thus differentiable to get\... $$e^x$$.
 
-#### Problem
+#### Exercise
 
-***Problem.*** Find $$\sum_{n=1}^\infty \frac{n}{2^n}$$.
+Find $$\sum_{n=1}^\infty \frac{n}{2^n}$$.
 
-***Answer.*** You\'ve got to bear with me on this one, because the given
+***Solution.*** You\'ve got to bear with me on this one, because the given
 solution is clearly written by someone who knew the answer already and
 have left out a lot of the logic leaps.
 
@@ -334,12 +334,12 @@ $$\begin{align} \therefore d(x^2 + y^2 = 0)/dx  & \implies 2xdx +
 
 
 
-#### Problem
+#### Exercise
 
-***Problem.*** Find $$\frac{dy}{dx}$$ of $$y \sin x + \tan^{-1} y = 0$$ in
+Find $$\frac{dy}{dx}$$ of $$y \sin x + \tan^{-1} y = 0$$ in
 terms of $$y, x$$.
 
-***Answer.*** First, differentiate $$y \sin x$$. By product rule,
+***Solution.*** First, differentiate $$y \sin x$$. By product rule,
 
 $$d(y \sin x) = \sin(x)dy + y\cos(x)dx$$ Then $$\tan^{-1} y$$ is a standard
 derivative, $$d(\tan^{-1} y) = \frac{1}{1+y^2} dy$$ Thus we get
@@ -441,8 +441,8 @@ let
 Also let the lower sum $$L(f, P$$ and the upper sum $$U(f, P)$$
 
 
-$$\begin{align} L(f, P)  & = \sum\_{r=1}^{n} (x\_r - x\_{r-1})m\_r, \\
-U(f, P)  & = \sum\_{r=1}^{n} (x\_r - x\_{r-1})M\_r. \end{align}$$
+$$\begin{align} L(f, P)  & = \sum_{r=1}^{n} (x_r - x_{r-1})m_r, \\
+U(f, P)  & = \sum_{r=1}^{n} (x_r - x_{r-1})M_r. \end{align}$$
 
  These
 are the lower and upper estimates of the area under the graph of $$f$$.
@@ -455,8 +455,8 @@ $$\vartriangleright$$
 
 
 
-$$\begin{align}  & \int\_{a}^{a} f(x)dx = 0  & \int\_{a}^{b} f(x)dx = -
-\int\_{b}^{a} f(x)dx. \end{align}$$
+$$\begin{align}  & \int_{a}^{a} f(x)dx = 0  & \int_{a}^{b} f(x)dx = -
+\int_{b}^{a} f(x)dx. \end{align}$$
 
 
 
@@ -715,13 +715,13 @@ $$\begin{align}
  And replace $$v$$ by $$\frac{y}{x}$$ to
 get the original general equation.
 
-The following problem *may* help.
+The following exercise *may* help.
 
-#### Problem
+#### Exercise
 
-***Problem.*** Solve $$2xy \frac{dy}{dx} = y^2 - x^2.$$
+Solve $$2xy \frac{dy}{dx} = y^2 - x^2.$$
 
-***Answer.*** We can rearrange;
+***Solution.*** We can rearrange;
 $$\implies \frac{dy}{dx} = \frac{y^2-x^2}{2xy} = \frac{1}{2}(\frac{y^2}{xy} - \frac{x^2}{xy}) = \frac{1}{2}(\frac{y}{x}-\frac{x}{y}).$$
 This is homogenous, so we apply the above principle to this equation;
 
@@ -759,13 +759,13 @@ $$\begin{align}
 
 
 
-#### Problem
+#### Exercise
 
-***Problem.*** Find the general solution to
+Find the general solution to
 $$(1+x^2)\frac{dy}{dx} + xy = x\sqrt{1+x^2},$$ and the particular solution
 which satisfies $$y = \frac{1}{2}, x=0$$.
 
-***Answer.*** We can rearrange the equation to
+***Solution.*** We can rearrange the equation to
 $$\frac{dy}{dx} + \frac{xy}{1+x^2} = \frac{x}{\sqrt{1+x^2}}$$ The
 integrating factor is thus
 $$e^{\int \frac{x}{1+x^2}dx} = e^{\frac{1}{2} \ln (1+x^2)} = (1 + x^2)^{\frac{1}{2}}.$$

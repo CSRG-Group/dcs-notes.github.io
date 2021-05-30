@@ -64,12 +64,12 @@ $$a_n \rightarrow \alpha, b+n \rightarrow \beta, c_n \rightarrow \gamma$$:
 
 
 
-#### Problems
+#### Exercise
 
-***Q.*** Show that the following sequence converges, find its
+Show that the following sequence converges, find its
 limit: $$a_n = \frac{(n+2)(2n-1)}{3n^2 + 1}$$
 
-***Answer.*** The components do not converge themselves, a technique here is *dividing
+***Solution.*** The components do not converge themselves, a technique here is *dividing
 by the fastest increasing term*. Dividing by $$n^2$$,
 $$a_n = \frac{\frac{(n+2)}{n}\frac{(2n-1)}{n}}{\frac{3n^2 +1}{n^2}} = \frac{(1 + \frac{2}{n})(2 - \frac{1}{n})}{3 + \frac{1}{n^2}}.$$
 
@@ -99,11 +99,11 @@ $$a_{n+1} \leq a_n \;\forall n$$.
 1.  A convergent sequence has a *unique* limit.
 2.  If $$a_n \rightarrow l$$ then *every subsequence* of $$a_n$$ also
     converges to $$l$$.
-3.  If $$a_n \rightarrow l$$ then $$|a_n| \rightarrow |l|$$.
+3.  If $$a_n \rightarrow l$$ then $$\|a_n\| \rightarrow \|l\|$$.
 4.  **The squeeze rule.** If
     $$a_n \rightarrow l, b_n \rightarrow l; a_n < c_n < b_n \; \forall n$$
-    then $$c_n \rightarrow l$$.^1^
-5.  A convergent sequence is always bounded.^2^
+    then $$c_n \rightarrow l$$.
+5.  A convergent sequence is always bounded.
 6.  An increasing sequence which is bounded above converges. A
     decreasing sequence which is bounded below converges.
 
@@ -113,18 +113,19 @@ converge to the same limit, so naturally it will too.$$\exists B > 0 : - B \leq 
 You can demonstrate an alternating sequence (e.g. $$(-1)^n$$) doesn\'t
 converge by looking at *subsequences*.
 
-Reminder: the binomial theorem is
-$$(1 + x)^n = 1 + nx + \frac{n(n-1)}{2!}x^2 + ... + \frac{n!}{k!(n-k)!}x^k$$
 
-#### Problems
 
-***Q.*** Show that for $$x \geq 0, n > 0$$, this:
+#### Exercise
+
+Show that for $$x \geq 0, n > 0$$, this:
 $$(1+x)^{\frac{1}{n}} \leq 1 + \frac{x}{n}$$.
 
 Hence deduce/show that if $$c > 0$$ then $$c^\frac{1}{n} \rightarrow 1$$.
 
+Reminder: the binomial theorem is
+$$(1 + x)^n = 1 + nx + \frac{n(n-1)}{2!}x^2 + ... + \frac{n!}{k!(n-k)!}x^k$$
 
-***Answer.*** Firstly, we can rearrange and use the binomial theorem.
+***Solution.*** Firstly, we can rearrange and use the binomial theorem.
 
 
 $$\begin{align} 1 + x  & \leq (1 + \frac{x}{n})^n. \\ (1 +
@@ -157,7 +158,7 @@ A sequence $$a_n$$ is said to **diverge to
 infinity** if
 $$\forall K \in \mathbb{R}\; \exists N : n > N \implies a_n > K$$.
 
-In plain english, there is a point in $$a_n$$ where the terms are greater
+In plain English, there is a point in $$a_n$$ where the terms are greater
 than any real number one picks.
 
 We denote this as $$a_n \rightarrow \infty$$. $$a_n$$ diverges to $$-\infty$$
@@ -168,13 +169,13 @@ A divergent sequence that doesn\'t go off to infinity is said to
 
 ### Basic convergent sequences
 
-$$\begin{align}  &  \lim\_{n
+$$\begin{align}  &  \lim_{n
 \rightarrow \infty} \frac{1}{n^p} = 0  &  \forall p > 0 \\  & 
-\lim\_{n \rightarrow \infty} c^n = 0  &  \forall c : \|c\| < 1 \\
- &  \lim\_{n \rightarrow \infty} c^\frac{1}{n} = 1  &  \forall c > 0
-\\  &  \lim\_{n \rightarrow \infty} n^p c^n = 0  &  \forall p > 0
-\land \|c\| < 1 \\  &  \lim\_{n \rightarrow \infty}
-\frac{c^n}{n!} = 0  &  \forall c \in \mathbb{R} \\  &  \lim\_{n
+\lim_{n \rightarrow \infty} c^n = 0  &  \forall c : \|c\| < 1 \\
+ &  \lim_{n \rightarrow \infty} c^\frac{1}{n} = 1  &  \forall c > 0
+\\  &  \lim_{n \rightarrow \infty} n^p c^n = 0  &  \forall p > 0
+\land \|c\| < 1 \\  &  \lim_{n \rightarrow \infty}
+\frac{c^n}{n!} = 0  &  \forall c \in \mathbb{R} \\  &  \lim_{n
 \rightarrow \infty} (1 + \frac{c}{n})^n = e^c  &  \forall c \in
 \mathbb{R} \end{align}$$
 
@@ -198,9 +199,9 @@ A standard one is the geometric series, $$\sum r^n$$ which will always
 converge to $$\frac{1}{1-r}$$ when $$|r| < 1$$. You can prove this by
 working out $$rs_n - s_n$$. 
 
-$$\begin{align} s\_n - rs\_n = 1 - r^{n+1}
- & \Longleftrightarrow s\_n(1-r) = 1 - r^{n+1}\\  & \Longleftrightarrow
-s\_n = \frac{1 - r^{n+1}}{1-r}. \end{align}$$
+$$\begin{align} s_n - rs_n = 1 - r^{n+1}
+ & \Longleftrightarrow s_n(1-r) = 1 - r^{n+1}\\  & \Longleftrightarrow
+s_n = \frac{1 - r^{n+1}}{1-r}. \end{align}$$
 
  And $$|r| < 1$$ means that
 $$r$$-power will converge to 0.
@@ -237,17 +238,20 @@ thin air, but (especially with rational functions) there\'s usually a
 technique for doing so based on the largest power of $$n$$, and slowly
 chipping away a piece at a time until we get a very simple expression.
 
-#### Problems
+#### Exercises
 
-***Q.*** Determine whether the following series converges or
-diverges: 
+Determine whether the following series converges or
+diverges:
 
-$$\begin{align}  &  (1)\; \sum \frac{n+2}{n^3 - n^2 + 1}  & 
-(2) \;\sum \frac{n^2 + 4}{2n^3 - n + 1} \end{align}$$
+1. $$
+   \sum \frac{n+2}{n^3 - n^2 + 1}
+   $$
 
+2. $$
+   \sum \frac{n^2 + 4}{2n^3 - n + 1}
+   $$
 
-
-***Answer 1.*** Take a look at the fraction $$\frac{n+2}{n^3 - n^2 + 1}$$.
+***Solution 1.*** Take a look at the fraction $$\frac{n+2}{n^3 - n^2 + 1}$$.
 If we want to find a smaller fraction, we want a smaller numerator and a
 larger denominator than our current fraction. 
 
@@ -269,7 +273,7 @@ all valid. Thus $$\frac{n+2}{n^3 - n^2 + 1} \leq \frac{6}{n^2}$$ and since
 we know $$\sum \frac{6}{n^2}$$ converges ($$6 \sum \frac{1}{n^2}$$) the
 original one must too.
 
-***Answer 2.*** We\'re gonna be cheat-y and say that this sequence does
+***Solution 2.*** We\'re gonna be cheat-y and say that this sequence does
 diverge. To show this, let\'s find a smaller fraction which diverges.
 
 
@@ -293,9 +297,9 @@ Useful in dealing with factorials.
 
 ### Basic Convergent Series
 
--   $$\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}$$ for all $$r : |r| < 1$$
+-   $$\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}$$ for all $$r : \|r\| < 1$$
 -   $$\sum \frac{1}{n^k}$$ converges for all $$k > 1$$
--   $$\sum n^k r^n$$ converges for $$k > 0 \land |r| < 1$$
+-   $$\sum n^k r^n$$ converges for $$k > 0 \land \|r\| < 1$$
 -   $$\sum_{n=0}^{\infty} \frac{c^n}{n!} = e^c$$ for all
     $$c \in \mathbb{R}$$
 
@@ -313,8 +317,8 @@ at $$n = 0$$, such that the sequence goes $$a_0, a_1x, a_2x^2, ...$$
 Let 
 
 $$\begin{align} f(x)  & =
-\sum\_{n=0}^{\infty} a\_nx^n  &  x \in (-R\_1, R\_1) \\ g(x)  & =
-\sum\_{n=0}^{\infty} b\_nx^n  &  x \in (-R\_2, R\_2) \end{align}$$
+\sum_{n=0}^{\infty} a_nx^n  &  x \in (-R_1, R_1) \\ g(x)  & =
+\sum_{n=0}^{\infty} b_nx^n  &  x \in (-R_2, R_2) \end{align}$$
 
  For
 positive $$R_1, R_2$$, and let $$R = \min(R_1, R_2)$$. Then for all
@@ -331,7 +335,7 @@ This also gives the general binomial theorem, which for any
 $$q \in \mathbb{Q}, x \in (-1, 1)$$ 
 
 $$\begin{align} (1+x)^q  & =
-\sum\_{n=0}^{\infty} {q \choose n} x^n \\ {q \choose n}  & =
+\sum_{n=0}^{\infty} {q \choose n} x^n \\ {q \choose n}  & =
 \frac{q!}{n!(q-n)!} \end{align}$$
 
 
@@ -341,7 +345,7 @@ $$\begin{align} (1+x)^q  & =
 ### Radius of convergence
 
 ***Lemma.*** If $$\sum a_n R^n$$ converges for some $$R \geq 0$$, then
-$$\sum a_n x^n$$ converges $$\forall x : |x| < R$$. *(proof in notes)*
+$$\sum a_n x^n$$ converges $$\forall x : \|x\| < R$$. *(proof in notes)*
 
 $$R \geq 0$$ is the **radius of convergence** of a power series
 $$\sum a_n x^n$$ if it converges according to the above, and diverges if
@@ -351,15 +355,15 @@ infinity.
 If the series $$\sum a_n x^n$$ has a conv. rad $$R$$ then it defines a
 function 
 
-$$\begin{align}  & f(x) = \sum\_{n=0}^{\infty} a\_nx^n
+$$\begin{align}  & f(x) = \sum_{n=0}^{\infty} a_nx^n
  & \forall x \in (-R, R) \end{align}$$
 
 
 
 You can find the [radius of convergence using ratio
 test](https://www.youtube.com/watch?v=4L9dSZN5Nvg), essentially
-evaluate $$\lim_{n \rightarrow \infty} |\frac{a_{n+1}}{a_n}| < 1.$$ and
-you will get an $$|x| < ...$$ where that something is your radius.
+evaluate $$\lim_{n \rightarrow \infty} \|\frac{a_{n+1}}{a_n}\| < 1.$$ and
+you will get an $$\|x\| < ...$$ where that something is your radius.
 
 
 
@@ -431,12 +435,11 @@ Let $$\lambda_1, \lambda_2$$ be the roots of the  auxiliary equation.
 For constants $$A, B$$, which can be found if the first two terms of the
 sequence are known.
 
-### Problems
+### Exercise
 
-***Problem.*** Find a closed form for the Fibonacci sequence.
+Find a closed form for the Fibonacci sequence.
 
-
-***Answer.*** We have $$F_n = F_{n-1} + F_{n-2}$$ so
+***Solution.*** We have $$F_n = F_{n-1} + F_{n-2}$$ so
 $$F_n - F_{n-1} - F_{n-2} = 0$$. The auxiliary equation is
 $$\lambda^2 - \lambda - 1 = 0$$ Which has roots
 $$\lambda = \frac{1 \pm \sqrt{5}}{2}$$ Or $$\phi$$ and $$-(\frac{1}{\phi})$$
@@ -445,7 +448,7 @@ $$F_n = A(\frac{1 + \sqrt{5}}{2}) + B(\frac{1 - \sqrt{5}}{2}).$$ We know
 $$F_0 = 0, F_1 = 1$$ so if we substitute these values in, we get that
 $$A = \frac{1}{\sqrt{5}}, B = -\frac{1}{\sqrt{5}}$$. 
 
-$$\begin{align} F\_n
+$$\begin{align} F_n
  & = \frac{1}{\sqrt{5}}(\frac{1 + \sqrt{5}}{2})
 -\frac{1}{\sqrt{5}}(\frac{1 - \sqrt{5}}{2}). \\  & =
 \frac{1}{\sqrt{5}}(\phi^n + \phi^{-n}). \end{align}$$
@@ -478,7 +481,7 @@ If $$f(n)$$ is a constant, try find a constant $$k$$.
 If $$f(n)$$ is a polynomial, try find a *same degree* polynomial.
 (substitute in a general polynomial)
 
-Etc. just like diff. equations.
+Etc. just like differential equations.
 
 ## Decimal Representation of Reals
 

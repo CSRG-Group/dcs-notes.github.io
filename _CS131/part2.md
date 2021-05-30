@@ -15,12 +15,16 @@ $$\mathbb{R^3}$$ respectively. *(Note, thus ordered pairs)*
 Can be treated as coordinate points.
 
 Denoted either with arrow ($$\vec{x}$$), underline ($$\underline{x}$$), or
-bold ($$\mathbfit{x}$$). I\'ll be using the arrow.
+bold ($$\mathbf{x}$$). I\'ll be using the arrow.
+
+### Addition and scalar multiplication
 
 Addition and scalar multiplication are done element-wise. For
 $$\vec{x} = (x_1, x_2, ..., x_n)$$ and $$\vec{y} = (y_1, y_2, ..., y_n)$$
-$$\lambda \vec{x} = (\lambda x_1, \lambda x_2, ..., \lambda x_n)$$
-$$\vec{x}\vec{y} = (y_1 + x_1, y_2 + x_2, ...,y_3 + x_n)$$
+
+- $$\lambda \vec{x} = (\lambda x_1, \lambda x_2, ..., \lambda x_n)$$
+- $$\vec{x}\vec{y} = (y_1 + x_1, y_2 + x_2, ...,y_3 + x_n)$$
+
 $$\vec{x} - \vec{y}$$ and $$-\vec{x}$$ are also defined accordingly from
 these.
 
@@ -28,19 +32,23 @@ In $$\mathbb{R}^2$$ if $$\vec{p} = (p_1, p_2)$$ then this is the directed
 line segment $$\overrightarrow{OP}$$ starting at origin $$O$$ and ending at
 point P $$(p_1, p_2)$$. $$\vec{p}$$ is then the **position vector** of P.
 
+### Position, unit and zero vectors, and vector length
+
 Two line segments are equivalent if they have the same length and
 direction.
 
-For points $$A, B$$ with vecs $$\vec{a}, \vec{b}$$ then
-$$\overrightarrow{AB} = \vec{b} - \vec{a}$$.
+For points $$A, B$$ with vectors $$\vec{a}, \vec{b}$$ then
+$$\overrightarrow{AB} = \vec{b} - \vec{a}$$, for $$\vec{a} = (a_1, a_2) \in \mathbb{R}^2$$
 
-For $$\vec{a} = (a_1, a_2) \in \mathbb{R}^2$$
-
-The **length of $$\vec{a}$$** $$|\vec{a}| = \sqrt{a_{1}^{2} + a_{2}^{2}}$$;
+The **length of $$\vec{a}$$** is written as $$\|\vec{a}\| = \sqrt{a_{1}^{2} + a_{2}^{2}}$$;
 similarly in 3D.
 
 A **unit vector** has length 1. The **distance** between
-$$\vec{a}, \vec{b} = |\vec{b} - \vec{a}|$$.
+$$\vec{a}, \vec{b} = \|\vec{b} - \vec{a}\|$$.
+
+The **zero vector**, $$\vec{0}$$ has all zeros in it.
+
+### The scalar/dot product
 
 The **scalar (dot) product**, $$\vec{a} \cdot \vec{b}$$ is the real number
 $$a_1 b_1 + a_2 b_2 + ... + a_n b_n$$.
@@ -52,7 +60,7 @@ vectors are **orthogonal** (perpendicular) if dot product is 0.
 
 All definitions (if not already) can be extended to $$n$$ dimensions.
 
-The **zero vector**, $$\vec{0}$$ has all zeros in it.
+
 
 ## Linear Combinations and Subspaces
 
@@ -115,9 +123,7 @@ empty) and $$\mathbb{R}^n$$ itself.
     $$\textrm{span } U$$ is a subspace, the subspace **spanned or
     generated** by U.
 
-### Problems
-
-***Q.***
+### Exercise
 
 Determine if $$S$$ is a subspace of $$\mathbb{R}^n$$:
 
@@ -125,18 +131,18 @@ Determine if $$S$$ is a subspace of $$\mathbb{R}^n$$:
 2.  $$S = \{(1, 1)\} \in \mathbb{R}^2$$
 3.  $$S = \{(x, y) : x^2 + y^2 \leq 1\} \in \mathbb{R}^2$$
 
-***Answer.***
+***Solutions.***
 
-(1) We need to show closure on addition and scaling. Let
+1\. We need to show closure on addition and scaling. Let
 $$\vec{u}, \vec{v} \in S : \vec{u} = (a, b, 0), \vec{v} = (c, d, 0)$$ for
 some $$a, b, c, d \in \mathbb{R}$$.
 $$\vec{u} + \vec{v} = (a, b, 0) + (c, d, 0) = (a+c, b+d, 0) \in S.$$ For
 any $$\lambda \in \mathbb{R}$$
 $$\lambda \vec{u} = \lambda (a, b, 0) = (\lambda a, \lambda b, 0) \in S.$$
 
-\(2) Nope, since $$2(1,1) \not \in S$$, so no scaling closure.
+2\. Nope, since $$2(1,1) \not \in S$$, so no scaling closure.
 
-\(3) Nope. Let $$\vec{u} = (1, 0), \vec{v} = (0, 1)$$, both of which
+3\. Nope. Let $$\vec{u} = (1, 0), \vec{v} = (0, 1)$$, both of which
 $$\in S$$, however $$\vec{u} + \vec{v} = (1, 1)$$.
 $$1^2 + 1^2 = 2 \not \leq 1$$, so not closed under addition.
 
@@ -199,13 +205,12 @@ This leads to the fact that any two bases for a subpace S have the
 The **dimension** of a subspace of $$\mathbb{R}^n$$ is
 the number of vectors in the basis.
 
-#### Problems
+#### Exercises
 
-***Q.*** Show that the set $$S = \{(x, y, z) : x + 2y - z = 0\}$$ is
+**1\.** Show that the set $$S = \{(x, y, z) : x + 2y - z = 0\}$$ is
 a subspace of $$\mathbb{R}^3$$, and find a basis and dimension of $$S$$.
 
-
-***Answer.*** We can rewrite S as: 
+***Solution.*** We can rewrite S as: 
 
 $$\begin{align} S  & = \{(x, y, x+2y =
 0) : x, y \in \mathbb{R}\} \\  & = \{x(1, 0, 1) + y(0, 1, 2) : x, y
@@ -227,11 +232,11 @@ combination of its \"predecessors\" will leave a basis for S.
 
 
 
-***Q.*** Find a basis for and dimension of a subspace S (of
+**2\.** Find a basis for and dimension of a subspace S (of
 $$\mathbb{R}^4$$) spanned by
 $$\{(2,1,0,-3), (-1,0,-1,2), (1,2,-3,0), (0,0,0,1), (0,1,-2,0)\}.$$
 
-***Answer.*** Let\'s look at (1, 2, -3, 0) and see if it is a linear comb.
+***Solution.*** Let\'s look at (1, 2, -3, 0) and see if it is a linear comb.
 of predecessors. $$(1, 2, -3, 0) = \alpha(2,1,0,-3) + \beta(-1,0,-1,2)$$
 
 
