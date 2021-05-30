@@ -15,8 +15,7 @@ omitted (for example, specific operations of the circuit).
 
 ## Complete notes
 
-Detailed typed notes for CS132 by **Akram Ahmad** and **Justin Tan**’s can be found below in parts or
-here for [CS132 One Page Notes](opnotes):
+Detailed typed notes for CS132 can be found below in parts or here for [CS132 One Page Notes](opnotes). These were authored by **Akram Ahmad** and **Justin Tan**, with contributions from **Edmund Goodman**:
 
 1. [x] [Data representation](part1)
 2. [x] [Digital logic](part2)
@@ -36,6 +35,8 @@ Another source of type notes by **Yijun Hu** can be found [here](https://www.yij
 
 Detailed handwritten notes for CS132 by **Josh Fitzmaurice** which cover the
 entire module can be found [here](./CS132_full.pdf).
+
+**Felix Bowyer** has made a cheat sheet for logic circuits, which can be found [here](http://fbcf.xyz/resources/doc/cheatsheet.pdf) [(mirror)](./logiccircuitsheet.pdf).
 
 ## Unofficial worksheet solutions
 
