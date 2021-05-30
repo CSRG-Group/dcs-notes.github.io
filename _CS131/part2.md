@@ -5,11 +5,9 @@ math: true
 title: "Vectors"
 ---
 
-Basics
-------
+## Basics
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note4.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note4.pdf)
 
 Vectors in 2 and 3D are members of the sets $$\mathbb{R}^2$$ and
 $$\mathbb{R^3}$$ respectively. *(Note, thus ordered pairs)*
@@ -56,19 +54,18 @@ All definitions (if not already) can be extended to $$n$$ dimensions.
 
 The **zero vector**, $$\vec{0}$$ has all zeros in it.
 
-Linear Combinations and Subspaces
----------------------------------
+## Linear Combinations and Subspaces
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
 
-***Linear Combination.*** If
-$$\vec{u}_1, \vec{u}_2, ..., \vec{u}_m \in \mathbb{R}^n$$ and
+### Linear Combinations
+
+If $$\vec{u}_1, \vec{u}_2, ..., \vec{u}_m \in \mathbb{R}^n$$ and
 $$a_1, a_2, ..., a_m \in \mathbb{R}$$, then any vector of the form
 $$a_1 \vec{u}_1 + a_2 \vec{u}_2 + ... + a_m \vec{u}_m$$ is a **linear
 combination** of $$\vec{u}_1, \vec{u}_2, ..., \vec{u}_m$$.
 
-A linear comb. of a single vector is defined as a multiple of that
+A linear combination of a single vector is defined as a multiple of that
 vector.
 
 In $$\mathbb{R}^3$$ if $$\vec{u}, \vec{v}$$ are not parallel, then
@@ -76,7 +73,9 @@ $$\alpha \vec{u} + \beta \vec{v}$$ represents the vertex of a
 parallelogram having $$\alpha \vec{u}, \beta \vec{v}$$ as sides - a vector
 in the **plane** containing $$\vec{u}, \vec{v}, \vec{0}$$.
 
-***Span.*** If $$U = \{\vec{u}_1, \vec{u}_2, ..., \vec{u}_m\}$$ is a
+### Spans
+
+If $$U = \{\vec{u}_1, \vec{u}_2, ..., \vec{u}_m\}$$ is a
 finite set of vectors in $$\mathbb{R}^n$$, then the **span** of U is the
 set of all linear combinations of vectors in U and is denoted
 $$\textrm{span } U$$;
@@ -91,7 +90,9 @@ $$\textrm{span } U = \{a_1 \vec{u}_1 + a_2 \vec{u}_2 + ... + a_m \vec{u}_m : a_1
     $$\{(1, 0), (0, 1)\}$$ and $$\{(1, 0, 0), (0,1,0), (0,0,1)\}$$
     respectively.
 
-***Subspaces.*** A **subspace** of $$\mathbb{R}^n$$ is a non-empty subset
+### Subspaces
+
+A **subspace** of $$\mathbb{R}^n$$ is a non-empty subset
 $$S \subseteq \mathbb{R}^n$$ such that: 
 
 $$\begin{align} (1)  & \vec{u},
@@ -107,17 +108,26 @@ those vectors is also in.
 Two elementary subspaces of $$\mathbb{R}^n$$ are $$\{\vec{0}\}$$ (just
 empty) and $$\mathbb{R}^n$$ itself.
 
-Problem\...
+#### Properties of Subspaces
 
-***Problem.*** Determine if $$S$$ is a subspace of $$\mathbb{R}^n$$:
+1.  Every subspace contains $$\vec{0}$$.
+2.  If $$U$$ is a nonempty finite subset of $$\mathbb{R}^n$$ then
+    $$\textrm{span } U$$ is a subspace, the subspace **spanned or
+    generated** by U.
+
+### Problems
+
+***Q.***
+
+Determine if $$S$$ is a subspace of $$\mathbb{R}^n$$:
 
 1.  $$S = \{(x, y, 0) : x, y \in \mathbb{R}\} \in \mathbb{R}^3$$
 2.  $$S = \{(1, 1)\} \in \mathbb{R}^2$$
 3.  $$S = \{(x, y) : x^2 + y^2 \leq 1\} \in \mathbb{R}^2$$
 
-Answer\...
+***Answer.***
 
-***Answer.***(1) We need to show closure on addition and scaling. Let
+(1) We need to show closure on addition and scaling. Let
 $$\vec{u}, \vec{v} \in S : \vec{u} = (a, b, 0), \vec{v} = (c, d, 0)$$ for
 some $$a, b, c, d \in \mathbb{R}$$.
 $$\vec{u} + \vec{v} = (a, b, 0) + (c, d, 0) = (a+c, b+d, 0) \in S.$$ For
@@ -130,18 +140,11 @@ $$\lambda \vec{u} = \lambda (a, b, 0) = (\lambda a, \lambda b, 0) \in S.$$
 $$\in S$$, however $$\vec{u} + \vec{v} = (1, 1)$$.
 $$1^2 + 1^2 = 2 \not \leq 1$$, so not closed under addition.
 
-***Properties of Subspaces.***
 
-1.  Every subspace contains $$\vec{0}$$.
-2.  If $$U$$ is a nonempty finite subset of $$\mathbb{R}^n$$ then
-    $$\textrm{span } U$$ is a subspace, the subspace **spanned or
-    generated** by U.
 
-Linear Independence
--------------------
+## Linear Independence
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
 
 A set of vectors
 $$\{\vec{u}_1, \vec{u}_2, ..., \vec{u}_m\} \in\mathbb{R}^n$$ are
@@ -171,14 +174,13 @@ $$\vec{u}_r$$ is a linear combination of its predecessors \$${\vec{u}\_1,
 
 *(proof omitted)*
 
-Basis and Dimension
--------------------
+## Basis and Dimension
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note7.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note7.pdf)
 
-***Basis.*** Let $$S$$ be a subspace of $$\mathbb{R}^n$$. A set of vectors
-is a **basis** of S if it is a *linearly independent* set which spans S.
+### Basis
+
+Let $$S$$ be a subspace of $$\mathbb{R}^n$$. A set of vectors is a **basis** of S if it is a *linearly independent* set which spans S.
 
 e.g. The set $$\{(1,0,0), (0,1,0), (0,0,1)\}$$ is a basis for
 $$\mathbb{R}^3$$. In fact, it is the **standard basis**.
@@ -192,15 +194,16 @@ independence* subset of S has *at most* $$m$$ vectors.
 This leads to the fact that any two bases for a subpace S have the
 **same** number of elems.
 
-***Dimension.*** The **dimension** of a subspace of $$\mathbb{R}^n$$ is
+### Dimension
+
+The **dimension** of a subspace of $$\mathbb{R}^n$$ is
 the number of vectors in the basis.
 
-Problem\...
+#### Problems
 
-***Problem.*** Show that the set $$S = \{(x, y, z) : x + 2y - z = 0\}$$ is
+***Q.*** Show that the set $$S = \{(x, y, z) : x + 2y - z = 0\}$$ is
 a subspace of $$\mathbb{R}^3$$, and find a basis and dimension of $$S$$.
 
-Answer\...
 
 ***Answer.*** We can rewrite S as: 
 
@@ -222,13 +225,11 @@ Let $$\{\vec{v}_1, \vec{v}_2, ..., \vec{v}_m\}$$ be a basis of a subspace
 S of $$\mathbb{R}^n$$. Then removing each $$\vec{v}_i$$ which is a linear
 combination of its \"predecessors\" will leave a basis for S.
 
-Problem\...
 
-***Problem.*** Find a basis for and dimension of a subspace S (of
+
+***Q.*** Find a basis for and dimension of a subspace S (of
 $$\mathbb{R}^4$$) spanned by
 $$\{(2,1,0,-3), (-1,0,-1,2), (1,2,-3,0), (0,0,0,1), (0,1,-2,0)\}.$$
-
-Answer\...
 
 ***Answer.*** Let\'s look at (1, 2, -3, 0) and see if it is a linear comb.
 of predecessors. $$(1, 2, -3, 0) = \alpha(2,1,0,-3) + \beta(-1,0,-1,2)$$
@@ -257,7 +258,6 @@ $$\{(0,0,0,1),(2,1,0,-3),(-1,0,-1,2)\}$$ is a linear independence set.
 Check the last one against all others,
 $$(0,1,-2,0) = \alpha(2,1,0,-3) + \beta(-1,0,-1,2) + \gamma(1, 2, -3, 0)$$
 
-
 $$\begin{align}  & \implies \begin{cases} 2\alpha - \beta  & = 0 \\
 \alpha  & = 1 \\ \beta  & = 2 \\ -3\alpha + 2\beta + \gamma  & = 0
 \end{cases}  & \implies \begin{cases} \alpha  & = 1 \\ \beta  & = 2
@@ -267,7 +267,7 @@ $$\begin{align}  & \implies \begin{cases} 2\alpha - \beta  & = 0 \\
 finally the remaining set $$\{(0,0,0,1),(2,1,0,-3),(-1,0,-1,2)\}$$ is the
 final basis of $$S$$, which gives $$S$$ a dimension of 3.
 
-There are a few quick checks one can do beforehand.
+### Properties of bases
 
 Let S be an $$m$$-dimensional subspace of $$\mathbb{R}^n$$ then
 
@@ -296,3 +296,4 @@ Subspaces of $$\mathbb{R}^3$$:
 3.  A 2D subspace is spanned by 2 linear independence vectors: plains containing
     the origin
 4.  The only 3D subspace is $$\mathbb{R}^3$$
+
