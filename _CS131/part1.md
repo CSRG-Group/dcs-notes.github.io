@@ -15,27 +15,28 @@ with 10 digits, but there is also binary, which uses 2 digits.
 Subscripts are used to denote base;
 $$10011_{\textrm{two}} = 19_{\textrm{ten}}$$ or $$10011_{2} = 19_{10}$$.
 
-### Decimal to Binary Conversion Alg
+### Decimal to Binary Conversion Algorithm
+
 Divide decimal number repeatedly
 by 2 to get remainders $$r_0, r_1, r_2,...r_n$$. The binary representation
 is $$r_{n}r_{n-1}...r_{1}r_0$$ (note the switched order).
 
 #### Problems
 
-***Q.*** Convert $$244_{10}$$ to binary.
-
-***Q.*** The *hexadecimal* system is base 16, with digits
-0123456789ABCDEF. Convert $$21BAD_{16}$$ to decimal.
+1. Convert $$244_{10}$$ to binary.
+2. The *hexadecimal* system is base 16, with digits
+   0123456789ABCDEF. Convert $$21BAD_{16}$$ to decimal.
 
 ### Generic Base Conversion Algorithm
 
 Let us have an integer $$b$$. To
 convert a base 10 integer to a base $$b$$ integer, divide repeatedly by
-$$b$$ to get remainders $$r_0, r_1,...r_n$$, thus the base $$b$$
-representation would be $$r_{n}r_{n-1}...r_{1}r_0$$ (note the switched
+$$b$$ to get remainders $$r_0, r_1,...,r_n$$, thus the base $$b$$
+representation would be $$r_{n},r_{n-1},...,r_{1},r_0$$ (note the switched
 order).
 
 ### Division Algorithm
+
 If $$a, b \in \mathbb{Z}$$ with $$b \neq 0$$, then
 there exist unique $$q, r \in \mathbb{Z}$$ with 
 
@@ -67,18 +68,53 @@ $$0 < r_1 < r_0$$.
     write this last nonzero remainder, thus
     $$\gcd(r_1, r_0) = xr_1 + yr_0 \textrm{ for some integers } x, y.$$
 
+A python implementation of this algorithm is as follows:
+
+```python
+#!/usr/bin/python3
+
+from math import log10, ceil
+
+def printTableRow(a,b,r):
+    print("| {} | {} | {} |".format(
+        str(a).ljust(strPad),
+        str(b).ljust(strPad),
+        str(r).ljust(strPad)
+    ))
+
+a = int(input("Enter the first number: "))
+b = int(input("Enter the second number: "))
+strPad = ceil(max(log10(a), log10(b)))
+
+if a < b:
+    a,b = b,a
+r = -1
+
+while r != 0:
+    r = a % b
+    printTableRow(a,b,r)
+    a,b = b,r
+
+print("GCD = {}".format(a))
+
+```
+
 #### Problems
 
-***Q.*** Find the greatest common divisor of 16579 and 30031, and
-determine integers $$x$$ and $$y$$ such that
-$$\gcd(16579, 30031) = x16579 + y30031$$.
+1. Find the greatest common divisor of 16579 and 30031, and
+   determine integers $$x$$ and $$y$$ such that
+   $$\gcd(16579, 30031) = x16579 + y30031$$.
 
-Of Modular Arithmetic, two integers $$a, b$$ are congruent modulo $$n$$
+### Modular Arithmetic
+
+Two integers $$a, b$$ are congruent modulo $$n$$
 (another integer) if $$a-b = kn \; k \in \mathbb{Z}$$, i.e. $$a = b + kn$$.
 Written $$a \equiv b \mod n$$ or $$a \stackrel{\mod{}}{\equiv} b$$.
 
 Two congruencies with the same mod $$n$$ can be added, subtracted,
 multiplied just like normal equations.
+
+### Two's complement
 
 In a computer, for negative integers we use two\'s complement, see
 [here](../cs132/index.html#datarep).
@@ -134,9 +170,7 @@ For all $$x, y, z \in \mathbb{R}$$:
 
 #### Exercises
 
-##### Exercise #1
-
-Show that $$0 < 1$$.
+**1\.** Show that $$0 < 1$$.
 
 We first need a lemma.
 
@@ -166,9 +200,9 @@ $$\begin{align} 1^2  & \geq 0 \textrm{ by lemma}\\
 \implies 1  & \geq 0\\ 1  & \neq 0 \textrm{ by ax. 6 } \therefore 1 > 0.
  & \triangleright \end{align}$$
 
-##### Exercise #2
 
-Show that $$a > 0 \implies \frac{1}{a} > 0$$.
+
+**2\.** Show that $$a > 0 \implies \frac{1}{a} > 0$$.
 
 ***Proof.*** Let $$a > 0$$ 
 
@@ -188,10 +222,10 @@ that $$\frac{1}{a} > 0. \quad \triangleright$$
 
 #### Problems
 
-**Q.** Show if $$a, b > 0$$ then $$a < b \Longleftrightarrow a^2 < b^2$$.
-*Note: you have to prove both ways.*
+1. Show if $$a, b > 0$$ then $$a < b \Longleftrightarrow a^2 < b^2$$.
+   *Note: you have to prove both ways.*
 
-**Q.** Show if $$a < b \land c < 0 \implies ac > bc$$.
+2. Show if $$a < b \land c < 0 \implies ac > bc$$.
 
 ### Intervals
 
@@ -213,14 +247,14 @@ it.
 ### Modulus or absolute function
 
 The **Modulus or Absolute** of $$x$$, $$|x|$$ is basically $$x$$ but without
-negatives. $$|x| = \sqrt{x^2} \; \forall x \in \mathbb{R}$$.
+negatives. $$\|x\| = \sqrt{x^2}, \quad \forall x \in \mathbb{R}$$.
 
 There are 4 properties of modulus:
 
-1.  $$-|x| \leq x \leq |x|$$
-2.  $$|xy| = |x||y|$$
-3.  $$|x + y| \leq |x|+|y|$$
-4.  $$||x| - |y|| \leq |x - y|$$
+1.  $$-\|x\| \leq x \leq \|x\|$$
+2.  $$\|xy\| = \|x\|\|y\|$$
+3.  $$\|x + y\| \leq \|x\|+\|y\|$$
+4.  $$\|\|x\| - \|y\|\| \leq \|x - y\|$$
 
 ### Bounds
 
@@ -302,17 +336,17 @@ $$r_{1} (\cos(\theta) + i\sin(\theta)) \cdot r_{2} (\cos(\phi) + i\sin(\phi)) = 
 
 ### Complex modulus
 
-$$r$$ is the **modulus**, often denoted $$|x + iy|$$.
+$$r$$ is the **modulus**, often denoted $$\|x + iy\|$$.
 
 **Properties of modulus**, for all $$z, w \in \mathbb{C}$$:
 
--   $$|z| = |\overline{z}|$$
--   $$|z| = \sqrt{z\overline{z}}$$
--   $$z\overline{z} = |z|^2$$
+-   $$\|z\| = \|\overline{z}\|$$
+-   $$\|z\| = \sqrt{z\overline{z}}$$
+-   $$z\overline{z} = \|z\|^2$$
 
--   $$|zw| = |z||w|$$
--   $$|z + w| \leq |z| + |w|$$, *(triangle inequality)*
--   $$||z| - |w|| \leq |z - w|$$
+-   $$\|zw\| = \|z\|\|w\|$$
+-   $$\|z + w\| \leq \|z\| + \|w\|$$, *(triangle inequality)*
+-   $$\|\|z\| - \|w\|\| \leq \|z - w\|$$
 
 
 

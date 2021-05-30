@@ -15,16 +15,14 @@ matrix is called a **column matrix/vector**, and $$1 \times n$$ matrices
 are similarly named as rows. Elements are referred to with subscript row
 column: $$a_{ij}$$.
 
-### Matrix operations
-
-#### Addition and scalar multiplication
+### Addition and scalar multiplication
 
 Sum of two matrices is only defined if they have the same order, and is
 *elementwise* addition.
 
 Scalar multiplication is also done elementwise.
 
-##### Properties of addition and scalar multiplication
+#### Properties of addition and scalar multiplication
 
 $$\forall m \times n$$ matrices $$A, B, C$$,
 $$\forall \lambda, \mu \in \mathbb{R}$$:
@@ -37,17 +35,16 @@ $$\forall \lambda, \mu \in \mathbb{R}$$:
 6.  $$\lambda (A+B) = \lambda A + \lambda B$$
 7.  $$\lambda(\mu A) = (\lambda \mu ) A$$
 
-#### Matrix multiplication
+### Matrix multiplication
 
 Matrix multiplication can only happen between an
-$$A_{m \times \mathbfit{n}}$$ and a $$B_{\mathbfit{n} \times p}$$ (note the
+$$A_{m \times n}$$ and a $$B_{n \times p}$$ (note the
 highlighted dimensions) and will produce a matrix $$C_{m \times p}$$.
 
 Matrix multiplication is hard to explain in text, so [see this
-video](https://www.youtube.com/watch?v=as8C8w-Nz94) if you\'re not sure
-(by blackpenredpen)
+video](https://www.youtube.com/watch?v=as8C8w-Nz94) by blackpenredpen if you\'re not sure
 
-##### Properties of matrix multiplication
+#### Properties of matrix multiplication
 
 Whenever the products exist, matrix multiplication has the properties:
 
@@ -60,14 +57,14 @@ Whenever the products exist, matrix multiplication has the properties:
 Note that matrix multiplication is **not commutative**: $$AB \neq BA$$
 (for all but specific circumstances).
 
-#### Matrix transposition
+### Matrix transposition
 
 The **transpose** $$A^T$$ of a matrix is obtained by swapping rows and
 columns (i.e. reflecting on leading diagonal).
 
-##### Properties of transposition
+#### Properties of transposition
 
-1.  $$(A^T)^T=A$$
+1.  $$(A^T)^T=A$$ holds for any matrix $$A$$
 2.  $$(A+B)^T = A^T + B^T$$ if $$A+B$$ exists
 3.  $$(\lambda A)^T = \lambda A^T$$ for any $$\lambda \in \mathbb{R}$$
 4.  $$(AB)^T = B^T A^T$$ if $$AB$$ exists.
@@ -112,11 +109,10 @@ $$A^{-1} = \frac{1}{\det A} \begin{bmatrix} d  &  -b \\ -c  &  a \end{bmatrix}$$
 
 A system of linear equations can be written in matrix form.
 
-
-$$\begin{align} ax\_1 + bx\_2  & = y\_1 \\ cx\_1 + dx\_2  & = y\_2
+$$\begin{align} ax_1 + bx_2  & = y_1 \\ cx_1 + dx_2  & = y_2
 \end{align}$$
 
-$$\equiv \begin{bmatrix} a  &  b \ c  &  d \end{bmatrix} \begin{bmatrix} x_1 \ x_2 \end{bmatrix} = \begin{bmatrix} y_1 \ y_2 \end{bmatrix}.$$
+$$\equiv \begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}.$$
 Which can be extrapolated to general form.
 
 ### Elementary row operations
@@ -132,7 +128,7 @@ Elimination**):
 
 Which can be done over the *augmented matrix*, which is gotten by
 combining $$\begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix}$$ and
-$$\begin{bmatrix} y_1 \ y_2 \end{bmatrix}$$ (the coefficients and the
+$$\begin{bmatrix} y_1 \\ y_2 \end{bmatrix}$$ (the coefficients and the
 result).
 $$\left[\begin{array}{cc|c} a  &  b  &  y_1 \\ c  &  d  &  y_2 \end{array}\right]$$
 
@@ -148,7 +144,7 @@ echelon form**, where each leading entry is a 1, and each column with a
 1 in has 0s for all other entries.*
 
 Elementary row operations can be done by multiplying by so-called *elementary
-matrices*. These are defined for (\E\_{n \times n}\):
+matrices*. These are defined for ($$E_{n \times n}$$\):
 
 -   $$E_{ij}$$ obtained from $$I$$ by exchanging rows $$i, j$$
 -   For $$\lambda \neq 0, \; E_i(\lambda)$$ obtained from $$I$$ by
@@ -174,12 +170,12 @@ $$\left[\begin{array}{cc|cc} a  &  b  &  1  &  0 \\ c  &  d  &  0  &  1 \end{arr
 The determinant of a $$3 \times 3$$ matrix is denoted the same way, and is
 defined 
 
-$$\begin{vmatrix} a\_{11}  &  a\_{12}  &  a\_{13} \\ a\_{21}  & 
-a\_{22}  &  a\_{23} \\ a\_{31}  &  a\_{32}  &  a\_{33} \end{vmatrix} =
-a\_{11} \begin{vmatrix} a\_{22}  &  a\_{23} \\ a\_{32}  & 
-a\_{33}\end{vmatrix} - a\_{12} \begin{vmatrix}a\_{21}  &  a\_{23} \\
-a\_{31}  &  a\_{33}\end{vmatrix} + a\_{32} \begin{vmatrix}a\_{21}  & 
-a\_{22} \\ a\_{31}  &  a\_{32}\end{vmatrix}$$
+$$\begin{vmatrix} a_{11}  &  a_{12}  &  a_{13} \\ a_{21}  & 
+a_{22}  &  a_{23} \\ a_{31}  &  a_{32}  &  a_{33} \end{vmatrix} =
+a_{11} \begin{vmatrix} a_{22}  &  a_{23} \\ a_{32}  & 
+a_{33}\end{vmatrix} - a_{12} \begin{vmatrix}a_{21}  &  a_{23} \\
+a_{31}  &  a_{33}\end{vmatrix} + a_{32} \begin{vmatrix}a_{21}  & 
+a_{22} \\ a_{31}  &  a_{32}\end{vmatrix}$$
 
  i.e. all elements on
 the first row multiplied (respecting +/- grid) with the determinant of
@@ -301,7 +297,7 @@ vectors in V w/ respect to W.
 If $$\vec{x} \in \mathbb{R}^m$$ has coordinates $$[x_1,...,x_n]$$ with
 respect to V then the coordinates with respect to W, $$[y_1, ... , y_n]$$
 are
-$$\begin{bmatrix} y_1 \ \vdots \ y_n \end{bmatrix} = M \begin{bmatrix} x_1 \ \vdots \ x_n \end{bmatrix}.$$
+$$\begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = M \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}.$$
 
 A matrix that changes between two different bases in $$\mathbb{R}^n$$ is
 called a **transition matrix**.
