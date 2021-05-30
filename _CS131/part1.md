@@ -5,11 +5,11 @@ math: true
 title: "Number Systems"
 ---
 
-Integers
---------
+[toc]
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note1.pdf)
+## Integers
+
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note1.pdf)
 
 Integers, denoted $$\mathbb{Z}$$. We use a denary/decimal (base-10) system
 with 10 digits, but there is also binary, which uses 2 digits.
@@ -17,24 +17,28 @@ with 10 digits, but there is also binary, which uses 2 digits.
 Subscripts are used to denote base;
 $$10011_{\textrm{two}} = 19_{\textrm{ten}}$$ or $$10011_{2} = 19_{10}$$.
 
-***Decimal to Binary Conversion Alg.*** Divide decimal number repeatedly
+### Decimal to Binary Conversion Alg
+Divide decimal number repeatedly
 by 2 to get remainders $$r_0, r_1, r_2,...r_n$$. The binary representation
 is $$r_{n}r_{n-1}...r_{1}r_0$$ (note the switched order).
 
-Problems\...
+#### Problems
 
 ***Q.*** Convert $$244_{10}$$ to binary.
 
 ***Q.*** The *hexadecimal* system is base 16, with digits
 0123456789ABCDEF. Convert $$21BAD_{16}$$ to decimal.
 
-***Generic Base Conversion Alg.*** Let us have an integer $$b$$. To
+### Generic Base Conversion Algorithm
+
+Let us have an integer $$b$$. To
 convert a base 10 integer to a base $$b$$ integer, divide repeatedly by
 $$b$$ to get remainders $$r_0, r_1,...r_n$$, thus the base $$b$$
 representation would be $$r_{n}r_{n-1}...r_{1}r_0$$ (note the switched
 order).
 
-***Division Algorithm.*** If $$a, b \in \mathbb{Z}$$ with $$b \neq 0$$, then
+### Division Algorithm
+If $$a, b \in \mathbb{Z}$$ with $$b \neq 0$$, then
 there exist unique $$q, r \in \mathbb{Z}$$ with 
 
 $$\begin{align}  & a = qb +
@@ -53,7 +57,9 @@ denominator is denoted $$\gcd(a, b)$$.
 
 $$\gcd(0, n) = n \; \forall n \in \mathbb{Z}^+$$
 
-***EUCLIDEAN ALGORITHM.*** Let $$r_1, r_0$$ be integers s.t.
+### Euclidean algorithm
+
+Let $$r_1, r_0$$ be integers s.t.
 $$0 < r_1 < r_0$$.
 
 1.  For each $$i$$, define $$r_{i+1}$$ as the remainder of
@@ -63,9 +69,7 @@ $$0 < r_1 < r_0$$.
     write this last nonzero remainder, thus
     $$\gcd(r_1, r_0) = xr_1 + yr_0 \textrm{ for some integers } x, y.$$
 
-\
-
-Problems\...
+#### Problems
 
 ***Q.*** Find the greatest common divisor of 16579 and 30031, and
 determine integers $$x$$ and $$y$$ such that
@@ -85,11 +89,9 @@ We are also working with a system modulo $$2^N$$ where $$N$$ is the number
 of bits. Thus the 32 bit limit of $$[2^{31}, 2^{31} - 1]$$ which is
 $$2^{32}$$ integers.
 
-Reals
------
+## Reals
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note2.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note2.pdf)
 
 Reals are denoted $$\mathbb{R}$$, and have a subset $$\mathbb{Q}$$ which are
 numbers definable as $$\frac{m}{n}, \; m, n \in \mathbb{Z}, \; n \neq 0$$.
@@ -105,6 +107,8 @@ Those which are not are called **transcendental**, such as $$\pi, e$$.
 A real number can be thought of as a sequence of rational numbers, which
 converges to said real. e.g. $$\pi$$ is the limit of
 $$3, 3.1, 3.14, 3.141, 3.1415...$$
+
+### Properties of real numbers
 
 All properties of real numbers come from **13 axioms**, of which 1-8 are
 **algebraic** properties, and 9-12 are **order properties**.
@@ -130,9 +134,11 @@ For all $$x, y, z \in \mathbb{R}$$:
 13.  **Completeness**: *Every non-empty subset of $$\mathbb{R}$$ that is
      bounded above has a least upper bound*
 
-***Excersise.*** Show that $$0 < 1$$.
+#### Exercises
 
-Answer\...
+##### Exercise #1
+
+Show that $$0 < 1$$.
 
 We first need a lemma.
 
@@ -162,9 +168,9 @@ $$\begin{align} 1^2  & \geq 0 \textrm{ by lemma}\\
 \implies 1  & \geq 0\\ 1  & \neq 0 \textrm{ by ax. 6 } \therefore 1 > 0.
  & \triangleright \end{align}$$
 
-***Excersise.*** Show that $$a > 0 \implies \frac{1}{a} > 0$$.
+##### Exercise #2
 
-Answer\...
+Show that $$a > 0 \implies \frac{1}{a} > 0$$.
 
 ***Proof.*** Let $$a > 0$$ 
 
@@ -182,19 +188,21 @@ $$\begin{align} \textrm{If } \frac{1}{a}  & < 0 \\ \implies a
  By axiom 10 we get
 that $$\frac{1}{a} > 0. \quad \triangleright$$
 
-More Problems\...
+#### Problems
 
 **Q.** Show if $$a, b > 0$$ then $$a < b \Longleftrightarrow a^2 < b^2$$.
 *Note: you have to prove both ways.*
 
 **Q.** Show if $$a < b \land c < 0 \implies ac > bc$$.
 
-Intervals, nth roots and Modulus/Abs basics\...
+### Intervals
 
 **Intervals** are ranges represented by brackets. $$(a, b)$$ ranges are
 called **open**, $$[a, b), \; (a, b]$$ are called **semi-open** or
 **semi-closed** and $$[a, b]$$ ranges are called **closed**. $$\infty$$ is
 not a real number and cannot appear in closed ranges.
+
+### Nth roots
 
 Let $$n \in \mathbb{Z}^+$$. For any
 $$a \in \mathbb{R}_{\geq 0}, \; \exists! x \geq 0$$ with $$x^n = a$$. This
@@ -203,6 +211,8 @@ real $$a, b$$ and $$n \in \mathbb{Z}^+$$ we have
 $$a < b \Longleftrightarrow a^{\frac{1}{n}} < b^{\frac{1}{n}}$$ There\'s
 also of course $$a^\frac{1}{2} \equiv \sqrt{a}$$ and all that comes with
 it.
+
+### Modulus or absolute function
 
 The **Modulus or Absolute** of $$x$$, $$|x|$$ is basically $$x$$ but without
 negatives. $$|x| = \sqrt{x^2} \; \forall x \in \mathbb{R}$$.
@@ -214,6 +224,8 @@ There are 4 properties of modulus:
 3.  $$|x + y| \leq |x|+|y|$$
 4.  $$||x| - |y|| \leq |x - y|$$
 
+### Bounds
+
 For a set of real numbers $$S$$
 
 -   $$u$$ is an **upper bound** of S if $$u \geq x \forall x \in S$$
@@ -223,7 +235,9 @@ For a set of real numbers $$S$$
 -   $$L$$ is the **greatest lower bound (infimum)** of S if $$L$$ is a LB of
     S and $$L \geq l \forall l$$
 
-![](C:/Users/egood/Desktop/bounds.svg)
+![boundsDiagram](./images/bounds.svg)
+
+#### Completeness axiom
 
 The *completeness axiom* suggests that for every set which has a lower
 bound has a greatest lower bound.
@@ -238,11 +252,9 @@ bound has a greatest lower bound.
 -   Every real number can be represented by a (possibly infinite)
     decimal expansion.
 
-Complex Numbers
----------------
+## Complex Numbers
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note3.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note3.pdf)
 
 In the set $$\mathbb{C}$$, of the form $$a + ib$$ where $$i^2 = \sqrt{-1}$$.
 Often denoted $$z$$.
@@ -253,6 +265,8 @@ plane* or *argand diagram*.
 
 For $$a, b \in \mathbb{R}$$ the **complex conjugate** of $$z = a + ib$$ is
 $$\overline{z} = a - ib$$ (overline). Effectively reflecting along x axis.
+
+### Complex conjugates
 
 **Properties of complex conjugates ($$\forall z, w \in \mathbb{C}$$):**
 
@@ -265,7 +279,7 @@ $$\overline{z} = a - ib$$ (overline). Effectively reflecting along x axis.
 -   $$Re_z = \frac{z + \overline{z}}{2}$$
 -   $$Im_z = \frac{z - \overline{z}}{2i}$$
 
-
+### Polar coordinates
 
 If $$x, y \in \mathbb{R}$$ and $$x + iy \neq 0$$ we can express $$x$$ and $$y$$
 in polar coordinates, 
@@ -283,6 +297,13 @@ $$\begin{align}  & r
  $$\theta$$ is the **argument**, with the
 **principal argument** being a $$\theta \in (-\pi, \pi]$$.
 
+
+You can multiply two complex numbers in polar form,
+$$r_{1} (\cos(\theta) + i\sin(\theta)) \cdot r_{2} (\cos(\phi) + i\sin(\phi)) = r_{1}r_{2}(\cos(\theta + \phi) + i\sin(\theta + \phi))$$.
+
+
+### Complex modulus
+
 $$r$$ is the **modulus**, often denoted $$|x + iy|$$.
 
 **Properties of modulus**, for all $$z, w \in \mathbb{C}$$:
@@ -299,16 +320,19 @@ $$r$$ is the **modulus**, often denoted $$|x + iy|$$.
 
 Proof of the triangle inequality is omitted.
 
-You can multiply two complex numbers in polar form,
-$$r_{1} (\cos(\theta) + i\sin(\theta)) \cdot r_{2} (\cos(\phi) + i\sin(\phi)) = r_{1}r_{2}(\cos(\theta + \phi) + i\sin(\theta + \phi))$$.
+### De Moivre\'s Theorem
 
-***De Moivre\'s Theorem.*** $$\forall n \in \mathbb{Z}$$:
+$$\forall n \in \mathbb{Z}$$:
 $$(r(\cos{\theta} + i\sin \theta))^n = r^{n}(\cos{n\theta} + i\sin{n\theta}).$$
 
 ***Q.*** Find all complex numbers $$z : z^3 = 1$$.
 
-The ***Fundamental Theorem of Algebra*** (Gauss) states that an $$n$$
+### Fundamental Theorem of Algebra
+(Gauss) states that an $$n$$
 degree polynomial must have $$n$$ roots.
 
-***Other Notation.*** The conjugate $$\overline{z}$$ can also be written
-$$z*$$. Sometimes (often in engineering) $$i$$ is $$j$$.
+### Other Notation
+
+The conjugate $$\overline{z}$$ can also be written $$z*$$.
+
+Sometimes (often in engineering) $$i$$ is instead written as $$j$$, as $$i$$ often refers to current.
