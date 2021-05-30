@@ -6,8 +6,7 @@ title: "Calculus"
 ---
 
 
-Limits and Continuity
----------------------
+## Limits and Continuity
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note19.pdf)
 
@@ -146,8 +145,7 @@ $$\begin{align}  & f(m)
 Basically, there\'s a maximum and minimum value of a function in a
 bound.
 
-Differentiation
----------------
+## Differentiation
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf)
 
@@ -229,8 +227,7 @@ side. Note that if we want to get to $$\frac{n}{2^n}$$ from
 $$\frac{n}{2^n-1}$$ we have to multiply by $$\frac{1}{2}$$, so we multiply
 both sides by a half to get $$\sum_{n=1}^\infty \frac{n}{2^n} = 2.$$
 
-Properties of Differentiable Functions
---------------------------------------
+## Properties of Differentiable Functions
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note21.pdf)
 
@@ -296,8 +293,7 @@ For curve sketching:
 -   Investigate near where (if) $$f(x) \rightarrow \infty$$, where a
     divide by zero is found or some other asymptote.
 
-L\'Hopital\'s Rule and Implicit Differentiation
------------------------------------------------
+## L\'Hopital\'s Rule and Implicit Differentiation
 
 [Link to the
 PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf)
@@ -352,8 +348,7 @@ $$(\sin(x) + \frac{1}{1+y^2})dy = (-y\cos(x))dx$$ Dividing through,
 $$\frac{dy}{dx} = \frac{-y \cos x}{\sin x + \frac{1}{1+ y^2}}$$ Which one
 can simplify if they wish.
 
-Differentiating Inverse Functions
----------------------------------
+## Differentiating Inverse Functions
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note23.pdf)
 
@@ -427,8 +422,7 @@ $$\begin{align}  & \frac{d}{dx}\tan^{-1}(x) = \frac{1}{1+x^2}  &  (x
 
 
 
-Integration
------------
+## Integration
 
 [Link to the
 PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note24.pdf)
@@ -575,8 +569,7 @@ Where $$[F(x)]^b_a$$ denotes $$F(b) - F(a)$$
 Alternatively, $$\frac{d}{dx}F(x) = f(x) \; \forall x$$, and $$f$$
 continuous, then $$\int f(x)dx = F(x) + c$$ for some c.
 
-Logs and Exponentials
----------------------
+## Logs and Exponentials
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note25.pdf)
 
@@ -620,8 +613,7 @@ $$\begin{align}  & \ln (a^x) = x \ln a
 We can change bases of logarithms (provided $$b \neq 1$$);
 $$\log_b x = \frac{\ln x}{\ln b}$$
 
-Taylor\'s Theorem
------------------
+## Taylor\'s Theorem
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note26.pdf)
 
@@ -681,8 +673,7 @@ ax + \frac{a(a-1)x^2}{2!} + ... + {a \choose n}x^n  &  (x \in
 These are all expressible as sums using the nth term, though bear in
 mind the last two start from $$n=1$$.
 
-First Order ODEs
-----------------
+## First Order ODEs
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note27.pdf)
 
@@ -789,8 +780,7 @@ solution is $$\sqrt{1+x^2}y = x^2 / 2 + c.$$ The particular solution is
 when you substitute the values for $$y, x$$ into the equation to find c,
 and $$c = \frac{1}{2}$$. That gives you the final specific curve.
 
-Second Order ODEs
------------------
+## Second Order ODEs
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note28.pdf)
 
