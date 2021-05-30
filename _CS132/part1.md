@@ -10,6 +10,7 @@ part: true
 In terms of the exam, the most important concept is **value versus representation** of any number. In practice, this means you need to accept that you cannot always represent a value across different bases using the same number of symbols.
 
 > **One value, many representations.** A representation is a way of using or describing a value, for example $$1010_2$$ and $$10_{10}$$ denote the same value.
+> A typical exam question (2019) may ask why we use different representations- one can cite how whilst binary is most appropriate for digital logic circuits (due to the high noise immunity it offers), it is not easy for humans to read nor compute, and hence we introduce the decimal system to handle daily life. We come up with other number systems such as hexadecimal as it is more efficient on a bus (wider range for the same number of symbols) than systems such as octal or decimal.
 
 There are four main number systems we will use:
 
@@ -175,13 +176,13 @@ $$
 &&                   &=& &2.75_{10}&
 \end{align}
 $$
-However, if the number is 2.8​ for example, **Fixed-PR** will not be very efficient because to represent it in binary will require a lot of bits. This means that in a microprocessor, we will need an incredibly large bus to represent such values. And so we use…
+However, if the number is 2.8​ for example, **Fixed-PR** will not be very efficient because to represent it in binary will require a lot of bits. This means that in a microprocessor, we will need an incredibly large bus to represent such values.
 
 ### Floating Point Representation
 
-Floating point uses the same principles as scientific notation. You should be familiar with **Floating-PR** from [CS118](https://csrg-group.github.io/dcs-notes.github.io/CS118/part1.html). A duplicate of the content their is mirrored here for completeness:
+Floating point uses the same principles as scientific notation. You should be familiar with **Floating-PR** from [CS118](https://csrg-group.github.io/dcs-notes.github.io/CS118/part1.html). A duplicate of the content there is mirrored here for completeness:
 
-IEEE standard 754 is widely used and specifies levels of binary precision
+The IEEE 754 standard is widely used and specifies specific levels of binary precision:
 
 - Single precision (32 bits) – 1bit for the sign, 8bits for the exponent, and 23 bits for the mantissa
 - Double precision (64 bits)
@@ -233,3 +234,11 @@ The **exponent bits** = `1111 1111`
 
 - If the _fraction_ is `0`, the value is `+- infinity`.
 - Otherwise, the value is `NaN`, otherwise known as **not a number**.
+
+### Issues with floating point precision
+
+There are two key issues to account for when using floating-point values- underflow, and loss of accuracy.
+
+> **Underflow** occurs when a floating point operation results in an _absolute_ value which is too close to 0 for the computer to accurately store in memory. This can be remedied by setting a **sticky bit** in the status bits of the CCR, and storing a 0 in memory for the time being. 
+
+A **loss of accuracy** can occur when performing an operation on numbers of two vastly different magnitudes. Specifically, due to maintaining precision when describing the large value, operations (such as incrementing or decrementing by a very very small amount) can result in the large value not being modified accurately as it is impossible to maintain the large and small context of the result. For an analogy, imagine pouring a teaspoon of water into a swimming pool- you cannot tell how much the volume of water has changed, and this would cause issues if further conditional operations depend on the result of this operation.
