@@ -1,315 +1,299 @@
 ---
 layout: CS131
 part: true
-title: Linear algebra and Matrices
+math: true
+title: "Vectors"
 ---
 
+## Basics
 
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note4.pdf)
 
-# Linear algebra
+Vectors in 2 and 3D are members of the sets $$\mathbb{R}^2$$ and
+$$\mathbb{R^3}$$ respectively. *(Note, thus ordered pairs)*
 
-## [Vectors](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note4.pdf)
+Can be treated as coordinate points.
 
-*Pull request if you want to complete this*
+Denoted either with arrow ($$\vec{x}$$), underline ($$\underline{x}$$), or
+bold ($$\mathbfit{x}$$). I\'ll be using the arrow.
 
-### Modulus
+Addition and scalar multiplication are done element-wise. For
+$$\vec{x} = (x_1, x_2, ..., x_n)$$ and $$\vec{y} = (y_1, y_2, ..., y_n)$$
+$$\lambda \vec{x} = (\lambda x_1, \lambda x_2, ..., \lambda x_n)$$
+$$\vec{x}\vec{y} = (y_1 + x_1, y_2 + x_2, ...,y_3 + x_n)$$
+$$\vec{x} - \vec{y}$$ and $$-\vec{x}$$ are also defined accordingly from
+these.
 
-The "modulus" of a vector denotes its length, and is calculated as follows:
-$$
-\| \underline{x} \| = \sqrt{(x_1)^2 + (x_2)^2 + ... + (x_n)^2}
-$$
-A vector is called a unit vector of its modulus is $$1$$
+In $$\mathbb{R}^2$$ if $$\vec{p} = (p_1, p_2)$$ then this is the directed
+line segment $$\overrightarrow{OP}$$ starting at origin $$O$$ and ending at
+point P $$(p_1, p_2)$$. $$\vec{p}$$ is then the **position vector** of P.
 
-### Dot product
+Two line segments are equivalent if they have the same length and
+direction.
 
-The dot product of two vectors is defined as:
-$$
-\underline{a} . \underline{b} = a_1 b_1 + a_2 b_2 + ... + a_n b_n
-$$
-It has the additional property:
-$$
-\underline{a} . \underline{b} = \|\underline{a}\| \|\underline{b}\| cos \theta
-$$
-Which can be used to find the angle between to vectors.
+For points $$A, B$$ with vecs $$\vec{a}, \vec{b}$$ then
+$$\overrightarrow{AB} = \vec{b} - \vec{a}$$.
 
-Hence, if the dot product is zero, then the vectors are orthogonal
+For $$\vec{a} = (a_1, a_2) \in \mathbb{R}^2$$
 
-## [Linear combinations and subspaces](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
+The **length of $$\vec{a}$$** $$|\vec{a}| = \sqrt{a_{1}^{2} + a_{2}^{2}}$$;
+similarly in 3D.
 
-### Linear combination definition
+A **unit vector** has length 1. The **distance** between
+$$\vec{a}, \vec{b} = |\vec{b} - \vec{a}|$$.
 
-Given the vectors $$\underline{u_1}, \underline{u_2}, ..., \underline{u_m} \in \mathbb{R}^n$$ and $$\alpha_1, \alpha_2, ..., \alpha_m \in \mathbb{R}$$, a vector of the form $$\alpha_1 \underline{u_1} + \alpha_2 \underline{u_2} + ... + \alpha_m \underline{u_m}$$ is called a linear combination of the vectors
+The **scalar (dot) product**, $$\vec{a} \cdot \vec{b}$$ is the real number
+$$a_1 b_1 + a_2 b_2 + ... + a_n b_n$$.
 
-### Span definition
+The angle between two position vectors, $$\theta$$ between vectors
+$$\vec{a}, \vec{b}$$ is given by
+$$\cos \theta = \frac{\vec{a} \cdot \vec{b} }{|\vec{a}||\vec{b}|}.$$ Two
+vectors are **orthogonal** (perpendicular) if dot product is 0.
 
-Give the set of vectors $$U = \{\underline{u_1}, \underline{u_2}, ..., \underline{u_m}\}$$, with each $$\underline{u_k} \in \mathbb{R}^n, \forall k$$, then the span of $$U$$ is the set of all linear combinations of the vectors in $$U$$. This can be written as:
-$$
-span(U) = \{
-	\alpha_1 \underline{u_1} + \alpha_2 \underline{u_2} + ... + \alpha_m \underline{u_m}
-	\ \|\ 
-	\alpha_1, \alpha_2, ..., \alpha_m \in \mathbb{R}
-\}
-$$
+All definitions (if not already) can be extended to $$n$$ dimensions.
 
-### Subspace definition
+The **zero vector**, $$\vec{0}$$ has all zeros in it.
 
-A subspace of $$\mathbb{R}^n$$ is a non-empty subset $$S$$ of $$\mathbb{R}^n$$ with the two properties:
+## Linear Combinations and Subspaces
 
-1. **Closure under addition:** $$\underline{u}, \underline{v} \in S \implies \underline{u} + \underline{v} \in S$$
-2. **Closure under scalar multiplication:** $$\underline{u} \in S, \lambda \in \mathbb{R} \implies \lambda \underline{u} \in S$$
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
 
+### Linear Combinations
 
+If $$\vec{u}_1, \vec{u}_2, ..., \vec{u}_m \in \mathbb{R}^n$$ and
+$$a_1, a_2, ..., a_m \in \mathbb{R}$$, then any vector of the form
+$$a_1 \vec{u}_1 + a_2 \vec{u}_2 + ... + a_m \vec{u}_m$$ is a **linear
+combination** of $$\vec{u}_1, \vec{u}_2, ..., \vec{u}_m$$.
 
-They then follow the properties:
+A linear combination of a single vector is defined as a multiple of that
+vector.
 
-1. Every subspace in $$\mathbb{R}^n$$ contains the zero vector
-2. If $$U$$ is a non-empty finite subset of $$\mathbb{R}^n$$ then the span of $$U$$ is a subspace of $$\mathbb{R}^n$$ and is called a subspace "spanned" by $$U$$
+In $$\mathbb{R}^3$$ if $$\vec{u}, \vec{v}$$ are not parallel, then
+$$\alpha \vec{u} + \beta \vec{v}$$ represents the vertex of a
+parallelogram having $$\alpha \vec{u}, \beta \vec{v}$$ as sides - a vector
+in the **plane** containing $$\vec{u}, \vec{v}, \vec{0}$$.
 
-## [Linear independence](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note6.pdf)
+### Spans
 
-### Linear independence definition
+If $$U = \{\vec{u}_1, \vec{u}_2, ..., \vec{u}_m\}$$ is a
+finite set of vectors in $$\mathbb{R}^n$$, then the **span** of U is the
+set of all linear combinations of vectors in U and is denoted
+$$\textrm{span } U$$;
+$$\textrm{span } U = \{a_1 \vec{u}_1 + a_2 \vec{u}_2 + ... + a_m \vec{u}_m : a_1, a_2, ..., a_n \in \mathbb{R}\}.$$
 
-A set of vectors is linearly independent if they cannot be expressed as a linear combination equally zero, unless all of the factors are zero
-$$
-\alpha_1 \underline{u_1} + \alpha_2 \underline{u_2} + ... + \alpha_m \underline{u_m} = \underline{0} \implies \alpha_i = 0, \forall i \in {1, 2, ..., m}
-$$
+-   If $$U = \{\vec{u}\}$$ then the span is the set of all multiples of
+    $$\vec{u}$$.
+-   Note that for *basis* spans, 1 vector is a line, 2 vectors is a
+    plane, and onwards to hyperplanes. (Basis is covered in next
+    section)
+-   Elementary spans of $$\mathbb{R}^2, \mathbb{R}^3$$ are
+    $$\{(1, 0), (0, 1)\}$$ and $$\{(1, 0, 0), (0,1,0), (0,0,1)\}$$
+    respectively.
 
-### Linear dependence definition
+### Subspaces
 
-Linear dependence is not linear independence, i.e. the zero vector can be expressed as a linear combination of the vectors
+A **subspace** of $$\mathbb{R}^n$$ is a non-empty subset
+$$S \subseteq \mathbb{R}^n$$ such that: 
 
-### Checking for linear independence
+$$\begin{align} (1)  & \vec{u},
+\vec{v} \in S \implies \vec{u} + \vec{v} \in S;\\ (2)  & \vec{u}
+\in S, \lambda \in \mathbb{R} \implies \lambda \vec{u} \in S.
+\end{align}$$
 
-Two ways:
+ i.e. closed on addition and multiplication.
 
-1. Form a system of equations, with the nth equation having the nth value in each vector
-2. A set of non-zero vectors is linearly dependent iff some $$\underline{u_r}$$ is a linear combination of its predecessors $$\underline{u_1}, ..., \underline{u_{r-1}}$$, so showing this shows linear dependence
+Means if a set of vectors is in a subspace, any linear combinations of
+those vectors is also in.
 
-## [Basis and dimension](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note7.pdf)
+Two elementary subspaces of $$\mathbb{R}^n$$ are $$\{\vec{0}\}$$ (just
+empty) and $$\mathbb{R}^n$$ itself.
 
-### Basis definition
+#### Properties of Subspaces
 
-Given a subspace $$S$$ of $$\mathbb{R}^n$$, a set of vectors is called a bases of $$S$$ if it is a linearly independent set which spans $$S$$.
+1.  Every subspace contains $$\vec{0}$$.
+2.  If $$U$$ is a nonempty finite subset of $$\mathbb{R}^n$$ then
+    $$\textrm{span } U$$ is a subspace, the subspace **spanned or
+    generated** by U.
 
-The number of items in $$S$$ cannot exceed $$n$$ if it is a basis, as it must then be linearly dependent
+### Problems
 
-#### Standard basis
+***Q.***
 
-The standard basis is vectors with a one each column, and zeroes in the rest, for example for $$\mathbb{R}^3$$:
+Determine if $$S$$ is a subspace of $$\mathbb{R}^n$$:
 
-- $$v_1 = \{1,0,0\}$$
-- $$v_2 = \{0,1,0\}$$
-- $$v_3 = \{0,0,1\}$$
+1.  $$S = \{(x, y, 0) : x, y \in \mathbb{R}\} \in \mathbb{R}^3$$
+2.  $$S = \{(1, 1)\} \in \mathbb{R}^2$$
+3.  $$S = \{(x, y) : x^2 + y^2 \leq 1\} \in \mathbb{R}^2$$
 
-### Constructing bases
+***Answer.***
 
-Let $$\{\underline{v_1}, \underline{v_2}, ..., \underline{v_m}\}$$ be a set of nonzero vectors that spans a subspace $$S$$ of $$\mathbb{R}^n$$. Then, removing each $$\underline{v_i}$$ which is a linear combination of its predecessors will leave a bases for $$S$$
+(1) We need to show closure on addition and scaling. Let
+$$\vec{u}, \vec{v} \in S : \vec{u} = (a, b, 0), \vec{v} = (c, d, 0)$$ for
+some $$a, b, c, d \in \mathbb{R}$$.
+$$\vec{u} + \vec{v} = (a, b, 0) + (c, d, 0) = (a+c, b+d, 0) \in S.$$ For
+any $$\lambda \in \mathbb{R}$$
+$$\lambda \vec{u} = \lambda (a, b, 0) = (\lambda a, \lambda b, 0) \in S.$$
 
-### Dimension definition
+\(2) Nope, since $$2(1,1) \not \in S$$, so no scaling closure.
 
-The dimension of a subspace is the minimum number of vectors needed for a basis of the subspace
+\(3) Nope. Let $$\vec{u} = (1, 0), \vec{v} = (0, 1)$$, both of which
+$$\in S$$, however $$\vec{u} + \vec{v} = (1, 1)$$.
+$$1^2 + 1^2 = 2 \not \leq 1$$, so not closed under addition.
 
 
 
-# Matrices
+## Linear Independence
 
-## [Matrix algebra](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note5.pdf)
 
-### Simple operations
+A set of vectors
+$$\{\vec{u}_1, \vec{u}_2, ..., \vec{u}_m\} \in\mathbb{R}^n$$ are
+**linearly *dependent*** IF there are real numbers $$a_1, a_2, ..., a_n$$
+which are NOT ALL ZERO such that
+$$a_1 \vec{u}_1 + a_2 \vec{u}_2 + ... + a_m \vec{u}_m = \vec{0}.$$
 
-#### Addition
+Thus a **linearly *independent*** set is where IF
+$$a_1 \vec{u}_1 + a_2 \vec{u}_2 + ... + a_m \vec{u}_m = \vec{0}.$$ THEN
+ALL $$a_i$$ are **0**.
 
-Matrices are added elementwise - with each cell being added to the corresponding one at the same row and column. Hence, the two matrices must have the same dimensions
+i.e. if you can\'t find a nonzero linear combination that makes zero
+vector, then the set is linearly independent.
 
-#### Scalar multiplication
+-   If a set contains one nonzero vector, it is linear independence
+-   If it contains the zero vector, it is linear dependence
 
-All elements in the matrix are multiplied by a scalar factor
+In a set of three vectors, you can fairly easily solve three simultaneous
+equations all with the sum of zero. Then, you either find that your
+three coefficients $$\alpha, \beta, \gamma$$ has to be 0 (indep) or there
+is some non-zero relationship between at least two of them (dep)
 
-#### Matrix multiplication
+***Theorem.*** A set $$\{\vec{u}_1, \vec{u}_2, ..., \vec{u}_m\}$$ of
+nonzero vectors is linearly *depending* **iff** some / any vector
+$$\vec{u}_r$$ is a linear combination of its predecessors \$${\vec{u}\_1,
+\vec{u}\_2, \..., \vec{u}\_m{r-1}\}$$
 
-Each element (i,j) in the resultant matrix is the sum of the products of the ith row and the jth column in the first and second matrices respectively
+*(proof omitted)*
 
-The number of columns in the first matrix must equal the number of rows in the second matrix
+## Basis and Dimension
 
-![](https://www.geeksforgeeks.org/wp-content/uploads/strassen_new.png)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note7.pdf)
 
-[Image source](https://www.geeksforgeeks.org/strassens-matrix-multiplication/)
+### Basis
 
-Matrix multiplication is **not commutative**
+Let $$S$$ be a subspace of $$\mathbb{R}^n$$. A set of vectors is a **basis** of S if it is a *linearly independent* set which spans S.
 
-#### Matrix transpose
+e.g. The set $$\{(1,0,0), (0,1,0), (0,0,1)\}$$ is a basis for
+$$\mathbb{R}^3$$. In fact, it is the **standard basis**.
 
-Reflection in the leading diagonal
+***Theorem.*** Let $$S$$ be subspace of $$\mathbb{R}^n$$. If a set
+$$\vec{v}_1, \vec{v}_2, ..., \vec{v}_m$$ spans S, then any *linearly
+independence* subset of S has *at most* $$m$$ vectors.
 
+*(proof omitted)*
 
+This leads to the fact that any two bases for a subpace S have the
+**same** number of elems.
 
-### Types of matrix
+### Dimension
 
-#### Zero
+The **dimension** of a subspace of $$\mathbb{R}^n$$ is
+the number of vectors in the basis.
 
-A zero matrix is one containing only zeros, for example the following 2x2 matrix:
-$$
-0_{m \times n} = 
-\begin{bmatrix}
-	0 & 0 \\
-	0 & 0
-\end{bmatrix}
-$$
+#### Problems
 
-#### Diagonal
+***Q.*** Show that the set $$S = \{(x, y, z) : x + 2y - z = 0\}$$ is
+a subspace of $$\mathbb{R}^3$$, and find a basis and dimension of $$S$$.
 
-Matrices containing only values on their leading diagonals, for example the following 2x2 matrix:
-$$
-diag[a_{11}, a_{22}] = 
-\begin{bmatrix}
-	a_{11} & 0 \\
-	0 & a_{22}
-\end{bmatrix}
-$$
 
-##### Identity
+***Answer.*** We can rewrite S as: 
 
-A special case of diagonal matrices, where all non-zero values are one, for example the following 2x2 matrix:
-$$
-I_{m \times n} = 
-\begin{bmatrix}
-	1 & 0 \\
-	0 & 1
-\end{bmatrix}
-$$
-Matrix multiplication by the identity matrix gives the initial matrix
+$$\begin{align} S  & = \{(x, y, x+2y =
+0) : x, y \in \mathbb{R}\} \\  & = \{x(1, 0, 1) + y(0, 1, 2) : x, y
+\in \mathbb{R}\} \\  & = \textrm{ span } \{(1, 0, 1), (0, 1, 2)\}.
+\end{align}$$
 
-## [Linear equations](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf)
+ Whih shows that S is a subspace, since the span of any
+nonempty finite set is a subspace (known property).
 
-### Expressing linear equations as matrices
+By inspection we can see that the two vectors in the set are
+independent, thus it is a basis. Thus the dimension of S is 2.
 
-We can write linear equations as matrices:
-$$
-a_{11}x_1 + a_{12}x_2 = b_1
-$$
+(Supposedly) we can use the theorem from [linear independence](#vec-3)
+to construct a basis from as panning set.
 
-$$
-a_{21}x_1 + a_{22}x_2 = b_2
-$$
+Let $$\{\vec{v}_1, \vec{v}_2, ..., \vec{v}_m\}$$ be a basis of a subspace
+S of $$\mathbb{R}^n$$. Then removing each $$\vec{v}_i$$ which is a linear
+combination of its \"predecessors\" will leave a basis for S.
 
-is equivalent to
-$$
-\begin{bmatrix}
-	a_{11} & a_{12} \\
-	a_{21} & a_{22}
-\end{bmatrix}
 
-\begin{bmatrix}
-	x_1 \\
-	x_2
-\end{bmatrix}
 
-=
+***Q.*** Find a basis for and dimension of a subspace S (of
+$$\mathbb{R}^4$$) spanned by
+$$\{(2,1,0,-3), (-1,0,-1,2), (1,2,-3,0), (0,0,0,1), (0,1,-2,0)\}.$$
 
-\begin{bmatrix}
-	b_1 \\
-	b_2
-\end{bmatrix}
-$$
-Which we often write as:
-$$
-A \underline{x} = \underline{b}
-$$
+***Answer.*** Let\'s look at (1, 2, -3, 0) and see if it is a linear comb.
+of predecessors. $$(1, 2, -3, 0) = \alpha(2,1,0,-3) + \beta(-1,0,-1,2)$$
 
 
-As we can see the matrix multiplication of the LHS will give a 1x2 matrix of the LHS of the linear equations, and then each row equates to one equation.
+$$\begin{align}  & \implies \begin{cases} 2\alpha - \beta  & = 1 \\
+\alpha  & = 2 \\ -\beta  & = -3 \\ -3\alpha + 2\beta  & = 0
+\end{cases}  & \implies \begin{cases} \alpha  & = 2 \\ \beta  & = 3.
+\end{cases} \end{align}$$
 
-Hence, by finding the matrix inverse of  $$A$$, we can pre-multiply it with $$\underline{b}$$, to get a matrix with each of the values of $$\underline{x}$$, which is what we are solving for
+ We can see it is a linear combination, so we
+remove, giving $$\{(2,1,0,-3), (-1,0,-1,2), (0,0,0,1), (0,1,-2,0)\}.$$
 
+Now we next check $$(0,0,0,1)$$.
+$$(0,0,0,1) = \alpha(2,1,0,-3) + \beta(-1,0,-1,2)$$ 
 
+$$\begin{align}
+ & \implies \begin{cases} 2\alpha - \beta  & = 0 \\ \alpha  & = 0 \\
+-\beta  & = 0 \\ -3\alpha + 2\beta  & = 1 \end{cases}  & \implies
+\begin{cases} \alpha  & = 0 \\ \beta  & = 0 \\ -3\alpha + 2\beta  & = 1 \end{cases} \end{align}$$
 
-### Elementary row operations to solve linear equations
+ Which have no solution of $$\alpha, \beta$$
+and thus (0, 0, 0, 1) is not a linear combination of priors. Thus
+$$\{(0,0,0,1),(2,1,0,-3),(-1,0,-1,2)\}$$ is a linear independence set.
 
-#### Augmented matrices
+Check the last one against all others,
+$$(0,1,-2,0) = \alpha(2,1,0,-3) + \beta(-1,0,-1,2) + \gamma(1, 2, -3, 0)$$
 
-Taking the first example of linear equations, we can re-write it as an "augmented matrix", to simplify row operations we will apply to it:
+$$\begin{align}  & \implies \begin{cases} 2\alpha - \beta  & = 0 \\
+\alpha  & = 1 \\ \beta  & = 2 \\ -3\alpha + 2\beta + \gamma  & = 0
+\end{cases}  & \implies \begin{cases} \alpha  & = 1 \\ \beta  & = 2
+\\ \gamma  & = -1. \end{cases} \end{align}$$
 
+ So we remove that, thus
+finally the remaining set $$\{(0,0,0,1),(2,1,0,-3),(-1,0,-1,2)\}$$ is the
+final basis of $$S$$, which gives $$S$$ a dimension of 3.
 
-$$
-a_{11}x_1 + a_{12}x_2 = b_1
-$$
+### Properties of bases
 
-$$
-a_{21}x_1 + a_{22}x_2 = b_2
-$$
+Let S be an $$m$$-dimensional subspace of $$\mathbb{R}^n$$ then
 
-Can be written as the augmented matrix
-$$
-\begin{bmatrix}
-	a_{11} & a_{12} & |\  b_1 \\
-	a_{21} & a_{22} & |\ b_2
-\end{bmatrix}
-$$
+1.  Any subset of S with more than $$m$$ vectors is linearly *dependent*;
+2.  A subset of S is a basis *if and only if* it is a linearly
+    independent set containing $$m$$ vectors.
 
-### Elementary row operations
+It then follows that any subset of $$\mathbb{R}^n$$ is linearly
+*dependent*, and a subset of $$\mathbb{R}^n$$ *iff* it is a linearly
+independent set containing $$n$$ vectors.
 
-There are three elementary row operations:
+$$\mathbb{R}^2, \mathbb{R}^3$$ properties\...
 
-1. Interchange rows
-2. Multiply a row by a non-zero scalar factor
-3. Add a multiple of one row to another
+Subspaces of $$\mathbb{R}^2$$:
 
-### Row equivalence
+1.  There is one 0 dim subspace $$\{\vec{0}\}$$
+2.  A 1D subspace is spanned by a single non-zero vector: straight lines
+    through origin.
+3.  The only 2D subspace is $$\mathbb{R}^2$$
 
-Two matrices are row equivalent when they can be transformed into each other using elementary row operations
+Subspaces of $$\mathbb{R}^3$$:
 
-### Row echelon form
+1.  There is one 0 dim subspace $$\{\vec{0}\}$$
+2.  A 1D subspace is spanned by a single non-zero vector: straight lines
+    through origin.
+3.  A 2D subspace is spanned by 2 linear independence vectors: plains containing
+    the origin
+4.  The only 3D subspace is $$\mathbb{R}^3$$
 
-A matrix is in row echelon form if the first non-zero entry in each row is further to the right than that in the previous row
-
-### Calculation of inverses
-
-If a sequence of elementary row operations transforms a square matrix $$A$$ into $$I$$, then $$A$$ is invertible and the same sequence transforms $$I$$ into $$A^{−1}$$
-
-## Determinants ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf), [Notes #2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf))
-
-### Definition
-
-*Pull request if you want to complete this*
-
-### Elementary row operations effect on determinants
-
-*Pull request if you want to complete this*
-
-
-
-## [Matrix inverses](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
-
-A matrix $$B$$ is the inverse of a matrix $$A$$ if $$AB = I = BA$$. Hence, they must both be square matrices of the same dimension
-
-### Requirements for invertibility
-
-The matrix must have a non-zero determinant to be invertible
-
-- [Adjoint/adjugant matrices](https://www.wikiwand.com/en/Adjugate_matrix)
-- Matrix inverse only well-defined if determinant is non-zero
-- Inverse from determinant and adjugant
-- Linear independence from matrix determinant
-
-
-
-## Linear transformations  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf), [Notes #2](https://warwickac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf))
-
-A function $$T : \mathbb{R}^m \rightarrow \mathbb{R}^n$$ is called a linear transformation if, for all $$\underline{u}, \underline{v} \in  \mathbb{R}^m$$ and all $$\lambda \in \mathbb{R}$$, we have:
-
-- Preservation of addition - $$T(\underline{u}) + \underline{v}) = T(\underline{u}) + T(\underline{v})$$
-- Preservation of multiplication - $$T(\lambda \underline{u}) = \lambda T(\underline{u})$$
-
-Hence, all linear transformations map $$T(\underline{0})$$ to $\underline{0}$
-
-### Matrix definitions of linear transformations
-
-Every matrix defines a linear transformation
-
-### Change of basis
-
-## [Eigenvalues and eigenvectors](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf)
-
-- Definitions
-- Complex values
-- Diagonalising matrices

@@ -1,164 +1,341 @@
 ---
 layout: CS131
 part: true
-title: Sequences and Series
-
+math: true
+title: "Matrices"
 ---
 
+## Matrix Algebra
+
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf)
+
+Matrices are rectangular arrays of elements. It\'s order is its
+$$\textrm{row } \times \textrm{ column}$$. Note that an $$m \times 1$$
+matrix is called a **column matrix/vector**, and $$1 \times n$$ matrices
+are similarly named as rows. Elements are referred to with subscript row
+column: $$a_{ij}$$.
+
+### Matrix operations
+
+#### Addition and scalar multiplication
+
+Sum of two matrices is only defined if they have the same order, and is
+*elementwise* addition.
+
+Scalar multiplication is also done elementwise.
+
+##### Properties of addition and scalar multiplication
+
+$$\forall m \times n$$ matrices $$A, B, C$$,
+$$\forall \lambda, \mu \in \mathbb{R}$$:
+
+1.  $$A + (B+C) = (A+B)+C$$ (associativity of addition)
+2.  $$A + O = A = O + A$$
+3.  $$A + (-A) = O = (-A) + A$$
+4.  $$A+B=B+A$$ (commutativity of addition)
+5.  $$(\lambda + \mu)A = \lambda A + \mu A$$
+6.  $$\lambda (A+B) = \lambda A + \lambda B$$
+7.  $$\lambda(\mu A) = (\lambda \mu ) A$$
+
+#### Matrix multiplication
+
+Matrix multiplication can only happen between an
+$$A_{m \times \mathbfit{n}}$$ and a $$B_{\mathbfit{n} \times p}$$ (note the
+highlighted dimensions) and will produce a matrix $$C_{m \times p}$$.
+
+Matrix multiplication is hard to explain in text, so [see this
+video](https://www.youtube.com/watch?v=as8C8w-Nz94) if you\'re not sure
+(by blackpenredpen)
+
+##### Properties of matrix multiplication
+
+Whenever the products exist, matrix multiplication has the properties:
+
+1.  $$(AB)C = A(BC)$$ (associativity)
+2.  $$A(B+C) = AB + AC$$, $$(A+B)C = AC + BC$$
+3.  $$IA = A = AI$$
+4.  $$OA = O = AO$$
+5.  $$A^p A^q = A^{p+q} = A^q A^p$$, $$(A^p)^q = A^{pq}$$
+
+Note that matrix multiplication is **not commutative**: $$AB \neq BA$$
+(for all but specific circumstances).
+
+#### Matrix transposition
+
+The **transpose** $$A^T$$ of a matrix is obtained by swapping rows and
+columns (i.e. reflecting on leading diagonal).
+
+##### Properties of transposition
+
+1.  $$(A^T)^T=A$$
+2.  $$(A+B)^T = A^T + B^T$$ if $$A+B$$ exists
+3.  $$(\lambda A)^T = \lambda A^T$$ for any $$\lambda \in \mathbb{R}$$
+4.  $$(AB)^T = B^T A^T$$ if $$AB$$ exists.
+
+For same order square matrices $$A, B$$, $$B$$ is the inverse of $$A$$ if and
+only if $$AB = I = BA$$. The inverse (should it exist) is **unique** and
+denoted $$A^{-1}$$.
+
+### Types of matrices
+
+A ***square matrix*** $$A_{n \times n}$$ is said to be of *order $$n$$*
+
+The ***zero matrix***, denoted $$O_{m \times n}$$ is a matrix of all zeros.
+
+**Diagonal matrices** only have elements on the leading diagonal;
+$$a_{ii}$$ for some $$i : [1..n]$$.
+
+The **identity matrix** $$I$$ (or $$I_n$$) is the $$n \times n$$ diagonal
+matrix whose diagonal elements are all 1.
+
+For a square matrix $$A$$, $$A, AA, AAA, ...$$ are defined as
+$$A, A^2, A^3,...$$ respectively. $$A^0 = I$$. Functions
+$$\exp(A), \cos(A), \sin(A)$$ can also be defined *(hint: taylor series)*.
+
+### Determinant of a 2x2 matrix
+
+The **determinant** of a $$2 \times 2$$ matrix
+$$A = \begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix}$$ is $$ad-bc$$ and
+denoted $$|A|, \det(A)$$.
+
+If a $$2 \times 2$$ matrix is invertible, then
+$$\det(A)det(A^{-1}) = \det(AA^{-1}) = \det(I) = 1$$. Thus
+$$\det(A) \neq 0$$ and in that case,
+
+The inverse of $$A = \begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix}$$ is
+$$A^{-1} = \frac{1}{\det A} \begin{bmatrix} d  &  -b \\ -c  &  a \end{bmatrix}$$
+(a particular case of a general result)
+
+## Matrix Inverse, Linear Equations
+
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf)
+
+A system of linear equations can be written in matrix form.
 
 
-# Sequences and Series
+$$\begin{align} ax\_1 + bx\_2  & = y\_1 \\ cx\_1 + dx\_2  & = y\_2
+\end{align}$$
 
-## [Sequences](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note15.pdf)
+$$\equiv \begin{bmatrix} a  &  b \ c  &  d \end{bmatrix} \begin{bmatrix} x_1 \ x_2 \end{bmatrix} = \begin{bmatrix} y_1 \ y_2 \end{bmatrix}.$$
+Which can be extrapolated to general form.
 
-A sequence $$a_n$$ is an infinite list of numbers $$a_0, a_1, ...$$
+### Elementary row operations
 
-Types of sequences:
+The following operations can be performed to solve a system (**Gaussian
+Elimination**):
 
-- Bounded: $$L < a_n < U, \forall n$$ (where $$L$$ and $$U$$ are the upper and lower limits respectively)
-- Increasing: $$a_n < a_{n+1}, \forall n$$
-- Decreasing: $$a_n > a_{n+1}, \forall n$$
+-   Swap two rows (equations)
+-   Multiply a row (both sides of an equation) by a nonzero number
+-   Add a multiple of one row (equation) to another
 
-### Limits
+### Augmented matrices
 
-A sequence $$a_n$$ is said to converge to a limit $$l \in \mathbb{R}$$ if for every $$\epsilon > 0$$ there is an integer $$N$$ (dependent on $$\epsilon$$) with $$\|a_n - l\| < \epsilon$$ for all $$n > N$$
+Which can be done over the *augmented matrix*, which is gotten by
+combining $$\begin{bmatrix} a  &  b \\ c  &  d \end{bmatrix}$$ and
+$$\begin{bmatrix} y_1 \ y_2 \end{bmatrix}$$ (the coefficients and the
+result).
+$$\left[\begin{array}{cc|c} a  &  b  &  y_1 \\ c  &  d  &  y_2 \end{array}\right]$$
 
-- Intuitively, this means that it converges to a value if every item after the current one is "closer" to that value than the current one
+Two matrices $$A, B$$ are **row equivalent** if we can use row operations
+to get from A to B. Denoted $$A \sim B$$.
 
-### Convergent sequences
+A matrix is in **row echelon form** if the first nonzero entry in each
+row is further to the right of said entry in the previous row. By
+reducing to row echelon form we can solve a system of linear equations.
 
-The combination rules of limits of convergent sequences are as expected, summing, multiplying etc. as with normal numbers
+See the pdf for sample problems. *Note: there also exists **reduced row
+echelon form**, where each leading entry is a 1, and each column with a
+1 in has 0s for all other entries.*
 
-#### Properties
+Elementary row operations can be done by multiplying by so-called *elementary
+matrices*. These are defined for (\E\_{n \times n}\):
 
-1. Every convergent sequence has a unique (single) limit
-2. If $$a_n$$ converges to $$l$$, then so does every subsequence of it
-3. If $$a_n$$ converges to $$l$$, the $$\|a_n\|$$ converges to $$\|l\|$$
-4. The **squeeze rule**
-   If $$a_n$$ converges to $$l$$, $$b_n$$ converges to $$l$$, and $$a_n \leq c_n \leq b_n, \forall n$$, then $$c_n$$ converges to $$l$$
-5. A convergent sequence is bounded, if $$B>0$$ with $$-B \leq a_n \leq B, \forall n$$
-6. Any increasing bounded above sequence converges
-7. Any decreasing bounded below sequence converges
+-   $$E_{ij}$$ obtained from $$I$$ by exchanging rows $$i, j$$
+-   For $$\lambda \neq 0, \; E_i(\lambda)$$ obtained from $$I$$ by
+    multiplying row $$i$$ by $$\lambda$$
+-   $$E_{ij}(\mu)$$ obtained from $$I$$ by adding $$\mu \cdot$$ row $$j$$ to row
+    $$i$$
 
-### Divergent sequences
+Every elementary matrix is invertible.
 
-Don't converge to a value
+If a sequence of row operations transforms a square matrix $$A$$ into $$I$$.
+then $$A^{-1}$$ exists and the same sequence transforms $$I$$ into $$A$$.
 
-### Big-O
+This is best done with an augmented matrix, like
+$$\left[\begin{array}{cc|cc} a  &  b  &  1  &  0 \\ c  &  d  &  0  &  1 \end{array}\right]$$
 
-See the [CS126 notes on this topic](../CS126/part2) for a more comprehensive guide
+## Matrix Inverse, Determinants
 
-## [Recurrences](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
+[Link to first PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf) 
+[Link to second PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf)
 
-Recurrences are sequences expressed in terms of their previous terms
+### Determinant of a 3x3 matrix and the cofactor matrix
 
-### Linear recurrences
+The determinant of a $$3 \times 3$$ matrix is denoted the same way, and is
+defined 
 
-#### Homogeneous recurrences
+$$\begin{vmatrix} a\_{11}  &  a\_{12}  &  a\_{13} \\ a\_{21}  & 
+a\_{22}  &  a\_{23} \\ a\_{31}  &  a\_{32}  &  a\_{33} \end{vmatrix} =
+a\_{11} \begin{vmatrix} a\_{22}  &  a\_{23} \\ a\_{32}  & 
+a\_{33}\end{vmatrix} - a\_{12} \begin{vmatrix}a\_{21}  &  a\_{23} \\
+a\_{31}  &  a\_{33}\end{vmatrix} + a\_{32} \begin{vmatrix}a\_{21}  & 
+a\_{22} \\ a\_{31}  &  a\_{32}\end{vmatrix}$$
 
-Consider the recurrence
-$$
-x_n + a x_{n-1} + b x_{n-2} = 0
-$$
-We then form an auxiliary equation from this
-$$
-\lambda^2 + a \lambda + b
-$$
-And solve for the roots $$\lambda_1$$ and $$\lambda_1$$. Then:
+ i.e. all elements on
+the first row multiplied (respecting +/- grid) with the determinant of
+the minor matrix (the cofactor) - the matrix gotten by deleting the row
+and column with said element.
 
-- If $$\lambda_1 \neq \lambda_2$$, the general solution is $$A (\lambda_1)^n + B (\lambda_1)^n$$
-- If $$\lambda_1 = \lambda_2$$, the general solution is $$A (\lambda_1)^n + Bn (\lambda_1)^n$$
+$$\begin{bmatrix}+ & - & + \\ - & + & - \\ + & - & +\end{bmatrix}$$
 
-With $$A$$ and $$B$$ being unknown constants
+This can be done with any row or column.
 
-#### Non-homogeneous recurrences
+### Elementary row operations on determinants
 
-Consider the recurrence:
-$$
-x_n + a x_{n-1} + b x_{n-2} = f(n)
-$$
-First, we let $$f(n)=0$$, and solve the recurrence using the technique for homogeneous recurrences shown above. Let this general solution be denoted as $$h_n$$
+On elementary row operations and determinants ($$B$$ obtained from $$A$$):
 
-Then, we also need to find *any* particular solution for the original recurrence. This will normally be a polynomial - and if one substitution doesn't work, we can try one of a higher order
+1.  Multiplying a row in A by a $$\lambda$$: $$|B| = \lambda|A|$$
+2.  Swapping 2 rows of A: $$|B| = -|A|$$
+3.  Adding a multiple of one row to another: $$|B| = |A|$$
 
-- For example, try substituting $$x_n = Cn + D$$ (and hence $$x_{n-1} = C(n-1) + D$$ and so on), which we call $$p_n$$, and solve for $$C$$ and $$D$$
+### Cramer's rule to invert matrices
 
-Then, the general solution to the recurrence is $$x_n = h_n + p_n$$
+A square matrix is inversible *iff* its determinant is not 0. If $$A$$ is
+invertible, $$A^{-1} = \frac{1}{|A|} \textrm{adj}(A)$$ where
+$$\textrm{adj}(A)$$ is the **transposed matrix of cofactors**.
 
-## Series  ([Notes #1](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part1.pdf), [Notes #2](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17_part2.pdf))
+You can also use matrix inverses to calculate equations: 
 
-A series $$\sum a_n$$ is a pair of sequences, composed from
+$$\begin{align}
+\textrm{if }  & A\vec{x} = \vec{y}\\ \textrm{then }  & A^{-1} A
+\vec{x} = A^{-1} \vec{y} \implies \vec{x} = A^{-1}\vec{y}
+\end{align}$$
 
-1. A sequence of terms, $$a_n$$
+ Where the column vector x are the variables, and column
+vector y are the values of the equations.
 
-2. A sequence of partial sums $$s_n$$ defined as:
-   $$
-   s_n = a_0 + a_1 + ... + a_n
-   $$
+### Linear independence via determinants
 
-If the sequence $$s_n$$ converges, we say that  $$\sum a_n$$ converges to the sum $$s$$, and can write:
-$$
-\sum_{n=0}^{\infin} a_n = s
-$$
+A set of $$n$$ vectors in
+$$\mathbb{R}^n$$ is linearly independent *if and only if* it is the set of
+column vectors of a matrix with nonzero determinant.
 
-### Geometric series
+Basically, bang $$n$$ $$\mathbb{R}^n$$ vectors into a square matrix, compute
+the determinant, and if it is 0, then those vectors are linearly
+dependent.
 
-A series of the form $$\sum r^n$$
+## Linear Transformations
 
-It converges for:
-$$
-\sum_{n=0}^{\infin} r^n = \frac{1}{1-r}, \quad \|r\| < 1
-$$
-And diverges for $$\|r\| \geq 1$$
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf)
 
-#### The harmonic series
+A function $$T : \textrm{R}^m \longrightarrow \mathbb{R}^n$$ is a **linear
+transformation** if,
+$$\forall \vec{u}, \vec{v} \in \mathbb{R}^n, \lambda \in \mathbb{R}$$, we
+have: $$T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v}),$$
+$$T(\lambda \vec{u}) = \lambda T(\vec{u}).$$ Which are preservation of
+addition and scaling respectively. Also,
 
-The harmonic series $$\sum_{n=1}^{\infin} \frac{1}{n}$$ diverges
+$$T(\vec{0}) = \vec{0}.$$
 
-### Properties of Convergent series
+For simple problems, verifying that the transformation fits the two
+rules of addition and scaling is sufficient.
 
-1. **Sum rule**: $$\sum a_n + \sum b_n = \sum (a_n + b_n)$$
-2. **Multiple rule**: $$\sum \lambda a_n = \lambda \cdot \sum a_n$$
-3. If the series $$\sum a_n$$ converges, then the sequence $$a_n$$ also converges to $$0$$
-4. If the series $$\sum \|a_n\|$$ converges, then the   series $$\sum a_n$$ also converges
+***Example.*** Let $$\vec{u}$$ be a nonzero 2D vector. If
+$$\vec{x} \in \mathbb{R}^2$$ then we define the **projection** of
+$$\vec{x}$$ onto $$\vec{u}$$ to be a vector $$P_{\vec{u}}(\vec{x})$$ such that
 
-### The comparison test
+1.  $$P_{\vec{u}}(\vec{x})$$ is a multiple of $$\vec{u}$$
+2.  $$\vec{x} - P_{\vec{u}}(\vec{x})$$ is perpendicular to $$\vec{u}$$.
 
-Suppose that $$0 \leq a_n \leq b_n, \forall n$$
+We have by (1) that $$P_{\vec{u}}(\vec{x}) = \alpha \vec{u}$$ for some
+$$\alpha \in \mathbb{R}$$, so by (2)
+$$0 = (\vec{x} - P_{\vec{u}}(\vec{x})) \cdot \vec{u} = (\vec{x} - \alpha \vec{u}) \cdot \vec{u} = \vec{x} \cdot \vec{u} - \alpha |\vec{u}|^2,$$
+$$\implies \alpha = \frac{\vec{x}\cdot\vec{u}}{|\vec{u}|^2}.$$
 
-1. If $$\sum b_n$$ converges, then so does $$\sum a_n$$
-2. If $$\sum a_n$$ diverges, then so does $$\sum b_n$$
+The projection can then be regarded as a function
+$$P_\vec{u} : \mathbb{R}^2 \longrightarrow \mathbb{R}^2$$ defined
+$$\forall \vec{x} \in \mathbb{R}^2$$:
+$$P_{\vec{u}}(\vec{x}) = (\frac{\vec{x}\cdot\vec{u}}{|\vec{u}|^2})\vec{u}.$$
+This function can be verified to be a linear transformation.
 
-### The ratio test
+***Example.*** For $$\theta \in [0, 2\pi)$$ define
+$$R_\theta : \mathbb{R}^2 \longrightarrow \mathbb{R^2}$$ to be a function
+describing rotation about angle $$\theta$$ through origin. After a bit of
+derivation, we get
+$$R_\theta (x, y) = (x\cos\theta - y\sin\theta, x\sin\theta - y\cos\theta).$$
+Or alternatively in matrix form (let $$(x', y')$$ be $$R_\theta (x, y)$$) as
+$$\begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix}\ \cos\theta  &  -\sin\theta \\ \sin\theta  &  \cos\theta \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}.$$
 
-If $$\|\frac{a_{n+1}}{a_n}\| \rightarrow L$$ then
+## Linear Transformations and Matrices
 
-1. If $$0 \leq L < 1$$ then the series $$\sum a_n$$ converges
-2. If $$L > 1$$ then the series $$\sum a_n$$ diverges
-3. If $$L=1$$, the test is inconclusive
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf)
 
-### Examples of series
+Referring back to the last example in the last section, it is further
+true that **every** $$M_{m \times n}$$ matrix can act as a linear
+transformation ($$T(\vec{x}) = M\vec{x}$$). Vectors are column vectors.
 
-*Pull request if you want to complete this*
+For a basis $$V = \{\vec{v}_1, \vec{v}_2, ... \vec{v}_n\}$$ of
+$$\mathbb{R}^n$$, every $$\vec{x} \in \mathbb{R}^n$$ has a linear expansion
+$$\vec{x} = a_1 \vec{v}_1 + a_2 \vec{v}_2 + ... + a_n \vec{v}_n$$.
 
-### Radius of convergence
+These coefficients $$a_1 ... a_n$$ are the **coordinates of $$x$$ with
+respect to basis $$V$$**.
 
-Intuitively the range of values for which the sequence converges
+Let $$T : \mathbb{R}^m \longrightarrow \mathbb{R}^n$$ be a linear
+transformation, V be a basis in $$\mathbb{R}^m$$ and W a basis in
+$$\mathbb{R}^n$$.
 
-### Properties of power series
+For each vector $$\vec{v}$$ in V $$T(\vec{v})$$ has an expansion in W. The
+**Matrix of a linear transformation** T with respect to V and W is the
+$$m \times n$$ matrix where each column $$i$$ contains the coefficients of
+the expansion of $$T(\vec{v}_i)$$ for each $$\vec{v}_i \in V$$.
 
-*Pull request if you want to complete this*
+When $$m = n, \; W = V$$ then it is referred to as the **matrix of T with
+respect to basis V**.
 
-### Binomial theorem
+***Matrix of a linear transformation.*** For a linear transformation T
+(as above), M the matrix of T with respect to bases V, W (as above); the
+columns of M contain the coordinates of the *images* of the basis
+vectors in V w/ respect to W.
 
-*Pull request if you want to complete this*
+If $$\vec{x} \in \mathbb{R}^m$$ has coordinates $$[x_1,...,x_n]$$ with
+respect to V then the coordinates with respect to W, $$[y_1, ... , y_n]$$
+are
+$$\begin{bmatrix} y_1 \ \vdots \ y_n \end{bmatrix} = M \begin{bmatrix} x_1 \ \vdots \ x_n \end{bmatrix}.$$
 
+A matrix that changes between two different bases in $$\mathbb{R}^n$$ is
+called a **transition matrix**.
 
+The definition on the notes is uh, just do the same thing as above but
+the matrix will be square.
 
-### [Decimal numbers as a geometric series](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note18.pdf)
+## Eigenvalues and Eigenvectors
 
-*Pull request if you want to complete this*
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf)
 
-### Partial fractions (optional)
+Relating to matrices multiplying vectors, and especially where the
+vectors don\'t change direction.
 
-*Pull request if you want to complete this*
+For a matrix A and a vector $$\vec{r}$$, if
+$$A\vec{r} = \lambda \vec{r}, \; \lambda \in \mathbb{R}$$, then $$\vec{r}$$
+is the **eigenvector** and $$\lambda$$ is the **eigenvalue**.
+
+A number $$\lambda$$ is an eigenvalue of A if and only if it satisfies the
+**characteristic equation** $$|A - \lambda I| = 0.$$
+
+For an order $$n$$ matrix there are $$n$$ (not necessarily unique)
+eigenvalues. Eigenvalues can also be $$\in \mathbb{C}$$.
+
+Recall that diagonal matrices are written
+$$\textrm{diag}[a_{11}, a_{22}, ..., a_{nn}]$$.
+
+### Diagonalisation of Matrices
+
+For an order $$n$$ matrix A:
+$$A = UDU^{-1}$$ Where
+$$D = \textrm{diag}[\lambda_1, \lambda_2, ..., \lambda_n]$$ (the eigen
+values), and $$U = [\vec{v}_1, \vec{v}_2, \dots, \vec{v}_n]$$ are the
+*corresponding* eigenvectors of said eigenvalues.
+
+Note that if you have repeated eigenvalues, you have to find multiple
+*distinct* (linear independence) eigenvectors for that eigenvalue.
