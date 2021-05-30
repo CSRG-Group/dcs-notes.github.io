@@ -55,7 +55,9 @@ Handshaking can be implemented with software or specialised hardware, which ofte
 
 > Another way to target synchronisation problems. CPU normally executes instructions sequentially, unless a jump or branch is made – an interrupt input can force a CPU to jump to a service routine. The key difference between interrupts and handshaking or polling is that it is **asynchronous.** 
 
-**Interrupt requests** may be ignored depending on the current task that the CPU is working on. The CPU compares the “priority” of the tasks and decides which tasks supersedes the other. **Non-maskable Interrupts** cannot be ignored and the CPU will have to service the interrupt. 
+**Interrupt requests** may be ignored depending on the current task that the CPU is working on. The CPU compares the “priority” of the tasks and decides which tasks supersedes the other. **Non-maskable Interrupts** cannot be ignored and the CPU will have to service the interrupt.
+
+> It is possible for a masked interrupt which was initially ignored to become non-masked (i.e., necessary to service) if it has been ignored for long enough.
 
 <img src="part5.assets/image-20210524180858554.png" alt="image-20210524180858554" style="zoom:67%;" class="center" />
 
@@ -94,7 +96,7 @@ DMA fixes this by giving control of the system buses from the CPU to the DMA Con
 
 ### DMA Modes of Operation
 
-> **Cycle Stealing.** DMAC uses the system buses when they are not being used by the CPU – usually by using available memory access cycles not used by the CPU. This is less effective and less common then the next mode of operation.
+> **Cycle Stealing.** DMAC uses the system buses when they are not being used by the CPU – usually by using available memory access cycles not used by the CPU. This is less effective and less common then the next mode of operation. This is equivalent to if you were working for 20 minutes at a time, but knew that every 18th minute you would be inefficient- instead of continuing to work in this time, you let the DMA handle the bus.
 >
 > **Burst Mode.** DMAC acquires system buses for the transfer of large amount of data at high speed and preventing the CPU from using the system buses for a fixed time OR…
 >
