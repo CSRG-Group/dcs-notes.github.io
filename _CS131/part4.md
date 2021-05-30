@@ -5,22 +5,22 @@ math: true
 title: "Sequences and Series"
 ---
 
-Sequences
----------
+## Sequences
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note15.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note15.pdf)
 
 A sequence $$(a_n)$$ is an infinite list of numbers $$(a_0, a_1,...)$$. We
 can define sequences through *nth term* rules or *recursively*.
 
-***Convergent Sequence.*** A sequence $$a_n$$ is said to **converge** to a
+### Convergent Sequences
+
+A sequence $$a_n$$ is said to **converge** to a
 **limit** $$l \in \mathbb{R}$$ if for every small $$\epsilon > 0$$ there is
 a related integer $$N$$ such that $$|a_n - l| < \epsilon \; \forall n > N$$.
 This is denoted as 
 
-$$\begin{align}  & \lim\_{n \rightarrow \infty} a\_n
-= l;  & a\_n \rightarrow l. \end{align}$$
+$$\begin{align}  & \lim_{n \rightarrow \infty} a_n
+= l;  & a_n \rightarrow l. \end{align}$$
 
 
 
@@ -46,7 +46,9 @@ out as an equation.
 If possible, try break a large sequence down into simpler components.
 They can be combined using the following:
 
-***Combination Rules for Convergent Sequences.*** For convergent
+#### Combination Rules for Convergent Sequences
+
+For convergent
 sequences
 $$a_n \rightarrow \alpha, b+n \rightarrow \beta, c_n \rightarrow \gamma$$:
 
@@ -60,14 +62,14 @@ $$a_n \rightarrow \alpha, b+n \rightarrow \beta, c_n \rightarrow \gamma$$:
 6.  ***Hybrid*** rule:
     $$\frac{b_n c_n}{a_n} \rightarrow \frac{\beta\gamma}{\alpha}$$
 
-Problem\...
 
-***Problem.*** Show that the following sequence converges, find its
+
+#### Problems
+
+***Q.*** Show that the following sequence converges, find its
 limit: $$a_n = \frac{(n+2)(2n-1)}{3n^2 + 1}$$
 
-Answer\...
-
-The components do not converge themselves, a technique here is *dividing
+***Answer.*** The components do not converge themselves, a technique here is *dividing
 by the fastest increasing term*. Dividing by $$n^2$$,
 $$a_n = \frac{\frac{(n+2)}{n}\frac{(2n-1)}{n}}{\frac{3n^2 +1}{n^2}} = \frac{(1 + \frac{2}{n})(2 - \frac{1}{n})}{3 + \frac{1}{n^2}}.$$
 
@@ -75,10 +77,14 @@ Now the components $$\frac{1}{n}$$ and $$\frac{1}{n^2}$$ converge to 0, so
 applying combination rules we can get
 $$a_n \rightarrow \frac{(1+0)(2-0)}{3+0} = \frac{2}{3}.$$
 
+### Bounded sequences
+
 A sequence $$a_n$$ is **bounded above** if there is a number
 $$U : a_n \leq U \forall n$$. $$a_n$$ is **bounded below** if there is a
 number $$L : L \leq a_n \forall n$$. A sequence is **bounded** if it is
 bounded both above and below.
+
+### Subsequences
 
 A **subsequence** of a sequence is obtained from the original sequence
 by deleting some terms. We can say $$a_{2n}, a_{2n+1}$$ are the even and
@@ -88,7 +94,7 @@ A sequence $$a_n$$ is an **increasing** sequence if
 $$a_{n+1} \geq a_n \;\forall n$$. It is a **decreasing** sequence if
 $$a_{n+1} \leq a_n \;\forall n$$.
 
-***Basic Properties of Convergent Sequences.***
+### Basic Properties of Convergent Sequences
 
 1.  A convergent sequence has a *unique* limit.
 2.  If $$a_n \rightarrow l$$ then *every subsequence* of $$a_n$$ also
@@ -101,9 +107,8 @@ $$a_{n+1} \leq a_n \;\forall n$$.
 6.  An increasing sequence which is bounded above converges. A
     decreasing sequence which is bounded below converges.
 
-^1^The sequence $$c_n$$ is \"squeezed\" between two sequences which both
-converge to the same limit, so naturally it will too.\
-^2^$$\exists B > 0 : - B \leq a_n \leq B, \; \forall n$$.
+The sequence $$c_n$$ is \"squeezed\" between two sequences which both
+converge to the same limit, so naturally it will too.$$\exists B > 0 : - B \leq a_n \leq B, \; \forall n$$.
 
 You can demonstrate an alternating sequence (e.g. $$(-1)^n$$) doesn\'t
 converge by looking at *subsequences*.
@@ -111,14 +116,13 @@ converge by looking at *subsequences*.
 Reminder: the binomial theorem is
 $$(1 + x)^n = 1 + nx + \frac{n(n-1)}{2!}x^2 + ... + \frac{n!}{k!(n-k)!}x^k$$
 
-Problem\...
+#### Problems
 
-***Problem.*** Show that for $$x \geq 0, n > 0$$, this:
+***Q.*** Show that for $$x \geq 0, n > 0$$, this:
 $$(1+x)^{\frac{1}{n}} \leq 1 + \frac{x}{n}$$.
 
 Hence deduce/show that if $$c > 0$$ then $$c^\frac{1}{n} \rightarrow 1$$.
 
-Answer\...
 
 ***Answer.*** Firstly, we can rearrange and use the binomial theorem.
 
@@ -128,7 +132,7 @@ $$\begin{align} 1 + x  & \leq (1 + \frac{x}{n})^n. \\ (1 +
 via binomial exp, so} \\ 1 + x  & \leq 1 + x + \textrm{ (other
 positive terms)} \\ \end{align}$$
 
- Thus if we take $$n^\textrm{th}$$ roots
+Thus if we take $$n^\textrm{th}$$ roots
 of each side we will demonstrate that
 $$(1+x)^\frac{1}{n} \leq 1 + \frac{x}{n}.$$
 
@@ -147,7 +151,9 @@ $$\frac{1}{c^\frac{1}{n}} \rightarrow 1$$.
 
 Did you get that? Me neither.
 
-***Divergent Sequence.*** A sequence $$a_n$$ is said to **diverge to
+### Divergent Sequences
+
+A sequence $$a_n$$ is said to **diverge to
 infinity** if
 $$\forall K \in \mathbb{R}\; \exists N : n > N \implies a_n > K$$.
 
@@ -160,7 +166,7 @@ if $$-a_n \rightarrow \infty$$.
 A divergent sequence that doesn\'t go off to infinity is said to
 **oscillate**.
 
-***Basic convergent sequences.*** 
+### Basic convergent sequences
 
 $$\begin{align}  &  \lim\_{n
 \rightarrow \infty} \frac{1}{n^p} = 0  &  \forall p > 0 \\  & 
@@ -174,31 +180,9 @@ $$\begin{align}  &  \lim\_{n
 
 
 
-Series
-------
+## Series
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17.pdf)
-
-Addendum: Partial Fractions
-
-Partial fractions can be important in series.
-
-Where a rational function is decomposed into a sum of simpler fractions,
-such as $$\frac{cx+d}{(x-a)(x-b)} = \frac{A}{x-a} + \frac{B}{x-b}.$$
-
-When there is no repeated factor, simply substituting $$x = a, x=b$$ can
-eliminate a term and make it easy to find the unknowns $$A, B$$. When
-there is however, we need to just pick values of $$x$$ and solve from
-there.
-
-If there is a repeated factor $$(x-a)^n$$, the partial sum will have all
-the fractions with denominations $$(x-a), (x-a)^2,...$$ up to $$(x-a)^n$$
-
-If the degree of the numerator is higher than the denominator, then we
-have to divide out the numerator (polynomial long division) to get a
-valid separable fraction,
-$$\frac{x^3 + 3x}{(x+1)(x-3)} = x+2 + \frac{10x+6}{(x+1)(x-3)}.$$
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17.pdf)
 
 A series $$\sum a_n$$ is a pair of sequences:
 
@@ -227,7 +211,7 @@ $$s_2, s_4, s_8, s_{16}, ...$$ and see that it will forever build to
 $$1 + 0.5 + 0.5 + 0.5 + ...$$. $$s_{2^n} > 1 + \frac{n}{2}.$$ Though any
 series $$\sum \frac{1}{n^k}$$ where $$k > 1$$ will always converge.
 
-***Basic Properties of Convergent Series.***
+### Basic Properties of Convergent Series
 
 1.  **Sum rule**, $$\sum a_n$$ converges to $$s,\; \sum b_n$$ converges to
     $$t \implies \sum (a_n + b_n)$$ converges to $$s + t$$.
@@ -240,7 +224,9 @@ series $$\sum \frac{1}{n^k}$$ where $$k > 1$$ will always converge.
 No. 4 is only useful really when you have an \"oscillating\" series,
 like $$\sum \frac{(-1)^n}{2^n}$$.
 
-***The Comparison Test.*** Suppose that $$0 \leq a_n \leq b_n$$ for all
+### The Comparison Test
+
+Suppose that $$0 \leq a_n \leq b_n$$ for all
 $$n$$,
 
 1.  If $$\sum b_n$$ converges then so does $$\sum a_n$$
@@ -251,17 +237,15 @@ thin air, but (especially with rational functions) there\'s usually a
 technique for doing so based on the largest power of $$n$$, and slowly
 chipping away a piece at a time until we get a very simple expression.
 
-Problem\...
+#### Problems
 
-***Problem.*** Determine whether the following series converges or
+***Q.*** Determine whether the following series converges or
 diverges: 
 
 $$\begin{align}  &  (1)\; \sum \frac{n+2}{n^3 - n^2 + 1}  & 
 (2) \;\sum \frac{n^2 + 4}{2n^3 - n + 1} \end{align}$$
 
 
-
-Answer\...
 
 ***Answer 1.*** Take a look at the fraction $$\frac{n+2}{n^3 - n^2 + 1}$$.
 If we want to find a smaller fraction, we want a smaller numerator and a
@@ -297,7 +281,9 @@ that this gives us $$\frac{1}{2n} \leq \frac{n^2 + 4}{2n^3 -n+1}$$ And oh
 no, $$\sum \frac{1}{2n}$$ diverges (multiple rule) so the original one
 must too.
 
-***The Ratio Test.*** If $$|\frac{a_{n+1}}{a_n}| \rightarrow L$$ then
+### The Ratio Test
+
+If $$|\frac{a_{n+1}}{a_n}| \rightarrow L$$ then
 
 1.  $$0 \leq L < 1 \implies \sum a_n$$ converges.
 2.  $$L > 1$$ or $$L \textrm{ is } \infty \implies \sum a_n$$ diverges.
@@ -305,7 +291,7 @@ must too.
 
 Useful in dealing with factorials.
 
-***Basic Convergent Series.***
+### Basic Convergent Series
 
 -   $$\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}$$ for all $$r : |r| < 1$$
 -   $$\sum \frac{1}{n^k}$$ converges for all $$k > 1$$
@@ -313,35 +299,18 @@ Useful in dealing with factorials.
 -   $$\sum_{n=0}^{\infty} \frac{c^n}{n!} = e^c$$ for all
     $$c \in \mathbb{R}$$
 
-***Basic Divergent Series.***
+### Basic Divergent Series
 
 -   $$\sum \frac{1}{n^k}$$ diverges for all $$k < 1$$.
+
+### Power series
 
 A **power series** is one of the form $$\sum a_n x^n$$. Usually we start
 at $$n = 0$$, such that the sequence goes $$a_0, a_1x, a_2x^2, ...$$
 
-***Lemma.*** If $$\sum a_n R^n$$ converges for some $$R \geq 0$$, then
-$$\sum a_n x^n$$ converges $$\forall x : |x| < R$$. *(proof in notes)*
+#### Basic Properties of Power Series
 
-$$R \geq 0$$ is the **radius of convergence** of a power series
-$$\sum a_n x^n$$ if it converges according to the above, and diverges if
-$$|x| > R$$. If a series converges $$\forall x$$ then the radius is
-infinity.
-
-If the series $$\sum a_n x^n$$ has a conv. rad $$R$$ then it defines a
-function 
-
-$$\begin{align}  & f(x) = \sum\_{n=0}^{\infty} a\_nx^n
- & \forall x \in (-R, R) \end{align}$$
-
-
-
-You can find the [radius of convergence using ratio
-test](https://www.youtube.com/watch?v=4L9dSZN5Nvg), essentially
-evaluate $$\lim_{n \rightarrow \infty} |\frac{a_{n+1}}{a_n}| < 1.$$ and
-you will get an $$|x| < ...$$ where that something is your radius.
-
-***Basic Properties of Power Series.*** Let 
+Let 
 
 $$\begin{align} f(x)  & =
 \sum\_{n=0}^{\infty} a\_nx^n  &  x \in (-R\_1, R\_1) \\ g(x)  & =
@@ -367,11 +336,58 @@ $$\begin{align} (1+x)^q  & =
 
 
 
-Recurrences
------------
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
+
+### Radius of convergence
+
+***Lemma.*** If $$\sum a_n R^n$$ converges for some $$R \geq 0$$, then
+$$\sum a_n x^n$$ converges $$\forall x : |x| < R$$. *(proof in notes)*
+
+$$R \geq 0$$ is the **radius of convergence** of a power series
+$$\sum a_n x^n$$ if it converges according to the above, and diverges if
+$$|x| > R$$. If a series converges $$\forall x$$ then the radius is
+infinity.
+
+If the series $$\sum a_n x^n$$ has a conv. rad $$R$$ then it defines a
+function 
+
+$$\begin{align}  & f(x) = \sum\_{n=0}^{\infty} a\_nx^n
+ & \forall x \in (-R, R) \end{align}$$
+
+
+
+You can find the [radius of convergence using ratio
+test](https://www.youtube.com/watch?v=4L9dSZN5Nvg), essentially
+evaluate $$\lim_{n \rightarrow \infty} |\frac{a_{n+1}}{a_n}| < 1.$$ and
+you will get an $$|x| < ...$$ where that something is your radius.
+
+
+
+### Addendum: Partial Fractions
+
+Partial fractions can be important in series.
+
+Where a rational function is decomposed into a sum of simpler fractions,
+such as $$\frac{cx+d}{(x-a)(x-b)} = \frac{A}{x-a} + \frac{B}{x-b}.$$
+
+When there is no repeated factor, simply substituting $$x = a, x=b$$ can
+eliminate a term and make it easy to find the unknowns $$A, B$$. When
+there is however, we need to just pick values of $$x$$ and solve from
+there.
+
+If there is a repeated factor $$(x-a)^n$$, the partial sum will have all
+the fractions with denominations $$(x-a), (x-a)^2,...$$ up to $$(x-a)^n$$
+
+If the degree of the numerator is higher than the denominator, then we
+have to divide out the numerator (polynomial long division) to get a
+valid separable fraction,
+$$\frac{x^3 + 3x}{(x+1)(x-3)} = x+2 + \frac{10x+6}{(x+1)(x-3)}.$$
+
+
+
+## Recurrences
+
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
 
 *Like the differential equations of sequences.*
 
@@ -390,6 +406,8 @@ We are looking at solving linear recurrences with constant coefficients,
 of the form $$x_n + a_1x_{n-1} + ... a_kx_{n-k} = f(n)$$ where $$f$$ is a
 given function. (If the terms from 1 to k are given, then this describes
 a unique sequence.)
+
+### Homogenous recurrences
 
 More importantly, we will look at **homogenous** ($$f(n) = 0$$)
 recurrences with $$k = 2$$. Thus, we want the general solution of
@@ -413,11 +431,10 @@ Let $$\lambda_1, \lambda_2$$ be the roots of the  auxiliary equation.
 For constants $$A, B$$, which can be found if the first two terms of the
 sequence are known.
 
-Problem\...
+### Problems
 
 ***Problem.*** Find a closed form for the Fibonacci sequence.
 
-Answer\...
 
 ***Answer.*** We have $$F_n = F_{n-1} + F_{n-2}$$ so
 $$F_n - F_{n-1} - F_{n-2} = 0$$. The auxiliary equation is
@@ -440,7 +457,9 @@ $$F_n = \left \lfloor{\frac{\phi^n}{\sqrt{5}}}\right \rfloor$$
 
 Non-homogenous recurrences have the $$f(n)$$ bit not 0.
 
-***Finding solutions to non-homogenous recurrences.*** of form
+### Non-homogenous recurrences
+
+Finding solutions to non-homogenous recurrences of the form
 $$x_n + ax_{n-1} + bx_{n-2} = f(n)$$
 
 1.  Find the general solution $$x_n = h_n$$ of the homogenous recurrence:
@@ -461,11 +480,9 @@ If $$f(n)$$ is a polynomial, try find a *same degree* polynomial.
 
 Etc. just like diff. equations.
 
-Decimal Representation of Reals
--------------------------------
+## Decimal Representation of Reals
 
-[Link to the
-PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
+[Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf)
 
 Rational numbers can be represented by expansions, so can repeating
 decimals.
@@ -502,3 +519,4 @@ really.
 
 Not sure why this is here save the fact that yes decimals are related to
 series.
+
