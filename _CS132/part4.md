@@ -17,9 +17,9 @@ When deciding on a memory technology, you must consider the following factors:
 
 <img src="part4res/4-1.png" alt="Memory hierarchy diagram" class="center"/>
 
-We know that roughly **90%** of memory accesses are within +-2KB of the previous program counter position. Therefore, we should only choose expensive memory **when we need it**, which is due to **spatial locality**.
+We know that roughly **90%** of memory accesses are within +-2KB of the previous program counter position. Therefore, we should only choose expensive memory **when we need it**, which is due to **spatial locality**. **Temporal locality** refers to the likelihood that a particular memory location will be referenced in the future.
 
-**Temporal locality** refers to the likelihood that a particular memory location will be referenced in the future.
+> Locality is not only a hardware feature- it is important for programmers to also write code which has 'good locality'- however, this is not typically a concern we have when writing higher level languages than assembly such as C or C++. I assume that the compiler will be optimising the code itself to ensure that the assembled code reflects these principles, as it leads to higher performance- if we have to keep accessing main store because we have exceeded the amount of cache available to us, or the information is not in higher levels of cache, then the access time can increase by orders of magnitude.
 
 ## Cache Memory
 - Cache is **kept small to limit cost**; it is also **transparent to the programmer**. However, this does allow _some_ control over what is stored in it. 
@@ -30,7 +30,7 @@ We know that roughly **90%** of memory accesses are within +-2KB of the previous
 > 
 > Currently, single core frequency is tailing off; this has lead the industry to focus on multicore performance instead. Comparatively, memory access speed is improving much more slowly; access time and capacity can become a huge bottleneck when it comes to creating performant systems.
 
-> Cache concepts are not included in these notes as they are not fully examined, and also do not feature in the revision videos.
+> Cache concepts are not included in these notes as they are not fully examined, and also do not feature in the revision videos. There are however several exam questions relating to cache which appear every year.
 
 ## Memory Cell Organisation
 Now that we're familiar with different parts of the memory hierarchy, it's crucial that we understand how this memory is actually constructed (down to the metal almost). 
