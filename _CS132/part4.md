@@ -31,6 +31,8 @@ Thus, in such cases, data in these memory locations should be stored in memory t
 
 <img src="part4res/4-1.png" alt="Memory hierarchy diagram" class="center"/>
 
+
+
 > Locality is not only a hardware feature – it is important for programmers to also write code which has 'good locality' – however, this is not typically a concern we have when writing higher level languages than assembly such as C or C++. I assume that the compiler will be optimising the code itself to ensure that the assembled code reflects these principles, as it leads to higher performance – if we have to keep accessing main store because we have exceeded the amount of cache available to us, or the information is not in higher levels of cache, then the access time can increase by orders of magnitude.
 
 ## Cache Memory
