@@ -190,9 +190,9 @@ This can be done with any row or column.
 
 On elementary row operations and determinants ($$B$$ obtained from $$A$$):
 
-1.  Multiplying a row in A by a $$\lambda$$: $$|B| = \lambda|A|$$
-2.  Swapping 2 rows of A: $$|B| = -|A|$$
-3.  Adding a multiple of one row to another: $$|B| = |A|$$
+1.  Multiplying a row in A by a $$\lambda$$: $$\|B\| = \lambda\|A\|$$
+2.  Swapping 2 rows of A: $$\|B\| = -\|A\|$$
+3.  Adding a multiple of one row to another: $$\|B\| = \|A\|$$
 
 ### Cramer's rule to invert matrices
 
