@@ -42,13 +42,24 @@ The operations composing the cycle are:
 #### Fetch stage
 
 1. Copy the address of the next instruction stored in the program counter to the memory address register
-   **MAR <- PC**
 2. Read the instruction in the main store at the address in the memory address register into the memory data register
-   **MDR <- MS[MAR]**
 3. Copy the instruction from the memory data register to the instruction register
-   **IR <- MDR**
-4. Increment the program counter to point to the address of the next instruction
-   **PC <- PC + 1**
+4. The instruction is sent from the instruction register to the control unit to be decoded in the next stage
+5. Increment the program counter to point to the address of the next instruction
+
+In *register transfer language*, fetching would look like
+
+```haskell
+[MAR] <- [PC]
+[MBR] <- [MS([MAR])]
+[IR]  <- [MBR]
+CU    <- [IR(opcode)]
+[PC]  <- [PC] + 1
+```
+
+This is explained in further detail [here](#example-instruction-fetching).
+
+**Note that the in different resources, the time at which the PC is incremented sometimes differs - most of the time (and in Matt's notes) it is said to be at the very end of the fetch stage [source #1](https://www.robots.ox.ac.uk/~dwm/Courses/2CO_2014/2CO-N2.pdf), [source #2](https://www.futurelearn.com/info/courses/how-computers-work/0/steps/49284), but sometimes it is said to be immediately after it is copied into the memory address register [source #3](http://theteacher.info/index.php/fundamentals-of-cs/1-hardware-and-communication/topics/2599-registers-and-the-fetch-decode-execute-cycle) - this is likely due to differences in implementation**
 
 #### Decode stage
 
@@ -62,8 +73,6 @@ The operations composing the cycle are:
 
 1. The control unit signals to functional CPU components, e.g. to indicate which busses to enable, or set whether the main store should be read from or written to
 2. Changes in the state of the machine, e.g. data registers, program counter, main store, resulting from the execution of the instruction may occur
-
-
 
 ## Registers
 
@@ -122,13 +131,13 @@ Given a series of instructions in words, we can find a way to represent this in 
 | Plain words | RTL equivalent |
 |-------------|----------------|
 | Contents of PC transferred to MAR address buffers | `[MAR] ⬅ [PC]` |
-| Increment the PC | `[PC] ⬅ [PC] + 1` |
 | Load MBR from external memory, and set $$R / \bar W$$ to Read | `[MBR] ⬅ [MS([MAR])]`; $$R / \bar W$$ to Read |
 | Transfer opcode to IR from MBR | `[IR] ⬅ [MBR]` |
 | Decode the instruction | `CU ⬅ [IR(opcode)]` |
+| Increment the PC | `[PC] ⬅ [PC] + 1` |
 
 If you wanted to add a constant byte to a register (take `D0` from the 68008), you would engage the ALU and then transfer this into a register:
-```
+```haskell
 { continue previous cycle }
 [MBR] ⬅ [MS([MAR])]
 ALU ⬅ [MBR] + D0
@@ -286,4 +295,3 @@ As mentioned earlier, there are several ways for the CPU to access memory; you s
 > Indirect addressing is never on the exam; however, this is where we add offsets, increments, or indexed addressing to access memory or data. 
 
 [Additional source #1](http://www.cs.iit.edu/~cs561/cs350/addressing/addsclm.html), [Additional source #2](https://www.geeksforgeeks.org/addressing-modes/)
-

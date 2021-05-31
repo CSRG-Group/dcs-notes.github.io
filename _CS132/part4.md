@@ -12,25 +12,50 @@ When deciding on a memory technology, you must consider the following factors:
 - Capacity required
 - Financial cost
 
-> The **designer's dilemma** is the conflict that is caused by choosing between low cost, high capacity storage or high cost, low capacity storage.
+> The **designer's dilemma** is the conflict that is caused by choosing between low cost, high capacity but slow access storage **and** high cost, low capacity, but fast access storage.
+>
 > Ideally, we would want our storage access to be frequent, quick, and spatially efficient – the balance of these three leads to the cost of the storage.
+
+The **memory hierarchy** is a way of addressing the designer’s dilemma to get the best out of each type of storage. 
+
+> In practice, most programs exhibit locality, which our memory systems can take advantage of.
+>
+> **Temporal Locality** – If a particular memory location is referenced, it is likely that the same location will be referenced again in the near future. Loops are excellent examples of temporal locality in programs.
+>
+> **Spatial Locality** – If a particular memory location is referenced, it is likely that nearby memory locations will be referenced in the near future. Nearly every program exhibits spatial locality, because instructions are usually executed in sequence. Loops exhibit both temporal and spatial locality.
+
+- Due to spatial locality, a reasonable assumption to make is that 90% of memory access is within &pm;2KB of the previous program counter location. 
+- Additionally, temporal locality states that these accessed memory locations are likely to be accessed again in the near future. 
+
+Thus, in such cases, data in these memory locations should be stored in memory that is as close to the CPU as possible (registers, cache, main store). However, this cannot be used for everything as it would **incur a high manufacturing cost**, and the **total capacity would be limited**. Data that is **less frequently accessed** should be stored in memory that is slower, higher capacity, and cheaper because the high speed of access is **not needed**. 
 
 <img src="part4res/4-1.png" alt="Memory hierarchy diagram" class="center"/>
 
-We know that roughly **90%** of memory accesses are within +-2KB of the previous program counter position. Therefore, we should only choose expensive memory **when we need it**, which is due to **spatial locality**. **Temporal locality** refers to the likelihood that a particular memory location will be referenced in the future.
-
-> Locality is not only a hardware feature- it is important for programmers to also write code which has 'good locality'- however, this is not typically a concern we have when writing higher level languages than assembly such as C or C++. I assume that the compiler will be optimising the code itself to ensure that the assembled code reflects these principles, as it leads to higher performance- if we have to keep accessing main store because we have exceeded the amount of cache available to us, or the information is not in higher levels of cache, then the access time can increase by orders of magnitude.
+> Locality is not only a hardware feature – it is important for programmers to also write code which has 'good locality' – however, this is not typically a concern we have when writing higher level languages than assembly such as C or C++. I assume that the compiler will be optimising the code itself to ensure that the assembled code reflects these principles, as it leads to higher performance – if we have to keep accessing main store because we have exceeded the amount of cache available to us, or the information is not in higher levels of cache, then the access time can increase by orders of magnitude.
 
 ## Cache Memory
-- Cache is **kept small to limit cost**; it is also **transparent to the programmer**. However, this does allow _some_ control over what is stored in it. 
-- A cache access is known as a **'cache hit'**.
-- Cache speed is incredibly important – moving down the memory hierarchy will take orders of magnitude more time for similar memory hits.
+
+> Cache memory is a small amount (typically tens of kilobytes) of memory that can be built into the microprocessor or is very close to it, and can be accessed very quickly. Cache memory is used to store values in memory which are likely to be retrieved, so the read times are quicker than the main store.
+>
+> - Cache is **kept small to limit cost**; it is also **transparent to the programmer**. However, this does allow _some_ control over what is stored in it. 
+> - A cache access is known as a **'cache hit'**.
+> - Cache speed is incredibly important – moving down the memory hierarchy will take orders of magnitude more time for similar memory hits.
+
+Because of spatial locality, cache memory often prefetches the memory locations around the last PC memory location before it is needed, which means that in many cases the cache already has the memory needed, increasing read speeds of order of magnitudes as compared to fetching from the main store.
+
+Due to temporal locality, the first time the processor reads from an address in main memory, a copy is stored in the cache. The next time the same address is needed, the copy in the cache can be used instead. So, commonly accessed data is stored in the faster cache memory.
+
+[Additional resource.](https://courses.cs.washington.edu/courses/cse378/10sp/lectures/lec16.pdf)
+
+### Moore’s Law
 
 > **Moore's Law** is focused on the transistor count within integrated circuits. It states that this count doubles roughly every two years.
-> 
-> Currently, single core frequency is tailing off; this has lead the industry to focus on multicore performance instead. Comparatively, memory access speed is improving much more slowly; access time and capacity can become a huge bottleneck when it comes to creating performant systems.
 
-> Cache concepts are not included in these notes as they are not fully examined, and also do not feature in the revision videos. There are however several exam questions relating to cache which appear every year.
+Currently, single core frequency is tailing off; this has lead the industry to focus on multicore performance instead. Comparatively, memory access speed is improving much more slowly; access time and capacity can become a huge bottleneck when it comes to creating performant systems.
+
+<blockquote class="extra">
+  <b>Note.</b> Cache concepts are not fully included in these notes as they are not fully examined, and also do not feature in the revision videos. There are however several exam questions relating to cache which appear every year.
+</blockquote>
 
 ## Memory Cell Organisation
 Now that we're familiar with different parts of the memory hierarchy, it's crucial that we understand how this memory is actually constructed (down to the metal almost). 
@@ -109,11 +134,13 @@ Broadly speaking, there are two types of errors:
 - **Magnetic media** will also have a "classic form of noise" due to the "random alignment of magnetic fields".
 
 > Noise is **always present**. If it doesn't come from the components themselves, it'll come from external sources such as radiation. Noise is hence one of the **limiting factors** in computer systems.
+>
 > In magnetic stores, when we have **decreased area** to store a bit, **noise gets worse** which increases the likelihood of errors.
 
 #### Digital logic devices
 
 > We choose binary systems for our number systems as it provides us a **high degree of noise immunity**.
+>
 > We also need to consider the **tolerances of the components we use**
 
 ##### Illustrating noise immunity, a trademarked Akram Analogy™
@@ -148,6 +175,7 @@ We can make the further assumption that **if the probability of one error is low
 #### Parity systems
 
 > There are many different types of parity systems, but the two main ones you should be focused on are the **even parity** and the **odd parity** system.
+>
 > Each system will add an extra bit to the message which makes the **number of logical 1's even or odd** depending on the system chosen.
 
 | Non-parity message (7 bits) | Even parity bit added | Odd parity bit added |
@@ -158,7 +186,7 @@ It is possible to calculate the parity bit using hardware or software.
 
 ##### Finite automaton to calculate parity
 
-The lecture slides contain a two-state finite automaton- this diagram shows how, for a message `110` travelling on an **even parity system**, we can use the automaton to reach a parity bit of `0`, so the message to be sent is `0110`.
+The lecture slides contain a two-state finite automaton – this diagram shows how, for a message `110` travelling on an **even parity system**, we can use the automaton to reach a parity bit of `0`, so the message to be sent is `0110`.
 
 <img src="part4res/4-7.png" alt="Memory cell word diagram" style="zoom: 50%;"/>
 
@@ -170,13 +198,14 @@ You can calculate the parity bit for a message by **XORing each bit with one ano
 
 > In the real world, it is more likely that **errors will appear in bursts**.
 
-Burst errors can be caused by number of reasons, including but not limited to network or communication dropouts for a few milliseconds.
+Burst errors can be caused by number of reasons, including but not limited to network or communication dropouts for a few milliseconds. 
+
 In this scenario, there may be errors in multiple bits and single-bit parity will still hold. Therefore, we must move to **checksums** to check entire columns.
 
 #### Bit-column parity
 One way in which we can identify errors in multiple columns (i.e. multiple bits) is to use bit-column parity. 
 
-Take the message, `Message`, which is made up of 7 7-bit ASCII characters:
+Take the message, `Message`, which is made up of seven 7-bit ASCII characters:
 
 | Character | 7 Bits |
 |-----------|--------|
@@ -187,8 +216,8 @@ Take the message, `Message`, which is made up of 7 7-bit ASCII characters:
 | `a` | `111 0001` |
 | `g` | `111 0111` |
 | `e` | `111 0101` |
+{:.centeredtable}
 
-</br>
 By arranging each column into its own message, we can then calculate a parity bit for each message:
 
 | Column number | 7-bit column | Even parity bit |
@@ -200,6 +229,7 @@ By arranging each column into its own message, we can then calculate a parity bi
 | 5 | `110 0011` | `0` |
 | 6 | `001 1010` | `1` |
 | 7 | `111 1111` | `1` |
+{:.centeredtable}
 
 We can then take _this_ column and turn it into a 7-bit message: `1001011` spells out ASCII `K`. Now, we can add `K` to the end of our original message, and send the final message `MessageK`.
 
