@@ -10,32 +10,60 @@ Before diving into assembler, we need to be familiar with the **key components o
 
 - **Arithmetic Logic Unit** (ALU): this performs **math and logic**
 - **Control Unit** (CU): this decodes program **instructions** and handles **logistics** for execution
+- **Program Counter** (PC): this tracks the **memory address** of the **next instruction** for execution
+- **Instruction Register** (IR): contains the **most recent instruction** fetched
+- **Memory Address Register** (MAR): contains the address of the _region_ of memory for read/write purposes
+- **Memory Data Register** (MDR): contains **fetched data** from memory or **data ready to be written** to memory. The MDR is also sometimes referred to as the Memory Buffer Register (MBR).
+
+Remember that the **Control Unit** is connected to all components
+
+
+
+In the Von Neumann architecture of microprocessor design, both instructions and data are stored in the same memory (In Harvard architecture they are separated)
+
+Each instruction is split into two parts, the opcode and the operands. The opcode indicates which instruction it is, and the operand the parameters of the instruction
+
+### The fetch-decode-execute cycle
+
+The CPU works by executing instructions in sequence to perform a task. Since the instructions are stored in memory, we need three steps to do this called the **fetch-decode-execute cycle**:
 
 > The CPU will constantly perform the following instruction cycle (the **fetch-decode-execute cycle**):
+>
 > - Retrieve instructions from memory
 > - Decode to form recognisable operations
 > - Execute to impact the current state
 
 ❕❗ **Learn the fetch-decode-execute cycle**. Think of it every time you look at a CPU, or a series of instructions. Think about which of the components (the CU or the ALU) are operating and when.
 
-The instruction cycle takes place over **several CPU clock cycles** – the same clock cycles we saw in **sequential logic circuits**. The FDE cycle relies on several CPU components interacting with one another.
+The instruction cycle takes place over **several CPU clock cycles** – the same clock cycles we saw in **sequential logic circuits**. The fetch-decode-execute cycle relies on several CPU components interacting with one another.
 
-### FDE Components
-There are several components that make up the FDE cycle:
-- ALU
-- CU
-- **Program Counter** (PC): this tracks the **memory address** of the **next instruction** for execution
-- **Instruction Register** (IR): contains the **most recent instruction** fetched
-- **Memory Address Register** (MAR): contains the address of the _region_ of memory for read/write purposes
-- **Memory Data Register** (MDR): contains **fetched data** from memory or **data ready to be written** to memory. The MDR is also sometimes referred to as the Memory Buffer Register (MBR).
+The operations composing the cycle are:
 
-> Remember that the **Control Unit** is connected to all components
+#### Fetch stage
 
-A typical instruction cycle may look something like this:
+1. Copy the address of the next instruction stored in the program counter to the memory address register
+   **MAR <- PC**
+2. Read the instruction in the main store at the address in the memory address register into the memory data register
+   **MDR <- MS[MAR]**
+3. Copy the instruction from the memory data register to the instruction register
+   **IR <- MDR**
+4. Increment the program counter to point to the address of the next instruction
+   **PC <- PC + 1**
 
-| Fetch                                                        | Decode                                                       | Execute                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. Instruction Received from memory location in PC<br />2. Retrieved instruction stored in IR<br />3. PC incremented to point to next instruction in memory | 1. Opcode retrieved / instruction decoded<br />2. Read effective address to establish opcode type | 1. CU signals functional CPU components<br />2. Can result in changes to data registers, such as the PC etc. |
+#### Decode stage
+
+1. The control unit extracts and decodes the opcode from the instruction in the instruction register
+
+2. The effective address is read to establish opcode type
+
+   If indirect addressing is used, more data needs to be read from the main store (MS) before the instruction is executed, but if direct addressing is used, the execution can proceed immediately
+
+#### Execute stage
+
+1. The control unit signals to functional CPU components, e.g. to indicate which busses to enable, or set whether the main store should be read from or written to
+2. Changes in the state of the machine, e.g. data registers, program counter, main store, resulting from the execution of the instruction may occur
+
+
 
 ## Registers
 
