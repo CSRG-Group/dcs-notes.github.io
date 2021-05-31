@@ -43,14 +43,15 @@ There are 7 electronic logic gates whose function you should understand.
 
 <img src="part2.assets/image-20210504102322015.png" alt="image-20210504102322015" style="zoom:60%;" class="center" />
 
-**AND, OR, NOT** are termed the **fundamental gates** because they can be used to build any of the functions that you see in the table above – meaning that they can also be used to build a circuit that fulfils the functions of the other gates you see below (**NAND, NOR etc.**).
+> **AND, OR, NOT** are termed the **fundamental gates** because they can be used to build any of the functions that you see in the table above – meaning that they can also be used to build a circuit that fulfils the functions of the other gates you see below (**NAND, NOR etc.**).
 
 Aside from the fundamental gates, the **NAND and NOR** gates which are termed the **universal gates** are important to understand as well because using either multiple **NAND** gates or multiple **NOR** gates we can build each **fundamental** gate. You either need **NAND** or **NOR**, you don't need the other. 
 
-<img src="part2.assets/image-20201019105447647.png" alt="image-20201019105447647" class="center"/>
-
 Additionally, while the **EX-OR** gate is not one of the fundamental or universal gates it is very useful as well.
-<img src="part2.assets/image-20201019105344802.png" alt="image-20201019105344802"/>
+
+$$
+f = A \oplus B = \bar A \cdot B + A \cdot \bar B
+$$
 
 ## Simplifying Logical Expressions using Boolean Algebra
 
@@ -76,19 +77,18 @@ There are two crucial skills to have
 
 In an exam, it is crucial that you **state** which rules you are applying so that what you are doing is **clear** to the marker.
 
-| Name            | Conjunction ("and" form)                                     | Disjunction ("or" form)                                      |
-| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Identity        | $$x \cdot 1 \equiv x$$                                       | $$x + 0 \equiv x$$                                           |
-| Null            | $$x \cdot 0 \equiv 0$$                                       | $$x + 1 \equiv 1$$                                           |
-| Negation        | $$\overline{\overline{x}} \equiv x$$                         | $$\overline{\overline{x}} \equiv x$$                         |
-| Idempotence     | $$x \cdot x \equiv x$$                                       | $$x + x \equiv x$$                                           |
-| Inverse         | $$x \cdot \overline{x} = 0$$                                 | $$x + \overline{x} = 1$$                                     |
-| Commutativity   | $$x \cdot y \equiv y \cdot x$$                               | $$x + y \equiv y + x$$                                       |
-| Associativity   | $$(x \cdot y) \cdot z \equiv x \cdot (y \cdot z)$$           | $$(x + y) + z \equiv x + (y + z)$$                           |
-| Distributivity  | $$x + (y \cdot z) \equiv (x + y) \cdot (x + z)$$             | $$x \cdot (y + z) \equiv (x \cdot y) + (x \cdot z)$$         |
-| Absorption      | $$x \cdot (x + y) \equiv x$$                                 | $$x + (x \cdot y) \equiv x$$                                 |
-| De Morgan's     | $$\overline{(x \cdot y)} \equiv \overline{x} + \overline{y}$$ | $$\overline{(x + y)} \equiv \overline{x} \cdot \overline{y}$$ |
-| Excluded middle | $$x \cdot \overline{x} \equiv 0$$                            | $$x + \overline{x} \equiv 1$$                                |
+| Name                           | Conjunction ("and" form)                                     | Disjunction ("or" form)                                      |
+| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Identity                       | $$x \cdot 1 \equiv x$$                                       | $$x + 0 \equiv x$$                                           |
+| Null                           | $$x \cdot 0 \equiv 0$$                                       | $$x + 1 \equiv 1$$                                           |
+| Negation                       | $$\overline{\overline{x}} \equiv x$$                         | $$\overline{\overline{x}} \equiv x$$                         |
+| Idempotence                    | $$x \cdot x \equiv x$$                                       | $$x + x \equiv x$$                                           |
+| Inverse (AKA: Excluded Middle) | $$x \cdot \overline{x} \equiv 0$$                            | $$x + \overline{x} \equiv 1$$                                |
+| Commutativity                  | $$x \cdot y \equiv y \cdot x$$                               | $$x + y \equiv y + x$$                                       |
+| Associativity                  | $$(x \cdot y) \cdot z \equiv x \cdot (y \cdot z)$$           | $$(x + y) + z \equiv x + (y + z)$$                           |
+| Distributivity                 | $$x + (y \cdot z) \equiv (x + y) \cdot (x + z)$$             | $$x \cdot (y + z) \equiv (x \cdot y) + (x \cdot z)$$         |
+| Absorption                     | $$x \cdot (x + y) \equiv x$$                                 | $$x + (x \cdot y) \equiv x$$                                 |
+| De Morgan's                    | $$\overline{(x \cdot y)} \equiv \overline{x} + \overline{y}$$ | $$\overline{(x + y)} \equiv \overline{x} \cdot \overline{y}$$ |
 {:.centeredtable}
 
 
@@ -186,7 +186,17 @@ The output of each sum (S<sub>k</sub>) and the final C<sub>out</sub> is then “
 
 ### Adder to Adder/Subtractor
 
-![image-20201019190232139](part2.assets/image-20201019190232139.png)
+> To convert an adder into an **adder/subtractor** we simply add a control input Z such that:
+> 
+> $$
+> Z = 0 \Rightarrow S = A + B \\
+> Z = 1 \Rightarrow S = A + (-B)
+> $$
+> 
+> **Recall.** We calculate –B using two’s complement
+>
+> 1. Invert the N-bit binary number B with Z &oplus; B 
+> 2. Add 1 (Carry In)
 
 #### N-bit Adder/Subtractor
 
@@ -200,8 +210,6 @@ Remember because the numbers are in two's complement form, the final C<sub>out</
 <blockquote class="extra" markdown="span">
     **FYI.** If the value of C<sub>out</sub> is different from the carry going into the last FA (the carry from the 2nd last FA), there is an overflow. You can read more about it [here](http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt) or [wikipedia](https://en.wikipedia.org/wiki/Two%27s_complement#Addition).
 </blockquote>
-
-
 ### Active High or Active Low?
 
 > Transistor-transistor logic floats high – meaning that if you don’t connect it to anything, its value is a logical 1. Hence, it is helpful for **0** to be the **active** state so that you are not accidentally enabling circuits.
@@ -291,7 +299,7 @@ A basic building block of memory. Level triggered devices (a device that respond
 
 ### D-Type Latch
 
-The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never be both be 0 so we won’t have the hazard condition. (I’ll may make a diagram).
+The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never be both be 0 so we won’t have the hazard condition. (I’ll make a diagram in the future).
 
 ![image-20201019204921469](part2.assets/image-20201019204921469.png)
 

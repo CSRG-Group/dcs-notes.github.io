@@ -167,6 +167,7 @@ This is intuitively clear, as $$a - b \equiv a + (-b)$$
 ### Fixed Point Representation
 
 For fractions, we introduce inverse/decimal powers. $$2.75_{10}$$ = $$10.11_2$$.
+
 $$
 \begin{align}
 &10.11_2&            &=& &1&   &0&   &1&      &1&      \\
@@ -176,6 +177,7 @@ $$
 &&                   &=& &2.75_{10}&
 \end{align}
 $$
+
 However, if the number is 2.8​ for example, **Fixed-PR** will not be very efficient because to represent it in binary will require a lot of bits. This means that in a microprocessor, we will need an incredibly large bus to represent such values.
 
 ### Floating Point Representation
