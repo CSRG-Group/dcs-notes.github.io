@@ -86,11 +86,11 @@ Our above examples are a **unilateral authentication**: A authenticates B
 
 We saw the public key encryption protocol by NS, they also proposed a secret key **authentication** protocol. In this protocol, there are 3 parties: A (K<sub>SA</sub> – key given to A by server), B (K<sub>SB</sub> – key given to B by server), Server (K<sub>AB</sub> – session key that server provides to both A and B)
 
-1. A –> S: A, B, R<sub>A1</sub>
-2. S –> A: { R<sub>A1</sub>, B, { K<sub>AB</sub>, A }<sub>K<sub>SB </sub></sub>}<sub>K<sub>SA</sub></sub>
-3. A –> B: { K<sub>AB</sub>, A }<sub>K<sub>SB</sub></sub>, { R<sub>A2</sub> }<sub>K<sub>AB</sub></sub>
-4. B &rightarrow; A: { R<sub>A2</sub> – 1, R<sub>B</sub>}<sub>K<sub>AB</sub></sub>
-5. A &rightarrow; B: { R<sub>B</sub> – 1 }<sub>K<sub>AB</sub></sub>
+1. A &rarr; S: A, B, R<sub>A1</sub>
+2. S &rarr; A: { R<sub>A1</sub>, B, { K<sub>AB</sub>, A }<sub>K<sub>SB </sub></sub>}<sub>K<sub>SA</sub></sub>
+3. A &rarr; B: { K<sub>AB</sub>, A }<sub>K<sub>SB</sub></sub>, { R<sub>A2</sub> }<sub>K<sub>AB</sub></sub>
+4. B &rarr; A: { R<sub>A2</sub> – 1, R<sub>B</sub>}<sub>K<sub>AB</sub></sub>
+5. A &rarr; B: { R<sub>B</sub> – 1 }<sub>K<sub>AB</sub></sub>
 
 ![needhamSchroeder](.\part7.assets\needhamSchroeder.png)
 

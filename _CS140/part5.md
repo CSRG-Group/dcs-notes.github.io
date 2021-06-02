@@ -16,33 +16,31 @@ Congruence mod $$n$$ forms $$n$$ equivalence classes of values $$[0; n-1]$$ on t
 
 The following are equivalent to each other:
 
-- $$(a + b)\ MOD\ n$$
-  - $$((a\ MOD\ n) + b)\ MOD\ n$$
-  - $$((a\ MOD\ n) + (b\ MOD\ n))\ MOD\ n$$
-- ($$a \cdot b)\ MOD\ n$$
-  - $$((a\ MOD\ n) \cdot b)\ MOD\ n$$
-  - $$((a\ MOD\ n) \cdot (b\ MOD\ n))\ MOD\ n$$
-- $$x^{ab}\ MOD\ n$$
-  - $$(x^a\ MOD\ n)^b\ MOD\ n$$
-  - $$(x^b\ MOD\ n)^a\ MOD\ n$$
+$$
+\begin{matrix}
+(a + b)\ MOD\ n    &\equiv &((a\ MOD\ n) + b)\ MOD\ n     &\equiv &((a\ MOD\ n) + (b\ MOD\ n))\ MOD\ n \\\\
+(a \cdot b)\ MOD\ n &\equiv &((a\ MOD\ n) \cdot b)\ MOD\ n &\equiv &((a\ MOD\ n) \cdot (b\ MOD\ n))\ MOD\ n \\\\
+x^{ab}\ MOD\ n     &\equiv &(x^a\ MOD\ n)^b\ MOD\ n       &\equiv &(x^b\ MOD\ n)^a\ MOD\ n
+\end{matrix}
+$$
 
 ## The Primitive Root
 
-*k = y <sup>x</sup>* mod p
+> The function below is an example of a one-way function if 
+>
+> - $$y$$ is the **primitive root mod $$p$$**
+> - $$p$$ is an enormous number (e.g. 512-bits).
+>
+> $$
+> k = y^x \!\!\!\mod p
+> $$
+> 
+> This is because if we try a value of $$x$$ for a given $$k$$, the probability that $$x$$ is **correct** is $$\frac1{p-1}$$ as the value of  $$k$$ is equally likely to be any number in $$[1, p - 1]$$. 
 
-*y* is the **primitive root mod p** if
+**Conditions** for $$y$$ to be the "primitive root mod $$p$$"
 
-1. Successive powers of *y* that takes mod p will generate results of 1 to p &minus; 1. 
-2. The generated numbers (*k*) are distributed uniformly in the range of [1, p &minus; 1].
-
-> If we pick a value of ***x***, the value of ***k*** is equally likely to be any number in [1, p &minus; 1]. 
-
-The above function is an example of a one-way function if 
-
-- *y* is the **primitive root mod p**
-- *p* is an enormous number (e.g. 512-bits).
-
-This is because if we try a value of *x* for a given *k*, the probability that *x* is **correct** is ***1/(p-1)***.
+1. Successive powers of $$y$$ that takes $$\text{mod } p$$ will generate results that loop from 1 to $$p - 1$$. 
+2. The generated numbers $$k$$ are distributed uniformly in the range of $$[1, p - 1]$$.
 
 ## Public Key Encryption
 
@@ -61,33 +59,56 @@ The idea is that each communication party generates a pair of keys, one private 
 
 ### RSA Encryption
 
-*RSA is a type of public key encryption scheme. One of the oldest.*
+<p align="center"><i>RSA is one of the oldest types of public key encryption schemes.</i></p>
 
-**To generate a public key.**
+Here we cover
+ 1. How the public key is generated
+ 2. How a message is encrypted
+ 3. How a private key is generated
+ 4. How to decrypt a message
 
-- Choose 2 large secret prime numbers, p and q, and calculate ***n*** = p &times; q. ***n*** will be the **public key**.
-- Select another value ***e***, that is 
-  - relatively prime to ***p–1***, ***q–1***, and ***(p–1) &times; (q-1)***. 
-  - ***1 < e < (p–1)(q–1)***
+#### How to generate public key
 
-**To encrypt a message.** ***C = M<sup>e</sup>* mod n**, where ***C*** is the ciphertext, ***M*** is the message.
+**Firstly,** choose 2 **large secret prime numbers**, $$p$$ and $$q$$, and calculate their product $$n = p \times q$$. $$n$$ is the **public key**.
 
-> If an eavesdropper gets ***C***, it is **computationally infeasible** to calculate ***M***.
+**Next,** select another value $$e$$, that is 
 
-**To generate a private key.**
+- relatively prime (coprime) to $$p-1$$, $$q-1$$, and $$(p-1) \times (q-1)$$. 
+- and $$1 \lt e \lt (p-1)(q-1)$$
 
-- We find a number ***d*** such that, ***e &times; d = 1 mod ((p – 1)(q – 1))***
-- ***d*** is the private key owned by Alice and is called the multiplicative inverse of ***e mod (p–1)(q–1)***.
+#### Message Encryption
 
-**To decrypt the ciphertext.** ***M = C<sup>d</sup>* mod n**. Very easy to decrypt given the private key.
+**To encrypt a message**, we use this formula 
+$$
+C = M^e\!\!\!\mod n
+$$
+where $$C$$ is the ciphertext and $$M$$ is the message.
 
-All receivers have to do is to keep the private key **safe.**
+> If an eavesdropper gets $$C$$, it is **computationally infeasible** to calculate $$M$$.
 
-#### Finding the private key
+#### How to generate the private key
+
+We find a number $$d$$ such that
+
+$$
+e \times d = 1 \!\!\!\mod ((p - 1)\cdot(q - 1))
+$$
+
+Here, $$d$$ is the private key owned by Alice and is called the multiplicative inverse of $$e \!\!\!\mod (p-1)(q-1)$$.
+
+##### How do we find *d*?
 
 There is a formal method of finding the [private key](https://people.csail.mit.edu/rivest/Rsapaper.pdf) (it’s a 15 page paper).
 
-Another way is by iteration. The goal is to find a multiple of ***e***, which is 1 greater than some multiple of ***(p–1)(q–1)***. So iterate through the multiples of ***(p–1)(q–1)*** and add 1, if that value is a multiple of ***e*** you have found a ***d***, otherwise continue to the next multiple.
+Another way is by iteration. The goal is to find a multiple of $$e$$, which is 1 greater than some multiple of $$(p–1)(q–1)$$. So iterate through the multiples of $$(p–1)(q–1)$$ and add 1, if that value is a multiple of $$e$$ you have found a $$d$$, otherwise continue to the next multiple.
+
+#### Ciphertext Decryption
+
+**To decrypt the ciphertext**, we use the formula,
+$$
+M= C^d\!\!\!\mod n
+$$
+As you can see, it is very easy to decrypt the ciphertext given the private key. All that the receiver has to do is to keep the private key **safe.**
 
 ### Why is RSA secure?
 
