@@ -106,7 +106,7 @@ This is because the default `.hashcode()` method is dependent on the object's lo
 
 > Collisions are when two **different** keys are **mapped to** the **same index** by the hash function. Since we cannot store duplicate keys unambiguously in a map, we need a protocol to resolve this. 
 
-When colliding items are placed in different cells in the table, it is called **open addressing**, or **closed hashing**, and when they are put in a separate data structure it is called **closed addressing**, or **separate chaining** (with linear probing and separate chaining being examples of both respectively) [additional link](http://www.iro.umontreal.ca/~nie/IFT1020/Watt/12/tsld009.htm).
+When colliding items are placed in different cells in the table, it is called **open addressing**, or **open-bucket hashing**, and when they are put in a separate data structure it is called **closed addressing**, or **closed-bucket chaining** (with linear probing and separate chaining being examples of both respectively) [additional link](http://www.iro.umontreal.ca/~nie/IFT1020/Watt/12/tsld009.htm).
 
 Common approaches to resolving collisions are:
 
@@ -114,7 +114,7 @@ Common approaches to resolving collisions are:
 - Linear probing
 - Double hashing
 
-### Separate Chaining (Closed Addressing)
+### Separate Chaining (closed-bucket)
 
 In **separate chaining**, each index in the array can contain a reference to a linked list. 
 
@@ -125,7 +125,7 @@ This has the **drawback** of requiring additional memory space for each linked l
 
 <img src="./images/separateChaining.png" alt="separateChaining" class="center"/>
 
-### Linear Probing (Open addressing)
+### Linear Probing (open-bucket)
 
 > **Linear probing** handles collisions by placing the colliding item in the next available table cell, wrapping around if necessary. 
 
@@ -165,7 +165,7 @@ This has the **drawback** of colliding items "lumping together", which can cause
 - If ***k*** is found, we replace it with `DEFUNCT` and we return the **value** of the item with key ***k***
 - Else we return **null**
 
-### Double Hashing (Open addressing)
+### Double Hashing (open-bucket)
 
 > **Double hashing** handles collisions by re-hashing the key with a new hash function
 >
