@@ -63,7 +63,7 @@ Therefore, to minimise **collisions** it is best to choose a $$N$$ such that it 
 
 Java implements hash functions for all objects with the `.hashCode()` method, giving a convenient way to implement hashing.
 
-The `.hashCode()` method is dependent on the memory address of the object storing the key, which is then cast to an integer. This then may be resined using a reduction function to map it to the correct size of the table may still be required.
+The `.hashCode()` method is dependent on the memory address of the object storing the key, which is then cast to an integer. This then may be resized using a reduction function to map it to the correct size of the table may still be required.
 
 ### Integer cast
 
