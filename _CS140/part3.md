@@ -165,6 +165,8 @@ But we can use **password salts** to make lookup table, reverse lookup and rainb
 > $$
 > **Both** ***h*** and the corresponding **salt** are stored in the password file.
 
+#### Login verification
+
 When a user enters a password during the login
 
 - Obtain the **salt** value used to generate the hash for the user

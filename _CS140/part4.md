@@ -364,7 +364,7 @@ The only operation in AES that directly operates on the AES round key. In this o
         <figcaption style="text-align:center;">AES add round key, <a href="https://commons.wikimedia.org/wiki/File:AES-AddRoundKey.svg">Wikimedia Commons</a></figcaption>
 </figure>
 
-### AES is secure
+### Is AES secure?
 
 A computer that can break DES in 8 seconds will take 1.3 &times; 10<sup>15</sup> years to break AES-128. 
 
