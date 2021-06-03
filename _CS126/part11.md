@@ -190,6 +190,24 @@ Algorithm BFS(G)
   for all v in G.vertices()
     if getLabel(v) == "unexplored"
       BFS(G,v)
+      
+Algorithm BGS(G,s)
+  L0 <- new empty sequence
+  L0.addLast(s)
+  setLabel(s, "visited")
+  while !L0.isEmpty()
+    Lnext <- new empty sequence
+    for all v in L0.elements()
+      for all e in G.incidentEdges(v)
+        if getLabel(e) = "unexplored"
+          w <- opposite(v,e)
+          if getLabel(w) = "unexplored"
+            setLabel(e, "discovery")
+            setLabel(w, "visited")
+            Lnext.addLast(w)
+          else
+            setLabel(e, "cross")
+    L0 <- Lnext // Set L0 to Lnext so while loop won't stop
 ```
 
 

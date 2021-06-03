@@ -95,13 +95,17 @@ Function postOrder(n)
 
 A binary tree with $$n$$ nodes, $$e$$ external nodes, $$i$$ internal nodes, and a height $$h$$ has the properties
 
-1. $$e = i + 1$$
-2. $$n = 2e - 1$$
-3. $$h \leq i$$
-4. $$h \leq \frac{(n-1)}{2}$$
-5. $$e \leq 2^h$$
-6. $$h \geq log_2 e$$
-7. $$h \geq log_2 (n+1) - 1$$
+$$
+\begin{gather}
+e = i + 1 \tag1
+\\\\ n = 2e - 1 \tag2 
+\\\\ h \leq i \tag3
+\\\\ h \leq \frac{(n-1)}{2} \tag4
+\\\\ e \leq 2^h \tag5
+\\\\ h \geq log_2 e \tag6
+\\\\ h \geq log_2 (n+1) - 1 \iff n = 2^{h+1} -1 \tag7
+\end{gather}
+$$
 
 As mentioned [earlier](#in-order-traversal), Binary Trees by definition have a **discrete middle node**, and inherently support **in-order traversal**.
 
