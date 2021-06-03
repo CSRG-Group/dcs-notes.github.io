@@ -86,7 +86,7 @@ The process is:
 
 2. Evaluate the polynomial:
    $$
-   p(z) = a_0 + a_1 \cdot z + a_2 \cdot z_2 + ... + a_{n-1} \cdot z^{n-1}
+   p(z) = a_0 + a_1 \cdot z + a_2 \cdot z^2 + ... + a_{n-1} \cdot z^{n-1}
    $$
    at a fixed value $$z$$, ignoring overflows
 

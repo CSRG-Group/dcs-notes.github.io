@@ -232,6 +232,15 @@
         "design",
         "bug"
       ]
+    },
+    {
+      "login": "parthmahendra",
+      "name": "Parth Mahendra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18237220?v=4",
+      "profile": "https://github.com/parthmahendra",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github",
