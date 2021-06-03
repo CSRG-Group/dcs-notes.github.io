@@ -157,16 +157,92 @@ stwo :: SNat ('Succ ('Succ 'Zero))
 stwo :: SSucc sone
 ```
 
-## Proxy Types
+## Reification
 
-We don’t have types at runtime due to **type erasure**, so we can’t write a function that does something based on a type. 
+> Reification is the process of **converting types to values**, typically using **type classes**. This resolves to the correct instances at compile-time so the right implementation of the function is evaluated at runtime.
 
-> Proxy types allow us work around Haskell’s limitations and convert a representation of a value at the **type level** into a **term level** value. 
+There are a few ways to implement the instances for the type classes and one way (which is used in the lectures) is to use **proxy types**.
+
+### Proxy Types
+
+We don’t have types at runtime due to **type erasure**, so we can’t write a function that takes types as arguments in Haskell, even though we sometimes want to.
+
+> Proxy types provide a partial work around Haskell’s limitations **for cases where** knowing what type is given to a function as its “argument” at compile-time is sufficient.
+>
+> **TLDR.** A proxy type is a type of kind `k -> *` (where `k` can be specialised to the kind of whatever types you want to give to a function as argument). Only types of kind `*` have values, so we apply our proxy **type constructor** to some argument of kind `k` to get a type of kind `*` which then makes a suitable parameter for a function.
+
+In the following **example**, we will show how this allows us to convert a representation of a value at the **type level** into a **term level** value (reification).
 
 ```haskell
 data NatProxy (a :: Nat) = MkProxy
 ```
 
-Here, the kind of `NatProxy` is actually `Nat -> *`, meaning it takes some type `a` of kind `Nat` and gives back a type of kind `*` which has a value at run-time (kind `Nat` does not have a value at run-time).
+Here, the `NatProxy` **type constructor** is of kind `Nat -> *`, meaning it takes some type `a` of kind `Nat` and gives back a type of kind `*` which has a value at run-time (kind `Nat` does not have a value at run-time).`MkProxy` is the **data constructor** for `NatProxy` and is of type `NatProxy n`.
 
-*I don’t really know how to explain this succinctly; if you think you are able to, a pull request would be appreciated.*
+```haskell
+class FromNat (n :: Nat) where
+  fromNat :: NatProxy n -> Int
+
+instance FromNat 'Zero where -- 'Zero is a type defined by Nat in GADT section
+  -- fromNat :: NatProxy 'Zero -> Int
+  fromNat _ = 0
+```
+
+Now with our **proxy type**, we can define a **type class** with instances that we can define the `fromNat` function for. The instance of this type class for `'Zero` is trivial.
+
+```haskell
+{-# LANGUAGE ScopedTypeVariables #-}
+instance FromNat n => FromNat ('Succ n) where
+  -- fromNat :: FromNat n => NatProxy ('Succ n) -> Int
+  fromNat _ = 1 + fromNat (MkProxy :: NatProxy n)
+  -- (MkProxy :: NatProxy n) essentially means the n in "NatProxy n" 
+  -- is the same n as that in the instance head. 
+  -- ScopedTypeVariables extension has to be enabled for this to work.
+```
+
+The instance for any other `n` will require us to constrain the `n` in the instance head to be an instance of `FromNat` so that we can define the instance for `'Succ n` recursively.
+
+> It is important to understand the difference between reification and proxy types as they are not the same thing. Here, we are reifying types from the proxy types. There are other ways of doing this without proxy types which are not covered in the module.
+
+### Additional Example (Type Application)
+
+<blockquote class="extra">
+  <b>FYI.</b> This section is additional material and is not tested in the exams.
+  I have included an example that Michael showed me, to illustrate how we may reify types without using proxy types. 
+</blockquote>
+
+Quoting Michael, 
+
+*“I just typed straight into Slack, so it may not compile as is, but conceptually this [is how we would do it]”*
+
+This example makes use of a few language extensions which are shown. 
+
+```haskell
+{-# LANGUAGE TypeApplication, AllowAmbiguousTypes, ScopedTypeVariables #-}
+class FromNat (n :: Nat) where
+   fromNat :: Int
+   
+instance FromNat Zero where
+   fromNat = 0
+   
+instance FromNat n => FromNat (Succ n) where
+   fromNat = 1 + fromNat @n
+   
+type Test = Succ (Succ Zero)
+
+test :: Int
+test = fromNat @Test
+```
+
+Here, `@` is type application which is used to explicitly supply an argument for a universal quantifier. Universal quantifiers are usually implicit in Haskell, but in some cases we would have to define it. In this case, we don’t need to, but if we did then `fromNat` would look like this.
+
+```haskell
+fromNat :: forall (n :: Nat) . FromNat n => Int
+```
+
+When we write `fromNat @Test` (last line), the `n` gets instantiated with `Test` and we get `FromNat Test => Int` as the type. Because `Test` expands to something that has an instance of `FromNat`, the constraint is satisfied and the compiler can pick the right implementation of `fromNat` to use, which is how the reification “works”.
+
+> Type application can be used with other variables, for example `something`. As long as these have an instance of `FromNat` defined for them. So if we write `fromNat @something` then `n` will be instantiated with `something`. 
+
+
+
