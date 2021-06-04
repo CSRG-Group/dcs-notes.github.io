@@ -162,7 +162,7 @@ Algorithm DFS(G,v):
 >
 > - It visits all vertices and edges in any connected component of a graph
 > - The discovery edges form a spanning tree of any graph it traverses
-> - The depth-first search tree of a connected graph is a straight line of nodes
+> - The depth-first search tree of a fully connected graph is a straight line of nodes
 
 ### Uses Cases
 
@@ -219,7 +219,7 @@ Algorithm BGS(G,s)
 > - It **visits all** vertices and edges in $$G_s$$, the connected component of a graph $$s$$
 > - The **discovery edges** form a **spanning tree** of any graph it traverses
 > - The **path** between any two vertices in the spanning tree of **discovery edges** it creates is the **shortest path** between them in the graph
-> - The bread-first search tree of a connected graph is like a star with the centre node being the starting node, and all other nodes being rays, with the only vertices being from the starting node to all other nodes
+> - The bread-first search tree of a fully connected graph is like a star with the centre node being the starting node, and all other nodes being rays, with the only vertices being from the starting node to all other nodes
 
 It can be used for path-finding by performing the traversal until the target node is found, then backtracking along the discovery edges to find the reverse of the path.
 
