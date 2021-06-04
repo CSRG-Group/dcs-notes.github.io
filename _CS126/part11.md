@@ -142,24 +142,25 @@ Informally, it can be described as always proceeding to its first adjacency, the
 
 ```java
 Algorithm DFS(G,v):
-  Input: A graph G and a vertex v of G
-  Output: Labelling of edges of G in the connected component of v as discovery edges and back edges
-    setLabel(v, "visited")
-    for all e in G.incidentEdges(v)
-      if getLabel(e) = "unexplored"
-        // Get vertex w, that's opposite vertex v across edge e
-        w <- opposite(v,e)
-        if getLabel(w) = "unexplored"
-          setLabel(e, "discovery")
-          DFS(G,w) // Recursive call to DFS on this "unexplored" vertex w
-        else
-          setLabel(e, "back")
+    Input: A graph G and a vertex v of G
+    Output: Labelling of edges of G in the connected component of v as discovery edges and back edges
+        setLabel(v, "visited")
+        for all e in G.incidentEdges(v)
+            if getLabel(e) = "unexplored"
+                // Get vertex w, that's opposite vertex v across edge e
+                w <- opposite(v,e)
+                if getLabel(w) = "unexplored"
+                    setLabel(e, "discovery")
+                    DFS(G,w) // Recursive call to DFS on this "unexplored" vertex w
+                else
+                    setLabel(e, "back")
 ```
 
 > It has the following properties
 >
 > - It visits all vertices and edges in any connected component of a graph
 > - The discovery edges form a spanning tree of any graph it traverses
+> - The depth-first search tree of a connected graph is a straight line of nodes
 
 ### Uses Cases
 
@@ -181,33 +182,33 @@ Informally, it can be described as exploring every one of its adjacencies, then 
 
 ```java
 Algorithm BFS(G)
-  Input: graph G
-  Output: Labelling of edges and partition of the vertices of G
-  for all u in G.vertices()
-    setLabel(u, "unexplored")
-  for all e in G.edges()
-    setLabel(e, "unexplored")
-  for all v in G.vertices()
-    if getLabel(v) == "unexplored"
-      BFS(G,v)
-      
+    Input: graph G
+    Output: Labelling of edges and partition of the vertices of G
+    for all u in G.vertices()
+        setLabel(u, "unexplored")
+    for all e in G.edges()
+        setLabel(e, "unexplored")
+    for all v in G.vertices()
+        if getLabel(v) == "unexplored"
+            BFS(G,v)
+            
 Algorithm BGS(G,s)
-  L0 <- new empty sequence
-  L0.addLast(s)
-  setLabel(s, "visited")
-  while !L0.isEmpty()
-    Lnext <- new empty sequence
-    for all v in L0.elements()
-      for all e in G.incidentEdges(v)
-        if getLabel(e) = "unexplored"
-          w <- opposite(v,e)
-          if getLabel(w) = "unexplored"
-            setLabel(e, "discovery")
-            setLabel(w, "visited")
-            Lnext.addLast(w)
-          else
-            setLabel(e, "cross")
-    L0 <- Lnext // Set L0 to Lnext so while loop won't stop
+    L0 <- new empty sequence
+    L0.addLast(s)
+    setLabel(s, "visited")
+    while !L0.isEmpty()
+        Lnext <- new empty sequence
+        for all v in L0.elements()
+            for all e in G.incidentEdges(v)
+                if getLabel(e) = "unexplored"
+                    w <- opposite(v,e)
+                    if getLabel(w) = "unexplored"
+                        setLabel(e, "discovery")
+                        setLabel(w, "visited")
+                        Lnext.addLast(w)
+                    else
+                        setLabel(e, "cross")
+        L0 <- Lnext // Set L0 to Lnext so while loop won't stop
 ```
 
 
@@ -216,6 +217,7 @@ Algorithm BGS(G,s)
 > - It **visits all** vertices and edges in $$G_s$$, the connected component of a graph $$s$$
 > - The **discovery edges** form a **spanning tree** of any graph it traverses
 > - The **path** between any two vertices in the spanning tree of **discovery edges** it creates is the **shortest path** between them in the graph
+> - The bread-first search tree of a connected graph is like a star with the centre node being the starting node, and all other nodes being rays, with the only vertices being from the starting node to all other nodes
 
 It can be used for path-finding by performing the traversal until the target node is found, then backtracking along the discovery edges to find the reverse of the path.
 

@@ -14,15 +14,20 @@ title: "Maps, Hash tables and Sets"
 They cannot contain duplicate keys, as then they would not be able to unambiguously look up values by their keys
 
 Maps have the fundamental operations:
-- contains(e)
-- get(e)
-- put(e)
-- remove(e)
-- size()
-- isEmpty()
-- *sometimes additional operations for getting lists of all keys or all values*
+
+| Fundamental operation | Value returned                                               | Effect                                        |
+| --------------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| contains(k)           | Whether the key `k` is in the map                            | -                                             |
+| get(k)                | The value associated with the key `k`, or null if it is not in the map | -                                             |
+| put(k,v)              | -                                                            | Add the key-value pair `k,v` to the map       |
+| remove(k)             | -                                                            | Remove the key-value pair of `k` from the map |
+| size()                | The number of key-value pairs stored in the map              | -                                             |
+| isEmpty()             | Whether the map is empty                                     | -                                             |
+
+*Sometimes additional operations for getting lists of all keys or all values are included*
 
 There are two common concrete implementations:
+
 - List based implementation
   - $$O(n)$$ lookup and insertion, as the whole list needs to be iterated over to check for duplicates
   - $$O(n)$$ space complexity, as there are no duplicates
@@ -215,21 +220,21 @@ These are the same as sets in mathematics.
 
 *If you want to pull request more stuff here, please do - but I'm not too sure how much more depth is needed*
 
-| Fundamental Operations | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| `add(e)`               | Adds the element *e* to *S* (if not already present)         |
-| `remove(e)`            | Removes the element *e* from *S* (if it is present).         |
-| `contains(e)`          | Returns whether *e* is an element of *S*                     |
-| `iterator()`           | Returns an iterator of the elements of *S*                   |
-| `union(s2)`            | Updates *S* to also include all elements of set *T*. This effectively replaces *S* with *S* &cup; *T* |
-| `intersection(s2)`     | Replace/Update *S* with *S* &cap; *T*                        |
-| `difference(s2)`       | Replace/Update *S* with *S* – *T*  (set minus)               |
+| Fundamental Operations | Value returned                     | Effect                                                       |
+| ---------------------- | ---------------------------------- | ------------------------------------------------------------ |
+| `add(e)`               | -                                  | Add the element *e* to *S* (if not already present)          |
+| `remove(e)`            | -                                  | Remove the element *e* from *S* (if it is present).          |
+| `contains(e)`          | Whether *e* is an element of *S*   | -                                                            |
+| `iterator()`           | An iterator of the elements of *S* | -                                                            |
+| `union(s2)`            | -                                  | Updates *S* to also include all elements of set *T*, effectively replacing *S* with *S* &cup; *T* |
+| `intersection(s2)`     | -                                  | Updates *S* to only include elements also in set T, effectively replacing *S* with *S* &cap; *T* |
+| `difference(s2)`       | -                                  | Updates *S* to not include any of the elements of set T, effectively replacing *S* with *S* \ *T* |
 
 And alternate definition for set operations can instead define a third set structure and fill it with the result of *S* \*set operation\* *T* – this way we don’t alter *S*
 
-- union(s1, s2)
-- intersection(s1, s2)
-- difference(s1, s2)
+- `union :: (s1, s2) -> s3`
+- `intersection :: (s1, s2) -> s3`
+- `difference :: (s1, s2) -> s3`
 
 ## Implementations
 
@@ -252,25 +257,33 @@ Set operations can be implemented using a generic **merge** algorithm.
 
 ```c++
 Algorithm genericMerge(A,B)
-    S <- empty set // Set S to be an empty set
-    while !A.isEmpty() and !B.isEmpty() // until either 1 is empty
-        a <- A.first().element(); b <-  B.first().element
+    S <- empty set
+    while !A.isEmpty() and !B.isEmpty()
+        // until either of the arrays is empty
+        a <- A.first().element()
+        b <-  B.first().element
         if a < b
-            aIsLess(a, S); A.remove(A.first())
+            aIsLess(a, S)
+            A.remove(A.first())
         else if b < a
-            bIsLess(b, S); B.remove(B.first())
+            bIsLess(b, S)
+            B.remove(B.first())
         else // b == a
             bothAreEqual(a, S)
             A.remove(A.first()); B.remove(B.first())
     // By this point either A is empty or B is empty
-    while !A.isEmpty() // populate S with remaining elements in A, if any
-        aIsLess(a, S); A.remove(A.first())
-    while !B.isEmpty() // Same for B as with A
-        bIsLess(b, S); B.remove(B.first())
+    while !A.isEmpty()
+        // Populate S with remaining elements in A, if any are still present
+        aIsLess(a, S)
+        A.remove(A.first())
+    while !B.isEmpty()
+        // Populate S with remaining elements in B, if any are still present
+        bIsLess(b, S)
+        B.remove(B.first())
     return S
 ```
 
-❕❗ This merging algorithm is used in **merge sort** as well! You may have noticed that we have 3 auxiliary methods in this algorithm: `aIsLess`, `bIsLess`, and `bothAreEqual`.
+This merging algorithm is used in **merge sort** as well! You may have noticed that we have 3 auxiliary methods in this algorithm: `aIsLess`, `bIsLess`, and `bothAreEqual`.
 
 > Depending on the set operation (or any operation you are using this generic merge for), you define these methods **differently**. 
 

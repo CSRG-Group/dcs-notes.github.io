@@ -15,10 +15,12 @@ There is an edge case of popping from an empty stack, which normally either retu
 
 Stacks have the fundamental operations:
 
-- push(e)
-- pop()
-- size()
-- isEmpty()
+| Fundamental operation | Value returned                                          | Effect                                                       |
+| --------------------- | ------------------------------------------------------- | ------------------------------------------------------------ |
+| `push(e)`             | Add the value `e` to the top of the stack               | -                                                            |
+| `pop()`               | The most recently pushed item from the top of the stack | Remove the most recently pushed item from the top of the stack |
+| `size()`              | The size of the stack                                   | -                                                            |
+| `isEmpty()`           | Whether the stack is empty                              | -                                                            |
 
 ### Array Based Implementation
 
@@ -40,10 +42,12 @@ There is an edge case of dequeuing from an empty queue, normally either returns 
 
 Queues have the fundamental operations
 
-- enqueue(e)
-- dequeue()
-- size()
-- isEmpty()
+| Fundamental operation | Value returned                                              | Effect                                                       |
+| --------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| `enqueue(e)`          | Add the value `e` to the tail of the queue                  | -                                                            |
+| `dequeue()`           | The least recently enqueued item from the head of the queue | Remove the least recently enqueued item from the head of the queue |
+| `size()`              | The size of the queue                                       | -                                                            |
+| `isEmpty()`           | Whether the queue is empty                                  | -                                                            |
 
 ### Array Based Implementation
 

@@ -11,13 +11,17 @@ title: "Priority Queues & Heaps"
 
 These priorities, usually called keys, must form a total order relation, for example $$x \leq y$$. We often use comparators on keys to form this total order relation.
 
-| Fundamental Operations | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| `enqueue(k,v)`         | Insert an entry with key ***k*** and value ***v*** into the queue, where ***k*** determines its position in the queue. |
-| `dequeue()`            | Element with the highest priority is removed from the queue. |
-| `size()`               | Size of priority queue                                       |
-| `isEmpty()`            | Returns `true` if priority queue is empty                    |
-| `first()`              | Returns the element with the highest priority – does not remove it. |
+If two keys of the same priority are to be dequeued, the most common implementation is reverting to the standard queue property of removing the least recently inserted one
+
+In some implementations, the key and the value are taken to be the same thing, so the total ordering is just based on the values, and no additional keys are required
+
+| Fundamental Operations | Returned value                                               | Effect                                                       |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `enqueue(k,v)`         | -                                                            | Insert an entry with key `k` and value `v` into the queue, where `k` determines its position in the queue |
+| `dequeue()`            | The element with the highest priority                        | Element with the highest priority is removed from the queue  |
+| `size()`               | The size of priority queue                                   | -                                                            |
+| `isEmpty()`            | Whether the priority queue is empty                          | -                                                            |
+| `first()`              | The element with the highest priority, but does not remove it | -                                                            |
 
 *Note.* The names of these operations/methods can differ, it is important to understand their function and purpose to draw the link with concrete implementations.
 
@@ -171,3 +175,28 @@ Given $$n$$ elements, an element at position $$p$$ is stored at index/cell $$f(p
 > The **last node** corresponds to the last occupied index. **Insertion** will insert a new element into the first free cell (unoccupied index) and **remove_min** will remove cell 0. 
 
 Usually we use an Array List so that the array can grow.
+
+
+
+## Building heaps in linear time
+
+The number of operations for `upheap` and `downheap` on a item in the heap are related to its position. If an item is closer to the top, `upheap` will be quicker, since it has "less far to go". Since there are more values on the bottom layer of the heap ($$2^n$$) , than the top layer of the heap ($$1$$), if we have to apply one of the algorithms to all of the items in the heap, we should prefer to use `downheap`, as it will result in fewer operations
+
+Since we can represent a heap using an array-based implementation of a tree, we can take the unsorted array we want to turn into a heap, then use heap operations on the array directly to turn it into a valid heap expressed in the array-based implementation.
+
+As discussed previously, we could go about this in two ways:
+
+1. Iterate from the first to the last index of the unsorted array, calling `upheap` on each of the items. At each step, all the items preceding the current index in the array will form a valid heap, so after calling `upheap` on every item, the array is a valid heap
+2. Iterate from the last to the first index of the unsorted array, calling `downheap` on each of the items
+
+```
+Let H <- the unsorted array to convert to a heap
+For each item in the array in reverse order
+	Call downheap on the item
+```
+
+There is a proof that this is actually $$O(n)$$ ([source #1](https://stackoverflow.com/a/18742428), [source #2](https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/)), but it's a bit tricky to explain here, so is omitted
+
+
+
+A final point is despite the fact we can build a heap in $$O(n)$$ time, we cannot use this to sort the array in linear time, as removing from the top of the heap still takes $$O(n\ log\ n)$$ time

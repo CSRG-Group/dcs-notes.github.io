@@ -429,7 +429,7 @@ Push i to the stack
 Function fibonacci(k)
 	If k = 0
 		Return 0
-	If k = 1
+	Else if k = 1
 		Return k
 	Else
 		Return fibonacci(k-1) + fibonacci(k-2)
