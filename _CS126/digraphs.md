@@ -40,29 +40,31 @@ It is also possible to create maximal subgraphs with every vertex being reachabl
 >
 > - If $$G$$ has a directed path from $$u$$ to $$v$$, and $$u \neq v$$, then $$G^*$$ has a directed edge from $$u$$ to $$v$$
 >
-> The transitive closure provides reachability information about a digraph
+> The transitive closure provides reachability information about a digraph, allowing us to answer reachability questions **fast**.
 
-Informally, this means that every pair of vertices with a path between them is adjacent
+Informally, this means that every pair of vertices with a path between them is adjacent in a transitive closure.
 
 <img src=".\images\transitiveClosure.png" alt="transitiveClosure" class="center" style="zoom:50%;" />
 
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+### Computing with DFS
 
-We can naively compute this by performing DFS for each vertex in graph to identify every reachable edge from it, then setting edges between them. However, this is very slow, being $$O(n \cdot (n+m))$$ time.
+One way of computing the transitive closure of a graph is to perform DFS on each vertex in graph to identify every reachable edge from it, then setting edges between them. 
 
-Instead, we can use the **Floyd-Warshall algorithm**, which is a dynamic programming solution
+Every run of DFS will take $$O(n+m)$$ time and because we are running it on every edge so this will take $$O(n \cdot (n+m))$$ time.
+
+> For sparse graphs, adjacency list/adjacency map representations, or very large graphs (many nodes), DFS is a good solution.
 
 ### Floyd-Warshall Algorithm
 
+> Another way to compute the transitive closure is to use the **Floyd-Warshall algorithm**, a dynamic programming solution.
+
+The $$G^*$$ graph starts off identical to $$G$$ with only the initial edges. We then add a direct edge between nodes which have a path of length 2 between them (only one other node separating the two nodes).
+
 <img src=".\images\floydWarshall.png" alt="floydWarshall" class="center" />
 
-Image source: *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+With each iteration, we pick a “pivot” (this is my own way of saying it) node $$k$$ and we loop through all $$i$$ and $$j$$ to check if there is an edge $$i\rightarrow k$$ and $$k\rightarrow j$$ – if this is true, then we insert an edge $$i \rightarrow j$$.
 
-We build up from $$1$$ to $$k$$, starting with the base case of the initial graph, which only has the initial adjacencies. We then add edges between any included nodes with path length two between them.
-
-With each iteration, we introduce a new node considered in the temporary graph, and ensure that all edges within this temporary graph are transitively closed.
-
-Since at the end of every step, every node is transitively closed, when all nodes are included, the entire graph is transitively closed.
+After every edge is inserted, this forms a new path of length 2 between two nodes, which is then considered in a later iteration. 
 
 ```java
 Algorithm FloydWarshall(G)
@@ -70,32 +72,48 @@ Algorithm FloydWarshall(G)
     Output: transitive closure G* of G
     i <- 1
     for all v in G.vertices()
-        denote v as vi
+        label v with i
         i <- i + 1
-    G_0 <- G
+    G_new <- G
     for k <- 1 to n do
-        G_k <- G_(k-1)
         for i <- 1 to n(i != k) do
-            for j <- 1 to n(j != k) do
-                if G_(k-1).areAdjacent(vi,vk) & G_(k-1).areAdjacent(vk,vj)
-                    if !G_(k-1).areAdjacent(vi,vj)
-                        G_k.insertDirectedEdge(vi,vj,k)
-    return G_n
+        for j <- 1 to n(j != k) do
+            if G_new.areAdjacent(i,k) & G_new.areAdjacent(k,j)
+            if !G_new.areAdjacent(i,j)
+                G_new.insertDirectedEdge(i,j,edge_k)
+    return G_new
 ```
 
-#### Speed Analysis
+> We say this is a dynamic programming algorithm because we only have to consider paths of length 2 and update the graph immediately. By resolving the transitive closure for every $$k$$ with every other $$i$$ and every other $$j$$, the end result is one that considers all possible closures and the final graph is transitively closed.
 
-Running time is $$O(n^3)$$ if we assume that the `areAdjacent` method takes $$O(1)$$ time. We know that this depends on the implementation of the graph $$G$$. 
+#### FW in Python
 
-If, the **adjacency matrix** structure is used then it will be $$O(1)$$ which is better than $$O(n \cdot (n+m))$$ for non-sparse graphs (often graphs have many more edges than nodes).
+I found a good explanation of this algorithm on [Youtube](https://www.youtube.com/watch?v=OO8Jfs9uZnc) which also includes a github gist of the Python implementation of this algorithm.
+
+```python
+def warshall(M):
+    n = M.nrows()
+    W = M
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                W[i,j] = W[i,j] or (W[i,k] and W[k,j])
+    return W
+```
+
+#### Speed Analysis of FW
+
+The running time is dominated by the 3 for-loops. If we assume that the `areAdjacent` method takes $$O(1)$$ time (which is true for **adjacency matrices**) then this algorithm is of $$O(n^3)$$ time.
+
+> For dense graphs, and adjacency matrix representations, the Floyd-Warshall algorithm is better than using DFS. Additionally, it is also algorithmically simpler.
 
 ## Topological ordering
 
+A topological ordering of a digraph is a numbering $$v_1,\ldots,v_n$$ of the vertices such that for every directed edge $$v_i,v_j$$, we have that $$i<j$$. 
+
 > **Theorem.** A digraph has a **topological ordering** if it is a **directed acyclic graph** (DAG – has no directed cycles). Having cycles would informally be self-dependencies
 
-Topological ordering means the same thing as a total relation in CS130, if the graph is considered as a set of relations.
-
-To prove the theorem above, we need to prove both ways. Showing that a digraph with a topological ordering contains no directed cycles is **trivial**. We will employ DFS to prove the other way. 
+To prove the theorem above, we need to prove both ways. Showing that a digraph with a topological ordering contains no directed cycles is **trivial** (left to right). We will employ DFS to prove the other way (right to left). 
 
 ### Topological Sorting with DFS
 
@@ -116,8 +134,10 @@ Algorithm topologicalDFS(G) // First function
             topologicalDFS(G,v)     // 2nd Function
 ```
 
+Here we set the starting vertex `v` to `visited`, and then for all edges that originate from `v` we check if the destination vertex `w` is `unexplored`. 
+
 ```java
-Algorithm topologicalDFS(G,v)
+Algorithm topologicalDFS(G,v) // 2nd Function
     Input: graph G and a start vertex v of G
     Output: Labelling of the vertices of G in the connected component of v
     setLabel(v, "visited")
@@ -131,18 +151,24 @@ Algorithm topologicalDFS(G,v)
     n <- n - 1
 ```
 
-Here we set the starting vertex `v` to `visited`, and then for all edges that originate from `v` we check if the destination vertex `w` is `unexplored`. 
-
-- If so, then the edge has **not been traversed** before and we call the 2nd function on the vertex `w` recursively. This will continue until we arrive at a vertex $$d_n$$ with **no outgoing unexplored edge**.
-  - When this happens, we label $$d_n$$ with the current number for the topological ordering (this number starts at $$n = \text{number of vertices in G}$$). Decrement n.
-  - Then as **an effect** of the recursive calls, the algorithm **backtracks** to the previous vertex $$d_x$$
-    - All remaining outgoing edges of $$d_x$$ are checked there will be **further recursive calls** to the 2nd function **if possible**. 
-    - The next vertex with no outgoing edge $$d_{n-1}$$ will be labelled with `n-1`. 
-- This goes on, and we will notice that after every exit from a recursive call, there will always be a **unique** vertex with no outgoing unexplored edge.
-
-Hence, we will be able to arrive at a topological ordering of $$G$$.
+Taking the following graph as an example, let’s start at vertex `A`. We first begin by labelling vertex `A` as `visited` and we loop through all the vertices that `A` has an edge to.
 
 <img src="./images/toposort1.svg" class="center"/>
 
-You may find it beneficial to **visualise** the algorithm with this diagram. If you start from vertex `2` and if the loop starts from edges from **bottom to top** (so the first edge that the loop will process is `2 -> 3`), then you will find that $$d_n$$ I talk about above is `9`, $$d_x$$ and $$d_{n-1}$$ both refer to the same vertex `8`, and so on. 
+If any are unexplored, then the edge has **not been traversed** before and we call the 2nd function on the destination vertex recursively, in this case lets say the loop starts with `G`. Then the same thing happens to `G` (as it is a recursive call). 
+
+This will continue until we arrive at a vertex `D` with **no outgoing unexplored edge**.
+
+- When this happens, we label `D` with the current number for the topological ordering (this number starts at $$n = \text{number of vertices in G}$$). After which, we decrement `n`.
+- Then as **an effect** of the recursive calls, the algorithm **backtracks** to the previous vertex $$d_x$$ (i.e `J`). 
+  - All remaining outgoing edges of $$d_x$$ are checked and there will be **further recursive calls** to the 2nd function if any edges have **not** been traversed.
+  - The next vertex with no outgoing edge $$d_{n-1}$$ will be labelled with `n-1`. In our example this is `J`. 
+
+- This goes on, and we will notice that after every exit from a recursive call, there will always be a vertex with no outgoing unexplored edge.
+
+Hence, we will be able to arrive at a topological ordering of $$G$$.
+
+<img src="./images/toposort2.svg" class="center"/>
+
+> **Note.** You may observer that if we start at a different root vertex (for example if we started from `B` instead of `A`), the topological ordering will be different. Hence, it is possible for one DAG to have multiple topological orderings.
 

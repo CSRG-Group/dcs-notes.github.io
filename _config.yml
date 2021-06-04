@@ -73,18 +73,18 @@ collections:
   CS126:
     output: true
     order:
-      - part1.md
-      - part2.md
-      - part3.md
-      - part4.md
-      - part5.md
-      - part6.md
-      - part7.md
-      - part9.md
-      - part10.md
-      - part11.md
+      - arrays-and-lists.md
+      - algorithm-analysis.md
+      - recursive-algorithms.md
+      - stacks-and-queues.md
+      - maps-hash-tables-and-sets.md
+      - trees.md
+      - priority-queues.md
+      - skip-lists.md
+      - balanced-trees.md
+      - graphs.md
       - digraphs.md
-      - part12.md
+      - general-algorithms.md
   CS130:
     output: true
   CS131:
