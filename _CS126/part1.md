@@ -21,6 +21,15 @@ title: "Arrays and Lists"
 >
 > - They are homogenous as it is otherwise much harder to calculate the memory address of the data to look up given an index.
 
+Arrays have the following fundamental operations:
+
+| Fundamental operation | Value returned                           | Effect                                                       |
+| --------------------- | ---------------------------------------- | ------------------------------------------------------------ |
+| `get(i)`              | The item at the `i`th index in the array | -                                                            |
+| `set(i,e)`            | -                                        | Set the item at the `i`th index in the array to the value `e` |
+| `size()`              | The size of the array                    | -                                                            |
+| `isEmpty()`           | Whether the array is empty               | -                                                            |
+
 This table is an overview of the time complexity of certain operations for an array.
 
 | Methods/Operations   | Time | Reason                                                       |
@@ -30,8 +39,6 @@ This table is an overview of the time complexity of certain operations for an ar
 | `isEmpty()`          | O(n) | Has to check every index                                     |
 | Insertion, Deletion  | O(n) | Fixed length – have to shift proceeding elements up or down to accommodate inserted/deleted element |
 | Resizing the array   | O(n) | Fixed length – have to create a larger array, then copy contents over. |
-
-The operations in `code` blocks are the **fundamental operations** of arrays.
 
 ### Implementation
 
@@ -63,14 +70,14 @@ To do this, we need to decide how large the new array should be. There are two s
 
 Array based implementations have the fundamental operations
 
-- size()
-- isEmpty()
-- get(i)
-- set(i,e)
-- add(i,e)
-- remove(i)
-
-
+| Fundamental operation | Value returned                          | Effect                                                       |
+| --------------------- | --------------------------------------- | ------------------------------------------------------------ |
+| `get(i)`              | The item at the `i`th index in the list | -                                                            |
+| `set(i,e)`            | -                                       | Set the item at the `i`th index in the list to the value `e` |
+| `add(e)`              | -                                       | Add the value `e` to the end of the list                     |
+| `remove(i)`           | -                                       | Remove the value at the `i`th index of the list              |
+| `size()`              | The size of the array                   | -                                                            |
+| `isEmpty()`           | Whether the array is empty              | -                                                            |
 
 ## Positional lists (ADT)
 
@@ -80,13 +87,16 @@ Array based implementations have the fundamental operations
 
 A "position" is a marker within the list, which is unaffected by changes elsewhere. For example, insertion or deletion of other elements doesn't change it, the only time it changes is when it itself is deleted.
 
-Fundamental operations
-- addFirst(e)
-- addLast(e)
-- addBefore(p,e)
-- addAfter(p,e)
-- set(p,e)
-- remove(p)
+Positional lists have the fundamental operations
+
+| Fundamental operation | Value returned | Effect                                                       |
+| --------------------- | -------------- | ------------------------------------------------------------ |
+| `addFirst(e)`         | -              | Add the value `e` to the beginning of the list               |
+| `addLast(e)`          | -              | Add the value `e` to the end of the list                     |
+| `addBefore(p,e)`      | -              | Add the value `e` below the position `p` in the list         |
+| `addAfter(p,e)`       | -              | Add the value `e` after the position `p` in the list         |
+| `set(p,e)`            | -              | Set the item at the position `p` in the list to the value `e` |
+| `remove(p)`           | -              | Remove the item at the position `p` in the list              |
 
 It is generally implemented as a [doubly linked list](#doubly-linked-lists).
 
@@ -109,15 +119,13 @@ This means they can more easily implement non-homogenous lists, as opposed to us
 | `remove(p)` (Deletion), Insertion | O(n) | Similar to getting and `set`, but pointers are changed instead of values, either to bypass or include a new node in the sequence. |
 
 Singly linked lists have the fundamental operations
-- addFirst(e)
 
-- addAfter(p,e)
-
-- set(p,e)
-
-- remove(p)
-
-  
+| Fundamental operation | Value returned | Effect                                                       |
+| --------------------- | -------------- | ------------------------------------------------------------ |
+| `addFirst(e)`         | -              | Add the value `e` to the beginning of the list               |
+| `addAfter(p,e)`       | -              | Add the value `e` after the position `p` in the list         |
+| `set(p,e)`            | -              | Set the item at the position `p` in the list to the value `e` |
+| `remove(p)`           | -              | Remove the item at the position `p` in the list              |
 
 ### Doubly Linked Lists
 
@@ -129,11 +137,4 @@ Similarly to singly linked lists, getting, setting, insertion, deletion all O(n)
 
 Head and tail operations are O(1) – head and tail references (pointers) and the list can be traversed **both** forwards and backwards.
 
-Fundamental operations (same as positional list as it is concrete implementation of it)
-
-- addFirst(e)
-- addLast(e)
-- addBefore(p,e)
-- addAfter(p,e)
-- set(p,e)
-- remove(p)
+Doubly linked lists have the same fundamental operations as positional lists, as they are a concrete implementation of them
