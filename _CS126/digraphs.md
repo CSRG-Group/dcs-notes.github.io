@@ -77,10 +77,9 @@ Algorithm FloydWarshall(G)
     G_new <- G
     for k <- 1 to n do
         for i <- 1 to n(i != k) do
-        for j <- 1 to n(j != k) do
-            if G_new.areAdjacent(i,k) & G_new.areAdjacent(k,j)
-            if !G_new.areAdjacent(i,j)
-                G_new.insertDirectedEdge(i,j,edge_k)
+        	for j <- 1 to n(j != k) do
+            	if G_new.areAdjacent(i,k) & G_new.areAdjacent(k,j) & !G_new.areAdjacent(i,j)
+                    G_new.insertDirectedEdge(i,j,edge_k)
     return G_new
 ```
 
@@ -88,7 +87,7 @@ Algorithm FloydWarshall(G)
 
 #### FW in Python
 
-I found a good explanation of this algorithm on [Youtube](https://www.youtube.com/watch?v=OO8Jfs9uZnc) which also includes a github gist of the Python implementation of this algorithm.
+I found a good explanation of this algorithm on [Youtube](https://www.youtube.com/watch?v=OO8Jfs9uZnc) which also includes a github gist of the Python implementation of this algorithm. This takes an adjacency matrix `M` which encodes the graph
 
 ```python
 def warshall(M):
