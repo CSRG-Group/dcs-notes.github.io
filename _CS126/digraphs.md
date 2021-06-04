@@ -170,5 +170,5 @@ Hence, we will be able to arrive at a topological ordering of $$G$$.
 
 <img src="./images/toposort2.svg" class="center"/>
 
-> **Note.** You may observer that if we start at a different root edge, the topological ordering will be different. Hence, it is possible for one DAG to have multiple topological orderings.
+> **Note.** You may observer that if we start at a different root vertex (for example if we started from `B` instead of `A`), the topological ordering will be different. Hence, it is possible for one DAG to have multiple topological orderings.
 
