@@ -30,6 +30,8 @@ Directed and undirected graphs
 | **Length (of a path of cycle)** | The number of edges in the path/cycle                        |
 | **Tree**                        | A connected acyclic graph                                    |
 | **Weight**                      | A weight is a numerical value attached to each edge. In weighted graphs relationships between vertices have a magnitude. |
+| **Dense**                       | A dense graph is one where the number of edges is close to the maximal number of edges. |
+| **Sparse**                      | A sparse graph is one with only a few edges.                 |
 {: .centeredtable}
 
 ### Graph properties
