@@ -165,19 +165,19 @@ There are a few ways to implement the instances for the type classes and one way
 
 ### Proxy Types
 
-We don’t have types at runtime due to **type erasure**, so we can’t write a function that takes types as arguments in Haskell, even though we sometimes want to.
+We don’t have types at runtime due to **type erasure**, so we can’t write a function that takes types as arguments in Haskell, even though we sometimes want to. For example, we might want to define a function `fromNat :: forall (n :: Nat) => n -> Int` which takes a type-level natural number `n` of kind `Nat` as input and returns the corresponding `Int` value. However, only types of kind `*` have values at run-time in Haskell. Since there are no values of types of kind `Nat`, we cannot define a `fromNat` function of the given type.
 
 > Proxy types provide a partial work around Haskell’s limitations **for cases where** knowing what type is given to a function as its “argument” at compile-time is sufficient.
 >
 > **TLDR.** A proxy type is a type of kind `k -> *` (where `k` can be specialised to the kind of whatever types you want to give to a function as argument). Only types of kind `*` have values, so we apply our proxy **type constructor** to some argument of kind `k` to get a type of kind `*` which then makes a suitable parameter for a function.
 
-In the following **example**, we will show how this allows us to convert a representation of a value at the **type level** into a **term level** value (reification).
+In the following **example**, we will how this allows us to convert a type into a corresponding value. In other words, we show how to take information from the **type level** and convert it to information at the **value level** (reification).
 
 ```haskell
 data NatProxy (a :: Nat) = MkProxy
 ```
 
-Here, the `NatProxy` **type constructor** is of kind `Nat -> *`, meaning it takes some type `a` of kind `Nat` and gives back a type of kind `*` which has a value at run-time (kind `Nat` does not have a value at run-time).`MkProxy` is the **data constructor** for `NatProxy` and is of type `NatProxy n`.
+Here, the `NatProxy` **type constructor** is of kind `Nat -> *`, meaning it takes some type `a` of kind `Nat` and gives back a type of kind `*` which has a value at run-time. `MkProxy` is the **data constructor** for `NatProxy` and is of type `NatProxy n`.
 
 ```haskell
 class FromNat (n :: Nat) where
@@ -188,7 +188,7 @@ instance FromNat 'Zero where -- 'Zero is a type defined by Nat in GADT section
   fromNat _ = 0
 ```
 
-Now with our **proxy type**, we can define a **type class** with instances that we can define the `fromNat` function for. The instance of this type class for `'Zero` is trivial.
+Now with our **proxy type**, we can define a `fromNat` function with a slightly modified type. Since `NatProxy :: Nat -> *`, `NatProxy n` is a valid parameter type for a function since it is of kind `*`. We use a type class to overload this `fromNat` function so that we can provide different implementations for it, depending on which type `n` is. For example, if `n` is `'Zero` we just define `fromNat` to return `0`.
 
 ```haskell
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -200,9 +200,9 @@ instance FromNat n => FromNat ('Succ n) where
   -- ScopedTypeVariables extension has to be enabled for this to work.
 ```
 
-The instance for any other `n` will require us to constrain the `n` in the instance head to be an instance of `FromNat` so that we can define the instance for `'Succ n` recursively.
+The instance for any other `n` requires us to constrain the `n` in the instance head to be an instance of `FromNat` so that we can define the instance for `'Succ n` recursively. The recursive call to `fromNat` is given `MkProxy` as argument, with an explicit type annotation instructing the compiler to choose the `fromNat` implementation for `n`.
 
-> It is important to understand the difference between reification and proxy types as they are not the same thing. Here, we are reifying types from the proxy types. There are other ways of doing this without proxy types which are not covered in the module.
+> Although we use proxy types to implement the reification process here, they are independent techniques. That is, proxy types have uses outside of reification and reification can be accomplished without proxy types, which is not covered in the module.
 
 ### Additional Example (Type Application)
 
@@ -234,7 +234,7 @@ test :: Int
 test = fromNat @Test
 ```
 
-Here, `@` is type application which is used to explicitly supply an argument for a universal quantifier. Universal quantifiers are usually implicit in Haskell, but in some cases we would have to define it. In this case, we don’t need to, but if we did then `fromNat` would look like this.
+Here, `@` is type application which is used to explicitly supply an argument for a universal quantifier. Universal quantifiers are usually implicit in Haskell, but in some cases it is useful to make them explicit when writing down typings. In the case of `fromNat`, its type is as follows with the universal quantifiers made explicit:
 
 ```haskell
 fromNat :: forall (n :: Nat) . FromNat n => Int
@@ -243,6 +243,5 @@ fromNat :: forall (n :: Nat) . FromNat n => Int
 When we write `fromNat @Test` (last line), the `n` gets instantiated with `Test` and we get `FromNat Test => Int` as the type. Because `Test` expands to something that has an instance of `FromNat`, the constraint is satisfied and the compiler can pick the right implementation of `fromNat` to use, which is how the reification “works”.
 
 > Type application can be used with other variables, for example `something`. As long as these have an instance of `FromNat` defined for them. So if we write `fromNat @something` then `n` will be instantiated with `something`. 
-
 
 
