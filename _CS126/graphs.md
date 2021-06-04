@@ -131,7 +131,7 @@ We can determine more specific space complexities for both graph structures base
 | Undirected tree | $$O(n^2)$$ | $$O(n)$$ ($$O(n + n)$$ ⭐ |
 | Directed, complete, with self loops | $$O(n^2)$$ | $$O(n^2)$$ |
 | Dense | Most efficient use of $$O(n^2)$$ space | Very similar to using a matrix |
- {: .centeredtable}
+ {:.centeredtable}
  
 ## Subgraphs
 
