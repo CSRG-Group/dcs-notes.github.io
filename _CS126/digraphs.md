@@ -109,11 +109,11 @@ The running time is dominated by the 3 for-loops. If we assume that the `areAdja
 
 ## Topological ordering
 
+A topological ordering of a digraph is a numbering $$v_1,\ldots,v_n$$ of the vertices such that for every directed edge $$v_i,v_j$$, we have that $$i<j$$. 
+
 > **Theorem.** A digraph has a **topological ordering** if it is a **directed acyclic graph** (DAG – has no directed cycles). Having cycles would informally be self-dependencies
 
-Topological ordering means the same thing as a total relation in CS130, if the graph is considered as a set of relations.
-
-To prove the theorem above, we need to prove both ways. Showing that a digraph with a topological ordering contains no directed cycles is **trivial**. We will employ DFS to prove the other way. 
+To prove the theorem above, we need to prove both ways. Showing that a digraph with a topological ordering contains no directed cycles is **trivial** (left to right). We will employ DFS to prove the other way (right to left). 
 
 ### Topological Sorting with DFS
 
@@ -134,8 +134,10 @@ Algorithm topologicalDFS(G) // First function
             topologicalDFS(G,v)     // 2nd Function
 ```
 
+Here we set the starting vertex `v` to `visited`, and then for all edges that originate from `v` we check if the destination vertex `w` is `unexplored`. 
+
 ```java
-Algorithm topologicalDFS(G,v)
+Algorithm topologicalDFS(G,v) // 2nd Function
     Input: graph G and a start vertex v of G
     Output: Labelling of the vertices of G in the connected component of v
     setLabel(v, "visited")
@@ -149,18 +151,24 @@ Algorithm topologicalDFS(G,v)
     n <- n - 1
 ```
 
-Here we set the starting vertex `v` to `visited`, and then for all edges that originate from `v` we check if the destination vertex `w` is `unexplored`. 
-
-- If so, then the edge has **not been traversed** before and we call the 2nd function on the vertex `w` recursively. This will continue until we arrive at a vertex $$d_n$$ with **no outgoing unexplored edge**.
-  - When this happens, we label $$d_n$$ with the current number for the topological ordering (this number starts at $$n = \text{number of vertices in G}$$). Decrement n.
-  - Then as **an effect** of the recursive calls, the algorithm **backtracks** to the previous vertex $$d_x$$
-    - All remaining outgoing edges of $$d_x$$ are checked there will be **further recursive calls** to the 2nd function **if possible**. 
-    - The next vertex with no outgoing edge $$d_{n-1}$$ will be labelled with `n-1`. 
-- This goes on, and we will notice that after every exit from a recursive call, there will always be a **unique** vertex with no outgoing unexplored edge.
-
-Hence, we will be able to arrive at a topological ordering of $$G$$.
+Taking the following graph as an example, let’s start at vertex `A`. We first begin by labelling vertex `A` as `visited` and we loop through all the vertices that `A` has an edge to.
 
 <img src="./images/toposort1.svg" class="center"/>
 
-You may find it beneficial to **visualise** the algorithm with this diagram. If you start from vertex `2` and if the loop starts from edges from **bottom to top** (so the first edge that the loop will process is `2 -> 3`), then you will find that $$d_n$$ I talk about above is `9`, $$d_x$$ and $$d_{n-1}$$ both refer to the same vertex `8`, and so on. 
+If any are unexplored, then the edge has **not been traversed** before and we call the 2nd function on the destination vertex recursively, in this case lets say the loop starts with `G`. Then the same thing happens to `G` (as it is a recursive call). 
+
+This will continue until we arrive at a vertex `D` with **no outgoing unexplored edge**.
+
+- When this happens, we label `D` with the current number for the topological ordering (this number starts at $$n = \text{number of vertices in G}$$). After which, we decrement `n`.
+- Then as **an effect** of the recursive calls, the algorithm **backtracks** to the previous vertex $$d_x$$ (i.e `J`). 
+  - All remaining outgoing edges of $$d_x$$ are checked and there will be **further recursive calls** to the 2nd function if any edges have **not** been traversed.
+  - The next vertex with no outgoing edge $$d_{n-1}$$ will be labelled with `n-1`. In our example this is `J`. 
+
+- This goes on, and we will notice that after every exit from a recursive call, there will always be a vertex with no outgoing unexplored edge.
+
+Hence, we will be able to arrive at a topological ordering of $$G$$.
+
+<img src="./images/toposort2.svg" class="center"/>
+
+> **Note.** You may observer that if we start at a different root edge, the topological ordering will be different. Hence, it is possible for one DAG to have multiple topological orderings.
 
