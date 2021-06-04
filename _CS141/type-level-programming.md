@@ -254,7 +254,7 @@ When we write `fromNat @Test` (last line), the `n` gets instantiated with `Test`
 
 ### Concluding Reification
 
-Here, we have provided two examples of how we can reify types. We use type classes as they allow us to **resolve** types to the **correct instances** at **compile-time** so the **right implementation** of the function is **evaluated at runtime**.
+Here, we have provided two examples of how we can reify types. You have seen how useful type classes  are as they allow us overload the `fromNat` function for different types of `n`. This **resolves** to the **correct instances** at **compile-time** so the **right implementation** of the function is **evaluated at runtime**.
 
 ## Type Families
 
