@@ -197,6 +197,7 @@ math: true
     <td align="center"><a href="http://fbcf.xyz"><img src="https://avatars.githubusercontent.com/u/46428367?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felix</b></sub></a><br /><a href="#content-efbicief" title="Content">🖋</a></td>
     <td align="center"><a href="https://tomff.com"><img src="https://avatars.githubusercontent.com/u/15079464?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tomás F.</b></sub></a><br /><a href="#design-tomasff" title="Design">🎨</a> <a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Atomasff" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/parthmahendra"><img src="https://avatars.githubusercontent.com/u/18237220?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Parth Mahendra</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aparthmahendra" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://warwick.ac.uk/michaelgale"><img src="https://avatars.githubusercontent.com/u/278086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael B. Gale</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/pulls?q=is%3Apr+reviewed-by%3Ambg" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
