@@ -9,23 +9,24 @@ title: "Trees"
 ## Trees (ADT)
 > **Trees** are "an abstract model of a hierarchical structure. A tree consists of nodes with a parent-child relation." 
 >
-> *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser*
+> *Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser
 
-*If you want to pull request more stuff here, please do - but I'm not too sure how much more depth is needed*
-
-| Fundamental Operation | Description                                                  |
-| --------------------- | ------------------------------------------------------------ |
-| `size()`              | Size of tree – number of nodes                               |
-| `isEmpty()`           | Returns `true` if the tree is empty.                         |
-| `iterator()`          | Iterator for the tree                                        |
-| `positions()`         | Return an iterable container of all nodes in the tree        |
-| `root()`              | Returns root node                                            |
-| `parent(p)`           | Returns parent of node ***p***                               |
-| `children(p)`         | Returns an iterable container of the children of node ***p*** |
-| `numChildren(p)`      | Returns the number of children of node ***p***               |
-| `isInternal(p)`       | Returns `true` if node ***p*** is an **internal node** (node with at least 1 child) |
-| `isExternal(p)`       | Returns `true` if node ***p*** is an **external node** (node with no children) |
-| `isRoot(p)`           | Returns `true` if node ***p*** is a **root node** (node without parent) |
+| Fundamental Operation | Value returned                                               | Effect                                             |
+| --------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| `size()`              | Number of nodes in the tree                                  | -                                                  |
+| `isEmpty()`           | Whether the tree is empty                                    | -                                                  |
+| `iterator()`          | An iterator for the tree                                     | -                                                  |
+| `positions()`         | An iterable container of all nodes in the tree               | -                                                  |
+| `root()`              | The root node                                                | -                                                  |
+| `parent(p)`           | The parent of the node `p`                                   | -                                                  |
+| `children(p)`         | An iterable container of the children of the node `p`        | -                                                  |
+| `numChildren(p)`      | The number of children of the node `p`                       | -                                                  |
+| `isInternal(p)`       | Whether the node `p` is an **internal node** (node with at least 1 child) | -                                                  |
+| `isExternal(p)`       | Whether the node `p` is an **external node** (node with no children) | -                                                  |
+| `isRoot(p)`           | Whether the node `p` is a **root node** (node without parent) | -                                                  |
+| `insert(p,e)`         | -                                                            | Add a node of value `e` as a child of the node `p` |
+| `update(p,e)`         | -                                                            | Update the value of the node `p` to be `e`         |
+| `delete(p)`           | The value of the node `p`                                    | Delete the node `p`                                |
 
 The methods for insertion, deletion, and searching are more complicated, and so are outlined in more detail in the binary search tree section
 
@@ -85,11 +86,11 @@ Function postOrder(n)
 
 > **Binary trees** are a specialised tree where each node has at most two children, called left and right
 
-| Fundamental Operations | Description                         |
-| ---------------------- | ----------------------------------- |
-| `left(p)`              | Returns left child of node ***p***  |
-| `right(p)`             | Returns right child of node ***p*** |
-| `sibling(p)`           | Returns sibling of node ***p***     |
+| Fundamental Operations | Value returned              | Effect |
+| ---------------------- | --------------------------- | ------ |
+| `left(p)`              | The left child of node `p`  | -      |
+| `right(p)`             | The right child of node `p` | -      |
+| `sibling(p)`           | The sibling of node `p`     | -      |
 
 ### Properties
 

@@ -46,16 +46,20 @@ To search for an value `v​` in a skip list, we follow the algorithm
 
 ```java
 Algorithm search(k):
-  p <- skiplist.first() // this is the minus-infinity guard of the top list
-  Repeat
-    e <- p.next().element()
-    if e.key() == k
-      return e
-    else if e.key() > k // next element is greater than v
-      p <- p.below()    // Drop Down Step
-      if p == null then return null
-    else                // next element's key is smaller than v
-      p <- p.next()     // Scan Forward Step
+	//Start at the minus-infinity guard of the top list
+	p <- skiplist.first()
+	Repeat
+		e <- p.next().element()
+		if e.key() == k
+			return e
+		else if e.key() > k
+            //Drop down to the next level
+			p <- p.below()
+			if p == null
+            	return null
+		else //e.key() < k
+            //Scan Forward Step
+            p <- p.next()     
 ```
 
 <img src="./images/skipListsSearch.png" alt="skipListsSearch" class="center"/>
@@ -67,11 +71,11 @@ To insert a value `v`​ into a skip list, we follow the algorithm.
 ```java
 i <- number of flips of a fair coin before a head comes up
 If i >= height of skip list
-  Add new, empty, sub-lists {S(h+1), ..., S(i+1)} to S 
+	Add new, empty, sub-lists {S(h+1), ..., S(i+1)} to S 
 Using the search algorithm, we find v //even though we know it is not inserted
-  For every dropdown step, store the position of the element in an array
+	For every dropdown step, store the position of the element in an array
 	// This array stores the positions p(0) to p(i) of the 
-  // largest element lesser than v of each sublist S(j)
+	// largest element lesser than v of each sublist S(j)
 For each sublist from 0 to i
 	Insert v into S(j) immediately after the position p(j) in array
 ```
@@ -84,11 +88,11 @@ To delete a value `v`​ from a skip list, we follow the algorithm
 
 ```java
 Using search algorithm, find v in skiplist
-  Once found at position p,
-    while p.below() != null
-      hold <- p
-      delete(p) // Delete v from sublists below
-      p <- hold
+Once found at position p,
+while p.below() != null
+	hold <- p
+	delete(p) // Delete v from sublists below
+	p <- hold
 Remove all but one list containing only guards from the top of the skip list
 ```
 

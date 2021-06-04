@@ -68,20 +68,20 @@ After every edge is inserted, this forms a new path of length 2 between two node
 
 ```java
 Algorithm FloydWarshall(G)
-  Input: digraph G
-  Output: transitive closure G* of G
-  i <- 1
-  for all v in G.vertices()
-    label v with i
-    i <- i + 1
-  G_new <- G
-  for k <- 1 to n do
-    for i <- 1 to n(i != k) do
-      for j <- 1 to n(j != k) do
-        if G_new.areAdjacent(i,k) & G_new.areAdjacent(k,j)
-          if !G_new.areAdjacent(i,j)
-            G_new.insertDirectedEdge(i,j,edge_k)
-  return G_new
+    Input: digraph G
+    Output: transitive closure G* of G
+    i <- 1
+    for all v in G.vertices()
+        label v with i
+        i <- i + 1
+    G_new <- G
+    for k <- 1 to n do
+        for i <- 1 to n(i != k) do
+        for j <- 1 to n(j != k) do
+            if G_new.areAdjacent(i,k) & G_new.areAdjacent(k,j)
+            if !G_new.areAdjacent(i,j)
+                G_new.insertDirectedEdge(i,j,edge_k)
+    return G_new
 ```
 
 > We say this is a dynamic programming algorithm because we only have to consider paths of length 2 and update the graph immediately. By resolving the transitive closure for every $$k$$ with every other $$i$$ and every other $$j$$, the end result is one that considers all possible closures and the final graph is transitively closed.
@@ -124,29 +124,29 @@ To prove the theorem above, we need to prove both ways. Showing that a digraph w
 
 ```java
 Algorithm topologicalDFS(G) // First function
-  Input: DAG G
-  Output: Topological ordering of G
-  n <- G.numVertices()
-  for all u in G.vertices()
-    setLabel(u, "unexplored")
-  for all v in G.vertices()
-    if getLabel(v) == "unexplored"
-      topologicalDFS(G,v)   // 2nd Function
+    Input: DAG G
+    Output: Topological ordering of G
+    n <- G.numVertices()
+    for all u in G.vertices()
+        setLabel(u, "unexplored")
+    for all v in G.vertices()
+        if getLabel(v) == "unexplored"
+            topologicalDFS(G,v)     // 2nd Function
 ```
 
 ```java
 Algorithm topologicalDFS(G,v)
-  Input: graph G and a start vertex v of G
-  Output: Labelling of the vertices of G in the connected component of v
-  setLabel(v, "visited")
-  for all e in G.outEdges(v)
-    w <- opposite(v,e)
-    if getLabel(w) == "unexplored" // e is a discovery edge
-      topologicalDFS(G,w)
-      setLabel(e, "cross")
-    // else we do nothing
-  Label v with topological number n
-  n <- n - 1
+    Input: graph G and a start vertex v of G
+    Output: Labelling of the vertices of G in the connected component of v
+    setLabel(v, "visited")
+    for all e in G.outEdges(v)
+        w <- opposite(v,e)
+        if getLabel(w) == "unexplored" // e is a discovery edge
+            topologicalDFS(G,w)
+            setLabel(e, "cross")
+        // else we do nothing
+    Label v with topological number n
+    n <- n - 1
 ```
 
 Here we set the starting vertex `v` to `visited`, and then for all edges that originate from `v` we check if the destination vertex `w` is `unexplored`. 
