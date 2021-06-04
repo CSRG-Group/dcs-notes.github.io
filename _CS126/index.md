@@ -15,18 +15,18 @@ Or access the [CS126 One Page Notes](opnotes).
 
 These were written by **Edmund Goodman** and **Justin Tan** with contributions from **Leon Chipchase**:
 
-1. [x] [Arrays and Lists](part1)
-2. [x] [Analysis of algorithms](part2)
-3. [x] [Recursive algorithms](part3)
-4. [x] [Stacks and Queues](part4)
-5. [x] [Maps, hash tables and sets](part5)
-6. [x] [Trees](part6)
-7. [x] [Priority queues & Heaps](part7)
-8. [x] [Skip lists](part9)
-9.  [x] [Self-balancing trees](part10)
-10. [x] [Graphs](part11)
+1. [x] [Arrays and Lists](arrays-and-lists)
+2. [x] [Analysis of algorithms](algorithm-analysis)
+3. [x] [Recursive algorithms](recursive-algorithms)
+4. [x] [Stacks and Queues](stacks-and-queues)
+5. [x] [Maps, hash tables and sets](maps-hash-tables-and-sets)
+6. [x] [Trees](trees)
+7. [x] [Priority queues & Heaps](priority-queues)
+8. [x] [Skip lists](skip-lists)
+9.  [x] [Self-balancing trees](balanced-trees)
+10. [x] [Graphs](graphs)
 11. [x] [Directed Graphs](digraphs)
-12. [ ] [General algorithms](part12)
+12. [ ] [General algorithms](general-algorithms)
 
 
 
