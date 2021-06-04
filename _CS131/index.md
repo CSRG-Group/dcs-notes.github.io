@@ -11,7 +11,7 @@ title: CS131
 
 
 
-Detailed typed notes for CS131 by **Yijun Hu** which cover the entire module can be found [here](https://adrakaris.github.io/blog-cs/cs131/index.html). Each individual section has been converted to markdown by **Edmund Goodman** and linked below:
+Detailed typed notes for CS131 by **Yijun Hu** which cover the entire module can be found [here](https://adrakaris.github.io/blog-cs/cs131/index.html). Each individual section has been converted to markdown by **Edmund Goodman** and linked below, and the one page notes form can be found [here](https://warwick.guide/CS131/opnotes):
 
 1. [x] [Number systems](part1)
 2. [x] [Vectors](part2)
