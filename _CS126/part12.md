@@ -427,6 +427,8 @@ Push i to the stack
 
 ```java
 Function fibonacci(k)
+	If k = 0
+		Return 0
 	If k = 1
 		Return k
 	Else
