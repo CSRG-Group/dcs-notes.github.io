@@ -126,13 +126,16 @@ Given a graph with **n** vertices and **m** edges (no parallel edges and no self
 #### Space complexity (choosing between an adjacency matrix and an adjacency list)
 
 We can determine more specific space complexities for both graph structures based on the type of graph we are using:
-| Type of graph | Adjacency matrix | Adjacency list |
-| :------------ | :--------------- | :------------- |
-| Undirected tree | $$O(n^2)$$ | $$O(n)$$ ($$O(n + n)$$ ⭐ |
-| Directed, complete, with self loops | $$O(n^2)$$ | $$O(n^2)$$ |
-| Dense | Most efficient use of $$O(n^2)$$ space | Very similar to using a matrix |
+
+| Type of graph                      | Adjacency matrix                      | Adjacency list                          |
+| ---------------------------------- | ------------------------------------- | --------------------------------------- |
+| General case                       | $$O(n^2)$$                            | $$O(n+m)$$ ⭐                            |
+| Sparse                             | Inefficient use of $$O(n^2)$$ space 💩 | Few edges to search through list for ⭐  |
+| Dense                              | Efficient use of $$O(n^2)$$ space ⭐   | Many edges to search through list for 💩 |
+| Complete directed, with self-loops | $$O(n^2)$$ ⭐                          | $$O(n^2)$$, and inefficient lookup 💩    |
+
  {:.centeredtable}
- 
+
 ## Subgraphs
 
 > A **subgraph** of the graph $$G$$ fulfils the two properties:
