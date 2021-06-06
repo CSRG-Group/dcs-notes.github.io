@@ -1,3 +1,10 @@
+---
+layout: CS131
+part: true
+math: true
+title: "QuestionSheet"
+---
+
 ## Vectors
 
 #### Important definitions
