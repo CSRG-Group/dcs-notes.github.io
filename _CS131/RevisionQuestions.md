@@ -290,11 +290,11 @@ Using the above equations, once we have a polynomial from either the Maclaurin o
 
   - Next, find the **particular solution** using the following table (a solution for the equation $$y=P(x)$$:
 
-  - \| $$f(x)$$                        \| form of particular solution for y                            \|
-    \| ------------------------------- \| ------------------------------------------------------------ \|
-    \| $$e^{\alpha x}$$                  \| $$y=Ae^{\alpha x}$$ if $$\alpha$$ is not a root of the auxiliary equation<br />$$y=Axe^{\alpha x}$$ if $$\alpha$$ is a non-repeated root<br />$$y=Ax^{2}e^{\alpha x}$$ if $$\alpha$$ is a repeated root \|
-    \| polynomial of degree $$n$$        \| polynomial of degree $$n$$ if 0 is not a root of the auxiliary equation<br />polynomial of degree $$n+1$$ if 0 is a *non-repeated* root<br />polynomial of degree $$n+2$$ if 0 is a *repeated root*<br />e.g. if you have $$f(x)=5x$$ then you can try $$y=Cx+D$$ which has degree 1. \|
-    \| $$A\cos\alpha x + B\sin\alpha x$$ \| **REMEMBER TO SUBSTITUTE A VALUE FOR $$\alpha$$**<br />$$y=C\cos\alpha x+D\sin\alpha x$$ if $$i\alpha$$ is **not** a root of the auxiliary equation<br />$$y=x(C\cos\alpha x+D\sin\alpha x)$$ otherwise \|
+  - | $$f(x)$$                        | form of particular solution for y                            |
+    | ------------------------------- | ------------------------------------------------------------ |
+    | $$e^{\alpha x}$$                  | $$y=Ae^{\alpha x}$$ if $$\alpha$$ is not a root of the auxiliary equation<br />$$y=Axe^{\alpha x}$$ if $$\alpha$$ is a non-repeated root<br />$$y=Ax^{2}e^{\alpha x}$$ if $$\alpha$$ is a repeated root |
+    | polynomial of degree $$n$$        | polynomial of degree $$n$$ if 0 is not a root of the auxiliary equation<br />polynomial of degree $$n+1$$ if 0 is a *non-repeated* root<br />polynomial of degree $$n+2$$ if 0 is a *repeated root*<br />e.g. if you have $$f(x)=5x$$ then you can try $$y=Cx+D$$ which has degree 1. |
+    | $$A\cos\alpha x + B\sin\alpha x$$ | **REMEMBER TO SUBSTITUTE A VALUE FOR $$\alpha$$**<br />$$y=C\cos\alpha x+D\sin\alpha x$$ if $$i\alpha$$ is **not** a root of the auxiliary equation<br />$$y=x(C\cos\alpha x+D\sin\alpha x)$$ otherwise |
 
   - Solve $$P(x)$$ to find out the values of the coefficients
 
