@@ -25,6 +25,17 @@ x^{ab}\ MOD\ n     &\equiv &(x^a\ MOD\ n)^b\ MOD\ n       &\equiv &(x^b\ MOD\ n)
 \end{matrix}
 $$
 
+## One Way Function
+
+> A o**ne-way function** is a function is easy to compute in one direction, but **computationally infeasible** to calculate in reverse. 
+>
+> In other words, given some inputs, it is easy to get the output, but given an output it is difficult to reverse the function to find the original input(s). 
+
+**Example of 1 way functions.**
+
+1. Modular exponentiation function ($$k = y^x \!\!\mod p$$)
+2. Prime factorisation ($$p\cdot q = n$$, where $$p$$ and $$q$$ are large prime numbers). 
+
 ## The Primitive Root
 
 > The function below is an example of a one-way function if 
@@ -115,9 +126,9 @@ As you can see, it is very easy to decrypt the ciphertext given the private key.
 
 To break RSA an attacker must
 
-- Either reverse the one-way function which is computationally difficult
-- Or know ***d***, which means to know ***p and q*** which means to know ***n*** – but n = p &times; q is also a one-way function.
-- The only way is brute force – but a large enough key size will make this infeasible.
+- Either reverse the **one-way function** which is computationally difficult
+- Or know ***d***, which means to know ***p and q*** which means to know ***n*** – but n = p &times; q is also a **one-way function**.
+- The only way is **brute force** – but a **large enough key size** will make this **infeasible**.
 
 > To match the security of a 256-bit secret key, the RSA key needs 15460-bits. RSA started with 512-bit public key, but now it is 2048-bits and will need to increase again to 3072-bits from 2030 onwards.
 
@@ -133,6 +144,6 @@ Another implication of a longer key length, k, is encryption and decryption time
 | Secret                                                       | Public                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Uses XOR, substitution, permutation – **fast**               | Uses a one-way function – **slower**                         |
-| Key is secret – requires shorter key for **same** level of security<br />Also means its, again, **faster**. | Only relies on the length of public key to prevent the crack with brute force<br />Long key – **slower** |
+| Key is secret – attacker knows less information and hence requires shorter key for **same** level of security<br />It is **faster** to perform operations on a shorter key. | Only relies on the length of public key to prevent the crack with brute force<br />The longer the key the **slower **the operation. |
 | Key distribution is **complicated**                          | Key distribution is **easy**                                 |
 

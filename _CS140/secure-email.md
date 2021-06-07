@@ -4,6 +4,8 @@ title: Secure Email
 part: true
 ---
 
+> According to the **Revision Lecture**, the main concepts to know for the exams in this section is **[PGP encryption](#interception)**.
+
 ***Some terminology.***
 
 - **Email domain:** Warwick domain, cambridge domain, google domain. e.g. “@warwick.ac.uk”
@@ -111,4 +113,3 @@ Below is a diagram depicting how PGP Encryption works.
   <figcaption>PGP Encryption Diagram, <a href="https://en.wikipedia.org/wiki/File:PGP_diagram.svg">Wikimedia Commons</a></figcaption>
   <img src="./secure-email.assets/PGP_diagram.svg"/>
 </figure>
-
