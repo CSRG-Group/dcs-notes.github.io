@@ -19,7 +19,7 @@ To do so, A and B have to first publicly agree on values for y and p in a modula
 - $$p$$ is an enormously large prime number
 - The two numbers can be publicly known
 
-Then A chooses a secret number, $$a$$ and..
+A and B choose secret numbers, $$a$$ and $$b$$ respectively, then:
 
 - Put $$a$$ into the one-way function and computes the result $$y^a \!\!\mod p = v_A$$
 - A sends $$v_A$$ to B and receives $$v_B$$ from B

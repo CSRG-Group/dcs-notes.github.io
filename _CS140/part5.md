@@ -122,6 +122,39 @@ M= C^d\!\!\!\mod n
 $$
 As you can see, it is very easy to decrypt the ciphertext given the private key. All that the receiver has to do is to keep the private key **safe.**
 
+#### Example of RSA
+
+Let us take the two starting prime numbers as:
+$$
+p=11, q=3
+$$
+We can then find the public key $$n$$ as their product:
+$$
+n = pq = 11 \times 3 = 33
+$$
+We can now select a value $$e$$ which fulfils the properties of being relatively prime to $$10$$, $$2$$, and $$20$$, and in the range $$1 < e < 20$$, for example
+$$
+e = 7
+$$
+Then, we calculate the private key $$d$$ from the equation:
+$$
+e \cdot d = 1\ MOD\ (p-1)(q-1)
+$$
+For which $$d=3$$ is a valid solution, as $$7 \times 3 = 21 = 1\ MOD\ 20$$. The easiest way to do this is just by trial and error
+
+
+
+Then, suppose we want to encrypt a message $$M=7$$ using the public key, we can find the ciphertext $$C$$ as:
+$$
+C = M^e\ MOD\ n
+= 7^7\ MOD\ 33 = 28
+$$
+This can then be decrypted using the secret key as:
+$$
+M = C^d\ MOD\ n = 28^3\ MOD\ 33 = 7
+$$
+
+
 ### Why is RSA secure?
 
 To break RSA an attacker must
