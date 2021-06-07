@@ -63,7 +63,7 @@ Modern “standard algorithm”:
 **How it works.**
 
 1.  A secret key is shared by sender and receiver. 
-2.  This secret key is used together with a known pubic algorithm (like AES)
+2.  This secret key is used together with a known public algorithm (like AES)
 3.  The ciphertext is transmitted 
 4.  The receivers decrypt the ciphertext with the known algorithm and the secret key to get plaintext.
 
