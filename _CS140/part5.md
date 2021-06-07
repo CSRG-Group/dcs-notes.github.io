@@ -2,6 +2,7 @@
 layout: CS140
 title: Public Key Cryptography
 part: true
+math: true
 ---
 
 ## Congruence
