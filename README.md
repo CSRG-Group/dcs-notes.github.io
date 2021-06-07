@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-26-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-27-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
@@ -186,6 +186,7 @@ math: true
     <td align="center"><a href="https://github.com/parthmahendra"><img src="https://avatars.githubusercontent.com/u/18237220?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Parth Mahendra</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aparthmahendra" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://warwick.ac.uk/michaelgale"><img src="https://avatars.githubusercontent.com/u/278086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael B. Gale</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/pulls?q=is%3Apr+reviewed-by%3Ambg" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/papa-github"><img src="https://avatars.githubusercontent.com/u/20775567?v=4?s=100" width="100px;" alt=""/><br /><sub><b>papa-github</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Apapa-github" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/SH4D0WR1D3R"><img src="https://avatars.githubusercontent.com/u/53613777?v=4?s=100" width="100px;" alt=""/><br /><sub><b>SH4D0WR1D3R</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ASH4D0WR1D3R" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
