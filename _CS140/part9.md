@@ -68,23 +68,28 @@ Below are a list of properties of VMs, and their impact on security.
 
 ### Isolated
 
+*Isolation*
+
 In a traditional multi-user OS, all user in the computer can be affected by an attack
 
-In virtualisation, each guest OS is encapsulated and hardware is abstracted
-
-- Each VM accesses separate file systems and memory blocks
+> In virtualisation, each guest OS is encapsulated and hardware is abstracted
+>
+> - Each VM accesses separate file systems and memory blocks
+> - VM technology provides an extra layer of isolation.
 
 Ideally a VM compromised by attackers will not affect the host or other VMs on the host
 
-Isolation and abstraction of VMs provides an additional security over traditional multi-user computers
+Isolation and abstraction of VMs provides an **additional security** over traditional multi-user computers
 
 ### Transient
 
+*Transience*
+
 Physical servers are often always on while VMs can be started very quickly and remotely
 
-> Typically VMs are turned on only when they are needed, and turned off when they are not used anymore
+> Typically VMs are **turned on only when they are needed**, and turned off when they are not used anymore
 >
-> Limiting operating time of VMs mitigates security risks because we can only infect a machine (physical or virtual) that is on.
+> **Limiting operating time** of VMs **mitigates security risks** because we can only infect a machine (physical or virtual) that is on.
 
 **However. It is a double edged sword.**
 
@@ -96,9 +101,9 @@ When virus hits **conventional** networks of physical machines, administrators o
 
 > In virtualised environments, infected VMs may appear briefly and disappear before they can be detected making it **difficult to identify which VMs are infected**.
 >
-> When performing patch management, virus and vulnerability scanning, the machines must be on. Because VMs are transient and not always on – **difficult to fix the vulnerability of infected VMs**.
+> When performing patch management, virus and vulnerability scanning, the **machines must be on**. Because VMs are transient and not always on – **difficult to fix the vulnerability of infected VMs**.
 >
-> The infected VMs may appear online briefly, infect other VMs and disappear offline before they are noticed making it **difficult to eradicate the infection in the system.**
+> The infected VMs may appear online briefly, infect other VMs and disappear offline before they are noticed making it **difficult to <u>eradicate</u> the infection in the system.**
 
 As a result, in virtualisation environment worm/virus infections tend to persist at a low level and flare up again at another time.
 
@@ -106,13 +111,13 @@ As a result, in virtualisation environment worm/virus infections tend to persist
 
 > The virtual disk for a VM is stored as a file on the hypervisor. This allows the hypervisor to record changes to the contents of the virtual disk.
 >
-> - It is easy for VMs to restore to previous states.
+> - It is **easy** for VMs to **restore** to **previous states**.
 >
-> - State restore provides a virus removal mechanism for infected VMs and helps ensure data integrity.
+> - State restore **provides a virus removal mechanism** for infected VMs and helps **ensure data integrity**.
 
-**However,** if the hypervisor is compromised then it doesn’t work, and attackers have unlimited freedom and access to the hardware. (Limitation)
+**However,** if the hypervisor is compromised then we can’t restore state, and attackers have unlimited freedom and access to the hardware. (Limitation)
 
-**Additionally,** since it is easy to restore infected VMs many users do not have the urge to secure their VMs with virus protection
+**Additionally,** since it is easy to restore infected VMs many users **are not motivated** to secure their VMs with virus protection
 
 - 60% of VMs in production are less secure than their physical counterparts, due to this factor
 
@@ -123,7 +128,7 @@ In physical machines, when a new **security patch** is applied, the machines rem
 - record when patches have been applied
 - evaluate which patches need to be applied again when a VM is restored to a previous state
 
-> Furthermore, rolling back a VM may **expose vulnerabilities**
+> **Furthermore**, rolling back a VM may **expose vulnerabilities**
 >
 > - re-expose patched vulnerabilities or virus
 > - re-enable accounts or passwords that have been disabled
@@ -131,7 +136,7 @@ In physical machines, when a new **security patch** is applied, the machines rem
 
 #### Data Lifetime
 
-> A fundamental principle for building secure systems is minimising the amount of time that sensitive data remains in a system
+> A fundamental principle for building secure systems is **minimising the amount of time** that sensitive data remains in a system
 
 In virtualised system, all changes are **recorded**, which **undermines** the principle. Moreover, the state changes will be transferred to persistent storage, which again break the security principle. 
 
@@ -142,11 +147,11 @@ In a physical computer, OS is the software that has the highest privilege in the
 - OS can only be monitored by itself in a physical machine
 - If the OS is infected with virus, it cannot be trusted. (Not reliable)
 
-A VM has lower privilege than the hypervisor.
-
-- VMS can be monitored by either the hypervisor, or by an authorised dedicated VM (Domain0)
-  - The latter is preferred method since it helps keep the hypervisor simple
-  - The hypervisor gives the dedicated VM the permission to view resources allocated to the monitored VM.
+> A VM has **lower privilege** than the hypervisor.
+>
+> - VMS can be **monitored by either the hypervisor**, or by an **authorised dedicated VM** (Domain0)
+>   - The **latter is preferred** method since it helps **keep the hypervisor simple**
+>   - The hypervisor gives the dedicated VM the permission to view resources allocated to the monitored VM.
 
 #### Security Patch
 
@@ -161,9 +166,11 @@ Therefore, it is very challenging for system administrators to apply security pa
 
 ### Mobile
 
+*Mobility*
+
 VMS are not physical, everything about a VM is virtualised as files – makes **theft** of data easier.
 
-In fact, attackers can access copies of VM that are located on the **physical disk** of the host machine. Because the Guest OS has no access to that disk, the VM will not show any records of intrusion.
+In fact, attackers **can access copies** of VM that are located on the **physical disk** of the host machine. Because the Guest OS has no access to that disk, the VM will **not show any records** of intrusion.
 
 > Being **offline** does not guarantee safety. An attacker can access and modify VM files while the VM is offline. A physical machine must be running to be susceptible. 
 
@@ -173,9 +180,9 @@ In a traditional network of physical machines, all machines have same configurat
 
 - When there are security vulnerabilities, the same security measure can be applied to all machines
 
-> VMs can be created rapidly, each with a unique configuration (VM Sprawl)
+> VMs can be created rapidly, each with a unique configuration (**VM Sprawl**)
 >
-> - Cannot apply a uniform security measure to all VMs
+> - **Cannot apply** a uniform security measure to all VMs
 > - The rapid growth of VMs exceeds the administrators’ ability to secure each unique VM
 
 ### Lack of Identity

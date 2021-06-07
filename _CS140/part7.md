@@ -43,48 +43,68 @@ Recall how public keys can be used to ensure integrity and non-repudiation, prov
 
 > Let’s say A sends B a message encrypted by KU<sub>A</sub>, B acknowledges that A is in fact A. However E also stores this message but does not touch it. After the communication with A and B is over, E can **replay** the message to B and B would accept E as A.
 
-**Solution 1.** B generates a token R, which is a random number (also called a *nonce* :eyes: ), that A needs to sign for authentication. The interaction can be formalised with the notation below. The final authenticated token, if encrypted with A’s private key can only mean it was authenticated by A.
+**Solution 1.** B generates a token R, which is a **random number** (also called a *nonce* :eyes: ), that A needs to **sign for authentication**. The final authenticated token, if it contains a digital signature that is encrypted with A’s private key can only mean it was authenticated by A and B can verify this by decrypting it with A’s public key.
 
-1. A –> B : A
-2. B –> A : R
-3. A –> B : [R]<sub>A</sub>
+The interaction can be formalised with the notation below. 
+
+1. A &rarr; B : A
+2. B &rarr; A : R
+3. A &rarr; B : [R]<sub>A</sub>
 
 **Solution 2.** Timestamping. When A sends message to B, they include a timestamp in the encrypted message. If the message is replayed by E, B will know that it is an old message.
 
 ### Mutual Authentication
 
-Our above examples are a **unilateral authentication**: A authenticates B
+Our above examples are a **unilateral authentication**: A authenticates B but not the other way around.
 
 **Mutual authentication.** Two-way authentication
 
-1. A –> B : A, R<sub>A</sub>
-2. B –> A : R<sub>B</sub>, [R<sub>A</sub>]<sub>B</sub> – In this step, A will know that B is truly B (as long as public key verified)
-3. A –> B : [R<sub>B</sub>]<sub>A</sub>       – Here B, will know A is A
+1. A &rarr; B : A, R<sub>A</sub>
+2. B &rarr; A : R<sub>B</sub>, [R<sub>A</sub>]<sub>B</sub> (In this step, A will know that B is truly B – as long as public key verified)
+3. A &rarr; B : [R<sub>B</sub>]<sub>A</sub> (Here B, will know A is A)
+
+### Authentication with DS vs Encryption
+
+Using **digital signature**:
+
+1. A &rarr; B: “I’m Alice”
+2. B &rarr; A: R (Bob’s token)
+3. A &rarr; B : [R]<sub>Alice</sub> (Bob’s token signed by A)
+
+Using **public key encryption**:
+
+1. A &rarr; B: “I’m Alice”
+2. B &rarr; A: {R}<sub>KP<sub>Alice</sub></sub>
+3. A &rarr; B: R
+
+This achieves a similar effect to DS.
 
 ## Authentication Spoofing
 
-> There’s still a problem with our protocol. A could communicate with E, but E could be malicious and decide to pass on the message to B. Now B will pass the token to E and E passes it to A and then passes the encrypted token back to B from A.
+> There’s still a problem with our protocol. A could communicate with E, but E could be **malicious** and decide to **pass on the message** to B. Now B will pass the token to E and E passes it to A and then passes the encrypted token back to B from A.
 >
-> As a result, B thinks that they are communicating with A.
+> As a result, **B thinks that they are communicating with A.**
 >
-> This is often referred to as a "man-in-the-middle" (MITM) attack
+> This is often referred to as a "**man-in-the-middle**" (MITM) attack
 
-**Solution 1.** Include the identity of the intended recipient encrypted along with the token from the recipient.
+The main idea behind the two solutions are to include information about both the **sender** and the **receiver** during communication. Depending on which method we are using to authenticate (DS or Public key Encryption), we include the missing information.
 
-1. A –> B: A
-2. B –> A: R
-3. A –> B: [R, E]<sub>A</sub> 🔔❕❗
-
-**Solution 2.** If we’re using encryption for authentication (Needham-Schroeder Authentication protocol), enclose the sender’s ID.
-
-1. A –> B: A
-2. B –> A: {B, R}<sub>KP<sub>A</sub></sub>
-3. A –> B: R
-
-> The principle is to include both sender and receiver’s info in the protocol
+> TLDR.
 >
 > - When using encryption, sender’s id is included.
 > - When using digital signature, receiver’s id is included
+
+**Solution 1.** Include the identity of the **intended recipient** encrypted along with the hash of the token from the recipient because information of the sender is the digital signature.
+
+1. A &rarr; B: A
+2. B &rarr; A: R
+3. A &rarr; B: [R, E]<sub>A</sub> 🔔❕❗
+
+**Solution 2.** If we’re using encryption for authentication (Needham-Schroeder Authentication protocol), enclose the sender’s ID (B below) because receiver’s info is that the message was encrypted with their public key.
+
+1. A &rarr; B: A
+2. B &rarr; A: {B, R}<sub>KP<sub>A</sub></sub>
+3. A &rarr; B: R
 
 ## Needham-Schroeder Secret key-based protocol
 
