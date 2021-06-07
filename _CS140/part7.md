@@ -2,9 +2,10 @@
 layout: CS140
 title: Security & Authentication Protocols
 part: true
+math: true
 ---
 
-<p align=center>A security protocol is a fixed pattern of exchanges (steps) between 2 or more communication parties to achieve a security related task.</p>
+<p align=center>A <b>security protocol</b> is a fixed pattern of exchanges (steps) between 2 or more communication parties to achieve a security related task.</p>
 
 ## Diffie-Hellman-Merkel Key Exchange Protocol
 
@@ -12,24 +13,27 @@ part: true
 
 > We use the DHM protocol when two parties wish to **communicate privately**, but the **communication channel is not secure** (everything can be read by outsiders), and they want to use **secret key encryption**. 
 
-To do so, A and B have to first publicly agree on values for y and p in a modular exponentiation one way function: y<sup>x</sup> mod p
+To do so, A and B have to first publicly agree on values for y and p in a modular exponentiation one way function: $$y^x \!\!\mod p$$
 
-- y needs to be the primitive root of p
-- p is an enormously large prime number
+- $$y$$ needs to be the primitive root of $$p$$
+- $$p$$ is an enormously large prime number
 - The two numbers can be publicly known
 
-Then A chooses a secret number, ***a*** that has to 
+Then A chooses a secret number, $$a$$ and..
 
-- Put ***a*** into the one-way function and computes the result y<sup>a</sup> mod p = ***v<sub>A</sub>***
-- A sends ***v<sub>A</sub>*** to B and receives a ***vB*** 
-- A applies their function to ***vB***: ***(vB)<sup>a</sup>*** mod p
-- B does the same and gets ***v<sub>b</sub>*** mod p
+- Put $$a$$ into the one-way function and computes the result $$y^a \!\!\mod p = v_A$$
+- A sends $$v_A$$ to B and receives $$v_B$$ from B
+- A applies their function to $$v_B$$: $$(v_B)^a \!\!\mod p$$
+- B does the same with $$(v_A)^b \!\!\mod p$$, where $$b$$ is B’s secret number.
 
-A and B will **arrive at the same value** which they use as their secret key: ***v<sub>b</sub>*** mod p = ***(vB)<sup>a</sup>*** mod p
+A and B will **arrive at the same value** which they use as their secret key $$s$$.
+$$
+(v_A)^b \!\!\mod p = (v_B)^a \!\!\mod p = s
+$$
 
 ## Authentication Protocol
 
-Normally when working in a local environment (secure channel) with a fixed link to the host, we use passwords to authenticate a user. However, more must be done over insecure channels.
+Normally when working in a local environment (**secure channel**) with a fixed link to the host, we use passwords to authenticate a user. However, more must be done over **insecure channels**.
 
 > Either use **encrypted passwords**, **digital signature**, or **public key encryption** for authentication.
 

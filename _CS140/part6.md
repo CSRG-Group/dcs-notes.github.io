@@ -53,12 +53,21 @@ On the receiver’s end, to **verify integrity**..
 
 ## Message Authentication Code (MAC)
 
-Another way of providing integrity – the hash of an input file is computed and encrypted using a shared secret key. This can guarantee integrity but cannot provide non-repudiation
+Another way of providing integrity 
+
+> The hash of an input file is computed and encrypted using a shared secret key. 
+
+This can **guarantee integrity** but **cannot provide non-repudiation**
 
 - because MAC is created with the secret key
-- Secret key is shared by more than one party
+- Secret key is **shared** by more than one party
+
+### Why MAC?
 
 MAC is used because it is much faster than DS as it uses secret key encryption instead of public.
+
+- **Recall** secret key uses XOR, shift etc.
+- Public key encryption uses modular exponentiation which takes more time to compute.
 
 ## Digital Certificates (CA)
 
@@ -118,9 +127,9 @@ This is one way authentication, where A **can authenticate** B’s identity.
 
 ## Web of Trust
 
-There is no centralised certificate authority (CA). Each user establishes their personal web of trust
+There is **no centralised certificate authority** (CA). Each user establishes their personal web of trust
 
-- Each user creates a cert and can sign other users’ cert
+- Each user **creates a cert** and **can sign** other users’ cert
 
 There are 2 attributes about a user. **Validity** and **Trust.**
 
@@ -173,7 +182,7 @@ A -> C(V: full, T: ultimate) ✅
 
 In the first example even if all users are of full trust on the chain from A to C, C’s key is not considered valid by A if the distance (number of arrows/links) between the 2 users is bigger than a pre-set threshold (i.e 4).
 
-**However**, if the trust level is ultimate throughout, it breaks the restriction of threshold distance.
+> **However**, if the trust level is ultimate throughout, it breaks the restriction of threshold distance.
 
 ![webOfTrust](.\part6.assets\webOfTrust.png)
 
