@@ -111,9 +111,9 @@ The reduction function we have defined does not represent a 1 to 1 relation betw
 
 **Example.** Both following chains contains p2; all info after p2 in both chains will be the same
 
-*Chain 1: p1-> h1 -> p2 -> h2 -> p3 -> h3 -> p4*
+Chain 1: $$p1-> h1 -> p2 -> h2 -> p3 -> h3 -> p4$$
 
-Chain 2: p’1 -> h’1 -> p’2 -> h’2 -> p2 -> h2 -> p3*
+Chain 2: $$p’1 -> h’1 -> p’2 -> h’2 -> p2 -> h2 -> p3$$
 
 Chain collision wastes space for the attacker
 - this is because after a certain $p_n$all following passwords in both chains will be the same
@@ -125,9 +125,9 @@ Chain collision wastes space for the attacker
 
 The collision between chain 1 and chain 2 is reduced.
 
-*Chain 1: p1 -> h1 –(R1)-> p2 -> h2 –(R2)-> p3 -> h3 –(R3)->p4*
+Chain 1: $$p1 -> h1 –(R1)-> p2 -> h2 –(R2)-> p3 -> h3 –(R3)->p4$$
 
-*Chain 2: p’1 -> h’1 –(R1)-> p’2 -> h’2 –(R2)-> p’’2 –> h’’2 –(R3)-> p’3*
+Chain 2: $$p’1 -> h’1 –(R1)-> p’2 -> h’2 –(R2)-> p’’2 –> h’’2 –(R3)-> p’3$$
 
 ### Cracking passwords in Rainbow Table
 
@@ -164,6 +164,8 @@ But we can use **password salts** to make lookup table, reverse lookup and rainb
 > h = Hash(password+salt)
 > $$
 > **Both** ***h*** and the corresponding **salt** are stored in the password file.
+
+#### Login verification
 
 When a user enters a password during the login
 

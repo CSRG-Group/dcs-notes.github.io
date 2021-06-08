@@ -9,7 +9,7 @@ title: "General Algorithms"
 
 ## Linear search
 
-```
+```java
 Let arr <- the array to search
 Let k <- the item to search for
 Let n <- 0
@@ -45,7 +45,7 @@ binarySearch(arr, k, int lowerBound, upperBound)
 
 ### Iterative algorithm
 
-```
+```java
 Let arr <- the array to search
 Let k <- the item to search for
 Let l <- 0
@@ -66,7 +66,7 @@ Stop, since the item is not in the array
 
 ### Recursive algorithm
 
-```
+```java
 Let arr <- the array to search
 Let k <- the item to search for
 
@@ -90,7 +90,7 @@ Function binarySearch(arr, k)
 
 ## Insertion sort
 
-```
+```java
 Let P <- a priority queue using an sorted array implementation
 Let arr <- the array to sort
 Let arr' <- the sorted array
@@ -103,7 +103,7 @@ While P is not empty
 
 ## Selection sort
 
-```
+```java
 Let P <- a priority queue using an unsorted array implementation
 Let arr <- the array to sort
 Let arr' <- the sorted array
@@ -116,7 +116,7 @@ While P is not empty
 
 ## Heap sort
 
-```
+```java
 Let P <- a priority queue using a heap based implementation
 Let arr <- the array to sort
 Let arr' <- the sorted array
@@ -129,7 +129,7 @@ While P is not empty
 
 ## Merge sort
 
-```
+```java
 Let arr <- the array to sort
 
 Function mergeSort(arr)
@@ -168,7 +168,7 @@ Function merge(arr1, arr2)
 ## Reversing a stack
 
 Push all the items in array to the stack, then pop all the items off the stack into the new reversed array
-```
+```java
 Let S <- the stack to reverse
 Let S' <- an empty stack (the output)
 For each item in S
@@ -179,7 +179,7 @@ For each item in S
 ## Reversing a linked list
 
 Iterate over the linked list from the head, and for each element in the list to reverse, set the item as the predecessor of the head in the new reversed list
-```
+```java
 Let L <- the linked list to reverse
 Let L' <- an empty linked list (the output)
 For each item in S
@@ -195,7 +195,7 @@ For each item in S
 ## Generic merging
 
 Taking the union of two sets, in linear time:
-```
+```java
 Let A, B <- The lists to merge
 Let S <- an empty list (the output)
 While neither A nor B are empty
@@ -349,50 +349,59 @@ topologicalDFS(G, v)
 
 ## Breadth-first search
 
-
-
-
-> **Algorithm** $$BFS(G, s)$$
-> 		$$L_0 \leftarrow$$ new empty sequence
-> 		$$L_0 .addLast(s)$$
-> 		$$setLabel(s, VISITED)$$
-> 		$$i \leftarrow 0$$
-> 		**while** $$¬L_i .isEmpty()$$
-> 		    $$L_i+1 \leftarrow$$ new empty sequence
-> 		    **for all** $$v\in L_i .elements()$$
-> 		 		   **for all** $$e \in G.incidentEdges(v)$$
-> 		 		 		  **if** $$getLabel(e) = UNEXPLORED$$
-> 		 		 		 		 $$w \leftarrow opposite(v,e)$$
-> 		 		 		 		 **if** $$getLabel(w) = UNEXPLORED$$
-> 		 		 		 		 		$$setLabel(e) = (e, DISCOVERY)$$
-> 		 		 		 		 		$$setLabel(w,VISITED)$$
-> 		 		 		 		 		$$L_i+1 .addLast(w)$$
-> 		 		 		 		 **else**
-> 		 		 		 		 		$$setLabel(e,CROSS)$$
-> 		    $$i \leftarrow i + 1$$
-> **END ALGORITHM**
+```java
+Algorithm BFS(G)
+  Input: graph G
+  Output: Labelling of edges and partition of the vertices of G
+  for all u in G.vertices()
+    setLabel(u, "unexplored")
+  for all e in G.edges()
+    setLabel(e, "unexplored")
+  for all v in G.vertices()
+    if getLabel(v) == "unexplored"
+      BFS(G,v)
+      
+Algorithm BGS(G,s)
+  L0 <- new empty sequence
+  L0.addLast(s)
+  setLabel(s, "visited")
+  while !L0.isEmpty()
+    Lnext <- new empty sequence
+    for all v in L0.elements()
+      for all e in G.incidentEdges(v)
+        if getLabel(e) = "unexplored"
+          w <- opposite(v,e)
+          if getLabel(w) = "unexplored"
+            setLabel(e, "discovery")
+            setLabel(w, "visited")
+            Lnext.addLast(w)
+          else
+            setLabel(e, "cross")
+    L0 <- Lnext // Set L0 to Lnext so while loop won't stop
+```
 
 
 
 ## Directed graphs
 
-> **Algorithm** $$FloydWarshall(G)$$
-> 		**Input** digraph $$G$$
-> 		**Output** transitive closure $$G^*$$ of $$G$$
-> 		$$i \leftarrow 1$$
-> 		**for all** $$v \in G.vertices()$$
-> 		    denote $$v$$ as $$v_i$$
-> 		    $$i \leftarrow i + 1$$
-> 		$$G_0 \leftarrow G$$
-> 		**for** $$k \leftarrow 1$$ **to** $$n$$ **do**
-> 		    $$G_k \leftarrow G_{k-1}$$
-> 		 		   **for** $$i\leftarrow 1$$ **to** $$n(i\neq k)$$ **do**
-> 		 		 		  **for** $$j \leftarrow 1$$ **to** $$n(j\neq i, k)$$ **do**
-> 		 		 		 		 **if** $$G_{k-1}.areAdjacent(v_i,v_k)$$  $$\&$$ $$G_{k-1}.areAdjacent(v_k,v_j)$$
-> 		 		 		 		 		**if** $$¬G_{k-1}.areAdjacent(v_i,v_j)$$
-> 		 		 		 		 		    $$G_k.insertDirectedEdge(v_i,v_j,k)$$
-> 		    **return** $$G_n$$
-> **END ALGORITHM
+```java
+Algorithm FloydWarshall(G)
+  Input: digraph G
+  Output: transitive closure G* of G
+  i <- 1
+  for all v in G.vertices()
+    denote v as vi
+    i <- i + 1
+  G_0 <- G
+  for k <- 1 to n do
+    G_k <- G_(k-1)
+    for i <- 1 to n(i != k) do
+      for j <- 1 to n(j != k) do
+        if G_(k-1).areAdjacent(vi,vk) & G_(k-1).areAdjacent(vk,vj)
+          if !G_(k-1).areAdjacent(vi,vj)
+            G_k.insertDirectedEdge(vi,vj,k)
+  return G_n
+```
 
 
 
@@ -403,7 +412,7 @@ topologicalDFS(G, v)
 The span of an array is the maximum number of consecutive elements less than a value at an index which precede it
 This can be calculated in linear time by
 
-```
+```java
 Let X <- the array to find spans of
 Let S <- a stack of all the indices in X
 Let i be the current index
@@ -416,9 +425,11 @@ Push i to the stack
 
 ### Exponential time
 
-```
+```java
 Function fibonacci(k)
-	If k = 1
+	If k = 0
+		Return 0
+	Else if k = 1
 		Return k
 	Else
 		Return fibonacci(k-1) + fibonacci(k-2)
@@ -428,7 +439,7 @@ This is very inefficient, running in $$O(2^n)$$ time, since it re-calculates cal
 
 ### Linear time
 
-```
+```java
 //Returns the tuple (f_k, f_k-1)
 Function fibonacci(k)
 	If k = 1

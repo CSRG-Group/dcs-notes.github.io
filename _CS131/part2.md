@@ -302,3 +302,40 @@ Subspaces of $$\mathbb{R}^3$$:
     the origin
 4.  The only 3D subspace is $$\mathbb{R}^3$$
 
+### Change of basis
+
+***Exercise***
+
+What are the co-ordinates of the vector $$\vec{w} = (8,-9,6)$$ in relation to the basis $$V = \{(1,-1,3),(-3,4,9),(2,-2,4)\}$$
+
+***Solution #1***
+$$
+\begin{align}
+	\begin{cases}
+		\alpha - 3\beta + 2\gamma  & = 8 \\
+		-\alpha + 4\beta -2\gamma  & = -9 \\
+		3\alpha + 9\beta + 4\gamma  & = 6
+	\end{cases}
+	& \implies
+	\begin{cases}
+		\alpha  & = 5 \\
+		\beta  & = -1 \\
+		\gamma  & = 0.
+	\end{cases}
+\end{align}
+$$
+Hence, the co-ordinates in the new basis are $$\vec{w} = (5,-1,0)$$
+
+***Solution #2***
+$$
+\alpha \vec{v}_1 + \beta \vec{v}_2 + \gamma \vec{v}_3 = \begin{bmatrix}8 \\ -9 \\ 6\end{bmatrix}
+$$
+
+$$
+x\begin{bmatrix}1 \\ -1 \\ 3\end{bmatrix} + y\begin{bmatrix}-3 \\ 4 \\ 9\end{bmatrix} + z\begin{bmatrix}2 \\ -2 \\ 4\end{bmatrix} = \begin{bmatrix}8 \\ -9 \\ 6\end{bmatrix}
+$$
+
+$$
+\implies x = 5, y = -1, z = 0
+$$
+

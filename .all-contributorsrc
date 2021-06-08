@@ -232,6 +232,42 @@
         "design",
         "bug"
       ]
+    },
+    {
+      "login": "parthmahendra",
+      "name": "Parth Mahendra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18237220?v=4",
+      "profile": "https://github.com/parthmahendra",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "mbg",
+      "name": "Michael B. Gale",
+      "avatar_url": "https://avatars.githubusercontent.com/u/278086?v=4",
+      "profile": "http://warwick.ac.uk/michaelgale",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "papa-github",
+      "name": "papa-github",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20775567?v=4",
+      "profile": "https://github.com/papa-github",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "SH4D0WR1D3R",
+      "name": "SH4D0WR1D3R",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53613777?v=4",
+      "profile": "https://github.com/SH4D0WR1D3R",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github",

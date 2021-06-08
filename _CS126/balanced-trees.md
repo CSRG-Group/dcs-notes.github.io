@@ -52,11 +52,11 @@ Perform the searching operation, but when an external node is found, instead of 
 
 ```java
 Function Insert(n) // node to insert is n
-  Start at root and search until external node is found
-	e <- the external node terminating the search algorithm
-	e <- n
-  e.leftChild <- null  // Add two external child nodes 
-  e.rightChild <- null // to e so that it is now internal
+	Start at root and search until external node is found
+		e <- the external node terminating the search algorithm
+		e <- n
+	e.leftChild <- null  // Add two external child nodes 
+	e.rightChild <- null // to e so that it is now internal
 ```
 
 #### Deletion
@@ -65,18 +65,18 @@ Dependent on the number of children of the node to delete, different operations 
 
 ```java
 Function Delete(k) // delete node with key k
-  Use Search(root, k) to find node, n, with key k
-  if the node has no internal children
-    // Overwrite the node to become an empty external node
-    n <- null
-  else if the node has only 1 internal child
-    // Overwrite it with the internal child node
-    n <- either leftChild or rightChild
-  else // the node has two internal children
-    i <- node that immediately follows it in an in-order traversal
-    // i is the left-most descendent of n.rightChild()
-    n <- i
-    i <- null // Set i to be empty external node
+	Use Search(root, k) to find node, n, with key k
+	if the node has no internal children
+		// Overwrite the node to become an empty external node
+		n <- null
+	else if the node has only 1 internal child
+		// Overwrite it with the internal child node
+		n <- either leftChild or rightChild
+	else // the node has two internal children
+		i <- node that immediately follows it in an in-order traversal
+		// i is the left-most descendent of n.rightChild()
+		n <- i
+		i <- null // Set i to be empty external node
 ```
 
 ### Algorithm

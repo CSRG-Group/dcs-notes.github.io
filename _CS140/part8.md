@@ -4,7 +4,9 @@ title: Web Server Security Issues
 part: true
 ---
 
-A large part of this topic was meant for us to understand more about the interactions between a client and the web server – which was relevant for our coursework at the time. That said, the module organiser has mentioned that security issues related to the web server may be tested in the exam. 
+> **Note.** In the revision lecture, Ligang mentioned that web server will not be tested during the exam 🥳
+
+A large part of this topic was meant for us to understand more about the interactions between a client and the web server – which was relevant for our coursework at the time.
 
 What I have done is included the main security issues at the top of this page, however if there is trouble understanding somethings then you might need to read the sections to understand more about PHP, HTTP requests, Client and Web Server interaction etc. 
 

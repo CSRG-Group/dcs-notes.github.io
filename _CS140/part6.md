@@ -53,27 +53,42 @@ On the receiver’s end, to **verify integrity**..
 
 ## Message Authentication Code (MAC)
 
-Another way of providing integrity – the hash of an input file is computed and encrypted using a shared secret key. This can guarantee integrity but cannot provide non-repudiation
+Another way of providing integrity 
+
+> The hash of an input file is computed and encrypted using a shared secret key. 
+
+This can **guarantee integrity** but **cannot provide non-repudiation**
 
 - because MAC is created with the secret key
-- Secret key is shared by more than one party
+- Secret key is **shared** by more than one party
+
+### Why MAC?
 
 MAC is used because it is much faster than DS as it uses secret key encryption instead of public.
 
-## Digital Certificates
+- **Recall** secret key uses XOR, shift etc.
+- Public key encryption uses modular exponentiation which takes more time to compute.
 
-Digital certificates are provided by a trusted 3rd party called the Certificate Authority. These certify that a public key indeed belongs to somebody.
+## Digital Certificates (CA)
+
+Digital certificates are provided by a trusted 3rd party called the **Certificate Authority**. These certify that a public key indeed belongs to somebody.
 
 > X.509 cert format is used to compose certificates which includes 
 >
-> - Subject: distinguished name of the user
+> - Subject: **distinguished name** of the user
 > - Subject’s public key
 > - Certificate Authority’s subject
 > - Digital signature of CA
 
 The format of the distinguished name is 
 
-O=University of Warwick, OU=Department of Computer Science, CN=Ligang He (O: organisation, OU: Organisation Unit, CN: Common Name)
+```
+O=University of Warwick, 
+OU=Department of Computer Science, 
+CN=Ligang He 
+```
+
+(O: organisation, OU: Organisation Unit, CN: Common Name)
 
 ### Authentication through certificates
 
@@ -112,9 +127,9 @@ This is one way authentication, where A **can authenticate** B’s identity.
 
 ## Web of Trust
 
-There is no centralised certificate authority (CA). Each user establishes their personal web of trust
+There is **no centralised certificate authority** (CA). Each user establishes their personal web of trust
 
-- Each user creates a cert and can sign other users’ cert
+- Each user **creates a cert** and **can sign** other users’ cert
 
 There are 2 attributes about a user. **Validity** and **Trust.**
 
@@ -167,6 +182,23 @@ A -> C(V: full, T: ultimate) ✅
 
 In the first example even if all users are of full trust on the chain from A to C, C’s key is not considered valid by A if the distance (number of arrows/links) between the 2 users is bigger than a pre-set threshold (i.e 4).
 
-**However**, if the trust level is ultimate throughout, it breaks the restriction of threshold distance.
+> **However**, if the trust level is ultimate throughout, it breaks the restriction of threshold distance.
 
 ![webOfTrust](.\part6.assets\webOfTrust.png)
+
+## Summary – CA vs WoT
+
+*Certificate Authority vs Web of Trust*
+
+CA is a centralised third party that issues **digital certificates** to users or other CAs. These CAs are assumed to be reputable and trustworthy. If an authentication chain can be established from a CA to a particular certificate, then the trustworthiness of the certificate is assumed.
+
+Contrastingly, the Web of Trust requires a chain of signatures to be established from each user to the certificate in question, each user acting his own Authority. Users can rate the **validity** and **trustworthiness** of other users, and this along with other parameters like the authentication chain length, number of separate chains affect the final score of a particular certificate. This final score determines if it should be trusted or not. This usually relies on personal knowledge of other users, and it should be people they know personally or otherwise have verified the identity of offline.
+
+> **Disclaimer.** Some information here were not directly sourced from the notes and if anything seems “wrong” then please submit a pull request to fix it! [Main source](https://andrewgdotcom.wordpress.com/2014/11/13/wot-ca/#:~:text=An%20Authority%20is%20a%20person,both%20well%2Dknown%20and%20trustworthy.&text=By%20contrast%2C%20a%20Web%20of,acting%20as%20his%20own%20Authority.) I referred to. (yes it’s a wordpress blog, idk how reliable it is but seems to match whatever is covered in the lectures.)
+
+|                             CAs                              |                             WoT                              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| More convenient for the end user because CA are assumed to be trustworthy. | Less convenient for end users as they have to continually assess the reliability of certificates. |
+| If one CA certificate is compromised, the attacker can impersonate any site on the internet as all CAs have the authority to sign any certificate. | Integrity of the WoT depends on how well-maintained it is by its users. |
+| Usually one authentication chain for any certificate, so every chain has a single point of failure. | Usually has multiple signature chains for one certificate. With more chains, a particular certificate is more trustworthy. |
+
