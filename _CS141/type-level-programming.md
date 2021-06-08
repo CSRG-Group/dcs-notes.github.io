@@ -208,6 +208,10 @@ instance FromNat n => FromNat ('Succ n) where
   -- (MkProxy :: NatProxy n) essentially means the n in "NatProxy n" 
   -- is the same n as that in the instance head. 
   -- ScopedTypeVariables extension has to be enabled for this to work.
+  
+  vlength :: forall n a . FromNat n => Vector n a -> Int 
+  vlength _ = fromNat (MkProxy :: NatProxy n)
+  -- Here "forall n a" is required for ScopedTypeVariables to work correctly
 ```
 
 Although we use proxy types to implement the reification process here, they are **independent techniques**. That is, proxy types have uses outside of reification and reification can be accomplished without proxy types, which is **not** covered in the module.
@@ -258,4 +262,141 @@ Here, we have provided two examples of how we can reify types. You have seen how
 
 ## Type Families
 
-*coming soon*
+*Language extension:* `TypeFamilies`
+
+Type families are type-level functions and allow us to **perform computation** at the type-level. There are two main types of type families, **closed type families** and **associated (open) type families**. 
+
+> **Associated (open) type families** are “attached” to **type classes** and is open to further extension when defining **instances**. 
+>
+> **Closed type families** are very much like “normal” functions in the sense that you “know” what kind of types the **type family** will deal with and the effect to be achieved, and you just define it as such.
+
+### Closed Type Families
+
+I think the best way to explain this is through an example. As you can see, the syntax for **type families** is different from anything we’ve seen before. The example below should be pretty self explanatory and you can see that the head of definition sort of resembles the type signature of a normal function, and the definition of the actual `Add` function is just pattern matching on the type of `Nat`. 
+
+```haskell
+{-# LANGUAGE TypeFamilies #-}
+type family Add (n :: Nat) (m :: Nat) :: Nat where
+  -- Add :: Nat -> Nat -> Nat
+  Add 'Zero m = m
+  Add ('Succ n) m = 'Succ (Add n m)
+```
+
+If we enable the `TypeOperators` language extension, we can use operators in our **type family** definition, which in turn allow us to use it very nicely in the `vappend` example below.
+
+```haskell
+{-# LANGUAGE TypeOperators #-}
+type family (+) (n :: Nat) (m :: Nat) :: Nat where
+-- or
+type family (n :: Nat) + (m :: Nat) :: Nat where
+
+vappend :: Vector n a -> Vector m a -> Vector (n + m) a
+vappend Nil         ys = ys
+vappend (Cons x xs) ys = Cons x (vappend xs ys)
+```
+
+#### How to test in REPL
+
+We can get REPL to evaluate types for us by using the `:kind!` syntax. This evaluates the type to its normal form.
+
+```haskell
+Lecture> :kind! (+) 'Zero 'Zero
+(+) 'Zero 'Zero :: Nat
+= 'Zero
+```
+
+### Associated (Open) Type Families
+
+> **Motivation for Associated Type Families.** Sometimes, when we define a certain type class, we want it to be as general as possible but because of certain constraint requirements for different instances of the type class, it is difficult without type families.
+
+**Example.** Let’s say we want to define a **type class** `Collection` for various data structures like lists or trees etc.
+
+```haskell
+class Collection c where
+  -- c :: * -> *
+  empty  :: c a 
+  insert :: a -> c a -> c a
+  member :: a -> c a -> Bool -- Checks if `a` is part of a collection
+```
+
+Now when we try to define an instance of `Collection` for lists, we could try to implement it this way. However, we get a type error due to our usage of `elem`, which requires elements in the list to have the `Eq` constraint.
+
+```haskell
+instance Collection [] where
+  empty       = []
+  insert x xs = x : xs
+  member x xs = x `elem` xs 
+  -- however we get a type error:
+  -- No instance for Eq a arising from use of elem
+```
+
+We could add an `Eq a` constraint onto the **type class** definition for member. However, this makes the `Collection` type class too **restrictive** for other data structures. Furthermore, we can’t predict what kind of data structures that other people will create, and `Collection` should be as **general** as possible. 
+
+#### Associated type families to the rescue
+
+Associated type families allow us to associate a **type family** with our **type class**. This allows to do “something” based on the instance of the type class which depends on the problem we are trying to solve.
+
+> Regarding the example above, our goal is to have some way of placing constraints on the **type** of the elements contained inside `c`, so that our instances for the **type class** type checks.
+
+So for any instance of collection, the `Elem` type family, given `c`, will return the type of elements in `c`. This establishes a relation between `c` and some type of kind `*`.
+
+```haskell
+class Collection c where
+  type family Elem c :: *
+  
+  empty  :: c
+  insert :: Elem c -> c -> c
+  member :: Elem c -> c -> Bool
+```
+
+If we write down the specialised type signatures for `insert` and `member` for this instance of `Collection` for lists, we can see that the associated type family `Elem` tells the compiler that the `a` contained inside the list, is the same `a` that is used in the rest of the instance definition. We can now place an `Eq` constraint on `a` and everything type checks.
+
+```haskell
+instance Eq a => Collection [a] where 
+  type Elem [a] = a -- this isn't a type alias; it's a type family instance.
+  
+  empty       = []
+  -- insert :: Elem [a] -> [a] -> [a] (Specialised type signature)
+  insert x xs = x : xs
+  -- member :: Elem [a] -> [a] -> Bool
+  member x xs = x `elem` xs
+```
+
+### Overloaded Lists
+
+*Language Extension:* `OverloadedLists`
+
+This is a neat language extension that allows us to use list notation for other data types as long as the data type has an instance of `IsList` defined for it.
+
+```haskell
+-- Without
+poultree :: Tree String
+poultree = Node Black
+             (Node Black Leaf "Chicken" Leaf)
+             "Duck"
+             (Node Black Leaf "Goose" Leaf)
+-- With
+{-# LANGUAGE OverloadedLists #-}
+poultree :: Tree String
+poultree = ["Duck", "Goose", "Chicken"]
+```
+
+Below we show an example with the `Tree` data structure from one of the labs.
+
+```haskell
+-- IsList is defined in GHC.Exts
+class IsList l where
+  type family Item l :: *
+  
+  fromList  :: [Item l] -> l
+  fromListN :: Int -> [Item l] -> l
+  fromListN _ xs = fromList xs
+  toList    :: l -> [Item l]
+  
+instance Ord a => IsList (L.Tree a) where
+  type Item (L.Tree a) = a
+  
+  toList = L.toList
+  fromList = foldr (flip L.insert) L.empty
+```
+
