@@ -57,7 +57,7 @@ class Functor f => Applicative f where
   pure :: a -> f a
   (<*>) :: f (a -> b) -> f a -> f b
   
-data Myabe a = Nothing | Just a
+data Maybe a = Nothing | Just a
 instance Applicative Maybe where
   -- pure :: a -> Maybe a
   pure x = Just x
