@@ -103,6 +103,10 @@ x <* y = const <$> x <*> y
 x *> y = flip const <$> x <*> y
 ```
 
+### Limitations of Applicatives
+
+Applicative effects cannot depend on the result of the previous computation. 
+
 ## Monad Merry-Go-Round
 
 > A type is a **monad** if its value represent some form of context that permits us to apply a function to all the elements in one context, producing one new context each which **can then** all **be joined** together into one final context.

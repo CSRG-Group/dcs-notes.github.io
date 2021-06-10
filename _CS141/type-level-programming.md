@@ -21,9 +21,9 @@ For example, the type `Bool` has kind `*` (star) because `Bool` has no parameter
 
 `[] :: * -> *` is another example – given a type `a` to the **list** type constructor and it will give `[a]` (a list of `a`). 
 
-### Kinds = Better Code
+### Kinds = Better Code 
 
-Kinds help us code instances better, as long as we understand it.
+Kinds help us code instances better, as long as we understand it. 
 
 ```haskell
 Monad :: (* -> *) -> Constraint
@@ -166,6 +166,8 @@ There are a few ways to implement the instances for the type classes and one way
 ### Proxy Types
 
 We don’t have types at runtime due to **type erasure**, so we can’t write a function that takes types as arguments in Haskell, even though we sometimes want to. 
+
+> Functions only accept arguments whose types are of kind `*`. Proxy types are used to establish a link between types of other kinds and types of kind `*`, thus “carrying” types of other kinds into the scope of a function’s type.
 
 **For example,** we might want to define a function
 
