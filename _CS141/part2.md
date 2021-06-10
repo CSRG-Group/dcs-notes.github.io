@@ -336,3 +336,22 @@ What this does is that the result of earlier calls to `fac` is evaluated and “
 
 As you can see, `fac'` **forces** the evaluation of the first argument at **every step** by pattern-matching on it. While the second argument will build up into a long list of closures if is evaluated **lazily**, the difference with **naive recursion** is that it **can** be **forced** to be evaluated because all arguments are present for **multiplication**.
 
+### Useful recursive functions
+
+There are a number of recursive functions which are useful to be able to lookup to see the schema, or just to be able to reproduce in some contexts
+
+#### Quick sort
+
+```haskell
+    quicksort :: (Ord a) => [a] -> [a]  
+    quicksort [] = []  
+    quicksort (x:xs) =   
+        let smallerSorted = quicksort [a | a <- xs, a <= x]  
+            biggerSorted = quicksort [a | a <- xs, a > x]  
+        in  smallerSorted ++ [x] ++ biggerSorted  
+```
+
+Implementation taken from *Learn You a Haskell for Great Good! A Beginner's Guide, Lipovaca, Miran*
+
+This can be expressed more neatly than merge sort, as due to the implementation of lists as linked lists, it is less efficient to split arrays in two in Haskell as is required for merge sort
+
