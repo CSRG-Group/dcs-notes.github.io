@@ -1,6 +1,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /** 1. Set default font family to sans-serif. 2. Prevent iOS text size adjust after orientation change, without disabling user zoom. */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
 html { font-family: sans-serif; /* 1 */ -ms-text-size-adjust: 100%; /* 2 */ -webkit-text-size-adjust: 100%; /* 2 */ }
 
 /** Remove default margin. */
@@ -70,7 +71,7 @@ hr { box-sizing: content-box; height: 0; }
 pre { overflow: auto; }
 
 /** Address odd `em`-unit font size rendering in all browsers. */
-code, kbd, pre, samp { font-family: monospace, monospace; font-size: 1em; }
+code, kbd, pre, samp { font-family: var(--code-font-family); font-size: 1em; }
 
 /* Forms ========================================================================== */
 /** Known limitation: by default, Chrome and Safari on OS X allow very limited styling of `select`, unless a `border` property is set. */
@@ -313,8 +314,8 @@ a:hover { text-decoration: underline; }
   color: #159957; 
 }
 .main-content p { margin-bottom: 1em; }
-.main-content code { padding: 2px 4px; font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 0.9rem; color: #567482; background-color: #f3f6fa; border-radius: 0.3rem; }
-.main-content pre { padding: 0.8rem; margin-top: 0; margin-bottom: 1rem; font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace; color: #567482; word-wrap: normal; background-color: #f3f6fa; border: solid 1px #dce6f0; border-radius: 0.3rem; }
+.main-content code { padding: 2px 4px; font-family: var(--code-font-family); font-size: 0.9rem; color: #567482; background-color: #f3f6fa; border-radius: 0.3rem; }
+.main-content pre { padding: 0.8rem; margin-top: 0; margin-bottom: 1rem; font: 1rem var(--code-font-family); color: #567482; word-wrap: normal; background-color: #f3f6fa; border: solid 1px #dce6f0; border-radius: 0.3rem; }
 .main-content pre > code { padding: 0; margin: 0; font-size: 0.9rem; color: #567482; word-break: normal; white-space: pre; background: transparent; border: 0; }
 .main-content .highlight { margin-bottom: 1rem; }
 .main-content .highlight pre { margin-bottom: 0; word-break: normal; }
@@ -346,6 +347,7 @@ a:hover { text-decoration: underline; }
 
 :root {
   --buttonCol-width: 2em;
+  --code-font-family: "Fira Code", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 .center {
