@@ -105,7 +105,55 @@ x *> y = flip const <$> x <*> y
 
 ### Limitations of Applicatives
 
-Applicative effects cannot depend on the result of the previous computation. 
+Applicative effects cannot depend on the result of the previous computation, which is why we have **monads**.
+
+Consider the example of looking up the grandmother of a person from a dictionary which maps people to their mothers. This dictionary can be represented as a value of type `[(String, String)]` and we can then use the `lookup :: Eq a => a -> [(a,b)] -> Maybe b` function from the standard library to retrieve the name of the mother of a given person:
+
+```haskell
+grandmother :: String -> [(String, String)] -> Maybe String
+grandmother x dict = do
+  mother <- lookup x dict
+  lookup mother dict
+```
+
+If there is no mapping for a person’s name to their mother, then `Nothing` is returned. Therefore, to look up a person’s grandmother, we first need to look up their mother’s name and then the name of their mother’s mother.
+
+## Writer Type
+
+```haskell
+data Writer w a = MkWriter (a,w)
+```
+
+The writer type is a good example of a **functor** that is **not** an **applicative functor**. 
+
+```haskell
+instance Functor (Writer w) where
+  fmap f (MkWriter (x,o)) = MkWriter (f x, o)
+```
+
+It cannot be an applicative functor because we need to be able to write an instance for `pure`. Looking at the typing for `pure`, we can see that we need to use the `MkWriter` constructor, which expects a pair of type `(a,w)` as argument. While we have a value of type `a` that can be given to `pure` as argument, we do not have a value for `w`. 
+
+```haskell
+pure :: a -> Writer w a
+```
+
+Hence, since it is not possible to write a suitable definition, the `Writer` type is not an **applicative functor**. Even if we find some way to write a definition, it will not obey the relevant applicative laws.
+
+## State Type
+
+`State` has two parameters and therefore is a of kind `* -> * -> *`. From type signature of `St`, we can see that we are storing functions that produces pairs. 
+
+```haskell
+data State s a = St (s -> (a,s))
+St :: (s -> (a,s)) -> State s a
+
+runState :: State s a -> s -> (a,s)
+runState (St m) = m
+```
+
+A value of type `State s a` represents a **computation** that accepts and initial state of type `s` and uses it to produce a result of type `a` and a resulting state of type `s`. 
+
+> The main idea behind this is that by combining values of type `State` in some way, we could automatically propagate state throughout a program in a way that appears **as if** the state was mutable.
 
 ## Monad Merry-Go-Round
 

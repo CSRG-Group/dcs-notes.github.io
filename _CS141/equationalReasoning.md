@@ -5,6 +5,11 @@ math: true
 title: "Equational Reasoning in Haskell"
 ---
 
+## Intro
+
+Functions in Haskell are pure – they have no side-effects and their results only depend on their arguments. Because of that we are able to easily prove formal properties about our functions.
+
+> We can’t use equational reasoning on impure functions, because their results may depend on values other than the arguments, thereby rendering any properties we prove invalid. 
 
 ## Techniques
 

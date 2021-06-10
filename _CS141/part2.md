@@ -14,7 +14,7 @@ title: Lazy Evaluation & Recursion
 
 ### Call-by-value
 
-> A **strict evaluation strategy** where all function arguments are reduced to normal forms (values) and then passed as such to the function.
+> A **strict evaluation strategy** where all function arguments are **reduced to normal forms** (values) before being passed as such to the function.
 
 **Example.**
 
@@ -36,7 +36,7 @@ fac' n m = fac' (n-1) (n*m)
 
 ### Call-by-name
 
-> A **non-strict evaluation strategy** where expressions are given to functions as arguments are not reduced before the function call is made. 
+> A **non-strict evaluation strategy** where expressions are given to functions as arguments are **not reduced** before the function call is made. 
 >
 > Expressions are only reduced when their value is **needed**.
 
@@ -69,6 +69,10 @@ When `2-1` (from the 2nd last step) is **reduced** to `1`, it is the first time 
 
 ### CBN vs CBV
 
+*call by name vs call by value*
+
+> In a language which uses call-by-name evaluation, such as Haskell, expressions are only evaluated when it becomes clear that their value is needed. In call-by-value, function arguments are always evaluated before the function is called.
+
 | Call-by-value                                                | Call-by-name                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Reduce function arguments to normal forms before calling the function | Only reduce expressions when their value is needed           |
@@ -87,6 +91,8 @@ Lazy evaluation is the default evaluation strategy in Haskell. Since Haskell is 
 This is the technique that helps us avoid duplicate evaluation.
 
 > Sharing turns arguments to function into local definitions. 
+>
+> **TLDR.** Normally for call-by-name, expressions are represented by **closures** (memory locations on the heap) and pointers to them are then passed to functions as arguments. If an argument is used more than once within a function, then it will be **evaluated multiple times**. Sharing is an optimisation which allows these **closures** to be **updated** with their result once they have been evaluated, meaning they only have to evaluated once.
 
 ```haskell
                               fac' n m = case n of
