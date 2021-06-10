@@ -82,25 +82,7 @@ Out:
     combined stuff
 ```
 
-There are two common implementations, `foldl`, and `foldr`, which start by applying the function to the first and last elements respectively. These two folds have different properties, and there is an additional type `foldl'`, which strengthens the properties of `foldl`
-
-- `foldr` generates the entire expression before evaluation, with `foldr f z [1,2,3]` evaluating to `f 1 (f 2 (f 3 z))`
-
-  For example  `foldr (+) [1..1000]` evaluates as `1 + (2 + (3 + (...)))`. As the chain of operations doesn't contain a **redex** (reducible expression) until the entire chain is built, the entire expression must be generated before it can be evaluated. This means it will cause stack overflows on large lists.~
-
-  If the combination function is able to produce part of the result independent of the recursive case, so the rest of the result is never demanded, the recursion will stop, allowing use on infinite lists
-
-- `foldl` applies the function as it goes along, with `foldl f z [1,2,3]` evaluating to `f (f (f z 1) 2) 3`
-
-  For example `foldl (+) [1..1000]` evaluates as `(((0 + 1) + 2) + 3) + ...`. This seems like it would reduce as is goes along, as each bracket is its own redex, but due to Haskell's lazy evaluation, it doesn't, so it still causes stack overflows on large lists.
-
-  It can never handle infinite lists, and will always recurse forever if they are given
-
-- `foldl'` is a modification of `foldl` which forces Haskell to evaluate each redex as it goes, despite lazy evaluation, allowing avoiding stack overflows for large lists, but inherently sacrificing the other benefits of lazy evaluation
-
-[Additional source](https://wiki.haskell.org/Foldr_Foldl_Foldl%27) [Additional source](https://wiki.haskell.org/Foldr_Foldl_Foldl%27)
-
-Example code:
+We actually write this in code using the following syntax
 
 ```haskell
 initialAccumulator :: a
@@ -109,6 +91,62 @@ combinationFunction :: a -> a -> a
 foo :: [a] -> a
 foo xs = foldr (\accumulator x -> combinationFunction accumulator x) initialAccumulator xs
 ```
+
+There are two common implementations, `foldl`, and `foldr`, which start by applying the function to the first and last elements respectively. These two folds have different properties, and there is an additional type `foldl'`, which strengthens the properties of `foldl`. [Additional source #1](https://wiki.haskell.org/Foldr_Foldl_Foldl%27) [Additional source #2](https://wiki.haskell.org/Foldr_Foldl_Foldl%27)
+
+#### Foldr
+
+`foldr` generates the entire expression before evaluation, with `foldr f z [1,2,3]` evaluating to `f 1 (f 2 (f 3 z))`
+
+For example  `foldr (+) [1..1000]` evaluates as `1 + (2 + (3 + (...)))`. As the chain of operations doesn't contain a **redex** (reducible expression) until the entire chain is built, the entire expression must be generated before it can be evaluated. This means it will cause stack overflows on large lists.
+
+If the combination function is able to produce part of the result independent of the recursive case, so the rest of the result is never demanded, the recursion will stop, allowing use on infinite lists
+
+```haskell
+foldr (\acc x -> acc + x) 0 [3,5,2,1]
+=> foldr (\acc x -> acc + x) (0+1) [3,5,2]
+=> foldr (\acc x -> acc + x) (2+(0+1)) [3,5]
+=> foldr (\acc x -> acc + x) (5+(2+(0+1))) [3]
+=> foldr (\acc x -> acc + x) (3+(5+(2+(0+1)))) []
+=> (3+(5+(2+(0+1))))
+```
+
+#### Foldl
+
+`foldl` applies the function as it goes along, with `foldl f z [1,2,3]` evaluating to `f (f (f z 1) 2) 3`
+
+For example `foldl (+) [1..1000]` evaluates as `(((0 + 1) + 2) + 3) + ...`. This seems like it would reduce as is goes along, as each bracket is its own redex, but due to Haskell's lazy evaluation, it doesn't, so it still causes stack overflows on large lists. It can never handle infinite lists, and will always recurse forever if they are given
+
+An example case of execution is:
+
+```haskell
+foldl (\acc x -> acc + x) 0 [3,5,2,1]
+=> foldl (\acc x -> acc + x) (0+3) [5,2,1]
+=> foldl (\acc x -> acc + x) ((0+3)+5) [2,1]
+=> foldl (\acc x -> acc + x) (((0+3)+5)+2) [1]
+=> foldl (\acc x -> acc + x) ((((0+3)+5)+2)+1) []
+=> ((((0+3)+5)+2)+1)
+```
+
+#### Foldl'
+
+`foldl'` is a modification of `foldl` which forces Haskell to evaluate each redex as it goes, despite lazy evaluation, allowing avoiding stack overflows for large lists, but inherently sacrificing the other benefits of lazy evaluation
+
+An example case of execution is:
+
+```haskell
+foldl (\acc x -> acc + x) 0 [3,5,2,1]
+=> foldl (\acc x -> acc + x) (0+3) [5,2,1]
+=> foldl (\acc x -> acc + x) 3 [5,2,1]
+=> foldl (\acc x -> acc + x) (3+5) [2,1]
+=> foldl (\acc x -> acc + x) 8 [2,1]
+=> foldl (\acc x -> acc + x) (8+2) [1]
+=> foldl (\acc x -> acc + x) 10 [1]
+=> foldl (\acc x -> acc + x) (10+1) []
+=> 11
+```
+
+We can see this differs from the standard `foldl`, as at each step it reduces the accumulated expression
 
 
 
