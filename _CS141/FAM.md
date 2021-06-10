@@ -57,7 +57,7 @@ class Functor f => Applicative f where
   pure :: a -> f a
   (<*>) :: f (a -> b) -> f a -> f b
   
-data Myabe a = Nothing | Just a
+data Maybe a = Nothing | Just a
 instance Applicative Maybe where
   -- pure :: a -> Maybe a
   pure x = Just x
@@ -154,3 +154,16 @@ m >>= return = m
 -- Associativity
 (m >>= f) >>= g = m >>= (\x -> f x >>= g)
 ```
+
+### Additional resources
+
+The following chapters in *Learn You a Haskell for Great Good! A Beginner's Guide, Lipovaca, Miran* cover functors, applicative functors and monads in gratuitous detail:
+
+- [The functor typeclass](http://learnyouahaskell.com/making-our-own-types-and-typeclasses#the-functor-typeclass)
+- [Functors, applicative functors, and monoids](http://learnyouahaskell.com/functors-applicative-functors-and-monoids)
+- [A fistful of monads](http://learnyouahaskell.com/a-fistful-of-monads)
+- [For a few monads more](http://learnyouahaskell.com/for-a-few-monads-more)
+
+However, a simpler more intuitive description of them (which does skim over some points), is available here:
+
+- [Functors, applicatives and monads in pictures](https://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)

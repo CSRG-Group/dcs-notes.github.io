@@ -1,6 +1,7 @@
 ---
 layout: CS141
 part: true
+math: true
 title: "General Functional Programming"
 ---
 
@@ -113,8 +114,8 @@ In function definitions, we often want to be able to write conditional statement
 
   ```{haskell}
   not' = \x -> if True
-  				then False
-  				else True
+                  then False
+                  else True
   ```
 
   This can then be re-written using syntactic sugar to an in-line expression
@@ -129,15 +130,15 @@ In function definitions, we often want to be able to write conditional statement
 
   ```{haskell}
   min x y | x < y		= x
-  		| otherwise	= y
+          | otherwise	= y
   ```
 
 - Case statements
 
   ```{haskell}
   not' = \x -> case x of
-  				True -> False
-  				False -> True
+                  True -> False
+                  False -> True
   ```
 
 
@@ -242,10 +243,8 @@ They have a large number of variations, including:
 ## Type Classes
 
 > **Type class constraints** are used to restrict type variables to only types which support the functions or operators specified by the type class.
-
-```haskell
-Num is a type class in the Standard Library
-```
+>
+> `Num` is a type class in the Standard Library
 
 Like names of types, type class names must start with an upper-case character.
 
