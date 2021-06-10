@@ -69,6 +69,3 @@ type Predicate a = a -> Bool
 |                   `Functor`                    |   `XDeriveFunctor`    |
 |                   `Foldable`                   |   `XDeriveFoldable`   |
 |                 `Traversable`                  | `XDeriveTraversable`  |
-
-## 
-
