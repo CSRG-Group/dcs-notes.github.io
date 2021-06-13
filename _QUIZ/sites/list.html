@@ -3,12 +3,29 @@ layout: default
 title: Question Bank
 description: A collection of student made questions
 jquery: true
+math: true
 script: list.js
 --- 
 <!--displays the select items in a list of questions and answers-->
 
-<form id="course-structure">
+<form onsubmit="return findQuestions()">
 
+
+    <div class=course_structure_element>
+        <ul class="course_structure_list">
+            <li><input type="checkbox" id="listitem" class="structure-textbox task-list-item-checkbox" checked="checked">
+            </input>&#9<label  for="listitem">All</label>
+            <ul id="course-structure" class="course_structure_list">
+
+            </ul>
+            </li>
+        </ul>
+        <br>
+        <br>
+        <input type="checkbox" id="Recall" class="task-list-item-checkbox" checked="checked"></input>Recall
+        <br>
+        <input type="checkbox" id="Understanding" class="task-list-item-checkbox" checked="checked"></input>Understanding
+    </div>
     <input type="submit" value="Find Questions">
 </form>
 <div class="questions">

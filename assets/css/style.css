@@ -7,6 +7,10 @@ html { font-family: sans-serif; /* 1 */ -ms-text-size-adjust: 100%; /* 2 */ -web
 /** Remove default margin. */
 body { margin: 0; }
 
+
+
+
+
 /* HTML5 display definitions ========================================================================== */
 /** Correct `block` display not defined for any HTML5 element in IE 8/9. Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox. Correct `block` display not defined for `main` in IE 11. */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
@@ -529,7 +533,10 @@ figcaption {
 }
 
 /* give course structure proper indentation */
-.course_structure_element{
-  margin-left: 40px;
+.course_structure_list{
+  list-style-type: none;
   display: block;
+}
+.questionAnswer{
+  display: none;
 }
