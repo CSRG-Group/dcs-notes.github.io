@@ -1,0 +1,57 @@
+{
+    "title":"CS132",
+    "name":"Computer organisaion and architecture",
+    "contributors": [{"name":"Joseph"}] ,
+    "structure": [
+        {"name":"Data representation"},
+        {"name":"Digital logic","subTopics":[
+                {"name":"Boolean algebra"},
+                {"name":"Karnaugh Map"},
+                {"name":"Combinatorial Logic Circuits"},
+                {"name":"Sequential Logic Circuits"}
+            ]},
+        {"name":"Assembler"},
+        {"name":"Memory Systems"},
+        {"name":"I/O mechanisms"},
+        {"name":"Processor architecture"}
+
+    ],
+    "extSites":[
+        {"name":"Boolean Algebra Quiz",
+         "description":"Practice simplifying basic boolean algebra",
+         "topics":["Boolean algebra"],
+         "link":"http://www.ee.surrey.ac.uk/Projects/Labview/boolalgebra/quiz/index.html",
+         "answerType":"C"}
+    ],
+    "recall":[
+        {
+            "question":"State the identity law of conjunction",
+            "answer":"x.1 = x",
+            "marks":1,
+            "contributors":["Joseph"]
+        },
+        {
+            "question":"State the Distributivity law of Disjunction",
+            "answer":"x+(y.z) = (x+y).(x.z)",
+            "marks":2,
+            "contributors":["Joseph"]
+        }
+    ],
+    "understaiding":[
+        {
+            "question":"Simplify (X+Y)(X+!(Y+Z))",
+            "answer":[
+                "(X+Y)(X+!Y!Z) {Demorgans theorm}",
+                "(X+!Y!Z)X + (X+!Y!Z)Y {Distributivity}",
+                "(XX+X!Y!Z) + (YX+Y!Y!Z) {Distributivity}",
+                "(X+X!Y!Z) + (YX+Y!Y!Z) {Idempotent}",
+                "(X) + (YX+Y!Y!Z) {Absorption Law}",
+                "(X) + (YX+0) {Inverse Law}",
+                "(X) + (YX) {Identity Law}",
+                "X {Absorption Law}"
+                ],
+            "marks":4,
+            "contributors":["Joseph"]
+        }
+    ]
+}
