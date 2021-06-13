@@ -1,7 +1,6 @@
 {
     "title":"CS132",
-    "name":"Computer organisaion and architecture",
-    "contributors": [{"name":"Joseph"}] ,
+    "name":"Computer organization and architecture",
     "structure": [
         {"name":"Data representation"},
         {"name":"Digital logic","subTopics":[
@@ -26,32 +25,43 @@
     "recall":[
         {
             "question":"State the identity law of conjunction",
-            "answer":"x.1 = x",
+            "answer":"$$x \\cdot 1 \\equiv x$$",
             "marks":1,
-            "contributors":["Joseph"]
+            "topics":["Boolean algebra"]
         },
         {
-            "question":"State the Distributivity law of Disjunction",
-            "answer":"x+(y.z) = (x+y).(x.z)",
+            "question":"State the Distributivity law of disjunction",
+            "answer":"$$x \\cdot (y + z) \\equiv (x \\cdot y) + (x \\cdot z)$$",
+
             "marks":2,
-            "contributors":["Joseph"]
+            "topics":["Boolean algebra"]
+            
+        },
+        {
+            "question":"Draw the truth table and circuit diagram for a 1 bit half adder",
+            "answer":"",
+            "answerImg":"image-20210504124908090.png",
+
+            "marks":2,
+            "topics":["Combinatorial Logic Circuits"]
+            
         }
     ],
-    "understaiding":[
+    "understanding":[
         {
-            "question":"Simplify (X+Y)(X+!(Y+Z))",
+            "question":"Simplify $$(X+Y)\\cdot(X+\\overline{(Y+Z)})$$",
             "answer":[
-                "(X+Y)(X+!Y!Z) {Demorgans theorm}",
-                "(X+!Y!Z)X + (X+!Y!Z)Y {Distributivity}",
-                "(XX+X!Y!Z) + (YX+Y!Y!Z) {Distributivity}",
-                "(X+X!Y!Z) + (YX+Y!Y!Z) {Idempotent}",
-                "(X) + (YX+Y!Y!Z) {Absorption Law}",
-                "(X) + (YX+0) {Inverse Law}",
-                "(X) + (YX) {Identity Law}",
-                "X {Absorption Law}"
+                "{Demorgans theorm}$$(X+Y)\\cdot(X+\\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Distributivity}$$(X+\\overline{Y}\\cdot\\overline{Z})\\cdot X + (X+\\overline{Y}\\cdot\\overline{Z})\\cdot Y$$ ",
+                "{Distributivity}$$(X\\cdot X + X\\cdot \\overline{Y}\\cdot\\overline{Z}) + (Y\\cdot X + Y\\cdot \\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Idempotent}$$(X + X\\cdot \\overline{Y}\\cdot\\overline{Z}) + (Y\\cdot X + Y\\cdot \\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Absorption Law}$$(X) + (Y\\cdot X + Y\\cdot \\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Inverse Law}$$(X) + (Y\\cdot X +0)$$ ",
+                "{Identity Law}$$(X) + (Y\\cdot X)$$ ",
+                "{Absorption Law}$$X$$ "
                 ],
-            "marks":4,
-            "contributors":["Joseph"]
+            "marks":6,
+            "topics":["Boolean algebra"]
         }
     ]
 }
