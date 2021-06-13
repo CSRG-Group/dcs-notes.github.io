@@ -527,3 +527,9 @@ figcaption {
   text-align: center;
   font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
+/* give course structure proper indentation */
+.course_structure_element{
+  margin-left: 40px;
+  display: block;
+}

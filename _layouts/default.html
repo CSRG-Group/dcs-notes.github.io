@@ -15,6 +15,12 @@
     {%- if page.math == true -%}
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     {%- endif -%}
+    {%- if page.jquery == true -%}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {%- endif -%}
+    {% if page.script %}
+    <script type="text/javascript" src="{{page.script}}"></script>
+    {%- endif -%}
 
 <!-- seo used to be here -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
