@@ -1,8 +1,11 @@
 var courseData
+//when the document is ready
 $( document ).ready(function() {
+    //obtain the module code form the url
     let params = (new URL(document.location)).searchParams;
     let id = params.get('course');
 
+    //make an ajax request for the json data file
     $.get("../questions/"+id+".json", function(data){
         $("#content").prepend(data);
         courseData=data;
@@ -21,7 +24,7 @@ function UpdateTitle(){
     $(".project-tagline").append(" for "+nam);
 }
 
-//create a structure forn the ajax result
+//create a structure from the ajax result
 function show_course_structure(){
     let structure=courseData.structure;
     let struct=""
@@ -31,9 +34,8 @@ function show_course_structure(){
     }
     $("#course-structure").prepend(struct);
 }
-
+//gets structure provided by the topic
 function get_structure_div(topic,count){
-
     struct='<li><input type="checkbox" id="listitem_'+count.val+'" class="structure-textbox task-list-item-checkbox" checked="checked"></input>&#9<label  for=listitem_'+count.val+'>';
     count.val+=1;
     struct+=topic.name+"</label>";
@@ -49,7 +51,7 @@ function get_structure_div(topic,count){
 }
 
 
-
+//when a check box is altered check parent and children to ensure consistency
 $(document).on('change','.structure-textbox',function(){
     if ($(this).prop("checked")){
         checkChildren($(this).parent());
@@ -60,7 +62,7 @@ $(document).on('change','.structure-textbox',function(){
         uncheckChildren($(this).parent());
     }
 })
-//uncheck the box when porvided the list item
+//uncheck the box when provided the list item
 function uncheckListItem(elem){
     elem.children().first().prop("checked", false)
 }
@@ -105,7 +107,7 @@ function monitorSiblings(elem){
     }
 }
 
-
+//find the questions when button selected
 function findQuestions(){
     $("#externalSites").remove();
     $("#questions").remove();
@@ -126,7 +128,6 @@ function findQuestions(){
     }
 
     display_extsites(filterMatching(topics,courseData.extSites));
-    console.log(questions);
     display_questions(questions);
     return false;
 }

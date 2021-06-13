@@ -3,4 +3,4 @@ layout: notes
 title: User Tutorial
 ---
 
-Organisation
+to use this simply don't be an idiot
