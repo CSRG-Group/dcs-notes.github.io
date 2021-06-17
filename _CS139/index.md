@@ -5,14 +5,15 @@ title: CS139
 
 # Welcome to the CS139 revision guide
 
-## Complete notes
+## [Full notes for the module](opnotes)
 
-Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page.
-You can access them from the [CS139 One Page Notes](opnotes) or the respective topic links below:
+The main set of notes for this module which is linked in the above heading were written by **Joseph Evans**
 
-These were written by **Joseph Evans**:
+### Individual topics
 
-### Languages
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. These are linked below by section:
+
+#### Languages
 
 1. [x] [HTML](HTML)
 2. [x] [CSS](CSS)
@@ -20,7 +21,7 @@ These were written by **Joseph Evans**:
 4. [X] [JavaScript](JavaScript)
 5. [x] [SQL](SQL)
 
-### Theory (work in progress)
+#### Theory
 
 1. [x] [History of the Internet](Theory1)
 2. [x] [Web Servers](Theory2)
@@ -35,7 +36,12 @@ These were written by **Joseph Evans**:
 11. [x] [Being A Web Developer](Theory11)
 12. [x] [Setting up a Real Website](Theory12)
 
-## Flash Cards
+
+
+## Additional resources
+
+### Flash cards
+
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
 
 [Flash Cards](https://quizlet.com/_99cgos?x=1jqt&i=18al03)

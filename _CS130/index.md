@@ -5,11 +5,15 @@ title: CS130
 
 # Welcome to the CS130 revision guide
 
+## [Full notes for the module](https://adrakaris.github.io/blog-cs/cs130/index.html)
 
+The main set of notes for this module which is linked in the above heading were written **Yijun Hu**.
 
-## Notes
+These are a link to an external website as opposed to internal markdown files, so *a pull request to convert them to be consistent with other notes would be appreciated* (`pandoc` offers reasonable initial conversion from HTML with MathJax to Markdown, but some additional tinkering is needed)
 
-Detailed typed notes for CS130 by **Yijun Hu** which cover the entire module can be found [here](https://adrakaris.github.io/blog-cs/cs130/index.html), with each individual section linked below:
+### Individual topics
+
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. These are linked below by section:
 
 1. [x] [Sets](https://adrakaris.github.io/blog-cs/cs130/index.html#sets)
 2. [x] [Propositional logic](https://adrakaris.github.io/blog-cs/cs130/index.html#proplogic)
@@ -23,7 +27,22 @@ Detailed typed notes for CS130 by **Yijun Hu** which cover the entire module can
 10. [x] [Partial orders](https://adrakaris.github.io/blog-cs/cs130/index.html#partorder)
 11. [x] [Probability](https://adrakaris.github.io/blog-cs/cs130/index.html#prob)
 
+### Crib sheets
 
+In addition to full notes, there is a condensed "crib sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
+
+- [General crib sheet](./cribSheet.html)
+
+
+Since the exam is held online this year (2021), questions are likely to be more proof than solution based, so a document on standard proof techniques is also likely to prove useful:
+
+- [Proof approaches](./proofApproaches.html)
+
+
+
+## Additional resources
+
+### Additional notes
 
 Detailed handwritten notes for CS130 by **Edmund Goodman** which cover the entire module are linked below by section:
 
@@ -38,10 +57,3 @@ Detailed handwritten notes for CS130 by **Edmund Goodman** which cover the entir
 9. [x] [Trees](./handwritten/trees.pdf)
 10. [x] [Probability](./handwritten/probability.pdf)
 
-In addition to full notes, there is a condensed "crib sheet", which includes mostly includes definitions, so they don't need to just be rote learnt:
-
-- [General crib sheet](./cribSheet.html)
-
-
-Since the exam is held online this year (2021), questions are likely to be more proof than solution based, so a document on standard proof techniques is also likely to prove useful:
-- [Proof approaches](./proofApproaches.html)
