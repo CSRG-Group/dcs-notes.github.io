@@ -5,11 +5,13 @@ title: CS140 Computer Security
 
 # Welcome to the CS140 revision guide
 
-## [Exam advice (revision lecture notes)](lecturenotes)
+## [Full notes for the module](opnotes)
 
-## Topics and content
+The main set of notes for this module which is linked in the above heading were written by **Justin Tan**, with contributions from **Edmund Goodman**
 
-There are nine broad topics in the module. You can access them from the [CS140 One Page Notes](opnotes) or the respective topic links below. Author(s): **Justin Tan**, with contributions from **Edmund Goodman**
+### Individual topics
+
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. These are linked below by section:
 
 1. [x] [Introductory concepts](part1)
 2. [x] [Authentication](part2)
@@ -22,6 +24,12 @@ There are nine broad topics in the module. You can access them from the [CS140 O
 9. [x] [Web Server Security Issues](part8)
 10. [x] [Virtualisation](part9)
 
-## Complete Notes
+
+
+## Additional resources
+
+### [Exam advice (revision lecture notes)](lecturenotes)
+
+### Additional notes
 
 Detailed handwritten notes for CS140 by **Josh Fitzmaurice** which cover the entire module can be found [here](./cs140-full.pdf).
