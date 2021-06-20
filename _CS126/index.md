@@ -1,19 +1,18 @@
 ---
 layout: modhome
 title: CS126
+
 ---
 
 # Welcome to the CS126 revision guide
 
+## [Full notes for the module](opnotes)
 
-## Complete Notes
+The main set of notes for this module which is linked in the above heading were written by **Edmund Goodman** and **Justin Tan** with contributions from **Leon Chipchase**
 
-Given the large number of topics, it makes sense to break these down into
-broader topics when revising - each of which having its own page.
+### Individual topics
 
-Or access the [CS126 One Page Notes](opnotes).
-
-These were written by **Edmund Goodman** and **Justin Tan** with contributions from **Leon Chipchase**:
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. These are linked below by section:
 
 1. [x] [Arrays and Lists](arrays-and-lists)
 2. [x] [Analysis of algorithms](algorithm-analysis)
@@ -23,12 +22,22 @@ These were written by **Edmund Goodman** and **Justin Tan** with contributions f
 6. [x] [Trees](trees)
 7. [x] [Priority queues & Heaps](priority-queues)
 8. [x] [Skip lists](skip-lists)
-9.  [x] [Self-balancing trees](balanced-trees)
+9. [x] [Self-balancing trees](balanced-trees)
 10. [x] [Graphs](graphs)
 11. [x] [Directed Graphs](digraphs)
 12. [x] [General algorithms](general-algorithms)
 
 
+
+## Additional resources
+
+### Flash cards
+
+Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
+
+- [Flash cards](https://quizlet.com/_99y5l2?x=1jqt&i=18al03)
+
+### Additional notes
 
 Detailed handwritten notes for CS126 by **Josh Fitzmaurice** which cover the entire module split into two parts can be can be found below:
 
@@ -48,7 +57,3 @@ These are a set of handwritten notes for lectures 4 to 12 by **Akram Ahmad**. Yo
 9. [Tree ADT](./akrampdf/10 - Trees.pdf)
 10. [Priority Queue ADT](./akrampdf/11 - Priority Queue.pdf)
 11. [Heap ADT](./akrampdf/12 - Heaps.pdf)
-
-Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
-
-- [Flash cards](https://quizlet.com/_99y5l2?x=1jqt&i=18al03)
