@@ -1,5 +1,5 @@
 ---
-layout: modhome
+layout: noteshome
 title: CS141 Functional Programming
 ---
 
@@ -14,7 +14,3 @@ Given the large number of topics, it makes sense to break these down into broade
 5. [x] [Equational reasoning](equationalReasoning)
 6. [x] [Functors, Applicatives, Monads](FAM)
 7. [x] [Type-level programming](type-level-programming)
-
-## Crib Sheets
-
-Refer to the [crib sheet](cribsheet) for laws and associativity in Haskell syntax!

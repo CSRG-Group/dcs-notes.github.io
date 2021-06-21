@@ -1,13 +1,13 @@
 ---
 layout: notes
-title: Contributor Tutorial
+title: QUIZ Contributor Tutorial
 ---
 
 This tutorial covers changing and adding questions to the JSON file for a tutorial on creating a pull request see see our tutorial [Generic tutorial here]()
 
 This tutorial assumes basic knowledge of JSON for a JSON tutorial see here [Generic Tutorial here]()
 
-# JSON schema 
+## JSON schema 
 
 json does not have a standard schema so for this tutorial
 
@@ -104,8 +104,9 @@ programs that track students history / progress expect questions in the same ord
     "answer":[""],
     *"answerImg":"",
 
-    "marks":1,                  #general reflection on difficulty 1-15
-    *"source":""
+    "marks":1,                  #general reflection on difficulty
+    "contributors":[""]         #defined in _contributors
+    *"source":{"name":"","link":""}
 }
 ```
 

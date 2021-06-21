@@ -15,7 +15,12 @@
     <meta charset="UTF-8">
     {%- if page.math == true or layout.math == true -%}
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+    {%- endif -%}
+    {%- if page.jquery == true -%}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {%- endif -%}
+    {% if page.script %}
+    <script type="text/javascript" src="{{page.script}}"></script>
     {%- endif -%}
     <!-- Include tocNAV javascript -->
     <script type="text/javascript" src="{{ site.baseurl }}/assets/js/tocNav.js"></script>
@@ -75,7 +80,7 @@
                         {%- endif -%}
                         {%- capture mod -%}{{ page.layout | default: "null"}}{%- endcapture -%}
 
-                        {% include partnav.html nex=next pre=previous mod=mod ptitle=ptitle ntitle=ntitle %}
+                        {% include partnav2.html url=page.url nex=next pre=previous mod=mod ptitle=ptitle ntitle=ntitle %}
                     {%- else -%}
                     {%- capture mod -%}{{ page.mod | default: "Module Home"}}{%- endcapture -%}
                     <a href="./">🏡{{ mod }}</a>
@@ -90,10 +95,17 @@
                             }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name
                             }}</a>.</span>
                     {% endif %}
+                    {% if page.contributors %}
+                        Page contributions have been made by &#9
+                        {%- for p in page.contributors -%}
+                            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&#9
+                        {%- endfor -%}
+                    {% endif %}
                 </footer>
             </main>
         </div>
     </div>
 </body>
 
+</html>
 </html>

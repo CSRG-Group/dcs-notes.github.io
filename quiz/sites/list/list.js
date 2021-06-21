@@ -6,7 +6,7 @@ $( document ).ready(function() {
     let id = params.get('course');
 
     //make an ajax request for the json data file
-    $.get("../questions/"+id+".json", function(data){
+    $.get("../../questions/"+id+".json", function(data){
         $("#content").prepend(data);
         courseData=data;
         UpdateTitle();
@@ -181,7 +181,7 @@ function display_questions(questions){
             //single line questions
             html+="<div>"
             if (typeof(question.question)=="string"){
-                html+="<p>"+question.question+"<p>";
+                html+="<p>"+question.question+"</p>";
             //multi-line questions
             }else{
                 html+="<p>";
@@ -191,9 +191,23 @@ function display_questions(questions){
                 html+="</p>";
             }
             if (typeof(question.questionImg)!=="undefined"){
-                html+='<img src="../questions/assets/'+question.questionImg+'"></img>';
+                html+='<img src="../../questions/assets/'+question.questionImg+'"></img>';
             }
-            html+="["+question.marks+"]";
+            
+
+            if (typeof(question.source)!=="undefined"){
+                html+='&#9 <small >Sourced from <a href='+question.source.link+'>'+question.source.name+'</a></small>';
+            }
+            if (typeof(question.contributors)!=="undefined"){
+                html+="&#9 <small> Contributions made by";
+                for (const contributor of question.contributors) {
+                    html+="&#9<a href=../../../contributors/?name="+contributor+">"+contributor+"</a>";
+                }
+                html+="</small>";
+            }
+
+
+            html+="<span style=float:right;>["+question.marks+"]</span>";
             html+="</div>"
             html+="<a><h3 class=answerHeadline> &gt answer </h3></a>";
 
@@ -210,7 +224,7 @@ function display_questions(questions){
                 html+="</p>";
             }
             if (typeof(question.answerImg)!=="undefined"){
-                html+='<img src="../questions/assets/'+question.answerImg+'"></img>';
+                html+='<img src="../../questions/assets/'+question.answerImg+'"></img>';
             }
             html+="</div>"
 

@@ -4,6 +4,150 @@ layout: default
 
 <!-- Layout for Module Homepages -->
 
-<a href="../">📚Home</a>
+<a href="../../">📚Home</a>
+
+
+<script>
+    function toggle(){
+        let part=document.getElementById("examStructure")
+        if (part.style.display=="none"){
+            part.style.display="block";
+            document.getElementById("headline").innerHTML="v info";
+        }
+        else{
+            part.style.display="none";
+            document.getElementById("headline").innerHTML="> info";
+        }
+    }
+    </script>
+    
+    
+    <a onclick="toggle()" href="javascript:void(0);"><h2 id=headline>&gt; info </h2></a>
+    
+    <div id=examStructure style = display:none;>
+    
+    
+    <table>
+    <tr>
+        <th> {{site.data[page.module].code}} </th>
+        <th> {{site.data[page.module].description}}</th>
+    </tr>
+    <tr>
+        <td>website</td>
+        <td> <a href={{site.data.CS141.website}}> {{site.data[page.module].website}} </td>
+    </tr>
+    <tr>
+        <td>cats</td>
+        <td>{{site.data[page.module].cats}}</td>
+    </tr>
+    <tr>
+        <td>optional?</td>
+        <td>{{site.data[page.module].optional}}</td>
+    </tr>
+    </table>
+    
+    <h3> Exam Structure </h3>
+    
+    <table>
+        <tr>
+            <th>name</th>
+            <th>percent</th>
+            <th>date</th>
+            <th>structure</th>
+        </tr>
+        {% for item in site.data[page.module].examStructure %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.percent}}</td>
+                <td> {{item.date | date: "%H:%M %-d %B %Y"}}</td>
+                <td> {{item.structure}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+    
+    
+    
+    {%- if site.data[page.module].Notes -%}  
+    {%- if site.data[page.module].Notes.size >0 -%}  
+    
+    <h2> Notes </h2>
+    {% for item in site.data[page.module].Notes %}
+        <div>
+        <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+        <a href="{{item.link | default: item.name}}">
+            <p>{{item.description}}</p>
+        </a>
+    
+        
+        {%- if item.authors -%}  
+            <small>created by
+            {% for author in item.authors %}
+                <a href="/contributors/index.html?name={{author}}">{{author}}</a>
+            {% endfor %}
+            </small>
+        {% endif %}
+        </div>
+    {% endfor %}
+    
+    {% endif %}
+    {% endif %}
+    
+    
+    {%- if site.data[page.module].Notes -%}  
+    {%- if site.data[page.module].Notes.size >0 -%}  
+    
+    <h2> Crib Sheets </h2>
+    {% for item in site.data[page.module].CribSheets %}
+        <div>
+            <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+            <a href="{{item.link | default: item.name}}">
+                <p>{{item.description}}</p>
+            </a>
+    
+            {%- if item.authors -%}  
+                <small>created by
+                {% for author in item.authors %}
+                    <a href="/contributors/index.html?name={{author}}">{{author}}</a>
+                {% endfor %}
+                </small>
+            {% endif %}
+        </div>
+    {% endfor %}
+    
+    
+    {% endif %}
+    {% endif %}
+    
+    {%- if site.data[page.module].Questions -%}  
+    {%- if site.data[page.module].Questions.altQuestions.size>0 or site.data[page.module].Questions.QUIZAvailable -%}  
+    
+    <h2> Questions </h2>
+    
+    {% if site.data[page.module].Questions.QUIZAvailable %}
+        Questions for this module are available on the site question page <a>Here</a>
+    {% endif %}
+    
+    {%- if site.data[page.module].Questions.altQuestions.size >0 -%}  
+        {% for item in site.data[page.module].Questions.altQuestions %}
+            <div>
+                <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+                <a href="{{item.link | default: item.name}}">
+                    <p>{{item.description | default: "here"}}</p>
+                </a>
+    
+                {%- if item.authors -%}  
+                    <small>created by
+                    {% for author in item.authors %}
+                        <a href="/contributors/index.html?name={{author}}">{{author}}</a>
+                    {% endfor %}
+                    </small>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+
 
 {{ content }}
