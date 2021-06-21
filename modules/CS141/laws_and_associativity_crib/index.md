@@ -1,5 +1,5 @@
 ---
-layout: CS141
+layout: noteshome
 title: Crib Sheet
 ---
 

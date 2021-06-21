@@ -27,6 +27,7 @@
             "question":"State the identity law of conjunction",
             "answer":"$$x \\cdot 1 \\equiv x$$",
             "marks":1,
+            "contributors":["LoudShadow"],
             "topics":["Boolean algebra"]
         },
         {

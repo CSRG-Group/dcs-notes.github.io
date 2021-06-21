@@ -3,6 +3,9 @@ layout: CS139
 title: CSS
 math: true
 part: true
+contributors:
+  - LoudShadow
+  - Mat
 ---
 
 
