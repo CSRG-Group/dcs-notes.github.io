@@ -1,5 +1,5 @@
 ---
-layout: modhome
+layout: noteshome
 title: CS118
 description: Programming for Computer Scientists
 ---
@@ -55,16 +55,6 @@ These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and a
 5. [x] [Abstract classes and inheritance](part5.html) (13 to 16)
 6. [x] [Exceptions](part6.html) (17)
 7. [x] [Generics](part7.html) (18)
-
-
-
-Notes by **Edmund Goodman** acting as a "Crib sheet" for the module, only covering the more complex content are linked below:
-
-- [A cut down version of the notes covering only the non-trivial content](cribSheet.html)
-
-These are based off of a full set of notes covering the entire topic, and whilst the above full notes are preferred, as they provide more robust example, these  could be used in combination for different explanations of the same topics, so are linked below:
-
-- [Notes covering the entire topic](combined.html)
 
 
 

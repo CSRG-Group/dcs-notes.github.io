@@ -3,6 +3,8 @@ layout: default
 title: Contributing
 description: A Tutorial on modifying and adding contributors to the site
 ---
+
+# THIS IS WRONG AND NEEDS UPDATING
 # Introduction
 
 Contributing is a key part of the function of warwick.guide credit so a systems to credit contributes has been created not just on the front page but for individual pages and question submissions.

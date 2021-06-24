@@ -21,7 +21,3 @@ There are nine broad topics in the module. You can access them from the [CS140 O
 8. [x] [Security & Authentication protocols](part7)
 9. [x] [Web Server Security Issues](part8)
 10. [x] [Virtualisation](part9)
-
-## Complete Notes
-
-Detailed handwritten notes for CS140 by **Josh Fitzmaurice** which cover the entire module can be found [here](./cs140-full.pdf).
