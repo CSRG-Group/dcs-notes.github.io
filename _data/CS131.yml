@@ -43,8 +43,8 @@ Notes:
     authors:
       - Yijun Hu
     link: https://yijun.hu/blog-cs/cs131/index.html
-  - name: full_pdf/CS131-notes.pdf
-    title: full pdf
+  - name: full pdf
+    link: full_pdf/cs131-notes.pdf
     description : handwritten notes on the whole module
     authors:
       - Josh Fitzmaurice

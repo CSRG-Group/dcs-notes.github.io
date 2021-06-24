@@ -1,11 +1,11 @@
 ---
-layout: modhome
+layout: noteshome
 title: CS140 Computer Security
 ---
 
 # Welcome to the CS140 revision guide
 
-## [Full notes for the module](opnotes)
+## [Full notes for the module](onePage)
 
 The main set of notes for this module which is linked in the above heading were written by **Justin Tan**, with contributions from **Edmund Goodman**
 
@@ -22,6 +22,7 @@ Given the large number of topics, it makes sense to break these down into broade
 7. [x] [Secure email](secure-email)
 8. [x] [Security & Authentication protocols](part7)
 9. [x] [Web Server Security Issues](part8)
+<<<<<<< HEAD
 <<<<<<< HEAD:modules/CS140/index.md
 10. [x] [Virtualisation](part9)
 
@@ -37,3 +38,6 @@ Detailed handwritten notes for CS140 by **Josh Fitzmaurice** which cover the ent
 =======
 10. [x] [Virtualisation](part9)
 >>>>>>> 5490021 (finised moving modules over to the new system and added one page notes):modules/CS140/Primary_Notes/index.md
+=======
+10. [x] [Virtualisation](part9)
+>>>>>>> f216d29 (bug fixes and formatting errors)

@@ -6,7 +6,7 @@ description: Programming for Computer Scientists
 
 # Welcome to the CS118 Revision Guide
 
-## [Full notes for the module](./opnotes)
+## [Full notes for the module](onePage)
 
 The main set of notes for this module which is linked in the above heading were written in collaboration by **Akram Ahmad** and **Justin Tan**
 
@@ -22,13 +22,10 @@ Given the large number of topics, it makes sense to break these down into broade
 6. [x] [Exceptions](part6.html) (17)
 7. [x] [Generics](part7.html) (18)
 
-### Crib sheet
-
-Notes by **Edmund Goodman** acting as a "Crib sheet" for the module, only covering the more complex content [can be found here](cribSheet.html)
-
 
 
 ## Additional resources
+<<<<<<< HEAD
 
 ### Flash cards
 
@@ -40,6 +37,8 @@ Notes by **Edmund Goodman** acting as a "Crib sheet" for the module, only coveri
 
 Full notes covering the entire module written by **Edmund Goodman** which were cut down to form the crib sheet [can be found here](combined.html)
 
+=======
+>>>>>>> f216d29 (bug fixes and formatting errors)
 ## Discussion of module content
 
 There are five broad topics overall which were split into 11 lectures - within these topics, the main sections of content are:
@@ -75,6 +74,7 @@ Along with topics with odd nuances, again including but not limited to:
  - Switch statement execution, including `break` and `default` keywords
  - Passing by value / reference
  - Encapsulation vs. data hiding
+<<<<<<< HEAD
 <<<<<<< HEAD:modules/CS118/index.md
 =======
 
@@ -101,3 +101,5 @@ These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and a
 Flash cards for the module by **Leon Chipchase** can be found [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](./media/exportedQuizlet118.txt)), which are based off the existing notes on this page.
 
 >>>>>>> 5490021 (finised moving modules over to the new system and added one page notes):modules/CS118/Primary_Notes/index.md
+=======
+>>>>>>> f216d29 (bug fixes and formatting errors)
