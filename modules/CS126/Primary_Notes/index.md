@@ -11,7 +11,7 @@ title: CS126
 Given the large number of topics, it makes sense to break these down into
 broader topics when revising - each of which having its own page.
 
-Or access the [CS126 One Page Notes](opnotes).
+Or access the [CS126 One Page Notes](onePage).
 
 These were written by **Edmund Goodman** and **Justin Tan** with contributions from **Leon Chipchase**:
 

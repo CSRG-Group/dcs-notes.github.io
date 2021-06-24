@@ -1,11 +1,11 @@
 ---
-layout: modhome
+layout: noteshome
 title: CS139
 ---
 
 # Welcome to the CS139 revision guide
 
-## [Full notes for the module](opnotes)
+## [Full notes for the module](onePage)
 
 The main set of notes for this module which is linked in the above heading were written by **Joseph Evans**
 
@@ -35,13 +35,3 @@ Given the large number of topics, it makes sense to break these down into broade
 10. [x] [Designing For Mobile](Theory10)
 11. [x] [Being A Web Developer](Theory11)
 12. [x] [Setting up a Real Website](Theory12)
-
-
-
-## Additional resources
-
-### Flash cards
-
-Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
-
-[Flash Cards](https://quizlet.com/_99cgos?x=1jqt&i=18al03)

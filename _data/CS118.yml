@@ -25,13 +25,13 @@ Notes:
       - Akram Ahmad
       - Justin Tan
     order:
-      - part1.md
-      - part2.md
-      - part3.md
-      - part4.md
-      - part5.md
-      - part6.md
-      - part7.md
+      - part1.html
+      - part2.html
+      - part3.html
+      - part4.html
+      - part5.html
+      - part6.html
+      - part7.html
   - name: Combined
     link: Primary_Notes/combined
     description: A cut down version of the notes

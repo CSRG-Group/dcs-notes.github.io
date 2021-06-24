@@ -20,23 +20,23 @@ Notes:
     authors:
       - Joseph Evans
     order:
-      - HTML.md
-      - CSS.md
-      - PHP.md
-      - JavaScript.md
-      - SQL.md
-      - Theory1.md
-      - Theory2.md
-      - Theory3.md
-      - Theory4.md
-      - Theory5.md
-      - Theory6.md
-      - Theory7.md
-      - Theory8.md
-      - Theory9.md
-      - Theory10.md
-      - Theory11.md
-      - Theory12.md
+      - HTML.html
+      - CSS.html
+      - PHP.html
+      - JavaScript.html
+      - SQL.html
+      - Theory1.html
+      - Theory2.html
+      - Theory3.html
+      - Theory4.html
+      - Theory5.html
+      - Theory6.html
+      - Theory7.html
+      - Theory8.html
+      - Theory9.html
+      - Theory10.html
+      - Theory11.html
+      - Theory12.html
 
 Questions :
   QUIZAvailable : false

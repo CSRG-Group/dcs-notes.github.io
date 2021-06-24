@@ -15,7 +15,7 @@ omitted (for example, specific operations of the circuit).
 
 ## Complete notes
 
-Detailed typed notes for CS132 can be found below in parts or here for [CS132 One Page Notes](opnotes). These were authored by **Akram Ahmad** and **Justin Tan**, with contributions from **Edmund Goodman**:
+Detailed typed notes for CS132 can be found below in parts or here for [CS132 One Page Notes](onePage). These were authored by **Akram Ahmad** and **Justin Tan**, with contributions from **Edmund Goodman**:
 
 1. [x] [Data representation](part1)
 2. [x] [Digital logic](part2)
