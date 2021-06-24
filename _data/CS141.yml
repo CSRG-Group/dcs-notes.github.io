@@ -32,6 +32,19 @@ Notes:
       - equationalReasoning.html
       - FAM.html
       - type-level-programming.html
+  - name: Primary_Notes2
+    description: Notes covering the whole of the module
+    authors:
+      - Justanhy
+      - EdmundGoodman
+    order:
+      - part1.html
+      - part2.html
+      - part3.html
+      - datatypes.html
+      - equationalReasoning.html
+      - FAM.html
+      - type-level-programming.html
 CribSheets :
   - name: laws_and_associativity_crib
     title: laws and associativity

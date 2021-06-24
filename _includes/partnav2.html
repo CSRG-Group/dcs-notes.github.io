@@ -37,7 +37,7 @@
     {%- if pre -%}
     <a href="{{ pre }}" title="{{ pre }}">👈Prev</a>
     {%- endif -%}
-    <a href="./" title="{{ include.mod }} Home">🏡{{ include.mod }} Homes</a>
+    <a href="./" title="{{notes | replace: "_", " " }} Home">🏡{{notes | replace: "_", " " }}</a>
 {%- endif -%}
 
 

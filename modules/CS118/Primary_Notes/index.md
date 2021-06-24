@@ -1,5 +1,5 @@
 ---
-layout: modhome
+layout: noteshome
 title: CS118
 description: Programming for Computer Scientists
 ---
@@ -75,3 +75,29 @@ Along with topics with odd nuances, again including but not limited to:
  - Switch statement execution, including `break` and `default` keywords
  - Passing by value / reference
  - Encapsulation vs. data hiding
+<<<<<<< HEAD:modules/CS118/index.md
+=======
+
+
+
+## Notes
+
+Given the large number of topics, it makes sense to break these down into broader topics when revising - each of which having its own page. For the **one page** (`CTRL-f` friendly) version, checkout the [CS118 One Page Notes](./opnotes) version. 
+
+These were written in collaboration by **Akram Ahmad** and **Justin Tan**, and are linked below by section:
+
+1. [x] [Variables, number systems, and I/O](part1.html) (1 to 4 from above)
+2. [x] [Conditional and iterative statements](part2.html) (5 to 6)
+3. [x] [Arrays, methods, scope and recursion](part3.html) (7 to 9)
+4. [x] [Object oriented programming](part4.html) (10 to 12)
+5. [x] [Abstract classes and inheritance](part5.html) (13 to 16)
+6. [x] [Exceptions](part6.html) (17)
+7. [x] [Generics](part7.html) (18)
+
+
+
+## Flash cards
+
+Flash cards for the module by **Leon Chipchase** can be found [here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](./media/exportedQuizlet118.txt)), which are based off the existing notes on this page.
+
+>>>>>>> 5490021 (finised moving modules over to the new system and added one page notes):modules/CS118/Primary_Notes/index.md

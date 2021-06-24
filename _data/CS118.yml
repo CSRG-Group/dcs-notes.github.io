@@ -1,0 +1,55 @@
+code: CS118
+description: 	Programming for Computer Scientists
+website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs118/
+cats : 15
+optional : "no"
+
+examStructure:
+  - name : Coursework 1
+    percent : 20
+    date : Continuous
+    structure: In person feedback
+  - name : Coursework 2 
+    percent : 20
+    date : TBD
+    structure: Coursework tabula submission
+  - name : Exam
+    percent : 60
+    date : TBD
+    structure: Online AEP 24 hour window
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    authors:
+      - Akram Ahmad
+      - Justin Tan
+    order:
+      - part1.md
+      - part2.md
+      - part3.md
+      - part4.md
+      - part5.md
+      - part6.md
+      - part7.md
+  - name: Combined
+    link: Primary_Notes/combined
+    description: A cut down version of the notes
+    authors:
+      - Edmund Goodman
+    
+
+CribSheets :
+  - name: Crib_sheet
+    description: A cut down version of the notes covering only the non-trivial content
+    authors:
+      - Edmund Goodman
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : flash cards
+      description : set of quizlet flash cards <a href='Primary_Notes/media/exportedQuizlet118.txt'>(plaintext export)</a>
+      link : https://quizlet.com/_9qa4vn?x=1jqt&i=18al03
+      authors:
+        - Leon Chipchase

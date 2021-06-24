@@ -1,0 +1,71 @@
+code: CS132
+description: 	Computer Organisation and Architecture
+website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs132/
+cats : 15
+optional : "no"
+
+examStructure:
+  - name : Coursework 1
+    percent : 15
+    date : TBD
+    structure: Coursework tabula submission
+  - name : Coursework 2
+    percent : 25
+    date : TBD
+    structure: Coursework tabula submission
+  - name : Exam
+    percent : 60
+    date : TBD
+    structure: Online AEP 24 hour window
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    authors:
+      - Akram Ahmad
+      - Justin Tan
+      - Edmund Goodman
+    order:
+      - part1.html
+      - part2.html
+      - part3.html
+      - part4.html
+      - part5.html
+      - part6.html
+  - name: yijuin notes
+    description: Typed notes
+    authors:
+      - Yijun Hu
+    link: https://www.yijun.hu/blog-cs/cs132/index.html#
+  - name: full_pdf/CS132_full.pdf
+    title: full pdf
+    description : handwritten notes on the whole module
+    authors:
+      - Josh Fitzmaurice
+
+
+CribSheets :
+  - name: logic_circuits
+    link: http://fbcf.xyz/resources/doc/cheatsheet.pdf
+    description: reference for common logic circuits and their diagrams <a href="logic_circuits/logiccircuitsheet.pdf">(mirror)</a>
+    authors:
+      - Felix Bowyer
+    
+
+Questions :
+  QUIZAvailable : true
+  altQuestions:
+    - name : Worksheets
+      description : worked soluiton for the worksheets
+      authors:
+        - Josh Fitzmaurice
+        - Edmund Goodman
+        - Justin Tan
+        - Clara Ramsay-Gray
+    
+    - name : flash cards
+      description : set of quizlet flash cards
+      link : https://quizlet.com/_9pgkq4?x=1jqt&i=18al03
+      authors:
+        - Leon Chipchase
+    

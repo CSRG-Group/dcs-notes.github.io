@@ -70,17 +70,7 @@
             <main id="content" class="main-content" role="main">
                 <div class="partNav">
                     {%- if page.part == true -%}
-                        {%- if page.previous.part == true -%}
-                            {% capture previous %}{{ page.previous.url }}{% endcapture %}
-                            {%- capture ptitle -%}{{ page.previous.title }}{%- endcapture -%}
-                        {%- endif -%}
-                        {%- if page.next.part == true -%}
-                            {% capture next %}{{ page.next.url }}{% endcapture %}
-                            {%- capture ntitle -%}{{ page.next.title }}{%- endcapture -%}
-                        {%- endif -%}
-                        {%- capture mod -%}{{ page.layout | default: "null"}}{%- endcapture -%}
-
-                        {% include partnav2.html url=page.url nex=next pre=previous mod=mod ptitle=ptitle ntitle=ntitle %}
+                        {% include partnav2.html url=page.url %}
                     {%- else -%}
                     {%- capture mod -%}{{ page.mod | default: "Module Home"}}{%- endcapture -%}
                     <a href="./">🏡{{ mod }}</a>

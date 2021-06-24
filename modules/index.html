@@ -1,0 +1,54 @@
+---
+module : Modules
+layout: default
+title: Warwick university course modules
+---
+{% assign modules = "" | split: ',' %}
+{% for item in site.data %}
+    {% assign modules = modules | push: item[1] %}
+{% endfor %}
+
+{% assign modules = modules | sort: "code" %}
+<a href="../">📚Home</a>
+
+<h2>Year 1</h2>
+<table>
+    {% for module in modules %}
+        {% assign year = module.code | slice: 2 %}
+        {%- if year == "1" -%}
+            <tr>
+                <td><a href="./{{module.code}}">{{module.code}}</a></td>
+                <td>{{module.description}}</td>
+            </tr>
+        {%- endif -%}
+    {% endfor %}
+</table>
+
+
+<h2>Year 2</h2>
+<table>
+    {% for module in modules %}
+        {% assign year = module.code | slice: 2 %}
+        {%- if year== "2" -%}
+            <tr>
+                <td><a href="./{{module.code}}">{{module.code}}</a></td>
+                <td>{{module.description}}</td>
+            </tr>
+        {%- endif -%}
+    {% endfor %}
+</table>
+
+
+
+<h2>Year 3</h2>
+<table>
+    {% for module in modules %}
+        {% assign year = module.code | slice: 2 %}
+        {%- if year== "3" -%}
+            <tr>
+                <td><a href="./{{module.code}}">{{module.code}}</a></td>
+                <td>{{module.description}}</td>
+            </tr>
+        {%- endif -%}
+    {% endfor %}
+</table>

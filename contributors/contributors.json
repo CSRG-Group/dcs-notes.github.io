@@ -1,10 +1,51 @@
 [
     {
+        "name":"Joseph Evans",
         "github":"LoudShadow",
         "nick":"Joseph",
         "image":"https://avatars.githubusercontent.com/u/72259471?v=4",
-        "discord":"sharpshot2566#2529"
+        "discord":"sharpshot2566#2529",
+        "lab dairy":{"value":"CS133","link": "https://www.dcs.warwick.ac.uk/~u2011913/cs133/index.html"}
+    },
+    {
+        "name":"Akram Ahmad",
+        "github":"arkamnite",
+        "image":"https://avatars.githubusercontent.com/u/47830962?v=4",
+        "discord":"akkerz#9511"
+    },
+    {
+        "name":"Edmund Goodman",
+        "github":"EdmundGoodman",
+        "image":"https://avatars.githubusercontent.com/u/37504168?v=4",
+        "discord":"EdmundGoodman#6546"
+    },
+    {
+        "name":"Justin Tan",
+        "github":"Justanhy",
+        "image":"https://avatars.githubusercontent.com/u/46620327?v=4",
+        "discord":"justanhy#0209"
+    },
+    {
+        "name":"Leon Chipchase",
+        "github":"lchipchase",
+        "image":"https://avatars.githubusercontent.com/u/77326474?v=4",
+        "discord":"lchipchase#6183"
+    },
+    {
+        "name":"Josh Fitzmaurice",
+        "github":"jfitz02",
+        "image":"https://avatars.githubusercontent.com/u/73333523?v=4",
+        "discord":"MrFitzmaurice#6646"
+    },
+    {
+        "name":"Yijun Hu",
+        "github":"Adrakaris",
+        "image":"https://avatars.githubusercontent.com/u/17861497?v=4"
+    }
+    ,
+    {
+        "name":"Felix Bowyer",
+        "image":"https://avatars.githubusercontent.com/u/46428367?v=4?s=10",
+        "website":{"value": "fbcf","link": "http://fbcf.xyz/"}
     }
 ]
-
-
