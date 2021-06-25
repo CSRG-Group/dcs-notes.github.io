@@ -7,8 +7,8 @@ optional : "no"
 examStructure:
   - name : Coursework 1
     percent : 20
-    date : Continuous
-    structure: In person feedback
+    date : TBD
+    structure: Coursework tabula submission
   - name : Coursework 2 
     percent : 20
     date : TBD
