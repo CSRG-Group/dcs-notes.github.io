@@ -33,8 +33,8 @@ Notes:
       - FAM.html
       - type-level-programming.html
 CribSheets :
-  - name: laws_and_associativity_crib
-    title: laws and associativity
+  - name: laws_and_associativity
+    link: laws_and_associativity_crib
     description: laws and associativity in Haskell syntax!
     authors:
       - Justanhy

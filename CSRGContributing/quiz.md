@@ -2,10 +2,7 @@
 layout: notes
 title: QUIZ Contributor Tutorial
 ---
-
-This tutorial covers changing and adding questions to the JSON file for a tutorial on creating a pull request see see our tutorial [Generic tutorial here]()
-
-This tutorial assumes basic knowledge of JSON for a JSON tutorial see here [Generic Tutorial here]()
+This tutorial assumes basic knowledge of JSON for a JSON tutorial see [here]
 
 ## JSON schema 
 
@@ -22,6 +19,7 @@ Each course has an individual JSON file in part to reduce file complexity and si
 
 a course has the following structure 
 
+Once the course has been defined it needs to be linked to in the `_data/<code>.yml` under questions  `QUIZAvailable :` should be set to `true`.
 ```JSON
 {
     "title":"CS132",
@@ -117,8 +115,7 @@ Images are moe supported and should be placed in _QUIZ/questions/assets and the 
 
 To save on space requirements and to increase clarity for text resizing etc rather than images, use images only where Mathematical expressions are too limiting
 
+
 # Features to add
-* add source links
-* add a contributors page
 * think about multi-part questions
 * display questions one at a time
