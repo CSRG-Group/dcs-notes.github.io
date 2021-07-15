@@ -4,63 +4,61 @@ title: QUIZ Contributor Tutorial
 ---
 This tutorial assumes basic knowledge of JSON for a JSON tutorial see [here]
 
-## JSON schema 
+The quiz section of this it designed to provide students with a large number of questions to practice with before the exam.
 
-json does not have a standard schema so for this tutorial
+## Creating a course
 
-objects enclosed in <> are defined later on
+1. in `quiz/questions` create a new file called `<Module Code>.json`
+2. Copy the following into the json file:
 
-\* represents an optional value - all other values are required
+        {
+            "title":"",
+            "name":"",
+            "structure": [<topic>],
+            "extSites":[<extSite>],
+            "recall":[<question>],
+            "understanding":[<question>]
+        }
 
-\# represents comments
 
-## Course Level
-Each course has an individual JSON file in part to reduce file complexity and size
-
-a course has the following structure 
-
-Once the course has been defined it needs to be linked to in the `_data/<code>.yml` under questions  `QUIZAvailable :` should be set to `true`.
-```JSON
-{
-    "title":"CS132",
-    "name":"Computer organization and architecture",
-    "structure": [<topic>],
-    "extSites":[<extSite>],
-    "recall":[<question>],
-    "understanding":[<question>]
-}
-```
+3. fill in the title with the module code
+4. fill in the name the the module name
+5. fill in the other sections with the tutorials below
 
 
 ## topic
 This is simply a topic that is a part of the course, sub topics are defined recursively
 
-Elements of subtopics are also elements of the parent topic so apply the lowest possible level to questions
+1. replace `<topic>` with the following
 
-```JSON
-{
-    "Name":"Boolean Algebra",
-    *"subTopics":[<Topic>]
-}
-```
 
+        {
+            "Name":"",
+            "subTopics":[<topic>]
+        }
+2. If there are multiple topics add several with a comma between each one 
+3. fill in the name with the topic name
+4. If subtopics exist repeat steps 1-4 again
+5. if no subtopics exist remove the line `"subTopics":[<topic>]`
 
 ## extSite
 
 Many external sites have sets of good practice question while the questions can't be shared links to the sites are welcome
 
-direct links to past papers are not allowed as the sharing of papers is against university policy but university sites that host the papers are (probably) ok so 
-[https://warwick.ac.uk/services/exampapers?q=CS132&department=&year=](https://warwick.ac.uk/services/exampapers?q=CS132&department=&year=) would be ok
+1. replace `<extSite>` with the following 
 
-```JSON
-{
-    "name":"Boolean Algebra Quiz",
-    "description":"Practice simplifying basic boolean algebra",
-    "topics":["Boolean algebra"],
-    "link":"http://www.ee.surrey.ac.uk/Projects/Labview/boolalgebra/quiz/index.html",
-    "answerType":"C"
-}
-```
+        {
+            "name":"",
+            "description":"",
+            "topics":[""],
+            "link":"",
+            "answerType":""
+        }
+2. If there are multiple sites add several with a comma between each one 
+3. fill in the name and description
+4. Topics should match  th topic name
+5. LInk should be a url to the site
+6. Fill in answer type according th the following guide:
 
 answerType there are 3 types of recognized answers
 * No answers (N)
@@ -84,38 +82,27 @@ taken to ensure that they do not represent a disproportionate amount of the set 
 
 Check the question bank for identical questions before submission
 
-__Do not__ modify the order of the questions, as the question and other information can be modified to improve clarity or fix mistakes the only unique identifer is the location of the question in an array so
-programs that track students history / progress expect questions in the same order. Deleted questions should be kept as {} to maintain this order. All new questions should be added to the end.
-(This is my first time wring a proper JSON program so IDK if there is a better solution other than a unique identifer or what is considered to be more accurate)
 
-
-```JSON
+1. Copy the following into the question array into recall or understanding depending the question type.  
+```
 {
-    "question":"Simplify $$A + \\overline{A}$$",
-        #or
-    "question":[""],   #each element will be displayed as a separate line
-    *"questionImg":"",
-
-
-    "answer": "{by Inverse} True",
-        #or
-    "answer":[""],
-    *"answerImg":"",
-
-    "marks":1,                  #general reflection on difficulty
-    "contributors":[""]         #defined in _contributors
-    *"source":{"name":"","link":""}
+    "question":"",
+    "answer": "",
+    "marks":1,         
 }
 ```
+2. Fill in the question mathjax is supported between $$ $$ however due to json formatting a double slash `\\` needs to be used instead of one
+3. If the question needs a supplementary image
+   1. place the image in `quiz/questions/assets`
+   2. add a new line `"questionImg":"",` and fill in the name of the image file
+3. Fill in the answer mathjax is supported between $$ $$ however due to json formatting a double slash `\\` needs to be used instead of one
+4. If the answer needs a supplementary image
+   1. place the image in `quiz/questions/assets`
+   2. add a new line `answerImg":"",` and fill in the name of the image file 
+5. fill in the number of marks, this should be a general reflection on difficulty and is not expected to be exact
+6. To credit contributors
+   * If an author
+        1. copy `"author":[""],` and add the author's names the the array
+   * If a contributor 
+        1. copy `"author":[""],` and add the contributor's names the the array
 
-
-Mathematical expressions for questions and answers are a supported feature however due to JSON formatting a double backslash needs to be used instead of one
-
-Images are moe supported and should be placed in _QUIZ/questions/assets and the QuestionsImg should equal the name of the image
-
-To save on space requirements and to increase clarity for text resizing etc rather than images, use images only where Mathematical expressions are too limiting
-
-
-# Features to add
-* think about multi-part questions
-* display questions one at a time

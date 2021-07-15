@@ -27,11 +27,12 @@ function UpdateTitle(){
 //create a structure from the ajax result
 function show_course_structure(){
     let structure=courseData.structure;
-    let struct=""
+    let struct=''
     let count={val:0};
     for (i of structure){
         struct += get_structure_div(i,count);
     }
+    struct+="</li>";
     $("#course-structure").prepend(struct);
 }
 //gets structure provided by the topic
@@ -198,8 +199,20 @@ function display_questions(questions){
             if (typeof(question.source)!=="undefined"){
                 html+='&#9 <small >Sourced from <a href='+question.source.link+'>'+question.source.name+'</a></small>';
             }
+            if (typeof(question.author)!=="undefined"){
+                html+="&#9 <small> Question made by made by";
+                for (const contributor of question.author) {
+                    html+="&#9<a href=../../../contributors/?name="+contributor+">"+contributor+"</a>";
+                }
+                html+="</small>";
+                if (typeof(question.contributors)!=="undefined"){
+                    html+="<small> &#9 with contributions made by";
+                }
+            }
+            else if (typeof(question.contributors)!=="undefined"){
+                html+="<small> &#9 Contributions made by";
+            }
             if (typeof(question.contributors)!=="undefined"){
-                html+="&#9 <small> Contributions made by";
                 for (const contributor of question.contributors) {
                     html+="&#9<a href=../../../contributors/?name="+contributor+">"+contributor+"</a>";
                 }

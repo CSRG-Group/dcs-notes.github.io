@@ -5,7 +5,7 @@ title: "Creating Questions"
 
 Active learning (topic questions, past papers, rewriting and transforming content, group work, teaching) is a far better way of learning and retaining information than passive learning (watching lectures, reading notes). In many of the courses there has been a lack of active learning resources such as questions or in-depth group work so we are asking students to create and submit their own questions for others to complete and try.
 
-The primary method for questions is our quiz section of the site, a dedicated section for the submission of student created questions as this allows for many display and question formats. However there are limitations as to what can be placed on there so this section is available for other formats. 
+The primary method for questions is our quiz section of the site, a dedicated section for the submission of student created questions as this allows for many display and question formats. However there are still limitations as to what can be placed on there so this section is available for other formats. 
 
 Questions have less support for multi document formats than notes however this is something that may change if the demand is there. The format for creating these questions is very similar to that of notes.
 
