@@ -540,3 +540,45 @@ figcaption {
 .questionAnswer{
   display: none;
 }
+.favorite{
+  float: left;
+}
+#favoriteBox{
+  position: fixed;
+  z-index: 10;
+  min-width:300px;
+  border-style: solid;
+  background-color: white;
+  border-color: rgba(131, 130, 130, 0.7);
+  border-width: 5px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction:column;
+  display: none;
+
+  
+}
+#favoriteBox .fav-header{
+background: linear-gradient(120deg, #155799, #159957);
+height: 70px;
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+padding: 1px;
+}
+.fav-link{
+  color: #000000;
+  font-size: large;
+  border: 10px;
+}
+.fav-link:hover{
+  background-color: rgb(200, 200, 200);
+}
+#fav-button{
+  width: 100%;
+  align-self: flex-end;
+  height: 50px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: rgba(131, 130, 130, 0.7);
+  border: none;
+}

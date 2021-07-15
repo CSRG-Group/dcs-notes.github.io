@@ -23,12 +23,11 @@ Contributing to a project such as this can seem intimidating at first as there a
 # Introduction
 This tutorial was created by [**Joseph Evans**]( {{ site.baseurl }}/contributors/index.html?name=Joseph%20Evans) with contributions from [**Edmund Goodman**]( {{ site.baseurl }}/contributors/index.html?name=Edmund%20Goodman) and is split into several segments each covering a different aspect of the site. If there are any parts not covered in enough depth please send a message requesting further information.
 
-An introduction on how the site works and expectations of contributors can be found [here](introduction.md)  
-A tutorial and standards for attributing content to authors can be found [here]()
+An introduction on how the site works and expectations of contributors can be found [here](introduction.html)  
 
 Beginners tutorials on the technologies that the site runs on, none are too complex and can be picked up within an hour.
 
-* [Introduction to git](basicGithub.md)
+* [Introduction to git](basicGithub.html)
 * [Introduction to markdown](https://www.markdownguide.org/basic-syntax/)
 * [Introduction to YAML](https://www.educative.io/blog/yaml-tutorial)
 * [Introduction to JSON](https://www.codewall.co.uk/the-complete-json-tutorial-quickly-learn-json/)
@@ -64,3 +63,7 @@ The expectations for contributions to the site
 
 # Docs
 These are brief reference guides for those who have already submitted previously or are familiar with jekyll, markdown, Yaml and JSON
+* [Contributors](contributorsDocs.html)
+* [Data files](datafiiles.html)
+* [Font matter](fontmatter.html)
+* [Quiz](quizDocs.md)
