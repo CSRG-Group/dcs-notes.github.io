@@ -6,14 +6,14 @@ part: true
 pre: Theory11
 ---
 
-# Deploying Applications
+## Deploying Applications
 
-## Registering a Domain Name
+### Registering a Domain Name
 * Make it memorable
 * Shorter is better
 * Most registrars charge £10 - £12 per year
 
-## Server for Applications
+### Server for Applications
 * use a small computer you own
 * Use a shard host with the domain registrar of Platform as a service
     * Advantages
@@ -41,7 +41,7 @@ pre: Theory11
     * Disadvantages
         * Expensive
 
-## Software Stack Choices
+### Software Stack Choices
 Database options include
 * mySQL
 * PostgreSQL
@@ -50,7 +50,7 @@ Many different versions __Don't use SQLite3__
 
 Webserver Apache / nginx are both good choices
 
-## Configuring the System
+### Configuring the System
 After the OS is installed the software stack can be installed form the source or with a package manager
 
 1. Install apache `apt-get install apache2`
@@ -78,19 +78,19 @@ Additional Software
 2. __sendmail__ - Acts as a mail server
 3. __logrotate__ - To rotate the log files and delete old ones
 
-## Updating the DNS
+### Updating the DNS
 1. Got to the registrar and register the IP address with the Domain Name
 2. Add a record for `www.` which points to the server
 3. Save changes
 4. It can take some time for any changes to propagate
 
-## Securing the Server
+### Securing the Server
 As a minimum always
 * Install `fail2ban` blocks ssh users form an IP for failed logins
 * Configure the firewall to only accept SSH and HTTP(s) traffic
 * Modify SSH to only accept key based logins from non designated IPs
 
-## Maintenance
+### Maintenance
 * Keep an eye on the server
 * Need to install monitoring Software to alert you to issues
 * Check logs on a daily basis

@@ -7,7 +7,7 @@ title: "Question Sheet"
 
 ## Vectors
 
-#### Important definitions
+### Important definitions
 
 - **Span** of $$U$$: the set of all linear combinations of vectors in $$U$$. The span describes all points reachable by a linear combination of the vectors in $$U$$.
 - **Subspace** of $$\mathbf{R}^{n}$$: this is a non-empty subset $$S$$ of $$\mathbf{R}^{n}$$ with properties that all vectors are **closed** under **addition and *scalar* multiplication**. This can be described as a vector space that is a **subset** of a larger vector space. Remember that the subspace is the **span** of its constituent vectors.
@@ -17,7 +17,7 @@ title: "Question Sheet"
 - **Basis**: If for a subspace $$S$$, all vectors $$s \in S$$ are **linearly independent** and they **span $$S$$**, you have a **basis** of a vector space.
   - *There cannot be more vectors in a basis than the dimension of the vector space they span.* It is not possible to have three vectors in a basis for $$\mathbf{R}^{2}$$; hence if you have this many vectors, then it is not a basis as one vector will be a linear combination of another before it.
 
-##### Questions
+#### Questions
 
 - Express the vector $$a$$ as a linear combination of vectors $$(b_{1}, b_{2}, ..., b_{n})$$.
   - You want to find the solution for the simultaneous equation $$a=\alpha b_{1}+\beta b_{2} + ... + \gamma b_{n}$$, solving for the unknown terms.
@@ -41,7 +41,7 @@ title: "Question Sheet"
 
 ## Matrices
 
-#### Basic arithmetic
+### Basic arithmetic
 
 - Multiply the two matrices $$M$$ and $$N$$
   - To matrices are only multipliable if the number of columns on $$M$$ is the same as the number of rows on $$N$$. 
@@ -50,7 +50,7 @@ title: "Question Sheet"
   - Sum the products of each element as you iteratively advance the **row** of $$M$$ and the **column** of $$N$$.
   - The number of row-$$M$$ and column-$$N$$ will determine where to put this sum-value in the new matrix. This can be seen as 'run-and-dive'.
 
-#### Various Operations
+### Various Operations
 
 Take the following 2x2 matrix:
 $$
@@ -97,7 +97,7 @@ $$
     B^{-1}=\frac{1}{det(B)}adj(A)
     $$
 
-#### Elementary Row Operations
+### Elementary Row Operations
 
 If you have the matrix $$B$$ obtained from the matrix $$A$$ after any of the following operations, the determinant of said matrix is also impacted:
 
@@ -105,7 +105,7 @@ If you have the matrix $$B$$ obtained from the matrix $$A$$ after any of the fol
 - **Interchanging** of two rows; $$\|B\|=-\|A\|$$.
 - **Adding a multiple of one row to another**; the determinant does not change.
 
-#### Linear Transformations
+### Linear Transformations
 
 - Verify that $$\mathbf{T}$$ is a linear transformation.
 
@@ -143,7 +143,7 @@ If you have the matrix $$B$$ obtained from the matrix $$A$$ after any of the fol
     \end{bmatrix}
     $$
 
-#### Eigenvalues and Eigenvectors
+### Eigenvalues and Eigenvectors
 
 **Eigenvectors**, when multiplied by their **eigenvalues**, will **not change direction**. 
 
@@ -238,7 +238,7 @@ If you have the matrix $$B$$ obtained from the matrix $$A$$ after any of the fol
 
 ## Taylor's Theorem
 
-#### Quick definitions
+### Quick definitions
 
 The Taylor series can be defined as
 $$
@@ -256,7 +256,7 @@ $$
 $$
 We can still use the above expression for the remainder left by the approximation by substituting a value of $$0$$ for $$a$$. However, given by the squeeze rule, we will typically find that $$R_{n} \rightarrow 0$$ which shows that the Maclaurin series expansion is valid for all $$x \in \mathbf{R}$$. **Focus on the absolute value for $$R_{n}(x)$$**.
 
-#### Finding the estimate of the error
+### Finding the estimate of the error
 
 Using the above equations, once we have a polynomial from either the Maclaurin or Taylor series, we just need to pick our value for $$c$$; this is always a value between $$x$$ (the value we have been given) and $$a$$ , which is set to 0 by definition for the Maclaurin series. **You may need to do some rearranging to ensure that your value for $$c$$** is correct. 
 

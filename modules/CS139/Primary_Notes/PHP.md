@@ -4,7 +4,7 @@ title: PHP
 part: true
 ---
 
-# Introductions
+## Introductions
 
 PHP is a server side scripting language 
 
@@ -24,7 +24,7 @@ PHP is run on the server side can collect data from:
 * email
 * other software
 
-# Basic
+## Basic
 the file name needs to be changes from `.html` to `.php`
 
 all php code must be written inside `<?php` and `?>`
@@ -35,13 +35,13 @@ comments are:
 * `//single line`
 * `/* multi-line */`
 
-## Simple Commands
+### Simple Commands
 
 `echo` inserts the output into the larger html page including any tags
 
 `echo <p><strong> Hello </strong></p>`
 
-### print f
+#### print f
 `print f` produces formatted statements form variables
 
 `printf("String",variables)`
@@ -58,13 +58,13 @@ Specifier | Type
 %s | string
 %d | decimal
 
-### NUll Coalescing Operator
+#### NUll Coalescing Operator
 `??` can be used to assign a value if a variable is null
 `$username= $GET_["username"]??default`
 
 [more here](https://www.php.net/manual/en/function.printf.php)
 
-# Variables
+## Variables
 * Variable prefixed with $
 * must start with letter or `_`
 * only contain alphanumerical characters and `_`
@@ -78,14 +78,14 @@ $b = 4;
 echo $a+$b;
 ```
 
-## constants
+### constants
 Use `define()`
 ``` php
 define("PI",3.141592653);
 $pi=PI;
 ```
 
-# Data Types
+## Data Types
 Scalar types
 * integer
 * float / double (these are the same)
@@ -96,7 +96,7 @@ Compound Types
 * Array
 * Object
 
-## Strings
+### Strings
  need double quotes
 
 concatenation uses `.`
@@ -115,12 +115,12 @@ $a -> Hello World
 $c -> Hello World
 ```
 
-## Arrays
+### Arrays
 Two types 
 * Numeric Array
 * Associative array
 
-### Numeric Array
+#### Numeric Array
 
 Creation:
 `$courses=("CS139","CS132","CS133");`
@@ -133,16 +133,16 @@ $courses[1]="CS132";
 $courses[2]="CS133";
 ```
 
-### Associative Array
+#### Associative Array
 Creation:
 
 `$courses=("CS139"=>"Web Dev","CS132"=>"Not A Cult","CS133"=>"Professional Skills");`
 
 You can also do Representation:
 
-# Operators
+## Operators
 
-## Arithmetic Operators
+### Arithmetic Operators
 
 Operator | Name
 --|--
@@ -154,7 +154,7 @@ Operator | Name
 `++` | Pre/Post increment
 `--` | Pre/Post decrement
 
-## Comparison Operators
+### Comparison Operators
 gh-pages
 Operator | Name
 --|--
@@ -169,7 +169,7 @@ Operator | Name
 
 Identical same value __and__ same type 5 is not identical to "5"
 
-## Logical Operators
+### Logical Operators
 
 Operator | Name
 --|--
@@ -177,7 +177,7 @@ Operator | Name
 `||` |OR
 `!` | NOT
 
-## Array Operators
+### Array Operators
 
 Operator | Name
 --|--
@@ -185,9 +185,9 @@ Operator | Name
 `$arr1 == $arr2` | Equal
 `$arr1 === $arr2` | Identical
 
-# Branching
+## Branching
 
-## If
+### If
 
 similar to Java
 ``` php
@@ -201,7 +201,7 @@ if ($course == "CS139") {
 ```
 can use `:` instead of {}
 
-## Switch
+### Switch
 ``` php
 switch($course){
     case "CS139":
@@ -216,14 +216,14 @@ switch($course){
 ```
 only judges by equality by if they are identical.
 
-# Looping
-## For loop
+## Looping
+### For loop
 ``` php
 for ($x=0; $x <=10; $x++){
     echo "$x <br>";
 }
 ```
-## While Loop
+### While Loop
 ``` php
 $x=0;
 while ($x<=10){
@@ -231,7 +231,7 @@ while ($x<=10){
     $x++;
 }
 ```
-## do while loop
+### do while loop
 ``` php
 $i=0;
 do {
@@ -239,7 +239,7 @@ do {
     $x++;
 } while ($x<=10);
 ```
-## Array Iteration
+### Array Iteration
 iterate over an array obtaining the value at each location
 ``` php
 foreach($array as $item){
@@ -253,7 +253,7 @@ foreach($array as $key => $value){
 }
 ```
 
-# Function
+## Function
 Functions that have a return value can also (optionally) have a a return type
 ``` php
 function FunctionName ($arg1,$arg2):string{
@@ -261,7 +261,7 @@ function FunctionName ($arg1,$arg2):string{
 }
 ```
 
-## Pass by Reference
+### Pass by Reference
 Adding an `&` in front passes by reference, a variable
 change in a function is reflected outside the function scope
 ```php
@@ -270,7 +270,7 @@ function add(&$arg){
 }
 ```
 
-## Global
+### Global
 Global scoped variables can be included in functions with global
 
 SHOULD BE AVOIDED
@@ -285,12 +285,12 @@ function findAB(){
 
 ```
 
-# HTML Forms
+## HTML Forms
 In PHP the data is converted from the requests to associative arrays.
 Post requests are `$_POST` get requests are `$_GET`
 
 
-# PHP From Another File
+## PHP From Another File
 Php can insert the contents of another file
 
 `require <script.php>`, script stops if file can't be found
@@ -303,7 +303,7 @@ also
 
 Elements such as header or nav bar only need to be made once then can be copied over
 
-# Objects and Classes
+## Objects and Classes
 ```php
 
 class Person{
@@ -318,24 +318,24 @@ class Person{
 ```
 All object variables need to be specified through `$this->`
 
-## Call Methods
+### Call Methods
 To call a method 
 `$object->method(<args>)`
 
-## Constructor
+### Constructor
 The constructor function is always  `__construct()`
 
 Objects can be created through the `new` keyword
 
 `$James= new Person();`
-## Access Modifier
+### Access Modifier
 * public
 * private 
 * protected
 
 can all be used to define access these should replace the `var` keyword or put in front of a function 
 
-## Inheritance
+### Inheritance
 `class Admin extends User`
 
 parent class method id called by 
@@ -343,7 +343,7 @@ parent class method id called by
 `parent::method();`
 
 
-# Cookies
+## Cookies
 Cookies can be added with the `setcookie()` function
 ``` php
 $expiry = time()+60*60*24*7;
@@ -358,7 +358,7 @@ if (isset($_COOKIE["Username"])){
 }
 ```
 
-# Sessions
+## Sessions
 To create a session use `session_start()` this must occur
 at the start of the file
 
@@ -386,7 +386,7 @@ else{
 ?>
 ```
 
-# Password Hashing
+## Password Hashing
 Passwords should be hashed for storing to ensure security the hashes can be created with `password_hash()`
 and verified with `password_verify($password,$hashedPassword)`
 
@@ -404,7 +404,7 @@ if (isset($_POST['username']) && isset($_POST['password'])){
 }
 ```
 
-# Login Verification
+## Login Verification
 It is important to verify that a user is logged in before they can access a page
 
 ``` php
@@ -428,7 +428,7 @@ function require_login(){
 ```
 if `$_SESSION['id']` is set when the user logs in this will prevent users
 from accessing pages unless they have logged in
-# SQL
+## SQL
 first a database connection must be established
 
 `$db =  new SQLite3('database.db');`
@@ -449,43 +449,43 @@ while ($row = $result->fetchArray()){
 }
 ```
 
-# Serialization
+## Serialization
 can be used for storing objects and complex data as a string
 `$string = serialize($object);`
 
 the text can then be un-serialized 
 `$object= unserialize($string);`
 
-# Reading and Writing Files
+## Reading and Writing Files
 two types oif access stream access, will read a small portion at a time. All-in-Memory access can read the entire file to memory.
 
-## Stream Access
+### Stream Access
 similar to 'C'
 
 * `fopen()` - opens the file
 * `fgets()` - gets a portion of the file
 * `fclose()`- closes the file
 
-## In-memory Access
+### In-memory Access
 
 * `file()` Reads the entire file and returns an array of each line in the file
 * `file_get_contents()` Read the entire file and return a string
 * `file_put_contents()` Writes the contents of a string variable to a file
 
-# Errors
+## Errors
 3 types of errors
 * Expected Errors - typing in the wrong name 
 * Warnings - thing to warn the user about, start before end dates
 * Fatal Errors - things that stop the process, should still be recoverable
 
-## Reporting
+### Reporting
 error reporting can be done with 
 ``` php
 error_reporting(E_ALL);
 ini_set("display_errors",1);
 ```
 
-# Superglobals
+## Superglobals
 Name | Description
 --|--
 $Globals | Array For storing data that needs the superglobal scope

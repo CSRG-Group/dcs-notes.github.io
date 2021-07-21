@@ -26,9 +26,9 @@ Firstly don't skip heading levels - Don't do this
 
 Make sure sections follow an appropriate hierarchy - skipping from h4 to h2 is alright, h1 to h3 is not.
 ## Heading 1
-### Heading 2
-#### Heading 3
-## Heading 1.1
+### Heading 1.1
+#### Heading 1.1.1
+## Heading 2
 ```
 ---
 

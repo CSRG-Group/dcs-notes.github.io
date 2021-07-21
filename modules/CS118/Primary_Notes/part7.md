@@ -115,7 +115,7 @@ As mentioned earlier, there is a convention that exists when deciding which symb
 
 Some of these will make more sense when you cast your mind back to CS126, and where each of those ideas are used for various data structures.
 
-## Generic Methods
+### Generic Methods
 
 When defining some methods, it might be useful to write generic method that only operate of particular types. For example, lets say you have a `compare` method as shown below:
 
@@ -146,13 +146,13 @@ Now when we try to compare `Pair` objects that contain mismatched types, a compi
 
 Do note that we won’t have to specify the generics in the method **if** the generics that you want to refer to in the parameters of the method are already defined at the class-level, like it is in the first line of the `GenericBox` class defined <a href="#genref">above</a>. 
 
-## The Java Class Library
+### The Java Class Library
 
 The original lecture for this content spent some time going over the [Java Class Library](https://docs.oracle.com/javase/7/docs/api/) I felt it would be improper to include lengthy descriptions here, as there is no way to really define what is useful or not. It is up to you to search through the documentation and decide what you find interesting - for a first start, check out the [`util`](https://docs.oracle.com/javase/7/docs/api/) documentation and try and find some classes you recognise, such as `Stack` or `Iterator`. 
 
 Going through the documentation in this safe space means you can pick up valuable skills on how to read a specification when your IDE does not have any suggestions.
 
-# Concluding notes from the author
+## Concluding notes from the author
 
 This abruptly brings us to the end of the modular CS118 revision notes! 🎉🎉 Thank you to everyone who submitted content, and remember to contact someone (or submit a pull request) if you spot any errors or would like to make a contribution for any modules, listed or otherwise. I hope by this point, there will be some answers to the questions posed on the CS118 landing page.
 

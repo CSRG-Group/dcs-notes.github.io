@@ -5,7 +5,7 @@ math: true
 part: true
 ---
 
-# Web Browsers
+## Web Browsers
 Web browsers interprets data into one in a recognized form
 
 Converting HTML page and rendering as a readable web page
@@ -18,7 +18,7 @@ Local caching can reduce load times
 
 Most offer additional features, Search engine auto complete etc...
 
-# Web Servers
+## Web Servers
 
 Typically powerful computer to respond to HTTP requests.
 
@@ -29,7 +29,7 @@ Also contains
 * Database Software (MySQL , MongoDB)
 * Scripting Language (PHP, python..)
 
-# State
+## State
 HTTP is a state-less protocol , in a local process the computer only knowns about current memory and instructions
 
 The Server treats every request as a completely new request
@@ -38,10 +38,10 @@ Many servers can be responding to many users making it hard to store data.
 
 Rest is used to transfer the current state of the communication between the client and the server. Most common operations are GET and POST
 
-## Solutions
+### Solutions
 there are 3 solutions to store state across requests
 
-### Query Strings
+#### Query Strings
 limited to 2048 on a get Request
 A simple store of variables and names
 
@@ -50,7 +50,7 @@ Typically used for requesting Data from a server
 Can alow for more dynamic URLS by having a more unique query string that can 
 be more easily interpreted
 
-### Cookies
+#### Cookies
 
 Data unique to the client is created by the server
 
@@ -60,7 +60,7 @@ The client includes the cookie in subsequent requests
 
 Cookies can expire - Server sets this
 
-### Sessions
+#### Sessions
 
 Store state like cookies but just for the time the user is active with the site
 

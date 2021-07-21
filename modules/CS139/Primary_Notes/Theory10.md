@@ -6,7 +6,7 @@ part: true
 pre: Theory9
 nex: Theory11
 ---
-# Mobile Sites
+## Mobile Sites
 
 Large amount of mobile web traffic over the past few years
 
@@ -18,7 +18,7 @@ Two techniques
 * Responsive Web design
 * Separate mobile platforms
 
-## Responsive Web Design
+### Responsive Web Design
 using an advanced css feature is `media`
 
 CAn be used to access the device
@@ -50,7 +50,7 @@ These also override any other styles specified elsewhere
 
 Easier then rewriting pages
 
-## Separate Mobile Layout
+### Separate Mobile Layout
 Previously common not so anymore
 
 Redirects can be done based on the browsers user agent based in the header
@@ -67,7 +67,7 @@ however needs updating as new devices come out
     * Can be a lot of work to double the number of pages
     * Two sets of pages need updating
 
-# Best?
+## Best?
 Each has its merits
 
 Some content can work best with different designs

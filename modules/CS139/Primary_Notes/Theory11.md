@@ -7,9 +7,9 @@ pre: Theory10
 nex: Theory12
 ---
 
-# Development
+## Development
 
-## Testing checklist
+### Testing checklist
 
 * Functional Testing
     * Test all pages for errors
@@ -38,7 +38,7 @@ nex: Theory12
     * Update policy
     * Software stack, correct settings, updated software etc...
 
-## Test Driven Development
+### Test Driven Development
 
 Writing code to satisfy tests
 
@@ -57,7 +57,7 @@ Run Test frequently
 
 Tests can be run automatically on submission to the central repository
 
-# Modern Web
+## Modern Web
 Not always written in PHP
 
 Facebook use a PHP -> C++ compiler for performance reasons
@@ -71,25 +71,25 @@ Other language
 
 Many Technologies are combined to build a web application
 
-## Ruby
+### Ruby
 * General purpose
 * OOP and functional styles are supported
 * Large software library
-## Rails
+### Rails
 Collection of libraries that work together
 * __Active Record__ - Object relational mapping for database entities
 * __ActiveResource__ - For web services
 * __ActionMailer__ - Manages Email Functionality
 * __ActionPack__ - Manages mapping URLs to correct applications
 
-# Front end
+## Front end
 
 some tips 
 * Learn photoshop for simple mockups
 * Learn ins/outs of Javascript
 * Find out about browser inconsistencies
 
-## Frameworks
+### Frameworks
 * Javascript
     * Angular.js
     * React.js
@@ -98,14 +98,14 @@ some tips
     * Django (Python)
     * Flask  (Python)
 
-## CSS
+### CSS
 Css can be difficult
 
 Sass extends css syntax to offer nested rules, named variables , mixins
 
 This then compiles down to css
 
-# Back End
+## Back End
 tips
 * Looks at you language / framework handles background jobs
 * Look at cloud based storage

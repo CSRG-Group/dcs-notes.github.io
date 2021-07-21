@@ -6,7 +6,7 @@ title: "Error Handling and Exceptions"
 
 The original delivery of this content loosely introduced what an exception was, then demonstrated the `try-catch` statement, before explaining more about exceptions, and _then_ demonstrating the `try-catch-finally` statement, before delivering more theory. As a result, I have opted to deliver as much theory as possible at the beginning, before diving into any code examples. If you are looking for the `try-catch` statement and its variant, then this can be found at the bottom of the page.
 
-# What are exceptions?
+## What are exceptions?
 
 According to [official Oracle documentation](https://docs.oracle.com/javase/tutorial/essential/exceptions/definition.html#:~:text=Definition%3A%20An%20exception%20is%20an,off%20to%20the%20runtime%20system.&text=This%20block%20of%20code%20is%20called%20an%20exception%20handler.), an **exception** is an **event**, which occurs during the **execution** of a program, that disrupts the normal flow of the program's instructions.
 
@@ -21,13 +21,13 @@ This is an alternative to traditional error-handling techniques, such as perform
 
 You will have noticed that these are exception _objects_, which means they are instances of classes. There are [many different Java exception classes](https://programming.guide/java/list-of-java-exceptions.html) from a range of packages, and as you will see shortly, you can choose which type of exception you want to handle based on the specific object the exception takes the form of.
 
-# `Exception` classes vs. `Error` classes
+## `Exception` classes vs. `Error` classes
 
 In Java, the `Throwable` class is a superclass of both the `Exception` and the `Error` classes. There is an important distinction to make between the two (Java specification):
 1. An `Error` is a subclass of `Throwable` that indicates a serious problem that a reasonable application _should not try_ to catch.
 2. The `Exception` class and its subclasses are a form of `Throwable` that indicates conditions that a resonable application _might want_ to catch.
 
-# How do you use exceptions? (The `try-catch` statement)
+## How do you use exceptions? (The `try-catch` statement)
 In order to make your code throw exceptions, you must use a `try-catch` statement. They take the following form:
 
 ```java
@@ -52,15 +52,15 @@ How does this work?
 
 If you code doesn't cause any runtime errors, then none of the code in the `catch` blocks will be executed. Moreover, if a non-matching exception is thrown, the JVM will resort to any default error handling.
 
-# Exceptions and inheritance
+## Exceptions and inheritance
 
 It is important to note that since exceptions are based on classes, the order in which a superclass exception and a subclass exception is caught has significant implications on your code. Specifically, if the **first `catch` block is a superclass** of another `catch` block, then **the subclass `catch` block will never be executed**
 
-# Checked and unchecked exceptions
+## Checked and unchecked exceptions
 
 Now that we are familiar with `try-catch` statements, we can delve into the difference between checked and unchecked exceptions, and how they must be handled. 
 
-## Checked exceptions (`throws`)
+### Checked exceptions (`throws`)
 A checked exception is any exception that **must be checked at compile-time**. For example, you may want to use the `BufferedReader` class to open a file and read the first line, but there are two possible exceptions that could be thrown:
 1. The file does not exist, and would throw a `FileNotFound` exception.
 2. There could be an error when reading a line, which would throw an `IOException` exception.
@@ -82,7 +82,7 @@ You have two options when it comes to handling checked errors:
 
 It is almost always better to use the latter option, unless you have a penchant for adding many `try-catch` statements into your code.
 
-### Using `throws`
+#### Using `throws`
 In the example above, the `FileNotFound` exception is a subclass of the `IOException` exception. If you _cast_ (🥁) your mind back to the superclass and subclass scenario, this means we only need to catch the `IOException`, and could maybe query the exception object specifically. The `throws` keyword can be added in the method signature and will handle this for us; we can therefore fix the above code as follows:
 
 ```java
@@ -95,13 +95,13 @@ someCompilableMethod() throws IOException {
 }
 ```
 
-## Unchecked exceptions
+### Unchecked exceptions
 
 These are any exceptions that do not need to be checked at compile time 'if they can be thrown by the execution of the method or the constructor and propogate outside the method or constructor boundary'. In English, this means that exceptions that are subclasses of `Error` and `RuntimeException`- for example, trying to divide by 0 will throw the `ArithmeticException`. It does not make sense to _have_ to catch this at compile time, but you can choose to check and handle it in a graceful manner. A final way to decide between which type of exception to use is this (from the Java documents):
 
 _"If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception"_.
 
-# Writing your own exceptions
+## Writing your own exceptions
 
 As stated before, any Exception is just a class that extends the Exception class. Therefore, if you are writing your own exceptions, you should **choose the most specific** exception that **encapsulates your Exception**, and then **extend this**. 
 
@@ -119,7 +119,7 @@ if (index > 0) {
 }
 ```
 
-# Chaining exceptions
+## Chaining exceptions
 
 There are four constructors for most `Exception` classes:
 - Default constructor, no parameters

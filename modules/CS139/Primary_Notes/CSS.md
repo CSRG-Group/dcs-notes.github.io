@@ -9,19 +9,19 @@ contributors:
 ---
 
 
-# Introduction
+## Introduction
 CSS stands for Cascading Style Sheets
 
 Intended to modify the appearance of HTML documents
 
-# Placement of Styles
+## Placement of Styles
 The code for the stylesheet can be placed in 3 possible locations.
 
-## Inside Respective Tags
+### Inside Respective Tags
 This method is often discouraged because it causes HTML code to be very messy and if you want to change the styling, you have to go to individual HTML tags.
 `<h1 style ="color:blue"> content </h1>`
 
-## In a Style Tag
+### In a Style Tag
 Inside the `<head>` tag:
 ``` html
 <style>
@@ -30,12 +30,12 @@ Inside the `<head>` tag:
 ```
 This method is used for certain styles.
 
-## In a Separate File
+### In a Separate File
 The file containing the stylesheet is then linked in the `<head>` tag. This method is most commonly used.
 `<link rel="stylesheet" href="styles.css">`
 
 
-# Types of Stylesheet
+## Types of Stylesheet
 
 There are 3 types of stylesheet
 
@@ -54,7 +54,7 @@ one there is no definition for the current style sheet
 3. internal stylesheet (`<head>`)
 4. inline styling
 
-# Syntax
+## Syntax
 
 CSS is formed from selectors and declarations.
 
@@ -73,7 +73,7 @@ h1 {
 }
 ```
 
-# Box Model
+## Box Model
 
 Every element is made form boxes and contains
 1. Content
@@ -84,32 +84,32 @@ Every element is made form boxes and contains
 These can be use to adjust size and location .
 using properties like `margin` and `border`
 
-# Positioning
+## Positioning
 
 __Static__ is the default and positions boxes according to the normal flow
 
 Other ways include __fixed__ and __floating__
 
-# Selectors
+## Selectors
 
 There are 3 ways of specifying a html element
 
-## Using the Tag Name
+### Using the Tag Name
 This will modify all tags of that type
 
 `h1 {color:blue;}`
 
-## Using a Class Selector
+### Using a Class Selector
 uses to modify just some elements uses `.`
 
 `.large {color:blue;}`
 
-## Using an Id
+### Using an Id
 id is unique used to modify a single element
 
 `#page_title {color:blue;}`
 
-## Attribute Selectors
+### Attribute Selectors
 
 attribute selectors style HTML elements that contain an attribute
 use `[]` to specify an attribute
@@ -129,7 +129,7 @@ Example:
 
 `[title*=subtitle]` would match `<h1 title="first_subtitle">`
 
-## Pseudo Selectors
+### Pseudo Selectors
 
 A pseudo-element selector is recognized but does not explicitly point to an html element
 
@@ -144,7 +144,7 @@ A pseudo-class selector targets a particular state or relationship
     a:hover{}
     a:active{}
 
-## Contextual Selectors
+### Contextual Selectors
 A contextual selector targets other tags within the document hierarchy
 
 Selector | Matches | Example
@@ -154,7 +154,7 @@ Child | A specified element that is a direct child of the specified element | di
 Adjacent Sibling| A specified element that is the next sibling of the specified element | h3+p
 General Sibling | A specified element that shares the same parent as the other specified element | h3~p
 
-# Properties
+## Properties
 
 There are hundreds of properties, some key ones you should know are:
 
@@ -202,8 +202,8 @@ Different properties take different values.
 
 Know the different value types for the main properties
 
-# Table Styling
-## Table Borders
+## Table Styling
+### Table Borders
 Borders around tables can increase readability
 
 ``` css
@@ -217,7 +217,7 @@ table {
   border-collapse: collapse;
 }
 ```
-## Text Alignment
+### Text Alignment
 Text in Tabels can be aligned within the cells
 ``` css
 td {
@@ -227,7 +227,7 @@ td {
 }
 ```
 
-## Styling
+### Styling
 Tables can be stripted usin `nth-child()`
 ``` css
 tr:nth-child(even) {
