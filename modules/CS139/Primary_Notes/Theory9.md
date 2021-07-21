@@ -6,21 +6,21 @@ part: true
 pre: Theory8
 nex: Theory10
 ---
-# Three Tier Architecture
+## Three Tier Architecture
 * Web Tier
     * Handles requests 
     * Serves static assets
     * (apache)
 * Application tier
     * Application specific logic
-    * (PHP C++ C# ...)
+    * (PHP C++ C## ...)
 * Database Tier
     * File storage
     * (SQL MongoDB ...)
 
 
-# Scaling
-## Vertical Scaling
+## Scaling
+### Vertical Scaling
 An older way of scaling or for small companies
 
 If the older server is too small
@@ -31,16 +31,16 @@ Fairly practical
     * can fit 3TB of RAM in a 1u server
     * a Standard rack is 42u
 
-### Advantages
+#### Advantages
 * Can buy a small system now then expand later
 * Minimizes immediate capital expenditure
 
-### Disadvantages
+#### Disadvantages
 * Whole machine needs to be replaced to scale up
 * Replacing the machine leads to downtime
 * Harder to scale down
 
-## Horizontal Scaling
+### Horizontal Scaling
 Separate the database to a separate computer
 
 Multiple servers can be setup to communicate with the single database computer
@@ -53,28 +53,28 @@ Load balancing algorithms
 * __Round Robin__ - requests sent to each server in turn
 * __Weighted round robin__ - Request sent to each server in turn but also determined by a weighting for each server
 * __Least active sessions__ - requests are sent to the most lightly loaded server
-### Advantages
+#### Advantages
 * The individual computers are cheaper
 * Built in redundancy if a server breaks the others can continue
 *  Easily add more servers
 
-### Disadvantages
+#### Disadvantages
 * Higher upfront costs
 * More complex systems, More Maintenance needed
 
-## Cloud Based Infrastructure
+### Cloud Based Infrastructure
 Cloud computing can allow users to rent servers
 
 Servers can be leased by the hour
 
 Software can monitor changes and boot up / shutdown servers to scale with demand
 
-## Caches
+### Caches
 Results of heavy computation can be cached
 
 Calculations does nto need to be run again
 
-## Message Queues
+### Message Queues
 Applications hav long running tasks
 
 Warning can take a long time
@@ -82,7 +82,7 @@ Warning can take a long time
 Applications can drop messages into the queue which are then processed by software which listen's to the queue
 
 
-# Measuring Performance
+## Measuring Performance
 There are different Metrics
 
 * End to End response time
@@ -108,7 +108,7 @@ Users expect a site ro be responsive.
 
 A poor experience will cause page abandonment. 
 
-## Throughput
+### Throughput
 How many responses a system can service per unit time
 
 Range of requests

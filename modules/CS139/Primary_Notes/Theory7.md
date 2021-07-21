@@ -8,7 +8,7 @@ nex: Theory8
 ---
 
 
-## XML
+### XML
 Extensible MArkup language
 Similar to HTML
 
@@ -53,21 +53,21 @@ an Example Food Menu:
     </drink>
 </menu>
 ```
-### Valid Names
+#### Valid Names
 * Can contain Letter, Numbers, and other characters
 Names cannot
 * Start with a number or punctuation
 * Start with the letters XML (case insensitive)
 * Cannot contain spaces
 
-### Attributes
+#### Attributes
 Attributes provide additional information about the data
 
 They may contain metadata , such as software used to create the XML
 
 Can be used to help parse the data
 
-### Well Formed
+#### Well Formed
 XML is well formed if ti meets the following requirements
 * The document contains only unicode characters
 * None of the special characters appear (e.g < and &)
@@ -76,7 +76,7 @@ XML is well formed if ti meets the following requirements
 * A single root element contains all the other elements
 
 
-# JSON
+## JSON
 Javascript Object Notation
 
 XML can be too clunky needed creating and parsing 
@@ -88,7 +88,7 @@ JSON is less human readable than XML
 Data amy or may not exit for example if there are no ratings for a product the
 rating data may be empty under some structures an null under others is is important to check that the variables exist if this is the case.
 
-## Data Types
+### Data Types
 * Number
 * String
 * Boolean
@@ -96,14 +96,14 @@ rating data may be empty under some structures an null under others is is import
 * Object (Collection of Key Value Pairs)
 * null (empty)
 
-## Syntax
+### Syntax
 * Data is in Key,value pairs
 * Data is comma seperated
 * `{ }` hold objects
 * `[ ]` hold arrays
 * Whitespace is not relevant can make it more readable
 
-## Example
+### Example
 ``` JSON
 {
     "Food" : [
@@ -127,7 +127,7 @@ rating data may be empty under some structures an null under others is is import
 }
 
 ```
-## conversion
+### conversion
 
 * `JSON.parse()` Create an object form a json string
 * `JSON.stringify()` Create a json string from an object 

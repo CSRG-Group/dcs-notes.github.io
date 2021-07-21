@@ -5,29 +5,29 @@ math: true
 part: true
 ---
 
-# Introduction
+## Introduction
 Stands for HyperText Markup Language.
 
 HTML is a __semantic__ language it describes the structure of the document and not the content.
 
-# HTML Nesting Structure
-## Parent 
+## HTML Nesting Structure
+### Parent 
 A tag is a parent of another if it immediately encloses the tag.
-## Child
+### Child
 A tag is a child of another if it is immediately enclosed by the tag.
-## Ancestor
+### Ancestor
 A tag is an ancestor if it is the parent or the parent of an ancestor of a tag.
-## Descendant
+### Descendant
 A tag is an descendant if it is the child or the child of a descendant of a tag.
-## Sibling
+### Sibling
 Two tags are siblings if they share a parent.
 
-# Document Object Model
+## Document Object Model
 The HTML document object Model is a tree of the objects within a documet
 
 starts with the document ant root element `<html>` includes all the tags in a structured tree to allow for navigation.
 
-# Basic Syntax
+## Basic Syntax
 HTML uses code tags for opening and closing to give information about the content inside, opening use `<>` and closing starts with a backslash `</>`
 
 The tags can also contain attributes with additional information like the class or ids.
@@ -42,12 +42,12 @@ closing tag | `</a>`
 
 Example of a HTML tag: `<a href="www.google.com"> a search engine </a>`
 
-## Empty Tags
+### Empty Tags
 
 Some tags have no content and so are empty, a closing tag is not needed.
 `<meta charset="utf-8">`
 
-# HTML Nesting
+## HTML Nesting
 All closing tags should occur in the reverse order they were opened. e.g
 
 `<h1> Share your <strong> Travels </strong><h1>`
@@ -58,7 +58,7 @@ is correct
 
 is incorrect
 
-# Character Entities
+## Character Entities
 Some symbols need to be represented with special characters so they are formatted correctly.
 
 Entity | Description
@@ -70,7 +70,7 @@ Entity | Description
 `&trade;`| &trade;
 
 
-# Block vs Inline
+## Block vs Inline
 Some elements are blocks these start and end with a new line. Examples are:
 * `<h1>`
 * `<p>`
@@ -83,45 +83,45 @@ Other elements are inline and can normally be integrated into a line of text wit
 * `<img>`
 * `<span>`
 
-# Validation
+## Validation
 for validation visit 
 [W3c](https://validator.w3.org/)
 There is also a live html validation extension in VSCODE called: VS Code W3C Validation extention.
 
-# Common Tags
+## Common Tags
 
-## Doctypes (R)
+### Doctypes (R)
 Every HTML document has a doctype definition 
 Variations of HTML, tells the browser what to expect.
 
 `<!DOCTYPE html>`
 
-## HTML (R)
+### HTML (R)
 Specifies content as html.
 
 `<html> Content </html>`
 
-## Head (R)
+### Head (R)
 Typically contains information about the page title etc.
 
 `<head>  </head>`
 
-## Title
+### Title
 Title of the page shown in the browser tab.
 
 `<title> Title of the page </title>`
 
-## Meta / Text encoding
+### Meta / Text encoding
 character encoding can be declared using the meta tag.
 
 `<meta charset="utf-8">`
 
-## Body (R)
+### Body (R)
 contains the main page of information.
 
 `<body> content </body>`
 
-## Headings 
+### Headings 
 uses h1 through h6 in decreasing size.
 
 * `<h1>Welcome to cs136</h1>`
@@ -129,7 +129,7 @@ uses h1 through h6 in decreasing size.
 * .....
 * `<h6>Welcome to cs136</h6>`
 
-## A (Links)
+### A (Links)
 produces a link that whn clicking on the content redirects to another page
 uses attribute href to specify page.
 
@@ -137,7 +137,7 @@ uses attribute href to specify page.
 
 href can link to external sites but can also link to within the page e.g `href="#top"` will move the page to a tag with id top.
 
-## Img (Image)
+### Img (Image)
 Displays an image on the page.
 
 Uses attribute src to specify location.
@@ -146,12 +146,12 @@ Uses attribute src to specify location.
 
 `<img src="file.gif" alt="file">`
 
-## Strong
+### Strong
 makes any content bold
 
 `<strong> content </strong>`
 
-## P
+### P
 specifies a paragraph of text
 
 `<p> paragraph </p>`
@@ -161,42 +161,42 @@ defines site structure
 
 `<div> content </div>`
 
-## Abbr (Abbreviation)
+### Abbr (Abbreviation)
 used to define an abbreviation 
 
 `<abbr title="World Health Organization">WHO</abbr> was founded in 1948`
 
-## Br break
+### Br break
 a break similar to newline no content
 
 `<br>`
 
-## Code 
+### Code 
 give content a code like look
 
 `<code> this is code </code>`
 
-## Em (emphasis)
+### Em (emphasis)
 provides emphasis usually italics
 
 `<em> no </em>`
 
-## Mark
+### Mark
 highlights the content
 
 `<mark> highlight </mark>`
 
-## Small
+### Small
 makes text small
 
 `<small> small text </small>`
 
-## Span 
+### Span 
 used to specify text for specific font and color changes
 
 `the sky is <span style="color:blue;font-weight:bold">blue</span>`
 
-## Lists
+### Lists
 
 * ordered list `<ol>`
     * List item `<li>`
@@ -207,7 +207,7 @@ used to specify text for specific font and color changes
     * List descriptions `<dd>`
 
 
-# Tables
+## Tables
 Allows displaying data in rows and columns uses 3 tags.
 * `<table> </table>`  overall table
 * `<tr> </tr>` table row
@@ -236,27 +236,27 @@ example:
 
 Tables default to no lines. To include lines they should be specified in css.
 
-## Modifying tables
-### table header
+### Modifying tables
+#### table header
 using `<thead>` around the first `<tr>` specifies it as a header row
-### table footer
+#### table footer
 using `<tfoot>` around the last `<tr>` specifies it as a footer row
-### caption
+#### caption
 Just inside the table a caption can be added using
 `<caption> </caption>`
 
-### rowspan
+#### rowspan
 
 Data can cross multiple rows through the use of rowspan 
 
 `<td rowspan="3"> Data </td>`
 
-### column span
+#### column span
 Data can cross multiple columns through the use of colspan 
 
 `<td colspan="2"> Data </td>`
 
-# HTML Forms
+## HTML Forms
 
 These are a way of gathering data form the user specified by `<form>` and providing them to the server
 has attributes:
@@ -265,12 +265,12 @@ has attributes:
 * accept-charset - The charset accepted by the form
 
 `<form method ="post" action="auth.php"`
-## Form Elements
+### Form Elements
 A form element allows the user to add information to the form for submission there are several types
 
 The element can also have a name attribute this can be used to reference the data the user entered
 
-### Input
+#### Input
 used to select data form the user can have many different types
 
 * text - text input
@@ -293,14 +293,14 @@ other types
 * url
 * week
 support is patchy and not uniform across browsers
-#### Other Attributes
+##### Other Attributes
 
 * value - the default value needed to be deleted before entering info 
 * placeholder - the suggested value is a ghost value
 
 `<input type="text", name="name">`
 
-### Select
+#### Select
 Allows the user to select from pre-chosen options uses option
 
 ``` html
@@ -315,7 +315,7 @@ in options
 
 attribute `value` can be used but defaults to the content
 attribute `selected` can be used to select the default 
-## Accessibility
+### Accessibility
 A label can be created with the attribute `for`, by making it equal to an element software can interpret it to aid in accessability for people with assistive tools.
 ``` html
 <label for=first_name>First Name:</label>

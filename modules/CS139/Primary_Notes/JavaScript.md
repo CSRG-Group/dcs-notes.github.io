@@ -6,7 +6,7 @@ part: true
 pre: PHP
 nex: SQL
 ---
-# Introduction
+## Introduction
 
 Javascript is an interpreted programming language
 
@@ -16,7 +16,7 @@ Javascript is an interpreted programming language
 
  Mostly Client side but can be used server side
 
- ## Uses
+### Uses
 
 Dynamically creating HTML
 
@@ -28,7 +28,7 @@ Validating input
 
 Background upload of data
 
-# Basic
+## Basic
 
 Javascript is written between `<script> </script>` tags in html
 
@@ -40,7 +40,7 @@ All statement lines end with a colon.
 
 Javascript is executed when the page loads
 
-## Commands
+### Commands
 
 `alert("");` Displays a popup to the user
 
@@ -48,7 +48,7 @@ Javascript is executed when the page loads
 
 `console.log(""):` Can add text to the hidden browser console
 
-## Variables
+### Variables
 Variables are loosely typed
 
 Names must start with letters `$` or `_` and are case sensitive
@@ -59,7 +59,7 @@ created with `var` keyword
 
 `var y = "Hello";`
 
-## DataTypes
+### DataTypes
 * strings - text inside single or double quotes
 * Numbers - both decimals and integers
 * Boolean - true/false
@@ -69,7 +69,7 @@ created with `var` keyword
 * Undefined - unset variable
 * Function
 
-## Arrays
+### Arrays
 
 Arrays are 0 indexed
 
@@ -81,12 +81,12 @@ animals[3]=2;
 ```
 Arrays can sore different object types
 
-### Common Methods
+#### Common Methods
 
 * length - `animals.length`
 * index  - `animals.indexOf("Cat")`
 
-## Functions
+### Functions
 
 a java script function can be created with the keyword `function`
 
@@ -97,8 +97,8 @@ function Name(args){
 ```
 can return a value using the `return` keyword
 
-# Control Flow
-## IF
+## Control Flow
+### IF
 ```javaScript
 if (course==`cs139`){
     alert("Web dev");
@@ -108,7 +108,7 @@ if (course==`cs139`){
     alert("Something else");
 }
 ```
-## Switch
+### Switch
 ```Javascript
 switch (course){
     case 'cs139':
@@ -121,14 +121,14 @@ switch (course){
         alert("Something else");
 }
 ```
-## For Loop
+### For Loop
 ``` javascript
 var i;
 for (i=0;i<10,i++){
     alert(i);
 }
 ```
-## While Loop
+### While Loop
 ``` javascript
 var x =0;
 while (x<5){
@@ -137,7 +137,7 @@ while (x<5){
 }
 ```
 
-# Objects
+## Objects
 
 Objects are a collection of properties similar to Key-value pairs.
 
@@ -149,7 +149,7 @@ Properties can be accessed using dot notation `person.first_name`
 
 Properties can be created arbitrarily `person.age = 60`
 
-## Constructor Function
+### Constructor Function
 JavaScript can create an object from a single function 
 
 Uses the `this` keyword to reference object variables 
@@ -168,10 +168,10 @@ function Person(firstName,lastName,age){
 var person = new Person("John","Smith",60);
 alert(person.bio());
 ```
-## Classes
+### Classes
 Full javascript object classes do exist but were not discussed in the videos.
 
-# Navigating the DOM
+## Navigating the DOM
 Javascript can manipulate the objects within the document object model
 
 Number of ways to refer to a HTML element
@@ -204,7 +204,7 @@ var heading = document.getElementById("heading");
 heading.innerHTML="Changed it"
 ```
 
-# Event Handling
+## Event Handling
 one way to handle events is using attributes:
 
 `<h1 onclick="this.innerHTML='changed'"> CLICK ME </h1>`
@@ -215,7 +215,7 @@ Can be aded programmatically:
 
 `document.getElementById("main").onclick = alert("hello");`
 
-## Forms 
+### Forms 
 
 Forms have a special event handler called `onsubmit`
 ```javascript
@@ -232,7 +232,7 @@ Can be used in the form with:
 
 `<form onsubmit="return validateForm()" action="submit.php">`
 
-# jQuery
+## jQuery
 JQuery is a framework to shorten document navigation and event handling
     
 Attempts to standardize a lot commands across browsers
@@ -242,7 +242,7 @@ JQuery can be added in the same was as an external javaScript program
 `<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf=8"></script>`
 
 jQuery uses the $ function
-## Starting Scripts
+### Starting Scripts
 Typically it is desirable for scripts to start after the while file has loaded
 this can be achieved using the DOM ready event.
 
@@ -250,19 +250,19 @@ this can be achieved using the DOM ready event.
 
 When using the jQuery function a jQuery object is crated this wraps the HTML and provided it with additional functionality.
 
-## Magical Objects
+### Magical Objects
 * `$('H1')` - all of the H1 elements on a a page
 * `$("#header")` - element with id header
 * `$('.title')` - elements with a class of title
 
-### Many Items
+#### Many Items
 There are also several ways fo obtainging the first itme of sevveral
 * `$('H1')[0]`
 * `$('H1:first')`
 * `$('H1').first()`
 all get the first element
 
-## Methods
+### Methods
 
 * `html();` - gets the inner html of an object
 * `html('HERE');` - sets the inner html of an object
@@ -287,7 +287,7 @@ Styling
 
 I the html content has changed the jQuery variables must be refreshed by calling the jQuery function again
 
-## JQuery Events
+### JQuery Events
 To bind events in jQuery
 1. Give the element an ID
 2. Tell jQuery that something should happen to the element
@@ -328,7 +328,7 @@ There can be multiple handlers for a single event type
 
 There is no guarantee about what order the events are called
 
-### Event Binding
+#### Event Binding
 Events can only be bound when an element exists.
 
 This can be fixed by creating an event listener that captures all squares
@@ -343,7 +343,7 @@ This monitors the parent for events then checks the chid it check if it matches
 no updated events are needed for newly created elements
 
 
-## Event Bubbling
+### Event Bubbling
 DOM elements are nested
 
 When an event is triggered on an element is it is triggered on the parent
@@ -351,7 +351,7 @@ clicking on a paragraph also clicks the body
 
 This can be stopped with `event.stopPropagation()` and is placed inside the function.
 
-# Animation
+## Animation
 JQuery can do simple animations
 
 * `show()`
@@ -364,7 +364,7 @@ JQuery can do simple animations
 
 and more
 
-# AJAX
+## AJAX
 Traditionally webpages were static. However now new data and information is needed from the server
 
 Ajax Asynchronous JavaScript and XML is a collection of inter related web technologies that can sent and receive data form a server without a full refresh.
@@ -375,7 +375,7 @@ Data can be returned  as XML
 
 More likely to bs JSON, Javascript Object Notation
 
-## Steps
+### Steps
 1. An Event occurs
 2. Crate an XMLHttpRequest object
 3. Send HTTPRequest
@@ -384,7 +384,7 @@ More likely to bs JSON, Javascript Object Notation
 6. Browser receives response using javascript
 7. Update page content
 
-## Implementations
+### Implementations
 
 using the XMLHttpRequestObject which can be created using `XMLHttpRequest();`
 
@@ -424,7 +424,7 @@ xmlhttp.onreadystatechange=function(){
 xmlhttp.open("GET","names.php?var=<DATA>",true);
 xmlhttp.send();
 ```
-## JQuery and AJAX
+### JQuery and AJAX
 
 ``` javascript
 $.get("names.php?var=<DATA>", function(data){

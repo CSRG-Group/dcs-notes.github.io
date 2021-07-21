@@ -4,7 +4,7 @@ part: true
 title: Variables, Number Systems, and I/O
 ---
 
-# Variables
+## Variables
 
 **Variables** are what we store _values_ in. A value can be anything from a primitive value, all the way up to an object instance. They're declared like this:
 
@@ -22,9 +22,9 @@ Scanner sinput = new Scanner(System.in);
 int a = sinput.nextInt();
 ```
 
-# Number systems
+## Number systems
 
-## Two's Complement
+### Two's Complement
 
 _Useful links: [source](https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html#:~:text=Two's%20complement%20is%20the%20way,add%20one%20to%20the%20result.&text=That%20is%20how%20one%20would%20write%20%2D28%20in%208%20bit%20binary.)_ _[conversion tool](https://www.rapidtables.com/convert/number/decimal-to-binary.html)_
 
@@ -39,11 +39,11 @@ Two's complement is the way in which computers represent integers. To get the tw
 **⚠ Important:** If you are converting a positive integer _to_ two's complement form, then you simply do a basic conversion. When converting to binary, you only invert the bits if you have a negative number. Similarly, if you see the number `00011110`, this is `30`- you do not need to do the hokey-pokey inversion magic. If you are reading from a binary number, you can either read the basic decimal number _OR_ the decimal from the signed 2's complement. In which case, the number `11111101` would read `253` and `-3` respectively.
 
 For example, given 8 bits and the number -28:
-### Write out the binary form of +28
+#### Write out the binary form of +28
 `28 = 0 0 0 1 1 1 0 0`
-### Invert the digits
+#### Invert the digits
 `0 0 0 1 1 1 0 0 => 1 1 1 0 0 0 1 1`
-### Add 1
+#### Add 1
 ``` 
 1 1 1 0 0 0 1 1
               1 +
@@ -51,7 +51,7 @@ For example, given 8 bits and the number -28:
 1 1 1 0 0 1 0 0
 ```
 
-## Two's Complement: Converting to decimal
+### Two's Complement: Converting to decimal
 It is therefore also possible to convert _from_ Two's Complement; take the number `0xFFFFFFFF` as an example. This is the hex representation of `1111 1111 1111 1111 1111 1111 1111 1111`.
 
 At first glance, we can tell that **this number is negative**, as it has a leading (leftmost) bit set to `1`.
@@ -63,7 +63,7 @@ If you want to see what this number is a negative _of_, then we follow a similar
 
 Therefore, inverting all the bits `0xFFFFFFFF` results in `0000 0000 0000 0000 0000`. Then, adding `1` leads to `0000 0000 0000 0001`, which is the number `1`. Therefore, the _negative_ of `0xFFFFFFFF` is 1, and hence the _value_ is `-1`.
 
-## Java’s numeric data types
+### Java’s numeric data types
 
 | Type    | Bytes           | Value in Decimal                         |
 | ------- | --------------- | ---------------------------------------- |
@@ -78,7 +78,7 @@ A `float` is 32-bits and can represent numbers between -3.4e38 and 3.4e38 with 6
 
 A `double` is 64-bits and can be represent numbers between -1.7e308 and 1.7e308 with 14 to 15 significant digits of accuracy. 
 
-# IEEE 754 notation for floating point numbers
+## IEEE 754 notation for floating point numbers
 
 _Useful links: [GeeksforGeeks (source)](https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/)_ _[Conversion Tool](https://www.h-schmidt.net/FloatConverter/IEEE754.html)_
 
@@ -91,7 +91,7 @@ Before we begin, a brief reminder on fractional binary: `9.125 = 1001.001`. We a
 
 The table is a little janky, but it hopefully gets the point across; you continue in descending powers of 2 as you go rightwards. Anything beyond `2^0` is followed by a decimal place, `.`.
 
-## Components of the IEEE 754 Floating Point Number
+### Components of the IEEE 754 Floating Point Number
 
 Before diving into the components, it's much better to look at an example. Therefore, take the decimal number `43.625`; this has binary representation `101011.101`. However, we would represent this as `1.01011101` x 2<sup>5</sup>. 
 
@@ -113,7 +113,7 @@ With these components established, we can rewrite our previous example, `43.625`
 
 **Complete representation:** `0 10000100 01011101000000000000000`
 
-## IEEE 754 Double-precision Number
+### IEEE 754 Double-precision Number
 
 Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.
 
@@ -123,7 +123,7 @@ Luckily for our computers, there is also a specification for double-precision nu
 - **Mantissa.** 52-bits
 - **Biased Exponent.** 11-bits
 
-## Special values
+### Special values
 
 IEEE 754 also has some special values you need to keep in mind:
 
@@ -135,7 +135,7 @@ The **exponent bits** = `1111 1111`
 - If the _fraction_ is `0`, the value is `+- infinity`.
 - Otherwise, the value is `NaN`, otherwise known as **not a number**.
 
-# Output
+## Output
 
 The main content I gleamed from this was to be familiar with the three Linux streams:
 
@@ -145,7 +145,7 @@ The main content I gleamed from this was to be familiar with the three Linux str
 | `System.out` | Send normal output | Your typical `System.out.println()` will output to this stream |
 | `System.err` | Send output when there is an error | Some IDE's such as Eclipse will output to this stream to highlight text in a different colour |
 
-# Casting
+## Casting
 
 Generally speaking, this is the process of **changing the data type** of one piece of data from one type to another. You need to be familiar with the different types (pun not intended) of casting:
 
@@ -162,7 +162,7 @@ float pi = 3.144;
 int more_pi = (int) pi; // essentially tells the compiler not to worry
 ```
 
-# Lazy and strict evaluation
+## Lazy and strict evaluation
 
 You will be familiar with both `&/&&` and `|/||`; if you use either of these, your code will still compile correctly. However, one is **strict** whilst the other is **lazy**. If you need a quick way to remember this, a **SINGLE CHARACTER** means **STRICT** evaluation.
 
@@ -179,7 +179,7 @@ if (false & (a++ == 5)) {}
 
 // Therefore, a lazy OR operator will not execute the RHS if the LHS is true.
 ```
-# Pre- and Post-increment
+## Pre- and Post-increment
 
 There are two ways to increment a numerical variable using the `++` operation:
 
@@ -189,7 +189,7 @@ There are two ways to increment a numerical variable using the `++` operation:
 
 I've found that a useful way to remember this is to think of where the `++` is; in the prefix case, the `++` precedes the variable name. Therefore, you can think of the return always happening when you reach the `var`. Hence, prefix `++var` incremements and then returns, whilst postfix `var++` returns and then increments.
 
-# Operator precedence _(BIDMAS on steroids)_
+## Operator precedence _(BIDMAS on steroids)_
 
 The Java creators realised that they too wanted to implement operator precedence. It follows this order:
 

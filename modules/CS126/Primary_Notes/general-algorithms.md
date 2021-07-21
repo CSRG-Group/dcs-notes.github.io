@@ -5,9 +5,9 @@ math: true
 title: "General Algorithms"
 ---
 
-# Searching data structures
+## Searching data structures
 
-## Linear search
+### Linear search
 
 ```java
 Let arr <- the array to search
@@ -21,11 +21,11 @@ While n is smaller than the length of arr
 Stop, since the item is not in the array
 ```
 
-## Binary search
+### Binary search
 
 This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1
 
-### Iterative algorithm
+#### Iterative algorithm
 
 ```java
 Let arr <- the array to search
@@ -46,7 +46,7 @@ While l != r
 Stop, since the item is not in the array
 ```
 
-### Recursive algorithm
+#### Recursive algorithm
 
 ```java
 Let arr <- the array to search
@@ -68,9 +68,9 @@ Function binarySearch(arr, k)
 
 
 
-# Sorting data structures
+## Sorting data structures
 
-## Insertion sort
+### Insertion sort
 
 ```java
 Let P <- a priority queue using an sorted array implementation
@@ -83,7 +83,7 @@ While P is not empty
 	Append i to arr'
 ```
 
-## Selection sort
+### Selection sort
 
 ```java
 Let P <- a priority queue using an unsorted array implementation
@@ -96,7 +96,7 @@ While P is not empty
 	Append i to arr'
 ```
 
-## Heap sort
+### Heap sort
 
 ```java
 Let P <- a priority queue using a heap based implementation
@@ -109,7 +109,7 @@ While P is not empty
 	Append i to arr'
 ```
 
-## Merge sort
+### Merge sort
 
 ```java
 Let arr <- the array to sort
@@ -146,8 +146,8 @@ Function merge(arr1, arr2)
 
 
 
-# Reversing data structures
-## Reversing a stack
+## Reversing data structures
+### Reversing a stack
 
 Push all the items in array to the stack, then pop all the items off the stack into the new reversed array
 ```java
@@ -158,7 +158,7 @@ For each item in S
 	Push s to the head of S'
 ```
 
-## Reversing a linked list
+### Reversing a linked list
 
 Iterate over the linked list from the head, and for each element in the list to reverse, set the item as the predecessor of the head in the new reversed list
 ```java
@@ -172,9 +172,9 @@ For each item in S
 
 
 
-# Set operations
+## Set operations
 
-## Generic merging
+### Generic merging
 
 Taking the union of two sets, in linear time:
 ```java
@@ -200,9 +200,9 @@ While B is not empty
 
 
 
-# Graph algorithms
+## Graph algorithms
 
-## Depth-first search
+### Depth-first search
 
 ```java
 DFS(G, v)
@@ -219,7 +219,7 @@ DFS(G, v)
 
 
 
-### DFS for an entire graph:
+#### DFS for an entire graph:
 
 The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.
 
@@ -250,7 +250,7 @@ DFS(G, v)
 
 
 
-### Path Finding with DFS
+#### Path Finding with DFS
 
 By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the **template method pattern**
 where **S** is an initially empty stack
@@ -275,7 +275,7 @@ pathDFS(G, v, z)
 
 
 
-### Cycle Finding with DFS
+#### Cycle Finding with DFS
 
 The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.
 
@@ -301,7 +301,7 @@ cycleDFS(G, v)
 	S.pop(v)
 ```
 
-### Topological ordering using DFS
+#### Topological ordering using DFS
 
 
 ```java	
@@ -329,7 +329,7 @@ topologicalDFS(G, v)
 
 
 
-## Breadth-first search
+### Breadth-first search
 
 ```java
 Algorithm BFS(G)
@@ -364,7 +364,7 @@ Algorithm BGS(G,s)
 
 
 
-## Directed graphs
+### Directed graphs
 
 ```java
 Algorithm FloydWarshall(G)
@@ -387,9 +387,9 @@ Algorithm FloydWarshall(G)
 
 
 
-# Miscellaneous
+## Miscellaneous
 
-## Computing spans
+### Computing spans
 
 The span of an array is the maximum number of consecutive elements less than a value at an index which precede it
 This can be calculated in linear time by
@@ -403,11 +403,15 @@ Set S[i] <- i-j
 Push i to the stack
 ```
 
-## Fibonacci
+### Fibonacci
 
+<<<<<<< HEAD
 The Fibonacci numbers can be calculated in various ways, each of which have varying efficiency, from very inefficient in exponential time, to efficient in linear time
 
 ### Exponential time
+=======
+#### Exponential time
+>>>>>>> 45bfe5d (fixed heading indentation to match style guide)
 
 ```java
 Function fibonacci(k)
@@ -421,7 +425,7 @@ Function fibonacci(k)
 
 This is very inefficient, running in $$O(2^n)$$ time, since it re-calculates calls to `fibonacci(k)` for some `k` many times, instead of using the same result every time it is needed
 
-### Linear time
+#### Linear time
 
 ```java
 //Returns the tuple (f_k, f_k-1)

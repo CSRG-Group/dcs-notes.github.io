@@ -5,13 +5,13 @@ math: true
 part: true
 ---
 
-# Protocols
+## Protocols
 A communication Standard so that computers can transfer data and instructions accurately.
 
 
-# Network Layers
+## Network Layers
 There are 4 (in this course) Network layers each have different protocols and are responsible for parts of data transmission.
-## Application Layer
+### Application Layer
 
 Many protocols
 * __HTTP__ Hypertext Transfer Protocol used for web communication
@@ -19,26 +19,26 @@ Many protocols
 * __POP/IMAP/SMTP__ Email protocols for transferring and storing email
 * __DNS__ Domain name service for resolving domain names to IP addresses
 
-### HTTP
+#### HTTP
 An Application Protocol for hypermedia information
 
 standard response request
 
 Development by Internet Engineering Task Force (IETF) and World Wide Web Consortium (W3C)
 
-## Transport Layer
+### Transport Layer
 Ensures Transmissions arrive in order an without error
 * TCP
 * UDP
 
 
-## Internet Layer
+### Internet Layer
 Establishes connection, routing and addressing
 * IPV4
 * IPV6
 An IP address is needed by every computer on the internet
 
-### IPV4
+#### IPV4
 
 Uses 4x8-bit numbers so 4,294,967,296 addresses
 they are now gone.
@@ -50,7 +50,7 @@ they are now gone.
 >
 > There are other reserved addresses
 
-#### NAT Network Address Translation
+##### NAT Network Address Translation
 Used in part to overcome the shortage of IPV4 addresses
 
 * A device connects to a router
@@ -64,15 +64,15 @@ e.g `213.31.218.101:5001` is port `5001` at address `213.31.218.101`
 A single IP address is need for the router all of the internal computers use 
 one of the reserved addresses for private networks
 
-### IPV6
+#### IPV6
 
 Uses 8x16-bit numbers 340 undecillion numbers (a lot)
-## Link Layer
+### Link Layer
 Responsible for transmission of raw bits
 *MAC
 
 
-# Domain Name 
+## Domain Name 
 DNS Domain Name system acts an a contact list for servers
 
 Translates Human readable Name to IP addresses
@@ -100,7 +100,7 @@ Registrars check with interNIC for the names
 
 Domain names are case insensitive
 
-## Resolving A Domain Name
+### Resolving A Domain Name
 Default Base
 
 When connecting to a network the computer is given a DNS server (root)
@@ -111,7 +111,7 @@ When Resolving a domain name
 * The top level domain which provides a sub domain server
 * Repeat until the address is found
 
-### Caching
+#### Caching
 The previous steps are extensive so DNS caching is used.
 * The computer points to a caching server
 * The caching server checks if it has the address in memory
@@ -121,7 +121,7 @@ The previous steps are extensive so DNS caching is used.
 
 DNS records have a TTL (time to live) which dictates how ling they are valid for
 
-# URL
+## URL
 
 Made form several steps
 Name | Example
@@ -140,7 +140,7 @@ Fragment | article
 
 No guarantee of a response 
 
-## Path 
+### Path 
     A request requests a file the path specifies the file
 
     / is the root folder for the webserver
@@ -149,10 +149,10 @@ No guarantee of a response
 
     path is case sensitive
 
-## Query String : 
+### Query String : 
 [SEE GET](Theory3.html)
 
-## Fragment
+### Fragment
 
 Requests a portion of a page.
 

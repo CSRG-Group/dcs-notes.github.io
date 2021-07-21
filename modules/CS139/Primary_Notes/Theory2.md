@@ -5,13 +5,13 @@ math: true
 part: true
 ---
 
-# Static Websites vs Dynamic Websites
+## Static Websites vs Dynamic Websites
 
-## Static Websites
+### Static Websites
 
 The user makes a page request the sever runs a script and returns the requested page to the user as fixed HTML.
 
-## Dynamic Websites
+### Dynamic Websites
 
 __Processing occurs on the clients machine__
 
@@ -20,19 +20,19 @@ The user makes a page request the sever runs a script and returns the requested 
 The JavaScript then may make additional requests to the server and updates
 the web page accordingly.
 
-# Client Server Model
-
 ## Client Server Model
+
+### Client Server Model
     
 The client requests data from a server that then then responds
 
-## Peer to Peer
+### Peer to Peer
 
 Devices are both requesting an serving data concurrently 
 
-# Data Centers
+## Data Centers
 
-## Servers
+### Servers
 
 Server's can have many different uses
 
@@ -43,7 +43,7 @@ Server's can have many different uses
 * Media
 * Authentication
 
-## Support Hardware
+### Support Hardware
 
 Data centers contain hardware to support and maintain the servers:
 
@@ -53,32 +53,32 @@ Data centers contain hardware to support and maintain the servers:
 * Backup generators
 * UPS (uninterruptible power supply (Batteries))
 
-## Data Duplication
+### Data Duplication
 
 In data centers data is duplicated so that if a server breaks then another
 server can take over and continue to provide the data
 
-# The Internet
+## The Internet
 
-## Communication
+### Communication
 The majority of data traves through wires and cables.
 
 Undersea cables are the primary way for continental communication
 
 Satellites and other communication methods may be used but this is generally rare.
 
-## Data Locality
+### Data Locality
 Generally the shortest path is used to obtain data if data is in the UK requests and information typically will not leave the country. If the data is in America then a request will be mad to America. The shortest path is not guaranteed as the internet is a web many different paths exist.
 
-## Packets
+### Packets
 
 Packet's are addressed and then routed to the correct location. Packets are transmitted across many computers on the way to the destination
 
-## Routing
+### Routing
 
 Routing involves checking if the destination is known to a computer and then directing the traffic in the correct location, if the location is not known then another computer higher up the chain is asked.
 
-# Mobile Web applications
+## Mobile Web applications
 
 Phone and tablets have many constraints
 * Lacks hover

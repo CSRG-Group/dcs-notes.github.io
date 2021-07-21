@@ -4,29 +4,29 @@ title: SQL
 math: true
 part: true
 ---
-# Key Commands
+## Key Commands
 
-# Database Theory
+## Database Theory
 "Keep what changes abd what stays the same separate"
 
 Keep structure and date separate
 
-## SQL
+### SQL
 Structures Query Language
 
 interact with a relational database
 
-## Relational Database
+### Relational Database
 Data is linked to other data through the use of, unique id and links/ references
 
-## Database Management
+### Database Management
 Databases need to be managed
 
 Users, password access rights
 
 Mostly beyond scope of this course
 
-## NoSQL
+### NoSQL
 Store data in Key value Pairs
 
 Similar to accusative arrays
@@ -34,7 +34,7 @@ Similar to accusative arrays
 Fast retrieval through hash functions
 Uses HAsh functions rather ehn 
 
-## ACID Compliance
+### ACID Compliance
 ensures transactions are robust
 * atomicity - each transaction is a single unit
 * consistency - only take the database from one valid state to another
@@ -42,7 +42,7 @@ ensures transactions are robust
 * durability - Once a transaction has occurs it will remain regardless of system failure
 
 
-## Database Table
+### Database Table
 
 Place to store data of the same type
 
@@ -52,34 +52,34 @@ Rows are data that is entered
 
 Unlimited number of rows are available but fixed number of columns.
 
-## Links
-### One to One
+### Links
+#### One to One
 One record is associated with one and only one record.
 
 * one person has one passport
-### One to Many
+#### One to Many
 One record points to many records.
 
 * A User has many posts
 * A post has one user
 
-### Many to Many
+#### Many to Many
 Many records are related to many records.
 
 * One student attends many courses
 * One course is attend by many Students
 
-## Identifiers
+### Identifiers
 Each data row has an ID that can be used to reference the data.
 
-## Schema
+### Schema
 A script used to create a database from scratch, used to define tables.
 
 The script may also contain default/ demo values
 
-# Detailed Commands
+## Detailed Commands
 
-## Data Types
+### Data Types
 
 * integer - whole Numbers
 * real - decimal numbers
@@ -89,13 +89,13 @@ The script may also contain default/ demo values
 * datetime - date and time
 * blob - binary data
 
-### Data Modifiers
-#### Auto increment
+#### Data Modifiers
+##### Auto increment
 `id integer PRIMARY KEY`
 when inserting values use NULL
 
-## Table Operations
-### Create Table
+### Table Operations
+#### Create Table
 ``` sql
 CREATE TABLE <table name>(
     <column1> <Datatype>,
@@ -105,16 +105,16 @@ CREATE TABLE <table name>(
 );
 ```
 
-### Delete Table
+#### Delete Table
 ``` sql
 DROP TABLE table1;
 ```
 
-## Add Data
+### Add Data
 ``` SQL
 INSERT INTO table1 VALUES (value1,value2,value3,....);
 ```
-## Updating Records
+### Updating Records
 ``` SQL
 UPDATE table1 SET column1 = value1 WHERE column2=value2;
 
@@ -122,11 +122,11 @@ Multiple records
 UPDATE table1 SET column1 = value1,column2 = value2 WHERE column3=value3;
 ```
 
-## Deleting Records
+### Deleting Records
 ``` SQL
 DELETE FROM table1 WHERE <column1=value1;
 ```
-## Find Data
+### Find Data
 
 ``` SQL
 SELECT column1,column2,.. FROM table1 WHERE column1=value1;
