@@ -33,6 +33,10 @@ Additionally, summary notes of key results, again made by the module organiser (
 
 ## Additional resources
 
+### Flash Cards
+
+**Anki** flash cards for the module by **Bora** [can be found here](https://github.com/bora-7/Anki-Flashcards-Year-1), simply download the CS131 deck and import it with Anki.
+
 ### Practice questions
 
 More practice questions can be found by visiting **Callum Whitfield**'s revision website and signing up using your university email address. The website can be found [here](https://mathrevision.pythonanywhere.com). The site allows you to practice Further Maths questions (of which there is overlap with 131) and dynamically chooses questions depending on your performance!
