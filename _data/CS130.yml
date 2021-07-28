@@ -1,0 +1,53 @@
+code: CS130
+description: 	Mathematics for Computer Scientists I
+website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs130/
+cats : 15
+optional : "no"
+
+examStructure:
+  - name : Dry Run
+    percent : 1
+    date : TBD
+    structure: Tabula submission
+  - name : Sheet and feedback 1
+    percent : 3
+    date : TBD
+    structure: Tabula submission
+  - name : Sheet and feedback 2
+    percent : 3
+    date : TBD
+    structure: Tabula submission
+  - name : Sheet and feedback 3
+    percent : 3
+    date : TBD
+    structure: Tabula submission
+  - name : Final problem sheet
+    percent : 3
+    date : TBD
+    structure: Tabula submission
+  - name : Exam
+    percent : 80
+    date : TBD
+    structure: Online AEP 24 hour window
+
+Notes:
+  - name: Typed Notes
+    link: https://adrakaris.github.io/blog-cs/cs130/index.html
+    description: Detailed typed notes for CS130 which cover the entire module
+    authors:
+      - Yijun Hu
+  - name: handwritten_notes
+    description: handwritten notes covering the whole of the module
+    authors:
+      - Edmund Goodman
+
+CribSheets :
+  - name: General_Crib_Sheet
+    description: condensed "crib sheet", which includes mostly includes definitions
+  - name: Proof_Approaches
+    description : Sheet on standard proof techniques
+   
+
+
+Questions :
+  QUIZAvailable : false

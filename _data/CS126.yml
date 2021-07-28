@@ -1,0 +1,61 @@
+code: CS126
+description: 	Design of Information Structures
+website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs126/
+cats : 15
+optional : "no"
+
+examStructure:
+  - name : Labs 1
+    percent : 10
+    date : Continuous
+    structure: In person feedback
+  - name : Coursework 
+    percent : 40
+    date : TBD
+    structure: Coursework tabula submission
+  - name : Exam
+    percent : 50
+    date : TBD
+    structure: Online AEP 24 hour window
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    authors:
+      - Edmund Goodman
+      - Justin Tan
+      - Leon Chipchase
+    order:
+      - arrays-and-lists.html
+      - algorithm-analysis.html
+      - recursive-algorithms.html
+      - stacks-and-queues.html
+      - maps-hash-tables-and-sets.html
+      - trees.html
+      - priority-queues.html
+      - skip-lists.html
+      - balanced-trees.html
+      - graphs.html
+      - digraphs.html
+      - general-algorithms.html
+
+  - name: Handwritten_notes
+    description : a pair of pdfs covering the entire module
+    authors:
+      - Josh Fitzmaurice
+
+  - name: Akram pdf notes
+    link: akrampdf
+    description : handwritten notes for lectures 4 to 12
+    authors:
+      - Akram Ahmad
+    
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : flash cards
+      description : set of quizlet flash cards
+      link : https://quizlet.com/_99y5l2?x=1jqt&i=18al03
+      authors:
+        - Leon Chipchase

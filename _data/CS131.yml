@@ -1,0 +1,75 @@
+code: CS131
+description: Mathematics for Computer Scientists II
+website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/
+cats : 15
+optional : "no"
+
+examStructure:
+  - name : Problem sheet 1
+    percent : 3
+    date : TBD
+    structure: Tabula submission
+  - name : Problem sheet 2
+    percent : 3
+    date : TBD
+    structure: Tabula submission
+  - name : Problem sheet 3
+    percent : 4
+    date : TBD
+    structure: Tabula submission
+  - name : Problem sheet 4
+    percent : 10
+    date : TBD
+    structure: Tabula submission
+  - name : Exam
+    percent : 80
+    date : TBD
+    structure: Online AEP 24 hour window
+
+Notes:
+  - name: Primary_Notes
+    description: Noted copied from Yijun Hu notes and cover the entire module
+    authors:
+      - Yijun Hu
+      - Edmund Goodman
+    order:
+      - part1.html
+      - part2.html
+      - part3.html
+      - part4.html
+      - part5.html
+  - name: yijuin notes
+    description: Detailed typed notes
+    authors:
+      - Yijun Hu
+    link: https://yijun.hu/blog-cs/cs131/index.html
+  - name: full pdf
+    link: full_pdf/cs131-notes.pdf
+    description : handwritten notes on the whole module
+    authors:
+      - Josh Fitzmaurice
+
+
+CribSheets :
+  - name: Question_Types
+    description: crib sheet for question types
+    authors:
+      - Akram Ahmad
+  - name: Summary of key results
+    description : summary notes of key results, again made by the module organiser (not hosted here, and only accessible using a Warwick ITS account)
+    link: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/revision_summary.pdf
+    
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : ankiQuestions/CS131-ankideck.apkg
+      title: Anki Flashcards
+      description : a set of flashcards for Anki
+    
+    - name : Further Maths overlap
+      description : More practice questions can be found by visiting Callum Whitfield's revision website and signing up using your university email address. The site allows you to practice Further Maths questions (of which there is overlap with 131) and dynamically chooses questions depending on your performance!
+      link : https://mathrevision.pythonanywhere.com
+      authors:
+        - Callum Whitfield
+    

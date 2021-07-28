@@ -15,11 +15,16 @@
     <meta charset="UTF-8">
     {%- if page.math == true or layout.math == true -%}
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+    {%- endif -%}
+    {%- if page.jquery == true -%}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {%- endif -%}
+    {% if page.script %}
+    <script type="text/javascript" src="{{page.script}}"></script>
     {%- endif -%}
     <!-- Include tocNAV javascript -->
     <script type="text/javascript" src="{{ site.baseurl }}/assets/js/tocNav.js"></script>
-
+    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/favourites.js"></script>
     <!-- seo used to be here -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
@@ -40,6 +45,22 @@
 <body>
     <div id="mainGrid" class="container">
         <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            <div class=favorite>
+                <img class=fav-star src="/assets/img/star1.svg" alt="Favorites" width =40 height=40 id=favoriteImage>
+                <div id=favoriteBox>
+                    <header class="fav-header">
+                        <h3> Favorites</h3>
+                    </header>  
+                    <div class="fav-contnet">
+                    </div>
+                    <button id=fav-button onclick="addToFavorites()">
+                        Add
+                    </button>
+                </div>
+            </div>
+            
+            
             <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
             {%- if page.description -%}
             <h2 class="project-tagline">{{ page.description }}</h2>
@@ -65,17 +86,7 @@
             <main id="content" class="main-content" role="main">
                 <div class="partNav">
                     {%- if page.part == true -%}
-                        {%- if page.previous.part == true -%}
-                            {% capture previous %}{{ page.previous.url }}{% endcapture %}
-                            {%- capture ptitle -%}{{ page.previous.title }}{%- endcapture -%}
-                        {%- endif -%}
-                        {%- if page.next.part == true -%}
-                            {% capture next %}{{ page.next.url }}{% endcapture %}
-                            {%- capture ntitle -%}{{ page.next.title }}{%- endcapture -%}
-                        {%- endif -%}
-                        {%- capture mod -%}{{ page.layout | default: "null"}}{%- endcapture -%}
-
-                        {% include partnav.html nex=next pre=previous mod=mod ptitle=ptitle ntitle=ntitle %}
+                        {% include partnav2.html url=page.url %}
                     {%- else -%}
                     {%- capture mod -%}{{ page.mod | default: "Module Home"}}{%- endcapture -%}
                     <a href="./">🏡{{ mod }}</a>
@@ -90,10 +101,29 @@
                             }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name
                             }}</a>.</span>
                     {% endif %}
+
+                    {% if page.authors %}
+                        Page made by made by &#9
+                        {%- for p in page.authors -%}
+                            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                        {%- endfor -%}
+                            {% if page.contributors %}
+                                with contributions by &#9
+                            {%- endif -%}
+                        {% elsif page.contributors %}
+                        Contributions made by &%9
+                    {%- endif -%}
+
+                    {% if page.contributors %}
+                        {%- for p in page.contributors -%}
+                            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                        {%- endfor -%}
+                    {%- endif -%}
                 </footer>
             </main>
         </div>
     </div>
 </body>
 
+</html>
 </html>

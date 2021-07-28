@@ -1,0 +1,68 @@
+{
+    "title":"CS132",
+    "name":"Computer organization and architecture",
+    "structure": [
+        {"name":"Data representation"},
+        {"name":"Digital logic","subTopics":[
+                {"name":"Boolean algebra"},
+                {"name":"Karnaugh Map"},
+                {"name":"Combinatorial Logic Circuits"},
+                {"name":"Sequential Logic Circuits"}
+            ]},
+        {"name":"Assembler"},
+        {"name":"Memory Systems"},
+        {"name":"I/O mechanisms"},
+        {"name":"Processor architecture"}
+
+    ],
+    "extSites":[
+        {"name":"Boolean Algebra Quiz",
+         "description":"Practice simplifying basic boolean algebra",
+         "topics":["Boolean algebra"],
+         "link":"http://www.ee.surrey.ac.uk/Projects/Labview/boolalgebra/quiz/index.html",
+         "answerType":"C"}
+    ],
+    "recall":[
+        {
+            "question":"State the identity law of conjunction",
+            "answer":"$$x \\cdot 1 \\equiv x$$",
+            "marks":1,
+            "authors":["Joseph Evans"],
+            "topics":["Boolean algebra"]
+        },
+        {
+            "question":"State the Distributivity law of disjunction",
+            "answer":"$$x \\cdot (y + z) \\equiv (x \\cdot y) + (x \\cdot z)$$",
+
+            "marks":2,
+            "topics":["Boolean algebra"]
+            
+        },
+        {
+            "question":"Draw the truth table and circuit diagram for a 1 bit half adder",
+            "answer":"",
+            "answerImg":"image-20210504124908090.png",
+
+            "marks":2,
+            "topics":["Combinatorial Logic Circuits"]
+            
+        }
+    ],
+    "understanding":[
+        {
+            "question":"Simplify $$(X+Y)\\cdot(X+\\overline{(Y+Z)})$$",
+            "answer":[
+                "{Demorgans theorm}$$(X+Y)\\cdot(X+\\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Distributivity}$$(X+\\overline{Y}\\cdot\\overline{Z})\\cdot X + (X+\\overline{Y}\\cdot\\overline{Z})\\cdot Y$$ ",
+                "{Distributivity}$$(X\\cdot X + X\\cdot \\overline{Y}\\cdot\\overline{Z}) + (Y\\cdot X + Y\\cdot \\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Idempotent}$$(X + X\\cdot \\overline{Y}\\cdot\\overline{Z}) + (Y\\cdot X + Y\\cdot \\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Absorption Law}$$(X) + (Y\\cdot X + Y\\cdot \\overline{Y}\\cdot\\overline{Z})$$ ",
+                "{Inverse Law}$$(X) + (Y\\cdot X +0)$$ ",
+                "{Identity Law}$$(X) + (Y\\cdot X)$$ ",
+                "{Absorption Law}$$X$$ "
+                ],
+            "marks":6,
+            "topics":["Boolean algebra"]
+        }
+    ]
+}
