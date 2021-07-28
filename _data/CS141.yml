@@ -22,8 +22,8 @@ Notes:
   - name: Primary_Notes
     description: Notes covering the whole of the module
     authors:
-      - Justanhy
-      - EdmundGoodman
+      - Justin Tan
+      - Edmund Goodman
     order:
       - part1.html
       - part2.html
@@ -37,8 +37,8 @@ CribSheets :
     link: laws_and_associativity_crib
     description: laws and associativity in Haskell syntax!
     authors:
-      - Justanhy
-      - EdmundGoodman
+      - Justin Tan
+      - Edmund Goodman
     
 
 Questions :

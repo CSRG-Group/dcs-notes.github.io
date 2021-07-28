@@ -47,7 +47,7 @@ To ensure the smooth running of the this project, and avoid any contributions ha
 - If you are directly sourcing content that is not your own, **please add the correct citations**. For images or text taken verbatim from a source, please include a link to the site it is taken from, and exercise common sense for other cases
 - Please do not re-host any university owned content, including but not limited to past papers and lecture notes
 
-
+A guide on proper attribution can be found [here](https://wiki.creativecommons.org/wiki/best_practices_for_attribution) 
 # Technical
 
 ## downloading

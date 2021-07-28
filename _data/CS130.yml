@@ -12,9 +12,11 @@ examStructure:
   - name : Sheet and feedback 1
     percent : 3
     date : TBD
+    structure: Tabula submission
   - name : Sheet and feedback 2
     percent : 3
     date : TBD
+    structure: Tabula submission
   - name : Sheet and feedback 3
     percent : 3
     date : TBD
@@ -49,4 +51,3 @@ CribSheets :
 
 Questions :
   QUIZAvailable : false
-  altQuestions:

@@ -102,7 +102,7 @@ Check the question bank for identical questions before submission
 5. fill in the number of marks, this should be a general reflection on difficulty and is not expected to be exact
 6. To credit contributors
    * If an author
-        1. copy `"author":[""],` and add the author's names the the array
+        1. copy `"authors":[""],` and add the author(s) names the the array
    * If a contributor 
-        1. copy `"author":[""],` and add the contributor's names the the array
+        1. copy `"contributors":[""],` and add the contributor's names the the array
 
