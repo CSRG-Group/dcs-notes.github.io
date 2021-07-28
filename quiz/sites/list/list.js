@@ -121,14 +121,19 @@ function findQuestions(){
     });
     questions=[]
     if ($("#Recall").prop("checked")){
-        questions=questions.concat(filterMatching(topics,courseData.recall))
+        if (courseData.recall){
+            questions=questions.concat(filterMatching(topics,courseData.recall));
+        }
     }
 
     if ($("#Understanding").prop("checked")){
-        questions=questions.concat(filterMatching(topics,courseData.understanding))
+        if (courseData.understanding){
+            questions=questions.concat(filterMatching(topics,courseData.understanding));
+        }
     }
-
-    display_extsites(filterMatching(topics,courseData.extSites));
+    if (courseData.extSites){
+        display_extsites(filterMatching(topics,courseData.extSites));
+    }
     display_questions(questions);
     return false;
 }
@@ -199,9 +204,9 @@ function display_questions(questions){
             if (typeof(question.source)!=="undefined"){
                 html+='&#9 <small >Sourced from <a href='+question.source.link+'>'+question.source.name+'</a></small>';
             }
-            if (typeof(question.author)!=="undefined"){
+            if (typeof(question.authors)!=="undefined"){
                 html+="&#9 <small> Question made by made by";
-                for (const contributor of question.author) {
+                for (const contributor of question.authors) {
                     html+="&#9<a href=../../../contributors/?name="+contributor+">"+contributor+"</a>";
                 }
                 html+="</small>";
