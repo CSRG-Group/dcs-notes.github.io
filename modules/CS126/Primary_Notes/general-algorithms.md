@@ -23,8 +23,29 @@ Stop, since the item is not in the array
 
 ### Binary search
 
-This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1
+This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1.
 
+<<<<<<< HEAD:modules/CS126/Primary_Notes/general-algorithms.md
+=======
+```{java}
+Let arr <- the array to search
+Let k <- the iterm to search for
+if !(arr.isSorted())
+	arr.mergeSort()
+binarySearch(arr, k, int lowerBound, upperBound)
+	middle <- (lowerBound + upperBound) / 2
+	if upperBound < lowerBound
+		return - 1
+	if k == arr[middle]
+    		return middle
+	else if k < arr[middle]
+    		return binarySearch(arr, k, lowerBound, middle -1)
+    	else 
+        	return binarySearch(arr, k, middle + 1, upperBound)
+      
+```
+
+>>>>>>> 64fb4ebe5887b5eca1307cf2a438cae523460529:_CS126/general-algorithms.md
 #### Iterative algorithm
 
 ```java
@@ -404,14 +425,9 @@ Push i to the stack
 ```
 
 ### Fibonacci
-
-<<<<<<< HEAD
 The Fibonacci numbers can be calculated in various ways, each of which have varying efficiency, from very inefficient in exponential time, to efficient in linear time
 
 ### Exponential time
-=======
-#### Exponential time
->>>>>>> 45bfe5d (fixed heading indentation to match style guide)
 
 ```java
 Function fibonacci(k)

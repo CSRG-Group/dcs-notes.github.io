@@ -35,9 +35,6 @@ Given the large number of topics, it makes sense to break these down into broade
 10. [x] [Designing For Mobile](Theory10)
 11. [x] [Being A Web Developer](Theory11)
 12. [x] [Setting up a Real Website](Theory12)
-<<<<<<< HEAD
-
-
 
 ## Additional resources
 
@@ -50,5 +47,3 @@ Given the large number of topics, it makes sense to break these down into broade
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.
 
 [Flash Cards](https://quizlet.com/_99cgos?x=1jqt&i=18al03)
-=======
->>>>>>> f216d29 (bug fixes and formatting errors)

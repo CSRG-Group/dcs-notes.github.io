@@ -25,6 +25,7 @@ Given the large number of topics, it makes sense to break these down into broade
 
 
 ## Additional resources
+<<<<<<< HEAD:modules/CS118/Primary_Notes/index.md
 <<<<<<< HEAD
 
 ### Flash cards
@@ -37,8 +38,6 @@ Given the large number of topics, it makes sense to break these down into broade
 
 Full notes covering the entire module written by **Edmund Goodman** which were cut down to form the crib sheet [can be found here](combined.html)
 
-=======
->>>>>>> f216d29 (bug fixes and formatting errors)
 ## Discussion of module content
 
 There are five broad topics overall which were split into 11 lectures - within these topics, the main sections of content are:
