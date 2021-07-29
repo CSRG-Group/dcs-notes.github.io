@@ -34,10 +34,14 @@ var store=[]
 
 function readCookies(){
     
-    favorite=JSON.parse( document.cookie   .split('; ')
-                                .find(row => row.startsWith('favorite='))
-                                .split('=')[1]);
-
+    favoriteTemp=document.cookie.split('; ').find(row => row.startsWith('favorite='));
+                                
+    if (!favoriteTemp){
+        favorite=[];
+    }
+    else{
+        favorite=JSON.parse( favoriteTemp.split('=')[1]);
+    }
 
     var title = document.getElementsByClassName("project-name");
     var favoriteBox= document.getElementById("favoriteBox");
@@ -71,9 +75,14 @@ function addToFavorites(){
     var content =favoriteBox.getElementsByClassName("fav-contnet");
     var found=false;
     
-    favorite=JSON.parse( document.cookie   .split('; ')
-                                .find(row => row.startsWith('favorite='))
-                                .split('=')[1]);
+    favoriteTemp=document.cookie.split('; ').find(row => row.startsWith('favorite='));
+                                
+    if (!favoriteTemp){
+        favorite=[];
+    }
+    else{
+        favorite=JSON.parse( favoriteTemp.split('=')[1]);
+    }
 
     for (var item of favorite){
         if (item.url == window.location.href){
@@ -93,7 +102,11 @@ function addToFavorites(){
         );
         store.push({url: window.location.href , title: title[0].innerHTML} );
         var data = JSON.stringify(store);
-        document.cookie = "favorite=" + data + '; path = /;';
+
+        var date=new Date;
+        date.setFullYear(date.getFullYear()+1);
+        document.cookie = "favorite=" + data + '; expires='+date.toUTCString()+';  path = /;';
+
         var favoriteBox = document.getElementById("fav-button").innerHTML="Remove";
         document.getElementById("fav-button").onclick=removeFromFavorites;
         document.getElementsByClassName("fav-star")[0].src="/assets/img/star2.svg";
@@ -120,7 +133,10 @@ function removeFromFavorites(){
         document.getElementById("fav-button").onclick=addToFavorites;
         document.getElementsByClassName("fav-star")[0].src="/assets/img/star1.svg";
         var data = JSON.stringify(store);
-        document.cookie = "favorite=" + data + '; path = /;';
+
+        var date=new Date;
+        date.setFullYear(date.getFullYear()+1);
+        document.cookie = "favorite=" + data + '; expires='+date.toUTCString()+';  path = /;';
 
 }
 
