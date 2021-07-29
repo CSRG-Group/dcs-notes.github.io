@@ -63,10 +63,11 @@ CribSheets :
 Questions :
   QUIZAvailable : false
   altQuestions:
-    - name : ankiQuestions/CS131-ankideck.apkg
-      title: Anki Flashcards
-      description : a set of flashcards for Anki
-    
+    - name : Anki flashcards
+      description : Download and import with Anki
+      link : https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Maths%20for%20CS%20-%20CS131.apkg
+      authors:
+        - Bora Akyuz
     - name : Further Maths overlap
       description : More practice questions can be found by visiting Callum Whitfield's revision website and signing up using your university email address. The site allows you to practice Further Maths questions (of which there is overlap with 131) and dynamically chooses questions depending on your performance!
       link : https://mathrevision.pythonanywhere.com

@@ -51,3 +51,9 @@ CribSheets :
 
 Questions :
   QUIZAvailable : false
+  altQuestions:
+    - name : Anki flashcards
+      description : Download and import with Anki
+      link : https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Discrete%20Mathematics%20-%20CS130.apkg
+      authors:
+        - Bora Akyuz

@@ -165,9 +165,9 @@ layout: default
     </tr>
     </table>
 
-
-    {%- if site.data[page.module].examStructure >0 -%}
     {%- if site.data[page.module].examStructure -%}
+    {%- if site.data[page.module].examStructure.size >0 -%}
+    
     <h3> Exam Structure </h3>
     
     <table>
