@@ -42,6 +42,10 @@ Since the exam is held online this year (2021), questions are likely to be more 
 
 ## Additional resources
 
+### Flash Cards
+
+**Anki** flash cards for the module by **Bora** [can be found here](https://github.com/bora-7/Anki-Flashcards-Year-1), simply download the CS130 deck and import it with Anki.
+
 ### Additional notes
 
 Detailed handwritten notes for CS130 by **Edmund Goodman** which cover the entire module are linked below by section:

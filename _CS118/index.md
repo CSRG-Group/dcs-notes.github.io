@@ -32,7 +32,9 @@ Notes by **Edmund Goodman** acting as a "Crib sheet" for the module, only coveri
 
 ### Flash cards
 
-Flash cards for the module by **Leon Chipchase** [can be found here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](./media/exportedQuizlet118.txt)), which are based off the existing notes on this page.
+**Quizlet** flash cards for the module by **Leon Chipchase** [can be found here](https://quizlet.com/_9qa4vn?x=1jqt&i=18al03) ([plaintext export](./media/exportedQuizlet118.txt)), which are based off the existing notes on this page.
+
+**Anki** flash cards for the module by **Bora** [can be found here](https://github.com/bora-7/Anki-Flashcards-Year-1), simply download the CS118 deck and import it with Anki.
 
 ### Additional notes
 
