@@ -223,14 +223,3 @@ Currently, the maintainers/admins for this project are: Akram Ahmad, Edmund Good
 
 There is a LinkedIn page for the group, which can be found [here](https://www.linkedin.com/company/75024569/admin/), and if you have any additional questions, or want to become more involved in contributing to this project, please feel free to DM us on WhatsApp or Discord (search for our names within the main first year CS group chat, or the grey/forklift or cult servers).
 
-
-
-## Dank Memes
-
-
-
-![notesTradeOffer](/assets/images/memes/notesTradeOffer.jpg)
-
-![berniePullRequests](/assets/images/memes/berniePullRequests.jpg)
-
-![contributorsIconMeme](/assets/images/memes/contributorsIconMeme.jpg)
