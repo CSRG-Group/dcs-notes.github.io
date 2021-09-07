@@ -229,8 +229,8 @@ There is a LinkedIn page for the group, which can be found [here](https://www.li
 
 
 
-![notesTradeOffer](C:\Users\egood\Desktop\dcs-notes.github.io\assets\images\memes\notesTradeOffer.jpg)
+![notesTradeOffer](\assets\images\memes\notesTradeOffer.jpg)
 
-![berniePullRequests](C:\Users\egood\Desktop\dcs-notes.github.io\assets\images\memes\berniePullRequests.jpg)
+![berniePullRequests](\assets\images\memes\berniePullRequests.jpg)
 
-![contributorsIconMeme](C:\Users\egood\Desktop\dcs-notes.github.io\assets\images\memes\contributorsIconMeme.jpg)
+![contributorsIconMeme](\assets\images\memes\contributorsIconMeme.jpg)
