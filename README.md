@@ -213,3 +213,17 @@ If you have any additional questions, or want to become more involved in contrib
 
 
 **Many thanks once again for visiting.**
+
+
+<br>
+<br>
+<br>
+
+
+## Dank Memes
+
+![notesTradeOffer](/assets/images/memes/notesTradeOffer.jpg)
+
+![berniePullRequests](/assets/images/memes/berniePullRequests.jpg)
+
+![contributorsIconMeme](/assets/images/memes/contributorsIconMeme.jpg)
