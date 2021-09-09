@@ -23,25 +23,7 @@ Stop, since the item is not in the array
 
 ## Binary search
 
-This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1.
-
-```{java}
-Let arr <- the array to search
-Let k <- the iterm to search for
-if !(arr.isSorted())
-	arr.mergeSort()
-binarySearch(arr, k, int lowerBound, upperBound)
-	middle <- (lowerBound + upperBound) / 2
-	if upperBound < lowerBound
-		return - 1
-	if k == arr[middle]
-    		return middle
-	else if k < arr[middle]
-    		return binarySearch(arr, k, lowerBound, middle -1)
-    	else 
-        	return binarySearch(arr, k, middle + 1, upperBound)
-      
-```
+This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1
 
 ### Iterative algorithm
 
@@ -422,6 +404,8 @@ Push i to the stack
 ```
 
 ## Fibonacci
+
+The Fibonacci numbers can be calculated in various ways, each of which have varying efficiency, from very inefficient in exponential time, to efficient in linear time
 
 ### Exponential time
 

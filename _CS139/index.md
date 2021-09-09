@@ -40,6 +40,10 @@ Given the large number of topics, it makes sense to break these down into broade
 
 ## Additional resources
 
+### Flash Cards
+
+**Anki** flash cards for the module by **Bora** [can be found here](https://github.com/bora-7/Anki-Flashcards-Year-1), simply download the CS139 deck and import it with Anki.
+
 ### Flash cards
 
 Here are a set of flashcards for the module by **Leon Chipchase** (they still need to be refined), and please message me if there is something incorrect on there.

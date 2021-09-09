@@ -25,7 +25,7 @@ Given the large number of topics, it makes sense to break these down into broade
 9. [x] [Self-balancing trees](balanced-trees)
 10. [x] [Graphs](graphs)
 11. [x] [Directed Graphs](digraphs)
-12. [ ] [General algorithms](general-algorithms)
+12. [x] [General algorithms](general-algorithms)
 
 
 

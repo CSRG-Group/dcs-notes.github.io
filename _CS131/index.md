@@ -9,7 +9,7 @@ title: CS131
 
 Detailed typed notes for CS131 by **Yijun Hu** which cover the entire module [can be found here](https://adrakaris.github.io/blog-cs/cs131/index.html),which is a link to an external site.
 
-All of the content of the site has converted to markdown, and some very minor additions and changes were made by **Edmund Goodman** to form the main set of notes for the module which are linked in the above heading
+All of the content of the site has converted to markdown (and some very minor additions and changes were made) by **Edmund Goodman** to form the main set of notes for the module which are linked in the above heading
 
 ### Individual topics
 
@@ -32,6 +32,10 @@ Additionally, summary notes of key results, again made by the module organiser (
 
 
 ## Additional resources
+
+### Flash Cards
+
+**Anki** flash cards for the module by **Bora** [can be found here](https://github.com/bora-7/Anki-Flashcards-Year-1), simply download the CS131 deck and import it with Anki.
 
 ### Practice questions
 
