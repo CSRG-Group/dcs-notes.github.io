@@ -97,8 +97,8 @@ The dominant technique, since roughly 1980s, for implementing control units in R
 > - Long design time.
 
 <figure align="center">
-    <figcaption style="text-align: center:">Diagram of hardwired CU by Matthew Leeke</figcaption>
     <img src="part6.assets/image-20210513110831502.png" alt="image-20210513110831502" style="zoom:50%;" />
+    <figcaption style="text-align: center:">Diagram of hardwired CU</figcaption>
 </figure>
 
 ### Microprogrammed
@@ -125,8 +125,8 @@ The dominant technique for implementing CUs, peaking in 1970s, for CISC processo
 > - Slower than hardwired implementations.
 
 <figure align="center">
-    <figcaption style="text-align: center:">Diagram of micro-programmed CU by Matthew Leeke</figcaption>
     <img src="part6.assets/image-20210513110735926.png" alt="image-20210513110735926" style="zoom:50%;" />
+    <figcaption style="text-align: center:">Diagram of micro-programmed CU</figcaption>
 </figure>
 
 #### Standard operation description
