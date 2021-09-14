@@ -48,8 +48,13 @@ CribSheets :
 Questions :
   QUIZAvailable : false
   altQuestions:
-    - name : flash cards
+    - name : Quizlet flash cards
       description : set of quizlet flash cards <a href='Primary_Notes/media/exportedQuizlet118.txt'>(plaintext export)</a>
       link : https://quizlet.com/_9qa4vn?x=1jqt&i=18al03
       authors:
         - Leon Chipchase
+    - name : Anki flash cards
+      description : simply download the CS118 deck and import it with Anki.
+      link: https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Programming%20for%20Computer%20Scientists%20-%20CS118.apkg
+      authors:
+        - Bora Akyuz

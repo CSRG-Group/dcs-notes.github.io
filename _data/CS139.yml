@@ -41,8 +41,13 @@ Notes:
 Questions :
   QUIZAvailable : false
   altQuestions:
-    - name : flashcards
-      description : Quizlet flashcards
+    - name : Quizlet flashcards
+      description : flashcards hosted on quizlet
       link : https://quizlet.com/_99cgos?x=1jqt&i=18al03
       authors:
         - Leon Chipchase
+    - name : Anki flashcards
+      description : Download and import with Anki
+      link : https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Web%20Development%20Technologies%20-%20CS139.apkg
+      authors:
+        - Bora Akyuz

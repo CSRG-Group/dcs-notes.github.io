@@ -23,4 +23,10 @@ If there is no YAML Front Matter you can add it at the top of the file like this
 math: true
 ---
 ```
+
+When adding MathJax to json files most notably quiz files a double slash is needed  
+```
+$$x \\cdot (y + z) \\equiv (x \\cdot y) + (x \\cdot z)$$
+```
+
 [Detailed MathJax Tutorial](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
