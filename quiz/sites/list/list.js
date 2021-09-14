@@ -18,10 +18,11 @@ $( document ).ready(function() {
 // update the page title and description
 function UpdateTitle(){
     let code=courseData.title;
-    let nam=courseData.name;
+    let name=courseData.name;
 
     $(".project-name").prepend(code+" ");
-    $(".project-tagline").append(" for "+nam);
+    $(".project-tagline").append(" for "+name);
+    $("#home-link").attr('href', $("#home-link").attr('href')+code);
 }
 
 //create a structure from the ajax result
@@ -207,7 +208,7 @@ function display_questions(questions){
             if (typeof(question.authors)!=="undefined"){
                 html+="&#9 <small> Question made by made by";
                 for (const contributor of question.authors) {
-                    html+="&#9<a href=../../../contributors/?name="+contributor+">"+contributor+"</a>";
+                    html+="&#9<a href='../../../contributors/?name="+contributor+"'>"+contributor+"</a>";
                 }
                 html+="</small>";
                 if (typeof(question.contributors)!=="undefined"){

@@ -105,7 +105,7 @@ layout: default
     <h2> Questions </h2>
     
     {% if site.data[page.module].Questions.QUIZAvailable %}
-        Questions for this module are available on the site question page <a>Here</a>
+        Questions for this module are available on the site question page <a href="{{ site.baseurl }}/quiz/sites/navigation/index.html?course={{page.module}}">Here</a>
     {% endif %}
     
     {%- if site.data[page.module].Questions.altQuestions.size >0 -%}  
