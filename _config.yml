@@ -141,3 +141,5 @@ collections:
       - equationalReasoning.md
       - FAM.md
       - type-level-programming.md
+  Tutorials:
+    output: true
