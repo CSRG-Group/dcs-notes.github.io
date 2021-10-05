@@ -10,7 +10,9 @@ It is entirely student-run, and not affiliated with or endorsed by the Universit
 
 ## Module notes
 
-### [Module notes can be found here](modules/)
+<form id="MainButton" action="./modules"> 
+<button>Module notes can be found here </button>
+</form>
 
 Another full revision guide, which also contains engineering modules for CSE students, can be found at <https://joeyh.dev/notes>.
 
