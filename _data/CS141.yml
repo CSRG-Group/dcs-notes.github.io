@@ -1,0 +1,33 @@
+code: CS141
+description: 	Functional Programming
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    primary: true
+    authors:
+      - Justin Tan
+      - Edmund Goodman
+    order:
+      - part1.html
+      - part2.html
+      - part3.html
+      - datatypes.html
+      - equationalReasoning.html
+      - FAM.html
+      - type-level-programming.html
+CribSheets :
+  - name: laws_and_associativity
+    link: laws_and_associativity_crib
+    description: laws and associativity in Haskell syntax!
+    authors:
+      - Justin Tan
+      - Edmund Goodman
+    
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : past papers
+      description : past papers hosted on past paper finder
+      link : https://warwick.ac.uk/services/exampapers/?q=CS141&department=&year=

@@ -4,6 +4,96 @@ layout: default
 
 <!-- Layout for Module Homepages -->
 
-<a href="../">📚Home</a>
+<a href="../">📚Modules</a>
+
+
+<div id=modMain-content>
+    <div id=modMain-Left>
+        <div id=modMain-notes>
+
+
+
+
+            {%- if site.data[page.module].Notes and site.data[page.module].Notes.size >0 -%}  
+            {% assign hasPrimary = false%}
+            
+            <h2>Primary notes </h2>
+            {% for item in site.data[page.module].Notes %}
+                {%- if item.primary -%}
+                    {% assign hasPrimary = true%}
+                    <div>
+                    
+                    <a href="{{item.link | default: item.name}}">
+                        <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+                    </a>
+                    <ul>
+                    {%for page in item.order%}
+                        <li>
+                            <a href="{{item.link | default: item.name}}/{{page}}">
+                                {{page | remove: ".html" | replace: "_", " " }}
+                            </a>
+                        </li>
+                    {%endfor%}
+                    </ul>
+                    </div>
+
+                    <a href="{{item.link | default: item.name}}/onePage">
+                        one Page
+                    </a>
+                {%-endif-%}
+            {% endfor %}
+            {% endif %}
+            {%-if hasPrimary !=true-%}
+                Unfortunately there are no primary notes for this module. Maybe you can create some.
+            {%-endif-%}
+
+
+
+
+            
+        </div>
+        <button id=modMain-index onclick="location.href='./modIndex.html'"">
+            {{page.module}} Index
+        </button>
+    </div>
+    <div id=modMain-Right>
+        <div id=modMain-cribSheets>
+            <h2> Crib Sheets </h2>
+            {%- if site.data[page.module].CribSheets and 
+                site.data[page.module].CribSheets.size >0 -%}  
+            
+            
+            <ul>
+            {% for item in site.data[page.module].CribSheets %}
+                <a href="{{item.link | default: item.name}}">
+                    <li><h3>{{item.title | default: item.name | replace: "_", " " }}</h3></li>
+                </a>
+            {% endfor %}
+            </ul>
+            {% else %}
+                Unfortunately there are no crib Sheets available maybe you can create one 
+            {% endif %}
+        </div>
+        <div id=modMain-questions>
+            <h2> Questions </h2>
+            {%- if site.data[page.module].Questions.altQuestions.size >0 -%}  
+            <ul>
+            {% for item in site.data[page.module].Questions.altQuestions %}
+                <div>
+                    
+                    <a href="{{item.link | default: item.name}}">
+                        <li><h3>{{item.title | default: item.name | replace: "_", " " }}</h3></li>
+                    </a>
+                </div>
+            {% endfor %}
+            </ul>
+            {% else %}
+                Unfortunately there are no question sheets available maybe you can create one 
+            {% endif %}
+        </div>
+    </div>
+    
+
+</div>
 
 {{ content }}

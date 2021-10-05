@@ -1,0 +1,30 @@
+code: CS130
+description: 	Mathematics for Computer Scientists I
+
+Notes:
+  - name: Typed Notes
+    link: https://adrakaris.github.io/blog-cs/cs130/index.html
+    description: Detailed typed notes for CS130 which cover the entire module
+    authors:
+      - Yijun Hu
+  - name: handwritten_notes
+    description: handwritten notes covering the whole of the module
+    authors:
+      - Edmund Goodman
+
+CribSheets :
+  - name: General_Crib_Sheet
+    description: condensed "crib sheet", which includes mostly includes definitions
+  - name: Proof_Approaches
+    description : Sheet on standard proof techniques
+   
+
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : Anki flashcards
+      description : Download and import with Anki
+      link : https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Discrete%20Mathematics%20-%20CS130.apkg
+      authors:
+        - Bora Akyuz
