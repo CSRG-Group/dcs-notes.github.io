@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Being A Web Developer
 math: true
 part: true

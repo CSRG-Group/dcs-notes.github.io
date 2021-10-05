@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Web Architectures and Performance
 math: true
 part: true

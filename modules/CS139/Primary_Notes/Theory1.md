@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: History of the Internet
 math: true
 part: true

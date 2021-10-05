@@ -1,6 +1,6 @@
 ---
 title: Virtualization
-layout: CS140
+layout: notes
 part: true
 ---
 

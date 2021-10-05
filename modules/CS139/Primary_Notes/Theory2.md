@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Web Servers
 math: true
 part: true

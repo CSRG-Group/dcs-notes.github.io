@@ -1,5 +1,5 @@
 ---
-layout: CS118
+layout: notes
 part: true
 title: "Inheritance, Abstract Classes, and Interfaces"
 ---

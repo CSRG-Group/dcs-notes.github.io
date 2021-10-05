@@ -1,5 +1,5 @@
 ---
-layout: CS126
+layout: notes
 part: true
 math: true
 title: "General Algorithms"
@@ -25,11 +25,9 @@ Stop, since the item is not in the array
 
 This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1.
 
-<<<<<<< HEAD:modules/CS126/Primary_Notes/general-algorithms.md
-=======
 ```{java}
 Let arr <- the array to search
-Let k <- the iterm to search for
+Let k <- the item to search for
 if !(arr.isSorted())
 	arr.mergeSort()
 binarySearch(arr, k, int lowerBound, upperBound)
@@ -45,7 +43,6 @@ binarySearch(arr, k, int lowerBound, upperBound)
       
 ```
 
->>>>>>> 64fb4ebe5887b5eca1307cf2a438cae523460529:_CS126/general-algorithms.md
 #### Iterative algorithm
 
 ```java

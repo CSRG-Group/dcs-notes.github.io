@@ -1,5 +1,5 @@
 ---
-layout: CS131
+layout: notes
 part: true
 math: true
 title: "Vectors"

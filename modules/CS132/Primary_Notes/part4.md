@@ -1,5 +1,5 @@
 ---
-layout: CS132
+layout: notes
 math: true
 title: Memory Systems
 part: true

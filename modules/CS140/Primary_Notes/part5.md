@@ -1,5 +1,5 @@
 ---
-layout: CS140
+layout: notes
 title: Public Key Cryptography
 part: true
 math: true

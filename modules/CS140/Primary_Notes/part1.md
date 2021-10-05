@@ -1,6 +1,6 @@
 ---
 part: true
-layout: CS140
+layout: notes
 title: Introduction to Computer Security
 ---
 

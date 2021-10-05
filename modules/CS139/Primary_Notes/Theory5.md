@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Web Browsers, servers and state
 math: true
 part: true

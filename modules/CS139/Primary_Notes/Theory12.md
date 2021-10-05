@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Setting up a Real Website
 math: true
 part: true

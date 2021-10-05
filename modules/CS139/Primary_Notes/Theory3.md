@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: GET and POST
 math: true
 part: true

@@ -1,5 +1,5 @@
 ---
-layout: CS132
+layout: notes
 title: Data Representation
 math: true
 part: true

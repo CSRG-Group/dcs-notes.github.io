@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: XML and JSON
 math: true
 part: true
