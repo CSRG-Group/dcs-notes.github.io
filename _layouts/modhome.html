@@ -7,182 +7,93 @@ layout: default
 <a href="../">📚Modules</a>
 
 
-<script>
-    function toggle(){
-        let part=document.getElementById("examStructure")
-        if (part.style.display=="none"){
-            part.style.display="block";
-            document.getElementById("headline").innerHTML="v info";
-        }
-        else{
-            part.style.display="none";
-            document.getElementById("headline").innerHTML="> info";
-        }
-    }
-    </script>
-    
-    {{ content }}
+<div id=modMain-content>
+    <div id=modMain-Left>
+        <div id=modMain-notes>
 
-    
-    {%- if site.data[page.module].Notes -%}  
-    {%- if site.data[page.module].Notes.size >0 -%}  
-    
-    <h2> Notes </h2>
-    {% for item in site.data[page.module].Notes %}
-        <div>
-        <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
-        <a href="{{item.link | default: item.name}}">
-            <p>{{item.description}}</p>
-        </a>
-    
-        
-        <small>
-            {% if item.authors %}
-                Page made by made by &#9
-                {%- for p in item.authors -%}
-                    <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
-                {%- endfor -%}
-                    {% if item.contributors %}
-                        with contributions by &#9
-                    {%- endif -%}
-                {% elsif item.contributors %}
-                Contributions made by &%9
-            {%- endif -%}
 
-            {% if item.contributors %}
-                {%- for p in item.contributors -%}
-                    <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
-                {%- endfor -%}
-            {%- endif -%}
-        </small>
+
+
+            {%- if site.data[page.module].Notes and site.data[page.module].Notes.size >0 -%}  
+            {% assign hasPrimary = false%}
+            
+            <h2>Primary notes </h2>
+            {% for item in site.data[page.module].Notes %}
+                {%- if item.primary -%}
+                    {% assign hasPrimary = true%}
+                    <div>
+                    
+                    <a href="{{item.link | default: item.name}}">
+                        <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+                    </a>
+                    <ul>
+                    {%for page in item.order%}
+                        <li>
+                            <a href="{{item.link | default: item.name}}/{{page}}">
+                                {{page | remove: ".html" | replace: "_", " " }}
+                            </a>
+                        </li>
+                    {%endfor%}
+                    </ul>
+                    </div>
+
+                    <a href="{{item.link | default: item.name}}/onePage">
+                        one Page
+                    </a>
+                {%-endif-%}
+            {% endfor %}
+            {% endif %}
+            {%-if hasPrimary !=true-%}
+                Unfortunately there are no primary notes for this module. Maybe you can create some.
+            {%-endif-%}
+
+
+
+
+            
         </div>
-    {% endfor %}
-    
-    {% endif %}
-    {% endif %}
-    
-    
-    {%- if site.data[page.module].CribSheets -%}  
-    {%- if site.data[page.module].CribSheets.size >0 -%}  
-    
-    <h2> Crib Sheets </h2>
-    {% for item in site.data[page.module].CribSheets %}
-        <div>
-            <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
-            <a href="{{item.link | default: item.name}}">
-                <p>{{item.description}}</p>
-            </a>
-    
-            <small>
-                {% if item.authors %}
-                    Page made by made by &#9
-                    {%- for p in item.authors -%}
-                        <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
-                    {%- endfor -%}
-                        {% if item.contributors %}
-                            with contributions by &#9
-                        {%- endif -%}
-                    {% elsif item.contributors %}
-                    Contributions made by &%9
-                {%- endif -%}
-
-                {% if item.contributors %}
-                    {%- for p in item.contributors -%}
-                        <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
-                    {%- endfor -%}
-                {%- endif -%}
-            </small>
-        </div>
-    {% endfor %}
-    
-    
-    {% endif %}
-    {% endif %}
-    
-    {%- if site.data[page.module].Questions -%}  
-    {%- if site.data[page.module].Questions.altQuestions.size>0 -%}  
-    
-    <h2> Questions </h2>
-    
-    
-    {%- if site.data[page.module].Questions.altQuestions.size >0 -%}  
-        {% for item in site.data[page.module].Questions.altQuestions %}
-            <div>
-                <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+        <button id=modMain-index onclick="location.href='./Modindex.html'"">
+            {{page.module}} Index
+        </button>
+    </div>
+    <div id=modMain-Right>
+        <div id=modMain-cribSheets>
+            <h2> Crib Sheets </h2>
+            {%- if site.data[page.module].CribSheets and 
+                site.data[page.module].CribSheets.size >0 -%}  
+            
+            
+            <ul>
+            {% for item in site.data[page.module].CribSheets %}
                 <a href="{{item.link | default: item.name}}">
-                    <p>{{item.description | default: "here"}}</p>
+                    <li><h3>{{item.title | default: item.name | replace: "_", " " }}</h3></li>
                 </a>
-                <small>
-                    {% if item.authors %}
-                        Page made by made by &#9
-                        {%- for p in item.authors -%}
-                            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
-                        {%- endfor -%}
-                            {% if item.contributors %}
-                                with contributions by &#9
-                            {%- endif -%}
-                        {% elsif item.contributors %}
-                        Contributions made by &%9
-                    {%- endif -%}
-
-                    {% if item.contributors %}
-                        {%- for p in item.contributors -%}
-                            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
-                        {%- endfor -%}
-                    {%- endif -%}
-                </small>
-            </div>
-        {% endfor %}
-    {% endif %}
-    {% endif %}
-    {% endif %}
-
-    <a onclick="toggle()" href="javascript:void(0);"><h2 id=headline>&gt; info </h2></a>
-    
-    <div id=examStructure style = display:none;>
-    
+            {% endfor %}
+            </ul>
+            {% else %}
+                Unfortunately there are no crib Sheets available maybe you can create one 
+            {% endif %}
+        </div>
+        <div id=modMain-questions>
+            <h2> Questions </h2>
+            {%- if site.data[page.module].Questions.altQuestions.size >0 -%}  
+            <ul>
+            {% for item in site.data[page.module].Questions.altQuestions %}
+                <div>
+                    
+                    <a href="{{item.link | default: item.name}}">
+                        <li><h3>{{item.title | default: item.name | replace: "_", " " }}</h3></li>
+                    </a>
+                </div>
+            {% endfor %}
+            </ul>
+            {% else %}
+                Unfortunately there are no question sheets available maybe you can create one 
+            {% endif %}
+        </div>
+    </div>
     
 
-    <table>
-    <tr>
-        <th> {{site.data[page.module].code}}</th>
-        <th> {{site.data[page.module].description}}</th>
-    </tr>
-    <tr>
-        <td>website</td>
-        <td> <a href={{site.data[page.module].website}}> {{site.data[page.module].website}}</a>&#9;</td>
-    </tr>
-    <tr>    
-        <td> cats</td>
-        <td>{{site.data[page.module].cats}}</td>
-    </tr>
-    <tr>
-        <td>optional?</td>
-        <td>{{site.data[page.module].optional}}</td>
-    </tr>
-    </table>
-
-    {%- if site.data[page.module].examStructure -%}
-    {%- if site.data[page.module].examStructure.size >0 -%}
-    
-    <h3> Exam Structure </h3>
-    
-    <table>
-        <tr>
-            <th>name</th>
-            <th>percent</th>
-            <th>date</th>
-            <th>structure</th>
-        </tr>
-        {% for item in site.data[page.module].examStructure %}
-            <tr>
-                <td>{{item.name}}</td>
-                <td>{{item.percent}}</td>
-                <td> {{item.date | date: "%H:%M %-d %B %Y"}}</td>
-                <td> {{item.structure}}</td>
-            </tr>
-        {% endfor %}
-    </table>
-    {%- endif -%}
-    {%- endif -%}
 </div>
+
+{{ content }}

@@ -4,6 +4,7 @@ description: 	Web Development
 Notes:
   - name: Primary_Notes
     description: Notes covering the whole of the module
+    primary: true
     authors:
       - Joseph Evans
     order:

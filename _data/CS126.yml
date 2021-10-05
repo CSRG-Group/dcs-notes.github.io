@@ -4,6 +4,7 @@ description: 	Design of Information Structures
 Notes:
   - name: Primary_Notes
     description: Notes covering the whole of the module
+    primary: true
     authors:
       - Edmund Goodman
       - Justin Tan

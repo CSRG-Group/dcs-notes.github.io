@@ -4,6 +4,7 @@ description: Mathematics for Computer Scientists II
 Notes:
   - name: Primary_Notes
     description: Noted copied from Yijun Hu notes and cover the entire module
+    primary: true
     authors:
       - Yijun Hu
       - Edmund Goodman
@@ -13,7 +14,7 @@ Notes:
       - part3.html
       - part4.html
       - part5.html
-  - name: yijuin notes
+  - name: Yijun notes
     description: Detailed typed notes
     authors:
       - Yijun Hu

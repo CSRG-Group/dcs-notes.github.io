@@ -4,6 +4,7 @@ description: 	Functional Programming
 Notes:
   - name: Primary_Notes
     description: Notes covering the whole of the module
+    primary: true
     authors:
       - Justin Tan
       - Edmund Goodman

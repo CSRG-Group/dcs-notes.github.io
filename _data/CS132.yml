@@ -4,6 +4,7 @@ description: 	Computer Organisation and Architecture
 Notes:
   - name: Primary_Notes
     description: Notes covering the whole of the module
+    primary: true
     authors:
       - Akram Ahmad
       - Justin Tan
@@ -15,7 +16,7 @@ Notes:
       - part4.html
       - part5.html
       - part6.html
-  - name: yijuin notes
+  - name: Yijun notes
     description: Typed notes
     authors:
       - Yijun Hu
