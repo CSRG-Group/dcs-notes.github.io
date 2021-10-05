@@ -1,34 +1,5 @@
 code: CS130
 description: 	Mathematics for Computer Scientists I
-website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs130/
-cats : 15
-optional : "no"
-
-examStructure:
-  - name : Dry Run
-    percent : 1
-    date : TBD
-    structure: Tabula submission
-  - name : Sheet and feedback 1
-    percent : 3
-    date : TBD
-    structure: Tabula submission
-  - name : Sheet and feedback 2
-    percent : 3
-    date : TBD
-    structure: Tabula submission
-  - name : Sheet and feedback 3
-    percent : 3
-    date : TBD
-    structure: Tabula submission
-  - name : Final problem sheet
-    percent : 3
-    date : TBD
-    structure: Tabula submission
-  - name : Exam
-    percent : 80
-    date : TBD
-    structure: Online AEP 24 hour window
 
 Notes:
   - name: Typed Notes

@@ -1,30 +1,5 @@
 code: CS131
 description: Mathematics for Computer Scientists II
-website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/
-cats : 15
-optional : "no"
-
-examStructure:
-  - name : Problem sheet 1
-    percent : 3
-    date : TBD
-    structure: Tabula submission
-  - name : Problem sheet 2
-    percent : 3
-    date : TBD
-    structure: Tabula submission
-  - name : Problem sheet 3
-    percent : 4
-    date : TBD
-    structure: Tabula submission
-  - name : Problem sheet 4
-    percent : 10
-    date : TBD
-    structure: Tabula submission
-  - name : Exam
-    percent : 80
-    date : TBD
-    structure: Online AEP 24 hour window
 
 Notes:
   - name: Primary_Notes
