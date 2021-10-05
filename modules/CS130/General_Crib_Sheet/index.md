@@ -1,5 +1,5 @@
 ---
-layout: CS130
+layout: notes
 math: true
 title: "Crib sheet for CS130 - Edmund Goodman"
 ---

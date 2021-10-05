@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Security
 math: true
 part: true

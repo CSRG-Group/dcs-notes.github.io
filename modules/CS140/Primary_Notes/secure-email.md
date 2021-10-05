@@ -1,5 +1,5 @@
 ---
-layout: CS140
+layout: notes
 title: Secure Email
 part: true
 ---

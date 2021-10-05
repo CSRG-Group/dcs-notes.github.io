@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: CSS
 math: true
 part: true

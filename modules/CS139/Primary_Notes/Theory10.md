@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Designing For Mobile
 math: true
 part: true

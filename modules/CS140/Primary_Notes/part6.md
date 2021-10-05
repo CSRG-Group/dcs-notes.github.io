@@ -1,5 +1,5 @@
 ---
-layout: CS140
+layout: notes
 title: Digital Signature & Certificates
 part: true
 ---

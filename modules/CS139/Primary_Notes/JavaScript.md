@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: JavaScript
 math: true
 part: true

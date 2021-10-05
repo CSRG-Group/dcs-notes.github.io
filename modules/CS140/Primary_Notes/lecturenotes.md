@@ -1,5 +1,5 @@
 ---
-layout: CS140
+layout: notes
 title: "CS140 Revision Lecture: Summary Notes"
 --- 
 

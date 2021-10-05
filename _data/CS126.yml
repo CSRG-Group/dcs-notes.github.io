@@ -1,26 +1,10 @@
 code: CS126
 description: 	Design of Information Structures
-website: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs126/
-cats : 15
-optional : "no"
-
-examStructure:
-  - name : Labs 1
-    percent : 10
-    date : Continuous
-    structure: In person feedback
-  - name : Coursework 
-    percent : 40
-    date : TBD
-    structure: Coursework tabula submission
-  - name : Exam
-    percent : 50
-    date : TBD
-    structure: Online AEP 24 hour window
 
 Notes:
   - name: Primary_Notes
     description: Notes covering the whole of the module
+    primary: true
     authors:
       - Edmund Goodman
       - Justin Tan

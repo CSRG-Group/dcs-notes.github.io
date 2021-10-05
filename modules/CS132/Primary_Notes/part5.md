@@ -1,6 +1,6 @@
 ---
 title: I/O Mechanisms
-layout: CS132
+layout: notes
 part: true
 ---
 

@@ -12,7 +12,10 @@ Modules are split into separate topics, and we have also included a one page (ct
 ## Folder naming
 Folders should be descriptive of the content they contain and words should be separated by underscores e.g `2021_Full_Notes`
 
+## File naming
+Files should be descriptive of the content they contain or match the page title. Words should be separated by underscores e.g `Data_Representation.md`
 
+Every none asset Folder should contain an `index.html` or `index.md` file
 ## Headlines
 
 There should be no document title headline this is added automatically by the site

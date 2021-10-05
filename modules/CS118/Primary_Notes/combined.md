@@ -1,5 +1,5 @@
 ---
-layout: CS118
+layout: notes
 math: true
 title: CS118 Combined Notes
 ---

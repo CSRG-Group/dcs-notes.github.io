@@ -24,7 +24,6 @@
     {%- endif -%}
     <!-- Include tocNAV javascript -->
     <script type="text/javascript" src="{{ site.baseurl }}/assets/js/tocNav.js"></script>
-    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/favourites.js"></script>
     
     <!-- seo used to be here -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -34,7 +33,6 @@
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link id="mainCS" rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/toggleDark.js"></script>
     <title>
         {%- if page.layout != "combined" -%}
             {{ page.layout }} {{ page.title }}
@@ -47,20 +45,6 @@
 <body>
     <div id="mainGrid" class="container">
         <header style="padding:10px;" class="page-header notes-header" role="banner">
-            
-            <div class=favorite>
-                <img class=fav-star src="/assets/img/star1.svg" alt="Favorites" width =40 height=40 id=favoriteImage>
-                <div id=favoriteBox>
-                    <header class="fav-header">
-                        <h3> Favorites</h3>
-                    </header>  
-                    <div class="fav-contnet">
-                    </div>
-                    <button id=fav-button onclick="addToFavorites()">
-                        Add
-                    </button>
-                </div>
-            </div>
             
             
             <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
@@ -99,15 +83,6 @@
 
 
                 <footer class="site-footer">
-                    Dark mode
-                    <label class="switch">
-                      <input type="checkbox", id="darkToggle">
-                      <span class="slider round"></span>
-                    </label>
-                    <br>
-                    <br>
-
-
 
                     {% if page.authors %}
                         Page made by made by &#9

@@ -1,5 +1,5 @@
 ---
-layout: CS132
+layout: notes
 slides: true
 math: true
 title: Digital Logic

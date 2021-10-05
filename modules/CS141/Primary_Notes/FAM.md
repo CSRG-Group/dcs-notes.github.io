@@ -1,5 +1,5 @@
 ---
-layout: CS141
+layout: notes
 part: true
 title: Functors, Applicatives, Monads
 ---

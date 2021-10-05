@@ -1,5 +1,5 @@
 ---
-layout: CS126
+layout: notes
 part: true
 math: true
 title: "Maps, Hash tables and Sets"

@@ -1,5 +1,5 @@
 ---
-layout: CS140
+layout: notes
 title: Web Server Security Issues
 part: true
 ---

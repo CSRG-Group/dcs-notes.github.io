@@ -27,6 +27,5 @@ math: true
 When adding MathJax to json files most notably quiz files a double slash is needed  
 ```
 $$x \\cdot (y + z) \\equiv (x \\cdot y) + (x \\cdot z)$$
-```
 
 [Detailed MathJax Tutorial](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)

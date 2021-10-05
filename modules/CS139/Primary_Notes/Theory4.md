@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Web Protocols
 math: true
 part: true

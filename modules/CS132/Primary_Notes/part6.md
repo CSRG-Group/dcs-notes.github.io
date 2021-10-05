@@ -1,5 +1,5 @@
 ---
-layout: CS132
+layout: notes
 title: Processor Architecture
 part: true
 math: true

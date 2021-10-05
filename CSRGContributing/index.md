@@ -51,12 +51,6 @@ Contributors are a key part of the running and creation of this site, so to supp
 
 * [Contributor pages](contributors.html)
 
-
-## Quiz 
-The site has a quiz section for practicing student made questions 
-
-* [Question Creation](quiz.html)
-
 # Style guide
 The expectations for contributions to the site 
 * [style guide](styleguide.html)
@@ -66,4 +60,3 @@ These are brief reference guides for those who have already submitted previously
 * [Contributors](contributorsDocs.html)
 * [Data files](datafiiles.html)
 * [Font matter](fontmatter.html)
-* [Quiz](quizDocs.md)

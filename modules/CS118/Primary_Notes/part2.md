@@ -1,5 +1,5 @@
 ---
-layout: CS118
+layout: notes
 part: true
 title: "Conditionals & Iteratives"
 ---

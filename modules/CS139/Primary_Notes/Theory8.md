@@ -1,5 +1,5 @@
 ---
-layout: CS139
+layout: notes
 title: Usability
 math: true
 part: true

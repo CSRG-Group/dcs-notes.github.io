@@ -1,5 +1,5 @@
 ---
-layout: CS140
+layout: notes
 part: true
 math: true
 title: Authentication

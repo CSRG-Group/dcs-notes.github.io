@@ -633,4 +633,58 @@ input:checked + .slider:before {
   border-radius: 20%;
 }
 
+#modMain-content{
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+}
+#modMain-content > * >*{
+  border: #159957;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  flex-grow: 1;
+  padding: 10px;
+}
+#modMain-content h2{
+  text-align: center;
+  margin: 0.1em;
+  padding: 0.1em;
+}
+#modMain-content h3{
+  margin: 0.1em;
+  padding: 0.1em;
+}
+#modMain-index {
+  overflow: auto;
+  flex-grow: 0;
+}
+#modMain-Left{
+  margin: 5px;
+  width:60%;
+  display: flex;
+  flex-direction: column;
+}
+#modMain-Right{
+  width:40%;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#MainButton button{
+  width:100%;
+  font-size: 2em;
+  border: #159957;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 3px;
+
+}
+
 /*-----------------------------------*/

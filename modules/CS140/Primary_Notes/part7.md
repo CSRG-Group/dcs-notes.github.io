@@ -1,5 +1,5 @@
 ---
-layout: CS140
+layout: notes
 title: Security & Authentication Protocols
 part: true
 math: true
