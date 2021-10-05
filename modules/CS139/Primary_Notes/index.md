@@ -1,6 +1,5 @@
 ---
 layout: noteshome
-layout: notes
 ---
 
 # Welcome to the CS139 revision guide
