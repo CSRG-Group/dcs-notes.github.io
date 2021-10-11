@@ -58,5 +58,5 @@ The expectations for contributions to the site
 # Docs
 These are brief reference guides for those who have already submitted previously or are familiar with jekyll, markdown, Yaml and JSON
 * [Contributors](contributorsDocs.html)
-* [Data files](datafiiles.html)
+* [Data files](datafiles.html)
 * [Font matter](fontmatter.html)

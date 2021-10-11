@@ -25,7 +25,7 @@ Inherits from default
 |--|--|--|--|
 | module | String | No | module code uppercase |
 
-# noteshome
+# modIndex
 
 Inherits from default
 
@@ -33,7 +33,7 @@ Inherits from default
 
 Inherits from default
 
-# QUIZ
+# onePage 
 
 Inherits from default
 

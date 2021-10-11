@@ -17,33 +17,36 @@ layout: default
             {%- if site.data[page.module].Notes and site.data[page.module].Notes.size >0 -%}  
             {% assign hasPrimary = false%}
             
-            <h2>Primary notes </h2>
+            
+
+            
             {% for item in site.data[page.module].Notes %}
                 {%- if item.primary -%}
                     {% assign hasPrimary = true%}
-                    <div>
                     
                     <a href="{{item.link | default: item.name}}">
-                        <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+                        <h2>{{item.title | default: item.name | replace: "_", " " }}</h2>
                     </a>
-                    <ul>
-                    {%for page in item.order%}
-                        <li>
-                            <a href="{{item.link | default: item.name}}/{{page}}">
-                                {{page | remove: ".html" | replace: "_", " " }}
-                            </a>
-                        </li>
-                    {%endfor%}
-                    </ul>
+                    <a href="{{item.link | default: item.name}}/onePage" style="text-align: center;margin: auto;">
+                        One Page
+                    </a>
+                    <div id="modMain-Contents" >    
+                        <h3>Topics</h3>
+                        <ul>
+                        {%for page in item.order%}
+                            <li>
+                                <a href="{{item.link | default: item.name}}/{{page}}">
+                                    {{page | remove: ".html" | replace: "_", " " }}
+                                </a>
+                            </li>
+                        {%endfor%}
+                        </ul>
                     </div>
-
-                    <a href="{{item.link | default: item.name}}/onePage">
-                        one Page
-                    </a>
                 {%-endif-%}
             {% endfor %}
             {% endif %}
             {%-if hasPrimary !=true-%}
+                <h2>Primary Notes</h2>
                 Unfortunately there are no primary notes for this module. Maybe you can create some.
             {%-endif-%}
 
@@ -53,7 +56,7 @@ layout: default
             
         </div>
         <button id=modMain-index onclick="location.href='./modIndex.html'"">
-            {{page.module}} Index
+            More Resources
         </button>
     </div>
     <div id=modMain-Right>

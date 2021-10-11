@@ -8,7 +8,6 @@ This website is a collection of notes for the modules in the first year computer
 
 It is entirely student-run, and not affiliated with or endorsed by the University. We have communicated with members of the department who have said that this project is acceptable, but if at any point we are told this goes against DCS anti-plagiarism guidelines, or any other policy, we will immediately take it down. Additionally, we cannot provide guarantees that all the notes are correct as all content is written by students, however, we will try our hardest to maintain quality.
 
-## Module notes
 
 <form id="MainButton" action="./modules"> 
 <button>Module notes can be found here </button>

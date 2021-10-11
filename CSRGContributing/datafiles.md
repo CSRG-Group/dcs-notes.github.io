@@ -7,22 +7,11 @@ A files are named `<modules code>.ymal`
 
 | name | type | optional | description |
 | code | String | No | module code |
-| description | String | No | module Description|
-| website | String | No | Link to the module website |
-| cats | Int | No | number of cats for the module |
-| optional | String | No | is the course optional for those taking  Computer Science |
 | Exam Structure | Array of exam objects | Yes | the examination structure for the course |
 | Notes | Array of notes objects | Yes | the notes for the course |
 | CribSheets |  Array of CribSheet objects | Yes | CribSheets for the course |
 | Questions | Question Object | Yes | Practice questions |
 
-# Exam Object
-
-| name | type | optional | description |
-| name | String | No | Exam name |
-| percent | String | No | percentage fo the module |
-| date | String | No | date due |
-| structure | String | No | the exam structure |
 
 # Notes Object 
 The notes should be put in a folder in the relevant module folder using _ for spaces

@@ -641,7 +641,7 @@ input:checked + .slider:before {
 #modMain-content > * >*{
   border: #159957;
   border-style: solid;
-  border-radius: 10px;
+  border-radius: 0.3rem;
   border-width: 3px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -676,15 +676,32 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
 }
+#modMain-notes{
+  text-align: center;
+}
 
 #MainButton button{
   width:100%;
   font-size: 2em;
   border: #159957;
   border-style: solid;
-  border-radius: 10px;
+  border-radius: 0.3rem;
   border-width: 3px;
 
 }
+#modMain-Contents{
+  text-align: left;
+}
+
+.cornell {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-column-gap: 20px;
+  max-width: 840px;
+}
+div.cornell > div:nth-child(odd) *{
+  text-align: right;
+  font-style: italic;
+} 
 
 /*-----------------------------------*/
