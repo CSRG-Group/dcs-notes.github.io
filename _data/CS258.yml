@@ -1,2 +1,13 @@
 code: CS258
 description: Database Systems
+
+Notes:
+  - name: Joes_Notes
+    description: notes created by Joseph Evans (sharpshot2566)
+    primary: true #Only here until a true primary comes along
+    authors:
+      - Joseph Evans
+    order:
+      - Database_Basics.html
+      - Relational_Data_Model.html
+      - Relational_Database_Constraints.html
