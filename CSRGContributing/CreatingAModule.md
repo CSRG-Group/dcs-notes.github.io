@@ -16,7 +16,7 @@ Site
 ## Adding a module
 
 1. In `./modules` create a directory in the folder named after the module code in all caps e.g `CS133`
-2. In the folder create a file called `index.html`
+2. In the folder create a file called `index.md`
 3. Add the following to the top of the file
 ```
 ---
