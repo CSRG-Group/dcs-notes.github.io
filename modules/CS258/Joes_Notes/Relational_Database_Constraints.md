@@ -1,3 +1,10 @@
+---
+layout: notes
+title: Relational Database Constraints
+math: true
+part: true
+---
+
 
 Constraints determine the permissible states of relation instances
 

@@ -2,6 +2,7 @@
 layout: notes
 title: Greedy Algorithms Shortest Path
 math: true
+part: true
 ---
 
 

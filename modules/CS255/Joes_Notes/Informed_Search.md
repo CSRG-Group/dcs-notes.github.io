@@ -1,3 +1,9 @@
+---
+layout: notes
+title: Informed Search
+math: true
+part: true
+---
 
 Using information about the goal to inform our path choice.
 

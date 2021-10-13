@@ -1,4 +1,9 @@
-
+---
+layout: notes
+title: Relational Data Model
+math: true
+part: true
+---
 ## Informal definition
 * **Relation** is a table of values made from 
   * A set of rows, the data elements in each row represents certain facts that correspond to a real-world entity or relationship.

@@ -1,3 +1,10 @@
+---
+layout: notes
+title: Rational Agents
+math: true
+part: true
+---
+
 ## Rational Agents
 
 In a rational agent a `goal` can be specified by some performance metric.

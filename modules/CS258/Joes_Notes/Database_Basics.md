@@ -1,3 +1,9 @@
+---
+layout: notes
+title: Database Basics
+math: true
+part: true
+---
 
 ## Data
 Data is typically stores on

@@ -1,3 +1,10 @@
+---
+layout: notes
+title: Agent Architectures
+math: true
+part: true
+---
+
 ## Agent architectures 
 
 ### Body
@@ -36,13 +43,13 @@ A belief status should approximate the environment
 ### Single level hierarchy
 In a single level hierarchy th agent has one body and a single controller.
 
-![Single level hierarchy diagram](/Assets/single_level_hierarchy.png)
+![Single level hierarchy diagram](/assets/single_level_hierarchy.png)
 
 #### functions
 * **Belief state function** controls the next belief state / memories.
 * **Command state function** decides on the commands the controller should produce.
 
-![Single level function diagram](/Assets/single_level_funcitons.png)
+![Single level function diagram](/assets/single_level_funcitons.png)
 
 #### Advantages
 Simpler and can be easier to program
@@ -58,14 +65,14 @@ Made from a body and many layers of controllers.
 
 Each controller acts as a virtual body to the controller above. It receives precepts and commands from the controller below it and sends selected precepts and commands to the controller above.
 
-![Multiple level hierarchy](Assets/multiple_level_hierarchy.png)
+![Multiple level hierarchy](assets/multiple_level_hierarchy.png)
 
 ### functions
 * **Belief state function** controls the next belief state / memories.
 * **Command state function** decides on the commands the controller should produce.
 * **Precept function** decides what commands to send to the higher controller
 
-![Multi level function diagram](Assets/miltiple_level_functions.png)
+![Multi level function diagram](assets/miltiple_level_functions.png)
 
 ### Agent Types
 #### Ideal Mapping

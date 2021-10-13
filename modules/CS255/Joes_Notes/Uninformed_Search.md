@@ -1,3 +1,11 @@
+---
+layout: notes
+title: Uninformed Search
+math: true
+part: true
+---
+
+
 Getting from a to b on a simple directed graph with no prior knowledge
 
 following an informed search through a graph can simulate th exploration fo the state space

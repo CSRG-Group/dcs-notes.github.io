@@ -1,3 +1,11 @@
+---
+layout: notes
+title: Search Optimizations
+math: true
+part: true
+---
+
+
 ## Cycle Checking
 The search encounters a node on a path that it has already encountered (the path traversed a cycle)
 

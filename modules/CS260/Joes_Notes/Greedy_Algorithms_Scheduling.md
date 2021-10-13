@@ -2,6 +2,7 @@
 layout: notes
 title: Greedy Algorithms Scheduling
 math: true
+part: true
 ---
 
 

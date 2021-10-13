@@ -1,3 +1,11 @@
+---
+layout: notes
+title: Heuristics
+math: true
+part: true
+---
+
+
 The choice of a heuristic to choose can have a large impact in the efficiency and running time of the search.
 
 ## Characterizing Heuristics

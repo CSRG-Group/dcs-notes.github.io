@@ -2,6 +2,7 @@
 layout: notes
 title: Minimum Spanning Tree
 math: true
+part: true
 ---
 
 

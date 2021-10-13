@@ -1,4 +1,9 @@
-
+---
+layout: notes
+title: Problem Formulation
+math: true
+part: true
+---
 ## Problem formulation
 Given a specification of a solution, not an algorithm to follow
 
