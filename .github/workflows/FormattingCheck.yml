@@ -1,0 +1,10 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Check markdown structure
+    steps:
+    - uses: actions/checkout@v2
+    - name: Check markdown headings
+      uses: LoudShadow/Guide-Action@master

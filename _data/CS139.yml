@@ -1,0 +1,41 @@
+code: CS139
+description: 	Web Development
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    primary: true
+    authors:
+      - Joseph Evans
+    order:
+      - HTML.html
+      - CSS.html
+      - PHP.html
+      - JavaScript.html
+      - SQL.html
+      - Theory1.html
+      - Theory2.html
+      - Theory3.html
+      - Theory4.html
+      - Theory5.html
+      - Theory6.html
+      - Theory7.html
+      - Theory8.html
+      - Theory9.html
+      - Theory10.html
+      - Theory11.html
+      - Theory12.html
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : Quizlet flashcards
+      description : flashcards hosted on quizlet
+      link : https://quizlet.com/_99cgos?x=1jqt&i=18al03
+      authors:
+        - Leon Chipchase
+    - name : Anki flashcards
+      description : Download and import with Anki
+      link : https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Web%20Development%20Technologies%20-%20CS139.apkg
+      authors:
+        - Bora Akyuz

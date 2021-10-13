@@ -1,0 +1,44 @@
+code: "CS118"
+description: 	Programming for Computer Scientists
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    primary: true
+    authors:
+      - Akram Ahmad
+      - Justin Tan
+    order:
+      - part1.html
+      - part2.html
+      - part3.html
+      - part4.html
+      - part5.html
+      - part6.html
+      - part7.html
+  - name: Combined
+    link: Primary_Notes/combined
+    description: A cut down version of the notes
+    authors:
+      - Edmund Goodman
+    
+
+CribSheets :
+  - name: Crib_sheet
+    description: A cut down version of the notes covering only the non-trivial content
+    authors:
+      - Edmund Goodman
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : Quizlet flash cards
+      description : set of quizlet flash cards <a href='Primary_Notes/media/exportedQuizlet118.txt'>(plaintext export)</a>
+      link : https://quizlet.com/_9qa4vn?x=1jqt&i=18al03
+      authors:
+        - Leon Chipchase
+    - name : Anki flash cards
+      description : simply download the CS118 deck and import it with Anki.
+      link: https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Programming%20for%20Computer%20Scientists%20-%20CS118.apkg
+      authors:
+        - Bora Akyuz

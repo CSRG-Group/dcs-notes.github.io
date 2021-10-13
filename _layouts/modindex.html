@@ -1,0 +1,124 @@
+---
+layout: default
+---
+
+<!-- Layout for Module Homepages -->
+
+<a href="../">📚Modules</a>
+    
+    {{ content }}
+
+    
+    {%- if site.data[page.module].Notes -%}  
+    {%- if site.data[page.module].Notes.size >0 -%}  
+    
+    <h2> Notes </h2>
+    {% for item in site.data[page.module].Notes %}
+        <div>
+        <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+        <a href="{{item.link | default: item.name}}">
+            <p>{{item.description}}</p>
+        </a>
+    
+        
+        <small>
+            {% if item.authors %}
+                Page made by made by &#9
+                {%- for p in item.authors -%}
+                    <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                {%- endfor -%}
+                    {% if item.contributors %}
+                        with contributions by &#9
+                    {%- endif -%}
+                {% elsif item.contributors %}
+                Contributions made by &%9
+            {%- endif -%}
+
+            {% if item.contributors %}
+                {%- for p in item.contributors -%}
+                    <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                {%- endfor -%}
+            {%- endif -%}
+        </small>
+        </div>
+    {% endfor %}
+    
+    {% endif %}
+    {% endif %}
+    
+    
+    {%- if site.data[page.module].CribSheets -%}  
+    {%- if site.data[page.module].CribSheets.size >0 -%}  
+    
+    <h2> Crib Sheets </h2>
+    {% for item in site.data[page.module].CribSheets %}
+        <div>
+            <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+            <a href="{{item.link | default: item.name}}">
+                <p>{{item.description}}</p>
+            </a>
+    
+            <small>
+                {% if item.authors %}
+                    Page made by made by &#9
+                    {%- for p in item.authors -%}
+                        <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                    {%- endfor -%}
+                        {% if item.contributors %}
+                            with contributions by &#9
+                        {%- endif -%}
+                    {% elsif item.contributors %}
+                    Contributions made by &%9
+                {%- endif -%}
+
+                {% if item.contributors %}
+                    {%- for p in item.contributors -%}
+                        <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                    {%- endfor -%}
+                {%- endif -%}
+            </small>
+        </div>
+    {% endfor %}
+    
+    
+    {% endif %}
+    {% endif %}
+    
+    {%- if site.data[page.module].Questions -%}  
+    {%- if site.data[page.module].Questions.altQuestions.size>0 -%}  
+    
+    <h2> Questions </h2>
+    
+    
+    {%- if site.data[page.module].Questions.altQuestions.size >0 -%}  
+        {% for item in site.data[page.module].Questions.altQuestions %}
+            <div>
+                <h3>{{item.title | default: item.name | replace: "_", " " }}</h3>
+                <a href="{{item.link | default: item.name}}">
+                    <p>{{item.description | default: "here"}}</p>
+                </a>
+                <small>
+                    {% if item.authors %}
+                        Page made by made by &#9
+                        {%- for p in item.authors -%}
+                            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                        {%- endfor -%}
+                            {% if item.contributors %}
+                                with contributions by &#9
+                            {%- endif -%}
+                        {% elsif item.contributors %}
+                        Contributions made by &%9
+                    {%- endif -%}
+
+                    {% if item.contributors %}
+                        {%- for p in item.contributors -%}
+                            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&thinsp;
+                        {%- endfor -%}
+                    {%- endif -%}
+                </small>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+</div>

@@ -1,0 +1,43 @@
+{% assign options = include.url | split: "/"%}
+{% assign module = options[2] %}
+{% assign notes = options[3] %}
+{% assign current = options[4] %}
+{% assign notesData = site.data[module].Notes | find :"name",notes %}
+
+
+{% assign pre = nil %}
+{% assign curr = nil %}
+{% assign nex = nil %}
+
+
+{% for item in notesData.order %}
+    {% assign pre = curr %}
+    {% assign curr = nex %}
+    {% assign nex = item %}
+
+
+    {%- if curr == current -%}
+        {%- if pre -%}
+        <a href="{{ pre }}" title="{{ pre }}">👈Prev</a>
+        {%- endif -%}
+        <a href="./" title="{{notes | replace: "_", " " }} Home">🏡{{notes | replace: "_", " " }}</a>
+        
+        
+        {%- if nex -%}
+        <a href="{{ nex }}" title="{{ nex }}">Next👉</a>
+        {%- endif -%}
+    {%- endif -%}
+{% endfor %}
+
+{% assign pre = curr %}
+{% assign curr = nex %}
+{% assign nex = nil %}
+
+{%- if curr == current -%}
+    {%- if pre -%}
+    <a href="{{ pre }}" title="{{ pre }}">👈Prev</a>
+    {%- endif -%}
+    <a href="./" title="{{notes | replace: "_", " " }} Home">🏡{{notes | replace: "_", " " }}</a>
+{%- endif -%}
+
+

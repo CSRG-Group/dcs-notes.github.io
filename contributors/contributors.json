@@ -1,0 +1,60 @@
+[
+    {
+        "name":"Joseph Evans",
+        "github":"LoudShadow",
+        "nick":"Joseph",
+        "image":"https://avatars.githubusercontent.com/u/72259471?v=4",
+        "discord":"sharpshot2566#2529"
+    },
+    {
+        "name":"Akram Ahmad",
+        "github":"arkamnite",
+        "image":"https://avatars.githubusercontent.com/u/47830962?v=4"
+    },
+    {
+        "name":"Edmund Goodman",
+        "github":"EdmundGoodman",
+        "image":"https://avatars.githubusercontent.com/u/37504168?v=4"
+    },
+    {
+        "name":"Justin Tan",
+        "github":"Justanhy",
+        "image":"https://avatars.githubusercontent.com/u/46620327?v=4"
+    },
+    {
+        "name":"Leon Chipchase",
+        "github":"lchipchase",
+        "image":"https://avatars.githubusercontent.com/u/77326474?v=4"
+    },
+    {
+        "name":"Josh Fitzmaurice",
+        "github":"jfitz02",
+        "image":"https://avatars.githubusercontent.com/u/73333523?v=4"
+    },
+    {
+        "name":"Yijun Hu",
+        "github":"Adrakaris",
+        "image":"https://avatars.githubusercontent.com/u/17861497?v=4"
+    }
+    ,
+    {
+        "name":"Felix Bowyer",
+        "image":"https://avatars.githubusercontent.com/u/46428367?v=4?s=10",
+        "website":{"value": "fbcf","link": "http://fbcf.xyz/"}
+    },
+    {
+        "name":"Callum Whitfield",
+        "image":"https://i.stack.imgur.com/frlIf.png"
+    },
+    {
+        "name":"Clara Ramsay-Gray",
+        "github":"clara-ramsay",
+        "image":"https://avatars.githubusercontent.com/u/77890048?v=4"
+    },
+    {
+        "name":"Bora Akyuz",
+        "github":"bora-7",
+        "image":"https://avatars.githubusercontent.com/u/76407294?v=4",
+        "Anki-Flashcards":{"value": "Year 1","link": "https://github.com/bora-7/Anki-Flashcards-Year-1"}
+    }
+]

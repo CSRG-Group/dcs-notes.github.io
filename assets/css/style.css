@@ -7,6 +7,10 @@ html { font-family: sans-serif; /* 1 */ -ms-text-size-adjust: 100%; /* 2 */ -web
 /** Remove default margin. */
 body { margin: 0; }
 
+
+
+
+
 /* HTML5 display definitions ========================================================================== */
 /** Correct `block` display not defined for any HTML5 element in IE 8/9. Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox. Correct `block` display not defined for `main` in IE 11. */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
@@ -527,3 +531,177 @@ figcaption {
   text-align: center;
   font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
+/* give course structure proper indentation */
+.course_structure_list{
+  list-style-type: none;
+  display: block;
+}
+.questionAnswer{
+  display: none;
+}
+.favorite{
+  float: left;
+}
+#favoriteBox{
+  position: fixed;
+  z-index: 10;
+  min-width:300px;
+  border-style: solid;
+  background-color: white;
+  border-color: rgba(131, 130, 130, 0.7);
+  border-width: 5px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction:column;
+  display: none;
+
+  
+}
+#favoriteBox .fav-header{
+background: linear-gradient(120deg, #155799, #159957);
+height: 70px;
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+padding: 1px;
+}
+.fav-link{
+  color: #000000;
+  font-size: large;
+  border: 10px;
+}
+.fav-link:hover{
+  background-color: rgb(200, 200, 200);
+}
+#fav-button{
+  width: 100%;
+  align-self: flex-end;
+  height: 50px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: rgba(131, 130, 130, 0.7);
+  border: none;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 25px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(201, 201, 201);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 15px;
+  left: -2px;
+  bottom: -2px;
+  background-color: rgb(68, 68, 68);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(29px);
+  -ms-transform: translateX(29px);
+  transform: translateX(29px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 4px;
+}
+
+.slider.round:before {
+  border-radius: 20%;
+}
+
+#modMain-content{
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+}
+#modMain-content > * >*{
+  border: #159957;
+  border-style: solid;
+  border-radius: 0.3rem;
+  border-width: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  flex-grow: 1;
+  padding: 10px;
+}
+#modMain-content h2{
+  text-align: center;
+  margin: 0.1em;
+  padding: 0.1em;
+}
+#modMain-content h3{
+  margin: 0.1em;
+  padding: 0.1em;
+}
+#modMain-index {
+  overflow: auto;
+  flex-grow: 0;
+}
+#modMain-Left{
+  margin: 5px;
+  width:60%;
+  display: flex;
+  flex-direction: column;
+}
+#modMain-Right{
+  width:40%;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+#modMain-notes{
+  text-align: center;
+}
+
+#MainButton button{
+  width:100%;
+  font-size: 2em;
+  border: #159957;
+  border-style: solid;
+  border-radius: 0.3rem;
+  border-width: 3px;
+
+}
+#modMain-Contents{
+  text-align: left;
+}
+
+.cornell {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-column-gap: 20px;
+  max-width: 840px;
+}
+div.cornell > div:nth-child(odd) *{
+  text-align: right;
+  font-style: italic;
+} 
+
+/*-----------------------------------*/

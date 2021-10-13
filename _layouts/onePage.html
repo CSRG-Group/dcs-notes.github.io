@@ -1,0 +1,33 @@
+---
+layout: notes
+math: true
+---
+
+<!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Are defined in the relevant module data file
+-->
+{% assign options = page.url | split: "/"%}
+{% assign module = options[2] %}
+{% assign notes = options[3] %}
+{% assign selected_Notes = site.data[module].Notes | find: "name", notes %}
+
+<!-- not the best and a little O-horrible  but the easiest way to do it -->
+{%- for post in selected_Notes.order -%}
+    {%- for item in site.pages -%}
+        {%- assign url = item.url | split: "/" -%}
+        {%- if url contains module and url contains notes and url contains post -%}
+            {%- capture title -%}# {{ item.title }}{%- endcapture -%}
+            {{ title | markdownify }}       
+            {{ item.content | markdownify }}
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/>
+        {%- endif -%}
+    {%- endfor -%}
+{%- endfor -%}

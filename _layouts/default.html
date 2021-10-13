@@ -15,6 +15,12 @@
     {%- if page.math == true -%}
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     {%- endif -%}
+    {%- if page.jquery == true -%}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {%- endif -%}
+    {% if page.script %}
+    <script type="text/javascript" src="{{page.script}}"></script>
+    {%- endif -%}
 
 <!-- seo used to be here -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,7 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link id="mainCS" rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <title>
       {%- if page.layout == "modhome" -%}
         {{ page.title | default: "Module" }}🏠
@@ -34,6 +40,8 @@
   </head>
   <body>
     <header class="page-header" role="banner">
+      
+      
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
       {% if site.github.is_project_page %}
@@ -49,9 +57,29 @@
       {{ content }}
 
       <footer class="site-footer">
+        {% if page.authors %}
+        Question made by made by &%9
+        {%- for p in page.authors -%}
+            <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&#9
+        {%- endfor -%}
+            {% if page.contributors %}
+                with contributions by &%9
+            {%- endif -%}
+        {% elsif page.contributors %}
+        Contributions made by &%9
+        {%- endif -%}
+
+        {% if page.contributors %}
+            {%- for p in page.contributors -%}
+                <a href="{{ site.baseurl }}/contributors/index.html?name={{p}}">{{p}}</a>&#9
+            {%- endfor -%}
+        {%- endif -%}
+
+        
+
         {% if site.github.is_project_page %}
-          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
-        {% endif %}
+        <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
+      {% endif %}
       </footer>
     </main>
   </body>

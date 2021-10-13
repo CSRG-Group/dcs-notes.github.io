@@ -1,0 +1,45 @@
+code: CS126
+description: 	Design of Information Structures
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    primary: true
+    authors:
+      - Edmund Goodman
+      - Justin Tan
+      - Leon Chipchase
+    order:
+      - arrays-and-lists.html
+      - algorithm-analysis.html
+      - recursive-algorithms.html
+      - stacks-and-queues.html
+      - maps-hash-tables-and-sets.html
+      - trees.html
+      - priority-queues.html
+      - skip-lists.html
+      - balanced-trees.html
+      - graphs.html
+      - digraphs.html
+      - general-algorithms.html
+
+  - name: Handwritten_notes
+    description : a pair of pdfs covering the entire module
+    authors:
+      - Josh Fitzmaurice
+
+  - name: Akram pdf notes
+    link: akrampdf
+    description : handwritten notes for lectures 4 to 12
+    authors:
+      - Akram Ahmad
+    
+
+Questions :
+  QUIZAvailable : false
+  altQuestions:
+    - name : flash cards
+      description : set of quizlet flash cards
+      link : https://quizlet.com/_99y5l2?x=1jqt&i=18al03
+      authors:
+        - Leon Chipchase

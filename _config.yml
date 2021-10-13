@@ -141,3 +141,13 @@ collections:
       - equationalReasoning.md
       - FAM.md
       - type-level-programming.md
+  QUIZ:
+    output: true
+  contributors:
+    output: true
+  cribSheets:
+    output: true
+  tutorials:
+    output: true
+  modules:
+    output: true

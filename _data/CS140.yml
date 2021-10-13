@@ -1,0 +1,26 @@
+code: CS140
+description: 	Computer Security
+
+Notes:
+  - name: Primary_Notes
+    description: Notes covering the whole of the module
+    primary: true
+    authors:
+      - Justin Tan
+      - Edmund Goodman
+    order:
+      - part1.html
+      - part2.html
+      - part3.html
+      - part4.html
+      - part5.html
+      - part6.html
+      - secure-email.html
+      - part7.html
+      - part8.html
+      - part9.html
+  - name: full_pdf/cs140-full.pdf
+    title: full pdf
+    description: Pdf handwritten Notes covering the whole of the module
+    authors:
+      - Josh Fitzmaurice
