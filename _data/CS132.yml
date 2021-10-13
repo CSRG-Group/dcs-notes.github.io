@@ -40,7 +40,7 @@ Questions :
   QUIZAvailable : true
   altQuestions:
     - name : Worksheets
-      description : worked soluiton for the worksheets
+      description : worked solutions for the worksheets
       authors:
         - Josh Fitzmaurice
         - Edmund Goodman
