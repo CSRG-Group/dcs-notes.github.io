@@ -1,2 +1,14 @@
 code: CS260
 description: 	Algorithms
+
+
+Notes:
+  - name: Joes_Notes
+    description: notes created by Joseph Evans (sharpshot2566)
+    primary: true #Only here until a true primary comes along
+    authors:
+      - Joseph Evans
+    order:
+      - Greedy_Algorithms_Scheduling.html
+      - Greedy_Algorithms_Shortest_Path.html
+      - Minimum_Spanning_Tree.html
