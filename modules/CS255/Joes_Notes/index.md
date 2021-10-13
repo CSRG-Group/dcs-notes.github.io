@@ -10,11 +10,11 @@ Notes created by Joseph Evans. I will aim to keep these updates throughout the c
 
 The notes are split into different sections.
 
-1. [x][(Rational_Agents.md)
-2. [x][(Agent_Architectures.md)
-3. [x][(Problem_Formulation.md)
-4. [x][(Uninformed_Search.md)
-5. [x][(Informed_Search.md)
-6. [x][(Search_Optimizations.md)
-7. [x][(Heuristics.md)
+1. [x][(Rational_Agents.html)
+2. [x][(Agent_Architectures.html)
+3. [x][(Problem_Formulation.html)
+4. [x][(Uninformed_Search.html)
+5. [x][(Informed_Search.html)
+6. [x][(Search_Optimizations.html)
+7. [x][(Heuristics.html)
 
