@@ -75,7 +75,7 @@ For any path $$P''$$ that extends $$P'$$
 So $$cost(P) \leq cost(P'')$$ for any path $$P''$$ to a goal
 
 ### Solution
->Theorem: A* will always find a solution fi there is one
+>Theorem: A* will always find a solution if there is one
 
 The frontier always contains the initial part of a path to a goal
 
