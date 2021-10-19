@@ -30,7 +30,7 @@ Notes
 ```
 To create this set of notes:
 1. In `/modules/<code>/` create a folder with a descriptive name for your notes (use _ instead of spaces)
-2. In the new folder create a new file called `index.html`
+2. In the new folder create a new file called `index.md`
 3. add this to the top:
 ```
 ---
