@@ -63,6 +63,7 @@ We welcome pull requests from anyone who is happy to share their notes, and woul
     <td align="center"><a href="http://warwick.ac.uk/michaelgale"><img src="https://avatars.githubusercontent.com/u/278086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael B. Gale</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/pulls?q=is%3Apr+reviewed-by%3Ambg" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/papa-github"><img src="https://avatars.githubusercontent.com/u/20775567?v=4?s=100" width="100px;" alt=""/><br /><sub><b>papa-github</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Apapa-github" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/SH4D0WR1D3R"><img src="https://avatars.githubusercontent.com/u/53613777?v=4?s=100" width="100px;" alt=""/><br /><sub><b>SH4D0WR1D3R</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ASH4D0WR1D3R" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/jakub-ucinski"><img src="https://avatars.githubusercontent.com/u/32566816?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jakub Ucinski</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Ajakub-ucinski" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
