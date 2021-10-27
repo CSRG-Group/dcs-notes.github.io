@@ -16,8 +16,8 @@ A rational agent will choose the the actions that maximizes the expected value.
 * **Abilities** A set of actions that the agent can perform
 * **Goal** What is the agent trying to achieve
 * **Prior Knowledge**  What sis the agent kno when it came into being
-* **Stimuli** 
-* * The current environment
+* **History** 
+* * Stimuli: The current environment
 * * Past experiences
 
 ### Agent System
@@ -122,13 +122,20 @@ A symbol-system has the means to manipulate symbols.
 **hypothesis** a Physical symbol system has the means for general intelligent action
 
 ### Knowledge and symbol levels
-**Knowledge level** This is about the external world
-**Symbol level** This is what the agent uses to implement the knowledge level
+* **Knowledge level** : Agent's knowledge, beliefs and goals.
+* **Symbol level** Describes what reasoning agent does. This is what the agent uses to implement the knowledge level
 
 ### Abstraction
-**Low level** Easier for machines to understand
-**High level** Easier for humans to understand
+* **Low level** Easier for machines to understand
+* **High level** Easier for humans to understand
 
-
+### Reasoning and acting
+* **Design time reasoning and computation** Reasoning done by designer to design the agent.
+* **Offline computation** Done by agent before it has to act
+* **Online computation** Done by agent "on the go" 
+###  Knowledge base and observations
+* **Knowledge base** Compiled background knowledge and data
+* **Observations** Information obtained online
+* Both used to make decisions
 
 
