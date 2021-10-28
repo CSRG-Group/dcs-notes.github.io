@@ -24,16 +24,17 @@ Controllers have a limited memory and computational resources
 * **Percept Trace** A sequence of all percepts, past present and future.
 * **Command Trace** A sequence of all commands, past present and future.
 * **Agent History** A sequence of past and present commands and precepts at to time $$t$$.
-* **transduction** A function that creates a percept trace and crates a command trace.
-* **Causal transduction** A transductions is causal if the trace only used percepts and creates commands to time $$t$$. 
-* **Controller** An implementation of a causal transduction on the agents form the agents historic precepts to an agents historic commands.
+* **transduction** A function from percept traces to command traces.
+* **History** Percepts to time $$t$$ (including time $$t$$) + Commands to time $$t$$ = History at $$t$$
+* **Causal transduction** History at time $$t$$ -> Command at $$t$$
+* **Controller** An implementation of a causal transduction.
 
 #### Belief Status
 An agent has limited memory 
 
 It must decide what subset of its history to remember
 
-This is the agents **history**
+This is the agents **memory**
 
 At every step the controller needs to decide
 1. What to do
@@ -41,15 +42,15 @@ At every step the controller needs to decide
 
 A belief status should approximate the environment
 ### Single level hierarchy
-In a single level hierarchy th agent has one body and a single controller.
+In a single level hierarchy the agent has one body and a single controller.
 
-![Single level hierarchy diagram](/assets/single_level_hierarchy.png)
+![Single level hierarchy diagram](./assets/single_level_hierarchy.png)
 
 #### functions
 * **Belief state function** controls the next belief state / memories.
 * **Command state function** decides on the commands the controller should produce.
 
-![Single level function diagram](/assets/single_level_funcitons.png)
+![Single level function diagram](./assets/single_level_funcitons.png)
 
 #### Advantages
 Simpler and can be easier to program
