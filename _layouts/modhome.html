@@ -33,10 +33,19 @@ layout: default
                     <div id="modMain-Contents" >    
                         <h3>Topics</h3>
                         <ul>
-                        {%for page in item.order%}
+                        {%for SubPage in item.order%}
+                        
                             <li>
-                                <a href="{{item.link | default: item.name}}/{{page}}">
-                                    {{page | remove: ".html" | replace: "_", " " }}
+                                {% assign testURL = page.url | append: item.name | append:"/" |append: SubPage %}
+                                {% assign var = nil %}
+                                <a href="{{item.link | default: item.name}}/{{SubPage}}">
+                                    {%for testPage in site.pages%}
+                                        {%- if testURL == testPage.url -%}
+                                            {% assign var = testPage.title %}
+
+                                        {%-endif-%}
+                                    {%endfor%}
+                                    {{ var | default: SubPage | remove: ".html" | replace: "_", " " | capitalize }}
                                 </a>
                             </li>
                         {%endfor%}
@@ -69,7 +78,7 @@ layout: default
             <ul>
             {% for item in site.data[page.module].CribSheets %}
                 <a href="{{item.link | default: item.name}}">
-                    <li><h3>{{item.title | default: item.name | replace: "_", " " }}</h3></li>
+                    <li><h3>{{item.title | default: item.name | replace: "_", " " | capitalize }}</h3></li>
                 </a>
             {% endfor %}
             </ul>
@@ -85,7 +94,7 @@ layout: default
                 <div>
                     
                     <a href="{{item.link | default: item.name}}">
-                        <li><h3>{{item.title | default: item.name | replace: "_", " " }}</h3></li>
+                        <li><h3>{{item.title | default: item.name | replace: "_", " " | capitalize }}</h3></li>
                     </a>
                 </div>
             {% endfor %}
