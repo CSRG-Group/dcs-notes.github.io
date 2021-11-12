@@ -141,7 +141,7 @@ Consider a relation $$R : A \rightarrow B$$
 - A relation is antisymmetric if $$aRb \land bRa \implies a = b \quad \forall a,b$$, i.e. all bi-directional relations are from an item to itself
 - A relation is transitive if $$aRb \land bRc \implies aRc \quad \forall a,b,c$$
 
-![Relation diagram](../media/relations.png)
+![Relation diagram](./relations.png)
 
 [Diagram source](https://math.libretexts.org/Bookshelves/Mathematical_Logic_and_Proof/Book%3A_Book_of_Proof_(Hammack)/11%3A_Relations/11.02%3A_Properties_of_Relations)
 
