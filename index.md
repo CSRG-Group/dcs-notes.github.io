@@ -65,6 +65,9 @@ We welcome pull requests from anyone who is happy to share their notes, and woul
     <td align="center"><a href="https://github.com/SH4D0WR1D3R"><img src="https://avatars.githubusercontent.com/u/53613777?v=4?s=100" width="100px;" alt=""/><br /><sub><b>SH4D0WR1D3R</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ASH4D0WR1D3R" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/jakub-ucinski"><img src="https://avatars.githubusercontent.com/u/32566816?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jakub Ucinski</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Ajakub-ucinski" title="Bug reports">🐛</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/Linh012"><img src="https://avatars.githubusercontent.com/u/60060916?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gia Linh Nguyen</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ALinh012" title="Bug reports">🐛</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
