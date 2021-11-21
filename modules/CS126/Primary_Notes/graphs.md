@@ -114,10 +114,10 @@ Given a graph with **n** vertices and **m** edges (no parallel edges and no self
 
 |                     | Edge List |         Adjacency List         |  Adjacency Matrix  |
 | :------------------ | :-------: | :----------------------------: | :----------------: |
-| **Space**           |  O(n+m)   |             O(n+m)             | O(n<sup>2</sup>) 💩 |
+| **Space**           |  O(n+m)   |             O(n+m)             | O(n<sup>2</sup>) ❌ |
 | `incidentEdges(v)`  |   O(m)    |          O(deg(v)) ⭐           |        O(n)        |
 | `areAdjacent(v,w)`  |   O(m)    | O(min(**deg(v)**, **deg(w)**)) |       O(1) ⭐       |
-| `insertVertex(o)`   |   O(1)    |              O(1)              | O(n<sup>2</sup>) 💩 |
+| `insertVertex(o)`   |   O(1)    |              O(1)              | O(n<sup>2</sup>) ❌ |
 | `insertEdge(v,w,o)` |   O(1)    |              O(1)              |        O(1)        |
 | `removeVertex(v)`   |   O(m)    |          O(deg(v)) ⭐           |  O(n<sup>2</sup>)  |
 | `removeEdge(e)`     |   O(1)    |              O(1)              |        O(1)        |
@@ -130,9 +130,9 @@ We can determine more specific space complexities for both graph structures base
 | Type of graph                      | Adjacency matrix                      | Adjacency list                          |
 | ---------------------------------- | ------------------------------------- | --------------------------------------- |
 | General case                       | $$O(n^2)$$                            | $$O(n+m)$$ ⭐                            |
-| Sparse                             | Inefficient use of $$O(n^2)$$ space 💩 | Few edges to search through list for ⭐  |
-| Dense                              | Efficient use of $$O(n^2)$$ space ⭐   | Many edges to search through list for 💩 |
-| Complete directed, with self-loops | $$O(n^2)$$ ⭐                          | $$O(n^2)$$, and inefficient lookup 💩    |
+| Sparse                             | Inefficient use of $$O(n^2)$$ space ❌ | Few edges to search through list for ⭐  |
+| Dense                              | Efficient use of $$O(n^2)$$ space ⭐   | Many edges to search through list for ❌ |
+| Complete directed, with self-loops | $$O(n^2)$$ ⭐                          | $$O(n^2)$$, and inefficient lookup ❌    |
 
  {:.centeredtable}
 

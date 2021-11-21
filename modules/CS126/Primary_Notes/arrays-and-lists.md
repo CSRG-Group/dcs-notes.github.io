@@ -42,7 +42,7 @@ This table is an overview of the time complexity of certain operations for an ar
 
 ### Implementation
 
-Arrays can be **concretely** implemented by **allocating** a **contiguous section** of memory, with cells being indexable by memory location, as the data at an index can be found at 
+Arrays can be **concretely** implemented by **allocating** a **contiguous section** of memory, with cells being indexable by memory location, as the data at an index can be found at:
 
 $$
 S + D \cdot I
