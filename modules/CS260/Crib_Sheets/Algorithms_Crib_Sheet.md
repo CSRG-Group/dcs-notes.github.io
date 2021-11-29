@@ -129,7 +129,7 @@ Two components:
 ### The $$OPT$$​​ equation
 
 - The $OPT$ equation is essential for **solving subproblems of increasing size**.
-- The $OPT$ function appears in the form $opt(j)$, where $opt(j)$ is the *value* of the optimal solution to the problem consisting of **subproblems** $\{1, 2, ..., j\}, j\in n$.
+- The $OPT$​ function utilises the $opt(j)$​ equation, where $opt(j)$​ is the value of the optimal solution to the problem consisting of **subproblems** $\{1, 2, ..., j\}, j\in n$​.
 
 The $OPT$ function provides hints as to which subproblems have solutions that are part of the optimal solution to the entire problem. There are two 'cases' that can arise when the $OPT$ function is used:
 
@@ -142,21 +142,64 @@ The $OPT$ function provides hints as to which subproblems have solutions that ar
 >
 > We must now choose which of these subproblems answer our wider problem- hence leading to the above two cases.
 
-### Using the $OPT$​ equation to recombine subproblem solutions
+### The Bellman Equation: using the $OPT$​ equation to recombine subproblem solutions
 
+- The Bellman equation is a formalised way of deciding how to recombine all previous subproblems into our optimal solution.
+- The goal of the Bellman equation (at every step) is to include the subproblem that will lead to the greatest success in terms of the problem at hand.
 
+An example of the Bellman equation for the max-weight scheduling problem is shown:
+$$
+\begin{equation}
+	OPT(j) =
+		\begin{cases}
+		0 & \text{if $j=0$}\\
+		max\{OPT(j-1), w_{j}+OPT(p(j))\} & \text{otherwise}
+		\end{cases}
+\end{equation}
+$$
+Where
 
+- $OPT(j-1)$ is the optimal solution for all previous jobs to $j$
+- $w_{j}$ is the current amassed weight
+- $OPT(p(j))$ refers to a smaller **compatible** subproblem where $p(j) < j$.
+  - $p(j_{i})$ is the largest **index** such that this index appears before the current $j$, and it is still compatible with $j$.
+  - $p(j)$ in this context therefore does not have to immediately precede subproblem $j$​- it is most likely the index of the largest compatible subproblem so far.
+    - The notion of an 'index' is particularly useful as we tend to cache our results in a table (otherwise known as several 1-D arrays).
 
+### Proving $O(n)$ performance
 
-### Memoization
+We use a progress measure $\Phi$ to indicate the **number of initialised entries** among $M[1,2,...,n]$ where $M$ is our memory.
 
-The idea of caching the results of the $$OPT$$ function if they have already been evaluated, so they needn't be re-computed
+- Initially, $\Phi=0, \Phi \leq n$
+- In the event of case $2$ where $OPT(j)$ selects $j$, $\Phi$ increases by 1
+  - This happens in $\leq 2n$ recursive calls
 
-### Top-down recursion
+### Memoization: a top down approach
 
-### Bottom-up recursion
+The reason we cache (or memoize the problem) is so that we do not have to solve a recursive problem tree at each step- instead, each node and leaf in the tree already has a constant value. However, we can still solve this tree starting from the bottom (bottom-up) or the top (top-down)- the tree structure remains intact even when we cache the results.
 
+**Memoization** is a **top-down approach** where we assume we have already computed all subproblems and you are working from the top of the tree (the root) downwards.
 
+Example: Common Fibonacci problem
+
+```java
+fib(100) = fib(99) + fib(98) + ...
+// which calls
+fib(99) = fib(98) + fib(97) + ...
+// However, due to memoizing the results, we do not call fib(98) more than once.
+```
+
+### Bottom-up recursion ($O(nlogn)$​): what you are already familiar with
+
+- We start iterating **forward** rather than splitting up the problem recursively.
+- We start with $j=0$​, and grow the size of the subproblem we are solving at each stage.
+
+### Using more than one variable in the $OPT$ equation
+
+- The most important factor to remain aware of is **space and time performance**.
+- If you use a typical tabulation approach, you will end up with $O(mn)$ time and $O(n^{2})$ performance for a bi-variate problem. This is certainly less than ideal.
+- You can achieve $O(n)$ space by storing **several 1-D arrays**.
+- You can **improve the time performance** by checking if any variables were updated in the previous iteration- depending on the type of problem you have, this can rule out any existing subproblems.
 
 ## Intractability
 
