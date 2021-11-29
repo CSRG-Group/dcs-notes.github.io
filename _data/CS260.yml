@@ -16,3 +16,16 @@ Notes:
       - Divide_and_Conquer_Closest_Points.html
       - Master_Theorem.html
       - Bit_Multiplication.html
+
+
+CribSheets :
+  - name: Algorithms_Crib_Sheet
+    link: ./Crib_Sheets/Algorithms_Crib_Sheet.html
+    description: Crib sheet of helpful things for the algorithms class test
+    authors:
+      - Edmund Goodman
+  - name: Definitions_Crib_Sheet
+    link: ./Crib_Sheets/Definitions_Crib_Sheet.html
+    description: Crib sheet of helpful things for the algorithms class test
+    authors:
+      - Edmund Goodman

@@ -22,14 +22,14 @@ The recommend layout for crib sheets
 ```
 ---
 layout: noteshome
-title: <code>
-description: <name>
+title: <name>
+description: <desc>
 ---
 ```
-4. Alter accordingly replacing `<code>` (all caps e.g. `CS133`) and `<name>`
-8. Create an `assets` folder 
-5. Fill in the page or copy your crib sheet over
-6. Go to `_data/<code>.yml` add the text below to `CribSheets:` add a new `CribSheets:` array if it does not exist
+1. Alter accordingly replacing `<name>`  and `<desc>`
+2. Create an `assets` folder 
+3. Fill in the page or copy your crib sheet over
+4. Go to `_data/<code>.yml` add the text below to `CribSheets:` add a new `CribSheets:` array if it does not exist
 ```
         - name: <name>
             description: <Desc>
