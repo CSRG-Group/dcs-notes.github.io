@@ -126,7 +126,27 @@ Two components:
 - Subproblems
 - Optimal substructure
 
-### The $$OPT$$ equation
+### The $$OPT$$​​ equation
+
+- The $OPT$ equation is essential for **solving subproblems of increasing size**.
+- The $OPT$ function appears in the form $opt(j)$, where $opt(j)$ is the *value* of the optimal solution to the problem consisting of **subproblems** $\{1, 2, ..., j\}, j\in n$.
+
+The $OPT$ function provides hints as to which subproblems have solutions that are part of the optimal solution to the entire problem. There are two 'cases' that can arise when the $OPT$ function is used:
+
+- Case 1: $OPT$​​ **does not select** a subproblem $j$ ​
+  - There must be an optimal solution that consists of jobs $\{1, 2, ..., j-1\}$​.
+- Case 2: $OPT$ **selects** a subproblem $j$​ 
+  - We collect the **profit** (some additional reward which contributes towards our target, such in as the max-weight scheduling problem) of including $j$ in the optimal solution.
+
+> By computing $opt(j), \forall j \in n$  we are computing the solutions to all subproblems in this wider problem.
+>
+> We must now choose which of these subproblems answer our wider problem- hence leading to the above two cases.
+
+### Using the $OPT$​ equation to recombine subproblem solutions
+
+
+
+
 
 ### Memoization
 
