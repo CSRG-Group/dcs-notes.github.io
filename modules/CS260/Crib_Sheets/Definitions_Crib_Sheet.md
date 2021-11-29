@@ -10,12 +10,12 @@ math: true
 - Partition of a graph $$G=(V,E)$$
 - Cut of a graph $$G=(V,E)$$
   - A partition of the nodes of the graph into two non-empty subsets  $$S$$ and $$V \setminus S$
-- Cutset of a graph $$G=(V,E)$
+- Cutset of a graph $$G=(V,E)$$
   - The cutset of a cut $$S$$ is the set of edges with exactly one endpoint in $$S$
 - Spanning tree of a graph $$G=(V,E)$
-  - A fully connected acyclic subgraph of $$G$
-  - Connected and $$|E| = |V| - 1$
-  - Acyclic and $$|E| = |V| - 1$
+  - A fully connected acyclic subgraph of $$G$$
+  - Connected and $$\vert E \vert  = \vert V \vert - 1$$
+  - Acyclic and $$\vert E\vert  = \vert V\vert - 1$$
   - Minimally connected subgraph of $$G$$ (removing any edge makes it disconnected)
   - Maximally acyclic subgraph of $$G$$ (adding any edge makes it cyclic)
   - Cayley's Theorem states there are $$n^{n-2}$$ spanning trees of any graph, so not brute forcable
