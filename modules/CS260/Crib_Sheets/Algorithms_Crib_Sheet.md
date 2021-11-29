@@ -186,7 +186,7 @@ Example: Common Fibonacci problem
 fib(100) = fib(99) + fib(98) + ...
 // which calls
 fib(99) = fib(98) + fib(97) + ...
-// However, due to memoizing the results, we do not call fib(98) more than once.
+// However, due to memoizing the results, we do not COMPUTE fib(98) more than once.
 ```
 
 ### Bottom-up recursion ($O(nlogn)$​): what you are already familiar with
