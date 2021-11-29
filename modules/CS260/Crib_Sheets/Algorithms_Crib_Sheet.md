@@ -1,12 +1,12 @@
-# Algorithms Crib Sheet
+---
+layout: noteshome
+title: Algorithms Crib Sheet
+description: Crib sheet of helpful things for the algorithms class test
+math: true
+---
+### Big-O $$O(n)$$
 
-Crib sheet of helpful things for the algorithms class test
-
-## Big-O notation
-
-### Big-Omega $$O(n)$$
-
-> $$O(n)$$ looks at **best cases.** $$f(n) = \Omega(g(n))$$ if
+> $$O(n)$$ looks at **best cases.** $$f(n) = O(g(n))$$ if
 >
 > $$
 > \begin{align}
@@ -59,11 +59,7 @@ Greedy algorithms don't have a formal definition, but are captured by the notion
 > Process the input in some order, and myopically and independently make irrevocable decisions about whether to accept or reject the input item
 
 
-
-The general approach to designing greedy algorithms is the following:
-
-```
-SORT the inputs into the order satisfying the greedy rule, and renumber them to be in that order
+andbe in that order
 S <- {}
 FOR j <- 1 TO N
 	IF input[j] satisfies the problem with all other items in S
@@ -128,30 +124,32 @@ This allows us to take a problem which would take $$\Theta(n^2)$$ time to brute 
 #### Master theorem
 
 A "recipe for solving common divide and conquer recurrences" - recursive expressions of the form:
+
 $$
 T(n) =
 \begin{cases}
     0, & \text{if}\ n=1 \\
     a \cdot T(n/b) + \Theta(n^c), & \text{otherwise}
 \end{cases} \\
-T(1) = \Theta(1) \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\
+T(1) = \Theta(1) \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
 $$
+
 Where:
 
-- $a \geq 1$ is the number of subproblems
-- b $\geq 2$ is the factor by which the subproblem size decreases (this also allows for $\lceil \frac{n}{b} \rceil$ and $\lfloor \frac{n}{b} \rfloor$ in the place of $\frac{n}{b}$)
-- $n^c\ ,\  \exists c > 0$ is the work needed to combine the subproblems back together into a solution
+- $$a \geq 1$$ is the number of subproblems
+- b $$\geq 2$$ is the factor by which the subproblem size decreases (this also allows for $$\lceil \frac{n}{b} \rceil$$ and $$\lfloor \frac{n}{b} \rfloor$$ in the place of $$\frac{n}{b}$$)
+- $$n^c\ ,\  \exists c > 0$$ is the work needed to combine the subproblems back together into a solution
 
 This then has solutions in the three different cases:
 
-- If $c < log_b\ a$, then $T(n) = \Theta(n^{log_b\ a})$
-- If $c = log_b\ a$, then $T(n) = \Theta(n^c\ log\ n)$
-- If $c > log_b\ a$, then $T(n) = \Theta(n^c)$
+- If $$c < log_b\ a$$, then $$T(n) = \Theta(n^{log_b\ a})$$
+- If $$c = log_b\ a$$, then $$T(n) = \Theta(n^c\ log\ n)$$
+- If $$c > log_b\ a$$, then $$T(n) = \Theta(n^c)$$
 
 This can also be extended in the following ways:
 
-- The $\Theta$ can be replaced with $O$ and $\Omega$ in all cases
-- The initial conditions can be replaced with $T(n) = \Theta(1)\ ,\  \forall n \leq n_0$, and only require the recurrence to hold for $n > n_0$
+- The $$\Theta$$ can be replaced with $$O$$ and $$\Omega$$ in all cases
+- The initial conditions can be replaced with $$T(n) = \Theta(1)\ ,\  \forall n \leq n_0$$, and only require the recurrence to hold for $$n > n_0$$
 
 
 
@@ -174,13 +172,13 @@ Two components:
 
 
 
-The $OPT$ equation
+The $$OPT$$ equation
 
 
 
 ### Memoization
 
-The idea of caching the results of the $OPT$ function if they have already been evaluated, so they needn't be re-computed
+The idea of caching the results of the $$OPT$$ function if they have already been evaluated, so they needn't be re-computed
 
 
 
@@ -198,20 +196,20 @@ Problems solvable in at most polynomial time are considered tractable
 
 ### Polynomial time reductions
 
-A problem $X$ "polynomial time reduces" to a problem $Y$ if arbitrary instances of $X$ can be solved with:
+A problem $$X$$ "polynomial time reduces" to a problem $$Y$$ if arbitrary instances of $$X$$ can be solved with:
 
 - A polynomial number of computational steps
 - A polynomial number of calls to an "oracle", which solves $Y$ in constant time
 
 ![polynomial_time_reduction](./polynomial_time_reduction.png)
 
-We refer to this reduction as $X \leq_p Y$ (read polynomial reduction of $X$ to $Y$)
+We refer to this reduction as $$X \leq_p Y$$ (read polynomial reduction of $$X$$ to $$Y$$)
 
-If $X \leq_p Y$, then if $Y$ is solvable in polynomial time, then $X$ must be too, and vice versa.
+If $$X \leq_p Y$$, then if $$Y$$ is solvable in polynomial time, then $$X$$ must be too, and vice versa.
 
-If $X \leq_p Y$ and $Y \leq_p X$, then we say $X \equiv_p Y$, which means $X$ is solvable in polynomial time iff $Y$ is too.
+If $$X \leq_p Y$$ and $$Y \leq_p X$$, then we say $$X \equiv_p Y$$, which means $$X$$ is solvable in polynomial time iff $$Y$$ is too.
 
-Reductions are also transitive, so $X \leq_p Y \and Y \leq_p Z \implies X \leq_p Z$ - which is intuitively clear, as we can just compose together reductions to get along the chain
+Reductions are also transitive, so $$X \leq_p Y \text{ and } Y \leq_p Z \implies X \leq_p Z$$ - which is intuitively clear, as we can just compose together reductions to get along the chain
 
 
 
@@ -219,9 +217,9 @@ Reductions are also transitive, so $X \leq_p Y \and Y \leq_p Z \implies X \leq_p
 
 For these definitions, we restrict ourselves to decision (yes/no) problems for convenience. We can then say:
 
-- A problem $X$ is a set of strings and an instance $s$ is one string
+- A problem $$X$$ is a set of strings and an instance $$s$$ is one string
 
-- An algorithm $A$ solves this problem if:
+- An algorithm $$A$$ solves this problem if:
   $$
   A(s) =
   \begin{cases}
@@ -233,17 +231,17 @@ For these definitions, we restrict ourselves to decision (yes/no) problems for c
 
 #### P
 
-An algorithm $A$ runs in polynomial time if for every string $s$, then $A(s)$ terminates in fewer than $p(|s|)$ steps, where $p$ is some polynomial function. This can be expressed as P is the set of decision problems for which there exists a polynomial time algorithm to find the solution.
+An algorithm $$A$$ runs in polynomial time if for every string $s$, then $$A(s)$$ terminates in fewer than $$p(\vert s \vert)$$ steps, where $$p$$ is some polynomial function. This can be expressed as $$P$$ is the set of decision problems for which there exists a polynomial time algorithm to find the solution.
 
 #### NP
 
 To define the NP class of problem, we first need some more vocabulary:
 
-- A certificate $t$ refers to a something which can help check whether a problem instance is true or false. For example, this could be a factor of the number which allows checking if a number is composite by simple division, or the subset which sums to the target which allows checking if a subset sum is possible by summation.
+- A certificate $$t$$ refers to a string of length at most $$P(n)$$ which can help check whether a problem instance is true or false. For example, this could be a factor of the number which allows checking if a number is composite by simple division, or the subset which sums to the target which allows checking if a subset sum is possible by summation.
 
-- An algorithm $C(s,t)$ is a certifier for problem $X$ if for every string $s$, $s \in X$ iff there exists a string $t$ (the certificate) such that $C(s,t) = yes$. This can be expressed as saying a certifier is an algorithm that always correctly checks whether a problem instance is correct given a certificate.
+- An algorithm $$C(s,t)$$ is a certifier for problem $$X$$ if for every string $$s$$, $$s \in X$$ iff there exists a string $$t$$ (the certificate) such that $$C(s,t) = yes$$. This can be expressed as saying a certifier is an algorithm that always correctly checks whether a problem instance is correct given a certificate.
 
-A problem is said to be NP if there exists a polynomial time algorithm $C(s,t)$, where the certificate $t$ is of polynomial size $|t| \leq p(|s|)$ for some polynomial function $p$
+- A problem is said to be NP if there exists a polynomial time algorithm $$C(s,t)$$, where the certificate $$t$$ is of polynomial size $$\vert t \vert \leq p(\vert s\vert )$$ for some polynomial function $$p$$
 
 #### EXP
 
