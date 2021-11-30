@@ -119,15 +119,11 @@ The key idea behind dynamic programming algorithms is the three steps:
 2. Solve the subproblems
 3. Combine the subproblems together to form a solution
 
-It is "a fancy name for caching intermediate results in a table for later re-use". It has two components:
-
-- Subproblems
-- Optimal substructure
+It is "a fancy name for caching intermediate results in a table for later re-use".
 
 ### The $$OPT$$​​ equation
 
-- The $$OPT$$ equation is essential for **solving subproblems of increasing size**.
-- The $$OPT$$​ function utilises the $$OPT(j)$$​ equation, where $$OPT(j)$$​ is the value of the optimal solution to the problem consisting of **subproblems** $$\{1, 2, ..., j\}, j\in n$$​.
+The $$opt$$ equation is essential for **solving subproblems of increasing size**. The $$OPT$$ function utilises the $$opt(j)$$ equation, where $$opt(j)$$ is the value of the optimal solution to the problem consisting of **subproblems** $$\{1, 2, ..., j\}, j\in n$$.
 
 The $$OPT$$ function provides hints as to which subproblems have solutions that are part of the optimal solution to the entire problem. There are two 'cases' that can arise when the $$OPT$$ function is used:
 
@@ -170,25 +166,61 @@ We use a progress measure $$\Phi$$ to indicate the **number of initialised entri
 - In the event of case $$2$$ where $$OPT(j)$$ selects $$j$$, $$\Phi$$ increases by 1
   - This happens in fewer than $$2n$$ recursive calls
 
-### Memoization - a top down approach
+### Memoization
 
-The reason we cache (or memoize the problem) is so that we do not have to solve a recursive problem tree at each step- instead, each node and leaf in the tree already has a constant value. However, we can still solve this tree starting from the bottom (bottom-up) or the top (top-down)- the tree structure remains intact even when we cache the results.
+Memoization is the concept of caching the solutions to computationally expensive function calls, so they do not need to be re-calculated later.
 
-**Memoization** is a **top-down approach** where we assume we have already computed all subproblems and you are working from the top of the tree (the root) downwards.
+The reason we memoize is so that we do not have to re-solve a recursive problem tree at each step. Instead, we store the previously calculated values of each node and leaf in the tree, and just look them up. We can still solve this tree starting from the bottom (bottom-up) or the top (top-down), as the tree structure remains intact even when we cache the results. Memoization is a *top-down approach* where we assume we have already computed all subproblems and you are working from the top of the tree (the root) downwards.
 
-Example: Common Fibonacci problem
+We implement memoization by building up an array of the cached returned values from subproblem calls, caching the result of subproblem $$j$$ in $$M[j]$$. We can then lookup $$M[j]$$, rather than re-solving $$j$$. This might look like:
 
-```java
-fib(100) = fib(99) + fib(98) + ...
-// which calls
-fib(99) = fib(98) + fib(97) + ...
-// However, due to memoizing the results, we do not COMPUTE fib(98) more than once.
+```
+FUNCTION Solve_With_Memoization(j)
+	IF M[j] is uninitialised
+		M[j] <- solution to j as a recursive call
+	ENDIF
+	RETURN M[j]
+ENDFUNCTION
+
+M <- Empty array of size n
+M[0] <- Base case
+Solve_with_memoization(j)
 ```
 
-### Bottom-up recursion ($$O(n\ log\ n)$$​)
+The time complexity can then be analysed by counting the number of recursive calls, and multiplying it by the complexity of the function. If the number of recursive calls is less than $$n$$ and no loops are used in the function, it is $$O(n)$$. However, pre-processing may be needed, for example sorting a list, so the total time complexity of the algorithm could be higher, e.g. $$O(n\ log\ n)$$
 
-- We start iterating **forward** rather than splitting up the problem recursively.
-- We start with $$j=0$$​, and grow the size of the subproblem we are solving at each stage.
+### Bottom-up recursion
+
+We can also implement dynamic programming iteratively instead of recursively, which can be more intuitive and reduce overhead, e.g. having many stack frames.
+
+We start iterating **forward** with $$j=0$$, and grow the size of the subproblem we are solving at each stage, rather than splitting up the problem recursively. This might look like:
+
+```
+M <- Empty array of size n
+M[0] <- Base case
+FOR j <- 1 TO n
+	M[j] <- solution to j in terms of previous subproblem results stored in M
+ENDFOR
+RETURN M[n]
+```
+
+The time complexity can then be analysed by counting loops and elementary operations. If only elementary are used in finding the solution from the solutions to previous subproblems, then it is $$O(n)$$. However, pre-processing may be needed, for example sorting a list, so the total time complexity of the algorithm could be higher, e.g. $$O(n\ log\ n)$$
+
+### Rebuilding the solution
+
+As we can see above, the output of the top-down and bottom-up dynamic programming algorithms is just the final value of the last problem. In some cases, this might be the cost of the final path or similar, i.e. not the entire solution. We then need to go back through the cached solutions to build up the whole solution. This might look like:
+
+```
+FUNCTION Find_Solution(j)
+	IF j = 0
+		RETURN empty set
+	ELSE IF w_j + M[p[j]] > M[j-1]
+		RETURN {j} UNION Find_Solution(p[j])
+	ELSE
+		RETURN Find_Solution(p[j])
+	ENDIF
+ENDFUNCTION
+```
 
 ### Using more than one variable in the $$OPT$$ equation
 
