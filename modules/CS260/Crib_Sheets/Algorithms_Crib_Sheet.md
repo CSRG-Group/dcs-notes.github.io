@@ -119,62 +119,58 @@ The key idea behind dynamic programming algorithms is the three steps:
 2. Solve the subproblems
 3. Combine the subproblems together to form a solution
 
-It is "a fancy name for caching intermediate results in a table for later re-use".
-
-Two components:
+It is "a fancy name for caching intermediate results in a table for later re-use". It has two components:
 
 - Subproblems
 - Optimal substructure
 
 ### The $$OPT$$​​ equation
 
-- The $OPT$ equation is essential for **solving subproblems of increasing size**.
-- The $OPT$​ function utilises the $opt(j)$​ equation, where $opt(j)$​ is the value of the optimal solution to the problem consisting of **subproblems** $\{1, 2, ..., j\}, j\in n$​.
+- The $$OPT$$ equation is essential for **solving subproblems of increasing size**.
+- The $$OPT$$​ function utilises the $$OPT(j)$$​ equation, where $$OPT(j)$$​ is the value of the optimal solution to the problem consisting of **subproblems** $$\{1, 2, ..., j\}, j\in n$$​.
 
-The $OPT$ function provides hints as to which subproblems have solutions that are part of the optimal solution to the entire problem. There are two 'cases' that can arise when the $OPT$ function is used:
+The $$OPT$$ function provides hints as to which subproblems have solutions that are part of the optimal solution to the entire problem. There are two 'cases' that can arise when the $$OPT$$ function is used:
 
-- Case 1: $OPT$​​ **does not select** a subproblem $j$ ​
-  - There must be an optimal solution that consists of jobs $\{1, 2, ..., j-1\}$​.
-- Case 2: $OPT$ **selects** a subproblem $j$​ 
-  - We collect the **profit** (some additional reward which contributes towards our target, such in as the max-weight scheduling problem) of including $j$ in the optimal solution.
+- Case 1: $$OPT$$​​ **does not select** a subproblem $$j$$ ​
+  - There must be an optimal solution that consists of jobs $$\{1, 2, ..., j-1\}$$​.
+- Case 2: $$OPT$$ **selects** a subproblem $$j$$​
+  - We collect the **profit** (some additional reward which contributes towards our target, such in as the max-weight scheduling problem) of including $$j$$ in the optimal solution.
 
-> By computing $opt(j), \forall j \in n$  we are computing the solutions to all subproblems in this wider problem.
+> By computing $$OPT(j), \forall j \in n$$  we are computing the solutions to all subproblems in this wider problem.
 >
 > We must now choose which of these subproblems answer our wider problem- hence leading to the above two cases.
 
-### The Bellman Equation: using the $OPT$​ equation to recombine subproblem solutions
+### The Bellman Equation: using the $$OPT$$​ equation to recombine subproblem solutions
 
 - The Bellman equation is a formalised way of deciding how to recombine all previous subproblems into our optimal solution.
 - The goal of the Bellman equation (at every step) is to include the subproblem that will lead to the greatest success in terms of the problem at hand.
 
 An example of the Bellman equation for the max-weight scheduling problem is shown:
 $$
-\begin{equation}
-	OPT(j) =
-		\begin{cases}
-		0 & \text{if $j=0$}\\
-		max\{OPT(j-1), w_{j}+OPT(p(j))\} & \text{otherwise}
-		\end{cases}
-\end{equation}
+OPT(j) =
+\begin{cases}
+    0 & \text{if}\ j=0 \\
+    max\{OPT(j-1), w_{j}+OPT(p(j))\} & \text{otherwise}
+\end{cases} \\
 $$
-Where
+Where:
 
-- $OPT(j-1)$ is the optimal solution for all previous jobs to $j$
-- $w_{j}$ is the current amassed weight
-- $OPT(p(j))$ refers to a smaller **compatible** subproblem where $p(j) < j$.
-  - $p(j_{i})$ is the largest **index** such that this index appears before the current $j$, and it is still compatible with $j$.
-  - $p(j)$ in this context therefore does not have to immediately precede subproblem $j$​- it is most likely the index of the largest compatible subproblem so far.
+- $$OPT(j-1)$$ is the optimal solution for all previous jobs to $$j$$
+- $$w_{j}$$ is the current amassed weight
+- $$OPT(p(j))$$ refers to a smaller **compatible** subproblem where $$p(j) < j$$.
+  - $$p(j_{i})$$ is the largest **index** such that this index appears before the current $$j$$, and it is still compatible with $$j$$.
+  - $$p(j)$$ in this context therefore does not have to immediately precede subproblem $$j$$​- it is most likely the index of the largest compatible subproblem so far.
     - The notion of an 'index' is particularly useful as we tend to cache our results in a table (otherwise known as several 1-D arrays).
 
-### Proving $O(n)$ performance
+### Proving $$O(n)$$ performance
 
-We use a progress measure $\Phi$ to indicate the **number of initialised entries** among $M[1,2,...,n]$ where $M$ is our memory.
+We use a progress measure $$\Phi$$ to indicate the **number of initialised entries** among $$M[1,2,...,n]$$ where $$M$$ is our memory.
 
-- Initially, $\Phi=0, \Phi \leq n$
-- In the event of case $2$ where $OPT(j)$ selects $j$, $\Phi$ increases by 1
-  - This happens in $\leq 2n$ recursive calls
+- Initially, $$\Phi=0, \Phi \leq n$$
+- In the event of case $$2$$ where $$OPT(j)$$ selects $$j$$, $$\Phi$$ increases by 1
+  - This happens in fewer than $$2n$$ recursive calls
 
-### Memoization: a top down approach
+### Memoization - a top down approach
 
 The reason we cache (or memoize the problem) is so that we do not have to solve a recursive problem tree at each step- instead, each node and leaf in the tree already has a constant value. However, we can still solve this tree starting from the bottom (bottom-up) or the top (top-down)- the tree structure remains intact even when we cache the results.
 
@@ -189,17 +185,19 @@ fib(99) = fib(98) + fib(97) + ...
 // However, due to memoizing the results, we do not COMPUTE fib(98) more than once.
 ```
 
-### Bottom-up recursion ($O(nlogn)$​): what you are already familiar with
+### Bottom-up recursion ($$O(n\ log\ n)$$​)
 
 - We start iterating **forward** rather than splitting up the problem recursively.
-- We start with $j=0$​, and grow the size of the subproblem we are solving at each stage.
+- We start with $$j=0$$​, and grow the size of the subproblem we are solving at each stage.
 
-### Using more than one variable in the $OPT$ equation
+### Using more than one variable in the $$OPT$$ equation
 
 - The most important factor to remain aware of is **space and time performance**.
-- If you use a typical tabulation approach, you will end up with $O(mn)$ time and $O(n^{2})$ performance for a bi-variate problem. This is certainly less than ideal.
-- You can achieve $O(n)$ space by storing **several 1-D arrays**.
+- If you use a typical tabulation approach, you will end up with $$O(mn)$$ time and $$O(n^{2})$$ performance for a bi-variate problem. This is certainly less than ideal.
+- You can achieve $$O(n)$$ space by storing **several 1-D arrays**.
 - You can **improve the time performance** by checking if any variables were updated in the previous iteration- depending on the type of problem you have, this can rule out any existing subproblems.
+
+
 
 ## Intractability
 
@@ -210,7 +208,7 @@ Problems solvable in at most polynomial time are considered tractable
 > A problem $$X$$ "polynomial time reduces" to a problem $$Y$$ if arbitrary instances of $$X$$ can be solved with:
 >
 > - A polynomial number of computational steps
-> - A polynomial number of calls to an "oracle", which solves $Y$ in constant time
+> - A polynomial number of calls to an "oracle", which solves $$Y$$ in constant time
 >
 > We refer to this reduction as $$X \leq_p Y$$ (read polynomial reduction of $$X$$ to $$Y$$)
 
@@ -241,7 +239,7 @@ For these definitions, we restrict ourselves to decision (yes/no) problems for c
 
 #### **P**
 
-> An algorithm $$A$$ runs in polynomial time if for every string $s$, then $$A(s)$$ terminates in fewer than $$p(\vert s \vert)$$ steps, where $$p$$ is some polynomial function. This can be expressed as **P** is the set of decision problems for which there exists a polynomial time algorithm to find the solution.
+> An algorithm $$A$$ runs in polynomial time if for every string $$s$$, then $$A(s)$$ terminates in fewer than $$p(\vert s \vert)$$ steps, where $$p$$ is some polynomial function. This can be expressed as **P** is the set of decision problems for which there exists a polynomial time algorithm to find the solution.
 
 #### **NP**
 
@@ -271,7 +269,7 @@ Hence, to show that a problem is **NP-Complete**, we do *both* of the following:
 
 ### **P** vs **NP**
 
-It is not known whether **P** fully encompasses **NP** - this is a big unsolved problem in computer science. The diagrams of the above classes look like the following for **P** = **NP** and **P** $\ne$ **NP** respectively:
+It is not known whether **P** fully encompasses **NP** - this is a big unsolved problem in computer science. The diagrams of the above classes look like the following for **P** = **NP** and **P** $$\ne$$ **NP** respectively:
 
 <img src="./images/p_vs_np.png" alt="P_vs_NP" class="center" />
 
@@ -321,4 +319,3 @@ This means that $$g(n)\cdot c$$ will always be lesser than or equals to $$f(n)$$
 > $$
 
 Here this means that for a specific $$g(n)$$, we can scale it by two variables $$c_O$$ and $$c_\Omega$$ and $$f$$ will be always “fit in-between” the two scaled $$g$$ s after a certain threshold $$n_0$$.
-
