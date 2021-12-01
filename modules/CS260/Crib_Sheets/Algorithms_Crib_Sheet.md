@@ -30,19 +30,25 @@ In order to implement this, we need to devise a "greedy rule". Picking these can
 
 After each step, show that the output of the greedy algorithm is at least as good as any other argument.
 
-Example
+Proof by contradiction is often convenient to show this:
+
+- Assume greedy is not optimal
+- Show that there is no way to improve the greedily selected output
 
 #### 2. Structural
 
-Find a structural property (called a bound) that all valid solutions must have, then show that the greedy algorithm always satisfies it.
+Find a structural property (called a bound) that all optimal solutions must have, then show that the greedy algorithm always satisfies it.
 
-Example
+Hence, we approach problems like this by:
+
+- Finding a property of all optimal solutions
+- Show that the greedily selected output always satisfies this property
 
 #### 3. Exchange argument
 
 Gradually transform any solution to the one found by the greedy algorithm without hurting its quality.
 
-Example
+This can be approached by direct proof, or by more complicated methods.
 
 
 
