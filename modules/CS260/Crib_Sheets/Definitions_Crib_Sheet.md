@@ -12,7 +12,7 @@ math: true
   - A partition of the nodes of the graph into two non-empty subsets  $$S$$ and $$V \setminus S$
 - Cutset of a graph $$G=(V,E)$$
   - The cutset of a cut $$S$$ is the set of edges with exactly one endpoint in $$S$
-- Spanning tree of a graph $$G=(V,E)$
+- Spanning tree of a graph $$G=(V,E)$$
   - A fully connected acyclic subgraph of $$G$$
   - Connected and $$\vert E \vert  = \vert V \vert - 1$$
   - Acyclic and $$\vert E\vert  = \vert V\vert - 1$$
