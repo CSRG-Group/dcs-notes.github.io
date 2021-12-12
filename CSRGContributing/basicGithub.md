@@ -37,15 +37,15 @@ To contribute ot the site the first step is to make a github account
 
 On the repository's page on GitHub [here](https://github.com/CSRG-Group/dcs-notes.github.io), click the "Fork repository" button
 
-Clone your fork of the repository to your computer by running the command git clone https://github.com/<YOUR_GITHUB_USERNAME>/dcs-notes.github.io
+Clone your fork of the repository to your computer by running the command<br> `git clone https://github.com/<YOUR_GITHUB_USERNAME>/dcs-notes.github.io`
 
-Create a new branch on your local repository by running the command git checkout -b <NEW_BRANCH_NAME>. Naming the branch as a very brief description of what the change entails is helpful for us when accepting pull requests.
+Create a new branch on your local repository by running the command <br>`git checkout -b <NEW_BRANCH_NAME>`. Naming the branch as a very brief description of what the change entails is helpful for us when accepting pull requests.
 
 Set a new remote server for the upstream repository by running the command git remote add upstream https://github.com/csrg-group/dcs-notes.github.io
 
-Make your changes/contributions, then add and commit your changes to the repository (with git add -A and git commit -m "<COMMIT_MESSAGE>" respectively)
+Make your changes/contributions, then add and commit your changes to the repository (with `git add --all` and `git commit -m "<COMMIT_MESSAGE>" respectively`)
 
-Push your changes to the remote server by running the command git push -u origin <NEW_BRANCH_NAME>
+Push your changes to the remote server by running the command  <br>`git push -u origin <NEW_BRANCH_NAME>`
 
 On the repository's page on GitHub, after the changes have been pushed, a green "Compare & pull request" button will appear. Click on it, then click on the green "Create pull request" button which will appear afterwards. After this is done, we will be able to merge it in to the repository, or we might ask you to make some changes before we do so
 
