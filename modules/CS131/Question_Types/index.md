@@ -44,7 +44,7 @@ title: "Question Sheet"
 ### Basic arithmetic
 
 - Multiply the two matrices $$M$$ and $$N$$
-  - To matrices are only multipliable if the number of columns on $$M$$ is the same as the number of rows on $$N$$. 
+  - Two matrices are only multipliable if the number of columns on $$M$$ is the same as the number of rows on $$N$$. 
     - Visualise this by taking a single row of $$M$$; rotate it 90 degrees; can you fit this inside the matrix $$N$$?
     - If this is not possible then you cannot multiply the two matrices, as you will not have enough values for the operation.
   - Sum the products of each element as you iteratively advance the **row** of $$M$$ and the **column** of $$N$$.
