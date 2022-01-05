@@ -67,6 +67,7 @@ We welcome pull requests from anyone who is happy to share their notes, and woul
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/Linh012"><img src="https://avatars.githubusercontent.com/u/60060916?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gia Linh Nguyen</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ALinh012" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/harry-pikesley"><img src="https://avatars.githubusercontent.com/u/95980050?v=4?s=100" width="100px;" alt=""/><br /><sub><b>harry-pikesley</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aharry-pikesley" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
