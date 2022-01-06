@@ -225,7 +225,7 @@ If you have the matrix $$B$$ obtained from the matrix $$A$$ after any of the fol
   - Find the stationary points and the values of $$f$$ at each of these.
   - Find the nature of each stationary point to determine if they are minima or maxima
   - Find the values of $$f(x)=0$$ if this is possible
-  - Determine the behaviour of $$f(x)$$ as $$x \rightarrow \pm \infin $$
+  - Determine the behaviour of $$f(x)$$ as $$x \rightarrow \pm \infty $$
   - Investigate any possible asymptotes
 - Show that $$f(x)=\frac{g(x)}{h(x)}$$ can be differentiated where $$h'(x)$$ is differentiable again with no reduction in the number of terms. You may also choose to use this rule when dealing with $$h(x) \rightarrow 0$$.
   - Use L'Hopital's Rule to calculate the limit of $$f'(x)$$; if both functions $$g(x)$$ and $$h(x)$$ are differentiable, then $$f'(x)=\frac{g'(x)}{h'(x)}$$. You can repeat this until you gain a value for a limit.
@@ -242,7 +242,7 @@ If you have the matrix $$B$$ obtained from the matrix $$A$$ after any of the fol
 
 The Taylor series can be defined as
 $$
-\sum^{\infin}_{n=0}\frac{f^{(n)}{(a)}}{n!}(x-a)^{n}
+\sum^{\infty}_{n=0}\frac{f^{(n)}{(a)}}{n!}(x-a)^{n}
 $$
 Since we use Taylor's Theorem to calculate an approximation for a function, we will typically have a remainder left over, $$R_{n}(x)$$ where
 $$
@@ -252,7 +252,7 @@ for some number $$c$$ between $$a$$ and $$x$$. The **Taylor polynomial** refers 
 
 When we pick $$a=0$$ for the Taylor series, we arrive at the Maclaurin series which is defined similarly:
 $$
-\sum^{\infin}_{n=0}\frac{f^{(n)}{(0)}}{n!}(x)^{n}
+\sum^{\infty}_{n=0}\frac{f^{(n)}{(0)}}{n!}(x)^{n}
 $$
 We can still use the above expression for the remainder left by the approximation by substituting a value of $$0$$ for $$a$$. However, given by the squeeze rule, we will typically find that $$R_{n} \rightarrow 0$$ which shows that the Maclaurin series expansion is valid for all $$x \in \mathbf{R}$$. **Focus on the absolute value for $$R_{n}(x)$$**.
 
