@@ -288,7 +288,7 @@ bound has a greatest lower bound.
 
 [Link to the PDF.](https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note3.pdf)
 
-In the set $$\mathbb{C}$$, of the form $$a + ib$$ where $$i^2 = \sqrt{-1}$$.
+In the set $$\mathbb{C}$$, of the form $$a + ib$$ where $$i^2 = -1$$.
 Often denoted $$z$$.
 
 Representable by an ordered pair $$z = (a, b)$$ where $$Re_z = a$$ and
