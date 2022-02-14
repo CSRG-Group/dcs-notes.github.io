@@ -2,7 +2,7 @@ code: CS262
 description: 	Logic and Verification
 
 CribSheets :
-  - name: laws_and_associativity
+  - name: Logic_and_Verification
     link: Crib_Sheets
     description: Crib sheet for the exam
     authors:
