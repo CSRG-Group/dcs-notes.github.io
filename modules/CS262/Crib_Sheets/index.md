@@ -35,7 +35,7 @@ X is a tautology if and only if $$\empty \vDash X$$ , which we write as $$\vDash
 
 - &nbsp; $$\langle X_1, X_2, ..., X_n \rangle = X_1 \wedge X_2 \wedge ... \wedge X_n$$
 - &nbsp; $$v(\langle X_1, X_2, ..., X_n \rangle) = T$$ if and only if $$v(X_i) = T, \quad \forall V_i$$
-- &nbsp; $$v(\langle \rangle) = v(\bot) = F$$
+- &nbsp; $$v(\langle \rangle) = v(\top) = T$$
 
 ### Normal forms
 
