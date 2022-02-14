@@ -1,5 +1,5 @@
 ---
-module : CS260
+module : CS262
 layout: modhome
-title: Algorithms
+title: Logic and Verification
 ---

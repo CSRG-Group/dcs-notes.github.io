@@ -1,3 +1,8 @@
+---
+layout: noteshome
+title: Crib Sheet
+---
+
 ## Logic crib sheet
 
 ### Parse trees

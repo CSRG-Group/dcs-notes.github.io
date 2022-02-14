@@ -1,0 +1,11 @@
+code: CS262
+description: 	Logic and Verification
+
+CribSheets :
+  - name: laws_and_associativity
+    link: Crib_Sheets
+    description: Crib sheet for the exam
+    authors:
+      - Justin Tan
+      - Edmund Goodman
+    
