@@ -1,6 +1,7 @@
 ---
 layout: noteshome
-title: Crib Sheet
+title: Logic and Verification
+math: true
 ---
 
 ## Logic crib sheet
@@ -26,17 +27,15 @@ X is a tautology if and only if $$\empty \vDash X$$ , which we write as $$\vDash
 
 #### Generalised disjunction
 
-- $$[X_1, X_2, ..., X_n] = X_1 \vee X_2 \vee ... \vee X_n$$
-
-- $$v([X_1, X_2, ..., X_n]) = T$$ if and only if $$v(X_i) = T, \quad \exists V_i$$
-- $$v([]) = v(\bot) = F$$
+- &nbsp; $$[X_1, X_2, ..., X_n] = X_1 \vee X_2 \vee ... \vee X_n$$
+-  &nbsp; $$v([X_1, X_2, ..., X_n]) = T$$ if and only if $$v(X_i) = T, \quad \exists V_i$$
+-  &nbsp; $$v([]) = v(\bot) = F$$
 
 #### Generalised conjunction
 
-- $$\langle X_1, X_2, ..., X_n \rangle = X_1 \wedge X_2 \wedge ... \wedge X_n$$
-
-- $$v(\langle X_1, X_2, ..., X_n \rangle) = T$$ if and only if $$v(X_i) = T, \quad \forall V_i$$
-- $$v(\langle \rangle) = v(\bot) = F$$
+- &nbsp; $$\langle X_1, X_2, ..., X_n \rangle = X_1 \wedge X_2 \wedge ... \wedge X_n$$
+- &nbsp; $$v(\langle X_1, X_2, ..., X_n \rangle) = T$$ if and only if $$v(X_i) = T, \quad \forall V_i$$
+- &nbsp; $$v(\langle \rangle) = v(\bot) = F$$
 
 ### Normal forms
 
