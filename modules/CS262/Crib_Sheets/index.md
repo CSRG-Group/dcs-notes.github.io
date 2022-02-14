@@ -6,8 +6,6 @@ math: true
 
 ## Logic crib sheet
 
-### Parse trees
-
 ### Propositional consequence
 
 We say that a formula $$X$$ is a **consequence** of a set $$S$$ of formulas, denoted $$S \vDash X$$ , provided that $$X$$ maps to $$T$$ under every valuation that
