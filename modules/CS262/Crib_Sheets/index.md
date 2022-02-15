@@ -6,8 +6,6 @@ math: true
 
 ## Logic crib sheet
 
-### Parse trees
-
 ### Propositional consequence
 
 We say that a formula $$X$$ is a **consequence** of a set $$S$$ of formulas, denoted $$S \vDash X$$ , provided that $$X$$ maps to $$T$$ under every valuation that
@@ -27,29 +25,38 @@ X is a tautology if and only if $$\empty \vDash X$$ , which we write as $$\vDash
 
 #### Generalised disjunction
 
-- &nbsp; $$[X_1, X_2, ..., X_n] = X_1 \vee X_2 \vee ... \vee X_n$$
--  &nbsp; $$v([X_1, X_2, ..., X_n]) = T$$ if and only if $$v(X_i) = T, \quad \exists V_i$$
--  &nbsp; $$v([]) = v(\bot) = F$$
+- $$[X_1, X_2, ..., X_n] = X_1 \vee X_2 \vee ... \vee X_n$$
+
+- $$v([X_1, X_2, ..., X_n]) = T$$ if and only if $$v(X_i) = T, \quad \exists V_i$$
+- $$v([]) = v(\bot) = F$$
 
 #### Generalised conjunction
 
-- &nbsp; $$\langle X_1, X_2, ..., X_n \rangle = X_1 \wedge X_2 \wedge ... \wedge X_n$$
-- &nbsp; $$v(\langle X_1, X_2, ..., X_n \rangle) = T$$ if and only if $$v(X_i) = T, \quad \forall V_i$$
-- &nbsp; $$v(\langle \rangle) = v(\bot) = F$$
+- $$\langle X_1, X_2, ..., X_n \rangle = X_1 \wedge X_2 \wedge ... \wedge X_n$$
+
+- $$v(\langle X_1, X_2, ..., X_n \rangle) = T$$ if and only if $$v(X_i) = T, \quad \forall V_i$$
+- $$v(\langle \rangle) = v(\top) = T$$
 
 ### Normal forms
 
 #### Disjunctive normal form
 
-Start with $$\langle [X] \rangle$$, then repeatedly apply the following rules to the expression, terminating when only literals remain:
+Start with $$[ \langle X \rangle ]$$, then repeatedly apply the following rules to the expression, terminating when only literals remain:
 
 ![DNFrules](./images/DNFrules.png)
 
+- $$\beta$$-expansion = replace the conjunction containing $$\beta$$ with two conjunctions containing all the same elements except $$\beta$$, which is replaced by $$\beta_1$$ and $$\beta$$ respectively
+- $$\alpha$$-expansion = replace the $$\alpha$$ within the conjunction with the two formulae $$\alpha_1$$ and $$\alpha_2$$ still within the conjunction
+
 #### Conjunctive normal form
 
-Start with $$[ \langle X \rangle ]$$, then repeatedly apply the following rules to the expression, terminating when only literals remain:
+Start with $$\langle [ X ] \rangle$$, then repeatedly apply the following rules to the expression, terminating when only literals remain:
 
 ![CNFrules](./images/CNFrules.png)
+
+- $$\beta$$-expansion = replace the $$\beta$$ within the disjunction with the two formulae $$\beta_1$$ and $$\beta_2$$ still within the disjunction 
+
+- $$\alpha$$-expansion = replace the disjunction containing $$\alpha$$ with two disjunctions containing all the same elements except $$\alpha$$, which is replaced by $$\alpha_1$$ and $$\alpha_2$$ respectively
 
 ### Proof systems
 
@@ -60,6 +67,10 @@ Start with $$\neg X$$ as the root node, as it is a refutation system, and we are
 In each step, select a branch and a non-literal formula on that branch, then apply the following rules (same as DNF):
 
 ![DNFrules](./images/DNFrules.png)
+
+- $$\beta$$-expansion = add two new child vertices $$\beta_1$$ and $$\beta_2$$ to the end of the current branch
+
+- $$\alpha$$-expansion = add a child and grandchild vertices $$\alpha_1$$ and $$\alpha_2$$ respectively to the end of the current branch
 
 A closed branch is when either both $$N$$ and $$\neg N$$, or $$\bot$$ occur on a branch. If all branches of the expansion are closed, the algorithm terminates.
 
@@ -99,9 +110,7 @@ A resolution proof of $$X$$ is a closed resolution for $$\neg X$$, and we write 
 
 #### Natural deduction
 
-A system of ____, with sub-ordinate proofs (lemmas), enclosed within boxes, which can then be used later in the proof.
-
-The first formula in a box is an assumption, which is taken as axiomatic, only within the scope of that.
+A system of assumptions, with sub-ordinate proofs (lemmas), enclosed within boxes, which can then be used later in the proof. The first formula in a box is an assumption, which is taken as axiomatic, only within the scope of that.
 
 The following rules can be applied:
 
@@ -111,10 +120,13 @@ The following rules can be applied:
 
 ![naturalDeductionDerivedRules](./images/naturalDeductionDerivedRules.png)
 
+- Horizontal line indicates given the element(s) above it, the element(s) below it can be added within the same scope
+- Box indicates that given a lemma with an initial assumption and final conclusion within it, the element below it can be added to the outer scope
+
 Proof strategies:
 
 - Work inwards from both the start and the end
-- Split an implication $$X \rightarrow Y$$, by assuming $$X$$, then showing $$Y$$ can be deduced from it, hence by ___ $$X \rightarrow Y$$
+- Split an implication $$X \rightarrow Y$$, by assuming $$X$$, then showing $$Y$$ can be deduced from it, so hence $$X \rightarrow Y$$
 - Assume the $$\neg X$$, show that $$\bot$$ can be deduced from it, hence $$X$$
 
 We write $$\vdash_d X$$ to denote a natural deduction proof of $$X$$
