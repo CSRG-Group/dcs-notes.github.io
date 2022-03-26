@@ -31,7 +31,7 @@ Maintain a set of explored nodes $$S$$
 
 let $$d[u]$$ be the length of a shortest $$s \rightarrow u$$ path
 
-initialize $$S \leftarrow \{s\}$$ , $$d[u] \leftarrow 0$$
+initialize $$S \leftarrow \{s\}$$ , $$d[s] \leftarrow 0$$
 
 repeatedly:
 * choose unexplored node $$v\notin S$$ that minimises $$\pi(v)$$ where:
