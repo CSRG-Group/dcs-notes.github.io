@@ -41,10 +41,7 @@ initialize $$S \leftarrow \{s\}$$ , $$d[u] \leftarrow 0$$
 repeatedly:
 * choose unexplored node $$v\notin S$$ that minimises $$\pi(v)$$ where:
 
-$$
-\pi(v) = \min_{e = (u,v):u \in S}
-
-$$
+$$\pi(v) = \min_{e = (u,v):u \in S}$$
 
 * add $$v$$ to $$S$$ , $$d[v]\leftarrow \pi(v)$$
 * prev[v] $$\leftarrow e$$
