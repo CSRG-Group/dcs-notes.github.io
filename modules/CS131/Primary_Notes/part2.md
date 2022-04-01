@@ -23,7 +23,7 @@ Addition and scalar multiplication are done element-wise. For
 $$\vec{x} = (x_1, x_2, ..., x_n)$$ and $$\vec{y} = (y_1, y_2, ..., y_n)$$
 
 - $$\lambda \vec{x} = (\lambda x_1, \lambda x_2, ..., \lambda x_n)$$
-- $$\vec{x}\vec{y} = (y_1 + x_1, y_2 + x_2, ...,y_3 + x_n)$$
+- $$\vec{x}+\vec{y} = (y_1 + x_1, y_2 + x_2, ...,y_3 + x_n)$$
 
 $$\vec{x} - \vec{y}$$ and $$-\vec{x}$$ are also defined accordingly from
 these.
