@@ -10,15 +10,20 @@ part: true
 
 ### Single-Pair Shortest path problem
 **Input**:
+
 * A weighted graph/digraph
 * A source node(start)
 * A destination node(end)
+
 **Output**:
 * A shortest path through the graph from the source to the destination 
 
 ### Single-Source shortest path problem
+**Input**:
+
 * A weighted graph/digraph
 * A source node(start)
+
 **Output**:
 * A set of shortest paths through the graph from the source to every node in the graph
 * Can be represented as a tree with the source as the node
