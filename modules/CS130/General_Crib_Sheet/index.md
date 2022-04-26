@@ -201,7 +201,7 @@ Consider the relation $$f : A \rightarrow B$$
 
 ## Graph isomorphism
 
-- Graph isomorphism ($$\cong$$) is when two graphs are topologically identically ([Additional notes](https://homepages.warwick.ac.uk/~masgar/Teach/2005_428/2005_09_08lecture_isomorphism.pdf)), formally:
+- Graph isomorphism ($$\cong$$) is when two graphs are topologically identical ([Additional notes](https://homepages.warwick.ac.uk/~masgar/Teach/2005_428/2005_09_08lecture_isomorphism.pdf)), formally:
 
   Two graphs $$G$$ and $$H$$ are isomorphic if there is a bijection $$f : V(G)\rightarrow V(H)$$ so that, for any $$v,w \in V(G)$$, the number of edges connecting $$v$$ to $$w$$ is the same as the number of edges connecting $$f(v)$$ to $$f(w)$$. 
 
