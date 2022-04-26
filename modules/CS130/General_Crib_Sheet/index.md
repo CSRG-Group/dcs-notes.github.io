@@ -167,7 +167,7 @@ Consider a relation $$R : A \rightarrow B$$
 
 Consider the relation $$f : A \rightarrow B$$
 
-- For a relation to be a function, it must only map values into the co-domain, and every value in the domain maps to a exactly one value in the range. Formally, we write this as $$\forall x \in A, \exists! y \in B \quad x \sim y$$
+- For a relation to be a function, it must only map values into the co-domain, and every value in the domain maps to exactly one value in the range. Formally, we write this as $$\forall x \in A, \exists! y \in B \quad x \sim y$$
 
    To prove this:
 
