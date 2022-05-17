@@ -4,7 +4,7 @@ title: PHP
 part: true
 ---
 
-## Introductions
+## Introduction
 
 PHP is a server side scripting language 
 
