@@ -24,7 +24,7 @@ Python files use the py extensions, for example: `test.py`
 
 Unlike with many other popular programming languages like Java or C, statements in python do **not** end with a semicolon `;`
 
-Curly brackets are also **not** used. Instead, scope is denoted through the use of indentation. This means that whitespace in python is also considered code, it does not get removed before interpretation/compilation.
+Curly brackets are also **not** used. Instead, scope (Part of the code in which a specific variable or method can be accessed) is denoted through the use of indentation. This means that whitespace in python is also considered code, it does not get removed before interpretation/compilation.
 
 Outputting to the console is handled using the `print()` function.
 
@@ -40,7 +40,9 @@ Valid variable names must
     * **Not** start with a number
     * Only contain alpha-numeric characters and underscores
 
-Once a variable is created, you are able to change its value even if it of a different *type*
+Constants (variables that won't change) should be all uppercase. This isn't required however it is common practice among programmers.
+
+Once a variable is created, you are able to change its value even if it's of a different *type*
 
 ```
 a = 5
