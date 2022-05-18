@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](#how-to-make-a-pull-request)
 [![licensebuttons by-nc-sa](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-31-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
+[![All Contributors](https://img.shields.io/badge/%E2%9D%A4_contributors-32-blue.svg?style=for-the-badge&labelColor=539be1)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!--[![GitHub forks](https://img.shields.io/github/forks/CSRG-Group/dcs-notes.github.io.svg?style=for-the-badge&label=Fork)](https://GitHub.com/CSRG-Group/dcs-notes.github.io/network/)
@@ -110,6 +110,7 @@ We will appreciate if contributors abide by these formatting guidelines, as it e
     <td align="center"><a href="https://github.com/Linh012"><img src="https://avatars.githubusercontent.com/u/60060916?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gia Linh Nguyen</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ALinh012" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/harry-pikesley"><img src="https://avatars.githubusercontent.com/u/95980050?v=4?s=100" width="100px;" alt=""/><br /><sub><b>harry-pikesley</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aharry-pikesley" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://kevinzonda.com"><img src="https://avatars.githubusercontent.com/u/33132228?v=4?s=100" width="100px;" alt=""/><br /><sub><b>KevinZønda</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3AKevinZonda" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/pzet123"><img src="https://avatars.githubusercontent.com/u/52672507?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Piotr Zychlinski</b></sub></a><br /><a href="#content-pzet123" title="Content">🖋</a></td>
   </tr>
 </table>
 
