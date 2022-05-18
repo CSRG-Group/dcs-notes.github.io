@@ -69,6 +69,7 @@ We welcome pull requests from anyone who is happy to share their notes, and woul
     <td align="center"><a href="https://github.com/Linh012"><img src="https://avatars.githubusercontent.com/u/60060916?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gia Linh Nguyen</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3ALinh012" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/harry-pikesley"><img src="https://avatars.githubusercontent.com/u/95980050?v=4?s=100" width="100px;" alt=""/><br /><sub><b>harry-pikesley</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3Aharry-pikesley" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://kevinzonda.com"><img src="https://avatars.githubusercontent.com/u/33132228?v=4?s=100" width="100px;" alt=""/><br /><sub><b>KevinZønda</b></sub></a><br /><a href="https://github.com/CSRG-Group/dcs-notes.github.io/issues?q=author%3AKevinZonda" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/pzet123"><img src="https://avatars.githubusercontent.com/u/52672507?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Piotr Zychlinski</b></sub></a><br /><a href="#content-pzet123" title="Content">🖋</a></td>
   </tr>
 </table>
 
