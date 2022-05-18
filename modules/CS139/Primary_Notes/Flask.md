@@ -81,6 +81,8 @@ def CS139():
 
 ## Jinja
 
+{% raw %}
+
 As stated previously, Jinja (AKA Jinja2) is the template generation engine used by Flask. Jinja has its own syntax which is somewhat similar to that of python. All Jinja code should be included within html templates.
 
 `{{ }}` Is used to add content to the HTML file. Anything between the braces will be added to the final generated web page as content.
@@ -121,6 +123,8 @@ You can iterate over items in a sequence using `for`, very similarly to how you 
 ```
 
 *This is likely all you will need to know about Jinja for the module however if you're interested in the rest of Jinja's features, you can read more about it on the [official website](https://jinja.palletsprojects.com/en/3.1.x/)*
+
+{% endraw %}
 
 ## Accessing Requests Data
 
