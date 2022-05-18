@@ -1,11 +1,7 @@
 ---
-
 layout: notes
-
 title: Python
-
 part: true
-
 ---
 
   *These notes will not cover everything Python has to offer or go into intricate detail of how python works under the hood, the purpose is to cover the basics and anything else which you may need to know to make use of Flask.*
