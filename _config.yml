@@ -151,3 +151,4 @@ collections:
     output: true
   modules:
     output: true
+theme: jekyll-theme-cayman
