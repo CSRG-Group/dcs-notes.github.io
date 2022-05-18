@@ -110,7 +110,7 @@ Conditional statements can be used to omit certain HTML depending on the data pa
 
 ### For loops
 You can iterate over items in a sequence using `for`, very similarly to how you would do it in Python. A for loop can be combined with an else statement that will execute in the case that there are no items to iterate over.
-
+```
 <ul>
 {% for user in users %}
     <li>Username: {{ user.username }}</li>
@@ -118,7 +118,7 @@ You can iterate over items in a sequence using `for`, very similarly to how you 
     <li>No users found</li>
 {% endfor %}
 </ul>
-
+```
 
 *This is likely all you will need to know about Jinja for the module however if you're interested in the rest of Jinja's features, you can read more about it on the [official website](https://jinja.palletsprojects.com/en/3.1.x/)*
 
