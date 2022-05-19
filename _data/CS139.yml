@@ -10,6 +10,8 @@ Notes:
     order:
       - HTML.html
       - CSS.html
+      - Python.html
+      - Flask.html
       - PHP.html
       - JavaScript.html
       - SQL.html

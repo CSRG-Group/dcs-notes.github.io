@@ -112,6 +112,8 @@ collections:
       - PHP.md
       - JavaScript.md
       - SQL.md
+      - Python.md
+      - Flask.md
       - Theory1.md
       - Theory2.md
       - Theory3.md
