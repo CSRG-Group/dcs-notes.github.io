@@ -10,15 +10,20 @@ part: true
 
 ### Single-Pair Shortest path problem
 **Input**:
+
 * A weighted graph/digraph
 * A source node(start)
 * A destination node(end)
+
 **Output**:
 * A shortest path through the graph from the source to the destination 
 
 ### Single-Source shortest path problem
+**Input**:
+
 * A weighted graph/digraph
 * A source node(start)
+
 **Output**:
 * A set of shortest paths through the graph from the source to every node in the graph
 * Can be represented as a tree with the source as the node
@@ -36,10 +41,7 @@ initialize $$S \leftarrow \{s\}$$ , $$d[s] \leftarrow 0$$
 repeatedly:
 * choose unexplored node $$v\notin S$$ that minimises $$\pi(v)$$ where:
 
-$$
-\pi(v) = \min_{e = (u,v):u \in S}
-
-$$
+$$\pi(v) = \min_{e = (u,v):u \in S}$$
 
 * add $$v$$ to $$S$$ , $$d[v]\leftarrow \pi(v)$$
 * prev[v] $$\leftarrow e$$
