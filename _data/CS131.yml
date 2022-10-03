@@ -39,6 +39,11 @@ CribSheets :
 Questions :
   QUIZAvailable : false
   altQuestions:
+    - name : Practice Questions
+      description : A set of practice questions in line with the specification
+      link : https://github.com/SwiftfoxStudios/CSRG-PQs/raw/main/CS131_PQs.pdf
+      authors:
+        - Antonio Brito
     - name : Anki flashcards
       description : Download and import with Anki
       link : https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Maths%20for%20CS%20-%20CS131.apkg
