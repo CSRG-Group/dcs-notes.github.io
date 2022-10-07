@@ -27,7 +27,7 @@ Defines the data space
 
 considering the:
 * Data items to be stored
-* What are teh data attributes
+* What are the data attributes
 * What are the relationships
 * Any attributes of the relationships
   
