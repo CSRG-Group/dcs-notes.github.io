@@ -63,7 +63,7 @@ This leads us to the idea of **circuit equivalence** where a *Boolean function c
 2. **Use the types of gates available** (these are usually dependent on the physical implementation e.g. only want to use **NAND** gates or maybe we have some 4-input gates etc.)
 3. **Minimise the number of gates used and hence cost**.
 
-There are two crucial skills to have
+There are two crucial skills to have:
 
 ### Logic Circuit to Truth Table
 
@@ -94,7 +94,7 @@ In an exam, it is crucial that you **state** which rules you are applying so tha
 
 The best way to get good at this is to **practise.** 
 
-### Karnaugh Maps / Kmaps
+### Karnaugh Maps / K-maps
 
 > Using Boolean algebra, it can be difficult to tell whether an equation is in its simplest form or to see the next step to simplifying it. K-maps show unambiguously when a Boolean expression is in its simplest form.
 
@@ -104,7 +104,7 @@ The best way to get good at this is to **practise.**
 <img src="part2.assets/image-20210505150058486.png" alt="image-20210505150058486" style="zoom: 50%;" class="center"/>
 
 
-**Karnaugh Map Grouping.**  The **first step** to finding the simplest expression is to form kmap groupings. There are some things/rules/features to note about this.
+**Karnaugh Map Grouping.**  The **first step** to finding the simplest expression is to form K-map groupings. There are some things/rules/features to note about this.
 
 1. **Wrap-around** is valid. This means the left most-column is adjacent to the right most-column, and the top row is adjacent to the bottom row. So the orange and green cells, and the blue and green cells are adjacent.
 2. **Groupings can overlap**. The cells don’t have to exclusively be in just 1 group.
@@ -132,9 +132,9 @@ Additionally, there are some expressions that are **impossible to simplify**. Th
 
 #### Don't Care Conditions
 
-Sometimes a certain combination of inputs either can’t happen or we don’t care what the output is if it happens. We denote this with a ❌ in our kmaps which may be assumed to be either 1 or 0 — we don’t care. 
+Sometimes a certain combination of inputs either can’t happen or we don’t care what the output is if it happens. We denote this with a ❌ in our K-maps which may be assumed to be either 1 or 0 — we don’t care. 
 
-These can allow us to create a simpler logic expression. If you take a look at the left kmap, you can see that there’s an outstanding 1 just below the ❌, and there are multiple ways we can choose to group it. If we do it like in the right kmap, you can see that we arrive at a slightly simpler logic expression – and the only reason we can group it that way is because the 01-00 cell is a **don’t care condition**.
+These can allow us to create a simpler logic expression. If you take a look at the left K-map, you can see that there’s an outstanding 1 just below the ❌, and there are multiple ways we can choose to group it. If we do it like in the right K-map, you can see that we arrive at a slightly simpler logic expression – and the only reason we can group it that way is because the 01-00 cell is a **don’t care condition**.
 
 <img src="part2.assets/image-20210504123211185.png" alt="image-20210504123211185" style="zoom:67%;" class="center"/>
 
@@ -148,7 +148,7 @@ Perform as fast as your gates.
 
 This circuit performs the addition of two bits, and can be extended to form a 1-bit full-adder. What’s important is that you recognise that the truth table for **sum** represents that of an **EX-OR** gate, while the **carry** represents that of an **AND** gate.
 
-This important because to derive the layout of the circuit, you can start from thinking about what you want to achieve first, i.e the addition of two bits. The truth table essentially describes this function and from there you can think about which gates you have to use and how they should be arranged according to the 1s and 0s in the truth table.
+This is important because to derive the layout of the circuit, you can start from thinking about what you want to achieve first, i.e the addition of two bits. The truth table essentially describes this function and from there you can think about which gates you have to use and how they should be arranged according to the 1s and 0s in the truth table.
 
 ![image-20210504124908090](part2.assets/image-20210504124908090.png)
 
@@ -299,11 +299,11 @@ A basic building block of memory. Level triggered devices (a device that respond
 
 ### D-Type Latch
 
-The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never be both be 0 so we won’t have the hazard condition. (I’ll make a diagram in the future).
+The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never both be 0 so we won’t have the hazard condition.
 
 ![image-20201019204921469](part2.assets/image-20201019204921469.png)
 
-When we want to store data, we have that data at D, and we set enable to 1 (or trigger the "latch"). Only then will the data from D go to Q. Otherwise, you can see from the truth table that Q and <span style="text-decoration:overline">Q</span> don’t change and behaves like memory. 
+When we want to store data, we have that data at D, and we set Enable to 1 (or trigger the "latch"). Only then will the data from D go to Q. Otherwise, you can see from the truth table that Q and <span style="text-decoration:overline">Q</span> don’t change and behaves like memory. 
 
 > The D-type is a fundamental component, so you should know how to draw it and understand its function. You should also understand how the D-type works with registers, shift registers, and counters.
 
@@ -313,7 +313,7 @@ The D-type latch (delay) is a type of clocked flip-flop and there are others lik
 
 **Level triggered** - 1s and 0s
 
-**Rising Edge triggered** - transition from 0 to 1
+**Rising edge triggered** - transition from 0 to 1
 
 **Falling edge triggered** - from 1 to 0 
 
