@@ -324,6 +324,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "starLiteAstro",
+      "name": "hapaxlegomena",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70979587?v=4",
+      "profile": "https://github.com/starLiteAstro",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github",
