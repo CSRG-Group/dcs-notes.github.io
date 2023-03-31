@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes CS118 Combined Notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">CS118 Combined Notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction-to-programming">Introduction to programming</a></li><li><a href="#variables-operators-and-types">Variables, operators and types</a><ul><li><a href="#data-types">Data types</a><ul><li><a href="#primitive-data-types">Primitive data types</a></li><li><a href="#passing-by-reference-and-by-value">Passing by reference and by value</a></li><li><a href="#casting">Casting</a></li></ul></li><li><a href="#operator-evaluation-and-precedence">Operator evaluation and precedence</a></li></ul></li><li><a href="#conditionals">Conditionals</a></li><li><a href="#iteratives">Iteratives</a></li><li><a href="#arrays-and-methods">Arrays and Methods</a></li><li><a href="#objects">Objects</a><ul><li><a href="#pillars-of-object-oriented-programming">Pillars of object oriented programming</a></li><li><a href="#solid-design-principles">SOLID design principles</a></li></ul></li><li><a href="#modifiers">Modifiers</a></li><li><a href="#inheritance">Inheritance</a></li><li><a href="#abstract-classes-interfaces-and-enumerated-types">Abstract classes, interfaces, and enumerated types</a><ul><li><a href="#abstract-classes">Abstract classes</a></li><li><a href="#interfaces">Interfaces</a></li><li><a href="#enumerated-types">Enumerated types</a></li></ul></li><li><a href="#exceptions">Exceptions</a></li><li><a href="#generics">Generics</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h1 id="introduction-to-programming">Introduction to programming</h1>
+
+<ul>
+  <li>Ways to classify programming languages
+	- High and low level languages
+    <ul>
+      <li>Low level languages only support simple operations, which they can run very quickly, but are difficult to program complex tasks in due to this restriction</li>
+      <li>High level languages rely on abstractions on top of low level languages to perform more complex operations, but these operations run slower as they are composed from many smaller ones, and are often less fit for purpose, as they are generic for many use cases</li>
+      <li>Programming paradigms
+        <ul>
+          <li>Imperative, instructing a machine how to change its state
+            <ul>
+              <li>Procedural - Grouping sequences of instructions into procedures</li>
+              <li>Object oriented - Grouping data and operations on the data together to model systems</li>
+            </ul>
+          </li>
+          <li>Declarative, declaring the properties of the desired result, but not how to compute it
+            <ul>
+              <li>Functional - Declaring the result as the value of a sequence of function applications</li>
+              <li>Logical - Declaring the result as the answer to a question composed of a set of axioms and inference rules</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Java is an object oriented programming language
+    <ul>
+      <li>Provides automatic memory management, called garbage collection</li>
+      <li>Error checks at both compile and runtime</li>
+      <li>Doesn’t compile straight to machine code like most compiled languages, but instead to “bytecode”, which is not human-readable, but is portable between machines, unlike machine code, which is specific to an individual machines architecture/instruction set
+        <ul>
+          <li>The java code is first compiled to bytecode (Using the <code class="language-plaintext highlighter-rouge">javac</code> command, producing a <code class="language-plaintext highlighter-rouge">.class</code> file)</li>
+          <li>The bytecode in this generated file is then interpreted into machine code in the JVM (Java virtual machine), using a JIT (just in time) compiler, so the computer can execute it (Using the <code class="language-plaintext highlighter-rouge">java</code> command)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>The process of converting the specification of what a program should do to program code is known as “refinement”. This often includes five main things
+    <ul>
+      <li>Precondition - when should the program work</li>
+      <li>Input - what data does the program need</li>
+      <li>Calculates - what should the program calculate</li>
+      <li>Output - what results does the program return</li>
+      <li>Postcondition - what is the state after execution</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="variables-operators-and-types">Variables, operators and types</h1>
+
+<ul>
+  <li>Variables store values, associating them with a name so they can be used symbolically
+    <ul>
+      <li>Variables require a type and a name, given by <code class="language-plaintext highlighter-rouge">[type] name;</code>, defined in a process called instantiation</li>
+      <li>They can then be assigned a value, either on the same line or after instantiation <code class="language-plaintext highlighter-rouge">name = value</code></li>
+    </ul>
+  </li>
+  <li>Number systems
+    <ul>
+      <li>Numbers are stored in binary</li>
+      <li>In order to store negative integer numbers, we don’t just add a “sign bit” as we would normally, as then we define both positive and negative values for zero, which wastes space, and can be confusing. Instead, we use “Two’s complement”
+        <ul>
+          <li>Binary representation, but the left-most bit is negative
+<img src=".\media\twosComplement.png" alt="twosComplement" /></li>
+          <li>With eight bits, the smallest value is \(10000000_2 = -128_{10}\), and the largest value is \(01111111_2 = 127_{10}\) (this is \(-2^n\) to \(2^n - 1\))</li>
+        </ul>
+      </li>
+      <li>In order to store decimal numbers, we use “floating point notation”, which automatically handles the trade-off between precision and range for storing numbers in a fixed number of bits. This is defined in the IEEE-754 specification (for single precision <code class="language-plaintext highlighter-rouge">floats</code>, <code class="language-plaintext highlighter-rouge">double</code>s are a bit different):
+<img src=".\media\IEEE754main.png" alt="IEEE754main" />
+        <ul>
+          <li>The “sign bit” denotes whether the number is positive or negative</li>
+          <li>The “exponent” needs to represent both positive and negative numbers, but it <strong>does not</strong> use two’s complement, it instead uses a bias of \(127\), meaning you subtract \(-127\) from the decimal value to get the exponent. Additionally, \(-127_{10} = 00000000_2\) and \(128+{10} = 11111111_2\) are reserved special cases. Double precision uses an 11-bit field instead of an 8-bit one, and hence has an offset of \(1023\)</li>
+          <li>The “fraction/mantissa” represents the precision bits of the number, with the most significant bit being \(\frac{1}{2^1}\), then \(\frac{1}{2^2}\), and so on. This is taken as the value after the binary point, and in almost all cases, the value before the binary point is one, however, if the exponent is all \(0\)s, it is \(0\) and said to be denormalised. Double precision uses a 52-bit field instead of a 23-bit one.
+As a rule of thumb, calculate the value of the fraction from binary with the reciprocal values, the add one to it</li>
+          <li>The fraction represents the value of the number, and is of fixed precision, for example, 23 bits of information. The exponent then specifies the range of the number.</li>
+          <li>Special values
+            <ul>
+              <li>Denormalised, when the exponent is all \(0\)s, so the number is assumed to have a leading \(0\) not a leading \(1\) before the binary point, i.e. \(0.[fraction]\) not \(1.[fraction]\)</li>
+              <li>Zero, when both the exponent and fraction are all \(0\)s, so it resolves to \(0.0\) . Due to the sign bit, there are both positive and negative zeroes, but they compare as equal</li>
+              <li>Infinity, positive and negative infinities are when the exponent is all \(1\)s, but the fraction is all \(0\)s, and the sign bit indicates sign. Since they are actual values in the scheme, we can do operations on them</li>
+              <li>NaN (not a number), when the exponent is all \(1\)s, and there is a non-zero fraction. These can be used for signalling errors etc.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>A tool for <strong>checking</strong> this is available: https://www.h-schmidt.net/FloatConverter/IEEE754.html, and additional resources are available: https://steve.hollasch.net/cgindex/coding/ieeefloat.html</li>
+      <li>An example of this in practice is:
+<img src=".\media\IEEE754example.png" alt="IEEE754example" />
+Note that the “1.(fraction)” denotes a decimal point, not a multiplication operation</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="data-types">Data types</h2>
+
+<h3 id="primitive-data-types">Primitive data types</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Range</th>
+      <th>Size</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>1 bit</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">byte</code></td>
+      <td>\(-128\) to \(127\)</td>
+      <td>1 byte</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">short</code></td>
+      <td>\(-32768\) to \(+32767\)</td>
+      <td>2 bytes</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">char</code></td>
+      <td>\(0\) to \(65,535\)</td>
+      <td>2 bytes</td>
+      <td><code class="language-plaintext highlighter-rouge">\u0000</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td>\(-2,147,483,648\) to \(+2,147,483,647\)</td>
+      <td>4 bytes</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">long</code></td>
+      <td>\(-2^{63}\) to \(2^{63}-1\)</td>
+      <td>8 bytes</td>
+      <td><code class="language-plaintext highlighter-rouge">0L</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">float</code></td>
+      <td>\(-3.4 \times 10^{38}\) and \(3.4 \times 10^{38}\) with 6 to 7 significant digits of accuracy</td>
+      <td>4 bytes</td>
+      <td><code class="language-plaintext highlighter-rouge">0.0f</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">double</code></td>
+      <td>\(-1.7 \times 10^{308}\) and \(1.7 \times 10^{308}\) with 14 to 15 significant digits of accuracy</td>
+      <td>8 bytes</td>
+      <td><code class="language-plaintext highlighter-rouge">0.0d</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">char</code> primitive is essentially an unsigned <code class="language-plaintext highlighter-rouge">short</code> primitive, which is used to store UTF-16 encoded single characters instead of a number</p>
+
+<h3 id="passing-by-reference-and-by-value">Passing by reference and by value</h3>
+
+<ul>
+  <li>Primitive data types are stored as a value in a place in memory, for example, and <code class="language-plaintext highlighter-rouge">int</code> would be four consecutive bytes, whose value can be looked up by a variable name</li>
+  <li>However, since objects are not necessarily of a fixed size, we cannot just allocate an amount of memory for them. Instead, we store a “reference” to them on the heap, and the variable name refers to this reference, not the actual data
+    <ul>
+      <li>Because of this, we cannot use the <code class="language-plaintext highlighter-rouge">==</code> operator to compare object contents, as it merely compares their memory references, only telling you if it is the exact same instance, not if it has the same stuff in</li>
+    </ul>
+  </li>
+  <li>All parameters passed to and returned by methods are “passed-by-value”, i.e. the data in the physical memory space is duplicated in the scope of the method, and won’t affect the contents of the variable which it was passed from. However, we know that objects are only stored as references to the data on the heap, so the value passed is only the reference to the data, so it any operations will act on the same object, so it becomes “pass-by-reference”, as it is passing the value of the reference to the object
+    <ul>
+      <li>In practice, in Java primitives are “pass-by-value” (so changing them in the method won’t change them outside it), and objects are “pass-by-reference” (so any changes to them in a new method will affect their state outside of it)</li>
+    </ul>
+  </li>
+  <li>Autoboxing is an action performed automatically by the compiler, which “boxes” a primitive into its corresponding object (e.g. <code class="language-plaintext highlighter-rouge">int</code> to <code class="language-plaintext highlighter-rouge">Integer</code>) if a method requires an object, not just a primitive value.</li>
+</ul>
+
+<h3 id="casting">Casting</h3>
+
+<ul>
+  <li>
+    <p>Casting is the process of changing the data type used to express a piece of information, for example to change the range or the precision used to store a numeric value</p>
+  </li>
+  <li>
+    <p>There are three different sets of keywords used to describe casting, which are:</p>
+
+    <ul>
+      <li>
+        <p>Explicit and implicit</p>
+
+        <ul>
+          <li>Explicit casting is when the casting is indicated directly in the source code. In Java, this is denoted by wrapping the new type in brackets, for example <code class="language-plaintext highlighter-rouge">castValue = (newType) value</code></li>
+          <li>Implicit casting is when the casting can be inferred by the compiler, and so does not need to be indicated directly in the source code (however, it can be indicated with explicit casting as well for easier readability)</li>
+        </ul>
+      </li>
+      <li>
+        <p>Safe/widening and unsafe/narrowing casting</p>
+
+        <ul>
+          <li>
+            <p>Safe (also called widening) casting is when the value is moved to a data type which supports more precision or a greater range of values. <strong>No data is lost in this operation</strong>. This can be done simply by setting a more precisely/larger typed variable equal to the value of a less precisely/smaller typed one, using implicit casting</p>
+
+            <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">narrowValue</span> <span class="o">=</span> <span class="mf">3.141f</span><span class="o">;</span>
+<span class="kt">double</span> <span class="n">widenedValue</span> <span class="o">=</span> <span class="n">narrrowValue</span><span class="o">;</span>
+</code></pre></div>            </div>
+
+            <p>Explicit casting can also be used, although it is not necessary, for additional readability</p>
+          </li>
+          <li>
+            <p>Unsafe (also called narrowing) casting is when the value is moved to a data type which supports less precision or a smaller range of values. <strong>Data can (possibly but not necessarily) be lost in this operation</strong>. This must be indicated with an explicit cast, with brackets indicating the new type, as the compiler cannot infer that the type should change</p>
+
+            <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">wideValue</span> <span class="o">=</span> <span class="mf">3.141f</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">narrowedValue</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">wideValue</span><span class="o">;</span>
+</code></pre></div>            </div>
+
+            <p>Explicit casting is required for unsafe casting, but unsafe casting is not required for explicit casting</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Checked and unchecked casting</p>
+
+        <ul>
+          <li>
+            <p>Checked casting is when the cast operation is “well-defined”, i.e. the output type is able to represent the information stored in the input type. For example, numeric types can be safely cast between each other, since they all encode numbers</p>
+          </li>
+          <li>
+            <p>Unchecked casting is when the cast operation is may not be “well-defined”, i.e. the output type may not be able to represent all the information stored in the input type, or the input type may not provide enough information to “fill” the output type. For example, casting from an <code class="language-plaintext highlighter-rouge">ArithmeticException</code> to an <code class="language-plaintext highlighter-rouge">Integer</code> would be an unsafe cast, as one cannot fully represent the other.</p>
+
+            <p>Unsafe/unchecked casting will result in an error being thrown by the compiler, unless the <code class="language-plaintext highlighter-rouge">@SuppressWarnings("unchecked")</code> method annotation is used, which allows the code to be compiled, but this may still fail at runtime</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="operator-evaluation-and-precedence">Operator evaluation and precedence</h2>
+
+<ul>
+  <li>
+    <p>Types of operators</p>
+
+    <ul>
+      <li>Comparison operators: <code class="language-plaintext highlighter-rouge">==, !=, &gt;=, &lt;=, &lt;, &gt;</code></li>
+      <li>Boolean operators: <code class="language-plaintext highlighter-rouge">&amp;, &amp;&amp;, |, ||, !</code></li>
+    </ul>
+  </li>
+  <li>Lazy and strict operators
+    <ul>
+      <li>Lazy operators aren’t executed if an earlier operations fully defines the statement, e.g. the value is an or, and the first statement is true, the second statement needn’t be tested</li>
+      <li>Strict operators execute everything, even if it isn’t “needed” to evaluate the statement, as state might be mutated in later parts, e.g. <code class="language-plaintext highlighter-rouge">y &amp;&amp; (x++ == 4)</code> would change the value of <code class="language-plaintext highlighter-rouge">x</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Initialising variables allocates space in memory. Variables need to be initialised along all code paths, as otherwise the memory might not be allocated</p>
+  </li>
+  <li>
+    <p>Pre-increment and post-increment</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">++i</code> increments the variable before it is used in the equation,<code class="language-plaintext highlighter-rouge">i++</code> increments it after it has been used.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Operator precedence (<a href="http://pages.cs.wisc.edu/~willb/cs302/java-operator-precedence.pdf">additional source</a>)</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Letter</th>
+          <th>Name</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P</td>
+          <td>Postfix</td>
+          <td><code class="language-plaintext highlighter-rouge">expr++</code>, <code class="language-plaintext highlighter-rouge">expr--</code></td>
+        </tr>
+        <tr>
+          <td>U</td>
+          <td>Unary/Prefix</td>
+          <td><code class="language-plaintext highlighter-rouge">++expr</code>, <code class="language-plaintext highlighter-rouge">--expr</code></td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td>Multiplicative</td>
+          <td><code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">&amp;</code></td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>Additive</td>
+          <td><code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code></td>
+        </tr>
+        <tr>
+          <td>S</td>
+          <td>Shift</td>
+          <td><code class="language-plaintext highlighter-rouge">&gt;&gt;</code>,<code class="language-plaintext highlighter-rouge">&lt;&lt;</code></td>
+        </tr>
+        <tr>
+          <td>R</td>
+          <td>Relational</td>
+          <td><code class="language-plaintext highlighter-rouge">&gt;</code>,<code class="language-plaintext highlighter-rouge">&lt;</code>,<code class="language-plaintext highlighter-rouge">&lt;=</code>,<code class="language-plaintext highlighter-rouge">&gt;=</code></td>
+        </tr>
+        <tr>
+          <td>E</td>
+          <td>Equality</td>
+          <td><code class="language-plaintext highlighter-rouge">==</code>,<code class="language-plaintext highlighter-rouge">!=</code></td>
+        </tr>
+        <tr>
+          <td>S</td>
+          <td>Strict operators</td>
+          <td><code class="language-plaintext highlighter-rouge">&amp;</code>,<code class="language-plaintext highlighter-rouge">|</code>,<code class="language-plaintext highlighter-rouge">^</code></td>
+        </tr>
+        <tr>
+          <td>L</td>
+          <td>Lazy operators</td>
+          <td><code class="language-plaintext highlighter-rouge">&amp;&amp;</code>,<code class="language-plaintext highlighter-rouge">||</code></td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>Assignment</td>
+          <td><code class="language-plaintext highlighter-rouge">=</code>,<code class="language-plaintext highlighter-rouge">+=</code>,<code class="language-plaintext highlighter-rouge">-=</code>,<code class="language-plaintext highlighter-rouge">*=</code>,…</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h1 id="conditionals">Conditionals</h1>
+
+<ul>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">if..else if..else</code> statement</p>
+
+    <ul>
+      <li>
+        <p>Boolean values are used to decide whether code blocks are run</p>
+
+        <ul>
+          <li>
+            <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">condition_1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//If condition_1 is true, execute the exit the whole statement</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">condition_2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//If condition_1 is false, and condition_2 is true then execute the exit the whole statement</span>
+<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">condition_3</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//If condition_1 is false, condition_2 is false, and condition_3 is true then execute the exit the whole statement</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="c1">//If none of the preceeding conditions are true, execute</span>
+<span class="o">}</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>The curly braces can be omitted for single line statements, however, this is less readable, and can lead to issues such as the dangling else, so in my opinion should be avoided</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Ternary operators are a shorthand for assigning values using <code class="language-plaintext highlighter-rouge">if..else</code> statements</p>
+
+    <ul>
+      <li>They evaluate as follows <code class="language-plaintext highlighter-rouge">output = (condition) ? (valueIfTrue) : (valueIfFalse)</code></li>
+      <li>They can be nested, but this is code smell, and should probably be reverted to an <code class="language-plaintext highlighter-rouge">if..else if..else</code> statement instead</li>
+    </ul>
+  </li>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">switch</code> statement</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">Switch</code> statements offer a way to select control flow based off the value of a variable as opposed to a boolean condition. In some cases, this can be more simple, and hence preferred over <code class="language-plaintext highlighter-rouge">if</code> statements</p>
+      </li>
+      <li>
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="o">(</span><span class="n">variable</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="nl">value_1:</span>
+            <span class="c1">//If the variable is equal to value_1, execute the code, then exit the statement due to the break statement</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="nl">value_2:</span>
+            <span class="c1">//If the variable is not equal to value_1, and is equal to value_2 then execute the code, and continue executing each block until the next break statement occurs, or the statement ends</span>
+        <span class="k">case</span> <span class="nl">value_3:</span>
+            <span class="c1">//If the variable is not equal to value_1, and is equal to either value_2 (since it is running through with no break statement) or value_3, then execute the code, then exit the statement due to the break statement</span>
+        	<span class="k">break</span><span class="o">;</span>
+        <span class="k">default</span><span class="o">:</span>
+        	<span class="c1">//If no cases have been satisfied, or the code runs through due to no break statements, execute the code</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Both the <code class="language-plaintext highlighter-rouge">break</code> and <code class="language-plaintext highlighter-rouge">default</code> sections are optional</p>
+      </li>
+      <li>
+        <p>Objects should not be switched on, only primitives, as the equality will compare their memory reference with the <code class="language-plaintext highlighter-rouge">==</code> operator, rather than calling the <code class="language-plaintext highlighter-rouge">.equals()</code> function.</p>
+      </li>
+      <li>Switch statements are faster than <code class="language-plaintext highlighter-rouge">if..else if.. else</code> statements when there are a large number of cases, as lookup tables can be used, which are fast</li>
+    </ul>
+  </li>
+  <li>
+    <p>We can reason carefully about what happens in conditionals by writing out the preconditions (similar idea to the explanation above, but easier to do it in boolean expressions to be terse)</p>
+  </li>
+</ul>
+
+<h1 id="iteratives">Iteratives</h1>
+
+<ul>
+  <li>
+    <p>Bounded repetition</p>
+
+    <ul>
+      <li>
+        <p>Bounded repetition is when the number of times to loop is known in advance</p>
+      </li>
+      <li>
+        <p>We know “where we wish to start, where we wish to end, and what iterative step to take each repetition”</p>
+      </li>
+      <li>
+        <p>The <code class="language-plaintext highlighter-rouge">for</code> statement implements bounded repetition</p>
+
+        <pre><code class="language-Java">//for (initialisation; booleanExpression; iteration) {}
+    
+//Each iteration, increment a counter from 0 by 1 until it is greater than five, i.e. repeat six times
+for (int i=0; i&lt;=5; i++) {
+    //Execute some code
+}
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Unbounded repetition</p>
+
+    <ul>
+      <li>Unbounded repetition is when the number of times to loop is not known in advance, merely the condition to stop looping. The can lead to infinite loops</li>
+      <li>The <code class="language-plaintext highlighter-rouge">while</code> statement implements “pre-test” unbounded repetition
+        <ul>
+          <li>A boolean expression is checked, then a code block is repeatedly run if it is true, and it moves on if it is false</li>
+          <li>The expression is checked <strong>before</strong> the code is run</li>
+        </ul>
+      </li>
+      <li>The <code class="language-plaintext highlighter-rouge">do..while</code> statement implements “post-test” unbounded repetition
+        <ul>
+          <li>A code block is run, then a boolean expression is checked, then the code block is repeatedly run if it is true, and it moves on if it is false</li>
+          <li>The expression is checked <strong>after</strong> the code is run</li>
+        </ul>
+      </li>
+      <li>Both statements are equivalent, as external boolean statements can be used to make the first test on the <code class="language-plaintext highlighter-rouge">while</code> loop always true</li>
+    </ul>
+  </li>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">break</code> and <code class="language-plaintext highlighter-rouge">continue</code> keywords</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">break</code> causes immediate exit from the highest level loop (current scope), moving on to the code after it</li>
+      <li><code class="language-plaintext highlighter-rouge">continue</code> skips the current iteration of the highest level loop (current scope), going back to the start of the next iteration at the beginning of the statement</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="arrays-and-methods">Arrays and Methods</h1>
+
+<ul>
+  <li>
+    <p>Arrays</p>
+
+    <ul>
+      <li>Store “lists of monomorphic data” in a neat (single variable name) and efficient (indexable items) way</li>
+      <li>Created with the syntax <code class="language-plaintext highlighter-rouge">[type][] name;</code> e.g. <code class="language-plaintext highlighter-rouge">int[] arrayOfInts</code></li>
+      <li>Arrays can be multidimensional, with each item itself being an array, but all items must be of the same type throughout. E.g. <code class="language-plaintext highlighter-rouge">int[][] matrix</code></li>
+      <li>When the array is declared, it starts at the special value null, and Java doesn’t allocate any memory to it, since it doesn’t know its size</li>
+      <li>Arrays can be instantiated using the <code class="language-plaintext highlighter-rouge">new</code> keyword, which reserves a block of contiguous memory. The size of the array must be provided at this point, so Java can calculate how much memory should be allocated given the number of items and the size of each item from its data type. An example of this is <code class="language-plaintext highlighter-rouge">int[] arrayOfInts = new int[5] </code></li>
+      <li>The items in arrays can be “indexed”, looking up values at a cell location. Indexing starts at 0 for the first cell, and the syntax is <code class="language-plaintext highlighter-rouge">array[index]</code>. Values can be got and set this way</li>
+      <li>Arrays can also be defined inline using the shorthand syntax <code class="language-plaintext highlighter-rouge">int[] arrayOfInts = {1,2,3,4}</code></li>
+      <li>Arrays have only one property, which is <code class="language-plaintext highlighter-rouge">array.length</code>. This tells us the number of indexable cells the array contains</li>
+    </ul>
+  </li>
+  <li>
+    <p>Methods</p>
+
+    <ul>
+      <li>
+        <p>The main method is a special method which is the “entry point” for java programs</p>
+      </li>
+      <li>
+        <p>All methods have “signatures”, which describe their name, return type, access modifiers, and parameters</p>
+
+        <ul>
+          <li>
+            <p>Example: <code class="language-plaintext highlighter-rouge">public static void main(String[] args) {  }</code></p>
+
+            <p>[Access modifier] [keyword (optional)] [return type] [name] ([arguments..]) {  }</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>The <code class="language-plaintext highlighter-rouge">return</code> statement</p>
+
+        <ul>
+          <li>Tells the method which value to return. This value must be of the type indicated in the method signature</li>
+        </ul>
+      </li>
+      <li>
+        <p>Methods can call themselves in a process called recursion (See the cult of CS141…)</p>
+      </li>
+      <li>
+        <p>Method overloading</p>
+
+        <ul>
+          <li>Two methods can have the same name, as long as they have different parameters. Which method will be run will be selected by which one’s signature fits the type and number of parameters passed</li>
+        </ul>
+      </li>
+      <li>
+        <p>Scope</p>
+
+        <ul>
+          <li>Variables have scope, which is defined as the block and all child blocks in which it is initialised</li>
+          <li>When a function is called a new “computation environment” is created, and all variables declared outside the function do not have scope within it</li>
+          <li>Variables must have a unique name within a scope</li>
+          <li>Sometimes we want to be able to access variables across many methods. We can define class variables to do this, which are variables which have scope across the entire object. These are defined at the start of the class, not within a method, before the constructor</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Passing by value and by reference</p>
+
+    <ul>
+      <li>We said that primitive variables directly store their values in memory. When they are provided as parameters, they are “passed by value”. This means that the value of the variable is cloned in memory to a new variable in the new scope. If the variable is changed in that new scope, it is unaffected outside of it, where it was passed from</li>
+      <li>Non-primitive variables (e.g. objects and arrays) are not store in memory. When they are provided as parameters, they are “passed by reference”. This means that if they are mutated in the new scope, they will also change in the old one, since both references point to the same place, and the item is being changed in that place</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="objects">Objects</h1>
+
+<ul>
+  <li>Paradigm shift from procedural/imperative to object oriented programming
+    <ul>
+      <li>Procedural defines a sequence of steps to achieve a goal</li>
+      <li>Object oriented models systems as data (properties) and operations on the data (behaviour) in a structure called an object
+        <ul>
+          <li>The operations on the data are procedural, so object oriented encompasses procedural</li>
+          <li>Essentially just a way of organising code to bundle data and operations together, providing a convenient abstraction</li>
+          <li>Object oriented programs can be considered as a collection of co-operating objects</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Classes are the “blueprint” for objects, defining what data will be stored, and the implementation of the algorithms on it, whereas objects are “instances” of classes, containing the data, and allowing the operations to be performed on it</li>
+  <li>The <code class="language-plaintext highlighter-rouge">class</code> keyword defines a new class, and <code class="language-plaintext highlighter-rouge">public</code> classes need their own file (by convention, classes start with a capital letter)</li>
+  <li>Constructor methods are special methods that have the same name as the class and return no value. They “set up” the object, normally assigning values to variables. (Objects needn’t have constructors, they are merely overriding the default constructor, which performs no operations)</li>
+  <li>New instances of an object are created using the <code class="language-plaintext highlighter-rouge">new</code> keyword, which allocates space in memory and calls the constructor. If an object is declared but not instantiated, it takes the special <code class="language-plaintext highlighter-rouge">null</code> value as with arrays</li>
+  <li>The <code class="language-plaintext highlighter-rouge">this</code> keyword refers to class variables. It can be omitted normally, unless there is a name clash with a local variable of the same name.</li>
+  <li>Objects are created from classes using the <code class="language-plaintext highlighter-rouge">new</code> keyword. This reserves space in memory for the default values of the object, and calls the constructor</li>
+  <li>To compare objects, we need to use the <code class="language-plaintext highlighter-rouge">.equals()</code> method, which compares the state of the all variables within the object (and can be overridden), as opposed to the <code class="language-plaintext highlighter-rouge">==</code> operator, which compares the actual memory location, so would only return true for two references to the same object instance, not just two objects with the same values</li>
+</ul>
+
+<h2 id="pillars-of-object-oriented-programming">Pillars of object oriented programming</h2>
+
+<p>There is some argument over the number of “pillars”, but the four commonly accepted ones are:</p>
+
+<ul>
+  <li>Abstraction
+    <ul>
+      <li>“Exposing essential features, whilst hiding irrelevant detail”</li>
+      <li>Used so that the purpose/interface of a function can be separated from its implementation, making code re-usable, more understandable, and easier to modify (won’t break things, changes need to be made in fewer places)</li>
+    </ul>
+  </li>
+  <li>Encapsulation
+    <ul>
+      <li>“Bundling data and operations that can be performed on that data together - leads to data hiding”
+        <ul>
+          <li>Encapsulation is not data hiding, but it does lead to it</li>
+          <li>Making state variables <code class="language-plaintext highlighter-rouge">private</code> and the methods that act on them <code class="language-plaintext highlighter-rouge">public</code> is called data hiding</li>
+        </ul>
+      </li>
+      <li>“Wrapping data and the code acting on it together as a single unit”, so users must use the external interface, rather than just changing things internally.</li>
+      <li>“The action of enclosing something in or as if in a capsule”, so that an object controls its own internal state, and should only be able to be changed through its interface. This is often implemented through/results in data hiding, which is removing access to variables within a class by making the <code class="language-plaintext highlighter-rouge">private</code>, and then providing getters and setters, rather than direct access to the data. This means that some internal variables can not be externally changed if no method is provided, and operations such as validation can be performed, instead of just directly changing the data</li>
+      <li>This has the beneficial property of the internal implementation being hidden, so it can be changed and improved without changing the external interface, so other code doesn’t break. Additionally, it hides the unnecessary detail of the implementation, and clarifies responsibility for the code</li>
+    </ul>
+  </li>
+  <li>Inheritance
+    <ul>
+      <li>“Creating new classes from existing ones, reducing programmer effort”</li>
+      <li>“Allowing an object to acquire the properties and methods of another object”, so that code can be re-used, along with helping abstractions and hierarchy.
+        <ul>
+          <li>A subclass inherits all the properties from its superclass, and may have some additional ones of its own, and/or override some of the parents, however, it must not remove methods from the parent class (known as Liskov substitution principle)</li>
+        </ul>
+      </li>
+      <li>The <code class="language-plaintext highlighter-rouge">super</code> keyword is used to refer to methods and properties of the superclass</li>
+      <li>Method overriding is when a subclass changes the definition of a function defined by its superclass. It is somewhat like overloading with different numbers of parameters for methods. If a method defined in the superclass is re-defined for the subclass, it will override it. This means that instances of the superclass will run the superclass definition, but those of the subclass will run the subclass definition, without the parent class being modified, and the subclass still retaining all other parent properties without having to redefine them
+        <ul>
+          <li>Class constructors are not inherited from their superclasses. To keep the functionality of their parent class, they can call the parent class constructor using <code class="language-plaintext highlighter-rouge">super()</code>, and then add any additional functionality later in the constructor. This method call must always be the first thing in the subclass constructor if it is used.</li>
+        </ul>
+      </li>
+      <li>A subclass can only inherit from one superclass, to avoid name-collisions if two superclasses implemented the same method signature differently</li>
+    </ul>
+  </li>
+  <li>
+    <p>Polymorphism (English definition “the condition of occurring in several different forms”)</p>
+
+    <ul>
+      <li>Using objects that can take many forms - allows us to invoke operations from derived classes while using a base class reference at run-time</li>
+      <li>“Polymorphism describes its ability to process objects of different types through a single uniform interface”</li>
+      <li>Static polymorphism (<a href="https://pediaa.com/what-is-the-difference-between-static-and-dynamic-polymorphism-in-java/">source</a>)
+        <ul>
+          <li>Occurs at compile time</li>
+          <li>An example is method overloading
+            <ul>
+              <li>Different behaviour is exhibited by the same method (in a given class) dependent on its interface, e.g. having different input types</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Dynamic polymorphism (<a href="https://pediaa.com/what-is-the-difference-between-static-and-dynamic-polymorphism-in-java/">source</a>)
+        <ul>
+          <li>Occurs at runtime</li>
+          <li>An example is method overriding
+            <ul>
+              <li>Methods in subclasses having different behaviour to the equivalent method in their superclass</li>
+              <li>Allows us to cast objects which are stored in their superclass to their subclass, so we can use their subclass interfaces</li>
+              <li>“Relating to the class hierarchy within a program”</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solid-design-principles">SOLID design principles</h2>
+
+<ul>
+  <li>Single Responsibility Principle
+    <ul>
+      <li>“A class should have one and only one reason to change, meaning that a class should have only one job.”</li>
+      <li>Removes “coupling” that would occur if one class encoded two things, as if one of them had to be changed, the other would be forced to to, even if it could stay unchanged if it were not coupled</li>
+    </ul>
+  </li>
+  <li>Open/Closed Principle
+    <ul>
+      <li>“Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.”</li>
+      <li>This means that you should be able to add new functionality without having to modify existing code</li>
+      <li>This further means that adding new functionality doesn’t force you to change any existing interfaces, which would otherwise require changing all calls to instances of the object</li>
+    </ul>
+  </li>
+  <li>Liskov Substitution Principle
+    <ul>
+      <li>“Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it”</li>
+      <li>“Let \(\Phi(x)\) be a property provable about objects <em>x</em> of type <em>T</em>. Then  \(\Phi(y)\) should be true for objects <em>y</em> of type <em>S</em> where <em>S</em> is a subtype of <em>T</em>.”
+        <ul>
+          <li>This means that subclasses cannot remove functionality (e.g. implementations of methods) provided by their superclasses, nor impose tighter restrictions on the inputs into or outputs from them</li>
+        </ul>
+      </li>
+      <li>This avoids errors which might be caused from casting between super and sub classes</li>
+    </ul>
+  </li>
+  <li>Interface Segregation Principle
+    <ul>
+      <li>“Many client-specific interfaces are better than one general-purpose interface.”</li>
+      <li>“Clients should not be forced to depend upon interfaces that they do not use.”</li>
+      <li>If one large general interface is used, and part of it has to be changed, then all other places which rely on it must be changed. If this is split up into multiple smaller interfaces, then only one needs to be changed, and only the places which rely directly on that one interface need be changed</li>
+    </ul>
+  </li>
+  <li>Dependency Inversion
+    <ul>
+      <li>“Depend upon abstractions, [not] concretions.”
+        <ul>
+          <li>High-level modules should not depend on low-level modules, instead, both should depend on the same abstractions</li>
+          <li>Abstractions should only implement high-level logic, not detail, which can then be specified in concretions</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Additional resources: <a href="https://stackify.com/solid-design-principles/">here</a> and <a href="https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design">here</a></p>
+
+<h1 id="modifiers">Modifiers</h1>
+
+<ul>
+  <li>
+    <p>Access modifiers</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">public</code> - can be accessed everywhere in the program</li>
+      <li><code class="language-plaintext highlighter-rouge">private</code> - can only be accessed from within its own class (including different instances of the same class)</li>
+      <li><code class="language-plaintext highlighter-rouge">protected</code> - can only be accessed from within its own class, or any subclasses (like <code class="language-plaintext highlighter-rouge">private</code>, but including subclasses)</li>
+      <li>These restrict the access to an objects properties an behaviours, meaning we can more closely control the interface provided for the object</li>
+      <li>Which modifier should be picked with common sense, and thinking about what interface we’re trying to provide</li>
+      <li>The constructor clearly must be <code class="language-plaintext highlighter-rouge">public</code>, as we need to access it from outside the object, as the object doesn’t exist yet</li>
+      <li>No access modifier defaults to “package private”, which is somewhere between <code class="language-plaintext highlighter-rouge">private</code> and <code class="language-plaintext highlighter-rouge">protected</code> (can only be accessed by objects in the same package)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Encapsulation and data hiding</p>
+
+    <ul>
+      <li>Usually all state variables are <code class="language-plaintext highlighter-rouge">private</code>, but we might need a way to change the externally</li>
+      <li>Making state variables <code class="language-plaintext highlighter-rouge">private</code> and the methods that act on them <code class="language-plaintext highlighter-rouge">public</code> is called data hiding</li>
+      <li>Encapsulation is “wrapping data and the code acting on it together as a single unit”, so users must use the external interface, rather than just changing things internally.</li>
+      <li>Encapsulation is not data hiding, but it does lead to it</li>
+      <li>This has the beneficial property of the internal implementation being hidden, so it can be changed and improved without changing the external interface, so other code doesn’t break. Additionally, it hides the unnecessary detail of the implementation, and clarifies responsibility for the code</li>
+      <li>Data hiding is often implemented using “getters” and “setters”, which are methods which allow internal private variables to be changed. This means that some internal variables can not be externally changed if no method is provided, and operations such as validation can be performed, instead of just directly changing the data</li>
+    </ul>
+  </li>
+  <li>
+    <p>Class/instance/final variables</p>
+
+    <ul>
+      <li>Instance variables have values attached to a specific instance of a class. This is the default for variables defined in classes</li>
+      <li>Class variables allow data to be shared between instances of a class. This is denoted by the <code class="language-plaintext highlighter-rouge">static</code> keyword, and starts to act more like imperative programming
+        <ul>
+          <li>Static properties are shared across all instances of the class</li>
+          <li>Static methods are called from the class name, not the object name</li>
+          <li>Static blocks are only executed once, the first time the class is loaded in memory</li>
+          <li>These static variables/methods can be called/interacted with anywhere through the name of the class, but a static method cannot call a non-static method</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">final</code> variables define a constant whose value cannot be changed after it has been set</li>
+    </ul>
+  </li>
+  <li>
+    <p>Enumerated types</p>
+
+    <ul>
+      <li>A special type of class that hold a range of constant values</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="inheritance">Inheritance</h1>
+
+<ul>
+  <li>Inheritance is properties that a taken from a parent
+    <ul>
+      <li>We call the “parent” a base of a super class</li>
+      <li>We call the “child” a derived or sub class</li>
+      <li>A class is indicated as inheriting from a superclass using the <code class="language-plaintext highlighter-rouge">extends</code> keyword, e.g. <code class="language-plaintext highlighter-rouge">public class Lion extends Cat</code>. Classes can only inherit from one superclass in Java (but sometimes more in other languages)</li>
+      <li>A subclass inherits all the properties from its superclass, and may have some additional ones of its own, and/or override some of the parents, however, it must not remove methods from the parent class (known as Liskov substitution principle - not examined)</li>
+      <li>Overriding is when a subclass changes the definition of a function defined by its superclass. It is somewhat like overloading with different numbers of parameters for methods. If a method defined in the superclass is re-defined for the subclass, it will override it. This means that instances of the superclass will run the superclass definition, but those of the subclass will run the subclass definition, without the parent class being modified, and the subclass still retaining all other parent properties without having to redefine them</li>
+      <li>The <code class="language-plaintext highlighter-rouge">super</code> keyword is like the <code class="language-plaintext highlighter-rouge">this</code> keyword for the superclass. We can then use <code class="language-plaintext highlighter-rouge">super()</code> to call the superclass constructor in the subclass, so it doesn’t need to be redefined (it must be the first thing that happens in the subclass constructor)</li>
+      <li><code class="language-plaintext highlighter-rouge">protected</code> properties cannot be “seen” externally, but can be “seen” by subclasses, meaning we needn’t go through or define accessor methods for such properties</li>
+      <li>All classes are ultimately subclasses of the <code class="language-plaintext highlighter-rouge">Object</code> class</li>
+    </ul>
+  </li>
+  <li>Polymorphism
+    <ul>
+      <li>“Polymorphism describes its ability to process objects of different types through a single uniform interface”</li>
+      <li>“Inheritance lets us  inherit attributes and methods from another class. Polymorphism  uses those methods to perform different tasks. This allows us to perform a single  action in different ways.” (https://www.w3schools.com/java/java_polymorphism.asp)</li>
+      <li>We can pass <code class="language-plaintext highlighter-rouge">Object</code> classes into any method that takes any non-primitive type, since everything is a subclass of it</li>
+      <li>Static vs dynamic polymorphism
+        <ul>
+          <li>Static polymorphism (<a href="https://pediaa.com/what-is-the-difference-between-static-and-dynamic-polymorphism-in-java/">source</a>)
+            <ul>
+              <li>Occurs at compile time, for example method overloading</li>
+              <li>Different behaviour is exhibited by the same method dependent on the input types</li>
+              <li>An example is method overloading</li>
+            </ul>
+          </li>
+          <li>Dynamic polymorphism (<a href="https://pediaa.com/what-is-the-difference-between-static-and-dynamic-polymorphism-in-java/">source</a>)
+            <ul>
+              <li>Occurs at runtime</li>
+              <li>Allows us to cast objects which are stored in their superclass to their subclass, so we can use their subclass interfaces</li>
+              <li>An example is method overriding</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>The <code class="language-plaintext highlighter-rouge">instanceof</code> keyword tells us whether an object is of a given type of class. We can use this to check when we need to cast objects so we can use their appropriate interfaces</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="abstract-classes-interfaces-and-enumerated-types">Abstract classes, interfaces, and enumerated types</h1>
+
+<h2 id="abstract-classes">Abstract classes</h2>
+
+<ul>
+  <li>
+    <p>When superclasses become so generic they contain methods which are only well-defined for their subclasses, they are called “abstract”.</p>
+  </li>
+  <li>
+    <p>Abstract classes cannot be instantiated, but it can be inherited from, acting as a pattern for subclasses</p>
+  </li>
+  <li>
+    <p>Abstract classes can still have a constructor and this can be referred to using <code class="language-plaintext highlighter-rouge">super()</code>. This is particularly useful for when all subclasses share a name or ID</p>
+  </li>
+  <li>
+    <p>They can contain a mix of abstract and concrete methods</p>
+
+    <ul>
+      <li>Abstract methods provide the method signature, but not the implementation. All abstract methods must be implemented by any subclasses.</li>
+      <li>Concrete/non-abstract methods are ones which will be the same for all subclasses, so they are fully defined, and will just be inherited as usual into the subclasses</li>
+    </ul>
+  </li>
+  <li>
+    <p>Typically, abstract classes are used to “provide partial implementation”</p>
+  </li>
+  <li>
+    <p>Example:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">GraphicObject</span> <span class="o">{</span>
+    <span class="c1">//Member variables</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
+      
+    <span class="c1">//Optional constructor, default no arg constructor is inferred otherwise.</span>
+      
+    <span class="c1">//A concrete method</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">moveTo</span><span class="o">(</span><span class="kt">int</span> <span class="n">newX</span><span class="o">,</span> <span class="kt">int</span> <span class="n">newY</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">newX</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">newY</span><span class="o">;</span>
+    <span class="o">}</span>
+      
+    <span class="c1">//Abstract method</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">draw</span><span class="o">();</span>
+<span class="o">}</span>
+  
+<span class="kd">class</span> <span class="nc">Circle</span> <span class="kd">extends</span> <span class="nc">GraphicObject</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">radius</span><span class="o">;</span>
+      
+    <span class="c1">//Constructor</span>
+    <span class="kd">public</span> <span class="nf">Circle</span><span class="o">(</span><span class="kt">int</span> <span class="n">radius</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">radius</span> <span class="o">=</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="o">}</span>
+      
+    <span class="c1">//moveTo already implemented through inheritance</span>
+      
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">draw</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//Implementation must be provided</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Circle"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Additional links:</p>
+
+    <ul>
+      <li>https://www.tutorialspoint.com/java/java_abstraction.htm</li>
+      <li>https://www.journaldev.com/1582/abstract-class-in-java</li>
+      <li>https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="interfaces">Interfaces</h2>
+
+<ul>
+  <li>
+    <p>If an abstract class contains <em>only</em> abstract methods, and no concrete implementations of methods, it is called an “interface”</p>
+
+    <ul>
+      <li>Hence, interfaces have similar properties to abstract classes, including not being able to be instantiated, so having no constructor</li>
+    </ul>
+  </li>
+  <li>
+    <p>Whilst only one class can be inherited, multiple interfaces can be “implemented”. This is to avoid the issue of two superclasses providing different implementations for the same method. The <code class="language-plaintext highlighter-rouge">implements</code> keyword is used instead of the <code class="language-plaintext highlighter-rouge">extends</code> one to indicate inheritance/implementation</p>
+  </li>
+  <li>
+    <p>Concrete classes implement interfaces, but interfaces can still extend other interfaces to inherit from them</p>
+  </li>
+  <li>
+    <p>Typically, interfaces are used to “encapsulate a small subset of functionality”</p>
+  </li>
+  <li>
+    <p>Example</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Foo</span> <span class="o">{</span>
+    <span class="c1">//No constructor</span>
+      
+    <span class="c1">//Only providing method signatures without implementations</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doFoo</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">undoFoo</span><span class="o">();</span>
+<span class="o">}</span>
+  
+<span class="kd">class</span> <span class="nc">Bar</span> <span class="kd">implements</span> <span class="nc">Foo</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+      
+    <span class="c1">//Provide implementations for all of the interface methods</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doFoo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">x</span><span class="o">++;</span>
+    <span class="o">}</span>
+      
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">undoFoo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">x</span><span class="o">--;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Additional links:</p>
+
+    <ul>
+      <li>https://www.w3schools.com/java/java_interface.asp</li>
+      <li>https://docs.oracle.com/javase/tutorial/java/concepts/interface.html</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="enumerated-types">Enumerated types</h2>
+
+<ul>
+  <li>
+    <p>A special type of class that hold a range of constant values, which can be used instead of defining a large number of final variables</p>
+  </li>
+  <li>
+    <p>Example</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">enum</span> <span class="nc">Level</span> <span class="o">{</span>
+  <span class="no">LOW</span><span class="o">,</span>
+  <span class="no">MEDIUM</span><span class="o">,</span>
+  <span class="no">HIGH</span>
+<span class="o">}</span>
+  
+<span class="nc">Level</span> <span class="n">myVar</span> <span class="o">=</span> <span class="nc">Level</span><span class="o">.</span><span class="na">MEDIUM</span><span class="o">;</span> 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Additional links:</p>
+
+    <ul>
+      <li>https://www.w3schools.com/java/java_enums.asp</li>
+      <li>https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="exceptions">Exceptions</h1>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">try..catch..finally</code> statement
+    <ul>
+      <li>The code in the <code class="language-plaintext highlighter-rouge">try</code> block is executed. If an exception is generated, the appropriate <code class="language-plaintext highlighter-rouge">catch</code> block is executed</li>
+      <li>Multiple <code class="language-plaintext highlighter-rouge">catch</code> blocks can be used, but they act like a <code class="language-plaintext highlighter-rouge">switch</code> statement, moving downwards, selecting the first to match, so if a subclass lies below a superclass, it will never be executed</li>
+      <li>The <code class="language-plaintext highlighter-rouge">finally</code> block is run irrespective of whether the <code class="language-plaintext highlighter-rouge">catch</code> was executed, even if there is a <code class="language-plaintext highlighter-rouge">return</code> within one of the blocks</li>
+    </ul>
+  </li>
+  <li>The <code class="language-plaintext highlighter-rouge">throws</code> keyword can be added to a method declaration to indicate that it might “throw” a checked exception of a given type</li>
+  <li>The <code class="language-plaintext highlighter-rouge">throw</code> keyword is used to throw a new exception from a method, and must be followed by an object that is an instance of the Throwable class (e.g. <code class="language-plaintext highlighter-rouge">throw new RuntimeException</code>)</li>
+  <li>The “Exceptions hierarchy” (image credit <a href="https://www.geeksforgeeks.org/exceptions-in-java/">GeeksForGeeks</a>)
+<img src=".\media\exceptionsDiagram.png" alt="exceptionsDiagram" />
+    <ul>
+      <li>In Java all errors and exceptions are subclasses of the <code class="language-plaintext highlighter-rouge">Throwable</code> class
+        <ul>
+          <li>Errors are “serious problem that a reasonable application should not try to catch”. These are rare, so we will largely ignore them</li>
+          <li>Exceptions are “conditions that a reasonable application might want to catch”</li>
+        </ul>
+      </li>
+      <li>There are two types of exceptions
+        <ul>
+          <li>Checked exceptions, which must be caught or re-thrown for the code to compile</li>
+          <li>Unchecked exceptions are subclasses of either <code class="language-plaintext highlighter-rouge">Error</code> or <code class="language-plaintext highlighter-rouge">RuntimeException</code>. They do not need to be specifically thrown, and while they can be caught, they don’t need to be for compilation</li>
+        </ul>
+      </li>
+      <li>Custom exceptions can be written
+        <ul>
+          <li>The exception should inherit from the most specific exception class that encapsulates it
+            <ul>
+              <li>Must be a subclass of <code class="language-plaintext highlighter-rouge">Throwable</code></li>
+              <li>Any subclass of <code class="language-plaintext highlighter-rouge">Exception</code> will be checked, and any subclass of <code class="language-plaintext highlighter-rouge">RunTimeException</code> will be unchecked</li>
+            </ul>
+          </li>
+          <li>Normally, they are just defined as inheriting from the superclass exception, then overriding the polymorphic constructors to provide appropriate error messages etc. All methods such as <code class="language-plaintext highlighter-rouge">printStackTrace</code> are then inherited from the superclass.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="generics">Generics</h1>
+
+<ul>
+  <li>Generics allow code to enforce strong type checking at compile time, which helps avoid errors such as invalid casting at runtime. Additionally, they minimise the number of type casts needed, as they automatically return data of the specified type, and they allow writing generic algorithms to be tailored to different types</li>
+  <li>Angle brackets are used to indicate the variables that will be used, e.g. <code class="language-plaintext highlighter-rouge">new MyClass&lt;String&gt;</code></li>
+  <li>Type placeholders are used in the class definition to receive which class the generic is instantiated with, e.g. <code class="language-plaintext highlighter-rouge">public class MyClass&lt;V&gt;</code>
+    <ul>
+      <li>The naming convention for the placeholders is a single uppercase letter, often of the start of what it refers to, e.g. E from element, or V from value</li>
+      <li>The type placeholder is then used instead of a concrete type e.g. <code class="language-plaintext highlighter-rouge">Object</code> throughout the class</li>
+    </ul>
+  </li>
+  <li>Primitives cannot be provided as generics, as they are not objects. Instead, we need to use their object wrapper (e.g. <code class="language-plaintext highlighter-rouge">int</code> becomes <code class="language-plaintext highlighter-rouge">Integer</code>). Then, if an integer is passed in as a parameter, it will be “autoboxed” into its object wrapper to be handled internally.</li>
+  <li>Types of generics can be restricted by using the extends keyword in the instantiation, e.g. <code class="language-plaintext highlighter-rouge">public class MyClass&lt;V extends Number&gt;</code></li>
+  <li>During the process of converting Java code to bytecode, the type information about objects is checked for errors, but ultimately discarded in the bytecode. For generics, the type checking before discarding the types is performed by substituting all of the instances of type variables with the type they are specified with in the instance in the code, so it can be type-checked, raising errors at compile time, not runtime.</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

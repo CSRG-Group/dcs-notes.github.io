@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Matrices</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Matrices</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#matrix-algebra">Matrix Algebra</a><ul><li><a href="#addition-and-scalar-multiplication">Addition and scalar multiplication</a><ul><li><a href="#properties-of-addition-and-scalar-multiplication">Properties of addition and scalar multiplication</a></li></ul></li><li><a href="#matrix-multiplication">Matrix multiplication</a><ul><li><a href="#properties-of-matrix-multiplication">Properties of matrix multiplication</a></li></ul></li><li><a href="#matrix-transposition">Matrix transposition</a><ul><li><a href="#properties-of-transposition">Properties of transposition</a></li></ul></li><li><a href="#types-of-matrices">Types of matrices</a></li><li><a href="#determinant-of-a-2x2-matrix">Determinant of a 2x2 matrix</a></li></ul></li><li><a href="#matrix-inverse-linear-equations">Matrix Inverse, Linear Equations</a><ul><li><a href="#elementary-row-operations">Elementary row operations</a></li><li><a href="#augmented-matrices">Augmented matrices</a></li></ul></li><li><a href="#matrix-inverse-determinants">Matrix Inverse, Determinants</a><ul><li><a href="#determinant-of-a-3x3-matrix-and-the-cofactor-matrix">Determinant of a 3x3 matrix and the cofactor matrix</a></li><li><a href="#elementary-row-operations-on-determinants">Elementary row operations on determinants</a></li><li><a href="#cramers-rule-to-invert-matrices">Cramer’s rule to invert matrices</a></li><li><a href="#linear-independence-via-determinants">Linear independence via determinants</a></li></ul></li><li><a href="#linear-transformations">Linear Transformations</a></li><li><a href="#linear-transformations-and-matrices">Linear Transformations and Matrices</a></li><li><a href="#eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</a><ul><li><a href="#diagonalisation-of-matrices">Diagonalisation of Matrices</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part2.html" title="part2.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part4.html" title="part4.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="matrix-algebra">Matrix Algebra</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note8.pdf">Link to the PDF.</a></p>
+
+<p>Matrices are rectangular arrays of elements. It's order is its
+\(\textrm{row } \times \textrm{ column}\). Note that an \(m \times 1\)
+matrix is called a <strong>column matrix/vector</strong>, and \(1 \times n\) matrices
+are similarly named as rows. Elements are referred to with subscript row
+column: \(a_{ij}\).</p>
+
+<h3 id="addition-and-scalar-multiplication">Addition and scalar multiplication</h3>
+
+<p>Sum of two matrices is only defined if they have the same order, and is
+<em>elementwise</em> addition.</p>
+
+<p>Scalar multiplication is also done elementwise.</p>
+
+<h4 id="properties-of-addition-and-scalar-multiplication">Properties of addition and scalar multiplication</h4>
+
+<p>\(\forall m \times n\) matrices \(A, B, C\),
+\(\forall \lambda, \mu \in \mathbb{R}\):</p>
+
+<ol>
+  <li>\(A + (B+C) = (A+B)+C\) (associativity of addition)</li>
+  <li>
+\[A + O = A = O + A\]
+  </li>
+  <li>
+\[A + (-A) = O = (-A) + A\]
+  </li>
+  <li>\(A+B=B+A\) (commutativity of addition)</li>
+  <li>
+\[(\lambda + \mu)A = \lambda A + \mu A\]
+  </li>
+  <li>
+\[\lambda (A+B) = \lambda A + \lambda B\]
+  </li>
+  <li>
+\[\lambda(\mu A) = (\lambda \mu ) A\]
+  </li>
+</ol>
+
+<h3 id="matrix-multiplication">Matrix multiplication</h3>
+
+<p>Matrix multiplication can only happen between an
+\(A_{m \times n}\) and a \(B_{n \times p}\) (note the
+highlighted dimensions) and will produce a matrix \(C_{m \times p}\).</p>
+
+<p>Matrix multiplication is hard to explain in text, so <a href="https://www.youtube.com/watch?v=as8C8w-Nz94">see this
+video</a> by blackpenredpen if you're not sure</p>
+
+<h4 id="properties-of-matrix-multiplication">Properties of matrix multiplication</h4>
+
+<p>Whenever the products exist, matrix multiplication has the properties:</p>
+
+<ol>
+  <li>\((AB)C = A(BC)\) (associativity)</li>
+  <li>\(A(B+C) = AB + AC\), \((A+B)C = AC + BC\)</li>
+  <li>
+\[IA = A = AI\]
+  </li>
+  <li>
+\[OA = O = AO\]
+  </li>
+  <li>\(A^p A^q = A^{p+q} = A^q A^p\), \((A^p)^q = A^{pq}\)</li>
+</ol>
+
+<p>Note that matrix multiplication is <strong>not commutative</strong>: \(AB \neq BA\)
+(for all but specific circumstances).</p>
+
+<h3 id="matrix-transposition">Matrix transposition</h3>
+
+<p>The <strong>transpose</strong> \(A^T\) of a matrix is obtained by swapping rows and
+columns (i.e. reflecting on leading diagonal).</p>
+
+<h4 id="properties-of-transposition">Properties of transposition</h4>
+
+<ol>
+  <li>\((A^T)^T=A\) holds for any matrix \(A\)</li>
+  <li>\((A+B)^T = A^T + B^T\) if \(A+B\) exists</li>
+  <li>\((\lambda A)^T = \lambda A^T\) for any \(\lambda \in \mathbb{R}\)</li>
+  <li>\((AB)^T = B^T A^T\) if \(AB\) exists.</li>
+</ol>
+
+<p>For same order square matrices \(A, B\), \(B\) is the inverse of \(A\) if and
+only if \(AB = I = BA\). The inverse (should it exist) is <strong>unique</strong> and
+denoted \(A^{-1}\).</p>
+
+<h3 id="types-of-matrices">Types of matrices</h3>
+
+<p>A <strong><em>square matrix</em></strong> \(A_{n \times n}\) is said to be of <em>order \(n\)</em></p>
+
+<p>The <strong><em>zero matrix</em></strong>, denoted \(O_{m \times n}\) is a matrix of all zeros.</p>
+
+<p><strong>Diagonal matrices</strong> only have elements on the leading diagonal;
+\(a_{ii}\) for some \(i : [1..n]\).</p>
+
+<p>The <strong>identity matrix</strong> \(I\) (or \(I_n\)) is the \(n \times n\) diagonal
+matrix whose diagonal elements are all 1.</p>
+
+<p>For a square matrix \(A\), \(A, AA, AAA, ...\) are defined as
+\(A, A^2, A^3,...\) respectively. \(A^0 = I\). Functions
+\(\exp(A), \cos(A), \sin(A)\) can also be defined <em>(hint: taylor series)</em>.</p>
+
+<h3 id="determinant-of-a-2x2-matrix">Determinant of a 2x2 matrix</h3>
+
+<p>The <strong>determinant</strong> of a \(2 \times 2\) matrix
+\(A = \begin{bmatrix} a  &amp;  b \\ c  &amp;  d \end{bmatrix}\) is \(ad-bc\) and
+denoted \(|A|, \det(A)\).</p>
+
+<p>If a \(2 \times 2\) matrix is invertible, then
+\(\det(A)det(A^{-1}) = \det(AA^{-1}) = \det(I) = 1\). Thus
+\(\det(A) \neq 0\) and in that case,</p>
+
+<p>The inverse of \(A = \begin{bmatrix} a  &amp;  b \\ c  &amp;  d \end{bmatrix}\) is
+\(A^{-1} = \frac{1}{\det A} \begin{bmatrix} d  &amp;  -b \\ -c  &amp;  a \end{bmatrix}\)
+(a particular case of a general result)</p>
+
+<h2 id="matrix-inverse-linear-equations">Matrix Inverse, Linear Equations</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note9.pdf">Link to the PDF.</a></p>
+
+<p>A system of linear equations can be written in matrix form.</p>
+
+\[\begin{align} ax_1 + bx_2  &amp; = y_1 \\ cx_1 + dx_2  &amp; = y_2
+\end{align}\]
+
+<p>\(\equiv \begin{bmatrix} a  &amp;  b \\ c  &amp;  d \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}.\)
+Which can be extrapolated to general form.</p>
+
+<h3 id="elementary-row-operations">Elementary row operations</h3>
+
+<p>The following operations can be performed to solve a system (<strong>Gaussian
+Elimination</strong>):</p>
+
+<ul>
+  <li>Swap two rows (equations)</li>
+  <li>Multiply a row (both sides of an equation) by a nonzero number</li>
+  <li>Add a multiple of one row (equation) to another</li>
+</ul>
+
+<h3 id="augmented-matrices">Augmented matrices</h3>
+
+<p>Which can be done over the <em>augmented matrix</em>, which is gotten by
+combining \(\begin{bmatrix} a  &amp;  b \\ c  &amp;  d \end{bmatrix}\) and
+\(\begin{bmatrix} y_1 \\ y_2 \end{bmatrix}\) (the coefficients and the
+result).
+\(\left[\begin{array}{cc|c} a  &amp;  b  &amp;  y_1 \\ c  &amp;  d  &amp;  y_2 \end{array}\right]\)</p>
+
+<p>Two matrices \(A, B\) are <strong>row equivalent</strong> if we can use row operations
+to get from A to B. Denoted \(A \sim B\).</p>
+
+<p>A matrix is in <strong>row echelon form</strong> if the first nonzero entry in each
+row is further to the right of said entry in the previous row. By
+reducing to row echelon form we can solve a system of linear equations.</p>
+
+<p>See the pdf for sample problems. <em>Note: there also exists <strong>reduced row
+echelon form</strong>, where each leading entry is a 1, and each column with a
+1 in has 0s for all other entries.</em></p>
+
+<p>Elementary row operations can be done by multiplying by so-called <em>elementary
+matrices</em>. These are defined for (\(E_{n \times n}\)):</p>
+
+<ul>
+  <li>\(E_{ij}\) obtained from \(I\) by exchanging rows \(i, j\)</li>
+  <li>For \(\lambda \neq 0, \; E_i(\lambda)\) obtained from \(I\) by
+multiplying row \(i\) by \(\lambda\)</li>
+  <li>\(E_{ij}(\mu)\) obtained from \(I\) by adding \(\mu \cdot\) row \(j\) to row
+\(i\)</li>
+</ul>
+
+<p>Every elementary matrix is invertible.</p>
+
+<p>If a sequence of row operations transforms a square matrix \(A\) into \(I\).
+then \(A^{-1}\) exists and the same sequence transforms \(I\) into \(A\).</p>
+
+<p>This is best done with an augmented matrix, like
+\(\left[\begin{array}{cc|cc} a  &amp;  b  &amp;  1  &amp;  0 \\ c  &amp;  d  &amp;  0  &amp;  1 \end{array}\right]\)</p>
+
+<h2 id="matrix-inverse-determinants">Matrix Inverse, Determinants</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note10.pdf">Link to first PDF.</a> 
+<a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note11.pdf">Link to second PDF.</a></p>
+
+<h3 id="determinant-of-a-3x3-matrix-and-the-cofactor-matrix">Determinant of a 3x3 matrix and the cofactor matrix</h3>
+
+<p>The determinant of a \(3 \times 3\) matrix is denoted the same way, and is
+defined</p>
+
+\[\begin{vmatrix} a_{11}  &amp;  a_{12}  &amp;  a_{13} \\ a_{21}  &amp; 
+a_{22}  &amp;  a_{23} \\ a_{31}  &amp;  a_{32}  &amp;  a_{33} \end{vmatrix} =
+a_{11} \begin{vmatrix} a_{22}  &amp;  a_{23} \\ a_{32}  &amp; 
+a_{33}\end{vmatrix} - a_{12} \begin{vmatrix}a_{21}  &amp;  a_{23} \\
+a_{31}  &amp;  a_{33}\end{vmatrix} + a_{32} \begin{vmatrix}a_{21}  &amp; 
+a_{22} \\ a_{31}  &amp;  a_{32}\end{vmatrix}\]
+
+<p>i.e. all elements on
+the first row multiplied (respecting +/- grid) with the determinant of
+the minor matrix (the cofactor) - the matrix gotten by deleting the row
+and column with said element.</p>
+
+\[\begin{bmatrix}+ &amp; - &amp; + \\ - &amp; + &amp; - \\ + &amp; - &amp; +\end{bmatrix}\]
+
+<p>This can be done with any row or column.</p>
+
+<h3 id="elementary-row-operations-on-determinants">Elementary row operations on determinants</h3>
+
+<p>On elementary row operations and determinants (\(B\) obtained from \(A\)):</p>
+
+<ol>
+  <li>Multiplying a row in A by a \(\lambda\): \(\|B\| = \lambda\|A\|\)</li>
+  <li>Swapping 2 rows of A: \(\|B\| = -\|A\|\)</li>
+  <li>Adding a multiple of one row to another: \(\|B\| = \|A\|\)</li>
+</ol>
+
+<h3 id="cramers-rule-to-invert-matrices">Cramer’s rule to invert matrices</h3>
+
+<p>A square matrix is inversible <em>iff</em> its determinant is not 0. If \(A\) is
+invertible, \(A^{-1} = \frac{1}{|A|} \textrm{adj}(A)\) where
+\(\textrm{adj}(A)\) is the <strong>transposed matrix of cofactors</strong>.</p>
+
+<p>You can also use matrix inverses to calculate equations:</p>
+
+\[\begin{align}
+\textrm{if }  &amp; A\vec{x} = \vec{y}\\ \textrm{then }  &amp; A^{-1} A
+\vec{x} = A^{-1} \vec{y} \implies \vec{x} = A^{-1}\vec{y}
+\end{align}\]
+
+<p>Where the column vector x are the variables, and column
+vector y are the values of the equations.</p>
+
+<h3 id="linear-independence-via-determinants">Linear independence via determinants</h3>
+
+<p>A set of \(n\) vectors in
+\(\mathbb{R}^n\) is linearly independent <em>if and only if</em> it is the set of
+column vectors of a matrix with nonzero determinant.</p>
+
+<p>Basically, bang \(n\) \(\mathbb{R}^n\) vectors into a square matrix, compute
+the determinant, and if it is 0, then those vectors are linearly
+dependent.</p>
+
+<h2 id="linear-transformations">Linear Transformations</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note12.pdf">Link to the PDF.</a></p>
+
+<p>A function \(T : \textrm{R}^m \longrightarrow \mathbb{R}^n\) is a <strong>linear
+transformation</strong> if,
+\(\forall \vec{u}, \vec{v} \in \mathbb{R}^n, \lambda \in \mathbb{R}\), we
+have: \(T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v}),\)
+\(T(\lambda \vec{u}) = \lambda T(\vec{u}).\) Which are preservation of
+addition and scaling respectively. Also,</p>
+
+\[T(\vec{0}) = \vec{0}.\]
+
+<p>For simple problems, verifying that the transformation fits the two
+rules of addition and scaling is sufficient.</p>
+
+<p><strong><em>Example.</em></strong> Let \(\vec{u}\) be a nonzero 2D vector. If
+\(\vec{x} \in \mathbb{R}^2\) then we define the <strong>projection</strong> of
+\(\vec{x}\) onto \(\vec{u}\) to be a vector \(P_{\vec{u}}(\vec{x})\) such that</p>
+
+<ol>
+  <li>\(P_{\vec{u}}(\vec{x})\) is a multiple of \(\vec{u}\)</li>
+  <li>\(\vec{x} - P_{\vec{u}}(\vec{x})\) is perpendicular to \(\vec{u}\).</li>
+</ol>
+
+<p>We have by (1) that \(P_{\vec{u}}(\vec{x}) = \alpha \vec{u}\) for some
+\(\alpha \in \mathbb{R}\), so by (2)
+\(0 = (\vec{x} - P_{\vec{u}}(\vec{x})) \cdot \vec{u} = (\vec{x} - \alpha \vec{u}) \cdot \vec{u} = \vec{x} \cdot \vec{u} - \alpha |\vec{u}|^2,\)
+\(\implies \alpha = \frac{\vec{x}\cdot\vec{u}}{|\vec{u}|^2}.\)</p>
+
+<p>The projection can then be regarded as a function
+\(P_\vec{u} : \mathbb{R}^2 \longrightarrow \mathbb{R}^2\) defined
+\(\forall \vec{x} \in \mathbb{R}^2\):
+\(P_{\vec{u}}(\vec{x}) = (\frac{\vec{x}\cdot\vec{u}}{|\vec{u}|^2})\vec{u}.\)
+This function can be verified to be a linear transformation.</p>
+
+<p><strong><em>Example.</em></strong> For \(\theta \in [0, 2\pi)\) define
+\(R_\theta : \mathbb{R}^2 \longrightarrow \mathbb{R^2}\) to be a function
+describing rotation about angle \(\theta\) through origin. After a bit of
+derivation, we get
+\(R_\theta (x, y) = (x\cos\theta - y\sin\theta, x\sin\theta - y\cos\theta).\)
+Or alternatively in matrix form (let \((x', y')\) be \(R_\theta (x, y)\)) as
+\(\begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix}\ \cos\theta  &amp;  -\sin\theta \\ \sin\theta  &amp;  \cos\theta \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}.\)</p>
+
+<h2 id="linear-transformations-and-matrices">Linear Transformations and Matrices</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note13.pdf">Link to the PDF.</a></p>
+
+<p>Referring back to the last example in the last section, it is further
+true that <strong>every</strong> \(M_{m \times n}\) matrix can act as a linear
+transformation (\(T(\vec{x}) = M\vec{x}\)). Vectors are column vectors.</p>
+
+<p>For a basis \(V = \{\vec{v}_1, \vec{v}_2, ... \vec{v}_n\}\) of
+\(\mathbb{R}^n\), every \(\vec{x} \in \mathbb{R}^n\) has a linear expansion
+\(\vec{x} = a_1 \vec{v}_1 + a_2 \vec{v}_2 + ... + a_n \vec{v}_n\).</p>
+
+<p>These coefficients \(a_1 ... a_n\) are the <strong>coordinates of \(x\) with
+respect to basis \(V\)</strong>.</p>
+
+<p>Let \(T : \mathbb{R}^m \longrightarrow \mathbb{R}^n\) be a linear
+transformation, V be a basis in \(\mathbb{R}^m\) and W a basis in
+\(\mathbb{R}^n\).</p>
+
+<p>For each vector \(\vec{v}\) in V \(T(\vec{v})\) has an expansion in W. The
+<strong>Matrix of a linear transformation</strong> T with respect to V and W is the
+\(m \times n\) matrix where each column \(i\) contains the coefficients of
+the expansion of \(T(\vec{v}_i)\) for each \(\vec{v}_i \in V\).</p>
+
+<p>When \(m = n, \; W = V\) then it is referred to as the <strong>matrix of T with
+respect to basis V</strong>.</p>
+
+<p><strong><em>Matrix of a linear transformation.</em></strong> For a linear transformation T
+(as above), M the matrix of T with respect to bases V, W (as above); the
+columns of M contain the coordinates of the <em>images</em> of the basis
+vectors in V w/ respect to W.</p>
+
+<p>If \(\vec{x} \in \mathbb{R}^m\) has coordinates \([x_1,...,x_n]\) with
+respect to V then the coordinates with respect to W, \([y_1, ... , y_n]\)
+are
+\(\begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} = M \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}.\)</p>
+
+<p>A matrix that changes between two different bases in \(\mathbb{R}^n\) is
+called a <strong>transition matrix</strong>.</p>
+
+<p>The definition on the notes is uh, just do the same thing as above but
+the matrix will be square.</p>
+
+<h2 id="eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part2/note14.pdf">Link to the PDF.</a></p>
+
+<p>Relating to matrices multiplying vectors, and especially where the
+vectors don't change direction.</p>
+
+<p>For a matrix A and a vector \(\vec{r}\), if
+\(A\vec{r} = \lambda \vec{r}, \; \lambda \in \mathbb{R}\), then \(\vec{r}\)
+is the <strong>eigenvector</strong> and \(\lambda\) is the <strong>eigenvalue</strong>.</p>
+
+<p>A number \(\lambda\) is an eigenvalue of A if and only if it satisfies the
+<strong>characteristic equation</strong> \(|A - \lambda I| = 0.\)</p>
+
+<p>For an order \(n\) matrix there are \(n\) (not necessarily unique)
+eigenvalues. Eigenvalues can also be \(\in \mathbb{C}\).</p>
+
+<p>Recall that diagonal matrices are written
+\(\textrm{diag}[a_{11}, a_{22}, ..., a_{nn}]\).</p>
+
+<h3 id="diagonalisation-of-matrices">Diagonalisation of Matrices</h3>
+
+<p>For an order \(n\) matrix A:
+\(A = UDU^{-1}\) Where
+\(D = \textrm{diag}[\lambda_1, \lambda_2, ..., \lambda_n]\) (the eigen
+values), and \(U = [\vec{v}_1, \vec{v}_2, \dots, \vec{v}_n]\) are the
+<em>corresponding</em> eigenvectors of said eigenvalues.</p>
+
+<p>Note that if you have repeated eigenvalues, you have to find multiple
+<em>distinct</em> (linear independence) eigenvectors for that eigenvalue.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

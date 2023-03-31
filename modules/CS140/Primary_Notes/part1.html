@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Introduction to Computer Security</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Introduction to Computer Security</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#2-features-of-computer-security">2 Features of Computer Security</a></li><li><a href="#cia-triangle">CIA Triangle</a></li><li><a href="#case-studies">Case studies</a><ul><li><a href="#malware---the-morris-worm">Malware - The Morris worm</a><ul><li><a href="#worm-vs-virus">Worm vs Virus</a></li></ul></li><li><a href="#denial-of-service---takes-on-georgian-blogger">Denial of service - takes on Georgian blogger</a></li><li><a href="#hacktivism">Hacktivism</a></li><li><a href="#social-engineering">Social engineering</a></li><li><a href="#physical-security">Physical security</a></li></ul></li><li><a href="#basic-terminology">Basic Terminology</a><ul><li><a href="#asset">Asset</a></li><li><a href="#vulnerability">Vulnerability</a></li><li><a href="#threat">Threat</a></li><li><a href="#risk">Risk</a></li><li><a href="#attack">Attack</a></li><li><a href="#countermeasure">Countermeasure</a></li><li><a href="#trust">Trust</a></li></ul></li><li><a href="#risk-analysis">Risk Analysis</a><ul><li><a href="#qualitative-analysis">Qualitative analysis</a><ul><li><a href="#checklist-method">Checklist Method</a></li><li><a href="#mathematical-method">Mathematical Method</a></li></ul></li></ul></li><li><a href="#analysing-security-incidents">Analysing Security Incidents</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part2.html" title="part2.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="2-features-of-computer-security">2 Features of Computer Security</h2>
+
+<p><strong>There is no such thing as absolute computer security.</strong> If we want to know whether a system is secure, there are many questions to ask.</p>
+
+<ul>
+  <li>Security, in which aspects?
+    <ul>
+      <li>Secrecy</li>
+      <li>damage prevention</li>
+      <li>ensure services are available</li>
+    </ul>
+  </li>
+  <li>Security from whom? All people or differentiate users?
+    <ul>
+      <li>It is harder to achieve different levels of security from different users.</li>
+    </ul>
+  </li>
+  <li>Security to what level? Trade off between cost and performance
+    <ul>
+      <li>To achieve a higher level of security</li>
+      <li>more investment</li>
+      <li>more performance degradation</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Part of the reason why there is no 100% security is because there are too many security issues to consider. We can’t achieve 100% – the aim is to <strong>reduce</strong> as much as possible.</p>
+</blockquote>
+
+<p><strong>Theory is not the same as practice.</strong> Security is not just about theory but also:</p>
+
+<ul>
+  <li><strong>Implementation.</strong> How the program is written. Is it accurately implementing theory?</li>
+  <li><strong>Deployment.</strong> Private or public server? How can user input be transferred safely to servers?</li>
+  <li><strong>Maintenance.</strong> Frequent security patches are needed.</li>
+  <li><strong>Parties involved.</strong> Who uses the system and what is their security behaviour? Parties involved have to have secure habits.</li>
+  <li><strong>Location.</strong> Where is the system used? Private or public domain?</li>
+  <li><strong>Temptation.</strong> How tempting is the asset? There will always be black hats trying to attack the system.</li>
+</ul>
+
+<blockquote>
+  <p>Beautiful cryptography can be regularly compromised by bad implementations (human error).</p>
+</blockquote>
+
+<h2 id="cia-triangle">CIA Triangle</h2>
+
+<p>A security model that defines three key aspects that should be guaranteed at all times</p>
+
+<ol>
+  <li><strong>Confidentiality.</strong> No unauthorised disclosure</li>
+  <li><strong>Integrity.</strong> No unauthorised change</li>
+  <li><strong>Availability.</strong> Users are not denied access to resources or have unwarranted delay</li>
+</ol>
+
+<p><img src=".\part1.assets\ciaTriad.png" alt="ciaTriad" /></p>
+
+<p><a href="http://panmore.com/the-cia-triad-confidentiality-integrity-availability">Image source</a></p>
+
+<h2 id="case-studies">Case studies</h2>
+
+<h3 id="malware---the-morris-worm">Malware - The Morris worm</h3>
+
+<p>Robert Morris tried to measure the size of the Internet. The worm could get into a computer through rsh, generate a process and invoke the OS commands to obtain certain information about the network.</p>
+
+<h4 id="worm-vs-virus">Worm vs Virus</h4>
+
+<blockquote>
+  <p><strong>Similarities.</strong> Both self-replicate rapidly and negatively affect a computer.</p>
+
+  <p><strong>Differences.</strong></p>
+
+  <ul>
+    <li>Virus – has to replicate into a host program/other executable code to infect a computer and have an impact</li>
+    <li>Worm – standalone, doesn’t need a host program.</li>
+  </ul>
+</blockquote>
+
+<h3 id="denial-of-service---takes-on-georgian-blogger">Denial of service - takes on Georgian blogger</h3>
+
+<p>Attackers sends a massive number of requests to access the service sites so that the sites are too busy to serve the requests from the genuine users</p>
+
+<h3 id="hacktivism">Hacktivism</h3>
+
+<p>Used as a protest action against governments/institutions.</p>
+
+<p>Anonymous took down US government websites: White House, Department of Justice and FBI. Music sites like Universal Music was targeted too. Coordinated, decentralized, very effective.</p>
+
+<h3 id="social-engineering">Social engineering</h3>
+
+<p>Hacking a system doesn’t involve technical skills</p>
+
+<ul>
+  <li>Happens by exploiting people’s trust</li>
+  <li>Con people into divulging personal info such as passwords
+    <ul>
+      <li>No technical skill, just social skills</li>
+    </ul>
+  </li>
+  <li>Kevin Mitnick - notorious hacker in the 80s to 90s, wrote the Art of Deception book.</li>
+</ul>
+
+<h3 id="physical-security">Physical security</h3>
+
+<p>Russian programmer taken hostage in 2010. People can be threatened, physical locations can be breached, dumpsters can be dived!</p>
+
+<blockquote>
+  <p><strong>This is why we say there is no such thing as 100% Com Sec.</strong></p>
+</blockquote>
+
+<h2 id="basic-terminology">Basic Terminology</h2>
+
+<p>Before we dive into risk analysis methods, we will cover basic terminology in security.</p>
+
+<h3 id="asset">Asset</h3>
+
+<blockquote>
+  <p>Anything we value enough so that we want to protect it</p>
+</blockquote>
+
+<p><strong>Examples</strong>:</p>
+
+<ul>
+  <li>Customer database, web page, source code or executables of programs</li>
+  <li>Laptop, mobile phone, staff, customers, consultants.</li>
+  <li>Company reputation</li>
+</ul>
+
+<h3 id="vulnerability">Vulnerability</h3>
+
+<blockquote>
+  <p>A flaw or weakness in a system’s design, implementation, or operation and management that could be exploited to violate the system’s security policy.</p>
+</blockquote>
+
+<p><strong>Examples</strong>:</p>
+
+<ul>
+  <li>Weak passwords</li>
+  <li>Program bug</li>
+  <li>New employee doesn’t understand the security policy</li>
+</ul>
+
+<h3 id="threat">Threat</h3>
+
+<blockquote>
+  <p>A potential for violation of security, which exists when the attacker has the capability and intention to breach security</p>
+</blockquote>
+
+<p><em>Threat = capability x intent​</em></p>
+
+<p><strong>Examples</strong></p>
+
+<ul>
+  <li>A hacker discovers a new way to exploit a vulnerability and writes a virus</li>
+</ul>
+
+<p>Evaluation models of threat (Microsoft STRIDE)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Threat</th>
+      <th>Security Aspect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Spoofing</strong></td>
+      <td>Authentication</td>
+    </tr>
+    <tr>
+      <td><strong>Tampering</strong></td>
+      <td>Integrity</td>
+    </tr>
+    <tr>
+      <td><strong>Repudiation</strong></td>
+      <td><a href="https://www.cryptomathic.com/products/authentication-signing/digital-signatures-faqs/what-is-non-repudiation">Non-repudiation</a> - the assurance that no one can deny the validity of something (data, service etc.)</td>
+    </tr>
+    <tr>
+      <td><strong>Information disclosure</strong></td>
+      <td>Confidentiality</td>
+    </tr>
+    <tr>
+      <td><strong>Denial of Service</strong></td>
+      <td>Availability</td>
+    </tr>
+    <tr>
+      <td><strong>Elevation of Privilege</strong></td>
+      <td>Authorisation</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="risk">Risk</h3>
+
+<blockquote>
+  <p>An expectation of loss expressed as the <strong>probability</strong> of an actual attack a threat will exploit a vulnerability with a harmful result.</p>
+</blockquote>
+
+<p><em>Risk = probability x harm = threat x vulnerability x harm</em></p>
+
+<p><strong>Example</strong>:</p>
+
+<ul>
+  <li>Risk of your laptop being trampled by an escaped rhino is small</li>
+  <li>Risk of leaving your laptop on the bus could be quite high.</li>
+</ul>
+
+<p>Here is a <a href="https://www.pilgrimsgroup.com/news.php?id=94">case study</a> for analysing the threat and risk.</p>
+
+<h3 id="attack">Attack</h3>
+
+<blockquote>
+  <p>An assault on security that derives from a threat. A threat that has been realised</p>
+</blockquote>
+
+<p><strong>Active attack:</strong> Crashing a website through DOS</p>
+
+<p><strong>Passive attack:</strong> Eavesdrop on the network traffic</p>
+
+<p>Social engineering attack is another type of attack that just requires social skills, no technical skills.</p>
+
+<h3 id="countermeasure">Countermeasure</h3>
+
+<blockquote>
+  <p>An action that reduces a threat, vulnerability, harm, or by eliminating or preventing the attack or by detecting the attack and reacting with corrective action. Anything that will reduce the violation of the security.</p>
+</blockquote>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+  <li>Prevention: firewall, passwords, encryption, backup, training staff etc.</li>
+  <li>Detection: Intrusion detection system</li>
+  <li>Reaction: Login systems that lock users out after 3 failed attempts.</li>
+</ul>
+
+<h3 id="trust">Trust</h3>
+
+<blockquote>
+  <p>“It is impossible to design a security system that is devoid of trust; we have to trust something. Even the person who writes his own security software has to trust his compiler and computer.”</p>
+
+  <p><em>– Bruce Schneier, Secrets and Lies.</em></p>
+</blockquote>
+
+<p><strong>Trust is used in many contexts, trusted user, trusted third party, trusted host, trusted systems</strong></p>
+
+<ul>
+  <li>Security policy for trusted users will be different than other users</li>
+  <li>Trust relationship limits our responsibility
+    <ul>
+      <li>When we design security mechanism/policy, we will think threat will not come from these trusted entities - so we do not need to think about how to defend against them</li>
+    </ul>
+  </li>
+  <li>Affects our view of threat and thus the countermeasures we employ</li>
+  <li>Trust is also a valuable business asset - it is something that a business would want to protect and maintain.</li>
+</ul>
+
+<h2 id="risk-analysis">Risk Analysis</h2>
+
+<p><strong>Informal risk analysis.</strong></p>
+
+<ul>
+  <li>Identify (value) assets.</li>
+  <li>Identify vulnerabilities</li>
+  <li>Identify threats</li>
+</ul>
+
+<h3 id="qualitative-analysis">Qualitative analysis</h3>
+
+<h4 id="checklist-method">Checklist Method</h4>
+
+<p>Examples: the <strong>DREAD</strong> model by Microsoft:</p>
+
+<p><strong>Damage</strong> - how bad would an attack be?</p>
+
+<p><strong>Reproducibility</strong> - how easy is it to reproduce the attack?</p>
+
+<p><strong>Exploitability</strong> - how easy is it to launch the attack?</p>
+
+<p><strong>Affected users</strong> - how many people will be impacted?</p>
+
+<p><strong>Discoverability</strong> - how easy is it to discover the threat?</p>
+
+<h4 id="mathematical-method">Mathematical Method</h4>
+
+<p>One example of a mathematical method of analysis is <strong>Fault Tree Analysis.</strong></p>
+
+<p>You basically list the possible events that can occur , and list the possible causes of it – until the most basic cause.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># If its listed it represents there is an OR relationship,</span>
+<span class="c1"># otherwise an AND relationship is explicitly stated (last line)</span>
+<span class="c1"># Usually, this is a drawn diagram but I'm lazy.</span>
+<span class="s">Car Won't Start</span><span class="err">:</span>
+  <span class="na">Electrical Fault</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Broken Wire</span>
+    <span class="pi">-</span> <span class="s">Starter Faulty</span>
+  <span class="na">Control Status</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Foot on brake &amp; In Park</span>
+</code></pre></div></div>
+
+<p>This can only tell us the probability an attack will occur. Afterwards, we still have to determine the amount of harm that it will cause, and we will get some form of <strong>measurable risk</strong>.</p>
+
+<h2 id="analysing-security-incidents">Analysing Security Incidents</h2>
+
+<p>Key questions to ask are:</p>
+
+<ul>
+  <li>Who is doing it?</li>
+  <li>Motivation</li>
+  <li>What is the damage - which aspect of security is breached?
+    <ul>
+      <li>Not all about divulging secrets</li>
+      <li>Also include DOS, integrity, reputation loss</li>
+    </ul>
+  </li>
+  <li>What should system security encompass?
+    <ul>
+      <li>What elements can be considered to avoid the incident?</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Example of analysis. DoS – Case study 2</strong></p>
+
+<p>Who is doing it? - Russian government allegedly</p>
+
+<p>Motivation? - Prevent criticism</p>
+
+<p>What damage? - Availability</p>
+
+<p>What should system security encompass? - Service provider should have resources available to serve genuine users.</p>
+
+<p><strong>Example of analysis with terminology. Morris Worm.</strong></p>
+
+<p><strong>The Case.</strong> 1988 - Robert Morris exploited a program bug to write a “worm”.</p>
+
+<ul>
+  <li>Considered the first computer “worm” on Internet</li>
+  <li>Not intend to cause damage, but to measure the size of Internet</li>
+  <li>Get into a computer through <strong>rsh</strong>*, generate a process and invoke the OS commands to obtain certain information about the network</li>
+  <li>Gradually slow down the computer to be completely useless</li>
+  <li>Computers on the network can be infected rapidly</li>
+</ul>
+
+<p><strong>Outcome.</strong> Rapidly infected 10% of all machines on the Arpanet. Caused the estimated damage of $100 million.</p>
+
+<p><strong>Analysis.</strong></p>
+
+<ul>
+  <li>Asset: The computers on the Arpanet</li>
+  <li>Vulnerability: rsh comment loophole in Unity OS</li>
+  <li>Threat: Robert has the capability because he discovered the loophole. He had the intent because he wrote the program to make use of the loophole</li>
+  <li>Attack: Robert ran the worm, and it replicated itself rapidly across the Arpanet</li>
+  <li>Risk: (<em>probability x harm</em>) <em>(10% of all machines) x (Money loss)</em> because of computer slowdown.</li>
+  <li>Countermeasure: Robert was charged in court. Applied security patch for the rsh loophole.</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Contributors Docs</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Contributors Docs</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>made from an array fo the following json object</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Type</th>
+      <th>optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td>String</td>
+      <td>No</td>
+      <td>Contributor name musty be unique</td>
+    </tr>
+    <tr>
+      <td>image</td>
+      <td>String</td>
+      <td>No</td>
+      <td>url to image resource</td>
+    </tr>
+    <tr>
+      <td>github</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>your github username</td>
+    </tr>
+    <tr>
+      <td>nick</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>replacement for name</td>
+    </tr>
+    <tr>
+      <td>discord</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>discord name + numbers</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>additional key value pairs can be added ac will be displayed</p>
+
+<p>additionally adding a link to the value can be done by adding</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"website":{"value": "my Site","link": "http://www.mysite.com/"}
+</code></pre></div></div>
+
+
+
+                <footer class="site-footer">
+
+                    
+                        Page made by made by &#9<a href="/contributors/index.html?name=Person1">Person1</a>&thinsp;<a href="/contributors/index.html?name=Person2">Person2</a>&thinsp;
+                                with contributions by &#9<a href="/contributors/index.html?name=person3">person3</a>&thinsp;<a href="/contributors/index.html?name=person4">person4</a>&thinsp;
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

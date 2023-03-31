@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Font Matter</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Font Matter</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#default">default</a></li><li><a href="#modhome">modhome</a></li><li><a href="#modindex">modIndex</a></li><li><a href="#onepage">onePage</a></li><li><a href="#onepage-1">onePage</a></li><li><a href="#notes">notes</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>The font matter is the contents at the top of each page and describe the layout</p>
+
+<p>layouts</p>
+
+<h1 id="default">default</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Type</th>
+      <th>optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td>String</td>
+      <td>No</td>
+      <td>title of the page</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>String</td>
+      <td>No</td>
+      <td>description for the page</td>
+    </tr>
+    <tr>
+      <td>math</td>
+      <td>Bool</td>
+      <td>Yes</td>
+      <td>if to include the MathJax javascript</td>
+    </tr>
+    <tr>
+      <td>jquery</td>
+      <td>Bool</td>
+      <td>Yes</td>
+      <td>if to include the JQuery javascript</td>
+    </tr>
+    <tr>
+      <td>script</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>Link to any other javascript</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="modhome">modhome</h1>
+
+<p>Inherits from default</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Type</th>
+      <th>optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>module</td>
+      <td>String</td>
+      <td>No</td>
+      <td>module code uppercase</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="modindex">modIndex</h1>
+
+<p>Inherits from default</p>
+
+<h1 id="onepage">onePage</h1>
+
+<p>Inherits from default</p>
+
+<h1 id="onepage-1">onePage</h1>
+
+<p>Inherits from default</p>
+
+<h1 id="notes">notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Type</th>
+      <th>optional</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td>String</td>
+      <td>No</td>
+      <td>title of the page</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>String</td>
+      <td>No</td>
+      <td>description for the page</td>
+    </tr>
+    <tr>
+      <td>math</td>
+      <td>Bool</td>
+      <td>Yes</td>
+      <td>if to include the MathJax javascript</td>
+    </tr>
+    <tr>
+      <td>jquery</td>
+      <td>Bool</td>
+      <td>Yes</td>
+      <td>if to include the JQuery javascript</td>
+    </tr>
+    <tr>
+      <td>script</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>Link to any other javascript</td>
+    </tr>
+    <tr>
+      <td>part</td>
+      <td>Bool</td>
+      <td>Yes</td>
+      <td>if tue is part of a structured order of notes defined in <code class="language-plaintext highlighter-rouge">_data</code></td>
+    </tr>
+    <tr>
+      <td>mod</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>the module for the page</td>
+    </tr>
+    <tr>
+      <td>authors</td>
+      <td>Array of Strings</td>
+      <td>Yes</td>
+      <td>the author/s for the page</td>
+    </tr>
+    <tr>
+      <td>contributors</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>Contributors other than the authors</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

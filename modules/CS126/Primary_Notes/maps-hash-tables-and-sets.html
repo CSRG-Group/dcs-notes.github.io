@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Maps, Hash tables and Sets</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Maps, Hash tables and Sets</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#maps-adt">Maps (ADT)</a></li><li><a href="#hash-tables">Hash tables</a><ul><li><a href="#hash-functions">Hash functions</a><ul><li><a href="#choosing-n">Choosing \(N\)</a></li></ul></li><li><a href="#memory-address">Memory address</a></li><li><a href="#integer-cast">Integer cast</a></li><li><a href="#component-sum">Component sum</a></li><li><a href="#polynomial-accumulation">Polynomial accumulation</a></li><li><a href="#java-hash-implementations">Java hash implementations</a></li></ul></li><li><a href="#collisions">Collisions</a><ul><li><a href="#separate-chaining-closed-bucket">Separate Chaining (closed-bucket)</a></li><li><a href="#linear-probing-open-bucket">Linear Probing (open-bucket)</a></li><li><a href="#double-hashing-open-bucket">Double Hashing (open-bucket)</a></li></ul></li><li><a href="#resizing-a-hash-table">Resizing a hash table</a></li><li><a href="#performance-of-hashing">Performance of Hashing</a></li><li><a href="#sets-adt">Sets (ADT)</a></li><li><a href="#implementations">Implementations</a><ul><li><a href="#list-based">List based</a><ul><li><a href="#generic-merging-algorithm">Generic Merging Algorithm</a></li></ul></li><li><a href="#hash-set-based">Hash-set based</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="stacks-and-queues.html" title="stacks-and-queues.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="trees.html" title="trees.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="maps-adt">Maps (ADT)</h2>
+<blockquote>
+  <p><strong>Maps</strong> are a “searchable collection of key-value entries”</p>
+
+  <p><em>Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser.</em></p>
+</blockquote>
+
+<p>They cannot contain duplicate keys, as then they would not be able to unambiguously look up values by their keys</p>
+
+<p>Maps have the fundamental operations:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>contains(k)</td>
+      <td>Whether the key <code class="language-plaintext highlighter-rouge">k</code> is in the map</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>get(k)</td>
+      <td>The value associated with the key <code class="language-plaintext highlighter-rouge">k</code>, or null if it is not in the map</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>put(k,v)</td>
+      <td>-</td>
+      <td>Add the key-value pair <code class="language-plaintext highlighter-rouge">k,v</code> to the map</td>
+    </tr>
+    <tr>
+      <td>remove(k)</td>
+      <td>-</td>
+      <td>Remove the key-value pair of <code class="language-plaintext highlighter-rouge">k</code> from the map</td>
+    </tr>
+    <tr>
+      <td>size()</td>
+      <td>The number of key-value pairs stored in the map</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>isEmpty()</td>
+      <td>Whether the map is empty</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Sometimes additional operations for getting lists of all keys or all values are included</em></p>
+
+<p>There are two common concrete implementations:</p>
+
+<ul>
+  <li>List based implementation
+    <ul>
+      <li>\(O(n)\) lookup and insertion, as the whole list needs to be iterated over to check for duplicates</li>
+      <li>\(O(n)\) space complexity, as there are no duplicates</li>
+    </ul>
+  </li>
+  <li>Hash table based implementation
+    <ul>
+      <li>\(O(1)\) lookup and insertion time, as they can be directly indexed</li>
+      <li>\(O(k \cdot n)\) space complexity (still linear with number of items, but larger by a big constant factor)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="hash-tables">Hash tables</h2>
+
+<p><em>Concrete implementation</em></p>
+
+<blockquote>
+  <p><strong>Hash tables</strong> are a time efficient implementation of the Map abstract data type</p>
+</blockquote>
+
+<p>To look up keys in \(O(1)\) time, we want essentially want to be able to index an array of them, but the space of keys are far too large to conceivably keep <strong>just</strong> one element in the array for each key.</p>
+
+<h3 id="hash-functions">Hash functions</h3>
+
+<blockquote>
+  <p>We can use a “hash function” to reduce the size of the keyspace, so we can used the hashed outputs of keys for indices in the array storing the map.
+\(h : keys \rightarrow indices\)
+\(h\) maps keys of a given type to integers in a fixed interval \([0, N-1]\) where \(N\) is the size of the array to store the items in (<strong>bucket</strong> size).</p>
+</blockquote>
+
+<p>Modern implementations of hash functions are <strong>very complicated</strong>, and often involve two phases</p>
+
+<ol>
+  <li>Mapping keys to integers with a <strong>hash code</strong> \(h_1\)</li>
+  <li>Reducing the range of those integers with a <strong>compression function</strong> \(h_2\)</li>
+</ol>
+
+<p>But simpler ones exist, for example \(h(x) =  x \!\!\mod \!N\)</p>
+
+<h4 id="choosing-n">Choosing \(N\)</h4>
+
+<blockquote>
+  <p>In general, every key \(x\) that shares a <strong>common factor</strong> with \(N\) (the number of buckets) will be hashed to a multiple of this <strong>factor</strong>.</p>
+</blockquote>
+
+<p>Therefore, to minimise <strong>collisions</strong> it is best to choose a \(N\) such that it has very few factors. Hence <strong>large prime numbers</strong> are often used for this very reason.</p>
+
+<h3 id="memory-address">Memory address</h3>
+
+<p>Java implements hash functions for all objects with the <code class="language-plaintext highlighter-rouge">.hashCode()</code> method, giving a convenient way to implement hashing.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">.hashCode()</code> method is dependent on the memory address of the object storing the key, which is then cast to an integer. This then may be resized using a reduction function to map it to the correct size of the table may still be required.</p>
+
+<h3 id="integer-cast">Integer cast</h3>
+
+<p>Taking the bits encoding the object storing the key, and re-interpreting them as an integer. This is only suitable for keys of fewer or equal to the number of bits in the integer type (i.e. primitives: <code class="language-plaintext highlighter-rouge">byte</code>, <code class="language-plaintext highlighter-rouge">short</code>, <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code>)</p>
+
+<h3 id="component-sum">Component sum</h3>
+
+<p>The process is:</p>
+
+<ol>
+  <li>Partition the bits of the key into a number of fixed length components (e.g. 8 bits)</li>
+  <li>Sum together the components, discarding overflows</li>
+</ol>
+
+<p>This is suitable for keys of a greater number of bits than the integer type (e.g. <code class="language-plaintext highlighter-rouge">long</code> and <code class="language-plaintext highlighter-rouge">double</code>)</p>
+
+<h3 id="polynomial-accumulation">Polynomial accumulation</h3>
+
+<p>The process is:</p>
+
+<ol>
+  <li>
+    <p>Partition the bits of the key into a number of fixed length components (e.g. 8 bits), and name them \(a_0, a_1, ..., a_{n-1}\) respectively</p>
+  </li>
+  <li>
+    <p>Evaluate the polynomial:
+\(p(z) = a_0 + a_1 \cdot z + a_2 \cdot z^2 + ... + a_{n-1} \cdot z^{n-1}\)
+at a fixed value \(z\), ignoring overflows</p>
+
+    <p>This can be evaluated quickly using Horner’s rule</p>
+  </li>
+</ol>
+
+<p>This is especially suitable for strings, with \(z=33\) giving at most \(6\) collisions from \(50,000\) English words</p>
+
+<h3 id="java-hash-implementations">Java hash implementations</h3>
+
+<p>Java implements hash functions for all objects with the <code class="language-plaintext highlighter-rouge">.hashCode()</code> method, giving a convenient way to implement hashing, but a reduction function to map it to the correct size of the table may still be required.</p>
+
+<p>Additionally, “You must override <code class="language-plaintext highlighter-rouge">hashCode()</code> in every class that overrides <code class="language-plaintext highlighter-rouge">equals()</code>.  Failure to do so will result in a violation of the general contract for <code class="language-plaintext highlighter-rouge">Object.hashCode()</code>, which will prevent your class from functioning  properly in conjunction with all hash-based collections, including  <code class="language-plaintext highlighter-rouge">HashMap</code>, <code class="language-plaintext highlighter-rouge">HashSet</code>, and <code class="language-plaintext highlighter-rouge">Hashtable</code>.” (<em>Effective Java</em>, Joshua Bloch)</p>
+
+<p>This is because the default <code class="language-plaintext highlighter-rouge">.hashcode()</code> method is dependent on the object’s location on memory, which is the same as the default implementation of the <code class="language-plaintext highlighter-rouge">.equals()</code> method. Then, if the .<code class="language-plaintext highlighter-rouge">equals()</code> method is changed to be dependent on an object’s internal state, two objects could be equal, but have different hash codes, which violates the property of hashing that two equal objects must have the same hash code, as otherwise it is non-deterministic. Hence, the <code class="language-plaintext highlighter-rouge">.hashcode()</code> method should always be updated to hash equal objects to the same hash code to maintain consistency and avoid difficult to debug conceptual errors. This is not a <em>requirement</em>, and the code will still compile if it is not done, but it is very inadvisable not to do so.</p>
+
+<h2 id="collisions">Collisions</h2>
+
+<blockquote>
+  <p>Collisions are when two <strong>different</strong> keys are <strong>mapped to</strong> the <strong>same index</strong> by the hash function. Since we cannot store duplicate keys unambiguously in a map, we need a protocol to resolve this.</p>
+</blockquote>
+
+<p>When colliding items are placed in different cells in the table, it is called <strong>open addressing</strong>, or <strong>open-bucket hashing</strong>, and when they are put in a separate data structure it is called <strong>closed addressing</strong>, or <strong>closed-bucket chaining</strong> (with linear probing and separate chaining being examples of both respectively) <a href="http://www.iro.umontreal.ca/~nie/IFT1020/Watt/12/tsld009.htm">additional link</a>.</p>
+
+<p>Common approaches to resolving collisions are:</p>
+
+<ul>
+  <li>Separate chaining</li>
+  <li>Linear probing</li>
+  <li>Double hashing</li>
+</ul>
+
+<h3 id="separate-chaining-closed-bucket">Separate Chaining (closed-bucket)</h3>
+
+<p>In <strong>separate chaining</strong>, each index in the array can contain a reference to a linked list.</p>
+
+<ul>
+  <li>Whenever a key is mapped to that index, the key-value pair is added to the linked-list.</li>
+  <li>If there are duplicates, we iterate over the chain till we find the key, or reach the end.</li>
+</ul>
+
+<p>This has the <strong>drawback</strong> of requiring additional memory space for each linked list</p>
+
+<p><img src="./images/separateChaining.png" alt="separateChaining" class="center" /></p>
+
+<h3 id="linear-probing-open-bucket">Linear Probing (open-bucket)</h3>
+
+<blockquote>
+  <p><strong>Linear probing</strong> handles collisions by placing the colliding item in the next available table cell, wrapping around if necessary.</p>
+</blockquote>
+
+<p><strong>Searching</strong></p>
+
+<p>As with the linked list, <strong>searching</strong> is done by iterating over the next cells, stopping when</p>
+
+<ul>
+  <li>The item is found</li>
+  <li>An empty cell in the table is found</li>
+  <li><strong><em>N</em></strong> cells have been unsuccessfully (cannot find key) probed.</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Psuedocode</span>
+<span class="n">Algorithm</span> <span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">&lt;-</span> <span class="n">h</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="c1">// h = hash function</span>
+    <span class="n">p</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+    <span class="n">repeat</span>
+    	<span class="n">c</span> <span class="o">&lt;-</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1">// A is the table</span>
+    	<span class="k">if</span> <span class="n">c</span> <span class="o">=</span> <span class="n">empty</span>
+            <span class="k">return</span> <span class="n">null</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">getKey</span><span class="p">()</span> <span class="o">=</span> <span class="n">k</span> <span class="c1">// We found our item</span>
+            <span class="k">return</span> <span class="n">c</span><span class="p">.</span><span class="n">getValue</span><span class="p">()</span>
+        <span class="k">else</span>
+            <span class="n">i</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="n">mod</span> <span class="n">N</span> <span class="c1">// mod N takes care of wrap arounds</span>
+            <span class="n">p</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span>
+   <span class="n">until</span> <span class="n">p</span> <span class="o">=</span> <span class="n">N</span> <span class="c1">// stop if we have repeated N times</span>
+   <span class="k">return</span> <span class="n">null</span>
+</code></pre></div></div>
+
+<p>This has the <strong>drawback</strong> of colliding items “lumping together”, which can cause many items needed to be iterated over in a probe.</p>
+
+<p><strong>Removing</strong></p>
+
+<p><strong>To remove</strong> an item, we cannot just set it to null again, as that would mean it stops probing, even though there might be subsequent elements. Instead, we replace it with a <code class="language-plaintext highlighter-rouge">DEFUNCT</code> element, which is just skipped over when probing.</p>
+
+<ul>
+  <li>Search for an entry with key <strong><em>k</em></strong></li>
+  <li>If <strong><em>k</em></strong> is found, we replace it with <code class="language-plaintext highlighter-rouge">DEFUNCT</code> and we return the <strong>value</strong> of the item with key <strong><em>k</em></strong></li>
+  <li>Else we return <strong>null</strong></li>
+</ul>
+
+<h3 id="double-hashing-open-bucket">Double Hashing (open-bucket)</h3>
+
+<blockquote>
+  <p><strong>Double hashing</strong> handles collisions by re-hashing the key with a new hash function</p>
+
+  <p>If cell \(h(k)\) is occupied and not our key, we try \([h(k) + i \cdot f(k)] \!\!\mod \!N, \; i \in \mathbb{Z}\)</p>
+
+  <ul>
+    <li>\(h\) and \(f\) are hashing functions, and \(f(k)\) cannot have 0 values.</li>
+    <li>\(N\) must be a prime to allow probing of all cells.</li>
+  </ul>
+</blockquote>
+
+<p>As before, there are many implementations of the hash function, but \(f(k)= q-k \!\!\mod\!q, \;s.t.\;  q&lt;N, q \in primes\) is normally used.</p>
+
+<ul>
+  <li>If \(f(k) = 1\) then we have <strong>linear probing</strong>.</li>
+</ul>
+
+<p><strong>Searching</strong> is similar to linear probing, but when iterating we look at the hash value for \(i = 1,2,3,\ldots\) rather than just the next index in the table. This helps avoid the issue of colliding items “lumping together” as in linear probing.</p>
+
+<h2 id="resizing-a-hash-table">Resizing a hash table</h2>
+
+<p>As with arrays, we create a new table of a larger size, then iterate over every index in the table, and apply the standard add operation to add it to the new one (re-hashing).</p>
+
+<p>Again, similarly to arrays, the new size of the table can be picked from various algorithms, most commonly constant or exponential growth.</p>
+
+<h2 id="performance-of-hashing">Performance of Hashing</h2>
+
+<p>The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array \(\alpha = \frac{n}{N}\).</p>
+
+<ul>
+  <li>If this approaches \(1\), the table becomes time inefficient to lookup in, so we often re-size the table whenever it exceeds a certain value, e.g. \(0.75\)</li>
+  <li>If this approaches \(0\), then the table is mostly empty, so is space inefficient, so we try to avoid tables of less than a certain value, e.g. \(0.5\)</li>
+</ul>
+
+<p>The time complexity of insertion and lookup is:</p>
+<ul>
+  <li>\(\Theta(1)\) best case</li>
+  <li>\(O(n)\) worst case – when all keys inserted into the map collide</li>
+  <li>“Expected” number of probes with open addressing is \(\frac{1}{1-\alpha}\)</li>
+</ul>
+
+<p>In practice, hash tables are a very efficient implementation of maps assuming the load factor is not very close to \(1\)</p>
+
+<blockquote class="extra">
+    Experiments show that as long as \(\alpha \lt 0.9\), there should be no problem with speed.
+    However, for \(\alpha \gt 0.9\) the number of collisions increase and becomes slower.
+</blockquote>
+
+<h2 id="sets-adt">Sets (ADT)</h2>
+
+<blockquote>
+  <p><strong>Sets</strong> are “an <strong>unordered</strong> collection of elements, <strong>without duplicates</strong> that typically supports <strong>efficient membership tests</strong>.”</p>
+
+  <p><em>Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser</em></p>
+</blockquote>
+
+<p>These are the same as sets in mathematics.</p>
+
+<p><em>If you want to pull request more stuff here, please do - but I’m not too sure how much more depth is needed</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental Operations</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">add(e)</code></td>
+      <td>-</td>
+      <td>Add the element <em>e</em> to <em>S</em> (if not already present)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remove(e)</code></td>
+      <td>-</td>
+      <td>Remove the element <em>e</em> from <em>S</em> (if it is present).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">contains(e)</code></td>
+      <td>Whether <em>e</em> is an element of <em>S</em></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">iterator()</code></td>
+      <td>An iterator of the elements of <em>S</em></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">union(s2)</code></td>
+      <td>-</td>
+      <td>Updates <em>S</em> to also include all elements of set <em>T</em>, effectively replacing <em>S</em> with <em>S</em> ∪ <em>T</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">intersection(s2)</code></td>
+      <td>-</td>
+      <td>Updates <em>S</em> to only include elements also in set T, effectively replacing <em>S</em> with <em>S</em> ∩ <em>T</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">difference(s2)</code></td>
+      <td>-</td>
+      <td>Updates <em>S</em> to not include any of the elements of set T, effectively replacing <em>S</em> with <em>S</em> \ <em>T</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>And alternate definition for set operations can instead define a third set structure and fill it with the result of <em>S</em> *set operation* <em>T</em> – this way we don’t alter <em>S</em></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">union :: (s1, s2) -&gt; s3</code></li>
+  <li><code class="language-plaintext highlighter-rouge">intersection :: (s1, s2) -&gt; s3</code></li>
+  <li><code class="language-plaintext highlighter-rouge">difference :: (s1, s2) -&gt; s3</code></li>
+</ul>
+
+<h2 id="implementations">Implementations</h2>
+
+<p>There are two common concrete implementations. These are essentially the same as for maps, however, the key and the value are taken to be the same.</p>
+
+<ul>
+  <li>Linked lists</li>
+  <li>Hash set</li>
+</ul>
+
+<h3 id="list-based">List based</h3>
+
+<blockquote>
+  <p>In the list implementation we store elements <strong>sorted</strong> according to some canonical ordering. This is <strong>important</strong> for the set operations to be more time efficient.</p>
+</blockquote>
+
+<p>Generally, the <strong>space complexity</strong> is \(O(n)\), without overhead of empty cells. Since sets are not indexable, linked lists can be used, <strong>offering efficient re-sizing</strong>.</p>
+
+<p>We need to iterate over each element in the list to lookup items, \(O(n)\) time complexity, which is not efficient, but for most more complex set operations, this becomes less of a drawback.</p>
+
+<h4 id="generic-merging-algorithm">Generic Merging Algorithm</h4>
+
+<p>Set operations can be implemented using a generic <strong>merge</strong> algorithm.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Algorithm</span> <span class="nf">genericMerge</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+    <span class="n">S</span> <span class="o">&lt;-</span> <span class="n">empty</span> <span class="n">set</span>
+    <span class="k">while</span> <span class="o">!</span><span class="n">A</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">()</span> <span class="n">and</span> <span class="o">!</span><span class="n">B</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">()</span>
+        <span class="c1">// until either of the arrays is empty</span>
+        <span class="n">a</span> <span class="o">&lt;-</span> <span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">().</span><span class="n">element</span><span class="p">()</span>
+        <span class="n">b</span> <span class="o">&lt;-</span>  <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">().</span><span class="n">element</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
+            <span class="n">aIsLess</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+            <span class="n">A</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">())</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">a</span>
+            <span class="n">bIsLess</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+            <span class="n">B</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">())</span>
+        <span class="k">else</span> <span class="c1">// b == a</span>
+            <span class="n">bothAreEqual</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+            <span class="n">A</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">());</span> <span class="n">B</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">())</span>
+    <span class="c1">// By this point either A is empty or B is empty</span>
+    <span class="k">while</span> <span class="o">!</span><span class="n">A</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">()</span>
+        <span class="c1">// Populate S with remaining elements in A, if any are still present</span>
+        <span class="n">aIsLess</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+        <span class="n">A</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">())</span>
+    <span class="k">while</span> <span class="o">!</span><span class="n">B</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">()</span>
+        <span class="c1">// Populate S with remaining elements in B, if any are still present</span>
+        <span class="n">bIsLess</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+        <span class="n">B</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">S</span>
+</code></pre></div></div>
+
+<p>This merging algorithm is used in <strong>merge sort</strong> as well! You may have noticed that we have 3 auxiliary methods in this algorithm: <code class="language-plaintext highlighter-rouge">aIsLess</code>, <code class="language-plaintext highlighter-rouge">bIsLess</code>, and <code class="language-plaintext highlighter-rouge">bothAreEqual</code>.</p>
+
+<blockquote>
+  <p>Depending on the set operation (or any operation you are using this generic merge for), you define these methods <strong>differently</strong>.</p>
+</blockquote>
+
+<p><strong>Example.</strong></p>
+
+<p>For <strong>set intersection</strong> – we only want the algorithm to merge when <code class="language-plaintext highlighter-rouge">b == a</code>, so <code class="language-plaintext highlighter-rouge">aIsLess</code> and <code class="language-plaintext highlighter-rouge">bIsLess</code> should do <strong>nothing</strong> and <code class="language-plaintext highlighter-rouge">bothAreEqual</code> should add either one into <strong><em>S</em></strong>.</p>
+
+<p><strong>Set union</strong> is trivial (just add everything).</p>
+
+<p>For <strong>set subtraction</strong> you do nothing if the elements are equal!</p>
+
+<p>This means that each <strong>set operation</strong> runs in <strong>linear time</strong> (i.e \(O(n_A + n_B)\) time), provided that the auxiliary methods run in <em>O(1)</em> time. This is <strong>possible</strong>, as we know that the <strong>elements are sorted</strong>.</p>
+
+<h3 id="hash-set-based">Hash-set based</h3>
+
+<p>Hash-sets are implemented like a hash-table, but using only keys, not key-value pairs. This gives fast \(O(1)\) lookups, and an \(O(n)\) space complexity, but with large overheads.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

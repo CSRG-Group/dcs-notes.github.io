@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Conditionals & Iteratives</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Conditionals & Iteratives</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#conditional-statements">Conditional Statements</a><ul><li><a href="#if-else-and-ternary">if, else, and ternary</a></li><li><a href="#switch">switch</a></li><li><a href="#switch-vs-if-else">switch vs if-else</a></li></ul></li><li><a href="#iterative-statements">Iterative statements</a><ul><li><a href="#bounded-repetition">Bounded repetition</a><ul><li><a href="#bounded-repetition-criteria">Bounded repetition criteria</a></li></ul></li><li><a href="#unbounded-repetition">Unbounded repetition</a></li><li><a href="#dowhile-statements">do...while statements</a></li><li><a href="#return-of-the-break-keyword">Return of the break keyword</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part1.html" title="part1.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part3.html" title="part3.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="conditional-statements">Conditional Statements</h2>
+
+<p>This part of the page covers the <code class="language-plaintext highlighter-rouge">if...else</code> statement, the ternary operator, and the <code class="language-plaintext highlighter-rouge">switch</code> statement.</p>
+
+<h3 id="if-else-and-ternary">if, else, and ternary</h3>
+
+<p>There isn’t a significant amount of content beyond the basic <code class="language-plaintext highlighter-rouge">if...else</code> statement; something you may have missed however is the <strong>ternary operator</strong>. This is a shorthand for the <code class="language-plaintext highlighter-rouge">if...else</code> statement and looks like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// Our boolean condition</span>
+<span class="nc">Boolean</span> <span class="n">boolCond</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+<span class="c1">// Your standard if-else</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">boolCond</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="n">valueIfTrue</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="n">valueIfFalse</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// Using a ternary operator to achieve the exact same goal</span>
+<span class="n">value</span> <span class="o">=</span> <span class="o">(</span><span class="n">boolCond</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">valueIfTrue</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">valueIfFalse</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>You may be pleased to know that the ternary operator can be nested; this is basically only useful for code-golf, however.</p>
+
+<p>Additionally, when explaining the semantics of an <code class="language-plaintext highlighter-rouge">if...else</code> statement, we can refer to the <code class="language-plaintext highlighter-rouge">{}</code> (curly brackets) as the <strong>construct</strong>. So we can say:</p>
+
+<blockquote>
+  <p>If the <strong>boolean expression</strong>, <code class="language-plaintext highlighter-rouge">boolCond</code>, evaluates to true, then the body of the statement is executed, otherwise control passes to the next <strong>program statement</strong> after the <strong>construct</strong>.</p>
+</blockquote>
+
+<h3 id="switch">switch</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">switch</code> statement is a way to simplify the <code class="language-plaintext highlighter-rouge">if...else</code> statement whilst also providing some additional control over how each <code class="language-plaintext highlighter-rouge">case</code> can be handled. First, the basic syntax:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="o">(</span><span class="n">variable</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nl">VALUE1:</span> <span class="c1">// Statements here if variable == VALUE1</span>
+    <span class="k">break</span><span class="o">;</span> <span class="c1">// Do not continue executing!</span>
+  <span class="k">case</span> <span class="nl">VALUE2:</span> <span class="c1">// Statements here if variable == VALUE2</span>
+    <span class="k">break</span><span class="o">;</span> <span class="c1">// Do not continue executing!</span>
+  <span class="k">default</span><span class="o">:</span> <span class="c1">// Statements here if neither case has been satisfied; however you can leave this blank.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The eagle-eyed amongst you will notice that each case is matched on an <strong>equality</strong> basis- not using <code class="language-plaintext highlighter-rouge">equals()</code> or <code class="language-plaintext highlighter-rouge">compareTo()</code>. Therefore, <strong>switch cases only work for the following primitives:</strong></p>
+<ul>
+  <li>int</li>
+  <li>short</li>
+  <li>byte</li>
+  <li>char</li>
+</ul>
+
+<p>Switch statements will also work on enumerated types (enums), <code class="language-plaintext highlighter-rouge">String</code>s, and objects that wrap the corresponding primitives:</p>
+<ul>
+  <li>Character</li>
+  <li>Byte</li>
+  <li>Short</li>
+  <li>Integer</li>
+</ul>
+
+<p>An example of a switch on a enum:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+  <span class="kd">enum</span> <span class="nc">Colour</span><span class="o">{</span><span class="no">RED</span><span class="o">,</span><span class="no">GREEN</span><span class="o">,</span><span class="no">BLUE</span><span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Colour</span> <span class="n">c</span> <span class="o">=</span> <span class="nc">Colour</span><span class="o">.</span><span class="na">RED</span><span class="o">;</span>
+    <span class="k">switch</span> <span class="o">(</span><span class="n">c</span><span class="o">){</span> 
+      <span class="k">case</span> <span class="nl">RED:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Colour is red"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+      <span class="k">case</span> <span class="nl">BLUE:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Colour is blue"</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">GREEN:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Colour is green"</span><span class="o">);</span>
+      <span class="k">default</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Default"</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>There are a few caveats to take away from this:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">switch</code> statements are evaluated bottom to top</li>
+  <li>If a <code class="language-plaintext highlighter-rouge">case</code> branch matches the <code class="language-plaintext highlighter-rouge">variable</code>, the expressions in that <code class="language-plaintext highlighter-rouge">case</code> will be evaluated.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">break</code> keyword is <strong>optional</strong>. This means that the <code class="language-plaintext highlighter-rouge">switch</code> statement will continue running top to bottom otherwise, even after satisfying a case. Think about if you would like this behaviour!</li>
+  <li>The <code class="language-plaintext highlighter-rouge">default</code> statement is also <strong>optional</strong>; it is only evaluated if no cases match the variable expression.</li>
+</ul>
+
+<p>Notably, if there is an <strong>absence</strong> of the <code class="language-plaintext highlighter-rouge">break</code> keyword and a specific <code class="language-plaintext highlighter-rouge">case</code> <strong>value</strong> has already matched the <strong>variable</strong>, the <code class="language-plaintext highlighter-rouge">switch</code> statement will continue running all the remaining <em>statements</em> inside each case without checking the <strong>value</strong> of the <code class="language-plaintext highlighter-rouge">case</code>.</p>
+
+<p>For example, if the colour of our <code class="language-plaintext highlighter-rouge">Colour</code> enum above is <code class="language-plaintext highlighter-rouge">BLUE</code>, the output of the switch statement will be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Colour is blue
+Colour is green
+Default
+</code></pre></div></div>
+
+<p>That is because, after <code class="language-plaintext highlighter-rouge">c</code> matches with the value <code class="language-plaintext highlighter-rouge">BLUE</code>, the <code class="language-plaintext highlighter-rouge">switch</code> statement continues executing all the remaining statements without checking the value <code class="language-plaintext highlighter-rouge">GREEN</code>. This can be avoided by using <code class="language-plaintext highlighter-rouge">break</code>.</p>
+
+<h3 id="switch-vs-if-else">switch vs if-else</h3>
+<p>In most cases, deciding between using a <code class="language-plaintext highlighter-rouge">switch</code> or <code class="language-plaintext highlighter-rouge">if...else</code> statement depends on readability and maintainability. However, for a larger number of cases (5 or more), a <code class="language-plaintext highlighter-rouge">switch</code> statement is generally faster. This is because the compiler creates a “jump table” based on each of the <code class="language-plaintext highlighter-rouge">case</code> values. Essentially, these are special byte codes that tell the Java Virtual Machine (JVM) which path of execution to take depending on the <strong>variable</strong> expression. Conversely, the JVM checks the boolean expressions in <code class="language-plaintext highlighter-rouge">if-else</code> statements one at a time, from top to bottom. This is why when there are many cases, a <code class="language-plaintext highlighter-rouge">switch</code> statement will run faster than equivalent logic coded <code class="language-plaintext highlighter-rouge">if-else</code> statements.</p>
+
+<p>The compiler is able to do this because the <strong>values</strong> in a <code class="language-plaintext highlighter-rouge">switch</code> statement are always constant values at compile time, and can be compared easily with the <strong>variable</strong> expression as they are the same type. For <code class="language-plaintext highlighter-rouge">if-else</code> statements, they are boolean expressions that may depend on an arbitrary number of variables and conditions and the compiler cannot assume that the values will be constant.</p>
+
+<h2 id="iterative-statements">Iterative statements</h2>
+
+<p>Whilst you are most likely familiar with <code class="language-plaintext highlighter-rouge">while</code> and <code class="language-plaintext highlighter-rouge">for</code> loops, it is important to understand the <strong>terminology</strong> that seperates the two. A <code class="language-plaintext highlighter-rouge">while</code> loop is <strong>unbounded</strong> repetition whilst a <code class="language-plaintext highlighter-rouge">for</code> loop is <strong>bounded</strong>; you cannot compile code which does not have a terminating condition.</p>
+
+<h3 id="bounded-repetition">Bounded repetition</h3>
+
+<h4 id="bounded-repetition-criteria">Bounded repetition criteria</h4>
+<p>We use bounded repetition when we know all of the following:</p>
+<ul>
+  <li>Where to start</li>
+  <li>Where to end</li>
+  <li>What iterative step to take at each repetition</li>
+</ul>
+
+<p>The Java <code class="language-plaintext highlighter-rouge">for</code> statement is structured with <code class="language-plaintext highlighter-rouge">for (initialisation; booleanCondition; iteration) { statement(s); }</code>. Keep in mind that the sky is the limit when it comes to either of these three components; you do not always have to use <code class="language-plaintext highlighter-rouge">i++</code> to iterate a list in forward direction.</p>
+
+<h3 id="unbounded-repetition">Unbounded repetition</h3>
+
+<p>We can use this when we are <strong>unsure of how many times</strong> we want to repeat something. There is no Java police to enforce which repetition you use, but I would keep in mind how tidy your code is. Moreover, if you find yourself iterating in a while loop, make sure you understand the differences between postfix and prefix operators.</p>
+
+<h3 id="dowhile-statements"><code class="language-plaintext highlighter-rouge">do...while</code> statements</h3>
+
+<p>This is for when you want to execute the loop body <strong>before checking the expression</strong>; this means that <strong>the body will always be ran once</strong>. After the first initialisation, a <code class="language-plaintext highlighter-rouge">do...while</code> statement will only execute the code inside the <code class="language-plaintext highlighter-rouge">do</code> whilst the <code class="language-plaintext highlighter-rouge">while</code> condition evaluates to <code class="language-plaintext highlighter-rouge">true</code>. You may want to use this when <em>generating random numbers, and then checking if these satisfy a condition…</em> 🤖</p>
+
+<h3 id="return-of-the-break-keyword">Return of the <code class="language-plaintext highlighter-rouge">break</code> keyword</h3>
+
+<p>You can use the <code class="language-plaintext highlighter-rouge">break</code> keyword at any point inside a <code class="language-plaintext highlighter-rouge">do...while</code>, <code class="language-plaintext highlighter-rouge">while</code>, or <code class="language-plaintext highlighter-rouge">for</code> statement to halt looping within that scope. For example, this code would stop iterating once a certain limit has been reached:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> 
+    <span class="k">break</span><span class="o">;</span> <span class="c1">// The code would stop looping at i = 5;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

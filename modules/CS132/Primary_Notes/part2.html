@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Digital Logic</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Digital Logic</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#logic-gates-circuits-and-truth-tables">Logic Gates, Circuits and Truth tables</a><ul><li><a href="#an-alternative-view-of-the-or-circuit">An Alternative view of the OR circuit</a></li><li><a href="#functions-of-two-binary-variables">Functions of Two Binary Variables</a></li><li><a href="#electronic-logic-gates">Electronic Logic Gates</a></li></ul></li><li><a href="#simplifying-logical-expressions-using-boolean-algebra">Simplifying Logical Expressions using Boolean Algebra</a><ul><li><a href="#logic-circuit-to-truth-table">Logic Circuit to Truth Table</a></li><li><a href="#truth-table-to-boolean-equation">Truth table to Boolean Equation</a></li><li><a href="#laws-of-boolean-algebra">Laws of Boolean Algebra</a></li><li><a href="#karnaugh-maps--k-maps">Karnaugh Maps / K-maps</a><ul><li><a href="#multiple-equivalent-expressions">Multiple equivalent expressions</a></li><li><a href="#dont-care-conditions">Don’t Care Conditions</a></li></ul></li></ul></li><li><a href="#combinatorial-logic-circuits">Combinatorial Logic Circuits</a><ul><li><a href="#1-bit-half-adder">1-bit Half-Adder</a></li><li><a href="#1-bit-full-adder">1-bit Full-Adder</a></li><li><a href="#n-bit-full-adder">N-bit Full-Adder</a></li><li><a href="#adder-to-addersubtractor">Adder to Adder/Subtractor</a><ul><li><a href="#n-bit-addersubtractor">N-bit Adder/Subtractor</a></li></ul></li><li><a href="#active-high-or-active-low">Active High or Active Low?</a></li><li><a href="#decoders">Decoders</a></li><li><a href="#encoder">Encoder</a></li><li><a href="#multiplexers-mux">Multiplexers (MUX)</a></li><li><a href="#de-multiplexers-de-mux">De-Multiplexers (DE-MUX)</a></li></ul></li><li><a href="#sequential-logic-circuits">Sequential Logic Circuits</a><ul><li><a href="#flip-flops">Flip-Flops</a></li><li><a href="#d-type-latch">D-Type Latch</a><ul><li><a href="#three-different-kinds-of-triggers">Three different kinds of triggers</a></li></ul></li><li><a href="#n-bit-register">N-bit Register</a></li><li><a href="#n-bit-shift-register">N-bit Shift Register</a></li><li><a href="#n-bit-counter">N-bit Counter</a></li></ul></li><li><a href="#three-state-logic--physical-implementations">Three State Logic &amp; Physical Implementations</a><ul><li><a href="#propagation-delay">Propagation Delay</a></li><li><a href="#logic-integrated-circuits-ics">Logic Integrated Circuits (ICs)</a></li><li><a href="#pla">PLA</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part1.html" title="part1.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part3.html" title="part3.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="logic-gates-circuits-and-truth-tables">Logic Gates, Circuits and Truth tables</h2>
+
+<h3 id="an-alternative-view-of-the-or-circuit">An Alternative view of the OR circuit</h3>
+
+<p>Why is \(\bar f = \bar A \cdot \bar B\) an appropriate representation?</p>
+
+<p>We know that \(\bar f = \overline {A+B}\), this means \(f = A+B\). Therefore, \(\bar f = \bar A \cdot \bar B\) (de Morgan’s Law)</p>
+
+<h3 id="functions-of-two-binary-variables">Functions of Two Binary Variables</h3>
+
+<p>16 (2<sup>4</sup>) functions can be found between two binary variables. We can interpret each of these functions algebraically.</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th style="text-align: center">A</th>
+      <th style="text-align: center">B</th>
+      <th style="text-align: center">\(f_0\)</th>
+      <th style="text-align: center">\(f_1\)</th>
+      <th style="text-align: center">\(\cdots\)</th>
+      <th style="text-align: center">\(f_{14}\)</th>
+      <th style="text-align: center">\(f_{15}\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+\[\begin{align}
+f_0 &amp;= 0 \\
+f_1 &amp;= A \cdot B \\
+f_2 &amp;= A \cdot \overline{B} \\
+f_3 &amp;= A \\
+&amp;\; \; \vdots \\
+f_{13} &amp;= \overline{A \cdot \overline{B}}
+\end{align}\]
+
+<h3 id="electronic-logic-gates">Electronic Logic Gates</h3>
+
+<p>There are 7 electronic logic gates whose function you should understand.</p>
+
+<p><img src="part2.assets/image-20210504102322015.png" alt="image-20210504102322015" style="zoom:60%;" class="center" /></p>
+
+<blockquote>
+  <p><strong>AND, OR, NOT</strong> are termed the <strong>fundamental gates</strong> because they can be used to build any of the functions that you see in the table above – meaning that they can also be used to build a circuit that fulfils the functions of the other gates you see below (<strong>NAND, NOR etc.</strong>).</p>
+</blockquote>
+
+<p>Aside from the fundamental gates, the <strong>NAND and NOR</strong> gates which are termed the <strong>universal gates</strong> are important to understand as well because using either multiple <strong>NAND</strong> gates or multiple <strong>NOR</strong> gates we can build each <strong>fundamental</strong> gate. You either need <strong>NAND</strong> or <strong>NOR</strong>, you don’t need the other.</p>
+
+<p>Additionally, while the <strong>EX-OR</strong> gate is not one of the fundamental or universal gates it is very useful as well.</p>
+
+\[f = A \oplus B = \bar A \cdot B + A \cdot \bar B\]
+
+<h2 id="simplifying-logical-expressions-using-boolean-algebra">Simplifying Logical Expressions using Boolean Algebra</h2>
+
+<blockquote>
+  <p>The <strong>motivation</strong> for simplifying logical expressions is <strong>economic</strong>. When producing microprocessors, we usually want to optimise (minimise) the amount of materials we use to <strong>reduce cost</strong> – which mean to use a minimum amount of silicon and other resources. Therefore, as much as possible, we will want to reduce the number of logic gates that we require for a particular circuit.</p>
+</blockquote>
+
+<p>This leads us to the idea of <strong>circuit equivalence</strong> where a <em>Boolean function can have many different but equivalent Boolean expressions</em>, and therefore different combinations of logic gates. What’s important is that given a function we are able to create equivalent circuits that:</p>
+
+<ol>
+  <li><strong>Perform the designated function</strong></li>
+  <li><strong>Use the types of gates available</strong> (these are usually dependent on the physical implementation e.g. only want to use <strong>NAND</strong> gates or maybe we have some 4-input gates etc.)</li>
+  <li><strong>Minimise the number of gates used and hence cost</strong>.</li>
+</ol>
+
+<p>There are two crucial skills to have:</p>
+
+<h3 id="logic-circuit-to-truth-table">Logic Circuit to Truth Table</h3>
+
+<p><img src="part2.assets/image-20201109133422712.png" alt="image-20201109133422712" /></p>
+
+<h3 id="truth-table-to-boolean-equation">Truth table to Boolean Equation</h3>
+
+<p><img src="part2.assets/image-20201109134011703.png" alt="image-20201109134011703" /></p>
+
+<h3 id="laws-of-boolean-algebra">Laws of Boolean Algebra</h3>
+
+<p>In an exam, it is crucial that you <strong>state</strong> which rules you are applying so that what you are doing is <strong>clear</strong> to the marker.</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Conjunction (“and” form)</th>
+      <th>Disjunction (“or” form)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Identity</td>
+      <td>\(x \cdot 1 \equiv x\)</td>
+      <td>\(x + 0 \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Null</td>
+      <td>\(x \cdot 0 \equiv 0\)</td>
+      <td>\(x + 1 \equiv 1\)</td>
+    </tr>
+    <tr>
+      <td>Negation</td>
+      <td>\(\overline{\overline{x}} \equiv x\)</td>
+      <td>\(\overline{\overline{x}} \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Idempotence</td>
+      <td>\(x \cdot x \equiv x\)</td>
+      <td>\(x + x \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Inverse (AKA: Excluded Middle)</td>
+      <td>\(x \cdot \overline{x} \equiv 0\)</td>
+      <td>\(x + \overline{x} \equiv 1\)</td>
+    </tr>
+    <tr>
+      <td>Commutativity</td>
+      <td>\(x \cdot y \equiv y \cdot x\)</td>
+      <td>\(x + y \equiv y + x\)</td>
+    </tr>
+    <tr>
+      <td>Associativity</td>
+      <td>\((x \cdot y) \cdot z \equiv x \cdot (y \cdot z)\)</td>
+      <td>\((x + y) + z \equiv x + (y + z)\)</td>
+    </tr>
+    <tr>
+      <td>Distributivity</td>
+      <td>\(x + (y \cdot z) \equiv (x + y) \cdot (x + z)\)</td>
+      <td>\(x \cdot (y + z) \equiv (x \cdot y) + (x \cdot z)\)</td>
+    </tr>
+    <tr>
+      <td>Absorption</td>
+      <td>\(x \cdot (x + y) \equiv x\)</td>
+      <td>\(x + (x \cdot y) \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>De Morgan’s</td>
+      <td>\(\overline{(x \cdot y)} \equiv \overline{x} + \overline{y}\)</td>
+      <td>\(\overline{(x + y)} \equiv \overline{x} \cdot \overline{y}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The best way to get good at this is to <strong>practise.</strong></p>
+
+<h3 id="karnaugh-maps--k-maps">Karnaugh Maps / K-maps</h3>
+
+<blockquote>
+  <p>Using Boolean algebra, it can be difficult to tell whether an equation is in its simplest form or to see the next step to simplifying it. K-maps show unambiguously when a Boolean expression is in its simplest form.</p>
+</blockquote>
+
+<p><strong>Grey Coding.</strong> Because sum of products can be simplified by looking for terms that differ by only one variable and its complement, when we draw out a kmap we have to grey code – which mean each cell only differs by 1 variable from its neighbours (horizontally and vertically) as you can see below.</p>
+
+<p><img src="part2.assets/image-20210505150058486.png" alt="image-20210505150058486" style="zoom: 50%;" class="center" /></p>
+
+<p><strong>Karnaugh Map Grouping.</strong>  The <strong>first step</strong> to finding the simplest expression is to form K-map groupings. There are some things/rules/features to note about this.</p>
+
+<ol>
+  <li><strong>Wrap-around</strong> is valid. This means the left most-column is adjacent to the right most-column, and the top row is adjacent to the bottom row. So the orange and green cells, and the blue and green cells are adjacent.</li>
+  <li><strong>Groupings can overlap</strong>. The cells don’t have to exclusively be in just 1 group.</li>
+  <li>The minimum logic expression is obtained on <strong>minimum number of groupings</strong>.</li>
+  <li>Number of elements in the group <strong>must be a power of two</strong> 1,2,4,8 etc..</li>
+</ol>
+
+<p><img src="part2.assets/image-20210504120645814.png" alt="image-20210504120645814" class="center" /></p>
+
+<p>The <strong>second and last step</strong> is to look within a particular group and <em>omit</em> the <strong>case/variable</strong> that <em>changes</em> from the <strong>group’s</strong> logic expression and <em>include</em> those that stayed <em>constant</em>. This is because those that change are not <strong>definitional</strong> to the group’s logical expression.</p>
+
+<p>The <strong>values</strong> of the cases/variables that stayed constant depend on the value within the grouping. In the example below <strong>B</strong> changes within the blue group so it is omitted, and both <strong>A and C</strong> stayed constant with value <strong>0</strong> so the final logic expression for the blue group is \(\overline{A} \cdot \overline{C}\).</p>
+
+<p><img src="part2.assets/image-20210505150245851.png" alt="image-20210505150245851" /></p>
+
+<h4 id="multiple-equivalent-expressions">Multiple equivalent expressions</h4>
+
+<p>In the exams, there will be no penalty if you give either answer but note that in reality sometimes the final choice comes down to the resources you have available like the number of <strong>NOT</strong> gates that you can use.</p>
+
+<p>Additionally, there are some expressions that are <strong>impossible to simplify</strong>. This example is just one of the very few logical expression that you cannot simplify because you cannot get any groupings more than 1.</p>
+
+<p><img src="part2.assets/image-20210504122403732.png" alt="image-20210504122403732" style="zoom:67%;" class="center" /></p>
+
+<h4 id="dont-care-conditions">Don’t Care Conditions</h4>
+
+<p>Sometimes a certain combination of inputs either can’t happen or we don’t care what the output is if it happens. We denote this with a ❌ in our K-maps which may be assumed to be either 1 or 0 — we don’t care.</p>
+
+<p>These can allow us to create a simpler logic expression. If you take a look at the left K-map, you can see that there’s an outstanding 1 just below the ❌, and there are multiple ways we can choose to group it. If we do it like in the right K-map, you can see that we arrive at a slightly simpler logic expression – and the only reason we can group it that way is because the 01-00 cell is a <strong>don’t care condition</strong>.</p>
+
+<p><img src="part2.assets/image-20210504123211185.png" alt="image-20210504123211185" style="zoom:67%;" class="center" /></p>
+
+<h2 id="combinatorial-logic-circuits">Combinatorial Logic Circuits</h2>
+
+<blockquote>
+  <p>A logic circuit whose output is a <strong>logical function</strong> of its input(s).</p>
+</blockquote>
+
+<p>Perform as fast as your gates.</p>
+
+<h3 id="1-bit-half-adder">1-bit Half-Adder</h3>
+
+<p>This circuit performs the addition of two bits, and can be extended to form a 1-bit full-adder. What’s important is that you recognise that the truth table for <strong>sum</strong> represents that of an <strong>EX-OR</strong> gate, while the <strong>carry</strong> represents that of an <strong>AND</strong> gate.</p>
+
+<p>This is important because to derive the layout of the circuit, you can start from thinking about what you want to achieve first, i.e the addition of two bits. The truth table essentially describes this function and from there you can think about which gates you have to use and how they should be arranged according to the 1s and 0s in the truth table.</p>
+
+<p><img src="part2.assets/image-20210504124908090.png" alt="image-20210504124908090" /></p>
+
+<h3 id="1-bit-full-adder">1-bit Full-Adder</h3>
+
+<p>A 1-bit full adder is capable of adding two bits (A and B) and considering a carry<sub>in</sub> from another 1-bit full adder, to produce an output sum and a carry<sub>out</sub>.</p>
+
+<div align="center" style="display:flex;justify-content:space-around">
+	<img src="part2.assets/image-20210504131413949.png" alt="image-20210504131413949" style="zoom:67%;" />
+	<img src="part2.assets/image-20210504131435740.png" alt="image-20210504131435740" style="zoom:67%;" />
+</div>
+
+<p>To design a circuit of a 1-bit full adder it is helpful to think about the logic gates needed based on the truth table above. Pay attention to how the value of <strong>C<sub>out</sub></strong> and <strong>S</strong> relate to <strong>C<sub>in</sub>, A, and B</strong> and try to think of the logic gates needed to emulate this behaviour/function.</p>
+
+<p>It is highly suggested that you try this on your own before clicking to see my own attempt – and also take mine with a pinch of salt and tell me if you think I’m wrong or can be better!</p>
+
+<details>
+    <summary>My design of a 1-bit Full-Adder</summary>
+    <p>
+    Looking at the truth table shown earlier, I realised that $$Sum = (A \oplus B) \oplus C_{in} \\ C_{out} = A \cdot B + C_{in} \cdot (A \oplus B)$$
+    With these two logic expressions, I was able to decide which logic gates to
+    use to arrive at my final design for the full adder.
+    </p>
+	<img src="part2.assets/1bit%20full%20adder.jpeg" alt="1bit full adder" style="zoom:37%;border-radius:2%;" class="center growimg" />
+</details>
+
+<h3 id="n-bit-full-adder">N-bit Full-Adder</h3>
+
+<p>Once we know how to design a 1-bit Full Adder (FA) we will be able to build a n-bit full adder which we can use to add 2 n-bit words (A and B) together. We do this by assigning each bit of A and B to each FA, and just like how we do long division we add each bit together, starting from the LSB (where the carry in is obviously 0) and then taking the carry of each FA and feeding it to the next FA until you reach the n<sup>th</sup> FA.</p>
+
+<p>The output of each sum (S<sub>k</sub>) and the final C<sub>out</sub> is then “dealt with” to arrive at the sum of A and B. It is important to consider how you would “deal” with all these bits, and also important to note that if C<sub>out</sub> is 1 then it means you have an <strong>overflow</strong>.</p>
+
+<p><img src="part2.assets/image-20210504162834347.png" alt="image-20210504162834347" style="zoom:67%;" class="center" /></p>
+
+<h3 id="adder-to-addersubtractor">Adder to Adder/Subtractor</h3>
+
+<blockquote>
+  <p>To convert an adder into an <strong>adder/subtractor</strong> we simply add a control input Z such that:</p>
+
+\[Z = 0 \Rightarrow S = A + B \\
+Z = 1 \Rightarrow S = A + (-B)\]
+
+  <p><strong>Recall.</strong> We calculate –B using two’s complement</p>
+
+  <ol>
+    <li>Invert the N-bit binary number B with Z ⊕ B</li>
+    <li>Add 1 (Carry In)</li>
+  </ol>
+</blockquote>
+
+<h4 id="n-bit-addersubtractor">N-bit Adder/Subtractor</h4>
+
+<p>You can see that <strong>Z</strong> is fed as the C<sub>in</sub> of the first FA, this has the effect of adding 1 to arrive at the proper value for the two’s complement <strong>B</strong>. From above, <strong>Z</strong> is <strong>EX-ORed</strong> with each bit of <strong>B</strong> and this has the effect of inverting the bits to get <strong>-B</strong>. When we are adding, then <strong>Z</strong> will be 0 and will have no effect on <strong>B</strong>.</p>
+
+<p><img src="part2.assets/image-20210505150517019.png" alt="image-20210505150517019" /></p>
+
+<p>Remember because the numbers are in two’s complement form, the final C<sub>out</sub> should be ignored in the calculation. However, it is significant in the “Assembler” topic because the C<sub>out</sub> goes to your Condition Code Register (CCR) as the <strong>Carry Flag</strong>.</p>
+<blockquote class="extra">
+    <strong>FYI.</strong> If the value of C<sub>out</sub> is different from the carry going into the last FA (the carry from the 2nd last FA), there is an overflow. You can read more about it <a href="http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt">here</a> or <a href="https://en.wikipedia.org/wiki/Two%27s_complement#Addition">wikipedia</a>.
+</blockquote>
+<h3 id="active-high-or-active-low">Active High or Active Low?</h3>
+
+<blockquote>
+  <p>Transistor-transistor logic floats high – meaning that if you don’t connect it to anything, its value is a logical 1. Hence, it is helpful for <strong>0</strong> to be the <strong>active</strong> state so that you are not accidentally enabling circuits.</p>
+</blockquote>
+
+<p>In some circuit applications, outputs and inputs have <strong>active</strong> and <strong>inactive</strong> states (you’ll see more of this in Three State Logic) and it is important that your input(s) and output(s) conform to the same standard.</p>
+
+<ul>
+  <li><strong>Active high.</strong> 0 is inactive and 1 is active.</li>
+  <li><strong>Active low.</strong> 0 is active and 1 is inactive. This is sometimes indicated with <span style="text-decoration:overline">Enable</span> – so if you see this bar it means that particular input/output is active low.</li>
+</ul>
+
+<h3 id="decoders">Decoders</h3>
+
+<p>A decoder has <strong>k</strong> input pins and <strong>2<sup>k</sup></strong> output pins. This is because with <strong>k</strong> inputs can have <strong>2<sup>k</sup></strong> possible states/combinations and can represent the same number of output values.</p>
+
+<blockquote>
+  <p>Decoders are often used to address unique memory locations in a microprocessor system.</p>
+</blockquote>
+
+<p>Here we have an example of a truth table for an <strong>active low</strong> decoder on the left. Notice that the distinct value of each Y<sub>i</sub> is 0, which makes sense that because we only want 1 possible output to be <strong>active</strong> for a particular <strong>input state</strong>. The truth table for an <strong>active high</strong> decoder is on the right (notice how the Y<sub>i</sub> bits are all flipped compared to <strong>active low</strong>).</p>
+
+<div align="center" style="display:flex;justify-content:space-around">
+    <img src="part2.assets/image-20210504183948760.png" alt="image-20210504183948760" style="zoom:40%;" />
+    <img src="part2.assets/image-20210504204625976.png" alt="image-20210504204625976" style="zoom:38%;" />
+</div>
+
+<h3 id="encoder">Encoder</h3>
+
+<p>The opposite of a decoder, where you take multiple input values and you <strong>define</strong> it in a more <strong>concise representation</strong>. Here you have 2<sup>k</sup> input(s) and k outputs. However, unlike the decoder where the inputs take all possible states, only one of the input pins should be <strong>active at a time</strong>.</p>
+
+<blockquote>
+  <p>Encoders usually used in communication because it is more <strong>efficient</strong> and succinct to send a <strong>compressed representation</strong> of certain values. Often used as simple input circuits.</p>
+</blockquote>
+
+<p><img src="part2.assets/image-20210504210040995.png" alt="image-20210504210040995" style="center" /></p>
+
+<h3 id="multiplexers-mux">Multiplexers (MUX)</h3>
+
+<p>A very common mechanism for selection.</p>
+
+<p><img src="part2.assets/image-20201019192310898.png" alt="image-20201019192310898" /></p>
+
+<blockquote>
+  <p><strong>Common Applications of Multiplexers.</strong></p>
+
+  <p>Source selection control - Home stereo, e.g: send iPod, CD or radio to speakers - note that this is analogue not digital</p>
+
+  <p>Share one communication line between multiple senders - Requires both MUX and DE-MUX</p>
+
+  <p>Parallel to serial conversion - Parallel input on X, clock signal on S, serial output on Y</p>
+
+  <p>Circuit that can be configured to produce any truth table relationship between S inputs and Y outputs - Set up the truth table required on X inputs.</p>
+</blockquote>
+
+<h3 id="de-multiplexers-de-mux">De-Multiplexers (DE-MUX)</h3>
+
+<p><img src="part2.assets/image-20201019192503304.png" alt="image-20201019192503304" /></p>
+
+<blockquote>
+  <p><strong>Common Applications of De-Multiplexers.</strong></p>
+
+  <p>Share one communication line between multiple senders – Requires both MUX and DE-MUX</p>
+
+  <p>Series to parallel conversion</p>
+
+  <p>A control for multiple lights – In a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.</p>
+</blockquote>
+
+<h2 id="sequential-logic-circuits">Sequential Logic Circuits</h2>
+
+<blockquote>
+  <p>A logic circuit whose <strong>outputs</strong> are logical functions of its <strong>input(s)</strong> and its <strong>current state.</strong></p>
+</blockquote>
+
+<p><img src="part2.assets/image-20201019202858996.png" alt="image-20201019202858996" /></p>
+
+<h3 id="flip-flops">Flip-Flops</h3>
+
+<p>A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states (<strong>bistable</strong> – <strong>Q and P</strong> are always opposite). I think the best way to understand the flip-flop is to look at the truth table and the timing diagram together.</p>
+
+<div style="display:flex;justify-content:center;">
+    <img src="part2.assets/image-20210505113338886.png" alt="image-20210505113338886" style="zoom:33%;" />
+    <img src="part2.assets/image-20210505113358425.png" alt="image-20210505113358425" style="zoom:33%;" />
+</div>
+<div style="display:flex;justify-content:center;">
+    <img src="part2.assets/image-20210504211149726.png" alt="image-20210504211149726" style="zoom:36%;" />
+    <img src="part2.assets/image-20210504211212581.png" alt="image-20210504211212581" style="zoom:30%" />
+</div>
+
+<ol>
+  <li>Note that <strong>Q</strong> and <strong>P</strong> are always different values <strong>as long as</strong> <strong><span style="text-decoration:overline">R</span></strong> and <strong><span style="text-decoration:overline">S</span></strong> are not active (0 because they <strong><span style="text-decoration:overline">RS</span></strong> are active low) at the same time.</li>
+  <li>Next, see how <strong>Q</strong> starts off <strong>active</strong> in the diagram, and changes from 1 to 0 when <strong><span style="text-decoration:overline">R</span></strong> changes from 1 to 0? I think it’s better to think of this as <strong>Q</strong> is <strong>reset</strong> when <strong><span style="text-decoration:overline">R</span></strong> is activated (or <strong><span style="text-decoration:overline">R</span></strong> resets <strong>Q</strong>).</li>
+  <li>Then also notice how when <strong><span style="text-decoration:overline">R</span></strong> is made inactive (goes back to 1), the value of <strong>Q</strong> and <strong>P</strong> don’t change. This is how the flip-flop is able to <strong>store</strong> a value when both <strong><span style="text-decoration:overline">S</span></strong> and <strong><span style="text-decoration:overline">R</span></strong> are inactive.</li>
+  <li><strong><span style="text-decoration:overline">S</span></strong> is activated, and <strong>Q</strong> is <strong>set</strong> to 1, while <strong>P</strong> resets to 0.</li>
+  <li>Again, when <strong><span style="text-decoration:overline">S</span></strong> is deactivated, the value of <strong>P</strong> and <strong>Q</strong> don’t change. Only if <strong><span style="text-decoration:overline">R</span></strong> is activated again, do the values of <strong>P</strong> and <strong>Q</strong> flip.</li>
+  <li>Now that you have understood that, you can look at the circuit diagram and see how and why having both <strong><span style="text-decoration:overline">S</span></strong> and <strong><span style="text-decoration:overline">R</span></strong> set to 0 leads to both <strong>Q</strong> and <strong>P</strong> to be 1 which violates the rule of the flip-flop as a bistable (<strong>P</strong> should be equal to <strong><span style="text-decoration:overline">Q</span></strong>) and is a <strong>hazard condition</strong>.</li>
+</ol>
+
+<h3 id="d-type-latch">D-Type Latch</h3>
+
+<p>The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never both be 0 so we won’t have the hazard condition.</p>
+
+<p><img src="part2.assets/image-20201019204921469.png" alt="image-20201019204921469" /></p>
+
+<p>When we want to store data, we have that data at D, and we set Enable to 1 (or trigger the “latch”). Only then will the data from D go to Q. Otherwise, you can see from the truth table that Q and <span style="text-decoration:overline">Q</span> don’t change and behaves like memory.</p>
+
+<blockquote>
+  <p>The D-type is a fundamental component, so you should know how to draw it and understand its function. You should also understand how the D-type works with registers, shift registers, and counters.</p>
+</blockquote>
+
+<p>The D-type latch (delay) is a type of clocked flip-flop and there are others like the T-type (toggle) and the JK-type. Clocking and enabling are used fairly interchangeably but the right term is clock. All the “latches” above changes only on the rising edge of the clock input, they only respond to change.</p>
+
+<h4 id="three-different-kinds-of-triggers">Three different kinds of triggers</h4>
+
+<p><strong>Level triggered</strong> - 1s and 0s</p>
+
+<p><strong>Rising edge triggered</strong> - transition from 0 to 1</p>
+
+<p><strong>Falling edge triggered</strong> - from 1 to 0</p>
+
+<h3 id="n-bit-register">N-bit Register</h3>
+
+<p>The diagram shown below, is a parallel-load register, each bit of <strong>A</strong> is fed to a D-type latch as input and we are storing each bit of A in the corresponding “memory location” of <strong>Q</strong>.</p>
+
+<p>When we provide a clock pulse, we are providing the transition from a 0 to a 1 and 1 to 0 probably afterwards. The D type will only respond to the 0 to 1, when that happens, each bit of A fed into each D type will go to each Q. No change will happen to Q unless we clock it again. This is how we can store data and the stored number appears on the outputs of Q.</p>
+
+<p><img src="part2.assets/image-20210505121628382.png" alt="image-20210505121628382" /></p>
+
+<p>Note that this diagram is incomplete – you should always label the D &amp; Clk inputs, and the Q &amp; <span style="text-decoration:overline">Q</span> outputs in an exam.</p>
+
+<p>An alternative design is…</p>
+
+<h3 id="n-bit-shift-register">N-bit Shift Register</h3>
+
+<p>The concept here is largely the same as the parallel-load register but is fed serially. This register stores one bit of a word/number <strong>A</strong> at time (starting from LSB of A) and shifts each prior bit to the next Q on the subsequent clocks until we clock the MSB of A into Q<sub>N-1</sub>.</p>
+
+<p><img src="part2.assets/image-20210505121914913.png" alt="image-20210505121914913" /></p>
+
+<blockquote>
+  <p>Usually used for serial to parallel conversion, because after feeding all N bits of A into the register each bit can be read in parallel from Q.</p>
+</blockquote>
+
+<p>Once you’ve understood all the parallel and shift register…</p>
+
+<h3 id="n-bit-counter">N-bit Counter</h3>
+
+<p><em>You need to know how to explain this.</em></p>
+
+<p><img src="part2.assets/image-20210505141644565.png" alt="image-20210505141644565" /></p>
+
+<p>Let’s run through the values of the counter. Note that the circles on the flip-flops aside from the first one indicate an inverter, which mean that those flip-flops are clocked only on the falling edge of the previous output.</p>
+
+<ol>
+  <li>Assuming all Qs start at 0. That means that the value of <span style="text-decoration:overline">Q</span> is 1 and that is fed to D. On the rising edge of the clock (low to high), Q<sub>0</sub> changes from 0 to 1. So now the value stored is <code class="language-plaintext highlighter-rouge">1000</code>.</li>
+  <li>On the next clock, Q<sub>0</sub> changes from 1 to 0, thereby also clocking the 2nd D-type which gives Q<sub>1</sub> the value 1 from 0. Now the value stored is <code class="language-plaintext highlighter-rouge">0100</code>.</li>
+  <li>On the next clock, Q<sub>0</sub> goes from 0 to 1, and Q<sub>1</sub> doesn’t change because the Q<sub>0</sub> just transitioned from low to high.</li>
+</ol>
+
+<blockquote>
+  <p>Since the value of each Q<sub>i</sub> represents a particular power of 2, notably 2<sup>i</sup>, when the counter is clocked…</p>
+
+  <ul>
+    <li>If Q<sub>0</sub> (which represents 2<sup>0</sup> = 1) is 0, it changes to 1 thereby increasing the count by 1.</li>
+    <li>If Q<sub>0</sub> is 1, then it changes from 1 to 0, supplying a falling edge clock to the next D-type which changes the value stored at Q<sub>1</sub>.</li>
+    <li>Now we can repeat the same condition for Q<sub>1</sub> as it was for Q<sub>0</sub> and hence for every Q<sub>i</sub>.</li>
+  </ul>
+
+  <p>Because the Q of each falling edge clocked D-type will only change from 0 to 1 when the output Q of the prior D-type changes from 1 to 0, this also means that the Q of all prior D-types until Q<sub>0</sub> changed from 1 to 0.</p>
+
+  <p>This emulates counting because each clock directly affects the first D-type only, and when all the bits of Q so far are not enough to represent the value of the next count, the clock would change Q<sub>0</sub> from 1 to 0 and the falling edge clocking mechanism of the subsequent D-types will trigger, changing each Q from 1 to 0 until the first Q<sub>i</sub> that is 0 (not 1). Essentially, the counter switches to a higher power of 2 when it needs to.</p>
+</blockquote>
+
+<p>So the output of the counter on each clock will look like..</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0000
+1000
+0100
+1100...
+</code></pre></div></div>
+
+<h2 id="three-state-logic--physical-implementations">Three State Logic &amp; Physical Implementations</h2>
+
+<p>In some logic components, termed a three-state buffer, whose output can be in three states: 1,0, or UNCONNECTED. Looking at the diagram below, when <strong>B</strong> is high the buffer is <strong>unconnected</strong> and vice versa. <em>It can be thought of as a switch.</em></p>
+
+<p><img src="part2.assets/image-20210505142939469.png" alt="image-20210505142939469" /></p>
+
+<blockquote>
+  <p>This is useful because we can provide communications between logical subsystems in an efficient way by <strong>sharing communication paths (buses)</strong>. The buffers that share a common bus cannot be active at the same time!</p>
+</blockquote>
+
+<p>Without three-state buffers, if you connect two outputs together you could be connecting a 1 to a 0 and cause a short circuit.</p>
+
+<h3 id="propagation-delay">Propagation Delay</h3>
+
+<p>In practice, logic gates have propagation delay, typically 1x10<sup>-9</sup>s or less. These delays limit the speed at which logic circuits work. While propagation delay can be reduced by putting logic gates close together, ultimately the design of your circuits play a big part as well. You can think of propagation delay as the collective operating speed of the circuit.</p>
+
+<blockquote>
+  <p>We’re usually interested in the maximum propagation delay and we do this to make sure that our circuit doesn’t cross the so-called “event horizon” where the change in the input is not registered by the output for a relatively significant amount of time because of propagation delay. If another component relies on this output and another input, this may cause some problems especially for systems that have to respond quickly.</p>
+</blockquote>
+
+<h3 id="logic-integrated-circuits-ics">Logic Integrated Circuits (ICs)</h3>
+
+<p>Programmable logic devices allow much larger circuits to be created inside a single chip.</p>
+
+<ul>
+  <li>Programmable Array Logic (PAL) - The first popular programmable device was one-time programmable</li>
+  <li>Programmable Logic Array (PLA) - Device contains an AND array, which feeds an OR array, providing a physical implementation of a sum of products.</li>
+  <li>Field Programmable Gate Array (FPGA) - One of several modern possibilities, which can contain million of gates - enough for an entire processor.</li>
+</ul>
+
+<h3 id="pla">PLA</h3>
+
+<p>Works by providing links/fuses that can be broken to produce a custom sum of products. As long as you are able to understand circuit diagrams you should be able to understand how you arrive at the sum of products for each output of the PLA.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

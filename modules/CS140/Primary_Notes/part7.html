@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Security & Authentication Protocols</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Security & Authentication Protocols</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#diffie-hellman-merkel-key-exchange-protocol">Diffie-Hellman-Merkel Key Exchange Protocol</a></li><li><a href="#authentication-protocol">Authentication Protocol</a><ul><li><a href="#replay-attack">Replay Attack</a></li><li><a href="#mutual-authentication">Mutual Authentication</a></li><li><a href="#authentication-with-ds-vs-encryption">Authentication with DS vs Encryption</a></li></ul></li><li><a href="#authentication-spoofing">Authentication Spoofing</a></li><li><a href="#needham-schroeder-secret-key-based-protocol">Needham-Schroeder Secret key-based protocol</a><ul><li><a href="#possible-attack">Possible Attack</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="secure-email.html" title="secure-email.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part8.html" title="part8.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p align="center">A <b>security protocol</b> is a fixed pattern of exchanges (steps) between 2 or more communication parties to achieve a security related task.</p>
+
+<h2 id="diffie-hellman-merkel-key-exchange-protocol">Diffie-Hellman-Merkel Key Exchange Protocol</h2>
+
+<p><em>For brevity sake, I will refer to it as DHM</em></p>
+
+<blockquote>
+  <p>We use the DHM protocol when two parties wish to <strong>communicate privately</strong>, but the <strong>communication channel is not secure</strong> (everything can be read by outsiders), and they want to use <strong>secret key encryption</strong>.</p>
+</blockquote>
+
+<p>To do so, A and B have to first publicly agree on values for y and p in a modular exponentiation one way function: \(y^x \!\!\mod p\)</p>
+
+<ul>
+  <li>\(y\) needs to be the primitive root of \(p\)</li>
+  <li>\(p\) is an enormously large prime number</li>
+  <li>The two numbers can be publicly known</li>
+</ul>
+
+<p>A and B choose secret numbers, \(a\) and \(b\) respectively, then:</p>
+
+<ul>
+  <li>Put \(a\) into the one-way function and computes the result \(y^a \!\!\mod p = v_A\)</li>
+  <li>A sends \(v_A\) to B and receives \(v_B\) from B</li>
+  <li>A applies their function to \(v_B\): \((v_B)^a \!\!\mod p\)</li>
+  <li>B does the same with \((v_A)^b \!\!\mod p\), where \(b\) is B’s secret number.</li>
+</ul>
+
+<p>A and B will <strong>arrive at the same value</strong> which they use as their secret key \(s\).
+\((v_A)^b \!\!\mod p = (v_B)^a \!\!\mod p = s\)</p>
+
+<h2 id="authentication-protocol">Authentication Protocol</h2>
+
+<p>Normally when working in a local environment (<strong>secure channel</strong>) with a fixed link to the host, we use passwords to authenticate a user. However, more must be done over <strong>insecure channels</strong>.</p>
+
+<blockquote>
+  <p>Either use <strong>encrypted passwords</strong>, <strong>digital signature</strong>, or <strong>public key encryption</strong> for authentication.</p>
+</blockquote>
+
+<p>Recall how public keys can be used to ensure integrity and non-repudiation, provided that the public key is trusted. Why can’t it provide authentication as well?</p>
+
+<h3 id="replay-attack">Replay Attack</h3>
+
+<blockquote>
+  <p>Let’s say A sends B a message encrypted by KU<sub>A</sub>, B acknowledges that A is in fact A. However E also stores this message but does not touch it. After the communication with A and B is over, E can <strong>replay</strong> the message to B and B would accept E as A.</p>
+</blockquote>
+
+<p><strong>Solution 1.</strong> B generates a token R, which is a <strong>random number</strong> (also called a <em>nonce</em> :eyes: ), that A needs to <strong>sign for authentication</strong>. The final authenticated token, if it contains a digital signature that is encrypted with A’s private key can only mean it was authenticated by A and B can verify this by decrypting it with A’s public key.</p>
+
+<p>The interaction can be formalised with the notation below.</p>
+
+<ol>
+  <li>A → B : A</li>
+  <li>B → A : R</li>
+  <li>A → B : [R]<sub>A</sub></li>
+</ol>
+
+<p><strong>Solution 2.</strong> Timestamping. When A sends message to B, they include a timestamp in the encrypted message. If the message is replayed by E, B will know that it is an old message.</p>
+
+<h3 id="mutual-authentication">Mutual Authentication</h3>
+
+<p>Our above examples are a <strong>unilateral authentication</strong>: A authenticates B but not the other way around.</p>
+
+<p><strong>Mutual authentication.</strong> Two-way authentication</p>
+
+<ol>
+  <li>A → B : A, R<sub>A</sub></li>
+  <li>B → A : R<sub>B</sub>, [R<sub>A</sub>]<sub>B</sub> (In this step, A will know that B is truly B – as long as public key verified)</li>
+  <li>A → B : [R<sub>B</sub>]<sub>A</sub> (Here B, will know A is A)</li>
+</ol>
+
+<h3 id="authentication-with-ds-vs-encryption">Authentication with DS vs Encryption</h3>
+
+<p>Using <strong>digital signature</strong>:</p>
+
+<ol>
+  <li>A → B: “I’m Alice”</li>
+  <li>B → A: R (Bob’s token)</li>
+  <li>A → B : [R]<sub>Alice</sub> (Bob’s token signed by A)</li>
+</ol>
+
+<p>Using <strong>public key encryption</strong>:</p>
+
+<ol>
+  <li>A → B: “I’m Alice”</li>
+  <li>B → A: {R}<sub>KP<sub>Alice</sub></sub></li>
+  <li>A → B: R</li>
+</ol>
+
+<p>This achieves a similar effect to DS.</p>
+
+<h2 id="authentication-spoofing">Authentication Spoofing</h2>
+
+<blockquote>
+  <p>There’s still a problem with our protocol. A could communicate with E, but E could be <strong>malicious</strong> and decide to <strong>pass on the message</strong> to B. Now B will pass the token to E and E passes it to A and then passes the encrypted token back to B from A.</p>
+
+  <p>As a result, <strong>B thinks that they are communicating with A.</strong></p>
+
+  <p>This is often referred to as a “<strong>man-in-the-middle</strong>” (MITM) attack</p>
+</blockquote>
+
+<p>The main idea behind the two solutions are to include information about both the <strong>sender</strong> and the <strong>receiver</strong> during communication. Depending on which method we are using to authenticate (DS or Public key Encryption), we include the missing information.</p>
+
+<blockquote>
+  <p>TLDR.</p>
+
+  <ul>
+    <li>When using encryption, sender’s id is included.</li>
+    <li>When using digital signature, receiver’s id is included</li>
+  </ul>
+</blockquote>
+
+<p><strong>Solution 1.</strong> Include the identity of the <strong>intended recipient</strong> encrypted along with the hash of the token from the recipient because information of the sender is the digital signature.</p>
+
+<ol>
+  <li>A → B: A</li>
+  <li>B → A: R</li>
+  <li>A → B: [R, E]<sub>A</sub> 🔔❕❗</li>
+</ol>
+
+<p><strong>Solution 2.</strong> If we’re using encryption for authentication (Needham-Schroeder Authentication protocol), enclose the sender’s ID (B below) because receiver’s info is that the message was encrypted with their public key.</p>
+
+<ol>
+  <li>A → B: A</li>
+  <li>B → A: {B, R}<sub>KP<sub>A</sub></sub></li>
+  <li>A → B: R</li>
+</ol>
+
+<h2 id="needham-schroeder-secret-key-based-protocol">Needham-Schroeder Secret key-based protocol</h2>
+
+<p>We saw the public key encryption protocol by NS, they also proposed a secret key <strong>authentication</strong> protocol. In this protocol, there are 3 parties: A (K<sub>SA</sub> – key given to A by server), B (K<sub>SB</sub> – key given to B by server), Server (K<sub>AB</sub> – session key that server provides to both A and B)</p>
+
+<ol>
+  <li>A → S: A, B, R<sub>A1</sub></li>
+  <li>S → A: { R<sub>A1</sub>, B, { K<sub>AB</sub>, A }<sub>K<sub>SB </sub></sub>}<sub>K<sub>SA</sub></sub></li>
+  <li>A → B: { K<sub>AB</sub>, A }<sub>K<sub>SB</sub></sub>, { R<sub>A2</sub> }<sub>K<sub>AB</sub></sub></li>
+  <li>B → A: { R<sub>A2</sub> – 1, R<sub>B</sub>}<sub>K<sub>AB</sub></sub></li>
+  <li>A → B: { R<sub>B</sub> – 1 }<sub>K<sub>AB</sub></sub></li>
+</ol>
+
+<p><img src=".\part7.assets\needhamSchroeder.png" alt="needhamSchroeder" /></p>
+
+<blockquote>
+  <p><strong>Disadvantages.</strong> Server needs to distribute secret key directly to B, and since B does not ask for a key, but receives one, if B is not responsive (AFK) or the server somehow can’t reach B then there will be no communication.</p>
+</blockquote>
+
+<h3 id="possible-attack">Possible Attack</h3>
+
+<p>If E manages to obtain an old session key, K<sub>AB</sub>, E can replay the old message (step 3) relating to that session key.</p>
+
+<ul>
+  <li>If B completes the protocol and assumes that they shared a key with A, E would have tricked B.</li>
+  <li>Can prevent this easily with timestamps.</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

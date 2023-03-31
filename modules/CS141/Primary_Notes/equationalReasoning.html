@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Equational Reasoning in Haskell</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Equational Reasoning in Haskell</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#intro">Intro</a></li><li><a href="#techniques">Techniques</a><ul><li><a href="#direct-proof">Direct proof</a><ul><li><a href="#function-application-and-unapplication">Function application and unapplication</a><ul><li><a href="#non-overlapping-pattern-matching">Non-overlapping pattern matching</a></li><li><a href="#case-analysis">Case analysis</a></li></ul></li><li><a href="#applying-an-assumption">Applying an assumption</a></li><li><a href="#eta-conversion">Eta-conversion</a></li></ul></li><li><a href="#induction">Induction</a></li></ul></li><li><a href="#examples">Examples</a><ul><li><a href="#direct-proof-1">Direct proof</a><ul><li><a href="#reversing-a-singleton-list">Reversing a singleton list</a></li></ul></li><li><a href="#proof-by-induction">Proof by induction</a><ul><li><a href="#addition-on-recursively-defined-numbers">Addition on recursively defined numbers</a><ul><li><a href="#adding-zero-results-in-no-change">Adding zero results in no change</a></li><li><a href="#associativity-of-natural-numbers">Associativity of natural numbers</a></li></ul></li><li><a href="#induction-on-lists">Induction on lists</a><ul><li><a href="#proving-map-fusion">Proving map fusion</a></li></ul></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="dataTypes.html" title="dataTypes.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="FAM.html" title="FAM.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="intro">Intro</h2>
+
+<p>Functions in Haskell are pure – they have no side-effects and their results only depend on their arguments. Because of that we are able to easily prove formal properties about our functions.</p>
+
+<blockquote>
+  <p>We can’t use equational reasoning on impure functions, because their results may depend on values other than the arguments, thereby rendering any properties we prove invalid.</p>
+</blockquote>
+
+<h2 id="techniques">Techniques</h2>
+
+<h3 id="direct-proof">Direct proof</h3>
+
+<p>The steps for performing a direct proof are:</p>
+
+<ol>
+  <li>Write down the types of all of the variables</li>
+  <li>Write down the definitions of all of the relevant functions</li>
+  <li>Repeatedly apply internal steps to get from the LHS to the RHS
+    <ul>
+      <li>It is often worth working from both sides in towards the middle</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The are only a small number of internal steps that can be made in a direct proof:</p>
+
+<ul>
+  <li>Function application or unapplication</li>
+  <li>Applying a known assumption</li>
+  <li>Eta-conversion</li>
+  <li>Variable renaming (alpha equivalence)
+    <ul>
+      <li>Mostly don’t use this, as there are strict rules around it</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="function-application-and-unapplication">Function application and unapplication</h4>
+
+<p>Consider the function definition:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">double</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>This can also be viewed as a property when reasoning about functions, allowing us to exchange the statement <code class="language-plaintext highlighter-rouge">double x</code> freely with <code class="language-plaintext highlighter-rouge">x + x</code>. This can be written as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	double x
+= {function application}
+	x + x
+= {function unapplication}
+	double x
+</code></pre></div></div>
+
+<h5 id="non-overlapping-pattern-matching">Non-overlapping pattern matching</h5>
+
+<p>The following function definition is fairly common-place:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">isZero</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">isZero</span> <span class="mi">0</span> <span class="o">=</span> <span class="kt">True</span>
+<span class="n">isZero</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">False</span>
+</code></pre></div></div>
+
+<p>However, we cannot take the second statement <code class="language-plaintext highlighter-rouge">isZero n = False</code> in isolation when using function application/unapplication, as it is dependent on not hitting the pattern match above it, checking that it isn’t zero</p>
+
+<p>Hence, it is often convenient to re-write function without implicit precedence from pattern matching, as such:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">isZero</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">isZero</span> <span class="n">n</span>
+	<span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span>	<span class="o">=</span> <span class="kt">True</span>
+	<span class="o">|</span> <span class="n">n</span> <span class="o">/=</span> <span class="mi">0</span>	<span class="o">=</span> <span class="kt">False</span>
+</code></pre></div></div>
+
+<h5 id="case-analysis">Case analysis</h5>
+
+<p>This leads us onto case analysis, were we can apply values to a function based on the case it will take. For example, consider the function:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">not</span> <span class="o">::</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">not</span> <span class="kt">False</span>	<span class="o">=</span> <span class="kt">True</span>
+<span class="n">not</span> <span class="kt">True</span>	<span class="o">=</span> <span class="kt">False</span>
+</code></pre></div></div>
+
+<p>We can then apply cases to simplify expressions, as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	not (not False)
+= {application to the inner `not`}
+	not True
+= {application to the `not`}
+	False
+</code></pre></div></div>
+
+<h4 id="applying-an-assumption">Applying an assumption</h4>
+
+<p>If an assumption, e.g. a function definition or inductive hypothesis fits the pattern of a part of the proof, it can be re-written with it - this is fairly self-explanatory</p>
+
+<h4 id="eta-conversion">Eta-conversion</h4>
+
+<p>Eta conversion is the “adding or dropping of abstraction over a function” <a href="https://wiki.haskell.org/Eta_conversion">source</a>.</p>
+
+<p>This means that we can say the following are equivalent:</p>
+
+<ul>
+  <li>
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">\</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">abs</span> <span class="n">x</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">abs</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="induction">Induction</h3>
+
+<p>The steps for performing a proof by induction are:</p>
+
+<ol>
+  <li>
+    <p>Select the variable to perform induction on. This may be the most used one, or the one which is used equally on both sides</p>
+  </li>
+  <li>
+    <p>Write out the proposition in terms of the variable to perform induction on, and with any other variables being arbitrary fixed constants of a given type</p>
+  </li>
+  <li>
+    <p>Prove the <strong>base case</strong></p>
+
+    <ol>
+      <li>This is normally a direct proof. However, there is sometimes an additional nested inductive proof</li>
+    </ol>
+  </li>
+  <li>
+    <p>Prove the <strong>inductive step</strong></p>
+
+    <ol>
+      <li>
+        <p>Write out the inductive hypothesis</p>
+      </li>
+      <li>
+        <p>Use the inductive hypothesis in the proof of the inductive step. Commonly, the operations are in the following order:</p>
+
+        <ol>
+          <li>Function application</li>
+          <li>Apply inductive hypothesis</li>
+          <li>Function unapplication</li>
+        </ol>
+
+        <p>However, there is sometimes an additional nested inductive proof</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>State the conclusion that the proposition is true by induction</p>
+  </li>
+</ol>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="direct-proof-1">Direct proof</h3>
+
+<h4 id="reversing-a-singleton-list">Reversing a singleton list</h4>
+
+<p>Consider the function to reverse a list:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reverse</span> <span class="o">::</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+<span class="n">reverse</span> <span class="kt">[]</span> 	   <span class="o">=</span> <span class="kt">[]</span>
+<span class="n">reverse</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">reverse</span> <span class="n">xs</span> <span class="o">++</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>We can then directly prove that the reverse of a singleton list is itself</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	reverse [x]
+= {Using list notation}
+	reverse (x : [])
+= {function application of `reverse`}
+	reverse [] ++ [x]
+= {function application of `reverse`}
+	[] ++ [x]
+= {function application of `++`}
+	[x]
+</code></pre></div></div>
+
+<h3 id="proof-by-induction">Proof by induction</h3>
+
+<h4 id="addition-on-recursively-defined-numbers">Addition on recursively defined numbers</h4>
+
+<p>Consider the definition of the natural numbers, and the function to add them:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Data type for natural numbers</span>
+<span class="kr">data</span> <span class="kt">Nat</span> <span class="o">=</span> <span class="kt">Zero</span>
+		 <span class="o">|</span> <span class="kt">Succ</span> <span class="kt">Nat</span>
+		 
+<span class="c1">-- Addition function</span>
+<span class="n">add</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">Nath</span>
+<span class="n">add</span> <span class="kt">Zero</span> <span class="n">m</span>	   <span class="o">=</span> <span class="n">m</span>
+<span class="n">add</span> <span class="p">(</span><span class="kt">Succ</span> <span class="n">n</span><span class="p">)</span> <span class="n">m</span> <span class="o">=</span> <span class="kt">Succ</span> <span class="p">(</span><span class="n">add</span> <span class="n">n</span> <span class="n">m</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h5 id="adding-zero-results-in-no-change">Adding zero results in no change</h5>
+
+<p>Proving the statement that:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For all
+	n :: Nat
+	
+add n Zero = n
+</code></pre></div></div>
+
+<p>Let P(<code class="language-plaintext highlighter-rouge">n</code>) be the proposition that <code class="language-plaintext highlighter-rouge">n</code> + <code class="language-plaintext highlighter-rouge">Zero</code> = <code class="language-plaintext highlighter-rouge">n</code></p>
+
+<p>First, consider the <strong>base case</strong> P(<code class="language-plaintext highlighter-rouge">Zero</code>), which is <code class="language-plaintext highlighter-rouge">add Zero Zero = Zero</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	add Zero Zero						(LHS)
+= {function application of `add`}
+	Zero								(RHS)
+</code></pre></div></div>
+
+<p>Next, consider the <strong>inductive step</strong>, showing <code class="language-plaintext highlighter-rouge">P(n)</code> \(\implies\)<code class="language-plaintext highlighter-rouge">P(Succ n)</code>. This means that the inductive hypothesis is <code class="language-plaintext highlighter-rouge">add n Zero = n</code>. Hence, we want to prove <code class="language-plaintext highlighter-rouge">add (Succ n) Zero = Succ n</code>, which is done as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	add (Succ n) Zero					(LHS)
+= {function application on `add`}
+	Succ (add n Zero)
+= {inductive hypothesis}
+	Succ n								(RHS)
+</code></pre></div></div>
+
+<p>By the principle of induction, since the base case P(<code class="language-plaintext highlighter-rouge">Zero</code>) and the inductive step P(<code class="language-plaintext highlighter-rouge">n</code>) \(\implies\) P(<code class="language-plaintext highlighter-rouge">Succ n</code>) are proven, the proposition is proven for all values of <code class="language-plaintext highlighter-rouge">n</code></p>
+
+<h5 id="associativity-of-natural-numbers">Associativity of natural numbers</h5>
+
+<p>Proving the statement that:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For all
+	x :: Nat,
+	y :: Nat,
+	z :: Nat
+	
+add x (add y z) =  add (add x y) z
+</code></pre></div></div>
+
+<p>There are three variables, and we want to show it is true for all values of all of them, but we can’t easily do induction on all of them. Since <code class="language-plaintext highlighter-rouge">x</code> is the first parameter in one of the two <code class="language-plaintext highlighter-rouge">add</code> functions on both sides, it is likely a good item to pick for induction.</p>
+
+<p>Let P(<code class="language-plaintext highlighter-rouge">x</code>) be the proposition that <code class="language-plaintext highlighter-rouge">add x (add y z) =  add (add x y) z</code> for some fixed <code class="language-plaintext highlighter-rouge">y</code> and <code class="language-plaintext highlighter-rouge">z</code></p>
+
+<p>First, consider the <strong>base case</strong> P(<code class="language-plaintext highlighter-rouge">Zero</code>), which is <code class="language-plaintext highlighter-rouge">add Zero (add y z) = add (add Zero y) z</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	add Zero (add y z)						(LHS)
+= {function application on `add`}
+	add y z
+= {function unapplication on `add`}
+	add (add Zero y) z						(RHS)
+</code></pre></div></div>
+
+<p>Next, consider the <strong>inductive step</strong>, showing <code class="language-plaintext highlighter-rouge">P(n)</code> \(\implies\)<code class="language-plaintext highlighter-rouge">P(Succ n)</code>. This means that the inductive hypothesis is <code class="language-plaintext highlighter-rouge">add x (add y z) = add (add x y) z</code>. Hence, we want to prove <code class="language-plaintext highlighter-rouge">add (Succ x) (add y z) =  add (add (Succ x) y) z</code>, which is done as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	add (Succ x) (add y z)					(LHS)
+= {function application on outer `add`}
+	Succ (add x (add y z))
+= {inductive hypothesis}
+	Succ (add (add x y)) z
+= {function unapplication on outer `add`}
+	add (Succ (add x y)) z
+= {function unapplication on inner `add`}
+	add (add (Succ x) y) z					(RHS)
+</code></pre></div></div>
+
+<p>By the principle of induction, since the base case P(<code class="language-plaintext highlighter-rouge">Zero</code>) and the inductive step P(<code class="language-plaintext highlighter-rouge">x</code>) \(\implies\) P(<code class="language-plaintext highlighter-rouge">Succ x</code>) are proven, the statement is proven for all <code class="language-plaintext highlighter-rouge">x</code>, and fixed arbitrary values of <code class="language-plaintext highlighter-rouge">y</code> and <code class="language-plaintext highlighter-rouge">z</code>.</p>
+
+<p>This is sufficient to prove the whole statement, as <code class="language-plaintext highlighter-rouge">y</code> and <code class="language-plaintext highlighter-rouge">z</code> are fixed on both the RHS and the LHS.</p>
+
+<h4 id="induction-on-lists">Induction on lists</h4>
+
+<p>Consider the definition on lists, and the cons operation:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Data type for the list</span>
+<span class="kr">data</span> <span class="kt">List</span> <span class="n">a</span> <span class="o">=</span> <span class="kt">Empty</span>
+			<span class="o">|</span> <span class="kt">Cons</span> <span class="n">a</span> <span class="p">(</span><span class="kt">List</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="c1">-- Cons operation on the list</span>
+<span class="kr">data</span> <span class="kt">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="kt">[]</span>
+		  <span class="o">|</span> <span class="p">(</span><span class="o">:</span><span class="p">)</span> <span class="n">a</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h5 id="proving-map-fusion">Proving map fusion</h5>
+
+<p>Proving the statement that:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For all
+	f :: b -&gt; c
+	g :: a -&gt; b
+	xs :: [a]
+	
+map f (map g xs) == map (f . g) xs
+</code></pre></div></div>
+
+<p>We take the following function definitions as assumptions:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">map</span> <span class="o">::</span> <span class="p">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span>
+<span class="n">map</span> <span class="n">f</span> <span class="kt">[]</span>	 <span class="o">=</span> <span class="kt">[]</span>
+<span class="n">map</span> <span class="n">f</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span> <span class="n">x</span> <span class="o">:</span> <span class="n">map</span> <span class="n">f</span> <span class="n">xs</span>
+
+<span class="p">(</span><span class="o">.</span><span class="p">)</span> <span class="o">::</span> <span class="p">(</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">c</span>
+<span class="p">(</span><span class="o">.</span><span class="p">)</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span> <span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We need to know what <code class="language-plaintext highlighter-rouge">xs</code> is to evaluate this statement, so we use induction on <code class="language-plaintext highlighter-rouge">xs</code></p>
+
+<p>Let P(<code class="language-plaintext highlighter-rouge">xs</code>) be the proposition that <code class="language-plaintext highlighter-rouge">map f (map g xs) = map (f . g) xs</code> for all <code class="language-plaintext highlighter-rouge">xs</code>, and some fixed <code class="language-plaintext highlighter-rouge">f</code> and <code class="language-plaintext highlighter-rouge">g</code></p>
+
+<p>First, consider the <strong>base case</strong> P(<code class="language-plaintext highlighter-rouge">[]</code>), which is<code class="language-plaintext highlighter-rouge">map f (map g []) = map (f . g) []</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	map f (map g [])						(LHS)
+= {function application on `map`}
+	map f []
+= {function application on `map`}
+	[]
+= {function unapplication on `map`}
+	map (f . g) []							(RHS)
+</code></pre></div></div>
+
+<p>Next, consider the <strong>inductive step</strong>, showing <code class="language-plaintext highlighter-rouge">P(xs)</code> \(\implies\)<code class="language-plaintext highlighter-rouge">P(x : xs)</code>. This means that the inductive hypothesis is <code class="language-plaintext highlighter-rouge">map f (map g xs) = map (f . g) xs</code>. Hence, we want to prove <code class="language-plaintext highlighter-rouge">map f (map g (x:xs)) = map (f . g) (x:xs)</code>, which is done as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	map f (map g (x:xs))
+= {function application on `map`}
+	map f (g x : map g xs)
+= {function application on `map`}
+	f (g x) : map f (map g xs)
+= {inductive hypothesis}
+	f (g x) : map (f . g) xs
+= {function unapplication on `(.)`}
+	(f . g) x : map (f . g) xs
+= {function unapplication on `map`}
+	map (f . g) (x:xs)
+</code></pre></div></div>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

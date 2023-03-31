@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Skip Lists</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Skip Lists</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#motivations-for-skip-lists">Motivations for skip lists</a></li><li><a href="#skip-lists-adt">Skip Lists (ADT)</a></li><li><a href="#searching">Searching</a></li><li><a href="#inserting">Inserting</a></li><li><a href="#deleting">Deleting</a></li><li><a href="#implementation">Implementation</a></li><li><a href="#performance">Performance</a><ul><li><a href="#space-usage">Space usage</a></li><li><a href="#height">Height</a></li><li><a href="#search-time">Search time</a></li><li><a href="#update-time">Update time</a></li><li><a href="#expectation-explanation">Expectation Explanation</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="priority-queues.html" title="priority-queues.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="balanced-trees.html" title="balanced-trees.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="motivations-for-skip-lists">Motivations for skip lists</h2>
+
+<p>We want to be able to efficiently implement both searching, and insertion and deletion</p>
+
+<p>For fast searching, we need the list to be sorted, and we have come across two concrete implementations of lists, but neither of which fulfil both of  these goals.</p>
+
+<ul>
+  <li>Sorted arrays
+    <ul>
+      <li>Easy to search using binary search, since they are not indexable, needs \(O(log\ n)\) time</li>
+      <li>Difficult insert/delete from, as elements need to be “shuffled up” to maintain ordering, needs \(O(n)\) time</li>
+    </ul>
+  </li>
+  <li>Sorted lists
+    <ul>
+      <li>Easy to insert/delete from, assuming the position is known, needs \(O(1)\) time</li>
+      <li>Difficult to search, since they are not indexable, needs \(O(n)\) time</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="skip-lists-adt">Skip Lists (ADT)</h2>
+
+<p><strong>Skip lists</strong> are composed from a number of sub-lists, which act as layers within them, which we denote by the set \(S = \{S_0, S_1, ..., S_h\}\) where \(h\) denotes the number of layers in the list, i.e. its “height”</p>
+
+<ul>
+  <li>
+    <p>All lists have a guard values \(+ \infty\) and \(- \infty\) at either end, and all the elements are in order between those values</p>
+  </li>
+  <li>
+    <p>The “bottom” list, \(S_0\) contains all the values in order between the guards</p>
+  </li>
+  <li>
+    <p>The “top” list, \(S_h\), contains only the guard values, \(+ \infty\) and \(- \infty\)</p>
+  </li>
+  <li>
+    <p>Each list \(S_i\) for \(0 &lt; i &lt; h\) (i.e. everything bar the top list, which contains only the guards, and the bottom list, which contains all elements) contains a random subset of the elements in the list below it, \(S_1\)</p>
+  </li>
+  <li>
+    <p>The probability of an element in \(S_i\) being in the list above it, \(S_{i+1}\), is \(0.5\)</p>
+  </li>
+</ul>
+
+<p>A diagram of the structure of a skip list is shown below</p>
+
+<p><img src="./images/skipLists.png" alt="skipLists" class="center" /></p>
+
+<h2 id="searching">Searching</h2>
+
+<p>To search for an value <code class="language-plaintext highlighter-rouge">v​</code> in a skip list, we follow the algorithm</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">search</span><span class="o">(</span><span class="n">k</span><span class="o">):</span>
+	<span class="c1">//Start at the minus-infinity guard of the top list</span>
+	<span class="n">p</span> <span class="o">&lt;-</span> <span class="n">skiplist</span><span class="o">.</span><span class="na">first</span><span class="o">()</span>
+	<span class="nc">Repeat</span>
+		<span class="n">e</span> <span class="o">&lt;-</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">element</span><span class="o">()</span>
+		<span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="na">key</span><span class="o">()</span> <span class="o">==</span> <span class="n">k</span>
+			<span class="k">return</span> <span class="n">e</span>
+		<span class="k">else</span> <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="na">key</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">k</span>
+            <span class="c1">//Drop down to the next level</span>
+			<span class="n">p</span> <span class="o">&lt;-</span> <span class="n">p</span><span class="o">.</span><span class="na">below</span><span class="o">()</span>
+			<span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="kc">null</span>
+            	<span class="k">return</span> <span class="kc">null</span>
+		<span class="k">else</span> <span class="c1">//e.key() &lt; k</span>
+            <span class="c1">//Scan Forward Step</span>
+            <span class="n">p</span> <span class="o">&lt;-</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">()</span>     
+</code></pre></div></div>
+
+<p><img src="./images/skipListsSearch.png" alt="skipListsSearch" class="center" /></p>
+
+<h2 id="inserting">Inserting</h2>
+
+<p>To insert a value <code class="language-plaintext highlighter-rouge">v</code>​ into a skip list, we follow the algorithm.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="o">&lt;-</span> <span class="n">number</span> <span class="n">of</span> <span class="n">flips</span> <span class="n">of</span> <span class="n">a</span> <span class="n">fair</span> <span class="n">coin</span> <span class="n">before</span> <span class="n">a</span> <span class="n">head</span> <span class="n">comes</span> <span class="n">up</span>
+<span class="nc">If</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">height</span> <span class="n">of</span> <span class="n">skip</span> <span class="n">list</span>
+	<span class="nc">Add</span> <span class="k">new</span><span class="o">,</span> <span class="n">empty</span><span class="o">,</span> <span class="n">sub</span><span class="o">-</span><span class="n">lists</span> <span class="o">{</span><span class="no">S</span><span class="o">(</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="o">),</span> <span class="o">...,</span> <span class="no">S</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">)}</span> <span class="n">to</span> <span class="no">S</span> 
+<span class="nc">Using</span> <span class="n">the</span> <span class="n">search</span> <span class="n">algorithm</span><span class="o">,</span> <span class="n">we</span> <span class="n">find</span> <span class="n">v</span> <span class="c1">//even though we know it is not inserted</span>
+	<span class="nc">For</span> <span class="n">every</span> <span class="n">dropdown</span> <span class="n">step</span><span class="o">,</span> <span class="n">store</span> <span class="n">the</span> <span class="n">position</span> <span class="n">of</span> <span class="n">the</span> <span class="n">element</span> <span class="n">in</span> <span class="n">an</span> <span class="n">array</span>
+	<span class="c1">// This array stores the positions p(0) to p(i) of the </span>
+	<span class="c1">// largest element lesser than v of each sublist S(j)</span>
+<span class="nc">For</span> <span class="n">each</span> <span class="n">sublist</span> <span class="n">from</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">i</span>
+	<span class="nc">Insert</span> <span class="n">v</span> <span class="n">into</span> <span class="nf">S</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="n">immediately</span> <span class="n">after</span> <span class="n">the</span> <span class="n">position</span> <span class="nf">p</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="n">in</span> <span class="n">array</span>
+</code></pre></div></div>
+
+<p><img src="./images/skipListsInsertion.png" alt="skipListsInsertion" class="center" /></p>
+
+<h2 id="deleting">Deleting</h2>
+
+<p>To delete a value <code class="language-plaintext highlighter-rouge">v</code>​ from a skip list, we follow the algorithm</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Using</span> <span class="n">search</span> <span class="n">algorithm</span><span class="o">,</span> <span class="n">find</span> <span class="n">v</span> <span class="n">in</span> <span class="n">skiplist</span>
+<span class="nc">Once</span> <span class="n">found</span> <span class="n">at</span> <span class="n">position</span> <span class="n">p</span><span class="o">,</span>
+<span class="k">while</span> <span class="n">p</span><span class="o">.</span><span class="na">below</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span>
+	<span class="n">hold</span> <span class="o">&lt;-</span> <span class="n">p</span>
+	<span class="nf">delete</span><span class="o">(</span><span class="n">p</span><span class="o">)</span> <span class="c1">// Delete v from sublists below</span>
+	<span class="n">p</span> <span class="o">&lt;-</span> <span class="n">hold</span>
+<span class="nc">Remove</span> <span class="n">all</span> <span class="n">but</span> <span class="n">one</span> <span class="n">list</span> <span class="n">containing</span> <span class="n">only</span> <span class="n">guards</span> <span class="n">from</span> <span class="n">the</span> <span class="n">top</span> <span class="n">of</span> <span class="n">the</span> <span class="n">skip</span> <span class="n">list</span>
+</code></pre></div></div>
+
+<p><img src="./images/skipListsDeletion.png" alt="skipListsDeletion" class="center" /></p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>We can use “quad-nodes”, which are similar to those used in linked lists, but with four pointers, instead of just one to store the entry, and links to the previous, next, below and above nodes:</p>
+
+<p><img src="./images/skipListsQuadNode.png" alt="skipListsQuadNode" class="center" /></p>
+
+<p>Additionally, there are special guard nodes, with the values \(+ \infty\) and \(- \infty\), and fewer pointers, as they don’t have adjacencies on one side.</p>
+
+<h2 id="performance">Performance</h2>
+
+<h3 id="space-usage">Space usage</h3>
+
+<p>Dependent on randomly generated numbers for how many elements are in high layers, and how high the layers are.</p>
+
+<p>We can find the <strong>expected number of nodes</strong> for a skip list of \(n\) elements:</p>
+
+<blockquote>
+  <p>The probability of having \(i\) layers in the skip list is \(\frac{1}{2^i}\).</p>
+
+  <p>If the probability of any one of \(n\) entries being in a set is \(p\), the <strong>expected size</strong> of the set is \(n \cdot p\)</p>
+
+  <p>Hence, the expected size of a list \(S_i\) is \(\frac{n}{2^i}\)</p>
+
+  <p>This gives the expected number of elements in the list as \(\sum_{i=0}^{h}(\frac{n}{2^i}),\) where \(h\) is the height.</p>
+
+  <p>We can express this as \(n \cdot \sum_{i=0}^{h}(\frac{1}{2^i}) \lt 2n\), and with the sum <strong>converging</strong> to a <strong>constant factor</strong>, so the <strong>space complexity</strong> is \(O(n)\).</p>
+</blockquote>
+
+<h3 id="height">Height</h3>
+
+<p>The height of a skip list of \(n\) items is <strong>likely</strong> to (since it is generated randomly) have a height of order \(O(log\ n)\).</p>
+
+<p>We show this by taking a height logarithmically related to the number of elements, and showing that the probability of the skip list having a height greater than that is very small.</p>
+
+<blockquote>
+  <p>The probability that a layer \(S_i\) has at least one item is at most \(\frac{n}{2^i}\)</p>
+
+  <p>Considering a layer logarithmically related to the number of elements \(i = 3 \cdot log\ n\)</p>
+
+  <p>The probability of the layer \(S_i\) has at least one entry is at most \(\frac{n}{2^{3 \cdot log\ n}} = \frac{n}{n^3} = \frac{1}{n^2}\)</p>
+
+  <p>Hence, the probability of a skip list of \(n\) items having a height of more than \(3 \cdot log\ n\) is at most \(\frac{1}{n^2}\), which tends to a negligibly small number very quickly.</p>
+</blockquote>
+
+<h3 id="search-time">Search time</h3>
+
+<p>The search time is <strong>proportional</strong> to the number of steps scan forward and drop down steps.</p>
+
+<blockquote>
+  <p>In the worst case, both dimensions have to be totally traversed, if the item is both bigger than all other items, or not present.</p>
+
+  <p>The number of <strong>drop down steps</strong> is <strong>bounded</strong> by the height so it is <strong>trivial</strong> to see that it is \(\approx O(log\ n)\) with high probability,</p>
+
+  <p>To analyse the scan-forward step, firstly <a href="#skip-lists-adt">recall</a> that given an item in sub-list \(i\), its probability of being in sub-list \((i-1)\) as well is ½. </p>
+
+  <p>Let’s say that we scanned \(n_i\) keys at sub-list \(i\) before we dropped down a level to \((i -1)\). Each subsequent key that we <strong>scan forward to</strong> cannot exist in \((i-1)\), otherwise we would have already seen it.</p>
+
+  <p>A probabilistic fact is that the <strong>expected</strong> number of keys we will encounter at \((i-1)\) is 2 which is an \(O(1)\) operation per sub-list. <a href="#expectation-explanation">Why?</a></p>
+
+  <p>Hence, the expected number of scan forward steps in <strong>total</strong> is \(O(log\ n)\) because the number of sub-list is the height of the skiplist.</p>
+</blockquote>
+
+<p>Hence, the total <strong>search time</strong> is \(O(log\ n)\).</p>
+
+<h3 id="update-time">Update time</h3>
+
+<p>Since the insert and delete operations are both essentially wrappers around the search operation, and all of their additional functionality is of \(O(log\ n)\) or better, the time complexity is the same as the search function</p>
+
+<h3 id="expectation-explanation">Expectation Explanation</h3>
+
+<p><em>FYI ONLY.</em> The source of this explanation is by <a href="https://math.stackexchange.com/questions/1196452/expected-value-of-the-number-of-flips-until-the-first-head">JMoravitz on Stack Exchange</a> (Accessed 16 May 2021)</p>
+
+<blockquote>
+  <p>Let X be a <strong>discrete random variable</strong> with possible outcomes:</p>
+
+  <p>\(x1,x2,x3,…,xi,…\) with associated probabilities \(p1,p2,p3,…,pi,…\)</p>
+
+  <p>The <strong>expected value</strong> of \(f(X)\) is given as: \(E[f(X)] = \sum\limits_{i\in\Delta} f(x_i)p_i\)</p>
+</blockquote>
+
+<p>For our example, we are examining the number of items we expect to see in both sub-list \(i\) and \((i-1)\).</p>
+
+<p>Hence, \(X\) could be \(1,2,3,\ldots,n\) with corresponding probabilities \(\frac{1}{2},\frac{1}{4},\frac{1}{8},\dots,\frac{1}{2^n}\)</p>
+
+<p>So, the expected value of \(X\) is: \(E[X] = \sum\limits_{i=1}^n i(\frac{1}{2})^i\). As \(n\rightarrow \infty\), \(E[X] \rightarrow 2\).</p>
+
+<p>This is a well known infinite sum of the form \(\sum\limits_{i=1}^\infty i p (1-p)^{i-1}=\frac1p\)</p>
+
+<p>To prove this:</p>
+
+\[\sum\limits_{i=1}^\infty i p (1-p)^{i-1} = p\sum\limits_{i=1}^\infty i (1-p)^{i-1}\\
+= p\left(\sum\limits_{i=1}^\infty (1-p)^{i-1} + \sum\limits_{i=2}^\infty (1-p)^{i-1} + \sum\limits_{i=3}^\infty (1-p)^{i-1} + \dots\right)\\
+= p\left[(1/p)+(1-p)/p+(1-p)^2/p+\dots\right]\\
+= 1 + (1-p)+(1-p)^2+\dots\\
+=\frac{1}{p}\]
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Web Servers</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Web Servers</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#static-websites-vs-dynamic-websites">Static Websites vs Dynamic Websites</a><ul><li><a href="#static-websites">Static Websites</a></li><li><a href="#dynamic-websites">Dynamic Websites</a></li></ul></li><li><a href="#client-server-model">Client Server Model</a><ul><li><a href="#client-server-model-1">Client Server Model</a></li><li><a href="#peer-to-peer">Peer to Peer</a></li></ul></li><li><a href="#data-centers">Data Centers</a><ul><li><a href="#servers">Servers</a></li><li><a href="#support-hardware">Support Hardware</a></li><li><a href="#data-duplication">Data Duplication</a></li></ul></li><li><a href="#the-internet">The Internet</a><ul><li><a href="#communication">Communication</a></li><li><a href="#data-locality">Data Locality</a></li><li><a href="#packets">Packets</a></li><li><a href="#routing">Routing</a></li></ul></li><li><a href="#mobile-web-applications">Mobile Web applications</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Theory1.html" title="Theory1.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory3.html" title="Theory3.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="static-websites-vs-dynamic-websites">Static Websites vs Dynamic Websites</h2>
+
+<h3 id="static-websites">Static Websites</h3>
+
+<p>The user makes a page request the sever runs a script and returns the requested page to the user as fixed HTML.</p>
+
+<h3 id="dynamic-websites">Dynamic Websites</h3>
+
+<p><strong>Processing occurs on the clients machine</strong></p>
+
+<p>The user makes a page request the sever runs a script and returns the requested page to the user as HTML and JavaScript.</p>
+
+<p>The JavaScript then may make additional requests to the server and updates
+the web page accordingly.</p>
+
+<h2 id="client-server-model">Client Server Model</h2>
+
+<h3 id="client-server-model-1">Client Server Model</h3>
+
+<p>The client requests data from a server that then then responds</p>
+
+<h3 id="peer-to-peer">Peer to Peer</h3>
+
+<p>Devices are both requesting an serving data concurrently</p>
+
+<h2 id="data-centers">Data Centers</h2>
+
+<h3 id="servers">Servers</h3>
+
+<p>Server’s can have many different uses</p>
+
+<ul>
+  <li>Web</li>
+  <li>Application</li>
+  <li>Database</li>
+  <li>Mail</li>
+  <li>Media</li>
+  <li>Authentication</li>
+</ul>
+
+<h3 id="support-hardware">Support Hardware</h3>
+
+<p>Data centers contain hardware to support and maintain the servers:</p>
+
+<ul>
+  <li>Server racks</li>
+  <li>Backup servers</li>
+  <li>Air conditioning</li>
+  <li>Backup generators</li>
+  <li>UPS (uninterruptible power supply (Batteries))</li>
+</ul>
+
+<h3 id="data-duplication">Data Duplication</h3>
+
+<p>In data centers data is duplicated so that if a server breaks then another
+server can take over and continue to provide the data</p>
+
+<h2 id="the-internet">The Internet</h2>
+
+<h3 id="communication">Communication</h3>
+<p>The majority of data traves through wires and cables.</p>
+
+<p>Undersea cables are the primary way for continental communication</p>
+
+<p>Satellites and other communication methods may be used but this is generally rare.</p>
+
+<h3 id="data-locality">Data Locality</h3>
+<p>Generally the shortest path is used to obtain data if data is in the UK requests and information typically will not leave the country. If the data is in America then a request will be mad to America. The shortest path is not guaranteed as the internet is a web many different paths exist.</p>
+
+<h3 id="packets">Packets</h3>
+
+<p>Packet’s are addressed and then routed to the correct location. Packets are transmitted across many computers on the way to the destination</p>
+
+<h3 id="routing">Routing</h3>
+
+<p>Routing involves checking if the destination is known to a computer and then directing the traffic in the correct location, if the location is not known then another computer higher up the chain is asked.</p>
+
+<h2 id="mobile-web-applications">Mobile Web applications</h2>
+
+<p>Phone and tablets have many constraints</p>
+<ul>
+  <li>Lacks hover</li>
+  <li>Lack processing power</li>
+  <li>Lack screen sizes</li>
+  <li>Variety of screen sizes</li>
+</ul>
+
+<p>However rather than having a dedicated web app browser apps can be made 
+to run in small browsers on the phone and websites can be converted over.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

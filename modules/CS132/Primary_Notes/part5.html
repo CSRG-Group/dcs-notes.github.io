@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes I/O Mechanisms</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">I/O Mechanisms</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#memory-mapped-io">Memory mapped I/O</a></li><li><a href="#polled-io">Polled I/O</a></li><li><a href="#handshaking">Handshaking</a></li><li><a href="#interrupts">Interrupts</a><ul><li><a href="#interrupts-for-io-examples">Interrupts for IO examples</a></li></ul></li><li><a href="#direct-memory-access-dma">Direct Memory Access (DMA)</a><ul><li><a href="#dma-modes-of-operation">DMA Modes of Operation</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part4.html" title="part4.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part6.html" title="part6.html">Next👉</a>
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p align="center">
+    There is no single I/O mechanism that is “better” than the others – it is important to understand the pros and cons of each mechanism and the situations where each should be used.
+</p>
+
+<blockquote>
+  <p>Note that although these mechanisms all deal with I/O, they have different objectives.</p>
+
+  <p>In particular, memory mapped I/O and DMA are mechanisms which are used to communicate with peripherals/devices.
+Polled I/O, interrupt driven I/O and handshaking are used for synchronization and would be used <strong>together</strong> with DMA or memory mapped I/O.</p>
+</blockquote>
+
+<h2 id="memory-mapped-io">Memory mapped I/O</h2>
+
+<ul>
+  <li>Same address bus is used to address both memory and I/O devices.</li>
+  <li>Memory addresses are associated with particular I/O devices – when we want to send data to an I/O device, we send it to that memory address; when we want to receive data, we just read from that memory address.</li>
+  <li>Memory and registers on I/O devices are mapped to these address values. An I/O device can then operate as designed on the data in these addresses.</li>
+</ul>
+
+<p><em>This means that all addressing modes supported by a CPU are available to I/O.</em></p>
+
+<blockquote>
+  <p><strong>Advantages.</strong> No need for dedicated instructions, or for additional hardware. Addressing modes supported by the CPU are available to I/O.</p>
+
+  <p><strong>Disadvantages.</strong> We are giving up portions of our memory to I/O devices. This is less of a concern for modern 64-bit processors with more address spaces, but is still relevant when sometimes you have no choice but to use a processor with constrained memory addresses like 16-bit legacy or embedded systems.</p>
+</blockquote>
+
+<h2 id="polled-io">Polled I/O</h2>
+
+<blockquote>
+  <p><strong>Synchronising I/O devices</strong> with our CPUs is one of the biggest challenges associated with I/O systems, as most of our I/O devices operate at much slower speeds than the CPU.</p>
+</blockquote>
+
+<p>Our CPUs <strong>operate much faster</strong> than IO devices, so while IO devices are doing their thing, the CPU can do other things.</p>
+
+<p><strong>Busy-wait polling</strong>, where your CPU is constantly reading and checking the status of a particular IO device (essentially waiting for it to be ready), is <strong>very wasteful of CPU time and power</strong>. Only time you not want to do this, is for <strong>devoted systems</strong> that want to keep checking for the output because it is <strong>important</strong> (e.g. temperature sensor in nuclear reactor).</p>
+
+<p><strong>Polling, interleaved with another task</strong> is a bit better because you can do other tasks while waiting for your I/O devices to be ready. But even then, this can lead to significantly delayed responses to that device, because your <strong>estimate for the the time-interval</strong> between status checks can still be off and there are cases where your CPU is dominated by the so-called side tasks.</p>
+
+<blockquote>
+  <p><strong>Advantages.</strong> Simple software and hardware involved; usually some kind of <code class="language-plaintext highlighter-rouge">loop</code> paired with some conditional checks and hardware support for the notion of “ready” is all that is required.</p>
+
+  <p><strong>Disadvantages.</strong> Busy-wait polling – waste of CPU time and power. If you have a power constrained device, this may not be good. Interleaving can still lead to significantly delayed responses to a particular I/O device – not a problem in most cases but is a serious issue if you’re working in a hard real-time context.</p>
+</blockquote>
+
+<h2 id="handshaking">Handshaking</h2>
+
+<p><strong>Handshaking</strong> is another way of solving synchronisation problems with I/O devices. There are 3 kinds of handshaking:</p>
+
+<ul>
+  <li><strong>Unsynchronised</strong> – where you just provide data to an I/O device for it to process.</li>
+  <li><strong>Open-ended</strong> – provide some data and assert its validity, after which the I/O device will handle the data.</li>
+  <li><strong>Closed-loop</strong> (the only true two-way communication) – data provided, asserted validity of data, recipient (I/O device) readiness.</li>
+</ul>
+
+<p><strong>Closed-loop</strong> handshaking allows both parties to know the period/time-interval where effective data transfer can occur. This is when both data is valid and I/O device is ready to receive. This way the CPU can more accurately predict when data transfer can occur and when it should do other things.</p>
+
+<p>Handshaking can be implemented with software or specialised hardware, which often requires fewer CPU instructions. Hardware solutions are usually used in embedded systems when software is not available for you to use.</p>
+
+<h2 id="interrupts">Interrupts</h2>
+
+<blockquote>
+  <p>Another way to target synchronisation problems. CPU normally executes instructions sequentially, unless a jump or branch is made – an interrupt input can force a CPU to jump to a service routine. The key difference between interrupts and handshaking or polling is that it is <strong>asynchronous.</strong></p>
+</blockquote>
+
+<p><strong>Interrupt requests</strong> may be ignored depending on the current task that the CPU is working on. The CPU compares the “priority” of the tasks and decides which tasks supersedes the other. <strong>Non-maskable Interrupts</strong> cannot be ignored and the CPU will have to service the interrupt.</p>
+
+<blockquote>
+  <p>It is possible for a masked interrupt which was initially ignored to become non-masked (i.e., necessary to service) if it has been ignored for long enough.</p>
+</blockquote>
+
+<p><img src="part5.assets/image-20210524180858554.png" alt="image-20210524180858554" style="zoom:67%;" class="center" /></p>
+
+<p>When an interrupt is serviced, typically the CPU will finish the current instruction it is working on and, save the state of the working registers and the program counter (usually saving this state on a <strong>stack</strong>). It will then process the interrupt service routine. Once complete, it will remove the program counter from the stack and start processing instructions again from where it left off.</p>
+
+<blockquote>
+  <p>Pushing and popping the PC and status registers onto the stack before and after servicing an interrupt is known as a <strong>context switch</strong> because we are changing the state to execute a different set of instructions.</p>
+</blockquote>
+
+<p>Maskable interrupts can be interrupted as well, provided that the <strong>new</strong> interrupt is of a higher priority than the current interrupt. This is why popping the PC and registers onto a stack is useful so we can keep track and sequentially process different set of instructions based on priority.</p>
+
+<h3 id="interrupts-for-io-examples">Interrupts for IO examples</h3>
+
+<p>Some IO devices can generate interrupts themselves.</p>
+
+<p>A hard drive can generate an interrupt when data, requested some time earlier, is ready to be read.</p>
+
+<p>A timer can generate an interrupt every 100ms and the service routine can then read a sensor input.</p>
+
+<p>A printer can generate an interrupt when it is ready to receive the next character to print.</p>
+
+<blockquote>
+  <p><strong>Advantages.</strong> The asynchronous nature of interrupts allow fast responses and no waste of CPU time/battery power – especially when the IO devices are asynchronous themselves.</p>
+
+  <p><strong>Disadvantages.</strong> But, all data transfers still controlled by CPU (DMA addresses this). Interrupts also make hardware and software more complex.</p>
+</blockquote>
+
+<h2 id="direct-memory-access-dma">Direct Memory Access (DMA)</h2>
+
+<p>Interrupts rely on the microprocessor (CPU) to do everything and this makes it the bottleneck for I/O if there are <strong>large amounts of data</strong> that must be transferred at high speed.</p>
+
+<p>DMA fixes this by giving control of the system buses from the CPU to the DMA Controller (DMAC).</p>
+
+<ul>
+  <li>The DMAC is a dedicated device that controls the three system buses during the data transfer.</li>
+  <li>The DMAC is <strong>optimised solely for data transfer</strong>.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Advantages.</strong> When dealing with large amounts of data, DMA-based I/O can be up to 10 times faster than CPU-driven I/O. CPU is able to process other instructions that do not require the system buses while the DMAC oversees data transfer.</p>
+
+  <p><strong>Disadvantages.</strong> Additional hardware cost.</p>
+</blockquote>
+
+<h3 id="dma-modes-of-operation">DMA Modes of Operation</h3>
+
+<blockquote>
+  <p><strong>Cycle Stealing.</strong> DMAC uses the system buses when they are not being used by the CPU – usually by using available memory access cycles not used by the CPU. This is less effective and less common then the next mode of operation. This is equivalent to if you were working for 20 minutes at a time, but knew that every 18th minute you would be inefficient- instead of continuing to work in this time, you let the DMA handle the bus.</p>
+
+  <p><strong>Burst Mode.</strong> DMAC acquires system buses for the transfer of large amount of data at high speed and preventing the CPU from using the system buses for a fixed time OR…</p>
+
+  <ul>
+    <li>until the transfer is complete</li>
+    <li>the CPU receives an interrupt from a device of greater priority.</li>
+  </ul>
+</blockquote>
+
+<p>This is usually the events that take place before the CPU surrenders control of the system buses:</p>
+
+<ol>
+  <li>DMA transfer requested by I/O</li>
+  <li>DMAC passes request to CPU</li>
+  <li>CPU initialises DMAC
+    <ul>
+      <li>Specifies if it is an <strong>Input</strong> or <strong>Output</strong> operation.</li>
+      <li>Sets the <strong>start address</strong> for the data transfer to the DMAC Address Register.</li>
+      <li>Sets the <strong>number of words</strong> to transfer to the DMAC Count Register.</li>
+      <li>CPU enables DMAC to initiate the transfer.</li>
+    </ul>
+  </li>
+  <li>DMAC requests use of system buses <strong>depending</strong> on its mode of operation.</li>
+  <li>CPU responds with DMA Ack when it’s ready to surrender buses.</li>
+</ol>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

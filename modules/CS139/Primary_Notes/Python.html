@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Python</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Python</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction">Introduction</a></li><li><a href="#basic">Basic</a><ul><li><a href="#variables">Variables</a></li><li><a href="#data-types">Data types</a><ul><li><a href="#strings">Strings</a></li><li><a href="#casting">Casting</a></li></ul></li><li><a href="#operators">Operators</a><ul><li><a href="#arithmetic-operators">Arithmetic Operators</a></li><li><a href="#comparison-operators">Comparison Operators</a></li><li><a href="#assignment-operators">Assignment Operators</a></li></ul></li><li><a href="#lists">Lists</a><ul><li><a href="#multi-dimensional-lists">Multi-dimensional lists</a></li></ul></li><li><a href="#tuples">Tuples</a></li><li><a href="#dictionaries">Dictionaries</a></li></ul></li><li><a href="#conditional-statements">Conditional Statements</a><ul><li><a href="#if">If</a></li><li><a href="#match">Match</a></li></ul></li><li><a href="#iteration">Iteration</a><ul><li><a href="#for">For</a></li><li><a href="#while">While</a></li></ul></li><li><a href="#functions">Functions</a><ul><li><a href="#function-wrappers">Function wrappers</a></li></ul></li><li><a href="#object-oriented-programming">Object-oriented Programming</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="CSS.html" title="CSS.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Flask.html" title="Flask.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p><em>These notes will not cover everything Python has to offer or go into intricate detail of how python works under the hood, the purpose is to cover the basics and anything else which you may need to know to make use of Flask.</em></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Python is a high-level interpreted language.</p>
+
+<p>In the context of web development it is mostly used for server-side programming. Many popular web frameworks such as Django and Flask are Python-based.</p>
+
+<p>Python was designed by <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum" title="Guido van Rossum">Guido van Rossum</a> with the purpose of allowing programmers to do more in fewer lines of code.</p>
+
+<h2 id="basic">Basic</h2>
+
+<p>Python files use the py extensions, for example: <code class="language-plaintext highlighter-rouge">test.py</code></p>
+
+<p>Unlike with many other popular programming languages like Java or C, statements in python do <strong>not</strong> end with a semicolon <code class="language-plaintext highlighter-rouge">;</code></p>
+
+<p>Curly brackets are also <strong>not</strong> used. Instead, scope (Part of the code in which a specific variable or method can be accessed) is denoted through the use of indentation. This means that whitespace in python is also considered code, it does not get removed before interpretation/compilation.</p>
+
+<p>Outputting to the console is handled using the <code class="language-plaintext highlighter-rouge">print()</code> function.</p>
+
+<h3 id="variables">Variables</h3>
+
+<p>Python is a dynamically typed language hence variable types are not declared in code.</p>
+
+<p>Python also does not have any way to declare a variable without also initialising it hence a variable is created when a value is assigned to it <code class="language-plaintext highlighter-rouge">a = 5</code></p>
+
+<p>Valid variable names must
+    * Start with a letter or the underscore character
+    * <strong>Not</strong> start with a number
+    * Only contain alpha-numeric characters and underscores</p>
+
+<p>Constants (variables that won’t change) should be all uppercase. This isn’t required however it is common practice among programmers.</p>
+
+<p>Once a variable is created, you are able to change its value even if it’s of a different <em>type</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
+a = 10
+a = "hello"
+a = True
+</code></pre></div></div>
+
+<h3 id="data-types">Data types</h3>
+
+<p>As stated previously, the types of variables in python are not declared however values that you assign to variables do have a type nevertheless</p>
+
+<ul>
+  <li>Integers: 1, -200, 1123123123123123123123123123123</li>
+  <li>Complex numbers: 2+3j, -1+1j, 2.5-2.5j (Notice that a j is used as opposed to an i to denote imaginary)</li>
+  <li>Floating point numbers: 1.0, -11.27, 999.9</li>
+  <li>Strings: “hello world”, “1”, ‘hello world’, ‘1’, “”, “‘quote’”, ‘“quote”’</li>
+  <li>Boolean: True, False</li>
+</ul>
+
+<h4 id="strings">Strings</h4>
+
+<p>Concatenation:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = "hello"
+b = "world"
+c = a + " " + b
+</code></pre></div></div>
+
+<p>Formatting:</p>
+
+<p>Python 3.6 added f-strings which provide an easy readable way of formatting strings. In order to format a string you must prefix it with <code class="language-plaintext highlighter-rouge">f</code> or <code class="language-plaintext highlighter-rouge">F</code> and add any variables or expressions that you want to include in the string within <code class="language-plaintext highlighter-rouge">{}</code>.</p>
+
+<p>Examples:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>moduleCode = 139
+moduleName = "Web Development Technologies"
+print(f"Module name: {moduleName}. Module Code: {moduleCode}")
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>daysInAWeek = 7
+weeksInAYear = 52
+print(f"Days in a year: {daysInAWeek * weeksInAYear}")
+</code></pre></div></div>
+
+<h4 id="casting">Casting</h4>
+
+<p>You may cast a value of one type to a different type through the use of casting functions which are usually named after the type that they cast to.</p>
+
+<p>Examples:
+<code class="language-plaintext highlighter-rouge">a = int("1") #Cast from string to integer</code>
+<code class="language-plaintext highlighter-rouge">b = str(2.5) #Cast from float to string</code></p>
+
+<p><em>Be wary when casting to boolean from a string as anything apart from the empty string will be parsed as True hence bool(“False”) evaluates to True</em></p>
+
+<h3 id="operators">Operators</h3>
+
+<h4 id="arithmetic-operators">Arithmetic Operators</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">+</code> : Addition and string concatenation</li>
+  <li><code class="language-plaintext highlighter-rouge">-</code> : Subtraction</li>
+  <li><code class="language-plaintext highlighter-rouge">/</code> : Division</li>
+  <li><code class="language-plaintext highlighter-rouge">%</code> : Modulus (Finding the remainder of division)</li>
+  <li><code class="language-plaintext highlighter-rouge">**</code> : Exponentation</li>
+  <li><code class="language-plaintext highlighter-rouge">//</code> : Integer division (floor division)</li>
+</ul>
+
+<h4 id="comparison-operators">Comparison Operators</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">==</code> : Equality</li>
+  <li><code class="language-plaintext highlighter-rouge">!=</code> : Inequality</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;</code> : Greater than</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;</code> : Less than</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;=</code> : Greater than or equal to</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;=</code> : Less than or equal to</li>
+</ul>
+
+<h4 id="assignment-operators">Assignment Operators</h4>
+
+<p>Any of the arithmetic operators can be combined with <code class="language-plaintext highlighter-rouge">=</code> to combine the operation with assignment. For example, <code class="language-plaintext highlighter-rouge">a += 5</code> is equivalent to the expression <code class="language-plaintext highlighter-rouge">a = a + 5</code></p>
+
+<h3 id="lists">Lists</h3>
+
+<p>Python does not have built-in support for arrays. Lists are used instead, they differ from arrays as they are dynamic (hence their size can change at runtime) and can store data of different types. <strong>Lists are zero-indexed</strong>.</p>
+
+<p>Initialisation:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aList = []
+bList = [1,2,3,4,5,6,7,8,9,10]
+cList = ["hello", 1.0, True, 20]
+</code></pre></div></div>
+<p>List access:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bList[0] #Used to access the first element which is 1
+bList[4] #Used to access the fith element which is 5
+bList[-1] #Used to access the last element which is 10
+</code></pre></div></div>
+
+<h4 id="multi-dimensional-lists">Multi-dimensional lists</h4>
+
+<p>A list can be an element of another list which allows you to create lists of multiple dimensions:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoDList = [[1,2,3,4],[5,6,7,8],[9,10]]
+</code></pre></div></div>
+
+<p>List access is very similar except now two values are used to access an element, the first is the index of the first list and the second is the index of the inner list:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twoDList[0][3] #This will return the fourth element of the first list element which is 4.
+</code></pre></div></div>
+<p>Python includes many useful list functions that handle basic operations such as appending, removing and sorting. You can find out more in the official <a href="https://docs.python.org/3/tutorial/datastructures.html">documentation</a></p>
+
+<h3 id="tuples">Tuples</h3>
+
+<p>Tuples are similar to lists in the sense that they store a collection of elements however they also adhere to the following restrictions:
+    * Elements stored in a tuple must all be of the same type
+    * Once a tuple is created, it cannot be changed (hence it is immutable)</p>
+
+<p>A tuple is created using <code class="language-plaintext highlighter-rouge">()</code> and accessed using an index just like with a list</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>testTuple = (1,2,3,4,5,6,7,8,9)
+testTuple[1] #returns the second element which is 2
+testTuple[1] = 5 #ERROR: This code will not run as tuples are immutable
+</code></pre></div></div>
+
+<h3 id="dictionaries">Dictionaries</h3>
+
+<p>Dictionaries are used to store key:value pairs. You can think of them as a list however instead of using an index to access an element you use a key which can be of almost any type. A dictionary is created using <code class="language-plaintext highlighter-rouge">{}</code>. The keys do not all have to be of the same type however in practice they almost always are.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>testDictionary = {"key1" : "value1", "key2" : "value2", "key3" : "value3"}
+testDictionary["key1"] #This code will return the value associated with "key1" which is "value1"
+
+unusualDictionary = {"key1" : "value1", 1 : "value2", 0.5: 1} #Also a valid dictionary in python
+</code></pre></div></div>
+
+<h2 id="conditional-statements">Conditional Statements</h2>
+<p><strong>Pay close attention to the indentation used, in python whitespace counts as syntax hence using incorrect indentation will prevent your code from running</strong></p>
+<h3 id="if">If</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if condition1:
+    print("Condition 1 true")
+elif condition2:
+    print("Condition 2 true")
+else:
+    print("Neither condition 1 or condition 2 are true")
+</code></pre></div></div>
+
+<h3 id="match">Match</h3>
+<p>Since the release of Python 3.10, match statements can be used to control execution flow. They are very similar to switch statements in other languages.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>match dataToMatch:
+    case pattern1:
+        print("dataToMatch is equal to pattern1")
+    case pattern2:
+        print("dataToMatch is equal to pattern2")
+    case pattern3:
+        print("dataToMatch is equal to pattern3")
+    case _:
+        print("The _ wildcard is used to execute code when none of the other patterns match")
+</code></pre></div></div>
+
+<h2 id="iteration">Iteration</h2>
+
+<h3 id="for">For</h3>
+<p>The for loop in python can iterate over any object which is considered iterable (this includes lists, dictionaries and tuples).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for x in iterable:
+    #action
+</code></pre></div></div>
+
+<p>To iterate over a range of values use the range function</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for x in range(0,10): #generates a range between 0 and 9 inclusive
+    #action
+</code></pre></div></div>
+
+<h3 id="while">While</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>while condition:
+    #action
+</code></pre></div></div>
+
+<h2 id="functions">Functions</h2>
+<p>Functions in python are defined using the <code class="language-plaintext highlighter-rouge">def</code> keyword. There is no need to declare a return type and any parameters are defined within <code class="language-plaintext highlighter-rouge">()</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def testFunction(arg1, arg2, arg3):
+    return "returning this string"
+</code></pre></div></div>
+
+<p>You can pass default value to functions using <code class="language-plaintext highlighter-rouge">=</code> which will be used if not argument is passed to the function call</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def testFunction2(arg1="default"):
+    print(arg1)
+</code></pre></div></div>
+
+<p>You can call a function in code by referencing its name and passing any required arguments in <code class="language-plaintext highlighter-rouge">()</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = testFunction(1, 2, "third argument")
+</code></pre></div></div>
+
+<p>This is all you really need to know for the module however there is a lot more to defining functions such as argument lists and passing functions as arguments. You can find read about this in the <a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions">official python documentation</a></p>
+
+<h3 id="function-wrappers">Function wrappers</h3>
+<p>Function wrappers (also known as function decorators) allow you to add functionality to existing functions. A function wrapper starts with the <code class="language-plaintext highlighter-rouge">@</code> symbol. For this module, all you need to know is that they exist as you will be using them in Flask however you won’t need to define your own function wrappers.</p>
+
+<h2 id="object-oriented-programming">Object-oriented Programming</h2>
+<p><em>This section will cover the very basics of OOP in python which is all that is required for the module, check the <a href="https://docs.python.org/3/tutorial/classes.html">official python documentation</a> for more.</em></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">self</code> keyword is used in code to refer to the current class instance. In <strong>other</strong> languages the <code class="language-plaintext highlighter-rouge">this</code> keyword is often used instead.</p>
+
+<p>Attributes and methods of an instance are accessed using <code class="language-plaintext highlighter-rouge">.</code></p>
+
+<p>Creating a class definition:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class className:
+
+    classVar = "this will stay the same among all class instances"
+
+    def __init__(self, value1): #The constructor must be called __init__
+        self.attribute1 = value1
+        #Other initialisation is done here
+    
+    def method1(self):
+        pass
+</code></pre></div></div>
+
+<p>Creating an instance of a class and accessing attributes:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>instance1 = className("value1")
+instance2 = className("value2")
+instance3 = className("value3")
+
+instance1.attribute1 #This will return "value1"
+instance2.attribute1 #This will return "value"
+
+instance1.classVar
+instance2.classVar #Both of these calls return the same value as classVar is a class variable
+                   #hence stays the same across instances
+
+instance1.method1() #Methods are also accessed using dot notation
+</code></pre></div></div>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

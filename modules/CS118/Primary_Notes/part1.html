@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Variables, Number Systems, and I/O</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Variables, Number Systems, and I/O</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#variables">Variables</a></li><li><a href="#number-systems">Number systems</a><ul><li><a href="#twos-complement">Two’s Complement</a><ul><li><a href="#write-out-the-binary-form-of-28">Write out the binary form of +28</a></li><li><a href="#invert-the-digits">Invert the digits</a></li><li><a href="#add-1">Add 1</a></li></ul></li><li><a href="#twos-complement-converting-to-decimal">Two’s Complement: Converting to decimal</a></li><li><a href="#javas-numeric-data-types">Java’s numeric data types</a></li></ul></li><li><a href="#ieee-754-notation-for-floating-point-numbers">IEEE 754 notation for floating point numbers</a><ul><li><a href="#components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</a></li><li><a href="#ieee-754-double-precision-number">IEEE 754 Double-precision Number</a></li><li><a href="#special-values">Special values</a></li></ul></li><li><a href="#output">Output</a></li><li><a href="#casting">Casting</a></li><li><a href="#lazy-and-strict-evaluation">Lazy and strict evaluation</a></li><li><a href="#pre--and-post-increment">Pre- and Post-increment</a></li><li><a href="#operator-precedence-bidmas-on-steroids">Operator precedence (BIDMAS on steroids)</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part2.html" title="part2.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="variables">Variables</h2>
+
+<p><strong>Variables</strong> are what we store <em>values</em> in. A value can be anything from a primitive value, all the way up to an object instance. They’re declared like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Creating an integer variable</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+
+<span class="c1">// Creating a String variable</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"I am a string"</span><span class="o">;</span>
+
+<span class="c1">// Instantiating a Scanner object and storing it in a variable</span>
+<span class="nc">Scanner</span> <span class="n">sinput</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+<span class="c1">// You can then call Scanner methods like so:</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sinput</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h2 id="number-systems">Number systems</h2>
+
+<h3 id="twos-complement">Two’s Complement</h3>
+
+<p><em>Useful links: <a href="https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html#:~:text=Two's%20complement%20is%20the%20way,add%20one%20to%20the%20result.&amp;text=That%20is%20how%20one%20would%20write%20%2D28%20in%208%20bit%20binary.">source</a></em> <em><a href="https://www.rapidtables.com/convert/number/decimal-to-binary.html">conversion tool</a></em></p>
+
+<p>Two’s complement is the way in which computers represent integers. To get the two’s complement negative notation of an integer, you perform the following steps:</p>
+
+<ol>
+  <li>Write out the number in binary</li>
+  <li>Invert the digits</li>
+  <li>Add one to the result</li>
+</ol>
+
+<p><strong>It is a given</strong> that if the leftmost bit is a <code class="language-plaintext highlighter-rouge">1</code>, then <strong>this number is negative</strong>.</p>
+
+<p><strong>⚠ Important:</strong> If you are converting a positive integer <em>to</em> two’s complement form, then you simply do a basic conversion. When converting to binary, you only invert the bits if you have a negative number. Similarly, if you see the number <code class="language-plaintext highlighter-rouge">00011110</code>, this is <code class="language-plaintext highlighter-rouge">30</code>- you do not need to do the hokey-pokey inversion magic. If you are reading from a binary number, you can either read the basic decimal number <em>OR</em> the decimal from the signed 2’s complement. In which case, the number <code class="language-plaintext highlighter-rouge">11111101</code> would read <code class="language-plaintext highlighter-rouge">253</code> and <code class="language-plaintext highlighter-rouge">-3</code> respectively.</p>
+
+<p>For example, given 8 bits and the number -28:</p>
+<h4 id="write-out-the-binary-form-of-28">Write out the binary form of +28</h4>
+<p><code class="language-plaintext highlighter-rouge">28 = 0 0 0 1 1 1 0 0</code></p>
+<h4 id="invert-the-digits">Invert the digits</h4>
+<p><code class="language-plaintext highlighter-rouge">0 0 0 1 1 1 0 0 =&gt; 1 1 1 0 0 0 1 1</code></p>
+<h4 id="add-1">Add 1</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 1 1 0 0 0 1 1
+              1 +
+-----------------
+1 1 1 0 0 1 0 0
+</code></pre></div></div>
+
+<h3 id="twos-complement-converting-to-decimal">Two’s Complement: Converting to decimal</h3>
+<p>It is therefore also possible to convert <em>from</em> Two’s Complement; take the number <code class="language-plaintext highlighter-rouge">0xFFFFFFFF</code> as an example. This is the hex representation of <code class="language-plaintext highlighter-rouge">1111 1111 1111 1111 1111 1111 1111 1111</code>.</p>
+
+<p>At first glance, we can tell that <strong>this number is negative</strong>, as it has a leading (leftmost) bit set to <code class="language-plaintext highlighter-rouge">1</code>.</p>
+
+<p>If you want to see what this number is a negative <em>of</em>, then we follow a similar set of steps:</p>
+
+<ol>
+  <li>Invert all the bits</li>
+  <li>Add one</li>
+</ol>
+
+<p>Therefore, inverting all the bits <code class="language-plaintext highlighter-rouge">0xFFFFFFFF</code> results in <code class="language-plaintext highlighter-rouge">0000 0000 0000 0000 0000</code>. Then, adding <code class="language-plaintext highlighter-rouge">1</code> leads to <code class="language-plaintext highlighter-rouge">0000 0000 0000 0001</code>, which is the number <code class="language-plaintext highlighter-rouge">1</code>. Therefore, the <em>negative</em> of <code class="language-plaintext highlighter-rouge">0xFFFFFFFF</code> is 1, and hence the <em>value</em> is <code class="language-plaintext highlighter-rouge">-1</code>.</p>
+
+<h3 id="javas-numeric-data-types">Java’s numeric data types</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Bytes</th>
+      <th>Value in Decimal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">byte</code></td>
+      <td>1 byte (8 bits)</td>
+      <td>-128 to +127</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">short</code></td>
+      <td>2 bytes</td>
+      <td>-32768 to +32767</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td>4 bytes</td>
+      <td>-2<sup>31</sup> to +(2<sup>31</sup> - 1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">long</code></td>
+      <td>8 bytes</td>
+      <td>-2<sup>63</sup> to +(2<sup>63</sup> - 1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We’ve seen how two’s complement is used to represent <strong>integers</strong>. For decimal numbers, like <code class="language-plaintext highlighter-rouge">float</code> and <code class="language-plaintext highlighter-rouge">double</code>, we use floating point notation to store their values (IEEE-754).</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">float</code> is 32-bits and can represent numbers between -3.4e38 and 3.4e38 with 6 to 7 significant digits of accuracy.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">double</code> is 64-bits and can be represent numbers between -1.7e308 and 1.7e308 with 14 to 15 significant digits of accuracy.</p>
+
+<h2 id="ieee-754-notation-for-floating-point-numbers">IEEE 754 notation for floating point numbers</h2>
+
+<p><em>Useful links: <a href="https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/">GeeksforGeeks (source)</a></em> <em><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">Conversion Tool</a></em></p>
+
+<p>Before we begin, a brief reminder on fractional binary: <code class="language-plaintext highlighter-rouge">9.125 = 1001.001</code>. We achieved this result with the following intuition:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Binary place values</th>
+      <th>2<sup>3</sup></th>
+      <th>2<sup>2</sup></th>
+      <th>2<sup>1</sup></th>
+      <th>2<sup>0</sup></th>
+      <th>2<sup>-1</sup></th>
+      <th>2<sup>-2</sup></th>
+      <th>2<sup>-3</sup></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Binary bits</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Decimal values</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.125</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The table is a little janky, but it hopefully gets the point across; you continue in descending powers of 2 as you go rightwards. Anything beyond <code class="language-plaintext highlighter-rouge">2^0</code> is followed by a decimal place, <code class="language-plaintext highlighter-rouge">.</code>.</p>
+
+<h3 id="components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</h3>
+
+<p>Before diving into the components, it’s much better to look at an example. Therefore, take the decimal number <code class="language-plaintext highlighter-rouge">43.625</code>; this has binary representation <code class="language-plaintext highlighter-rouge">101011.101</code>. However, we would represent this as <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup>.</p>
+
+<p>In general the value of a floating point number is determined by</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 127</sup></p>
+</blockquote>
+
+<p>There are three basic components which make up the IEEE 754 floating point number:</p>
+<ol>
+  <li>The <strong>Sign Bit</strong>: this is a <em>single bit</em> where a <code class="language-plaintext highlighter-rouge">0</code> represents a positive number, whilst a <code class="language-plaintext highlighter-rouge">1</code> represents a negative number.</li>
+  <li>The <strong>Biased Exponent</strong>: this is an <em>eight bit</em> exponent field which represents both positive and negative exponents. It is <strong>biased</strong> because it is a fixed positive value that is then subtracted by 127 to represent either a positive or negative exponent. For example, given the exponent bits 10000100<sub>2</sub> = 132<sub>10</sub>. We arrive at the index 2<sup>5</sup> because 2<sup>132-127</sup> = 2<sup>5</sup>.</li>
+  <li>The <strong>Mantissa</strong>: this is a <em>twenty-three bit</em> field which makes up the numbers to right of the decimal point <code class="language-plaintext highlighter-rouge">.</code> (as shown in the formula above). The most significant bit (the left most) is 1/2<sup>1</sup>, then 1/2<sup>2</sup>, and so on. In most cases, the value before the <code class="language-plaintext highlighter-rouge">.</code> is 1, however in some cases which we will explain in the <strong>special</strong> cases section below, it may be 0 (this is when it is renormalised).</li>
+</ol>
+
+<p>With these components established, we can rewrite our previous example, <code class="language-plaintext highlighter-rouge">43.625</code>, <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup> in IEEE 754 notation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sign (1 bit)</th>
+      <th>Exponent (8 bits)</th>
+      <th>Mantissa (23 bits)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+      <td><code class="language-plaintext highlighter-rouge">10000100</code></td>
+      <td><code class="language-plaintext highlighter-rouge">01011101000000000000000</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Complete representation:</strong> <code class="language-plaintext highlighter-rouge">0 10000100 01011101000000000000000</code></p>
+
+<h3 id="ieee-754-double-precision-number">IEEE 754 Double-precision Number</h3>
+
+<p>Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 1023</sup></p>
+</blockquote>
+
+<ul>
+  <li><strong>Sign Bit.</strong> No change in bits.</li>
+  <li><strong>Mantissa.</strong> 52-bits</li>
+  <li><strong>Biased Exponent.</strong> 11-bits</li>
+</ul>
+
+<h3 id="special-values">Special values</h3>
+
+<p>IEEE 754 also has some special values you need to keep in mind:</p>
+
+<p>When the <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">0000 0000</code></p>
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">-0</code>.</li>
+  <li>Otherwise, renormalise the number with this form: (<code class="language-plaintext highlighter-rouge">-1</code>)<sup>sign bit</sup> x <code class="language-plaintext highlighter-rouge">0.(fraction)</code> x 2<sup>-127</sup></li>
+</ul>
+
+<p>The <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">1111 1111</code></p>
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">+- infinity</code>.</li>
+  <li>Otherwise, the value is <code class="language-plaintext highlighter-rouge">NaN</code>, otherwise known as <strong>not a number</strong>.</li>
+</ul>
+
+<h2 id="output">Output</h2>
+
+<p>The main content I gleamed from this was to be familiar with the three Linux streams:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stream</th>
+      <th>Purpose</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">System.in</code></td>
+      <td>Collect input</td>
+      <td><code class="language-plaintext highlighter-rouge">Scanner</code> uses this stream to collect user input</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">System.out</code></td>
+      <td>Send normal output</td>
+      <td>Your typical <code class="language-plaintext highlighter-rouge">System.out.println()</code> will output to this stream</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">System.err</code></td>
+      <td>Send output when there is an error</td>
+      <td>Some IDE’s such as Eclipse will output to this stream to highlight text in a different colour</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="casting">Casting</h2>
+
+<p>Generally speaking, this is the process of <strong>changing the data type</strong> of one piece of data from one type to another. You need to be familiar with the different types (pun not intended) of casting:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Implicit casting</th>
+      <th>Explicit casting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Definition</strong></td>
+      <td>No loss of precision</td>
+      <td>Possible loss of precision</td>
+    </tr>
+    <tr>
+      <td><strong>Example</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">float pi = 3.141f;</code> <br /><code class="language-plaintext highlighter-rouge">double big_pi = pi;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float pi = 3.141f;</code> <br /><code class="language-plaintext highlighter-rouge">int less_pi = pi;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The compiler will ‘let you know’ (otherwise known as screaming) if you attempt an <strong>explicit cast</strong>. However, if this is intentional you can do it like this.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// lets say you want to cast a variable from a float to an int</span>
+<span class="kt">float</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.144</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">more_pi</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">pi</span><span class="o">;</span> <span class="c1">// essentially tells the compiler not to worry</span>
+</code></pre></div></div>
+
+<h2 id="lazy-and-strict-evaluation">Lazy and strict evaluation</h2>
+
+<p>You will be familiar with both <code class="language-plaintext highlighter-rouge">&amp;/&amp;&amp;</code> and <code class="language-plaintext highlighter-rouge">|/||</code>; if you use either of these, your code will still compile correctly. However, one is <strong>strict</strong> whilst the other is <strong>lazy</strong>. If you need a quick way to remember this, a <strong>SINGLE CHARACTER</strong> means <strong>STRICT</strong> evaluation.</p>
+
+<p>The only difference between a strict and a lazy evaluation is how many of the operands are computed; this means that if you are expecting something to happen on the RHS of a comparison, <strong>only a strict evaluation</strong> will execute the LHs as well as the RHS. In essence, a lazy comparison will only execute both operands if needed.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+
+<span class="c1">// Lazy AND example; the LHS is false, so the overall statement is false. The RHS is not executed, and a = 5.</span>
+<span class="k">if</span> <span class="o">(</span><span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">a</span><span class="o">++</span> <span class="o">==</span> <span class="mi">5</span><span class="o">))</span> <span class="o">{}</span>
+
+<span class="c1">// Strict AND example; the LHS is false, but the RHS is still executed. a = 6 after this, even though the result is false.</span>
+<span class="k">if</span> <span class="o">(</span><span class="kc">false</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">a</span><span class="o">++</span> <span class="o">==</span> <span class="mi">5</span><span class="o">))</span> <span class="o">{}</span>
+
+<span class="c1">// Therefore, a lazy OR operator will not execute the RHS if the LHS is true.</span>
+</code></pre></div></div>
+<h2 id="pre--and-post-increment">Pre- and Post-increment</h2>
+
+<p>There are two ways to increment a numerical variable using the <code class="language-plaintext highlighter-rouge">++</code> operation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prefix <code class="language-plaintext highlighter-rouge">++var</code></th>
+      <th>Postfix <code class="language-plaintext highlighter-rouge">var++</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The value is <em>incremented first</em>, and then returned.</td>
+      <td>The value is <em>returned first</em>, and then it is incremented</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I’ve found that a useful way to remember this is to think of where the <code class="language-plaintext highlighter-rouge">++</code> is; in the prefix case, the <code class="language-plaintext highlighter-rouge">++</code> precedes the variable name. Therefore, you can think of the return always happening when you reach the <code class="language-plaintext highlighter-rouge">var</code>. Hence, prefix <code class="language-plaintext highlighter-rouge">++var</code> incremements and then returns, whilst postfix <code class="language-plaintext highlighter-rouge">var++</code> returns and then increments.</p>
+
+<h2 id="operator-precedence-bidmas-on-steroids">Operator precedence <em>(BIDMAS on steroids)</em></h2>
+
+<p>The Java creators realised that they too wanted to implement operator precedence. It follows this order:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>P</th>
+      <th>U</th>
+      <th>M</th>
+      <th>A</th>
+      <th>S</th>
+      <th>R</th>
+      <th>E</th>
+      <th>S</th>
+      <th>L</th>
+      <th>A</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Postfix</td>
+      <td>Unary</td>
+      <td>Multiplicative</td>
+      <td>Additive</td>
+      <td>Shift</td>
+      <td>Relational</td>
+      <td>Equality</td>
+      <td>Strict Ops</td>
+      <td>Lazy Ops</td>
+      <td>Assignment</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">var++</code></td>
+      <td><code class="language-plaintext highlighter-rouge">++var</code></td>
+      <td><code class="language-plaintext highlighter-rouge">* / %</code></td>
+      <td><code class="language-plaintext highlighter-rouge">+ -</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;&lt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;= &lt; &gt;= &gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">== !=</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&amp;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&amp;&amp;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">= += -= *= /= ...</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

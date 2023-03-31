@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Graphs</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Graphs</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#graphs-as-a-mathematical-concept">Graphs as a mathematical concept</a><ul><li><a href="#graph-properties">Graph properties</a></li></ul></li><li><a href="#graphs-as-an-adt">Graphs as an ADT</a><ul><li><a href="#concrete-implementations">Concrete Implementations</a><ul><li><a href="#edge-list-structure">Edge List Structure</a></li><li><a href="#adjacency-list">Adjacency list</a></li><li><a href="#adjacency-matrix">Adjacency matrix</a></li><li><a href="#performance">Performance</a></li><li><a href="#space-complexity-choosing-between-an-adjacency-matrix-and-an-adjacency-list">Space complexity (choosing between an adjacency matrix and an adjacency list)</a></li></ul></li></ul></li><li><a href="#subgraphs">Subgraphs</a></li><li><a href="#depth-first-search">Depth-first search</a><ul><li><a href="#uses-cases">Uses Cases</a></li></ul></li><li><a href="#breadth-first-search">Breadth-first search</a><ul><li><a href="#applications">Applications</a></li><li><a href="#dfs-and-bfs-visualization">DFS and BFS visualization</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="balanced-trees.html" title="balanced-trees.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="digraphs.html" title="digraphs.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="graphs-as-a-mathematical-concept">Graphs as a mathematical concept</h2>
+
+<p><strong>Graphs</strong> are defined as a pair \(G = (V, E)\) were \(V\) is a set of vertices, and \(E\) is an unordered collection of pairs of vertices, called edges, for example: \(G = (\{a, b, c\}, [(a,b), (b,c), (c,a)])\)</p>
+
+<p>Directed and undirected graphs</p>
+<ul>
+  <li>
+    <p>In undirected graphs, the edge pair indicates that both vertices are connected to each other</p>
+  </li>
+  <li>
+    <p>In directed graphs, the edge pair indicates that the first vertex is connected to the second, but not vice versa</p>
+  </li>
+</ul>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Adjacent Vertices</strong></td>
+      <td>Vertices with an edge between them</td>
+    </tr>
+    <tr>
+      <td><strong>Edges incident on a vertex</strong></td>
+      <td>Edges which both connect to the same vertex</td>
+    </tr>
+    <tr>
+      <td><strong>End vertices/endpoints</strong></td>
+      <td>The two vertices in the pair that an edge connects to</td>
+    </tr>
+    <tr>
+      <td><strong>Degree of a vertex</strong></td>
+      <td>The number of edges that connect to a pair</td>
+    </tr>
+    <tr>
+      <td><strong>Parallel edges</strong></td>
+      <td>Two edges both connecting the same nodes (This is the reason why edges are an unordered collection, not a <strong>set</strong>)</td>
+    </tr>
+    <tr>
+      <td><strong>Self-loop</strong></td>
+      <td>An edge whose vertices are both the same</td>
+    </tr>
+    <tr>
+      <td><strong>Path</strong></td>
+      <td>A sequence of alternating vertices and edges, starting and ending in a vertex</td>
+    </tr>
+    <tr>
+      <td><strong>Simple paths</strong></td>
+      <td>Paths containing no repeating vertices (hence are acyclic)</td>
+    </tr>
+    <tr>
+      <td><strong>Cycle</strong></td>
+      <td>A path starting and ending at the same vertex</td>
+    </tr>
+    <tr>
+      <td><strong>Acyclic</strong></td>
+      <td>A graph containing no cycles</td>
+    </tr>
+    <tr>
+      <td><strong>Simple cycle</strong></td>
+      <td>A path where the only repeated vertex is the starting/ending one</td>
+    </tr>
+    <tr>
+      <td><strong>Length (of a path of cycle)</strong></td>
+      <td>The number of edges in the path/cycle</td>
+    </tr>
+    <tr>
+      <td><strong>Tree</strong></td>
+      <td>A connected acyclic graph</td>
+    </tr>
+    <tr>
+      <td><strong>Weight</strong></td>
+      <td>A weight is a numerical value attached to each edge. In weighted graphs relationships between vertices have a magnitude.</td>
+    </tr>
+    <tr>
+      <td><strong>Dense</strong></td>
+      <td>A dense graph is one where the number of edges is close to the maximal number of edges.</td>
+    </tr>
+    <tr>
+      <td><strong>Sparse</strong></td>
+      <td>A sparse graph is one with only a few edges.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="graph-properties">Graph properties</h3>
+
+<blockquote>
+  <p><strong>Property 1.</strong> The <strong>sum of the degrees</strong> of the vertices in an undirected graph is an even number.</p>
+
+  <p><strong>Proof. Handshaking Theorem.</strong> Every edge must connect two vertices, so sum of degrees is twice the number of edges, which must be even.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Property 2.</strong> An undirected graph with no self loops nor parallel edges, with number of edges \(m\) and number of vertices \(n\) fulfils the property \(m \leq \frac{n \cdot (n-1)}{2}\)</p>
+
+  <p><strong>Proof.</strong> The first vertex can connect to \(n-1\) vertices (all vertices bar itself), then the second can connect to \(n-2\) (all the vertices bar itself and the first vertex, which it is already connected to), and so on, giving the sum \(1+2+...+n\) , which is known to be \(\frac{n \cdot (n-1)}{2}\)</p>
+
+  <p>Fully connected graphs fulfil the property \(m = \frac{n \cdot (n-1)}{2}\)</p>
+</blockquote>
+
+<h2 id="graphs-as-an-adt">Graphs as an ADT</h2>
+
+<blockquote>
+  <p><strong>Graphs</strong> are a “collection of vertex and edge objects”</p>
+</blockquote>
+
+<p>They have a large number of fundamental operations, to the extent it is unnecessary to enumerate them here, but they are essentially just accessor, mutator, and count methods on the vertices and edges</p>
+
+<h3 id="concrete-implementations">Concrete Implementations</h3>
+
+<h4 id="edge-list-structure">Edge List Structure</h4>
+
+<p><img src="images\edgeListGraph.png" alt="edgeListGraph" class="center" style="zoom:50%;" /></p>
+
+<p>Consists of</p>
+
+<ul>
+  <li>A list of vertices – contains references to <strong>vertex objects</strong></li>
+  <li>A list of edges – contains references to <strong>edge objects</strong></li>
+  <li><strong>Vertex Object</strong>
+    <ul>
+      <li>Contains the element that it stores</li>
+      <li>Also has a reference to its <strong>position</strong> in the vertex list.</li>
+    </ul>
+  </li>
+  <li><strong>Edge Object</strong>
+    <ul>
+      <li>Contains the element it stores</li>
+      <li>Reference to origin vertex</li>
+      <li>Reference to destination vertex</li>
+      <li>Reference to <strong>position</strong> in edge list</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Advantage of Reference to Position.</strong> Allows faster removal of vertices from the vertex list because vertex objects already have a reference to their position.</p>
+
+  <p><strong>Limitations.</strong> As you can see, the vertex objects has no information about the incident edges. Therefore, if we wanted to remove a vertex object, call it <strong><em>w</em></strong>, from the list we will have to scan the entire <strong>edge list</strong> to check which edges point to <strong><em>w</em></strong>.</p>
+</blockquote>
+
+<h4 id="adjacency-list">Adjacency list</h4>
+
+<p><img src="./images/adjacencyListGraph.png" alt="adjacencyListGraph" class="center" style="zoom:50%;" /></p>
+
+<p>Consists of</p>
+
+<ul>
+  <li>1 list containing all of the vertices. Each of which have a pointer to a list edge objects of incident edges.</li>
+</ul>
+
+<h4 id="adjacency-matrix">Adjacency matrix</h4>
+
+<p>This is an extension of the <strong>edge list structure</strong> – we extend/add-on to the <strong>vertex object</strong>.</p>
+
+<p><img src="./images/adjacencyMatrixGraph.png" alt="adjacencyMatrixGraph" class="center" style="zoom:50%;" /></p>
+
+<p>Consists of</p>
+
+<ul>
+  <li>Extended/augmented <strong>Vertex Object</strong>
+    <ul>
+      <li>Integer key (index) associated with each vertex. A graph with \(n\) vertices then their keys go from 0 to \((n-1)\).</li>
+    </ul>
+  </li>
+  <li><strong>Adjacency Matrix</strong> – 2D Array
+    <ul>
+      <li>Square matrix, with each dimension being the number of vertices \(n\)</li>
+      <li>Let \(C_{ij}\) represent a particular cell in the matrix. \(C_{ij}\) either has a reference to an <strong>edge object</strong> for adjacent vertices or <strong>null</strong> for <strong>non</strong>-adjacent vertices.
+        <ul>
+          <li>If a reference to an edge object, \(k\), is stored at cell \(C_{ij}\) it means that \(k\) is an edge <strong>from</strong> the vertex with index \(i\) <strong>to</strong> the vertex with index \(j\).</li>
+          <li>If our graph is <strong>undirected</strong> then the matrix will be <strong>symmetrical</strong> across the <strong>main diagonal</strong>, meaning \(C_{ij} = C_{ji}\) (as shown in the diagram above).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Advantage of 2D Adjacency Array.</strong> We are able to lookup edges between vertices in \(O(1)\) time.</p>
+
+  <p><strong>Limitations.</strong></p>
+
+  <ul>
+    <li>Not easy to change the size of the array</li>
+    <li>Space Complexity is \(O(n^2)\) and in many practical applications the graphs we are considering do not have many edges, so using an adjacency matrix might not be so space efficient.</li>
+  </ul>
+</blockquote>
+
+<h4 id="performance">Performance</h4>
+
+<p>Given a graph with <strong>n</strong> vertices and <strong>m</strong> edges (no parallel edges and no self-loops).</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: center">Edge List</th>
+      <th style="text-align: center">Adjacency List</th>
+      <th style="text-align: center">Adjacency Matrix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Space</strong></td>
+      <td style="text-align: center">O(n+m)</td>
+      <td style="text-align: center">O(n+m)</td>
+      <td style="text-align: center">O(n<sup>2</sup>) ❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">incidentEdges(v)</code></td>
+      <td style="text-align: center">O(m)</td>
+      <td style="text-align: center">O(deg(v)) ⭐</td>
+      <td style="text-align: center">O(n)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">areAdjacent(v,w)</code></td>
+      <td style="text-align: center">O(m)</td>
+      <td style="text-align: center">O(min(<strong>deg(v)</strong>, <strong>deg(w)</strong>))</td>
+      <td style="text-align: center">O(1) ⭐</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">insertVertex(o)</code></td>
+      <td style="text-align: center">O(1)</td>
+      <td style="text-align: center">O(1)</td>
+      <td style="text-align: center">O(n<sup>2</sup>) ❌</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">insertEdge(v,w,o)</code></td>
+      <td style="text-align: center">O(1)</td>
+      <td style="text-align: center">O(1)</td>
+      <td style="text-align: center">O(1)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">removeVertex(v)</code></td>
+      <td style="text-align: center">O(m)</td>
+      <td style="text-align: center">O(deg(v)) ⭐</td>
+      <td style="text-align: center">O(n<sup>2</sup>)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">removeEdge(e)</code></td>
+      <td style="text-align: center">O(1)</td>
+      <td style="text-align: center">O(1)</td>
+      <td style="text-align: center">O(1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="space-complexity-choosing-between-an-adjacency-matrix-and-an-adjacency-list">Space complexity (choosing between an adjacency matrix and an adjacency list)</h4>
+
+<p>We can determine more specific space complexities for both graph structures based on the type of graph we are using:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type of graph</th>
+      <th>Adjacency matrix</th>
+      <th>Adjacency list</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>General case</td>
+      <td>\(O(n^2)\)</td>
+      <td>\(O(n+m)\) ⭐</td>
+    </tr>
+    <tr>
+      <td>Sparse</td>
+      <td>Inefficient use of \(O(n^2)\) space ❌</td>
+      <td>Few edges to search through list for ⭐</td>
+    </tr>
+    <tr>
+      <td>Dense</td>
+      <td>Efficient use of \(O(n^2)\) space ⭐</td>
+      <td>Many edges to search through list for ❌</td>
+    </tr>
+    <tr>
+      <td>Complete directed, with self-loops</td>
+      <td>\(O(n^2)\) ⭐</td>
+      <td>\(O(n^2)\), and inefficient lookup ❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="centeredtable" id="subgraphs">Subgraphs</h2>
+
+<blockquote>
+  <p>A <strong>subgraph</strong> of the graph \(G\) fulfils the two properties:</p>
+
+  <ul>
+    <li>
+      <p>Its vertices are a subset of the vertices of \(G\)</p>
+    </li>
+    <li>
+      <p>Its edges are a subset of the edges of \(G\)</p>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>A <strong>spanning subgraph</strong> contains all of the vertices in \(G\). This then gives rise to <strong>spanning trees</strong>, which are spanning subgraphs which are connected and acyclic.</p>
+
+  <ul>
+    <li>A spanning tree is not unique unless the graph is a tree.</li>
+  </ul>
+</blockquote>
+
+<h2 id="depth-first-search">Depth-first search</h2>
+
+<blockquote>
+  <p>Depth-first search is a general technique for traverse graphs. It takes \(O(n + m)\) time to search a graph of \(n\) vertices and \(m\) edges.</p>
+</blockquote>
+
+<p>Informally, it can be described as always proceeding to its first adjacency, then backtracking when it reaches a vertex with no adjacencies which it has not explored already</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">v</span><span class="o">):</span>
+    <span class="nl">Input:</span> <span class="no">A</span> <span class="n">graph</span> <span class="no">G</span> <span class="n">and</span> <span class="n">a</span> <span class="n">vertex</span> <span class="n">v</span> <span class="n">of</span> <span class="no">G</span>
+    <span class="nl">Output:</span> <span class="nc">Labelling</span> <span class="n">of</span> <span class="n">edges</span> <span class="n">of</span> <span class="no">G</span> <span class="n">in</span> <span class="n">the</span> <span class="n">connected</span> <span class="n">component</span> <span class="n">of</span> <span class="n">v</span> <span class="n">as</span> <span class="n">discovery</span> <span class="n">edges</span> <span class="n">and</span> <span class="n">back</span> <span class="n">edges</span>
+        <span class="nf">setLabel</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="s">"visited"</span><span class="o">)</span>
+        <span class="k">for</span> <span class="n">all</span> <span class="n">e</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">incidentEdges</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+            <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">=</span> <span class="s">"unexplored"</span>
+                <span class="c1">// Get vertex w, that's opposite vertex v across edge e</span>
+                <span class="n">w</span> <span class="o">&lt;-</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">e</span><span class="o">)</span>
+                <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="s">"unexplored"</span>
+                    <span class="n">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"discovery"</span><span class="o">)</span>
+                    <span class="no">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">w</span><span class="o">)</span> <span class="c1">// Recursive call to DFS on this "unexplored" vertex w</span>
+                <span class="k">else</span>
+                    <span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"back"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>It has the following properties</p>
+
+  <ul>
+    <li>It visits all vertices and edges in any connected component of a graph</li>
+    <li>The discovery edges form a spanning tree of any graph it traverses</li>
+    <li>The depth-first search tree of a fully connected graph is a straight line of nodes</li>
+  </ul>
+</blockquote>
+
+<h3 id="uses-cases">Uses Cases</h3>
+
+<p>It can be used for <strong>path-finding</strong> by performing the traversal until the target node is found, then <strong>backtracking</strong> along the <strong>discovery edges</strong> to find the reverse of the path.</p>
+
+<ul>
+  <li>This is done by altering the DFS algorithm to push <strong>visited</strong> vertices and <strong>discovery</strong> edges as the algorithm goes through them.</li>
+  <li>Once the target vertex is found, we return the path as the contents of the stack</li>
+</ul>
+
+<p>It can be used to <strong>identify cycles</strong>, as if it <strong>ever finds</strong> an <strong>adjacency</strong> to a vertex which it has <strong>already explored</strong>, (a <strong>back edge</strong>), the graph must contain a cycle.</p>
+
+<ul>
+  <li>A stack is again used for the same purpose.</li>
+  <li>When a <strong>back edge</strong> is encountered between a node <strong><em>v</em></strong> and another node <strong><em>w</em></strong>, the cycle is returned as the <strong>portion of the stack</strong> from the top to until node <strong><em>v</em></strong>.is</li>
+</ul>
+
+<h2 id="breadth-first-search">Breadth-first search</h2>
+
+<blockquote>
+  <p>Breadth-first search is a technique to traverse graphs. It takes \(O(n + m)\) time to search a graph of \(n\) vertices and \(m\) edges.</p>
+</blockquote>
+
+<p>Informally, it can be described as exploring every one of its adjacencies, then proceeding to the first adjacency, then backtracking when it reaches a vertex with no adjacencies which it has not explored already</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">BFS</span><span class="o">(</span><span class="no">G</span><span class="o">)</span>
+    <span class="nl">Input:</span> <span class="n">graph</span> <span class="no">G</span>
+    <span class="nl">Output:</span> <span class="nc">Labelling</span> <span class="n">of</span> <span class="n">edges</span> <span class="n">and</span> <span class="n">partition</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vertices</span> <span class="n">of</span> <span class="no">G</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">u</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+        <span class="n">setLabel</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="s">"unexplored"</span><span class="o">)</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">e</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">edges</span><span class="o">()</span>
+        <span class="n">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"unexplored"</span><span class="o">)</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+        <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">v</span><span class="o">)</span> <span class="o">==</span> <span class="s">"unexplored"</span>
+            <span class="no">BFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">v</span><span class="o">)</span>
+            
+<span class="nc">Algorithm</span> <span class="nf">BGS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">s</span><span class="o">)</span>
+    <span class="no">L0</span> <span class="o">&lt;-</span> <span class="k">new</span> <span class="n">empty</span> <span class="n">sequence</span>
+    <span class="no">L0</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">s</span><span class="o">)</span>
+    <span class="n">setLabel</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="s">"visited"</span><span class="o">)</span>
+    <span class="k">while</span> <span class="o">!</span><span class="no">L0</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span>
+        <span class="nc">Lnext</span> <span class="o">&lt;-</span> <span class="k">new</span> <span class="n">empty</span> <span class="n">sequence</span>
+        <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="no">L0</span><span class="o">.</span><span class="na">elements</span><span class="o">()</span>
+            <span class="k">for</span> <span class="n">all</span> <span class="n">e</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">incidentEdges</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+                <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">=</span> <span class="s">"unexplored"</span>
+                    <span class="n">w</span> <span class="o">&lt;-</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">e</span><span class="o">)</span>
+                    <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="s">"unexplored"</span>
+                        <span class="n">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"discovery"</span><span class="o">)</span>
+                        <span class="n">setLabel</span><span class="o">(</span><span class="n">w</span><span class="o">,</span> <span class="s">"visited"</span><span class="o">)</span>
+                        <span class="nc">Lnext</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">w</span><span class="o">)</span>
+                    <span class="k">else</span>
+                        <span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"cross"</span><span class="o">)</span>
+        <span class="no">L0</span> <span class="o">&lt;-</span> <span class="nc">Lnext</span> <span class="c1">// Set L0 to Lnext so while loop won't stop</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>It has the following properties</p>
+
+  <ul>
+    <li>It <strong>visits all</strong> vertices and edges in \(G_s\), the connected component of a graph \(s\)</li>
+    <li>The <strong>discovery edges</strong> form a <strong>spanning tree</strong> of any graph it traverses</li>
+    <li>The <strong>path</strong> between any two vertices in the spanning tree of <strong>discovery edges</strong> it creates is the <strong>shortest path</strong> between them in the graph</li>
+    <li>The bread-first search tree of a fully connected graph is like a star with the centre node being the starting node, and all other nodes being rays, with the only vertices being from the starting node to all other nodes</li>
+  </ul>
+</blockquote>
+
+<p>It can be used for path-finding by performing the traversal until the target node is found, then backtracking along the discovery edges to find the reverse of the path.</p>
+
+<p>It can be used to identify cycles, as if it ever finds an adjacency to a vertex which it has already explored, (a back edge), the graph must contain a cycle.</p>
+
+<h3 id="applications">Applications</h3>
+
+<p>We can specialise the BFS algorithm to solve the following problems in \(O(n+m)\) time.</p>
+
+<ul>
+  <li>Compute the connected components of G</li>
+  <li>Compute a spanning forest of G</li>
+  <li>Find a simple cycle in G, or report that G is a forest</li>
+  <li>Given two vertices of G, find a path in G between them with the minimum number of edges, or report that no such path exists.</li>
+</ul>
+
+<h3 id="dfs-and-bfs-visualization">DFS and BFS visualization</h3>
+
+<p>The site linked <a href="https://www.cs.usfca.edu/~galles/visualization/DFS.html">here</a> traces the steps of DFS either or BFS, and one can specify whether each node is connected, as well as whether the graphs are directed or undirected</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Style guide</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Style guide</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#structure">Structure</a></li><li><a href="#folder-naming">Folder naming</a></li><li><a href="#file-naming">File naming</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#images">Images</a></li><li><a href="#internal-links">Internal Links</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>We will appreciate if contributors abide by these formatting guidelines, as it ensures that the layout of the website is perfect. That said, nothing will break if you don’t do so, just certain things (table of contents) won’t be as user friendly as it should be.</p>
+
+<h2 id="structure">Structure</h2>
+<p>Modules are split into separate topics, and we have also included a one page (ctrl-f) version for modules that are arranged this way. To ensure that the table of contents in the one page versions are displayed correctly there are a few things we would like contributors to note:</p>
+
+<h2 id="folder-naming">Folder naming</h2>
+<p>Folders should be descriptive of the content they contain and words should be separated by underscores e.g <code class="language-plaintext highlighter-rouge">2021_Full_Notes</code></p>
+
+<h2 id="file-naming">File naming</h2>
+<p>Files should be descriptive of the content they contain or match the page title. Words should be separated by underscores e.g <code class="language-plaintext highlighter-rouge">Data_Representation.md</code></p>
+
+<p>Every none asset Folder should contain an <code class="language-plaintext highlighter-rouge">index.html</code> or <code class="language-plaintext highlighter-rouge">index.md</code> file</p>
+<h2 id="headlines">Headlines</h2>
+
+<p>There should be no document title headline this is added automatically by the site</p>
+
+<p>Do not use a <code class="language-plaintext highlighter-rouge">h1</code> or <code class="language-plaintext highlighter-rouge">#</code>. Start a page on <code class="language-plaintext highlighter-rouge">h2</code> or <code class="language-plaintext highlighter-rouge">##</code></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Firstly don't skip heading levels - Don't do this
+<span class="gu">## Heading 1</span>
+<span class="gu">#### Heading 2</span>
+
+Make sure sections follow an appropriate hierarchy - skipping from h4 to h2 is alright, h1 to h3 is not.
+<span class="gu">## Heading 1</span>
+<span class="gu">### Heading 1.1</span>
+<span class="gu">#### Heading 1.1.1</span>
+<span class="gu">## Heading 2</span>
+</code></pre></div></div>
+<hr />
+
+<h2 id="images">Images</h2>
+<p>images and other assets should be contained within an <code class="language-plaintext highlighter-rouge">Assets</code> folder</p>
+
+<h2 id="internal-links">Internal Links</h2>
+<p>Internal site links should be relative links rather than absolute links if a absoule link must be used it should be defined as so:
+<code class="language-plaintext highlighter-rouge">{{ site.baseurl }}/path/to/file</code><br />
+e.g. <code class="language-plaintext highlighter-rouge">{{ site.baseurl }}/CSRGContributing/styleguide.md</code></p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

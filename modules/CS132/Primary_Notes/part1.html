@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Data Representation</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Data Representation</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#representation-and-number-systems">Representation and number systems</a><ul><li><a href="#sizes-of-symbols">Sizes of symbols</a></li></ul></li><li><a href="#why-do-we-use-binary">Why do we use Binary?</a><ul><li><a href="#what-is-noise-immunity">What is Noise Immunity?</a></li></ul></li><li><a href="#bits-bytes-words-and-bus-sizes">Bits, Bytes, Words, and Bus sizes</a></li><li><a href="#conversion">Conversion</a></li><li><a href="#converting-from-decimal-to-binary">Converting from Decimal to Binary</a><ul><li><a href="#decimal-to-octal-or-hex">Decimal to Octal or Hex</a></li></ul></li><li><a href="#addition">Addition</a></li><li><a href="#negative-numbers">Negative Numbers</a><ul><li><a href="#signed-magnitude-representation">Signed Magnitude Representation</a></li><li><a href="#twos-complement-representation">Two’s complement representation</a></li></ul></li><li><a href="#subtraction">Subtraction</a></li><li><a href="#fractional-numbers">Fractional Numbers</a><ul><li><a href="#fixed-point-representation">Fixed Point Representation</a></li><li><a href="#floating-point-representation">Floating Point Representation</a><ul><li><a href="#components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</a></li><li><a href="#ieee-754-double-precision-number">IEEE 754 Double-precision Number</a></li><li><a href="#special-values">Special values</a></li></ul></li><li><a href="#issues-with-floating-point-precision">Issues with floating point precision</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part2.html" title="part2.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="representation-and-number-systems">Representation and number systems</h2>
+
+<p>In terms of the exam, the most important concept is <strong>value versus representation</strong> of any number. In practice, this means you need to accept that you cannot always represent a value across different bases using the same number of symbols.</p>
+
+<blockquote>
+  <p><strong>One value, many representations.</strong> A representation is a way of using or describing a value, for example \(1010_2\) and \(10_{10}\) denote the same value.
+A typical exam question (2019) may ask why we use different representations- one can cite how whilst binary is most appropriate for digital logic circuits (due to the high noise immunity it offers), it is not easy for humans to read nor compute, and hence we introduce the decimal system to handle daily life. We come up with other number systems such as hexadecimal as it is more efficient on a bus (wider range for the same number of symbols) than systems such as octal or decimal.</p>
+</blockquote>
+
+<p>There are four main number systems we will use:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number system</th>
+      <th>Symbols</th>
+      <th>Base</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Binary</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Octal</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, <code class="language-plaintext highlighter-rouge">4</code>, <code class="language-plaintext highlighter-rouge">5</code>, <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">7</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Decimal</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, <code class="language-plaintext highlighter-rouge">4</code>, <code class="language-plaintext highlighter-rouge">5</code>, <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">7</code>, <code class="language-plaintext highlighter-rouge">8</code>, <code class="language-plaintext highlighter-rouge">9</code></td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Hex</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, <code class="language-plaintext highlighter-rouge">4</code>, <code class="language-plaintext highlighter-rouge">5</code>, <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">7</code>, <code class="language-plaintext highlighter-rouge">8</code>, <code class="language-plaintext highlighter-rouge">9</code>, <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>, <code class="language-plaintext highlighter-rouge">C</code>, <code class="language-plaintext highlighter-rouge">D</code>, <code class="language-plaintext highlighter-rouge">E</code>, <code class="language-plaintext highlighter-rouge">F</code></td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is crucial that you learn to distinguish between representations of these numbers – for example, 16<sub>10</sub> = 10000<sub>2</sub> = 20<sub>8</sub> = 10<sub>16</sub>.</p>
+
+<p>For any number system, you can use the following equation to calculate the value of a number:</p>
+
+\[\text{value = (sum from } i = 0\text{ to } i = (N-1))\text{ symbol}(i) \times \text{base}^i\]
+
+<h3 id="sizes-of-symbols">Sizes of symbols</h3>
+<p>As the base increases, we can see that a single symbol can represent bases more concisely than in other bases – take the following examples:</p>
+<ul>
+  <li>Octal symbols can represent 3 bits:
+    <ul>
+      <li>111<sub>2</sub> = 7<sub>8</sub></li>
+      <li>010 100 011<sub>2</sub> = 243<sub>8</sub></li>
+    </ul>
+  </li>
+  <li>Hex symbols can represent four bits:
+    <ul>
+      <li>1111<sub>2</sub> = 15<sub>10</sub> = F<sub>16</sub></li>
+      <li>1010 0011<sub>2</sub> = A3<sub>16</sub></li>
+    </ul>
+  </li>
+</ul>
+
+<p>A decimal symbol requires roughly <strong>3.3 bits</strong>, and therefore hex and octal are much more convenient when describing values on a bus.</p>
+
+<h2 id="why-do-we-use-binary">Why do we use Binary?</h2>
+
+<p>Mainly because 0s and 1s provide the greatest degree of distinction for voltage levels which gives us <strong>noise immunity</strong>.</p>
+
+<h3 id="what-is-noise-immunity">What is Noise Immunity?</h3>
+
+<p>In <em>TTL (transistor-transistor logic)</em>, we use two voltage ranges to determine when we register a <code class="language-plaintext highlighter-rouge">0</code> or a <code class="language-plaintext highlighter-rouge">1</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Voltage</th>
+      <th>Signal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0V - 0.8V</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2.4V - 5V</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>These are ranges are governed by the tolerance of the electrical components and can be affected by <em>noise</em> that makes the voltage fluctuate. Hence there is a “divide” between the 2 ranges to provide a separation for the signal, in order to properly distinguish between a 0 or 1.</p>
+
+  <p>Otherwise, if the cut-off point was just at a particular voltage, e.g. \(3V\), then if it is at \(2.9V\) the transistor will not know if it is a \(0\) or a \(1\) because there will be fluctuations (noise).</p>
+</blockquote>
+
+<p>Now we can carry this information on a wire and usually we have multiple wires running in parallel, which is known as a <strong>parallel bus</strong> (a collection of wires communicating a value between sub-circuits).</p>
+
+<h2 id="bits-bytes-words-and-bus-sizes">Bits, Bytes, Words, and Bus sizes</h2>
+
+<p>You need to understand and recall the value ranges (or size) of the aforementioned terms:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Magic word</th>
+      <th>Explanation</th>
+      <th>Value range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bit</td>
+      <td>Binary digit</td>
+      <td>Values 0<sub>2</sub> or 1<sub>2</sub> inclusive</td>
+    </tr>
+    <tr>
+      <td>Byte</td>
+      <td>8 bits</td>
+      <td>Values 0<sub>10</sub> to 255<sub>10</sub> inclusive</td>
+    </tr>
+    <tr>
+      <td>Nibble</td>
+      <td>4 bits</td>
+      <td>Values 0<sub>10</sub> to 15<sub>10</sub> inclusive</td>
+    </tr>
+    <tr>
+      <td>Word</td>
+      <td>The number of <strong>bits</strong> a machine can <strong>process simultaneously</strong></td>
+      <td>Machine specific – increasing over time</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <strong>disadvantages</strong> of increased word size are increased CPU, bus, and memory complexity. This results in an <strong>exponential increase in cost</strong>.</p>
+
+<p><strong>MSB</strong> (most significant bit) and <strong>LSB</strong> (least significant bit), usually the leftmost and rightmost bit respectively. There are exceptions when you want to flip it around, and that should in such cases you should explicitly state which bit you are referring to.</p>
+
+<h2 id="conversion">Conversion</h2>
+
+<p>One disadvantage of binary is that it is <strong>not</strong> a very <strong>compact</strong> way of representing values. So for representing larger values for humans, we usually use octal or hexadecimal, why? because…</p>
+
+<p><em>It is easier to convert from binary to octal or binary to hexadecimal than from binary to decimal</em></p>
+
+<p>One octal symbol can represent 3 bits 
+\(010_2 = 2_8, 100_2 = 4_8,011_2 = 3_8 \\
+010\;100\;011_2 = 243_8\)
+One hex can represent 4 bits
+\(1010\;0011_2=A3_{16}\)
+One decimal symbol requires 3.333… bits, so hex and octal are more convenient.</p>
+
+<h2 id="converting-from-decimal-to-binary">Converting from Decimal to Binary</h2>
+
+<p>Repeatedly divide the number by the base required, i.e 2 for binary, and record the remainder for each division. Once you’re done, write out the remainders from quotient 0 to the original number (in this case right to left) and you will arrive at the binary representation of your original number.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Quotient</th>
+      <th style="text-align: center">163</th>
+      <th style="text-align: center">81</th>
+      <th style="text-align: center">40</th>
+      <th style="text-align: center">20</th>
+      <th style="text-align: center">10</th>
+      <th style="text-align: center">5</th>
+      <th style="text-align: center">2</th>
+      <th style="text-align: center">1</th>
+      <th style="text-align: center">0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Remainder</strong></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+\[163_{10} = 1010 \;0011_2\]
+
+<h3 id="decimal-to-octal-or-hex">Decimal to Octal or Hex</h3>
+
+<p>The same division method can be used…but it might be easier to convert to binary first and then into the required base:</p>
+
+\[\begin{align}
+23_{10} &amp;= 16 + 4 +2+1\\
+&amp;=10111_2 \\
+&amp;=27_8 (010\; 111_2) \\
+&amp;= 17_{16} (0001\;0111_2)
+\end{align}\]
+
+<p>You can do this unless Matt prohibits it in exam. The best way to get better at this is by doing practice questions.</p>
+
+<h2 id="addition">Addition</h2>
+
+<blockquote>
+  <p>To do <strong>addition</strong> in binary we just do it normally, sum the numbers, and carry over the 1 if it adds to 2.</p>
+
+  <p>It is helpful to include the <strong>carry row</strong> in your working for clarity. (also remember hearing Matt saying to do it)</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0100 0101
++ 1110 1101
+------------
+  0011 0010  &lt;- Sum Row
+  1100 1101  &lt;- Carry Row
+</code></pre></div></div>
+
+<h2 id="negative-numbers">Negative Numbers</h2>
+
+<h3 id="signed-magnitude-representation">Signed Magnitude Representation</h3>
+
+<p>One way we can represent negative binary numbers if by adding considering the most significant bit as a flag for whether the number is negative. Normally, the MSB being one means the number is negative.</p>
+
+<p>However, using this representation, there are two representations of zero: \(+0\) and \(-0\). This can lead to confusion when using equality operations and other conceptual errors, however, it can be less complex to implement.</p>
+
+<p>Additionally, it reduces the range of the representation by one number, since an additional one is used up to represent the second zero value. This leaves signed magnitude being able to encode the range of numbers \([-2^{n-1} + 1, 2^{n-1} -1]\)</p>
+
+<h3 id="twos-complement-representation">Two’s complement representation</h3>
+
+<p>The MSB has the same value as in the binary positional representation but it is negative. This makes the range asymmetric from [-2<sup>n-1</sup>, 2<sup>n-1</sup> - 1] – there are more negative numbers than positive as the MSB is negative. Because of this, it also makes the zero <strong>unique</strong>.</p>
+
+<p>To get a negative number in two’s complement form from its positive number in binary.</p>
+
+<ol>
+  <li>Invert the bits ensuring there are enough bits for the MSB to be the sign</li>
+  <li>Add 1, ignoring any overflow.</li>
+</ol>
+
+<p>Tada, now we can do subtraction by adding negative numbers in two’s complement form. Positive numbers in two’s complement are exactly the same as their binary form just that you have to include an extra bit (the MSB) that is 0.</p>
+
+<p>The only thing to know for addition and subtraction in two’s complement is to ignore any carry to bits that are beyond the precision of the 2 numbers.</p>
+
+<h2 id="subtraction">Subtraction</h2>
+
+<p>Two subtract two numbers, we convert the number to subtract into a negative value, either by flipping the sign bit, or inverting the bits and adding one, dependent on representation. Then we can just add as usual.</p>
+
+<p>This is intuitively clear, as \(a - b \equiv a + (-b)\)</p>
+
+<h2 id="fractional-numbers">Fractional Numbers</h2>
+
+<h3 id="fixed-point-representation">Fixed Point Representation</h3>
+
+<p>For fractions, we introduce inverse/decimal powers. \(2.75_{10}\) = \(10.11_2\).</p>
+
+\[\begin{align}
+&amp;10.11_2&amp;            &amp;=&amp; &amp;1&amp;   &amp;0&amp;   &amp;1&amp;      &amp;1&amp;      \\
+&amp;\text{Position:}&amp; &amp;&amp;  &amp;2^1&amp; &amp;2^0&amp; &amp;2^{-1}&amp; &amp;2^{-1}&amp; \\
+&amp;&amp;                   &amp;=&amp; &amp;2&amp;    &amp;1&amp;    &amp;0.5&amp;       &amp;0.25&amp; \\
+&amp;\text{Value}&amp;     &amp;=&amp; &amp;(1\times 2+&amp;    &amp;0\times1+&amp;    &amp;1\times0.5+&amp;   &amp;1\times0.25)&amp; \\
+&amp;&amp;                   &amp;=&amp; &amp;2.75_{10}&amp;
+\end{align}\]
+
+<p>However, if the number is 2.8​ for example, <strong>Fixed-PR</strong> will not be very efficient because to represent it in binary will require a lot of bits. This means that in a microprocessor, we will need an incredibly large bus to represent such values.</p>
+
+<h3 id="floating-point-representation">Floating Point Representation</h3>
+
+<p>Floating point uses the same principles as scientific notation. You should be familiar with <strong>Floating-PR</strong> from <a href="https://csrg-group.github.io/dcs-notes.github.io/CS118/part1.html">CS118</a>. A duplicate of the content there is mirrored here for completeness:</p>
+
+<p>The IEEE 754 standard is widely used and specifies specific levels of binary precision:</p>
+
+<ul>
+  <li>Single precision (32 bits) – 1bit for the sign, 8bits for the exponent, and 23 bits for the mantissa</li>
+  <li>Double precision (64 bits)</li>
+  <li>Quad precision (128 bits)</li>
+</ul>
+
+<h4 id="components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</h4>
+
+<p>Before diving into the components, it’s much better to look at an example. Therefore, take the decimal number <code class="language-plaintext highlighter-rouge">43.625</code>; this has binary representation <code class="language-plaintext highlighter-rouge">101011.101</code>. However, we would represent this as <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup>.</p>
+
+<p>In general the value of a floating point number is determined by</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 127</sup></p>
+</blockquote>
+
+<p>There are three basic components which make up the IEEE 754 floating point number:</p>
+
+<ol>
+  <li>The <strong>Sign Bit</strong>: this is a <em>single bit</em> where a <code class="language-plaintext highlighter-rouge">0</code> represents a positive number, whilst a <code class="language-plaintext highlighter-rouge">1</code> represents a negative number.</li>
+  <li>The <strong>Biased Exponent</strong>: this is an <em>eight bit</em> exponent field which represents both positive and negative exponents. It is <strong>biased</strong> because it is a fixed positive value that is then subtracted by 127 to represent either a positive or negative exponent. For example, given the exponent bits 10000100<sub>2</sub> = 132<sub>10</sub>. We arrive at the index 2<sup>5</sup> because 2<sup>132-127</sup> = 2<sup>5</sup>.</li>
+  <li>The <strong>Mantissa</strong>: this is a <em>twenty-three bit</em> field which makes up the numbers to right of the decimal point <code class="language-plaintext highlighter-rouge">.</code> (as shown in the formula above). The most significant bit (the left most) is 1/2<sup>1</sup>, then 1/2<sup>2</sup>, and so on. In most cases, the value before the <code class="language-plaintext highlighter-rouge">.</code> is 1, however in some cases which we will explain in the <strong>special</strong> cases section below, it may be 0 (this is when it is renormalised).</li>
+</ol>
+
+<p>With these components established, we can rewrite our previous example, <code class="language-plaintext highlighter-rouge">43.625</code>, <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup> in IEEE 754 notation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sign (1 bit)</th>
+      <th>Exponent (8 bits)</th>
+      <th>Mantissa (23 bits)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+      <td><code class="language-plaintext highlighter-rouge">10000100</code></td>
+      <td><code class="language-plaintext highlighter-rouge">01011101000000000000000</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Complete representation:</strong> <code class="language-plaintext highlighter-rouge">0 10000100 01011101000000000000000</code></p>
+
+<h4 id="ieee-754-double-precision-number">IEEE 754 Double-precision Number</h4>
+
+<p>Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 1023</sup></p>
+</blockquote>
+
+<ul>
+  <li><strong>Sign Bit.</strong> No change in bits.</li>
+  <li><strong>Mantissa.</strong> 52-bits</li>
+  <li><strong>Biased Exponent.</strong> 11-bits</li>
+</ul>
+
+<h4 id="special-values">Special values</h4>
+
+<p>IEEE 754 also has some special values you need to keep in mind:</p>
+
+<p>When the <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">0000 0000</code></p>
+
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">-0</code>.</li>
+  <li>Otherwise, renormalise the number with this form: (<code class="language-plaintext highlighter-rouge">-1</code>)<sup>sign bit</sup> x <code class="language-plaintext highlighter-rouge">0.(fraction)</code> x 2<sup>-127</sup></li>
+</ul>
+
+<p>The <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">1111 1111</code></p>
+
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">+- infinity</code>.</li>
+  <li>Otherwise, the value is <code class="language-plaintext highlighter-rouge">NaN</code>, otherwise known as <strong>not a number</strong>.</li>
+</ul>
+
+<h3 id="issues-with-floating-point-precision">Issues with floating point precision</h3>
+
+<p>There are two key issues to account for when using floating-point values- underflow, and loss of accuracy.</p>
+
+<blockquote>
+  <p><strong>Underflow</strong> occurs when a floating point operation results in an <em>absolute</em> value which is too close to 0 for the computer to accurately store in memory. This can be remedied by setting a <strong>sticky bit</strong> in the status bits of the CCR, and storing a 0 in memory for the time being.</p>
+</blockquote>
+
+<p>A <strong>loss of accuracy</strong> can occur when performing an operation on numbers of two vastly different magnitudes. Specifically, due to maintaining precision when describing the large value, operations (such as incrementing or decrementing by a very very small amount) can result in the large value not being modified accurately as it is impossible to maintain the large and small context of the result. For an analogy, imagine pouring a teaspoon of water into a swimming pool- you cannot tell how much the volume of water has changed, and this would cause issues if further conditional operations depend on the result of this operation.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

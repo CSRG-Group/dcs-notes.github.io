@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Higher order functions</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Higher order functions</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#sections">Sections</a></li><li><a href="#examples-of-higher-order-functions">Examples of higher order functions</a><ul><li><a href="#map">Map</a></li><li><a href="#filter">Filter</a><ul><li><a href="#quicksort-using-filter">Quicksort using filter</a></li></ul></li><li><a href="#folds">Folds</a><ul><li><a href="#foldr">Foldr</a></li><li><a href="#foldl">Foldl</a></li><li><a href="#foldl-1">Foldl’</a></li></ul></li><li><a href="#function-composition">Function composition</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part2.html" title="part2.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="dataTypes.html" title="dataTypes.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>Higher order functions are functions which operate on other functions, either taking another function as a parameter, or returning one as a result</p>
+
+<p>The process of currying, discussed earlier, is a higher order function, as a function takes a parameter, and returns another functioned, specialised by that parameter</p>
+
+<h2 id="sections">Sections</h2>
+
+<p>Sections are partial applications of infix operators. If you give only one argument to an infix operator, it returns a function of the “missing” side of the operation, for example, if the left side of the infix exponent is given, a function taking the exponent as the parameter is returned, but if the right side is given, the function takes the base as parameter. This is written as:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="p">(</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="nf">\</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">^</span> <span class="mi">2</span>
+
+<span class="o">&gt;</span> <span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="p">)</span>
+<span class="nf">\</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">^</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<h2 id="examples-of-higher-order-functions">Examples of higher order functions</h2>
+
+<h3 id="map">Map</h3>
+
+<p>A function that takes a list and a function, and returns a new list, with every element in the old one having had the function applied to it</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">map</span> <span class="o">::</span> <span class="p">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span>  
+<span class="n">map</span> <span class="kr">_</span> <span class="kt">[]</span> <span class="o">=</span> <span class="kt">[]</span>  
+<span class="n">map</span> <span class="n">f</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span> <span class="n">x</span> <span class="o">:</span> <span class="n">map</span> <span class="n">f</span> <span class="n">xs</span>  
+</code></pre></div></div>
+
+<h3 id="filter">Filter</h3>
+
+<p>A function that takes a list and a predicate (a function which indicates the truth value of its parameter), and returns the list containing only the true values in the original list</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filter</span> <span class="o">::</span> <span class="p">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>  
+<span class="n">filter</span> <span class="kr">_</span> <span class="kt">[]</span> <span class="o">=</span> <span class="kt">[]</span>  
+<span class="n">filter</span> <span class="n">p</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span>   
+    <span class="o">|</span> <span class="n">p</span> <span class="n">x</span>       <span class="o">=</span> <span class="n">x</span> <span class="o">:</span> <span class="n">filter</span> <span class="n">p</span> <span class="n">xs</span>  
+    <span class="o">|</span> <span class="n">otherwise</span> <span class="o">=</span> <span class="n">filter</span> <span class="n">p</span> <span class="n">xs</span>  
+</code></pre></div></div>
+
+<h4 id="quicksort-using-filter">Quicksort using filter</h4>
+
+<p>We can neatly write sorting algorithms using this, such as quicksort (with the pivot being picked as the middle in this case)</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quicksort</span> <span class="o">::</span> <span class="p">(</span><span class="kt">Ord</span> <span class="n">a</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>    
+<span class="n">quicksort</span> <span class="kt">[]</span> <span class="o">=</span> <span class="kt">[]</span>    
+<span class="n">quicksort</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span>     
+    <span class="kr">let</span> <span class="n">smallerSorted</span> <span class="o">=</span> <span class="n">quicksort</span> <span class="p">(</span><span class="n">filter</span> <span class="p">(</span><span class="o">&lt;=</span><span class="n">x</span><span class="p">)</span> <span class="n">xs</span><span class="p">)</span>  
+        <span class="n">biggerSorted</span> <span class="o">=</span> <span class="n">quicksort</span> <span class="p">(</span><span class="n">filter</span> <span class="p">(</span><span class="o">&gt;</span><span class="n">x</span><span class="p">)</span> <span class="n">xs</span><span class="p">)</span>   
+    <span class="kr">in</span>  <span class="n">smallerSorted</span> <span class="o">++</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">++</span> <span class="n">biggerSorted</span>  
+</code></pre></div></div>
+
+<h3 id="folds">Folds</h3>
+
+<p>Folds are a class of function which repeatedly reduce a list, having an accumulator value, and a function which takes values from the list elementwise, and combines them into the accumulator. It is described in a <a href="https://stackoverflow.com/a/25150003">stack overflow answer</a> as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>In:
+    initial value
+    way to combine stuff with initial value
+    collection
+Out:
+    combined stuff
+</code></pre></div></div>
+
+<p>We actually write this in code using the following syntax</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">initialAccumulator</span> <span class="o">::</span> <span class="n">a</span>
+<span class="n">combinationFunction</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span>
+
+<span class="n">foo</span> <span class="o">::</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">a</span>
+<span class="n">foo</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">foldr</span> <span class="p">(</span><span class="nf">\</span><span class="n">accumulator</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">combinationFunction</span> <span class="n">accumulator</span> <span class="n">x</span><span class="p">)</span> <span class="n">initialAccumulator</span> <span class="n">xs</span>
+</code></pre></div></div>
+
+<p>There are two common implementations, <code class="language-plaintext highlighter-rouge">foldl</code>, and <code class="language-plaintext highlighter-rouge">foldr</code>, which start by applying the function to the first and last elements respectively. These two folds have different properties, and there is an additional type <code class="language-plaintext highlighter-rouge">foldl'</code>, which strengthens the properties of <code class="language-plaintext highlighter-rouge">foldl</code>. <a href="https://wiki.haskell.org/Foldr_Foldl_Foldl%27">Additional source #1</a> <a href="https://wiki.haskell.org/Foldr_Foldl_Foldl%27">Additional source #2</a></p>
+
+<h4 id="foldr">Foldr</h4>
+
+<p><code class="language-plaintext highlighter-rouge">foldr</code> generates the entire expression before evaluation, with <code class="language-plaintext highlighter-rouge">foldr f z [1,2,3]</code> evaluating to <code class="language-plaintext highlighter-rouge">f 1 (f 2 (f 3 z))</code></p>
+
+<p>For example  <code class="language-plaintext highlighter-rouge">foldr (+) [1..1000]</code> evaluates as <code class="language-plaintext highlighter-rouge">1 + (2 + (3 + (...)))</code>. As the chain of operations doesn’t contain a <strong>redex</strong> (reducible expression) until the entire chain is built, the entire expression must be generated before it can be evaluated. This means it will cause stack overflows on large lists.</p>
+
+<p>If the combination function is able to produce part of the result independent of the recursive case, so the rest of the result is never demanded, the recursion will stop, allowing use on infinite lists</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">foldr</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="mi">0</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldr</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldr</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldr</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="o">+</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldr</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="p">(</span><span class="mi">5</span><span class="o">+</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="p">))))</span> <span class="kt">[]</span>
+<span class="o">=&gt;</span> <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="p">(</span><span class="mi">5</span><span class="o">+</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="p">))))</span>
+</code></pre></div></div>
+
+<h4 id="foldl">Foldl</h4>
+
+<p><code class="language-plaintext highlighter-rouge">foldl</code> applies the function as it goes along, with <code class="language-plaintext highlighter-rouge">foldl f z [1,2,3]</code> evaluating to <code class="language-plaintext highlighter-rouge">f (f (f z 1) 2) 3</code></p>
+
+<p>For example <code class="language-plaintext highlighter-rouge">foldl (+) [1..1000]</code> evaluates as <code class="language-plaintext highlighter-rouge">(((0 + 1) + 2) + 3) + ...</code>. This seems like it would reduce as is goes along, as each bracket is its own redex, but due to Haskell’s lazy evaluation, it doesn’t, so it still causes stack overflows on large lists. It can never handle infinite lists, and will always recurse forever if they are given</p>
+
+<p>An example case of execution is:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="mi">0</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">((</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(((</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">((((</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="kt">[]</span>
+<span class="o">=&gt;</span> <span class="p">((((</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="foldl-1">Foldl’</h4>
+
+<p><code class="language-plaintext highlighter-rouge">foldl'</code> is a modification of <code class="language-plaintext highlighter-rouge">foldl</code> which forces Haskell to evaluate each redex as it goes, despite lazy evaluation, allowing avoiding stack overflows for large lists, but inherently sacrificing the other benefits of lazy evaluation</p>
+
+<p>An example case of execution is:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="mi">0</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="mi">3</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="mi">8</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="mi">10</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="n">foldl</span> <span class="p">(</span><span class="nf">\</span><span class="n">acc</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="kt">[]</span>
+<span class="o">=&gt;</span> <span class="mi">11</span>
+</code></pre></div></div>
+
+<p>We can see this differs from the standard <code class="language-plaintext highlighter-rouge">foldl</code>, as at each step it reduces the accumulated expression</p>
+
+<h3 id="function-composition">Function composition</h3>
+
+<p>A function which chains the output of one function into the input of the other</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="o">.</span><span class="p">)</span> <span class="o">::</span> <span class="p">(</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">c</span>
+<span class="p">(</span><span class="o">.</span><span class="p">)</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span> <span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We can then use this to write code more neatly with fewer brackets, for example, the following statments are equivalent:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="p">(</span><span class="n">h</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">f</span> <span class="o">.</span> <span class="n">g</span> <span class="o">.</span> <span class="n">h</span> <span class="n">x</span>
+</code></pre></div></div>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes General Algorithms</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">General Algorithms</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#searching-data-structures">Searching data structures</a><ul><li><a href="#linear-search">Linear search</a></li><li><a href="#binary-search">Binary search</a><ul><li><a href="#iterative-algorithm">Iterative algorithm</a></li><li><a href="#recursive-algorithm">Recursive algorithm</a></li></ul></li></ul></li><li><a href="#sorting-data-structures">Sorting data structures</a><ul><li><a href="#insertion-sort">Insertion sort</a></li><li><a href="#selection-sort">Selection sort</a></li><li><a href="#heap-sort">Heap sort</a></li><li><a href="#merge-sort">Merge sort</a></li></ul></li><li><a href="#reversing-data-structures">Reversing data structures</a><ul><li><a href="#reversing-a-stack">Reversing a stack</a></li><li><a href="#reversing-a-linked-list">Reversing a linked list</a></li></ul></li><li><a href="#set-operations">Set operations</a><ul><li><a href="#generic-merging">Generic merging</a></li></ul></li><li><a href="#graph-algorithms">Graph algorithms</a><ul><li><a href="#depth-first-search">Depth-first search</a><ul><li><a href="#dfs-for-an-entire-graph">DFS for an entire graph:</a></li><li><a href="#path-finding-with-dfs">Path Finding with DFS</a></li><li><a href="#cycle-finding-with-dfs">Cycle Finding with DFS</a></li><li><a href="#topological-ordering-using-dfs">Topological ordering using DFS</a></li></ul></li><li><a href="#breadth-first-search">Breadth-first search</a></li><li><a href="#directed-graphs">Directed graphs</a></li></ul></li><li><a href="#miscellaneous">Miscellaneous</a><ul><li><a href="#computing-spans">Computing spans</a></li><li><a href="#fibonacci">Fibonacci</a></li><li><a href="#exponential-time">Exponential time</a><ul><li><a href="#linear-time">Linear time</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="digraphs.html" title="digraphs.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="searching-data-structures">Searching data structures</h2>
+
+<h3 id="linear-search">Linear search</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="n">arr</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">search</span>
+<span class="nc">Let</span> <span class="n">k</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">item</span> <span class="n">to</span> <span class="n">search</span> <span class="k">for</span>
+<span class="nc">Let</span> <span class="n">n</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+
+<span class="nc">While</span> <span class="n">n</span> <span class="n">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">arr</span>
+	<span class="nc">If</span> <span class="n">k</span> <span class="n">is</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">arr</span><span class="o">[</span><span class="n">n</span><span class="o">]</span>
+		<span class="nc">Stop</span><span class="o">,</span> <span class="n">since</span> <span class="n">the</span> <span class="n">item</span> <span class="n">is</span> <span class="n">found</span>
+	<span class="nc">Increment</span> <span class="n">n</span>
+<span class="nc">Stop</span><span class="o">,</span> <span class="n">since</span> <span class="n">the</span> <span class="n">item</span> <span class="n">is</span> <span class="n">not</span> <span class="n">in</span> <span class="n">the</span> <span class="n">array</span>
+</code></pre></div></div>
+
+<h3 id="binary-search">Binary search</h3>
+
+<p>This binary search algorithm is used for searching an array, and will return the index of the item in the array else -1.</p>
+
+<pre><code class="language-{java}">Let arr &lt;- the array to search
+Let k &lt;- the item to search for
+if !(arr.isSorted())
+	arr.mergeSort()
+binarySearch(arr, k, int lowerBound, upperBound)
+	middle &lt;- (lowerBound + upperBound) / 2
+	if upperBound &lt; lowerBound
+		return - 1
+	if k == arr[middle]
+    		return middle
+	else if k &lt; arr[middle]
+    		return binarySearch(arr, k, lowerBound, middle -1)
+    	else 
+        	return binarySearch(arr, k, middle + 1, upperBound)
+      
+</code></pre>
+
+<h4 id="iterative-algorithm">Iterative algorithm</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="n">arr</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">search</span>
+<span class="nc">Let</span> <span class="n">k</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">item</span> <span class="n">to</span> <span class="n">search</span> <span class="k">for</span>
+<span class="nc">Let</span> <span class="n">l</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+<span class="nc">Let</span> <span class="n">r</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">size</span> <span class="n">of</span> <span class="n">arr</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nc">Let</span> <span class="n">m</span> <span class="o">&lt;-</span> <span class="o">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="nc">While</span> <span class="n">l</span> <span class="o">!=</span> <span class="n">r</span>
+	<span class="nc">If</span> <span class="n">k</span> <span class="n">is</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">arr</span><span class="o">[</span><span class="n">n</span><span class="o">]</span>
+		<span class="nc">Stop</span><span class="o">,</span> <span class="n">since</span> <span class="n">the</span> <span class="n">item</span> <span class="n">is</span> <span class="n">found</span>
+	<span class="nc">Else</span> <span class="k">if</span> <span class="n">k</span> <span class="n">is</span> <span class="n">less</span> <span class="n">than</span> <span class="n">arr</span><span class="o">[</span><span class="n">n</span><span class="o">]</span>
+		<span class="n">r</span> <span class="o">&lt;-</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span>
+		<span class="n">m</span> <span class="o">&lt;-</span> <span class="o">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span>
+	<span class="nc">Else</span> <span class="o">(</span><span class="k">if</span> <span class="n">k</span> <span class="n">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="n">arr</span><span class="o">[</span><span class="n">n</span><span class="o">])</span>
+		<span class="n">l</span> <span class="o">&lt;-</span> <span class="n">m</span>
+		<span class="n">m</span> <span class="o">&lt;-</span> <span class="o">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nc">Stop</span><span class="o">,</span> <span class="n">since</span> <span class="n">the</span> <span class="n">item</span> <span class="n">is</span> <span class="n">not</span> <span class="n">in</span> <span class="n">the</span> <span class="n">array</span>
+</code></pre></div></div>
+
+<h4 id="recursive-algorithm">Recursive algorithm</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="n">arr</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">search</span>
+<span class="nc">Let</span> <span class="n">k</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">item</span> <span class="n">to</span> <span class="n">search</span> <span class="k">for</span>
+
+<span class="nc">Function</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">k</span><span class="o">)</span>
+	<span class="nc">Let</span> <span class="n">l</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+    <span class="nc">Let</span> <span class="n">r</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">size</span> <span class="n">of</span> <span class="n">arr</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nc">Let</span> <span class="n">m</span> <span class="o">&lt;-</span> <span class="o">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nc">If</span> <span class="n">l</span> <span class="o">==</span> <span class="n">m</span>
+    	<span class="nc">Stop</span><span class="o">,</span> <span class="n">since</span> <span class="n">the</span> <span class="n">item</span> <span class="n">is</span> <span class="n">not</span> <span class="n">in</span> <span class="n">the</span> <span class="n">array</span>
+    <span class="nc">Else</span> <span class="k">if</span> <span class="n">k</span> <span class="n">is</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">arr</span><span class="o">[</span><span class="n">n</span><span class="o">]</span>
+		<span class="nc">Stop</span><span class="o">,</span> <span class="n">since</span> <span class="n">the</span> <span class="n">item</span> <span class="n">is</span> <span class="n">found</span>
+	<span class="nc">Else</span> <span class="k">if</span> <span class="n">k</span> <span class="n">is</span> <span class="n">less</span> <span class="n">than</span> <span class="n">arr</span><span class="o">[</span><span class="n">n</span><span class="o">]</span>
+		<span class="nf">binarySearch</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="nl">l:</span><span class="n">m</span><span class="o">],</span> <span class="n">k</span><span class="o">)</span>
+	<span class="nc">Else</span> <span class="o">(</span><span class="k">if</span> <span class="n">k</span> <span class="n">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="n">arr</span><span class="o">[</span><span class="n">n</span><span class="o">])</span>
+		<span class="n">binarySearch</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="nl">m:</span><span class="n">r</span><span class="o">],</span> <span class="n">k</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h2 id="sorting-data-structures">Sorting data structures</h2>
+
+<h3 id="insertion-sort">Insertion sort</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="no">P</span> <span class="o">&lt;-</span> <span class="n">a</span> <span class="n">priority</span> <span class="n">queue</span> <span class="n">using</span> <span class="n">an</span> <span class="n">sorted</span> <span class="n">array</span> <span class="n">implementation</span>
+<span class="nc">Let</span> <span class="n">arr</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">sort</span>
+<span class="nc">Let</span> <span class="n">arr</span><span class="err">'</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">sorted</span> <span class="n">array</span>
+<span class="nc">For</span> <span class="n">each</span> <span class="n">i</span> <span class="n">in</span> <span class="n">arr</span>
+	<span class="nc">Enqueue</span> <span class="n">i</span> <span class="n">to</span> <span class="no">P</span>
+<span class="nc">While</span> <span class="no">P</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+	<span class="nc">Let</span> <span class="n">i</span> <span class="o">&lt;-</span> <span class="nc">Dequeue</span> <span class="n">from</span> <span class="no">P</span>
+	<span class="nc">Append</span> <span class="n">i</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+</code></pre></div></div>
+
+<h3 id="selection-sort">Selection sort</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="no">P</span> <span class="o">&lt;-</span> <span class="n">a</span> <span class="n">priority</span> <span class="n">queue</span> <span class="n">using</span> <span class="n">an</span> <span class="n">unsorted</span> <span class="n">array</span> <span class="n">implementation</span>
+<span class="nc">Let</span> <span class="n">arr</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">sort</span>
+<span class="nc">Let</span> <span class="n">arr</span><span class="err">'</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">sorted</span> <span class="n">array</span>
+<span class="nc">For</span> <span class="n">each</span> <span class="n">i</span> <span class="n">in</span> <span class="n">arr</span>
+	<span class="nc">Enqueue</span> <span class="n">i</span> <span class="n">to</span> <span class="no">P</span>
+<span class="nc">While</span> <span class="no">P</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+	<span class="nc">Let</span> <span class="n">i</span> <span class="o">&lt;-</span> <span class="nc">Dequeue</span> <span class="n">from</span> <span class="no">P</span>
+	<span class="nc">Append</span> <span class="n">i</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+</code></pre></div></div>
+
+<h3 id="heap-sort">Heap sort</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="no">P</span> <span class="o">&lt;-</span> <span class="n">a</span> <span class="n">priority</span> <span class="n">queue</span> <span class="n">using</span> <span class="n">a</span> <span class="n">heap</span> <span class="n">based</span> <span class="n">implementation</span>
+<span class="nc">Let</span> <span class="n">arr</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">sort</span>
+<span class="nc">Let</span> <span class="n">arr</span><span class="err">'</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">sorted</span> <span class="n">array</span>
+<span class="nc">For</span> <span class="n">each</span> <span class="n">i</span> <span class="n">in</span> <span class="n">arr</span>
+	<span class="nc">Enqueue</span> <span class="n">i</span> <span class="n">to</span> <span class="no">P</span>
+<span class="nc">While</span> <span class="no">P</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+	<span class="nc">Let</span> <span class="n">i</span> <span class="o">&lt;-</span> <span class="nc">Dequeue</span> <span class="n">from</span> <span class="no">P</span>
+	<span class="nc">Append</span> <span class="n">i</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+</code></pre></div></div>
+
+<h3 id="merge-sort">Merge sort</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="n">arr</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">sort</span>
+
+<span class="nc">Function</span> <span class="nf">mergeSort</span><span class="o">(</span><span class="n">arr</span><span class="o">)</span>
+	<span class="nc">If</span> <span class="n">arr</span> <span class="n">contains</span> <span class="n">only</span> <span class="n">one</span> <span class="n">element</span>
+		<span class="nc">Return</span> <span class="n">arr</span>
+    <span class="nc">Let</span> <span class="n">lArr</span><span class="o">,</span> <span class="n">rArr</span> <span class="o">&lt;-</span> <span class="n">arr</span> <span class="n">split</span> <span class="n">into</span> <span class="n">two</span> <span class="n">even</span> <span class="n">halves</span>
+    <span class="nc">Return</span> <span class="nf">merge</span><span class="o">(</span>
+    	<span class="n">mergeSort</span><span class="o">(</span><span class="n">lArr</span><span class="o">),</span>
+    	<span class="n">mergeSort</span><span class="o">(</span><span class="n">rArr</span><span class="o">)</span>
+    <span class="o">)</span>
+    
+<span class="nc">Function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">arr1</span><span class="o">,</span> <span class="n">arr2</span><span class="o">)</span>
+	<span class="nc">Let</span> <span class="n">arr</span><span class="err">'</span> <span class="o">&lt;-</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">array</span> <span class="n">large</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">fit</span> <span class="n">both</span> <span class="n">arr1</span> <span class="n">and</span> <span class="n">arr2</span> <span class="n">in</span>
+	<span class="nc">Let</span> <span class="n">n1</span><span class="o">,</span> <span class="n">n2</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+	<span class="nc">While</span> <span class="n">neither</span> <span class="n">arr1</span> <span class="n">nor</span> <span class="n">arr2</span> <span class="n">are</span> <span class="n">empty</span>
+		<span class="nc">If</span> <span class="n">arr1</span><span class="o">[</span><span class="n">n1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr2</span><span class="o">[</span><span class="n">n2</span><span class="o">]</span>
+			<span class="nc">Append</span> <span class="n">arr1</span><span class="o">[</span><span class="n">n1</span><span class="o">]</span> <span class="n">and</span> <span class="n">arr2</span><span class="o">[</span><span class="n">n2</span><span class="o">]</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+			<span class="nc">Increment</span> <span class="n">n1</span> <span class="n">and</span> <span class="n">n2</span>
+		<span class="nc">Else</span> <span class="k">if</span> <span class="n">arr1</span><span class="o">[</span><span class="n">n1</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr2</span><span class="o">[</span><span class="n">n2</span><span class="o">]</span>
+			<span class="nc">Append</span> <span class="n">arr1</span><span class="o">[</span><span class="n">n1</span><span class="o">]</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+			<span class="nc">Increment</span> <span class="n">n1</span>
+		<span class="nf">Else</span> <span class="o">(</span><span class="k">if</span> <span class="n">arr1</span><span class="o">[</span><span class="n">n1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr2</span><span class="o">[</span><span class="n">n2</span><span class="o">])</span>
+			<span class="nc">Append</span> <span class="n">arr2</span><span class="o">[</span><span class="n">n2</span><span class="o">]</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+			<span class="nc">Increment</span> <span class="n">n2</span>
+	<span class="nc">For</span> <span class="n">each</span> <span class="n">element</span> <span class="n">in</span> <span class="n">arr1</span> <span class="n">from</span> <span class="n">n1</span> <span class="n">to</span> <span class="n">its</span> <span class="n">last</span> <span class="n">element</span>
+		<span class="nc">Append</span> <span class="n">arr1</span><span class="o">[</span><span class="n">n1</span><span class="o">]</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+	<span class="nc">For</span> <span class="n">each</span> <span class="n">element</span> <span class="n">in</span> <span class="n">arr2</span> <span class="n">from</span> <span class="n">n2</span> <span class="n">to</span> <span class="n">its</span> <span class="n">last</span> <span class="n">element</span>
+		<span class="nc">Append</span> <span class="n">arr2</span><span class="o">[</span><span class="n">n2</span><span class="o">]</span> <span class="n">to</span> <span class="n">arr</span><span class="err">'</span>
+	<span class="nc">Return</span> <span class="n">arr</span><span class="err">'</span>
+</code></pre></div></div>
+
+<h2 id="reversing-data-structures">Reversing data structures</h2>
+<h3 id="reversing-a-stack">Reversing a stack</h3>
+
+<p>Push all the items in array to the stack, then pop all the items off the stack into the new reversed array</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="no">S</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">stack</span> <span class="n">to</span> <span class="n">reverse</span>
+<span class="nc">Let</span> <span class="no">S</span><span class="err">'</span> <span class="o">&lt;-</span> <span class="n">an</span> <span class="n">empty</span> <span class="nf">stack</span> <span class="o">(</span><span class="n">the</span> <span class="n">output</span><span class="o">)</span>
+<span class="nc">For</span> <span class="n">each</span> <span class="n">item</span> <span class="n">in</span> <span class="no">S</span>
+	<span class="nc">Pop</span> <span class="n">the</span> <span class="n">head</span> <span class="n">off</span> <span class="no">S</span> <span class="n">into</span> <span class="n">s</span>
+	<span class="nc">Push</span> <span class="n">s</span> <span class="n">to</span> <span class="n">the</span> <span class="n">head</span> <span class="n">of</span> <span class="no">S</span><span class="err">'</span>
+</code></pre></div></div>
+
+<h3 id="reversing-a-linked-list">Reversing a linked list</h3>
+
+<p>Iterate over the linked list from the head, and for each element in the list to reverse, set the item as the predecessor of the head in the new reversed list</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="no">L</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">linked</span> <span class="n">list</span> <span class="n">to</span> <span class="n">reverse</span>
+<span class="nc">Let</span> <span class="no">L</span><span class="err">'</span> <span class="o">&lt;-</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">linked</span> <span class="nf">list</span> <span class="o">(</span><span class="n">the</span> <span class="n">output</span><span class="o">)</span>
+<span class="nc">For</span> <span class="n">each</span> <span class="n">item</span> <span class="n">in</span> <span class="no">S</span>
+	<span class="nc">Let</span> <span class="n">l</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">first</span> <span class="n">item</span> <span class="n">in</span> <span class="n">the</span> <span class="n">linked</span> <span class="n">list</span>
+	<span class="nc">Delete</span> <span class="n">the</span> <span class="n">first</span> <span class="n">item</span> <span class="n">in</span> <span class="n">the</span> <span class="n">linked</span> <span class="n">list</span>
+	<span class="nc">Add</span> <span class="n">l</span> <span class="n">as</span> <span class="n">the</span> <span class="n">head</span> <span class="n">of</span> <span class="no">L</span><span class="err">'</span>
+</code></pre></div></div>
+
+<h2 id="set-operations">Set operations</h2>
+
+<h3 id="generic-merging">Generic merging</h3>
+
+<p>Taking the union of two sets, in linear time:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="no">A</span><span class="o">,</span> <span class="no">B</span> <span class="o">&lt;-</span> <span class="nc">The</span> <span class="n">lists</span> <span class="n">to</span> <span class="n">merge</span>
+<span class="nc">Let</span> <span class="no">S</span> <span class="o">&lt;-</span> <span class="n">an</span> <span class="n">empty</span> <span class="nf">list</span> <span class="o">(</span><span class="n">the</span> <span class="n">output</span><span class="o">)</span>
+<span class="nc">While</span> <span class="n">neither</span> <span class="no">A</span> <span class="n">nor</span> <span class="no">B</span> <span class="n">are</span> <span class="n">empty</span>
+	<span class="nc">Let</span> <span class="n">a</span><span class="o">,</span> <span class="n">b</span> <span class="o">&lt;-</span> <span class="nc">The</span> <span class="n">first</span> <span class="n">elements</span> <span class="n">of</span> <span class="no">A</span> <span class="n">and</span> <span class="no">B</span> <span class="n">respectively</span>
+	<span class="nc">If</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
+		<span class="nc">Add</span> <span class="n">a</span> <span class="n">to</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="no">S</span>
+		<span class="nc">Remove</span> <span class="n">a</span> <span class="n">from</span> <span class="no">A</span>
+	<span class="nc">Else</span> <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">a</span>
+		<span class="nc">Add</span> <span class="n">b</span> <span class="n">to</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="no">S</span>
+		<span class="nc">Remove</span> <span class="n">b</span> <span class="n">from</span> <span class="no">B</span>
+	<span class="nf">Else</span> <span class="o">(</span><span class="n">hence</span> <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">)</span>
+		<span class="nc">Add</span> <span class="n">a</span> <span class="n">to</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="nf">S</span> <span class="o">(</span><span class="n">both</span> <span class="n">are</span> <span class="n">equal</span><span class="o">,</span> <span class="n">so</span> <span class="n">it</span> <span class="n">doesn</span><span class="err">'</span><span class="n">t</span> <span class="n">matter</span> <span class="n">which</span><span class="o">)</span>
+		<span class="nc">Remove</span> <span class="n">a</span> <span class="n">and</span> <span class="n">b</span> <span class="n">from</span> <span class="no">A</span> <span class="n">and</span> <span class="no">B</span> <span class="nf">respectively</span>
+<span class="o">(</span><span class="nc">Cleaning</span> <span class="n">up</span> <span class="n">the</span> <span class="n">other</span> <span class="n">list</span> <span class="n">when</span> <span class="n">one</span> <span class="n">is</span> <span class="n">empty</span><span class="o">)</span>
+<span class="nc">While</span> <span class="no">A</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+	<span class="nc">Add</span> <span class="n">all</span> <span class="n">the</span> <span class="n">items</span> <span class="n">left</span> <span class="n">in</span> <span class="no">A</span> <span class="n">to</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="no">S</span>
+<span class="nc">While</span> <span class="no">B</span> <span class="n">is</span> <span class="n">not</span> <span class="n">empty</span>
+	<span class="nc">Add</span> <span class="n">all</span> <span class="n">the</span> <span class="n">items</span> <span class="n">left</span> <span class="n">in</span> <span class="no">B</span> <span class="n">to</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="no">S</span>
+</code></pre></div></div>
+
+<h2 id="graph-algorithms">Graph algorithms</h2>
+
+<h3 id="depth-first-search">Depth-first search</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span>
+	<span class="n">setLabel</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="no">VISITED</span><span class="o">)</span>
+	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">incidentEdges</span><span class="o">(</span><span class="n">v</span><span class="o">))</span>
+        	<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+			<span class="n">w</span> <span class="o">=</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">e</span><span class="o">)</span>  	
+            		<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+                		<span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">DISCOVERY</span><span class="o">)</span>
+                		<span class="no">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">w</span><span class="o">)</span>
+            		<span class="k">else</span> 
+               			<span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">BACK</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="dfs-for-an-entire-graph">DFS for an entire graph:</h4>
+
+<p>The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// For the entire graph</span>
+<span class="no">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">)</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Vertex</span> <span class="n">u</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">())</span>
+        	<span class="n">setLabel</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="no">UNEXPLORED</span><span class="o">)</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">edges</span><span class="o">())</span>
+        	<span class="n">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">UNEXPLORED</span><span class="o">)</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Vertex</span> <span class="n">u</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">())</span>
+        	<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="no">UNEXPLORED</span><span class="o">)</span>
+            		<span class="no">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">u</span><span class="o">)</span>
+            
+<span class="c1">// For each vertex individually      </span>
+<span class="no">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span>
+	<span class="n">setLabel</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="no">VISITED</span><span class="o">)</span>
+	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">incidentEdges</span><span class="o">(</span><span class="n">v</span><span class="o">))</span>
+        	<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+			<span class="n">w</span> <span class="o">=</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">e</span><span class="o">)</span>  	
+            		<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+                		<span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">DISCOVERY</span><span class="o">)</span>
+                		<span class="no">DFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">w</span><span class="o">)</span>
+            		<span class="k">else</span> 
+               			<span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">BACK</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="path-finding-with-dfs">Path Finding with DFS</h4>
+
+<p>By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the <strong>template method pattern</strong>
+where <strong>S</strong> is an initially empty stack</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pathDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">v</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span>
+    	<span class="n">setLabel</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="no">VISITED</span><span class="o">)</span>
+   	<span class="no">S</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+    	<span class="k">if</span> <span class="n">v</span> <span class="o">=</span> <span class="n">z</span>
+        	<span class="k">return</span> <span class="no">S</span><span class="o">.</span><span class="na">elements</span><span class="o">()</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">incidentEdges</span><span class="o">(</span><span class="n">v</span><span class="o">))</span>
+        	<span class="k">if</span> <span class="nf">getLbel</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+            		<span class="n">w</span> <span class="o">=</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">e</span><span class="o">)</span>
+            		<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+                		<span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">DISCOVERY</span><span class="o">)</span>
+                		<span class="no">S</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">e</span><span class="o">)</span>
+                		<span class="n">pathDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">w</span><span class="o">,</span><span class="n">z</span><span class="o">)</span>
+                		<span class="no">S</span><span class="o">.</span><span class="na">pop</span><span class="o">(</span><span class="n">e</span><span class="o">)</span>
+           		<span class="k">else</span> 
+                		<span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">BACK</span><span class="o">)</span>
+		<span class="no">S</span><span class="o">.</span><span class="na">pop</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="cycle-finding-with-dfs">Cycle Finding with DFS</h4>
+
+<p>The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cycleDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span>
+   	<span class="n">setLabel</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="no">VISITED</span><span class="o">)</span>
+    	<span class="no">S</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">incidentEdges</span><span class="o">(</span><span class="n">v</span><span class="o">))</span>
+        	<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+            		<span class="n">w</span> <span class="o">=</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">e</span><span class="o">)</span>
+            		<span class="no">S</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">e</span><span class="o">)</span>
+            		<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+                		<span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="no">DISCOVERY</span><span class="o">)</span>
+                		<span class="n">cycleDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">w</span><span class="o">)</span>
+               			<span class="no">S</span><span class="o">.</span><span class="na">pop</span><span class="o">(</span><span class="n">e</span><span class="o">)</span>
+           		 <span class="k">else</span> 
+               			<span class="no">T</span> <span class="o">=</span> <span class="k">new</span> <span class="n">empty</span> <span class="nc">Stack</span>
+                		<span class="n">repeat</span>
+                			<span class="n">o</span> <span class="o">=</span> <span class="no">S</span><span class="o">.</span><span class="na">pop</span>
+                			<span class="no">T</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">o</span><span class="o">)</span>
+                		<span class="n">until</span> <span class="n">o</span> <span class="o">=</span> <span class="n">w</span>
+                		<span class="k">return</span> <span class="no">T</span><span class="o">.</span><span class="na">elements</span><span class="o">()</span>
+	<span class="no">S</span><span class="o">.</span><span class="na">pop</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="topological-ordering-using-dfs">Topological ordering using DFS</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">)</span>
+    	<span class="n">z</span> <span class="o">=</span> <span class="no">G</span><span class="o">.</span><span class="na">getVertices</span><span class="o">()</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Vertex</span> <span class="n">u</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">)</span>
+        	<span class="n">setLabel</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="no">UNEXPLORED</span><span class="o">)</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Vertex</span> <span class="n">v</span> <span class="o">:</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">)</span>
+        	<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">v</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>
+            		<span class="nf">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span>
+
+
+<span class="n">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span>
+	<span class="n">setLabel</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="no">VISITED</span><span class="o">)</span>
+    	<span class="k">for</span> <span class="nf">each</span> <span class="o">(</span><span class="nc">Edge</span> <span class="n">e</span> <span class="o">:</span> <span class="n">outgoingEdges</span><span class="o">(</span><span class="n">v</span><span class="o">))</span>
+        	<span class="n">w</span> <span class="o">=</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">e</span><span class="o">)</span>
+        	<span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="no">UNEXPLORED</span>	
+            		<span class="nf">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span> <span class="n">w</span><span class="o">)</span>
+        	<span class="k">else</span>
+            		<span class="nc">Label</span> <span class="n">v</span> <span class="n">with</span> <span class="n">topological</span> <span class="n">number</span> <span class="n">n</span>
+        	<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h3 id="breadth-first-search">Breadth-first search</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">BFS</span><span class="o">(</span><span class="no">G</span><span class="o">)</span>
+  <span class="nl">Input:</span> <span class="n">graph</span> <span class="no">G</span>
+  <span class="nl">Output:</span> <span class="nc">Labelling</span> <span class="n">of</span> <span class="n">edges</span> <span class="n">and</span> <span class="n">partition</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vertices</span> <span class="n">of</span> <span class="no">G</span>
+  <span class="k">for</span> <span class="n">all</span> <span class="n">u</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+    <span class="n">setLabel</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="s">"unexplored"</span><span class="o">)</span>
+  <span class="k">for</span> <span class="n">all</span> <span class="n">e</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">edges</span><span class="o">()</span>
+    <span class="n">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"unexplored"</span><span class="o">)</span>
+  <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+    <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">v</span><span class="o">)</span> <span class="o">==</span> <span class="s">"unexplored"</span>
+      <span class="no">BFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">v</span><span class="o">)</span>
+      
+<span class="nc">Algorithm</span> <span class="nf">BGS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">s</span><span class="o">)</span>
+  <span class="no">L0</span> <span class="o">&lt;-</span> <span class="k">new</span> <span class="n">empty</span> <span class="n">sequence</span>
+  <span class="no">L0</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">s</span><span class="o">)</span>
+  <span class="n">setLabel</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="s">"visited"</span><span class="o">)</span>
+  <span class="k">while</span> <span class="o">!</span><span class="no">L0</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span>
+    <span class="nc">Lnext</span> <span class="o">&lt;-</span> <span class="k">new</span> <span class="n">empty</span> <span class="n">sequence</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="no">L0</span><span class="o">.</span><span class="na">elements</span><span class="o">()</span>
+      <span class="k">for</span> <span class="n">all</span> <span class="n">e</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">incidentEdges</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+        <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">=</span> <span class="s">"unexplored"</span>
+          <span class="n">w</span> <span class="o">&lt;-</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">e</span><span class="o">)</span>
+          <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">=</span> <span class="s">"unexplored"</span>
+            <span class="n">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"discovery"</span><span class="o">)</span>
+            <span class="n">setLabel</span><span class="o">(</span><span class="n">w</span><span class="o">,</span> <span class="s">"visited"</span><span class="o">)</span>
+            <span class="nc">Lnext</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">w</span><span class="o">)</span>
+          <span class="k">else</span>
+            <span class="nf">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"cross"</span><span class="o">)</span>
+    <span class="no">L0</span> <span class="o">&lt;-</span> <span class="nc">Lnext</span> <span class="c1">// Set L0 to Lnext so while loop won't stop</span>
+</code></pre></div></div>
+
+<h3 id="directed-graphs">Directed graphs</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">FloydWarshall</span><span class="o">(</span><span class="no">G</span><span class="o">)</span>
+  <span class="nl">Input:</span> <span class="n">digraph</span> <span class="no">G</span>
+  <span class="nl">Output:</span> <span class="n">transitive</span> <span class="n">closure</span> <span class="no">G</span><span class="o">*</span> <span class="n">of</span> <span class="no">G</span>
+  <span class="n">i</span> <span class="o">&lt;-</span> <span class="mi">1</span>
+  <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+    <span class="n">denote</span> <span class="n">v</span> <span class="n">as</span> <span class="n">vi</span>
+    <span class="n">i</span> <span class="o">&lt;-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="no">G_0</span> <span class="o">&lt;-</span> <span class="no">G</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span> <span class="k">do</span>
+    <span class="n">G_k</span> <span class="o">&lt;-</span> <span class="no">G_</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="nf">n</span><span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">k</span><span class="o">)</span> <span class="k">do</span>
+      <span class="k">for</span> <span class="n">j</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="nf">n</span><span class="o">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">k</span><span class="o">)</span> <span class="k">do</span>
+        <span class="k">if</span> <span class="nf">G_</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="na">areAdjacent</span><span class="o">(</span><span class="n">vi</span><span class="o">,</span><span class="n">vk</span><span class="o">)</span> <span class="o">&amp;</span> <span class="no">G_</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="na">areAdjacent</span><span class="o">(</span><span class="n">vk</span><span class="o">,</span><span class="n">vj</span><span class="o">)</span>
+          <span class="k">if</span> <span class="o">!</span><span class="no">G_</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="na">areAdjacent</span><span class="o">(</span><span class="n">vi</span><span class="o">,</span><span class="n">vj</span><span class="o">)</span>
+            <span class="n">G_k</span><span class="o">.</span><span class="na">insertDirectedEdge</span><span class="o">(</span><span class="n">vi</span><span class="o">,</span><span class="n">vj</span><span class="o">,</span><span class="n">k</span><span class="o">)</span>
+  <span class="k">return</span> <span class="n">G_n</span>
+</code></pre></div></div>
+
+<h2 id="miscellaneous">Miscellaneous</h2>
+
+<h3 id="computing-spans">Computing spans</h3>
+
+<p>The span of an array is the maximum number of consecutive elements less than a value at an index which precede it
+This can be calculated in linear time by</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="no">X</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">array</span> <span class="n">to</span> <span class="n">find</span> <span class="n">spans</span> <span class="n">of</span>
+<span class="nc">Let</span> <span class="no">S</span> <span class="o">&lt;-</span> <span class="n">a</span> <span class="n">stack</span> <span class="n">of</span> <span class="n">all</span> <span class="n">the</span> <span class="n">indices</span> <span class="n">in</span> <span class="no">X</span>
+<span class="nc">Let</span> <span class="n">i</span> <span class="n">be</span> <span class="n">the</span> <span class="n">current</span> <span class="n">index</span>
+<span class="nc">Pop</span> <span class="n">indices</span> <span class="n">from</span> <span class="n">the</span> <span class="n">stack</span> <span class="n">until</span> <span class="n">we</span> <span class="n">find</span> <span class="n">index</span> <span class="n">j</span> <span class="n">such</span> <span class="n">that</span> <span class="no">X</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="no">X</span><span class="o">[</span><span class="n">j</span><span class="o">]</span>
+<span class="nc">Set</span> <span class="no">S</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;-</span> <span class="n">i</span><span class="o">-</span><span class="n">j</span>
+<span class="nc">Push</span> <span class="n">i</span> <span class="n">to</span> <span class="n">the</span> <span class="n">stack</span>
+</code></pre></div></div>
+
+<h3 id="fibonacci">Fibonacci</h3>
+<p>The Fibonacci numbers can be calculated in various ways, each of which have varying efficiency, from very inefficient in exponential time, to efficient in linear time</p>
+
+<h3 id="exponential-time">Exponential time</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Function</span> <span class="nf">fibonacci</span><span class="o">(</span><span class="n">k</span><span class="o">)</span>
+	<span class="nc">If</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="nc">Return</span> <span class="mi">0</span>
+	<span class="nc">Else</span> <span class="k">if</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="nc">Return</span> <span class="n">k</span>
+	<span class="nc">Else</span>
+		<span class="nc">Return</span> <span class="nf">fibonacci</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>This is very inefficient, running in \(O(2^n)\) time, since it re-calculates calls to <code class="language-plaintext highlighter-rouge">fibonacci(k)</code> for some <code class="language-plaintext highlighter-rouge">k</code> many times, instead of using the same result every time it is needed</p>
+
+<h4 id="linear-time">Linear time</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Returns the tuple (f_k, f_k-1)</span>
+<span class="nc">Function</span> <span class="nf">fibonacci</span><span class="o">(</span><span class="n">k</span><span class="o">)</span>
+	<span class="nc">If</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="nc">Return</span> <span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+	<span class="nc">Else</span>
+		<span class="nc">Let</span> <span class="n">i</span><span class="o">,</span><span class="n">j</span> <span class="o">&lt;-</span> <span class="n">fibonacci</span><span class="o">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+		<span class="nc">Return</span> <span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="o">,</span> <span class="n">i</span><span class="o">)</span>
+</code></pre></div></div>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

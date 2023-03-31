@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Priority Queues & Heaps</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Priority Queues & Heaps</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#priority-queues-adt">Priority queues (ADT)</a></li><li><a href="#implementations">Implementations</a><ul><li><a href="#unsorted-list-based">Unsorted list based</a></li><li><a href="#sorted-list-based">Sorted list based</a></li><li><a href="#heap-based">Heap based</a></li></ul></li><li><a href="#comparators">Comparators</a></li><li><a href="#sorting-with-list-based-priority-queues">Sorting with list based priority queues</a></li><li><a href="#heaps-adt">Heaps (ADT)</a></li><li><a href="#heap-properties">Heap properties</a><ul><li><a href="#height-of-a-heap">Height of a Heap</a></li></ul></li><li><a href="#heap-methods">Heap methods</a><ul><li><a href="#inserting-into-a-heap">Inserting into a heap</a></li><li><a href="#removal-from-a-heap">Removal from a heap</a></li></ul></li><li><a href="#use-in-sorting">Use in sorting</a></li><li><a href="#concrete-implementations">Concrete implementations</a><ul><li><a href="#array-based-heap-implementation">Array-based Heap Implementation</a></li></ul></li><li><a href="#building-heaps-in-linear-time">Building heaps in linear time</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="trees.html" title="trees.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="skip-lists.html" title="skip-lists.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="priority-queues-adt">Priority queues (ADT)</h2>
+
+<blockquote>
+  <p><strong>Priority queues</strong> are (unsurprisingly) similar to queues, but items are sorted in order of a property “priority”, the assigned priorities specify which element leaves first (is dequeued). Unlike maps, multiple elements can have the same priority.</p>
+</blockquote>
+
+<p>These priorities, usually called keys, must form a total order relation, for example \(x \leq y\). We often use comparators on keys to form this total order relation.</p>
+
+<p>If two keys of the same priority are to be dequeued, the most common implementation is reverting to the standard queue property of removing the least recently inserted one</p>
+
+<p>In some implementations, the key and the value are taken to be the same thing, so the total ordering is just based on the values, and no additional keys are required</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental Operations</th>
+      <th>Returned value</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">enqueue(k,v)</code></td>
+      <td>-</td>
+      <td>Insert an entry with key <code class="language-plaintext highlighter-rouge">k</code> and value <code class="language-plaintext highlighter-rouge">v</code> into the queue, where <code class="language-plaintext highlighter-rouge">k</code> determines its position in the queue</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dequeue()</code></td>
+      <td>The element with the highest priority</td>
+      <td>Element with the highest priority is removed from the queue</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>The size of priority queue</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>Whether the priority queue is empty</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">first()</code></td>
+      <td>The element with the highest priority, but does not remove it</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Note.</em> The names of these operations/methods can differ, it is important to understand their function and purpose to draw the link with concrete implementations.</p>
+
+<h2 id="implementations">Implementations</h2>
+
+<p>There are three common concrete implementations:</p>
+<ul>
+  <li>Unsorted list based</li>
+  <li>Sorted list</li>
+  <li>Heap based</li>
+</ul>
+
+<p>For both list based implementations, a positional/linked list should be used (for unsorted, doubly linked is needed), since we want to be able to grow the list, but don’t need to be able to index it</p>
+
+<h3 id="unsorted-list-based">Unsorted list based</h3>
+
+<p>To enqueue an item, we just add it to the end of the list, in \(O(1)\) time.</p>
+
+<p>To dequeue an item, we have to traverse the entire list to find the smallest item, taking \(O(n)\) time</p>
+
+<h3 id="sorted-list-based">Sorted list based</h3>
+
+<p>To enqueue an item, we have to traverse the list to find where to put it, taking \(O(n)\) time (but we normally wouldn’t need to traverse the entire list, unlike dequeuing in the unsorted implementation, which also must)</p>
+
+<p>To dequeue an item, we just take it from the front of the list, in \(O(1)\) time</p>
+
+<h3 id="heap-based">Heap based</h3>
+
+<p>This is covered in the section on heaps</p>
+
+<h2 id="comparators">Comparators</h2>
+
+<blockquote>
+  <p><strong>Comparators</strong> are used to “encapsulate[…] the action of comparing two objects from a given total order”</p>
+
+  <p><em>Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser</em>s</p>
+</blockquote>
+
+<p>The comparator is an object external to the keys being compared, not a property of the keys. See the 118 notes for a more full description.</p>
+
+<p>In this context, comparators would be used to provide the total ordering on objects inserted to the priority queue.</p>
+
+<h2 id="sorting-with-list-based-priority-queues">Sorting with list based priority queues</h2>
+
+<p>We can sort a set of items by enqueueing them one by one, using the priority as the total ordering to sort by, and then dequeuing them into a list will result in them being sorted.</p>
+
+<p>When the unsorted concrete implementation is used, this encodes “<strong>selection sort</strong>”. The steps taken in the sort are:</p>
+
+<ol>
+  <li>Enqueue all \(n\) elements, each taking \(O(1)\) time into the priority queue, taking \(O(n)\) time</li>
+  <li>Dequeue all the elements into sorted order, with the total calls taking \(O(n) + O(n-1) + ... + O(1)\) which is \(O(n^2)\) time. Hence, the <strong>total time complexity</strong> is \(O(n^2)\)</li>
+</ol>
+
+<p>When the sorted concrete implementation is used, this encodes “<strong>insertion sort</strong>”. The steps taken in the sort are:</p>
+
+<ol>
+  <li>Enqueue \(n\) elements, with the total calls taking \(O(1) + O(2) + ... + O(n)\), which is \(O(n^2)\) time</li>
+  <li>Dequeue all \(n\) items, each taking \(O(1)\), taking \(O(n)\) time. Hence, the <strong>total time complexity</strong> is \(O(n^2)\)</li>
+</ol>
+
+<h2 id="heaps-adt">Heaps (ADT)</h2>
+<blockquote>
+  <p><strong>Heaps</strong> are essentially binary trees storing keys at their nodes and satisfying a set of “heap properties”.</p>
+</blockquote>
+
+<p>As such, they are implemented in the same way as binary trees, discussed earlier, but with modified internal behaviour when inserting and deleting elements</p>
+
+<h2 id="heap-properties">Heap properties</h2>
+
+<p>The properties a binary tree must fulfil to be a heap are:</p>
+
+<p><strong>Heap-order.</strong> For every internal node other than the root (as it has no parent), the value of the node is greater than the value of the parent node</p>
+
+<p><strong>Complete binary tree.</strong> The height of the tree is minimal for the number of the nodes it contains, and is filled from “left to right”. This is formally defined as:</p>
+
+<blockquote>
+  <p>Let \(h\) be the height of the heap</p>
+
+  <p>​	Every layer of height \(i\) other than the lowest layer (\(i = h-1\)) has \(2^i\) nodes</p>
+
+  <p>​	In the lowest layer, the all internal nodes are to the left of external nodes</p>
+</blockquote>
+
+<p>The <strong>last node</strong> of the heap is the rightmost node of maximum depth</p>
+
+<p><img src="./images/heapDiagram.png" alt="heapDiagram" class="center" /></p>
+
+<h3 id="height-of-a-heap">Height of a Heap</h3>
+
+<blockquote>
+  <p>A heap storing <strong><em>n</em></strong> keys has height = log<sub>2</sub>n.</p>
+</blockquote>
+
+<p><strong>Proof.</strong> Let \(h\) be the height of a heap storing \(n\) keys</p>
+
+<p>Since there are \(2^i\) keys at depth \(i = 0, \ldots, h - 1\) and at least 1 key at depth \(h\), we have \(n \ge 1 +2 +4+\ldots+2^{h-1} + 1\)</p>
+
+<p>Thus, \(n \ge 2^h \Rightarrow h \le log_{2}\ n\).</p>
+
+<h2 id="heap-methods">Heap methods</h2>
+
+<h3 id="inserting-into-a-heap">Inserting into a heap</h3>
+
+<p>First, the element is inserted to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, with a running time of \(O(1)\) time, if a pointer to the position to insert is maintained</p>
+
+<p>Then, the <code class="language-plaintext highlighter-rouge">upheap</code> algorithm is run to re-order the heap so that it fulfils the heap properties. This algorithm repeatedly swaps the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let k &lt;- the element to insert
+While k is smaller than its parent, and k is not the root node
+	Swap the values of k and its parent node
+</code></pre></div></div>
+
+<p><img src="./images/heapInsertion.png" alt="heapInsertion" class="center" /></p>
+
+<p>Since the heap has a height of \(O(log_2\ n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes \(O(log_2\ n)\), time. In total, insertion takes \(O(log_2\ n)\) time.</p>
+
+<h3 id="removal-from-a-heap">Removal from a heap</h3>
+
+<p>The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten.</p>
+
+<p>First, the value of the root node is overwritten with the value of the last node, and the last node is removed from the tree:</p>
+
+<p>Then the <code class="language-plaintext highlighter-rouge">downheap</code> algorithm is run to re-order the heap so that it fulfils the heap properties:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let p &lt;- the root node
+Let c &lt;- the child of p with the minimal key (right if existent, otherwise left)
+If the value of p is less than or equal to the value of c
+	Stop, since the heap order property is fulfilled
+Else
+	Swap the values of p and c
+	Run the downheap algorithm again with the root node (p) now as the child node (c)
+</code></pre></div></div>
+
+<p><img src="./images/heapDeletion.png" alt="heapDeletion" class="center" /></p>
+
+<p>As with <code class="language-plaintext highlighter-rouge">upheap</code>, since the heap has a height of \(O(log_2\ n)\), the <code class="language-plaintext highlighter-rouge">downheap</code> algorithm takes \(O(log_2\ n)\) time.</p>
+
+<h2 id="use-in-sorting">Use in sorting</h2>
+
+<p>Since the heap can be used to implement priority queues, it can be used for sorting as with list based implementations, which resulted in selection and insertion sort. This is called a heap sort.</p>
+
+<p>The steps taken in heap sort are:</p>
+<ol>
+  <li>Enqueue \(n\) elements, with each enqueueing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time</li>
+  <li>Dequeue all \(n\) items, with each Dequeuing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time</li>
+</ol>
+
+<p>Hence, the <strong>overall time complexity</strong> is \(O(n \cdot log n)\)</p>
+
+<p>This is one of the fastest classes of sorting algorithm, and is much more efficient than <strong>quadratic sorting algorithms</strong> like insertion or selection sort.</p>
+
+<h2 id="concrete-implementations">Concrete implementations</h2>
+
+<p>Any <strong>tree implementation</strong> can be used for a heap, as it merely modifies the way getters and setters work, not the internal data structures.</p>
+
+<p>The main draw-back of <strong>array based implementations</strong> of space inefficiency for unbalanced trees is a <strong>non-issue for heaps</strong>, as they are <strong>implicitly balanced</strong>, so they are often used.</p>
+
+<h3 id="array-based-heap-implementation">Array-based Heap Implementation</h3>
+
+<p>Given \(n\) elements, an element at position \(p\) is stored at index/cell \(f(p)\) where</p>
+
+<ul>
+  <li>If \(p\) is the root, then \(f(p) = 0\) (index 0)</li>
+  <li>If \(p\) is the left child of another position \(q\), \(f(p) = 2f(q) + 1\).</li>
+  <li>For the right child this is, \(f(p) = 2f(q) + 2\).</li>
+</ul>
+
+<blockquote>
+  <p>The <strong>last node</strong> corresponds to the last occupied index. <strong>Insertion</strong> will insert a new element into the first free cell (unoccupied index) and <strong>remove_min</strong> will remove cell 0.</p>
+</blockquote>
+
+<p>Usually we use an Array List so that the array can grow.</p>
+
+<h2 id="building-heaps-in-linear-time">Building heaps in linear time</h2>
+
+<p>The number of operations for <code class="language-plaintext highlighter-rouge">upheap</code> and <code class="language-plaintext highlighter-rouge">downheap</code> on a item in the heap are related to its position. If an item is closer to the top, <code class="language-plaintext highlighter-rouge">upheap</code> will be quicker, since it has “less far to go”. Since there are more values on the bottom layer of the heap (\(2^n\)) , than the top layer of the heap (\(1\)), if we have to apply one of the algorithms to all of the items in the heap, we should prefer to use <code class="language-plaintext highlighter-rouge">downheap</code>, as it will result in fewer operations</p>
+
+<p>Since we can represent a heap using an array-based implementation of a tree, we can take the unsorted array we want to turn into a heap, then use heap operations on the array directly to turn it into a valid heap expressed in the array-based implementation.</p>
+
+<p>As discussed previously, we could go about this in two ways:</p>
+
+<ol>
+  <li>Iterate from the first to the last index of the unsorted array, calling <code class="language-plaintext highlighter-rouge">upheap</code> on each of the items. At each step, all the items preceding the current index in the array will form a valid heap, so after calling <code class="language-plaintext highlighter-rouge">upheap</code> on every item, the array is a valid heap</li>
+  <li>Iterate from the last to the first index of the unsorted array, calling <code class="language-plaintext highlighter-rouge">downheap</code> on each of the items</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let H &lt;- the unsorted array to convert to a heap
+For each item in the array in reverse order
+	Call downheap on the item
+</code></pre></div></div>
+
+<p>There is a proof that this is actually \(O(n)\) (<a href="https://stackoverflow.com/a/18742428">source #1</a>, <a href="https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/">source #2</a>), but it’s a bit tricky to explain here, so is omitted</p>
+
+<p>A final point is despite the fact we can build a heap in \(O(n)\) time, we cannot use this to sort the array in linear time, as removing from the top of the heap still takes \(O(n\ log\ n)\) time</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

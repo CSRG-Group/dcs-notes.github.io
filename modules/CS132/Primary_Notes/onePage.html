@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>onePage 132 One Page Notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">132 One Page Notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#data-representation">Data Representation</a><ul><li><a href="#representation-and-number-systems">Representation and number systems</a><ul><li><a href="#sizes-of-symbols">Sizes of symbols</a></li></ul></li><li><a href="#why-do-we-use-binary">Why do we use Binary?</a><ul><li><a href="#what-is-noise-immunity">What is Noise Immunity?</a></li></ul></li><li><a href="#bits-bytes-words-and-bus-sizes">Bits, Bytes, Words, and Bus sizes</a></li><li><a href="#conversion">Conversion</a></li><li><a href="#converting-from-decimal-to-binary">Converting from Decimal to Binary</a><ul><li><a href="#decimal-to-octal-or-hex">Decimal to Octal or Hex</a></li></ul></li><li><a href="#addition">Addition</a></li><li><a href="#negative-numbers">Negative Numbers</a><ul><li><a href="#signed-magnitude-representation">Signed Magnitude Representation</a></li><li><a href="#twos-complement-representation">Two’s complement representation</a></li></ul></li><li><a href="#subtraction">Subtraction</a></li><li><a href="#fractional-numbers">Fractional Numbers</a><ul><li><a href="#fixed-point-representation">Fixed Point Representation</a></li><li><a href="#floating-point-representation">Floating Point Representation</a><ul><li><a href="#components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</a></li><li><a href="#ieee-754-double-precision-number">IEEE 754 Double-precision Number</a></li><li><a href="#special-values">Special values</a></li></ul></li><li><a href="#issues-with-floating-point-precision">Issues with floating point precision</a></li></ul></li></ul></li><li><a href="#digital-logic">Digital Logic</a><ul><li><a href="#logic-gates-circuits-and-truth-tables">Logic Gates, Circuits and Truth tables</a><ul><li><a href="#an-alternative-view-of-the-or-circuit">An Alternative view of the OR circuit</a></li><li><a href="#functions-of-two-binary-variables">Functions of Two Binary Variables</a></li><li><a href="#electronic-logic-gates">Electronic Logic Gates</a></li></ul></li><li><a href="#simplifying-logical-expressions-using-boolean-algebra">Simplifying Logical Expressions using Boolean Algebra</a><ul><li><a href="#logic-circuit-to-truth-table">Logic Circuit to Truth Table</a></li><li><a href="#truth-table-to-boolean-equation">Truth table to Boolean Equation</a></li><li><a href="#laws-of-boolean-algebra">Laws of Boolean Algebra</a></li><li><a href="#karnaugh-maps--k-maps">Karnaugh Maps / K-maps</a><ul><li><a href="#multiple-equivalent-expressions">Multiple equivalent expressions</a></li><li><a href="#dont-care-conditions">Don’t Care Conditions</a></li></ul></li></ul></li><li><a href="#combinatorial-logic-circuits">Combinatorial Logic Circuits</a><ul><li><a href="#1-bit-half-adder">1-bit Half-Adder</a></li><li><a href="#1-bit-full-adder">1-bit Full-Adder</a></li><li><a href="#n-bit-full-adder">N-bit Full-Adder</a></li><li><a href="#adder-to-addersubtractor">Adder to Adder/Subtractor</a><ul><li><a href="#n-bit-addersubtractor">N-bit Adder/Subtractor</a></li></ul></li><li><a href="#active-high-or-active-low">Active High or Active Low?</a></li><li><a href="#decoders">Decoders</a></li><li><a href="#encoder">Encoder</a></li><li><a href="#multiplexers-mux">Multiplexers (MUX)</a></li><li><a href="#de-multiplexers-de-mux">De-Multiplexers (DE-MUX)</a></li></ul></li><li><a href="#sequential-logic-circuits">Sequential Logic Circuits</a><ul><li><a href="#flip-flops">Flip-Flops</a></li><li><a href="#d-type-latch">D-Type Latch</a><ul><li><a href="#three-different-kinds-of-triggers">Three different kinds of triggers</a></li></ul></li><li><a href="#n-bit-register">N-bit Register</a></li><li><a href="#n-bit-shift-register">N-bit Shift Register</a></li><li><a href="#n-bit-counter">N-bit Counter</a></li></ul></li><li><a href="#three-state-logic--physical-implementations">Three State Logic &amp; Physical Implementations</a><ul><li><a href="#propagation-delay">Propagation Delay</a></li><li><a href="#logic-integrated-circuits-ics">Logic Integrated Circuits (ICs)</a></li><li><a href="#pla">PLA</a></li></ul></li></ul></li><li><a href="#assembler">Assembler</a><ul><li><a href="#microprocessor-fundamentals">Microprocessor Fundamentals</a><ul><li><a href="#the-fetch-decode-execute-cycle">The fetch-decode-execute cycle</a><ul><li><a href="#fetch-stage">Fetch stage</a></li><li><a href="#decode-stage">Decode stage</a></li><li><a href="#execute-stage">Execute stage</a></li></ul></li></ul></li><li><a href="#registers">Registers</a><ul><li><a href="#data-registers">Data registers</a></li><li><a href="#status-registers">Status registers</a></li><li><a href="#address-register">Address register</a><ul><li><a href="#stack-pointer">Stack pointer</a></li></ul></li><li><a href="#program-counter">Program counter</a></li></ul></li><li><a href="#register-transfer-language">Register Transfer Language</a><ul><li><a href="#example-instruction-fetching">Example: Instruction fetching</a></li></ul></li><li><a href="#assembly-language">Assembly Language</a><ul><li><a href="#assembler-format">Assembler Format</a></li><li><a href="#assembly-language-conventions">Assembly Language Conventions</a></li><li><a href="#data-types-and-assembler-instructions">Data types and assembler instructions</a></li></ul></li><li><a href="#instruction-set-aspects">Instruction set aspects</a><ul><li><a href="#data-movement-instructions">Data Movement Instructions</a></li><li><a href="#arithmetic-instructions">Arithmetic Instructions</a></li><li><a href="#logical-instructions">Logical instructions</a></li><li><a href="#branch-instructions">Branch instructions</a></li><li><a href="#subroutines-and-stacks">Subroutines and Stacks</a></li></ul></li><li><a href="#addressing-modes">Addressing modes</a></li></ul></li><li><a href="#memory-systems">Memory Systems</a><ul><li><a href="#memory-hierarchy">Memory hierarchy</a></li><li><a href="#cache-memory">Cache Memory</a><ul><li><a href="#moores-law">Moore’s Law</a></li></ul></li><li><a href="#memory-cell-organisation">Memory Cell Organisation</a><ul><li><a href="#semiconductor-memory-main-store">Semiconductor Memory (main store)</a></li></ul></li><li><a href="#organising-memory">Organising memory</a><ul><li><a href="#memory-cells">Memory cells</a></li><li><a href="#storing-single-words">Storing single words</a></li><li><a href="#storing-multiple-words">Storing multiple words</a></li></ul></li><li><a href="#detecting-and-correcting-errors">Detecting and Correcting Errors</a><ul><li><a href="#noise">Noise</a><ul><li><a href="#digital-logic-devices">Digital logic devices</a><ul><li><a href="#illustrating-noise-immunity-a-trademarked-akram-analogy">Illustrating noise immunity, a trademarked Akram Analogy™</a></li></ul></li></ul></li><li><a href="#detecting-single-errors">Detecting single errors</a><ul><li><a href="#parity-systems">Parity systems</a><ul><li><a href="#finite-automaton-to-calculate-parity">Finite automaton to calculate parity</a></li><li><a href="#hardware-to-calculate-parity">Hardware to calculate parity</a></li></ul></li></ul></li><li><a href="#detecting-multiple-errors">Detecting multiple errors</a><ul><li><a href="#bit-column-parity">Bit-column parity</a></li><li><a href="#error-correcting-codes-row-and-column-parity">Error Correcting Codes: row and column parity</a></li></ul></li></ul></li></ul></li><li><a href="#io-mechanisms">I/O Mechanisms</a><ul><li><a href="#memory-mapped-io">Memory mapped I/O</a></li><li><a href="#polled-io">Polled I/O</a></li><li><a href="#handshaking">Handshaking</a></li><li><a href="#interrupts">Interrupts</a><ul><li><a href="#interrupts-for-io-examples">Interrupts for IO examples</a></li></ul></li><li><a href="#direct-memory-access-dma">Direct Memory Access (DMA)</a><ul><li><a href="#dma-modes-of-operation">DMA Modes of Operation</a></li></ul></li></ul></li><li><a href="#processor-architecture">Processor Architecture</a><ul><li><a href="#microprocessor-organisation">Microprocessor Organisation</a></li><li><a href="#micro-and-macro-instructions">Micro and Macro Instructions</a><ul><li><a href="#clock-cycles">Clock cycles</a></li><li><a href="#representation-of-instructions">Representation of Instructions</a></li></ul></li><li><a href="#control-unit-design">Control Unit Design</a><ul><li><a href="#hardwired-cu">Hardwired CU</a></li><li><a href="#microprogrammed">Microprogrammed</a><ul><li><a href="#standard-operation-description">Standard operation description</a></li></ul></li></ul></li><li><a href="#cisc-vs-risc">CISC vs RISC</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Are defined in the relevant module data file
+-->
+
+
+
+
+
+<!-- not the best and a little O-horrible  but the easiest way to do it --><h1 id="data-representation">Data Representation</h1>
+       
+            <h2 id="representation-and-number-systems">Representation and number systems</h2>
+
+<p>In terms of the exam, the most important concept is <strong>value versus representation</strong> of any number. In practice, this means you need to accept that you cannot always represent a value across different bases using the same number of symbols.</p>
+
+<blockquote>
+  <p><strong>One value, many representations.</strong> A representation is a way of using or describing a value, for example \(1010_2\) and \(10_{10}\) denote the same value.
+A typical exam question (2019) may ask why we use different representations- one can cite how whilst binary is most appropriate for digital logic circuits (due to the high noise immunity it offers), it is not easy for humans to read nor compute, and hence we introduce the decimal system to handle daily life. We come up with other number systems such as hexadecimal as it is more efficient on a bus (wider range for the same number of symbols) than systems such as octal or decimal.</p>
+</blockquote>
+
+<p>There are four main number systems we will use:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number system</th>
+      <th>Symbols</th>
+      <th>Base</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Binary</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code></td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Octal</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, <code class="language-plaintext highlighter-rouge">4</code>, <code class="language-plaintext highlighter-rouge">5</code>, <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">7</code></td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Decimal</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, <code class="language-plaintext highlighter-rouge">4</code>, <code class="language-plaintext highlighter-rouge">5</code>, <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">7</code>, <code class="language-plaintext highlighter-rouge">8</code>, <code class="language-plaintext highlighter-rouge">9</code></td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Hex</td>
+      <td><code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">2</code>, <code class="language-plaintext highlighter-rouge">3</code>, <code class="language-plaintext highlighter-rouge">4</code>, <code class="language-plaintext highlighter-rouge">5</code>, <code class="language-plaintext highlighter-rouge">6</code>, <code class="language-plaintext highlighter-rouge">7</code>, <code class="language-plaintext highlighter-rouge">8</code>, <code class="language-plaintext highlighter-rouge">9</code>, <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>, <code class="language-plaintext highlighter-rouge">C</code>, <code class="language-plaintext highlighter-rouge">D</code>, <code class="language-plaintext highlighter-rouge">E</code>, <code class="language-plaintext highlighter-rouge">F</code></td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is crucial that you learn to distinguish between representations of these numbers – for example, 16<sub>10</sub> = 10000<sub>2</sub> = 20<sub>8</sub> = 10<sub>16</sub>.</p>
+
+<p>For any number system, you can use the following equation to calculate the value of a number:</p>
+
+\[\text{value = (sum from } i = 0\text{ to } i = (N-1))\text{ symbol}(i) \times \text{base}^i\]
+
+<h3 id="sizes-of-symbols">Sizes of symbols</h3>
+<p>As the base increases, we can see that a single symbol can represent bases more concisely than in other bases – take the following examples:</p>
+<ul>
+  <li>Octal symbols can represent 3 bits:
+    <ul>
+      <li>111<sub>2</sub> = 7<sub>8</sub></li>
+      <li>010 100 011<sub>2</sub> = 243<sub>8</sub></li>
+    </ul>
+  </li>
+  <li>Hex symbols can represent four bits:
+    <ul>
+      <li>1111<sub>2</sub> = 15<sub>10</sub> = F<sub>16</sub></li>
+      <li>1010 0011<sub>2</sub> = A3<sub>16</sub></li>
+    </ul>
+  </li>
+</ul>
+
+<p>A decimal symbol requires roughly <strong>3.3 bits</strong>, and therefore hex and octal are much more convenient when describing values on a bus.</p>
+
+<h2 id="why-do-we-use-binary">Why do we use Binary?</h2>
+
+<p>Mainly because 0s and 1s provide the greatest degree of distinction for voltage levels which gives us <strong>noise immunity</strong>.</p>
+
+<h3 id="what-is-noise-immunity">What is Noise Immunity?</h3>
+
+<p>In <em>TTL (transistor-transistor logic)</em>, we use two voltage ranges to determine when we register a <code class="language-plaintext highlighter-rouge">0</code> or a <code class="language-plaintext highlighter-rouge">1</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Voltage</th>
+      <th>Signal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0V - 0.8V</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2.4V - 5V</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>These are ranges are governed by the tolerance of the electrical components and can be affected by <em>noise</em> that makes the voltage fluctuate. Hence there is a “divide” between the 2 ranges to provide a separation for the signal, in order to properly distinguish between a 0 or 1.</p>
+
+  <p>Otherwise, if the cut-off point was just at a particular voltage, e.g. \(3V\), then if it is at \(2.9V\) the transistor will not know if it is a \(0\) or a \(1\) because there will be fluctuations (noise).</p>
+</blockquote>
+
+<p>Now we can carry this information on a wire and usually we have multiple wires running in parallel, which is known as a <strong>parallel bus</strong> (a collection of wires communicating a value between sub-circuits).</p>
+
+<h2 id="bits-bytes-words-and-bus-sizes">Bits, Bytes, Words, and Bus sizes</h2>
+
+<p>You need to understand and recall the value ranges (or size) of the aforementioned terms:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Magic word</th>
+      <th>Explanation</th>
+      <th>Value range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bit</td>
+      <td>Binary digit</td>
+      <td>Values 0<sub>2</sub> or 1<sub>2</sub> inclusive</td>
+    </tr>
+    <tr>
+      <td>Byte</td>
+      <td>8 bits</td>
+      <td>Values 0<sub>10</sub> to 255<sub>10</sub> inclusive</td>
+    </tr>
+    <tr>
+      <td>Nibble</td>
+      <td>4 bits</td>
+      <td>Values 0<sub>10</sub> to 15<sub>10</sub> inclusive</td>
+    </tr>
+    <tr>
+      <td>Word</td>
+      <td>The number of <strong>bits</strong> a machine can <strong>process simultaneously</strong></td>
+      <td>Machine specific – increasing over time</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <strong>disadvantages</strong> of increased word size are increased CPU, bus, and memory complexity. This results in an <strong>exponential increase in cost</strong>.</p>
+
+<p><strong>MSB</strong> (most significant bit) and <strong>LSB</strong> (least significant bit), usually the leftmost and rightmost bit respectively. There are exceptions when you want to flip it around, and that should in such cases you should explicitly state which bit you are referring to.</p>
+
+<h2 id="conversion">Conversion</h2>
+
+<p>One disadvantage of binary is that it is <strong>not</strong> a very <strong>compact</strong> way of representing values. So for representing larger values for humans, we usually use octal or hexadecimal, why? because…</p>
+
+<p><em>It is easier to convert from binary to octal or binary to hexadecimal than from binary to decimal</em></p>
+
+<p>One octal symbol can represent 3 bits 
+\(010_2 = 2_8, 100_2 = 4_8,011_2 = 3_8 \\
+010\;100\;011_2 = 243_8\)
+One hex can represent 4 bits
+\(1010\;0011_2=A3_{16}\)
+One decimal symbol requires 3.333… bits, so hex and octal are more convenient.</p>
+
+<h2 id="converting-from-decimal-to-binary">Converting from Decimal to Binary</h2>
+
+<p>Repeatedly divide the number by the base required, i.e 2 for binary, and record the remainder for each division. Once you’re done, write out the remainders from quotient 0 to the original number (in this case right to left) and you will arrive at the binary representation of your original number.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Quotient</th>
+      <th style="text-align: center">163</th>
+      <th style="text-align: center">81</th>
+      <th style="text-align: center">40</th>
+      <th style="text-align: center">20</th>
+      <th style="text-align: center">10</th>
+      <th style="text-align: center">5</th>
+      <th style="text-align: center">2</th>
+      <th style="text-align: center">1</th>
+      <th style="text-align: center">0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Remainder</strong></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+\[163_{10} = 1010 \;0011_2\]
+
+<h3 id="decimal-to-octal-or-hex">Decimal to Octal or Hex</h3>
+
+<p>The same division method can be used…but it might be easier to convert to binary first and then into the required base:</p>
+
+\[\begin{align}
+23_{10} &amp;= 16 + 4 +2+1\\
+&amp;=10111_2 \\
+&amp;=27_8 (010\; 111_2) \\
+&amp;= 17_{16} (0001\;0111_2)
+\end{align}\]
+
+<p>You can do this unless Matt prohibits it in exam. The best way to get better at this is by doing practice questions.</p>
+
+<h2 id="addition">Addition</h2>
+
+<blockquote>
+  <p>To do <strong>addition</strong> in binary we just do it normally, sum the numbers, and carry over the 1 if it adds to 2.</p>
+
+  <p>It is helpful to include the <strong>carry row</strong> in your working for clarity. (also remember hearing Matt saying to do it)</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0100 0101
++ 1110 1101
+------------
+  0011 0010  &lt;- Sum Row
+  1100 1101  &lt;- Carry Row
+</code></pre></div></div>
+
+<h2 id="negative-numbers">Negative Numbers</h2>
+
+<h3 id="signed-magnitude-representation">Signed Magnitude Representation</h3>
+
+<p>One way we can represent negative binary numbers if by adding considering the most significant bit as a flag for whether the number is negative. Normally, the MSB being one means the number is negative.</p>
+
+<p>However, using this representation, there are two representations of zero: \(+0\) and \(-0\). This can lead to confusion when using equality operations and other conceptual errors, however, it can be less complex to implement.</p>
+
+<p>Additionally, it reduces the range of the representation by one number, since an additional one is used up to represent the second zero value. This leaves signed magnitude being able to encode the range of numbers \([-2^{n-1} + 1, 2^{n-1} -1]\)</p>
+
+<h3 id="twos-complement-representation">Two’s complement representation</h3>
+
+<p>The MSB has the same value as in the binary positional representation but it is negative. This makes the range asymmetric from [-2<sup>n-1</sup>, 2<sup>n-1</sup> - 1] – there are more negative numbers than positive as the MSB is negative. Because of this, it also makes the zero <strong>unique</strong>.</p>
+
+<p>To get a negative number in two’s complement form from its positive number in binary.</p>
+
+<ol>
+  <li>Invert the bits ensuring there are enough bits for the MSB to be the sign</li>
+  <li>Add 1, ignoring any overflow.</li>
+</ol>
+
+<p>Tada, now we can do subtraction by adding negative numbers in two’s complement form. Positive numbers in two’s complement are exactly the same as their binary form just that you have to include an extra bit (the MSB) that is 0.</p>
+
+<p>The only thing to know for addition and subtraction in two’s complement is to ignore any carry to bits that are beyond the precision of the 2 numbers.</p>
+
+<h2 id="subtraction">Subtraction</h2>
+
+<p>Two subtract two numbers, we convert the number to subtract into a negative value, either by flipping the sign bit, or inverting the bits and adding one, dependent on representation. Then we can just add as usual.</p>
+
+<p>This is intuitively clear, as \(a - b \equiv a + (-b)\)</p>
+
+<h2 id="fractional-numbers">Fractional Numbers</h2>
+
+<h3 id="fixed-point-representation">Fixed Point Representation</h3>
+
+<p>For fractions, we introduce inverse/decimal powers. \(2.75_{10}\) = \(10.11_2\).</p>
+
+\[\begin{align}
+&amp;10.11_2&amp;            &amp;=&amp; &amp;1&amp;   &amp;0&amp;   &amp;1&amp;      &amp;1&amp;      \\
+&amp;\text{Position:}&amp; &amp;&amp;  &amp;2^1&amp; &amp;2^0&amp; &amp;2^{-1}&amp; &amp;2^{-1}&amp; \\
+&amp;&amp;                   &amp;=&amp; &amp;2&amp;    &amp;1&amp;    &amp;0.5&amp;       &amp;0.25&amp; \\
+&amp;\text{Value}&amp;     &amp;=&amp; &amp;(1\times 2+&amp;    &amp;0\times1+&amp;    &amp;1\times0.5+&amp;   &amp;1\times0.25)&amp; \\
+&amp;&amp;                   &amp;=&amp; &amp;2.75_{10}&amp;
+\end{align}\]
+
+<p>However, if the number is 2.8​ for example, <strong>Fixed-PR</strong> will not be very efficient because to represent it in binary will require a lot of bits. This means that in a microprocessor, we will need an incredibly large bus to represent such values.</p>
+
+<h3 id="floating-point-representation">Floating Point Representation</h3>
+
+<p>Floating point uses the same principles as scientific notation. You should be familiar with <strong>Floating-PR</strong> from <a href="https://csrg-group.github.io/dcs-notes.github.io/CS118/part1.html">CS118</a>. A duplicate of the content there is mirrored here for completeness:</p>
+
+<p>The IEEE 754 standard is widely used and specifies specific levels of binary precision:</p>
+
+<ul>
+  <li>Single precision (32 bits) – 1bit for the sign, 8bits for the exponent, and 23 bits for the mantissa</li>
+  <li>Double precision (64 bits)</li>
+  <li>Quad precision (128 bits)</li>
+</ul>
+
+<h4 id="components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</h4>
+
+<p>Before diving into the components, it’s much better to look at an example. Therefore, take the decimal number <code class="language-plaintext highlighter-rouge">43.625</code>; this has binary representation <code class="language-plaintext highlighter-rouge">101011.101</code>. However, we would represent this as <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup>.</p>
+
+<p>In general the value of a floating point number is determined by</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 127</sup></p>
+</blockquote>
+
+<p>There are three basic components which make up the IEEE 754 floating point number:</p>
+
+<ol>
+  <li>The <strong>Sign Bit</strong>: this is a <em>single bit</em> where a <code class="language-plaintext highlighter-rouge">0</code> represents a positive number, whilst a <code class="language-plaintext highlighter-rouge">1</code> represents a negative number.</li>
+  <li>The <strong>Biased Exponent</strong>: this is an <em>eight bit</em> exponent field which represents both positive and negative exponents. It is <strong>biased</strong> because it is a fixed positive value that is then subtracted by 127 to represent either a positive or negative exponent. For example, given the exponent bits 10000100<sub>2</sub> = 132<sub>10</sub>. We arrive at the index 2<sup>5</sup> because 2<sup>132-127</sup> = 2<sup>5</sup>.</li>
+  <li>The <strong>Mantissa</strong>: this is a <em>twenty-three bit</em> field which makes up the numbers to right of the decimal point <code class="language-plaintext highlighter-rouge">.</code> (as shown in the formula above). The most significant bit (the left most) is 1/2<sup>1</sup>, then 1/2<sup>2</sup>, and so on. In most cases, the value before the <code class="language-plaintext highlighter-rouge">.</code> is 1, however in some cases which we will explain in the <strong>special</strong> cases section below, it may be 0 (this is when it is renormalised).</li>
+</ol>
+
+<p>With these components established, we can rewrite our previous example, <code class="language-plaintext highlighter-rouge">43.625</code>, <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup> in IEEE 754 notation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sign (1 bit)</th>
+      <th>Exponent (8 bits)</th>
+      <th>Mantissa (23 bits)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+      <td><code class="language-plaintext highlighter-rouge">10000100</code></td>
+      <td><code class="language-plaintext highlighter-rouge">01011101000000000000000</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Complete representation:</strong> <code class="language-plaintext highlighter-rouge">0 10000100 01011101000000000000000</code></p>
+
+<h4 id="ieee-754-double-precision-number">IEEE 754 Double-precision Number</h4>
+
+<p>Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 1023</sup></p>
+</blockquote>
+
+<ul>
+  <li><strong>Sign Bit.</strong> No change in bits.</li>
+  <li><strong>Mantissa.</strong> 52-bits</li>
+  <li><strong>Biased Exponent.</strong> 11-bits</li>
+</ul>
+
+<h4 id="special-values">Special values</h4>
+
+<p>IEEE 754 also has some special values you need to keep in mind:</p>
+
+<p>When the <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">0000 0000</code></p>
+
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">-0</code>.</li>
+  <li>Otherwise, renormalise the number with this form: (<code class="language-plaintext highlighter-rouge">-1</code>)<sup>sign bit</sup> x <code class="language-plaintext highlighter-rouge">0.(fraction)</code> x 2<sup>-127</sup></li>
+</ul>
+
+<p>The <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">1111 1111</code></p>
+
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">+- infinity</code>.</li>
+  <li>Otherwise, the value is <code class="language-plaintext highlighter-rouge">NaN</code>, otherwise known as <strong>not a number</strong>.</li>
+</ul>
+
+<h3 id="issues-with-floating-point-precision">Issues with floating point precision</h3>
+
+<p>There are two key issues to account for when using floating-point values- underflow, and loss of accuracy.</p>
+
+<blockquote>
+  <p><strong>Underflow</strong> occurs when a floating point operation results in an <em>absolute</em> value which is too close to 0 for the computer to accurately store in memory. This can be remedied by setting a <strong>sticky bit</strong> in the status bits of the CCR, and storing a 0 in memory for the time being.</p>
+</blockquote>
+
+<p>A <strong>loss of accuracy</strong> can occur when performing an operation on numbers of two vastly different magnitudes. Specifically, due to maintaining precision when describing the large value, operations (such as incrementing or decrementing by a very very small amount) can result in the large value not being modified accurately as it is impossible to maintain the large and small context of the result. For an analogy, imagine pouring a teaspoon of water into a swimming pool- you cannot tell how much the volume of water has changed, and this would cause issues if further conditional operations depend on the result of this operation.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="digital-logic">Digital Logic</h1>
+       
+            <h2 id="logic-gates-circuits-and-truth-tables">Logic Gates, Circuits and Truth tables</h2>
+
+<h3 id="an-alternative-view-of-the-or-circuit">An Alternative view of the OR circuit</h3>
+
+<p>Why is \(\bar f = \bar A \cdot \bar B\) an appropriate representation?</p>
+
+<p>We know that \(\bar f = \overline {A+B}\), this means \(f = A+B\). Therefore, \(\bar f = \bar A \cdot \bar B\) (de Morgan’s Law)</p>
+
+<h3 id="functions-of-two-binary-variables">Functions of Two Binary Variables</h3>
+
+<p>16 (2<sup>4</sup>) functions can be found between two binary variables. We can interpret each of these functions algebraically.</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th style="text-align: center">A</th>
+      <th style="text-align: center">B</th>
+      <th style="text-align: center">\(f_0\)</th>
+      <th style="text-align: center">\(f_1\)</th>
+      <th style="text-align: center">\(\cdots\)</th>
+      <th style="text-align: center">\(f_{14}\)</th>
+      <th style="text-align: center">\(f_{15}\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+\[\begin{align}
+f_0 &amp;= 0 \\
+f_1 &amp;= A \cdot B \\
+f_2 &amp;= A \cdot \overline{B} \\
+f_3 &amp;= A \\
+&amp;\; \; \vdots \\
+f_{13} &amp;= \overline{A \cdot \overline{B}}
+\end{align}\]
+
+<h3 id="electronic-logic-gates">Electronic Logic Gates</h3>
+
+<p>There are 7 electronic logic gates whose function you should understand.</p>
+
+<p><img src="part2.assets/image-20210504102322015.png" alt="image-20210504102322015" style="zoom:60%;" class="center" /></p>
+
+<blockquote>
+  <p><strong>AND, OR, NOT</strong> are termed the <strong>fundamental gates</strong> because they can be used to build any of the functions that you see in the table above – meaning that they can also be used to build a circuit that fulfils the functions of the other gates you see below (<strong>NAND, NOR etc.</strong>).</p>
+</blockquote>
+
+<p>Aside from the fundamental gates, the <strong>NAND and NOR</strong> gates which are termed the <strong>universal gates</strong> are important to understand as well because using either multiple <strong>NAND</strong> gates or multiple <strong>NOR</strong> gates we can build each <strong>fundamental</strong> gate. You either need <strong>NAND</strong> or <strong>NOR</strong>, you don’t need the other.</p>
+
+<p>Additionally, while the <strong>EX-OR</strong> gate is not one of the fundamental or universal gates it is very useful as well.</p>
+
+\[f = A \oplus B = \bar A \cdot B + A \cdot \bar B\]
+
+<h2 id="simplifying-logical-expressions-using-boolean-algebra">Simplifying Logical Expressions using Boolean Algebra</h2>
+
+<blockquote>
+  <p>The <strong>motivation</strong> for simplifying logical expressions is <strong>economic</strong>. When producing microprocessors, we usually want to optimise (minimise) the amount of materials we use to <strong>reduce cost</strong> – which mean to use a minimum amount of silicon and other resources. Therefore, as much as possible, we will want to reduce the number of logic gates that we require for a particular circuit.</p>
+</blockquote>
+
+<p>This leads us to the idea of <strong>circuit equivalence</strong> where a <em>Boolean function can have many different but equivalent Boolean expressions</em>, and therefore different combinations of logic gates. What’s important is that given a function we are able to create equivalent circuits that:</p>
+
+<ol>
+  <li><strong>Perform the designated function</strong></li>
+  <li><strong>Use the types of gates available</strong> (these are usually dependent on the physical implementation e.g. only want to use <strong>NAND</strong> gates or maybe we have some 4-input gates etc.)</li>
+  <li><strong>Minimise the number of gates used and hence cost</strong>.</li>
+</ol>
+
+<p>There are two crucial skills to have:</p>
+
+<h3 id="logic-circuit-to-truth-table">Logic Circuit to Truth Table</h3>
+
+<p><img src="part2.assets/image-20201109133422712.png" alt="image-20201109133422712" /></p>
+
+<h3 id="truth-table-to-boolean-equation">Truth table to Boolean Equation</h3>
+
+<p><img src="part2.assets/image-20201109134011703.png" alt="image-20201109134011703" /></p>
+
+<h3 id="laws-of-boolean-algebra">Laws of Boolean Algebra</h3>
+
+<p>In an exam, it is crucial that you <strong>state</strong> which rules you are applying so that what you are doing is <strong>clear</strong> to the marker.</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Conjunction (“and” form)</th>
+      <th>Disjunction (“or” form)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Identity</td>
+      <td>\(x \cdot 1 \equiv x\)</td>
+      <td>\(x + 0 \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Null</td>
+      <td>\(x \cdot 0 \equiv 0\)</td>
+      <td>\(x + 1 \equiv 1\)</td>
+    </tr>
+    <tr>
+      <td>Negation</td>
+      <td>\(\overline{\overline{x}} \equiv x\)</td>
+      <td>\(\overline{\overline{x}} \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Idempotence</td>
+      <td>\(x \cdot x \equiv x\)</td>
+      <td>\(x + x \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Inverse (AKA: Excluded Middle)</td>
+      <td>\(x \cdot \overline{x} \equiv 0\)</td>
+      <td>\(x + \overline{x} \equiv 1\)</td>
+    </tr>
+    <tr>
+      <td>Commutativity</td>
+      <td>\(x \cdot y \equiv y \cdot x\)</td>
+      <td>\(x + y \equiv y + x\)</td>
+    </tr>
+    <tr>
+      <td>Associativity</td>
+      <td>\((x \cdot y) \cdot z \equiv x \cdot (y \cdot z)\)</td>
+      <td>\((x + y) + z \equiv x + (y + z)\)</td>
+    </tr>
+    <tr>
+      <td>Distributivity</td>
+      <td>\(x + (y \cdot z) \equiv (x + y) \cdot (x + z)\)</td>
+      <td>\(x \cdot (y + z) \equiv (x \cdot y) + (x \cdot z)\)</td>
+    </tr>
+    <tr>
+      <td>Absorption</td>
+      <td>\(x \cdot (x + y) \equiv x\)</td>
+      <td>\(x + (x \cdot y) \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>De Morgan’s</td>
+      <td>\(\overline{(x \cdot y)} \equiv \overline{x} + \overline{y}\)</td>
+      <td>\(\overline{(x + y)} \equiv \overline{x} \cdot \overline{y}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The best way to get good at this is to <strong>practise.</strong></p>
+
+<h3 id="karnaugh-maps--k-maps">Karnaugh Maps / K-maps</h3>
+
+<blockquote>
+  <p>Using Boolean algebra, it can be difficult to tell whether an equation is in its simplest form or to see the next step to simplifying it. K-maps show unambiguously when a Boolean expression is in its simplest form.</p>
+</blockquote>
+
+<p><strong>Grey Coding.</strong> Because sum of products can be simplified by looking for terms that differ by only one variable and its complement, when we draw out a kmap we have to grey code – which mean each cell only differs by 1 variable from its neighbours (horizontally and vertically) as you can see below.</p>
+
+<p><img src="part2.assets/image-20210505150058486.png" alt="image-20210505150058486" style="zoom: 50%;" class="center" /></p>
+
+<p><strong>Karnaugh Map Grouping.</strong>  The <strong>first step</strong> to finding the simplest expression is to form K-map groupings. There are some things/rules/features to note about this.</p>
+
+<ol>
+  <li><strong>Wrap-around</strong> is valid. This means the left most-column is adjacent to the right most-column, and the top row is adjacent to the bottom row. So the orange and green cells, and the blue and green cells are adjacent.</li>
+  <li><strong>Groupings can overlap</strong>. The cells don’t have to exclusively be in just 1 group.</li>
+  <li>The minimum logic expression is obtained on <strong>minimum number of groupings</strong>.</li>
+  <li>Number of elements in the group <strong>must be a power of two</strong> 1,2,4,8 etc..</li>
+</ol>
+
+<p><img src="part2.assets/image-20210504120645814.png" alt="image-20210504120645814" class="center" /></p>
+
+<p>The <strong>second and last step</strong> is to look within a particular group and <em>omit</em> the <strong>case/variable</strong> that <em>changes</em> from the <strong>group’s</strong> logic expression and <em>include</em> those that stayed <em>constant</em>. This is because those that change are not <strong>definitional</strong> to the group’s logical expression.</p>
+
+<p>The <strong>values</strong> of the cases/variables that stayed constant depend on the value within the grouping. In the example below <strong>B</strong> changes within the blue group so it is omitted, and both <strong>A and C</strong> stayed constant with value <strong>0</strong> so the final logic expression for the blue group is \(\overline{A} \cdot \overline{C}\).</p>
+
+<p><img src="part2.assets/image-20210505150245851.png" alt="image-20210505150245851" /></p>
+
+<h4 id="multiple-equivalent-expressions">Multiple equivalent expressions</h4>
+
+<p>In the exams, there will be no penalty if you give either answer but note that in reality sometimes the final choice comes down to the resources you have available like the number of <strong>NOT</strong> gates that you can use.</p>
+
+<p>Additionally, there are some expressions that are <strong>impossible to simplify</strong>. This example is just one of the very few logical expression that you cannot simplify because you cannot get any groupings more than 1.</p>
+
+<p><img src="part2.assets/image-20210504122403732.png" alt="image-20210504122403732" style="zoom:67%;" class="center" /></p>
+
+<h4 id="dont-care-conditions">Don’t Care Conditions</h4>
+
+<p>Sometimes a certain combination of inputs either can’t happen or we don’t care what the output is if it happens. We denote this with a ❌ in our K-maps which may be assumed to be either 1 or 0 — we don’t care.</p>
+
+<p>These can allow us to create a simpler logic expression. If you take a look at the left K-map, you can see that there’s an outstanding 1 just below the ❌, and there are multiple ways we can choose to group it. If we do it like in the right K-map, you can see that we arrive at a slightly simpler logic expression – and the only reason we can group it that way is because the 01-00 cell is a <strong>don’t care condition</strong>.</p>
+
+<p><img src="part2.assets/image-20210504123211185.png" alt="image-20210504123211185" style="zoom:67%;" class="center" /></p>
+
+<h2 id="combinatorial-logic-circuits">Combinatorial Logic Circuits</h2>
+
+<blockquote>
+  <p>A logic circuit whose output is a <strong>logical function</strong> of its input(s).</p>
+</blockquote>
+
+<p>Perform as fast as your gates.</p>
+
+<h3 id="1-bit-half-adder">1-bit Half-Adder</h3>
+
+<p>This circuit performs the addition of two bits, and can be extended to form a 1-bit full-adder. What’s important is that you recognise that the truth table for <strong>sum</strong> represents that of an <strong>EX-OR</strong> gate, while the <strong>carry</strong> represents that of an <strong>AND</strong> gate.</p>
+
+<p>This is important because to derive the layout of the circuit, you can start from thinking about what you want to achieve first, i.e the addition of two bits. The truth table essentially describes this function and from there you can think about which gates you have to use and how they should be arranged according to the 1s and 0s in the truth table.</p>
+
+<p><img src="part2.assets/image-20210504124908090.png" alt="image-20210504124908090" /></p>
+
+<h3 id="1-bit-full-adder">1-bit Full-Adder</h3>
+
+<p>A 1-bit full adder is capable of adding two bits (A and B) and considering a carry<sub>in</sub> from another 1-bit full adder, to produce an output sum and a carry<sub>out</sub>.</p>
+
+<div align="center" style="display:flex;justify-content:space-around">
+	<img src="part2.assets/image-20210504131413949.png" alt="image-20210504131413949" style="zoom:67%;" />
+	<img src="part2.assets/image-20210504131435740.png" alt="image-20210504131435740" style="zoom:67%;" />
+</div>
+
+<p>To design a circuit of a 1-bit full adder it is helpful to think about the logic gates needed based on the truth table above. Pay attention to how the value of <strong>C<sub>out</sub></strong> and <strong>S</strong> relate to <strong>C<sub>in</sub>, A, and B</strong> and try to think of the logic gates needed to emulate this behaviour/function.</p>
+
+<p>It is highly suggested that you try this on your own before clicking to see my own attempt – and also take mine with a pinch of salt and tell me if you think I’m wrong or can be better!</p>
+
+<details>
+    <summary>My design of a 1-bit Full-Adder</summary>
+    <p>
+    Looking at the truth table shown earlier, I realised that $$Sum = (A \oplus B) \oplus C_{in} \\ C_{out} = A \cdot B + C_{in} \cdot (A \oplus B)$$
+    With these two logic expressions, I was able to decide which logic gates to
+    use to arrive at my final design for the full adder.
+    </p>
+	<img src="part2.assets/1bit%20full%20adder.jpeg" alt="1bit full adder" style="zoom:37%;border-radius:2%;" class="center growimg" />
+</details>
+
+<h3 id="n-bit-full-adder">N-bit Full-Adder</h3>
+
+<p>Once we know how to design a 1-bit Full Adder (FA) we will be able to build a n-bit full adder which we can use to add 2 n-bit words (A and B) together. We do this by assigning each bit of A and B to each FA, and just like how we do long division we add each bit together, starting from the LSB (where the carry in is obviously 0) and then taking the carry of each FA and feeding it to the next FA until you reach the n<sup>th</sup> FA.</p>
+
+<p>The output of each sum (S<sub>k</sub>) and the final C<sub>out</sub> is then “dealt with” to arrive at the sum of A and B. It is important to consider how you would “deal” with all these bits, and also important to note that if C<sub>out</sub> is 1 then it means you have an <strong>overflow</strong>.</p>
+
+<p><img src="part2.assets/image-20210504162834347.png" alt="image-20210504162834347" style="zoom:67%;" class="center" /></p>
+
+<h3 id="adder-to-addersubtractor">Adder to Adder/Subtractor</h3>
+
+<blockquote>
+  <p>To convert an adder into an <strong>adder/subtractor</strong> we simply add a control input Z such that:</p>
+
+\[Z = 0 \Rightarrow S = A + B \\
+Z = 1 \Rightarrow S = A + (-B)\]
+
+  <p><strong>Recall.</strong> We calculate –B using two’s complement</p>
+
+  <ol>
+    <li>Invert the N-bit binary number B with Z ⊕ B</li>
+    <li>Add 1 (Carry In)</li>
+  </ol>
+</blockquote>
+
+<h4 id="n-bit-addersubtractor">N-bit Adder/Subtractor</h4>
+
+<p>You can see that <strong>Z</strong> is fed as the C<sub>in</sub> of the first FA, this has the effect of adding 1 to arrive at the proper value for the two’s complement <strong>B</strong>. From above, <strong>Z</strong> is <strong>EX-ORed</strong> with each bit of <strong>B</strong> and this has the effect of inverting the bits to get <strong>-B</strong>. When we are adding, then <strong>Z</strong> will be 0 and will have no effect on <strong>B</strong>.</p>
+
+<p><img src="part2.assets/image-20210505150517019.png" alt="image-20210505150517019" /></p>
+
+<p>Remember because the numbers are in two’s complement form, the final C<sub>out</sub> should be ignored in the calculation. However, it is significant in the “Assembler” topic because the C<sub>out</sub> goes to your Condition Code Register (CCR) as the <strong>Carry Flag</strong>.</p>
+<blockquote class="extra">
+    <strong>FYI.</strong> If the value of C<sub>out</sub> is different from the carry going into the last FA (the carry from the 2nd last FA), there is an overflow. You can read more about it <a href="http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt">here</a> or <a href="https://en.wikipedia.org/wiki/Two%27s_complement#Addition">wikipedia</a>.
+</blockquote>
+<h3 id="active-high-or-active-low">Active High or Active Low?</h3>
+
+<blockquote>
+  <p>Transistor-transistor logic floats high – meaning that if you don’t connect it to anything, its value is a logical 1. Hence, it is helpful for <strong>0</strong> to be the <strong>active</strong> state so that you are not accidentally enabling circuits.</p>
+</blockquote>
+
+<p>In some circuit applications, outputs and inputs have <strong>active</strong> and <strong>inactive</strong> states (you’ll see more of this in Three State Logic) and it is important that your input(s) and output(s) conform to the same standard.</p>
+
+<ul>
+  <li><strong>Active high.</strong> 0 is inactive and 1 is active.</li>
+  <li><strong>Active low.</strong> 0 is active and 1 is inactive. This is sometimes indicated with <span style="text-decoration:overline">Enable</span> – so if you see this bar it means that particular input/output is active low.</li>
+</ul>
+
+<h3 id="decoders">Decoders</h3>
+
+<p>A decoder has <strong>k</strong> input pins and <strong>2<sup>k</sup></strong> output pins. This is because with <strong>k</strong> inputs can have <strong>2<sup>k</sup></strong> possible states/combinations and can represent the same number of output values.</p>
+
+<blockquote>
+  <p>Decoders are often used to address unique memory locations in a microprocessor system.</p>
+</blockquote>
+
+<p>Here we have an example of a truth table for an <strong>active low</strong> decoder on the left. Notice that the distinct value of each Y<sub>i</sub> is 0, which makes sense that because we only want 1 possible output to be <strong>active</strong> for a particular <strong>input state</strong>. The truth table for an <strong>active high</strong> decoder is on the right (notice how the Y<sub>i</sub> bits are all flipped compared to <strong>active low</strong>).</p>
+
+<div align="center" style="display:flex;justify-content:space-around">
+    <img src="part2.assets/image-20210504183948760.png" alt="image-20210504183948760" style="zoom:40%;" />
+    <img src="part2.assets/image-20210504204625976.png" alt="image-20210504204625976" style="zoom:38%;" />
+</div>
+
+<h3 id="encoder">Encoder</h3>
+
+<p>The opposite of a decoder, where you take multiple input values and you <strong>define</strong> it in a more <strong>concise representation</strong>. Here you have 2<sup>k</sup> input(s) and k outputs. However, unlike the decoder where the inputs take all possible states, only one of the input pins should be <strong>active at a time</strong>.</p>
+
+<blockquote>
+  <p>Encoders usually used in communication because it is more <strong>efficient</strong> and succinct to send a <strong>compressed representation</strong> of certain values. Often used as simple input circuits.</p>
+</blockquote>
+
+<p><img src="part2.assets/image-20210504210040995.png" alt="image-20210504210040995" style="center" /></p>
+
+<h3 id="multiplexers-mux">Multiplexers (MUX)</h3>
+
+<p>A very common mechanism for selection.</p>
+
+<p><img src="part2.assets/image-20201019192310898.png" alt="image-20201019192310898" /></p>
+
+<blockquote>
+  <p><strong>Common Applications of Multiplexers.</strong></p>
+
+  <p>Source selection control - Home stereo, e.g: send iPod, CD or radio to speakers - note that this is analogue not digital</p>
+
+  <p>Share one communication line between multiple senders - Requires both MUX and DE-MUX</p>
+
+  <p>Parallel to serial conversion - Parallel input on X, clock signal on S, serial output on Y</p>
+
+  <p>Circuit that can be configured to produce any truth table relationship between S inputs and Y outputs - Set up the truth table required on X inputs.</p>
+</blockquote>
+
+<h3 id="de-multiplexers-de-mux">De-Multiplexers (DE-MUX)</h3>
+
+<p><img src="part2.assets/image-20201019192503304.png" alt="image-20201019192503304" /></p>
+
+<blockquote>
+  <p><strong>Common Applications of De-Multiplexers.</strong></p>
+
+  <p>Share one communication line between multiple senders – Requires both MUX and DE-MUX</p>
+
+  <p>Series to parallel conversion</p>
+
+  <p>A control for multiple lights – In a gambling machine you might connect a processor to A and S and connect Y outputs to lights, such that the processor runs in a rapid loop addressing each light sequentially.</p>
+</blockquote>
+
+<h2 id="sequential-logic-circuits">Sequential Logic Circuits</h2>
+
+<blockquote>
+  <p>A logic circuit whose <strong>outputs</strong> are logical functions of its <strong>input(s)</strong> and its <strong>current state.</strong></p>
+</blockquote>
+
+<p><img src="part2.assets/image-20201019202858996.png" alt="image-20201019202858996" /></p>
+
+<h3 id="flip-flops">Flip-Flops</h3>
+
+<p>A basic building block of memory. Level triggered devices (a device that responds to 1s and 0s) that are stable in only two states (<strong>bistable</strong> – <strong>Q and P</strong> are always opposite). I think the best way to understand the flip-flop is to look at the truth table and the timing diagram together.</p>
+
+<div style="display:flex;justify-content:center;">
+    <img src="part2.assets/image-20210505113338886.png" alt="image-20210505113338886" style="zoom:33%;" />
+    <img src="part2.assets/image-20210505113358425.png" alt="image-20210505113358425" style="zoom:33%;" />
+</div>
+<div style="display:flex;justify-content:center;">
+    <img src="part2.assets/image-20210504211149726.png" alt="image-20210504211149726" style="zoom:36%;" />
+    <img src="part2.assets/image-20210504211212581.png" alt="image-20210504211212581" style="zoom:30%" />
+</div>
+
+<ol>
+  <li>Note that <strong>Q</strong> and <strong>P</strong> are always different values <strong>as long as</strong> <strong><span style="text-decoration:overline">R</span></strong> and <strong><span style="text-decoration:overline">S</span></strong> are not active (0 because they <strong><span style="text-decoration:overline">RS</span></strong> are active low) at the same time.</li>
+  <li>Next, see how <strong>Q</strong> starts off <strong>active</strong> in the diagram, and changes from 1 to 0 when <strong><span style="text-decoration:overline">R</span></strong> changes from 1 to 0? I think it’s better to think of this as <strong>Q</strong> is <strong>reset</strong> when <strong><span style="text-decoration:overline">R</span></strong> is activated (or <strong><span style="text-decoration:overline">R</span></strong> resets <strong>Q</strong>).</li>
+  <li>Then also notice how when <strong><span style="text-decoration:overline">R</span></strong> is made inactive (goes back to 1), the value of <strong>Q</strong> and <strong>P</strong> don’t change. This is how the flip-flop is able to <strong>store</strong> a value when both <strong><span style="text-decoration:overline">S</span></strong> and <strong><span style="text-decoration:overline">R</span></strong> are inactive.</li>
+  <li><strong><span style="text-decoration:overline">S</span></strong> is activated, and <strong>Q</strong> is <strong>set</strong> to 1, while <strong>P</strong> resets to 0.</li>
+  <li>Again, when <strong><span style="text-decoration:overline">S</span></strong> is deactivated, the value of <strong>P</strong> and <strong>Q</strong> don’t change. Only if <strong><span style="text-decoration:overline">R</span></strong> is activated again, do the values of <strong>P</strong> and <strong>Q</strong> flip.</li>
+  <li>Now that you have understood that, you can look at the circuit diagram and see how and why having both <strong><span style="text-decoration:overline">S</span></strong> and <strong><span style="text-decoration:overline">R</span></strong> set to 0 leads to both <strong>Q</strong> and <strong>P</strong> to be 1 which violates the rule of the flip-flop as a bistable (<strong>P</strong> should be equal to <strong><span style="text-decoration:overline">Q</span></strong>) and is a <strong>hazard condition</strong>.</li>
+</ol>
+
+<h3 id="d-type-latch">D-Type Latch</h3>
+
+<p>The first two NAND gates and the NOT gate ensure that the intermediate values just before the orange section can never both be 0 so we won’t have the hazard condition.</p>
+
+<p><img src="part2.assets/image-20201019204921469.png" alt="image-20201019204921469" /></p>
+
+<p>When we want to store data, we have that data at D, and we set Enable to 1 (or trigger the “latch”). Only then will the data from D go to Q. Otherwise, you can see from the truth table that Q and <span style="text-decoration:overline">Q</span> don’t change and behaves like memory.</p>
+
+<blockquote>
+  <p>The D-type is a fundamental component, so you should know how to draw it and understand its function. You should also understand how the D-type works with registers, shift registers, and counters.</p>
+</blockquote>
+
+<p>The D-type latch (delay) is a type of clocked flip-flop and there are others like the T-type (toggle) and the JK-type. Clocking and enabling are used fairly interchangeably but the right term is clock. All the “latches” above changes only on the rising edge of the clock input, they only respond to change.</p>
+
+<h4 id="three-different-kinds-of-triggers">Three different kinds of triggers</h4>
+
+<p><strong>Level triggered</strong> - 1s and 0s</p>
+
+<p><strong>Rising edge triggered</strong> - transition from 0 to 1</p>
+
+<p><strong>Falling edge triggered</strong> - from 1 to 0</p>
+
+<h3 id="n-bit-register">N-bit Register</h3>
+
+<p>The diagram shown below, is a parallel-load register, each bit of <strong>A</strong> is fed to a D-type latch as input and we are storing each bit of A in the corresponding “memory location” of <strong>Q</strong>.</p>
+
+<p>When we provide a clock pulse, we are providing the transition from a 0 to a 1 and 1 to 0 probably afterwards. The D type will only respond to the 0 to 1, when that happens, each bit of A fed into each D type will go to each Q. No change will happen to Q unless we clock it again. This is how we can store data and the stored number appears on the outputs of Q.</p>
+
+<p><img src="part2.assets/image-20210505121628382.png" alt="image-20210505121628382" /></p>
+
+<p>Note that this diagram is incomplete – you should always label the D &amp; Clk inputs, and the Q &amp; <span style="text-decoration:overline">Q</span> outputs in an exam.</p>
+
+<p>An alternative design is…</p>
+
+<h3 id="n-bit-shift-register">N-bit Shift Register</h3>
+
+<p>The concept here is largely the same as the parallel-load register but is fed serially. This register stores one bit of a word/number <strong>A</strong> at time (starting from LSB of A) and shifts each prior bit to the next Q on the subsequent clocks until we clock the MSB of A into Q<sub>N-1</sub>.</p>
+
+<p><img src="part2.assets/image-20210505121914913.png" alt="image-20210505121914913" /></p>
+
+<blockquote>
+  <p>Usually used for serial to parallel conversion, because after feeding all N bits of A into the register each bit can be read in parallel from Q.</p>
+</blockquote>
+
+<p>Once you’ve understood all the parallel and shift register…</p>
+
+<h3 id="n-bit-counter">N-bit Counter</h3>
+
+<p><em>You need to know how to explain this.</em></p>
+
+<p><img src="part2.assets/image-20210505141644565.png" alt="image-20210505141644565" /></p>
+
+<p>Let’s run through the values of the counter. Note that the circles on the flip-flops aside from the first one indicate an inverter, which mean that those flip-flops are clocked only on the falling edge of the previous output.</p>
+
+<ol>
+  <li>Assuming all Qs start at 0. That means that the value of <span style="text-decoration:overline">Q</span> is 1 and that is fed to D. On the rising edge of the clock (low to high), Q<sub>0</sub> changes from 0 to 1. So now the value stored is <code class="language-plaintext highlighter-rouge">1000</code>.</li>
+  <li>On the next clock, Q<sub>0</sub> changes from 1 to 0, thereby also clocking the 2nd D-type which gives Q<sub>1</sub> the value 1 from 0. Now the value stored is <code class="language-plaintext highlighter-rouge">0100</code>.</li>
+  <li>On the next clock, Q<sub>0</sub> goes from 0 to 1, and Q<sub>1</sub> doesn’t change because the Q<sub>0</sub> just transitioned from low to high.</li>
+</ol>
+
+<blockquote>
+  <p>Since the value of each Q<sub>i</sub> represents a particular power of 2, notably 2<sup>i</sup>, when the counter is clocked…</p>
+
+  <ul>
+    <li>If Q<sub>0</sub> (which represents 2<sup>0</sup> = 1) is 0, it changes to 1 thereby increasing the count by 1.</li>
+    <li>If Q<sub>0</sub> is 1, then it changes from 1 to 0, supplying a falling edge clock to the next D-type which changes the value stored at Q<sub>1</sub>.</li>
+    <li>Now we can repeat the same condition for Q<sub>1</sub> as it was for Q<sub>0</sub> and hence for every Q<sub>i</sub>.</li>
+  </ul>
+
+  <p>Because the Q of each falling edge clocked D-type will only change from 0 to 1 when the output Q of the prior D-type changes from 1 to 0, this also means that the Q of all prior D-types until Q<sub>0</sub> changed from 1 to 0.</p>
+
+  <p>This emulates counting because each clock directly affects the first D-type only, and when all the bits of Q so far are not enough to represent the value of the next count, the clock would change Q<sub>0</sub> from 1 to 0 and the falling edge clocking mechanism of the subsequent D-types will trigger, changing each Q from 1 to 0 until the first Q<sub>i</sub> that is 0 (not 1). Essentially, the counter switches to a higher power of 2 when it needs to.</p>
+</blockquote>
+
+<p>So the output of the counter on each clock will look like..</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0000
+1000
+0100
+1100...
+</code></pre></div></div>
+
+<h2 id="three-state-logic--physical-implementations">Three State Logic &amp; Physical Implementations</h2>
+
+<p>In some logic components, termed a three-state buffer, whose output can be in three states: 1,0, or UNCONNECTED. Looking at the diagram below, when <strong>B</strong> is high the buffer is <strong>unconnected</strong> and vice versa. <em>It can be thought of as a switch.</em></p>
+
+<p><img src="part2.assets/image-20210505142939469.png" alt="image-20210505142939469" /></p>
+
+<blockquote>
+  <p>This is useful because we can provide communications between logical subsystems in an efficient way by <strong>sharing communication paths (buses)</strong>. The buffers that share a common bus cannot be active at the same time!</p>
+</blockquote>
+
+<p>Without three-state buffers, if you connect two outputs together you could be connecting a 1 to a 0 and cause a short circuit.</p>
+
+<h3 id="propagation-delay">Propagation Delay</h3>
+
+<p>In practice, logic gates have propagation delay, typically 1x10<sup>-9</sup>s or less. These delays limit the speed at which logic circuits work. While propagation delay can be reduced by putting logic gates close together, ultimately the design of your circuits play a big part as well. You can think of propagation delay as the collective operating speed of the circuit.</p>
+
+<blockquote>
+  <p>We’re usually interested in the maximum propagation delay and we do this to make sure that our circuit doesn’t cross the so-called “event horizon” where the change in the input is not registered by the output for a relatively significant amount of time because of propagation delay. If another component relies on this output and another input, this may cause some problems especially for systems that have to respond quickly.</p>
+</blockquote>
+
+<h3 id="logic-integrated-circuits-ics">Logic Integrated Circuits (ICs)</h3>
+
+<p>Programmable logic devices allow much larger circuits to be created inside a single chip.</p>
+
+<ul>
+  <li>Programmable Array Logic (PAL) - The first popular programmable device was one-time programmable</li>
+  <li>Programmable Logic Array (PLA) - Device contains an AND array, which feeds an OR array, providing a physical implementation of a sum of products.</li>
+  <li>Field Programmable Gate Array (FPGA) - One of several modern possibilities, which can contain million of gates - enough for an entire processor.</li>
+</ul>
+
+<h3 id="pla">PLA</h3>
+
+<p>Works by providing links/fuses that can be broken to produce a custom sum of products. As long as you are able to understand circuit diagrams you should be able to understand how you arrive at the sum of products for each output of the PLA.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="assembler">Assembler</h1>
+       
+            <h2 id="microprocessor-fundamentals">Microprocessor Fundamentals</h2>
+
+<p>Before diving into assembler, we need to be familiar with the <strong>key components of all CPUs</strong>. No matter how complex a CPU is, they always have the two following components.</p>
+
+<ul>
+  <li><strong>Arithmetic Logic Unit</strong> (ALU): this performs <strong>math and logic</strong></li>
+  <li><strong>Control Unit</strong> (CU): this decodes program <strong>instructions</strong> and handles <strong>logistics</strong> for execution</li>
+  <li><strong>Program Counter</strong> (PC): this tracks the <strong>memory address</strong> of the <strong>next instruction</strong> for execution</li>
+  <li><strong>Instruction Register</strong> (IR): contains the <strong>most recent instruction</strong> fetched</li>
+  <li><strong>Memory Address Register</strong> (MAR): contains the address of the <em>region</em> of memory for read/write purposes</li>
+  <li><strong>Memory Data Register</strong> (MDR): contains <strong>fetched data</strong> from memory or <strong>data ready to be written</strong> to memory. The MDR is also sometimes referred to as the Memory Buffer Register (MBR).</li>
+</ul>
+
+<p>Remember that the <strong>Control Unit</strong> is connected to all components</p>
+
+<p>In the Von Neumann architecture of microprocessor design, both instructions and data are stored in the same memory (In Harvard architecture they are separated)</p>
+
+<p>Each instruction is split into two parts, the opcode and the operands. The opcode indicates which instruction it is, and the operand the parameters of the instruction</p>
+
+<h3 id="the-fetch-decode-execute-cycle">The fetch-decode-execute cycle</h3>
+
+<p>The CPU works by executing instructions in sequence to perform a task. Since the instructions are stored in memory, we need three steps to do this called the <strong>fetch-decode-execute cycle</strong>:</p>
+
+<blockquote>
+  <p>The CPU will constantly perform the following instruction cycle (the <strong>fetch-decode-execute cycle</strong>):</p>
+
+  <ul>
+    <li>Retrieve instructions from memory</li>
+    <li>Decode to form recognisable operations</li>
+    <li>Execute to impact the current state</li>
+  </ul>
+</blockquote>
+
+<p>❕❗ <strong>Learn the fetch-decode-execute cycle</strong>. Think of it every time you look at a CPU, or a series of instructions. Think about which of the components (the CU or the ALU) are operating and when.</p>
+
+<p>The instruction cycle takes place over <strong>several CPU clock cycles</strong> – the same clock cycles we saw in <strong>sequential logic circuits</strong>. The fetch-decode-execute cycle relies on several CPU components interacting with one another.</p>
+
+<p>The operations composing the cycle are:</p>
+
+<h4 id="fetch-stage">Fetch stage</h4>
+
+<ol>
+  <li>Copy the address of the next instruction stored in the program counter to the memory address register</li>
+  <li>Read the instruction in the main store at the address in the memory address register into the memory data register</li>
+  <li>Copy the instruction from the memory data register to the instruction register</li>
+  <li>The instruction is sent from the instruction register to the control unit to be decoded in the next stage</li>
+  <li>Increment the program counter to point to the address of the next instruction</li>
+</ol>
+
+<p>In <em>register transfer language</em>, fetching would look like</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="kt">MAR</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">PC</span><span class="p">]</span>
+<span class="p">[</span><span class="kt">MBR</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">MS</span><span class="p">([</span><span class="kt">MAR</span><span class="p">])]</span>
+<span class="p">[</span><span class="kt">IR</span><span class="p">]</span>  <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">MBR</span><span class="p">]</span>
+<span class="kt">CU</span>    <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">IR</span><span class="p">(</span><span class="n">opcode</span><span class="p">)]</span>
+<span class="p">[</span><span class="kt">PC</span><span class="p">]</span>  <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">PC</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>This is explained in further detail <a href="#example-instruction-fetching">here</a>.</p>
+
+<p><strong>Note that the in different resources, the time at which the PC is incremented sometimes differs - most of the time (and in Matt’s notes) it is said to be at the very end of the fetch stage <a href="https://www.robots.ox.ac.uk/~dwm/Courses/2CO_2014/2CO-N2.pdf">source #1</a>, <a href="https://www.futurelearn.com/info/courses/how-computers-work/0/steps/49284">source #2</a>, but sometimes it is said to be immediately after it is copied into the memory address register <a href="http://theteacher.info/index.php/fundamentals-of-cs/1-hardware-and-communication/topics/2599-registers-and-the-fetch-decode-execute-cycle">source #3</a> - this is likely due to differences in implementation</strong></p>
+
+<h4 id="decode-stage">Decode stage</h4>
+
+<ol>
+  <li>
+    <p>The control unit extracts and decodes the opcode from the instruction in the instruction register</p>
+  </li>
+  <li>
+    <p>The effective address is read to establish opcode type</p>
+
+    <p>If indirect addressing is used, more data needs to be read from the main store (MS) before the instruction is executed, but if direct addressing is used, the execution can proceed immediately</p>
+  </li>
+</ol>
+
+<h4 id="execute-stage">Execute stage</h4>
+
+<ol>
+  <li>The control unit signals to functional CPU components, e.g. to indicate which busses to enable, or set whether the main store should be read from or written to</li>
+  <li>Changes in the state of the machine, e.g. data registers, program counter, main store, resulting from the execution of the instruction may occur</li>
+</ol>
+
+<h2 id="registers">Registers</h2>
+
+<p>Now that we have the FDE cycle established, we need <strong>registers</strong> to help store intermediate information- this can either be in the form of memory or system flags. The Motorola 68008 will be used to give context to each type of register:</p>
+
+<blockquote>
+  <p>You can think of a register as a parallel set of bits which can be toggled on or off.</p>
+</blockquote>
+
+<h3 id="data-registers">Data registers</h3>
+<ul>
+  <li>These are useful for storing <strong>frequently used values</strong> or <strong>intermediate results</strong> of calculations.</li>
+  <li>You typically <strong>only need one</strong> data register <strong>on chip</strong> – however, the advantage of having many registers is that <strong>fewer references to external memory are needed</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>The 68008 has 32 bit data registers. This is a <em>long</em> register; 16 bits form a <em>word</em>, and 8 bits form a <em>byte</em>.</p>
+</blockquote>
+
+<h3 id="status-registers">Status registers</h3>
+<ul>
+  <li>These have various status bits that are set or reset by the <strong>ALU</strong>.</li>
+  <li>They are a <em>set of flags</em>:
+    <ul>
+      <li>Half are for the <strong>system</strong> (CU)</li>
+      <li>The <strong>conditional control register</strong> is a <strong>subset of flags</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">⬅ System byte ➡</th>
+      <th style="text-align: center">⬅ User byte ➡</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">8 bits</td>
+      <td style="text-align: center">8 bits, where a few bits will make up the CCR</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>The CCR is made up of several bits representing statuses such as <em>extend, negative, zero, overflow, carry</em>. If you wanted to check the status of the computer in a program, you could use bitwise <strong>AND</strong> against a bitmask (the string of bits you want toggled) and seeing if the final result is the flag you wanted to see.</p>
+</blockquote>
+
+<h3 id="address-register">Address register</h3>
+<ul>
+  <li>These are used as <strong>pointer registers</strong> in the calculation of operand addresses.</li>
+  <li>Operations on these addresses <strong>do not alter the CCR</strong>.</li>
+  <li>Only the <strong>ALU</strong> has the capacity to incur changes in status (through operations on non-addresses).</li>
+</ul>
+
+<h4 id="stack-pointer">Stack pointer</h4>
+<ul>
+  <li>This is an <strong>address register</strong> that points to the <strong>next free location</strong>; it can hold <strong>subroutine return addresses</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>The 68008 has pointer registers <code class="language-plaintext highlighter-rouge">A0-A6</code> whilst <code class="language-plaintext highlighter-rouge">A7</code> is used as a system stack pointer.</p>
+</blockquote>
+
+<h3 id="program-counter">Program counter</h3>
+<p>We are already familiar with what the PC does – it is a <strong>32 bit</strong> register on the 68008 that keeps track of the address at which the next instruction will be found.</p>
+
+<blockquote>
+  <p>If you were writing a software emulator, think of the memory as an array of strings (each string is an opcode). The PC would be an integer; your code would access <code class="language-plaintext highlighter-rouge">memory[PC]</code> to find out which opcode to pull from the memory and decode. Therefore, by incrementing the PC (an 8-bit, 16-bit, or 32-bit integer in your code) you can increment through the memory array. You can sometimes increment the PC by multiple amounts.
+Generally speaking, if you were to be writing an emulator for any CPU, you <em>could</em> represent each register as an n-bit unsigned integer as you can toggle bits and perform bitwise operations, including bitshifts, on each integer variable. You would typically want to implement memory as a simple array of m-bit integers, where m is the word length of your CPU.</p>
+</blockquote>
+
+<h2 id="register-transfer-language">Register Transfer Language</h2>
+
+<blockquote>
+  <p>RTL is used to describe the operations of the microprocessor as it is executing program instructions.
+It is also a way of making sure we access the correct parts of the microprocessor – <strong>do not confuse it with assembler instructions</strong>.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Example RTL</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[MAR] ⬅ [PC]</code></td>
+      <td><em>Transfer</em> the contents of the PC <strong>to</strong> the MAR</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[MS(12345)]</code></td>
+      <td>The <em>contents</em> of memory <em>location</em> 12345 in the <em>main store</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[D1(0:7)] &lt;- [D0(0:7)]</code></td>
+      <td><i>Transfer</i> the contents of the 1st 8bits of <code class="language-plaintext highlighter-rouge">D0</code> to the 1st 8bits of <code class="language-plaintext highlighter-rouge">D1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-instruction-fetching">Example: Instruction fetching</h3>
+<p>Given a series of instructions in words, we can find a way to represent this in RTL. Consider the following example:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Plain words</th>
+      <th>RTL equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Contents of PC transferred to MAR address buffers</td>
+      <td><code class="language-plaintext highlighter-rouge">[MAR] ⬅ [PC]</code></td>
+    </tr>
+    <tr>
+      <td>Load MBR from external memory, and set \(R / \bar W\) to Read</td>
+      <td><code class="language-plaintext highlighter-rouge">[MBR] ⬅ [MS([MAR])]</code>; \(R / \bar W\) to Read</td>
+    </tr>
+    <tr>
+      <td>Transfer opcode to IR from MBR</td>
+      <td><code class="language-plaintext highlighter-rouge">[IR] ⬅ [MBR]</code></td>
+    </tr>
+    <tr>
+      <td>Decode the instruction</td>
+      <td><code class="language-plaintext highlighter-rouge">CU ⬅ [IR(opcode)]</code></td>
+    </tr>
+    <tr>
+      <td>Increment the PC</td>
+      <td><code class="language-plaintext highlighter-rouge">[PC] ⬅ [PC] + 1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you wanted to add a constant byte to a register (take <code class="language-plaintext highlighter-rouge">D0</code> from the 68008), you would engage the ALU and then transfer this into a register:</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="n">continue</span> <span class="n">previous</span> <span class="n">cycle</span> <span class="p">}</span>
+<span class="p">[</span><span class="kt">MBR</span><span class="p">]</span> <span class="err">⬅</span> <span class="p">[</span><span class="kt">MS</span><span class="p">([</span><span class="kt">MAR</span><span class="p">])]</span>
+<span class="kt">ALU</span> <span class="err">⬅</span> <span class="p">[</span><span class="kt">MBR</span><span class="p">]</span> <span class="o">+</span> <span class="kt">D0</span>
+<span class="p">[</span><span class="kt">DO</span><span class="p">]</span> <span class="err">⬅</span> <span class="kt">ALU</span>
+</code></pre></div></div>
+<p>As you can see, RTL describes how we can specifically set values in registers and interact with components in a standardised language.</p>
+
+<h2 id="assembly-language">Assembly Language</h2>
+
+<p><em>You should be able to explain the motivations, applications, and characteristics of high-level and low-level programming languages.</em></p>
+
+<p>Code written in high-level programming languages typically go through a compiler, or for some languages like Python an <a href="https://www.computerscience.gcse.guru/theory/translators">interpreter</a> (FYI only), and is eventually <strong>translated</strong> into machine code that your microprocessor understands. Low-level assembly code is <strong>assembled</strong> by an assembler into machine code.</p>
+
+<blockquote class="extra">
+    Sometimes, the compilation process first compiles code into a lower-level assembly language and then the assembler assembles it into machine code, but in other cases high-level languages can be translated directly to machine code.
+    I previously had the misunderstanding that high-level languages are
+    <strong>always</strong> compiled to some kind of assembler language and is then 
+    assembled to machine code, but this is not the case.
+</blockquote>
+
+<p>The <strong>motivation</strong> for low-level languages is to give programmers more <strong>control</strong> of how the microprocessor executes a particular program, as it allows you to define the exact sequence of instructions that will be executed by the microprocessor. High-level programming languages don’t have the capability to provide such specific instructions. Sometimes, this means that the resultant machine code has <strong>greater performance</strong> than one that was compiled from a high-level language.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">High-level Language</th>
+      <th style="text-align: center">Machine Code</th>
+      <th style="text-align: center">Assembler Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Human readable. <br />Difficult to translate into performant machine code whilst retaining original intention.</td>
+      <td style="text-align: center">Not readable.</td>
+      <td style="text-align: center">More readable than machine code but more precise than high-level languages.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Assembly language saves us from machine code by using <strong>mnemonics</strong>. We can provide <strong>memory locations</strong> and <strong>constants</strong>, as well as <strong>symbolic names</strong>. These features are not afforded to us by RTL!</p>
+</blockquote>
+
+<h3 id="assembler-format">Assembler Format</h3>
+
+<p>Assembly language typically takes the following form:</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Label (Optional)</th>
+      <th style="text-align: center">Opcode</th>
+      <th style="text-align: center">Operand</th>
+      <th style="text-align: center">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Example</strong></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">START:</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">move.b</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">#5, D0</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">|load D0 with 5</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="assembly-language-conventions">Assembly Language Conventions</h3>
+
+<p>There are several conventions of Assembly language to keep in mind:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number Symbol</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#</code></td>
+      <td>Indicates a constant. A number without <code class="language-plaintext highlighter-rouge">#</code> is an address. By default, numbers are in base 10.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$</code></td>
+      <td>A <strong>hex</strong> value. E.g. <code class="language-plaintext highlighter-rouge">ORG $4B0 | this program starts at hex 4B0</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td>A <strong>binary</strong> value. E.g. <code class="language-plaintext highlighter-rouge">add.b #%11, D0 | add 3 to D0</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Directives</th>
+      <th>Definition</th>
+      <th>Convention</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Label names</td>
+      <td>You can assign labels to represent bytes or instructions</td>
+      <td>Label or name followed by <code class="language-plaintext highlighter-rouge">:</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ANS: DS.B 1</code> will leave 1 byte of memory empty and name it ANS</td>
+    </tr>
+    <tr>
+      <td>Defining storage (<code class="language-plaintext highlighter-rouge">DS</code>)</td>
+      <td>Instruct the assembler to reserve some memory</td>
+      <td><code class="language-plaintext highlighter-rouge">DS.{data type} {amount}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DS.B 1</code> will leave 1 byte of memory free. See data types further on.</td>
+    </tr>
+    <tr>
+      <td>Origin (<code class="language-plaintext highlighter-rouge">ORG</code>)</td>
+      <td>Tells the assembler where in memory to start putting the instructions or data</td>
+      <td><code class="language-plaintext highlighter-rouge">ORG</code> followed by value</td>
+      <td><code class="language-plaintext highlighter-rouge">ORG $4B0</code> starts the program at hex <code class="language-plaintext highlighter-rouge">4B0</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you want to string together an assembler instruction, you typically write them in the form
+<code class="language-plaintext highlighter-rouge">operation.datatype</code>  <code class="language-plaintext highlighter-rouge">source,</code>   <code class="language-plaintext highlighter-rouge">destination</code></p>
+
+<h3 id="data-types-and-assembler-instructions">Data types and assembler instructions</h3>
+
+<p>Previously, we saw how the <code class="language-plaintext highlighter-rouge">DS</code> directive requires a data type and then an amount of data to set aside; Assembler language defines three types of data type:</p>
+<ul>
+  <li><strong>8 bits / byte</strong>: <code class="language-plaintext highlighter-rouge">.b</code></li>
+  <li><strong>2 bytes / word</strong>: <code class="language-plaintext highlighter-rouge">.w</code></li>
+  <li><strong>4 bytes / long word</strong>: <code class="language-plaintext highlighter-rouge">.l</code></li>
+</ul>
+
+<blockquote>
+  <p>You can typically omit the data type and <code class="language-plaintext highlighter-rouge">.</code> if you are working with a <strong>word</strong>.</p>
+</blockquote>
+
+<h2 id="instruction-set-aspects">Instruction set aspects</h2>
+
+<p>Generally speaking, there are two aspects to a CPU instruction set:</p>
+<ul>
+  <li><strong>Instructions</strong> which tell the processor which operations to perform
+    <ul>
+      <li>Data movement: this is similar to what we have already seen with RTL</li>
+      <li>Arithmetic instructions: keep in mind whether your CPU can operate on fractional numbers</li>
+      <li>Logical instructions</li>
+      <li>Branch instructions</li>
+      <li>System control instructions</li>
+    </ul>
+  </li>
+  <li><strong>Addressing modes</strong> tell the processor which ways it can access data or memory locations, or how they may be calculated by the CPU.</li>
+</ul>
+
+<blockquote>
+  <p>Addressing modes can provide data, specify where it is, and how to go find it.
+You may describe direct addresses, or relative addresses where you compare one address to another to find it.</p>
+</blockquote>
+
+<h3 id="data-movement-instructions">Data Movement Instructions</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">move</code> operations are similar to RTL, just pay attention to the data type.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>move.b D0,D1  | [D1(0:7)] &lt;- [D0(0:7)]
+moveb  D0,D1  | same
+exg.b  D4,D5  | exchange contents of two registers
+swap   D2     | swap lower and upper words of D2
+lea  $F20,A3  | load effective address [A3] &lt;- [$F20]
+</code></pre></div></div>
+
+<h3 id="arithmetic-instructions">Arithmetic Instructions</h3>
+
+<p>Depending on your processor architecture, you may or may not have floating point support.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add.l  Di,Dj  | [Dj] &lt;- [Di] + [Dj]
+addx.w Di,Dj  | also add in x bit from CCR
+mulu.w Di,Dj  | [Dj(0:31)] &lt;- [Di(0:15)] * [Dj(0:15)] signed multiplication
+</code></pre></div></div>
+
+<p>You also have <code class="language-plaintext highlighter-rouge">sub</code> (subtract), <code class="language-plaintext highlighter-rouge">mulu</code> (unsigned mult), <code class="language-plaintext highlighter-rouge">divu</code> and <code class="language-plaintext highlighter-rouge">divs</code>. You don’t have to memorise or know these very well but the key takeaways are</p>
+
+<ul>
+  <li>The “variables” (around the comma <code class="language-plaintext highlighter-rouge">,</code>) are operated on sequentially (left to right).</li>
+  <li>The result of the operation is stored in the second variable (after the comma <code class="language-plaintext highlighter-rouge">,</code>).</li>
+  <li>You can add or subtract bits from the CCR</li>
+  <li>Division and multiplication use the first half of the bits available (unless specified) because the resultant register has a fixed bit length (32 bits in the above example).</li>
+</ul>
+
+<h3 id="logical-instructions">Logical instructions</h3>
+
+<p>We can often use <strong>bitmasks</strong> to achieve our goals in conjunction with <strong>bitwise operations</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AND.B #%11110000, D3 | bitwise AND on 1111 0000 and first 8bits of D3
+</code></pre></div></div>
+
+<p>Additional pointers:</p>
+
+<ul>
+  <li><strong>Shift operations</strong> are fundamental; for example, you can multiply by 2 using left shift operations.</li>
+  <li>Other operations such as rotations also exist.</li>
+</ul>
+
+<h3 id="branch-instructions">Branch instructions</h3>
+<p>These are crucial for <strong>control flow statements</strong>; we typically branch based on <strong>conditions set in the CCR</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LDA NumA | Read the value "NumA"
+CMP NumB | Compare against "NumB"
+BCC Loc  | Go to label "Loc" if "NumA" &lt; "NumB", or in RTL: [PC] &lt;- Loc
+</code></pre></div></div>
+
+<p><a href="https://www.c64-wiki.com/wiki/BCC">Example</a> for illustration purposes (we don’t need to know what <code class="language-plaintext highlighter-rouge">LDA</code> or <code class="language-plaintext highlighter-rouge">CMP</code> is exactly just roughly understand the syntax). Branch instructions cause the processor to branch (jump) to a labelled address.</p>
+
+<ul>
+  <li>CCR flags are set by the previous instruction</li>
+  <li>The current instruction can test the state of the CCR bits and branch if a certain <strong>condition</strong> is met.</li>
+</ul>
+
+<h3 id="subroutines-and-stacks">Subroutines and Stacks</h3>
+<p>Subroutines (<code class="language-plaintext highlighter-rouge">JSR</code>; jump, <code class="language-plaintext highlighter-rouge">RTS</code>; return) let you use the <strong>same code repeatedly</strong> reducing program size and improving readability. It is similar to functions.</p>
+
+<p>Typically when a subroutine is called (with <code class="language-plaintext highlighter-rouge">JSR &lt;subroutine label&gt;</code>), the current address in the PC is <strong>pushed</strong> to a stack and your stack pointer points to the newly pushed address (current address). The address of the subroutine is “loaded” into the PC and the instructions in the subroutine is executed.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">RTS</code> is called, the stack is <strong>popped</strong> and the <strong>popped address</strong> is put into the PC; the stack pointer points to the next address at the top of the stack.</p>
+
+<h2 id="addressing-modes">Addressing modes</h2>
+<p>As mentioned earlier, there are several ways for the CPU to access memory; you should be familiar with the following, and they are found on many CPUs (not just the 68008):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address type</th>
+      <th>Definition</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Direct address</td>
+      <td>The address to act on is <strong>held within a specified register</strong> (in this case <code class="language-plaintext highlighter-rouge">D2</code> and <code class="language-plaintext highlighter-rouge">D3</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">move D3, D2</code></td>
+    </tr>
+    <tr>
+      <td>Immediate address</td>
+      <td>The <strong>operand</strong> forms part of the instruction and <strong>remains constant</strong> - no fetch from memory is made</td>
+      <td><code class="language-plaintext highlighter-rouge">move.b #$42, D5</code></td>
+    </tr>
+    <tr>
+      <td>Absolute address</td>
+      <td>The <strong>operand</strong> contains the address as an <strong>explicit constant</strong> – not useful because programs are stored at different addresses at each run-time.</td>
+      <td><code class="language-plaintext highlighter-rouge">move.l D2, $7FFF0</code> which moves the long value held in D2 to address <code class="language-plaintext highlighter-rouge">$7FFF0</code></td>
+    </tr>
+    <tr>
+      <td>Relative address</td>
+      <td>These all <strong>relate to the program counter</strong> to write <strong>position independent code</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">move d16(PC), D3</code> move contents that are located in the address +16 addresses from PC to <code class="language-plaintext highlighter-rouge">D3</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Indirect addressing is never on the exam; however, this is where we add offsets, increments, or indexed addressing to access memory or data.</p>
+</blockquote>
+
+<p><a href="http://www.cs.iit.edu/~cs561/cs350/addressing/addsclm.html">Additional source #1</a>, <a href="https://www.geeksforgeeks.org/addressing-modes/">Additional source #2</a></p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="memory-systems">Memory Systems</h1>
+       
+            <h2 id="memory-hierarchy">Memory hierarchy</h2>
+<p>When deciding on a memory technology, you must consider the following factors:</p>
+<ul>
+  <li>Frequency of access</li>
+  <li>Access time</li>
+  <li>Capacity required</li>
+  <li>Financial cost</li>
+</ul>
+
+<blockquote>
+  <p>The <strong>designer’s dilemma</strong> is the conflict that is caused by choosing between low cost, high capacity but slow access storage <strong>and</strong> high cost, low capacity, but fast access storage.</p>
+
+  <p>Ideally, we would want our storage access to be frequent, quick, and spatially efficient – the balance of these three leads to the cost of the storage.</p>
+</blockquote>
+
+<p>The <strong>memory hierarchy</strong> is a way of addressing the designer’s dilemma to get the best out of each type of storage.</p>
+
+<blockquote>
+  <p>In practice, most programs exhibit locality, which our memory systems can take advantage of.</p>
+
+  <p><strong>Temporal Locality</strong> – If a particular memory location is referenced, it is likely that the same location will be referenced again in the near future. Loops are excellent examples of temporal locality in programs.</p>
+
+  <p><strong>Spatial Locality</strong> – If a particular memory location is referenced, it is likely that nearby memory locations will be referenced in the near future. Nearly every program exhibits spatial locality, because instructions are usually executed in sequence. Loops exhibit both temporal and spatial locality.</p>
+</blockquote>
+
+<ul>
+  <li>Due to spatial locality, a reasonable assumption to make is that 90% of memory access is within &amp;pm;2KB of the previous program counter location.</li>
+  <li>Additionally, temporal locality states that these accessed memory locations are likely to be accessed again in the near future.</li>
+</ul>
+
+<p>Thus, in such cases, data in these memory locations should be stored in memory that is as close to the CPU as possible (registers, cache, main store). However, this cannot be used for everything as it would <strong>incur a high manufacturing cost</strong>, and the <strong>total capacity would be limited</strong>. Data that is <strong>less frequently accessed</strong> should be stored in memory that is slower, higher capacity, and cheaper because the high speed of access is <strong>not needed</strong>.</p>
+
+<p><img src="part4res/4-1.png" alt="Memory hierarchy diagram" class="center" /></p>
+
+<blockquote>
+  <p>Locality is not only a hardware feature – it is important for programmers to also write code which has ‘good locality’ – however, this is not typically a concern we have when writing higher level languages than assembly such as C or C++. I assume that the compiler will be optimising the code itself to ensure that the assembled code reflects these principles, as it leads to higher performance – if we have to keep accessing main store because we have exceeded the amount of cache available to us, or the information is not in higher levels of cache, then the access time can increase by orders of magnitude.</p>
+</blockquote>
+
+<h2 id="cache-memory">Cache Memory</h2>
+
+<blockquote>
+  <p>Cache memory is a small amount (typically tens of kilobytes) of memory that can be built into the microprocessor or is very close to it, and can be accessed very quickly. Cache memory is used to store values in memory which are likely to be retrieved, so the read times are quicker than the main store.</p>
+
+  <ul>
+    <li>Cache is <strong>kept small to limit cost</strong>; it is also <strong>transparent to the programmer</strong>. However, this does allow <em>some</em> control over what is stored in it.</li>
+    <li>A cache access is known as a <strong>‘cache hit’</strong>.</li>
+    <li>Cache speed is incredibly important – moving down the memory hierarchy will take orders of magnitude more time for similar memory hits.</li>
+  </ul>
+</blockquote>
+
+<p>Because of spatial locality, cache memory often prefetches the memory locations around the last PC memory location before it is needed, which means that in many cases the cache already has the memory needed, increasing read speeds of order of magnitudes as compared to fetching from the main store.</p>
+
+<p>Due to temporal locality, the first time the processor reads from an address in main memory, a copy is stored in the cache. The next time the same address is needed, the copy in the cache can be used instead. So, commonly accessed data is stored in the faster cache memory.</p>
+
+<p><a href="https://courses.cs.washington.edu/courses/cse378/10sp/lectures/lec16.pdf">Additional resource.</a></p>
+
+<h3 id="moores-law">Moore’s Law</h3>
+
+<blockquote>
+  <p><strong>Moore’s Law</strong> is focused on the transistor count within integrated circuits. It states that this count doubles roughly every two years.</p>
+</blockquote>
+
+<p>Currently, single core frequency is tailing off; this has lead the industry to focus on multicore performance instead. Comparatively, memory access speed is improving much more slowly; access time and capacity can become a huge bottleneck when it comes to creating performant systems.</p>
+
+<blockquote class="extra">
+  <b>Note.</b> Cache concepts are not fully included in these notes as they are not fully examined, and also do not feature in the revision videos. There are however several exam questions relating to cache which appear every year.
+</blockquote>
+
+<h2 id="memory-cell-organisation">Memory Cell Organisation</h2>
+<p>Now that we’re familiar with different parts of the memory hierarchy, it’s crucial that we understand how this memory is actually constructed (down to the metal almost).</p>
+
+<h3 id="semiconductor-memory-main-store">Semiconductor Memory (main store)</h3>
+<p>Semiconductor memory is the most common form of main store memory, otherwise known as <strong>RAM</strong>. It can be broken up into several groups:</p>
+<ul>
+  <li><strong>Static RAM</strong> (SRAM)
+    <ul>
+      <li>SRAM uses a <strong>flip-flop</strong> as storage element for each bit.</li>
+    </ul>
+  </li>
+  <li><strong>Dynamic RAM</strong> (DRAM)
+    <ul>
+      <li>For each bit, the <strong>presence or absence of charge</strong> in a capacitor to determine a <code class="language-plaintext highlighter-rouge">1</code> or <code class="language-plaintext highlighter-rouge">0</code>.</li>
+      <li>The capacitor charge <strong>leaks away over time</strong>, which requires <strong>periodic refreshing</strong>.</li>
+      <li>DRAM is typically cheaper than SRAM which is why we accommodate for the higher overhead.
+        <blockquote>
+          <p>Refreshing DRAM incurs a <strong>constant overhead</strong>, which means that it <strong>does not increase per bit</strong>. This is because it is just a one-off cost for one group of DRAM cells.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Both <strong>SRAM and DRAM are volatile</strong> memory storage – therefore, power must continuously be applied to <strong>retain memory</strong>. Once power is removed, you cannot assume that the data is still stored. However, the similarities end there and it is crucial to recognise the differences between the two memory cells.</p>
+
+<blockquote>
+  <p>Always ask yourself about the cost of these memory technologies – it is the reason we have decided to use semiconductor memory as our main store.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>SRAM cells</th>
+      <th>DRAM cells</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>More complex – 5 to 6 transistors per cell</td>
+      <td>Simpler – usually just 1 transistor per cell</td>
+    </tr>
+    <tr>
+      <td>Provides <strong>better read/write times</strong> because of <strong>higher switching speeds</strong>.</td>
+      <td>Because it is simpler it is more compact, which allows for <strong>greater memory cell density</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Cache memory</strong>, both on and off chip, is implemented as SRAM</td>
+      <td>Cheaper to produce than equivalent SRAM memory, and hence is used for <strong>main memory</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>DRAM can be organised even further:</p>
+<ul>
+  <li>Synchronous DRAM (SDRAM)</li>
+  <li>Rambus DRAM (RDRAM)</li>
+  <li>Double Data Rate Synchronous (DDR SDRAM)</li>
+  <li>Cache DRAM (CDRAM)</li>
+</ul>
+
+<h2 id="organising-memory">Organising memory</h2>
+
+<h3 id="memory-cells">Memory cells</h3>
+<p>Before we begin organising memory, it’s useful to know what the individual memory cells will look like. Think of them as single boxes with the following properties:</p>
+<ul>
+  <li>They only store two states (<code class="language-plaintext highlighter-rouge">1</code> or <code class="language-plaintext highlighter-rouge">0</code>).</li>
+  <li>They are capable of being written to as well as read from. This is controlled by a \(R / \bar{W}\) line which determines which direction the information will flow from.</li>
+  <li>They are enabled when a single pin, such as a <code class="language-plaintext highlighter-rouge">SELECT</code> line, is powered.</li>
+</ul>
+
+<p><img src="part4res/4-2.png" alt="Memory cell diagram" class="center" style="zoom: 50%;" /></p>
+
+<blockquote>
+  <p>You can think of a memory cell as a means of storing a single bit.</p>
+</blockquote>
+
+<h3 id="storing-single-words">Storing single words</h3>
+
+<p>In order to store multiple bits together (i.e. words), we will simply store a series of memory cells next to each other. We will need some column selecting I/O to handle selecting the individual bits of the word correctly.</p>
+
+<p><img src="part4res/4-3.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<h3 id="storing-multiple-words">Storing multiple words</h3>
+
+<p>Now that we have organised individual words, we want to store multiple words in memory. We can use this grid arrangement to arrange the words in parallel as follows (imagine we wanted to store four of the 4-bit words shown above):</p>
+
+<p><img src="part4res/4-4.png" alt="Memory cell words diagram" style="zoom: 50%;" /></p>
+
+<p>In our <strong>address decoder</strong>, we have \(log_{2} (W)\) many control pins, where \(W\) is the number of words we want to store in memory. (This is because each pin can be high or low, and hence refer to two distinct words). <strong>Address decoders</strong> are used to select a row of memory cells and the <strong>Column I/O</strong> specifies the exact cell to read or write to.</p>
+
+<p><strong>We want to maintain a square grid of cells.</strong> We could simply have a 16-bit word, which we partition into four individual words (it is possible to put smaller words into the registers of larger ones). However, this would require 16 data lines on the column selection IO, with each bit requiring power; this would be rather lopsided and would result in a column selector doing all the work. Maintaining a square grid means that we can balance the number of required pins across two different pieces of IO, each with their own power requirements.</p>
+
+<blockquote>
+  <p>We are trying to avoid long, narrow arrays when we design our memory cell arrays. We want to <strong>maximise space for memory cells</strong> and minimise space taken up by IO.</p>
+</blockquote>
+
+<h2 id="detecting-and-correcting-errors">Detecting and Correcting Errors</h2>
+
+<blockquote>
+  <p>Although this topic is within the memory systems lecture, it is fundamental to error detection on the whole and hence has its own section here.</p>
+</blockquote>
+
+<p>Broadly speaking, there are two types of errors:</p>
+<ul>
+  <li>Errors that occur <strong>within a system</strong>, e.g. in a memory system.</li>
+  <li>Errors that occur in the <strong>communication between systems</strong>, e.g., in the transmission of messages or data between systems. This is what we will focus on.</li>
+</ul>
+
+<h3 id="noise">Noise</h3>
+
+<ul>
+  <li>We typically <strong>send information through channels</strong>- when these channels become affected by <strong>unwanted information</strong>, they become <strong>noisy</strong>.</li>
+  <li>Noise will arise from the <strong>physical properties</strong> of devices:
+    <ul>
+      <li>Thermal noise</li>
+      <li>Noise of electronic components</li>
+      <li>Noise of transmission circuits</li>
+    </ul>
+  </li>
+  <li><strong>Magnetic media</strong> will also have a “classic form of noise” due to the “random alignment of magnetic fields”.</li>
+</ul>
+
+<blockquote>
+  <p>Noise is <strong>always present</strong>. If it doesn’t come from the components themselves, it’ll come from external sources such as radiation. Noise is hence one of the <strong>limiting factors</strong> in computer systems.</p>
+
+  <p>In magnetic stores, when we have <strong>decreased area</strong> to store a bit, <strong>noise gets worse</strong> which increases the likelihood of errors.</p>
+</blockquote>
+
+<h4 id="digital-logic-devices">Digital logic devices</h4>
+
+<blockquote>
+  <p>We choose binary systems for our number systems as it provides us a <strong>high degree of noise immunity</strong>.</p>
+
+  <p>We also need to consider the <strong>tolerances of the components we use</strong></p>
+</blockquote>
+
+<h5 id="illustrating-noise-immunity-a-trademarked-akram-analogy">Illustrating noise immunity, a trademarked Akram Analogy™</h5>
+
+<p><em>If you are comfortable with the idea of noise immunity and transistor-transistor logic voltage levels, you probably won’t need to read this.</em></p>
+
+<p>To illustrate the first point, consider the following thought experiment:</p>
+<ul>
+  <li>You and your friend have found a massive tunnel (assuming CS students step outdoors). <strong>The tunnel has water dripping and some other ambiguous sounds.</strong></li>
+  <li>You both stand at either end of the tunnel, and you realise now you want to say something to your friend. You have two choices:
+    <ul>
+      <li>You can choose to simply clap your hands to get their attention (a binary communication system), OR</li>
+      <li>You can choose to say a magic password that only they will respond to (a base-26 communication system).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Given the ambiguous sounds in the tunnel, which do you think your friend will be able to distinguish better? Would they be able to distinguish a clap above a specific volume? Or would they be able to distinguish the spoken magic password? How do you know when a sound is finally loud enough to constitute you communicating with one another?</p>
+
+<p>This idea of a small window where we do not consider a signal high or low is widest when we use a binary system- if we had any more possible values, we would need to find even more ranges which we consider ‘nothing’ (<em><strong>i.e. neither 0 nor anything else)</strong></em>.</p>
+
+<blockquote>
+  <p>Using binary means that we only focus on two logical values.</p>
+</blockquote>
+
+<p>In the image below, you can see the illustrated example for the above analogy, with annotated TTL voltage levels for context.</p>
+
+<p><img src="part4res/4-5.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<p><img src="part4res/4-6.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<p>There is a point at which <strong>if there is too much noise</strong>, i.e. a train suddenly passes through the tunnel, your clap will never be heard and is permanently lost- this is known as a <strong>loss/ collapse of immunity</strong>.</p>
+
+<h3 id="detecting-single-errors">Detecting single errors</h3>
+<p>If we <em>assume</em> that errors occur <strong>at random</strong> due to noise, one could naively ask you to clap three times and hope that your friend hears majority of them- i.e., you could send the message several times and take a vote. However, this is a very expensive affair (you would get tired quickly).</p>
+
+<p>We can make the further assumption that <strong>if the probability of one error is low, the probability of two errors close together is even lower</strong>. Using this knowledge, we can add a <strong>parity bit</strong> to the message which can <strong>summarise the property of the message</strong>. We can check that this property is intact to see whether the message has been altered; using a parity bit is typically <strong>cheaper and adequate</strong> in many situations.</p>
+
+<h4 id="parity-systems">Parity systems</h4>
+
+<blockquote>
+  <p>There are many different types of parity systems, but the two main ones you should be focused on are the <strong>even parity</strong> and the <strong>odd parity</strong> system.</p>
+
+  <p>Each system will add an extra bit to the message which makes the <strong>number of logical 1’s even or odd</strong> depending on the system chosen.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Non-parity message (7 bits)</th>
+      <th>Even parity bit added</th>
+      <th>Odd parity bit added</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">100 0001</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0100 0001</code> (two <code class="language-plaintext highlighter-rouge">1</code>’s)</td>
+      <td><code class="language-plaintext highlighter-rouge">1100 0001</code> (three <code class="language-plaintext highlighter-rouge">1</code>s)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is possible to calculate the parity bit using hardware or software.</p>
+
+<h5 id="finite-automaton-to-calculate-parity">Finite automaton to calculate parity</h5>
+
+<p>The lecture slides contain a two-state finite automaton – this diagram shows how, for a message <code class="language-plaintext highlighter-rouge">110</code> travelling on an <strong>even parity system</strong>, we can use the automaton to reach a parity bit of <code class="language-plaintext highlighter-rouge">0</code>, so the message to be sent is <code class="language-plaintext highlighter-rouge">0110</code>.</p>
+
+<p><img src="part4res/4-7.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<h5 id="hardware-to-calculate-parity">Hardware to calculate parity</h5>
+
+<p>You can calculate the parity bit for a message by <strong>XORing each bit with one another</strong>. You can achieve this by connecting each pair of bits to an XOR gate; for an odd number of input bits, add a <code class="language-plaintext highlighter-rouge">0</code> for an <strong>even</strong> parity system and a <code class="language-plaintext highlighter-rouge">1</code> for an <strong>odd</strong> parity system.</p>
+
+<h3 id="detecting-multiple-errors">Detecting multiple errors</h3>
+
+<blockquote>
+  <p>In the real world, it is more likely that <strong>errors will appear in bursts</strong>.</p>
+</blockquote>
+
+<p>Burst errors can be caused by number of reasons, including but not limited to network or communication dropouts for a few milliseconds.</p>
+
+<p>In this scenario, there may be errors in multiple bits and single-bit parity will still hold. Therefore, we must move to <strong>checksums</strong> to check entire columns.</p>
+
+<h4 id="bit-column-parity">Bit-column parity</h4>
+<p>One way in which we can identify errors in multiple columns (i.e. multiple bits) is to use bit-column parity.</p>
+
+<p>Take the message, <code class="language-plaintext highlighter-rouge">Message</code>, which is made up of seven 7-bit ASCII characters:</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Character</th>
+      <th>7 Bits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">M</code></td>
+      <td><code class="language-plaintext highlighter-rouge">100 1101</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">e</code></td>
+      <td><code class="language-plaintext highlighter-rouge">110 0101</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0011</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0011</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">a</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0001</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">g</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0111</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">e</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0101</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By arranging each column into its own message, we can then calculate a parity bit for each message:</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Column number</th>
+      <th>7-bit column</th>
+      <th>Even parity bit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">111 1111</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">011 1111</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code class="language-plaintext highlighter-rouge">001 1000</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">100 0000</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code class="language-plaintext highlighter-rouge">110 0011</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><code class="language-plaintext highlighter-rouge">001 1010</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><code class="language-plaintext highlighter-rouge">111 1111</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We can then take <em>this</em> column and turn it into a 7-bit message: <code class="language-plaintext highlighter-rouge">1001011</code> spells out ASCII <code class="language-plaintext highlighter-rouge">K</code>. Now, we can add <code class="language-plaintext highlighter-rouge">K</code> to the end of our original message, and send the final message <code class="language-plaintext highlighter-rouge">MessageK</code>.</p>
+
+<blockquote>
+  <p>This system will detect all burst errors of less than 14 bits; it will fail if an even number of errors occur in a bit-column (i.e., a message equal to 8 characters).</p>
+</blockquote>
+
+<h4 id="error-correcting-codes-row-and-column-parity">Error Correcting Codes: row and column parity</h4>
+
+<p>The above example only detects errors in columns- but it doesn’t stop us from using row correction at the exact same time. If we have both row parity and column parity, then we begin by checking if each column has correct parity. If we find a column with incorrect parity, we immediately begin going through the rows, and checking the parity of each row. If we find a mistake in a row as well, we simply need to invert the bit found in the column with an error. This ECC enables us to detect multiple errors and fix single errors.</p>
+
+<footer class="site-footer" style="border-top:none;">Otherwise stated, all diagrams on this page belong to <a href="https://github.com/arkamnite">Akram Ahmad</a>.</footer>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="io-mechanisms">I/O Mechanisms</h1>
+       
+            <p align="center">
+    There is no single I/O mechanism that is “better” than the others – it is important to understand the pros and cons of each mechanism and the situations where each should be used.
+</p>
+
+<blockquote>
+  <p>Note that although these mechanisms all deal with I/O, they have different objectives.</p>
+
+  <p>In particular, memory mapped I/O and DMA are mechanisms which are used to communicate with peripherals/devices.
+Polled I/O, interrupt driven I/O and handshaking are used for synchronization and would be used <strong>together</strong> with DMA or memory mapped I/O.</p>
+</blockquote>
+
+<h2 id="memory-mapped-io">Memory mapped I/O</h2>
+
+<ul>
+  <li>Same address bus is used to address both memory and I/O devices.</li>
+  <li>Memory addresses are associated with particular I/O devices – when we want to send data to an I/O device, we send it to that memory address; when we want to receive data, we just read from that memory address.</li>
+  <li>Memory and registers on I/O devices are mapped to these address values. An I/O device can then operate as designed on the data in these addresses.</li>
+</ul>
+
+<p><em>This means that all addressing modes supported by a CPU are available to I/O.</em></p>
+
+<blockquote>
+  <p><strong>Advantages.</strong> No need for dedicated instructions, or for additional hardware. Addressing modes supported by the CPU are available to I/O.</p>
+
+  <p><strong>Disadvantages.</strong> We are giving up portions of our memory to I/O devices. This is less of a concern for modern 64-bit processors with more address spaces, but is still relevant when sometimes you have no choice but to use a processor with constrained memory addresses like 16-bit legacy or embedded systems.</p>
+</blockquote>
+
+<h2 id="polled-io">Polled I/O</h2>
+
+<blockquote>
+  <p><strong>Synchronising I/O devices</strong> with our CPUs is one of the biggest challenges associated with I/O systems, as most of our I/O devices operate at much slower speeds than the CPU.</p>
+</blockquote>
+
+<p>Our CPUs <strong>operate much faster</strong> than IO devices, so while IO devices are doing their thing, the CPU can do other things.</p>
+
+<p><strong>Busy-wait polling</strong>, where your CPU is constantly reading and checking the status of a particular IO device (essentially waiting for it to be ready), is <strong>very wasteful of CPU time and power</strong>. Only time you not want to do this, is for <strong>devoted systems</strong> that want to keep checking for the output because it is <strong>important</strong> (e.g. temperature sensor in nuclear reactor).</p>
+
+<p><strong>Polling, interleaved with another task</strong> is a bit better because you can do other tasks while waiting for your I/O devices to be ready. But even then, this can lead to significantly delayed responses to that device, because your <strong>estimate for the the time-interval</strong> between status checks can still be off and there are cases where your CPU is dominated by the so-called side tasks.</p>
+
+<blockquote>
+  <p><strong>Advantages.</strong> Simple software and hardware involved; usually some kind of <code class="language-plaintext highlighter-rouge">loop</code> paired with some conditional checks and hardware support for the notion of “ready” is all that is required.</p>
+
+  <p><strong>Disadvantages.</strong> Busy-wait polling – waste of CPU time and power. If you have a power constrained device, this may not be good. Interleaving can still lead to significantly delayed responses to a particular I/O device – not a problem in most cases but is a serious issue if you’re working in a hard real-time context.</p>
+</blockquote>
+
+<h2 id="handshaking">Handshaking</h2>
+
+<p><strong>Handshaking</strong> is another way of solving synchronisation problems with I/O devices. There are 3 kinds of handshaking:</p>
+
+<ul>
+  <li><strong>Unsynchronised</strong> – where you just provide data to an I/O device for it to process.</li>
+  <li><strong>Open-ended</strong> – provide some data and assert its validity, after which the I/O device will handle the data.</li>
+  <li><strong>Closed-loop</strong> (the only true two-way communication) – data provided, asserted validity of data, recipient (I/O device) readiness.</li>
+</ul>
+
+<p><strong>Closed-loop</strong> handshaking allows both parties to know the period/time-interval where effective data transfer can occur. This is when both data is valid and I/O device is ready to receive. This way the CPU can more accurately predict when data transfer can occur and when it should do other things.</p>
+
+<p>Handshaking can be implemented with software or specialised hardware, which often requires fewer CPU instructions. Hardware solutions are usually used in embedded systems when software is not available for you to use.</p>
+
+<h2 id="interrupts">Interrupts</h2>
+
+<blockquote>
+  <p>Another way to target synchronisation problems. CPU normally executes instructions sequentially, unless a jump or branch is made – an interrupt input can force a CPU to jump to a service routine. The key difference between interrupts and handshaking or polling is that it is <strong>asynchronous.</strong></p>
+</blockquote>
+
+<p><strong>Interrupt requests</strong> may be ignored depending on the current task that the CPU is working on. The CPU compares the “priority” of the tasks and decides which tasks supersedes the other. <strong>Non-maskable Interrupts</strong> cannot be ignored and the CPU will have to service the interrupt.</p>
+
+<blockquote>
+  <p>It is possible for a masked interrupt which was initially ignored to become non-masked (i.e., necessary to service) if it has been ignored for long enough.</p>
+</blockquote>
+
+<p><img src="part5.assets/image-20210524180858554.png" alt="image-20210524180858554" style="zoom:67%;" class="center" /></p>
+
+<p>When an interrupt is serviced, typically the CPU will finish the current instruction it is working on and, save the state of the working registers and the program counter (usually saving this state on a <strong>stack</strong>). It will then process the interrupt service routine. Once complete, it will remove the program counter from the stack and start processing instructions again from where it left off.</p>
+
+<blockquote>
+  <p>Pushing and popping the PC and status registers onto the stack before and after servicing an interrupt is known as a <strong>context switch</strong> because we are changing the state to execute a different set of instructions.</p>
+</blockquote>
+
+<p>Maskable interrupts can be interrupted as well, provided that the <strong>new</strong> interrupt is of a higher priority than the current interrupt. This is why popping the PC and registers onto a stack is useful so we can keep track and sequentially process different set of instructions based on priority.</p>
+
+<h3 id="interrupts-for-io-examples">Interrupts for IO examples</h3>
+
+<p>Some IO devices can generate interrupts themselves.</p>
+
+<p>A hard drive can generate an interrupt when data, requested some time earlier, is ready to be read.</p>
+
+<p>A timer can generate an interrupt every 100ms and the service routine can then read a sensor input.</p>
+
+<p>A printer can generate an interrupt when it is ready to receive the next character to print.</p>
+
+<blockquote>
+  <p><strong>Advantages.</strong> The asynchronous nature of interrupts allow fast responses and no waste of CPU time/battery power – especially when the IO devices are asynchronous themselves.</p>
+
+  <p><strong>Disadvantages.</strong> But, all data transfers still controlled by CPU (DMA addresses this). Interrupts also make hardware and software more complex.</p>
+</blockquote>
+
+<h2 id="direct-memory-access-dma">Direct Memory Access (DMA)</h2>
+
+<p>Interrupts rely on the microprocessor (CPU) to do everything and this makes it the bottleneck for I/O if there are <strong>large amounts of data</strong> that must be transferred at high speed.</p>
+
+<p>DMA fixes this by giving control of the system buses from the CPU to the DMA Controller (DMAC).</p>
+
+<ul>
+  <li>The DMAC is a dedicated device that controls the three system buses during the data transfer.</li>
+  <li>The DMAC is <strong>optimised solely for data transfer</strong>.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Advantages.</strong> When dealing with large amounts of data, DMA-based I/O can be up to 10 times faster than CPU-driven I/O. CPU is able to process other instructions that do not require the system buses while the DMAC oversees data transfer.</p>
+
+  <p><strong>Disadvantages.</strong> Additional hardware cost.</p>
+</blockquote>
+
+<h3 id="dma-modes-of-operation">DMA Modes of Operation</h3>
+
+<blockquote>
+  <p><strong>Cycle Stealing.</strong> DMAC uses the system buses when they are not being used by the CPU – usually by using available memory access cycles not used by the CPU. This is less effective and less common then the next mode of operation. This is equivalent to if you were working for 20 minutes at a time, but knew that every 18th minute you would be inefficient- instead of continuing to work in this time, you let the DMA handle the bus.</p>
+
+  <p><strong>Burst Mode.</strong> DMAC acquires system buses for the transfer of large amount of data at high speed and preventing the CPU from using the system buses for a fixed time OR…</p>
+
+  <ul>
+    <li>until the transfer is complete</li>
+    <li>the CPU receives an interrupt from a device of greater priority.</li>
+  </ul>
+</blockquote>
+
+<p>This is usually the events that take place before the CPU surrenders control of the system buses:</p>
+
+<ol>
+  <li>DMA transfer requested by I/O</li>
+  <li>DMAC passes request to CPU</li>
+  <li>CPU initialises DMAC
+    <ul>
+      <li>Specifies if it is an <strong>Input</strong> or <strong>Output</strong> operation.</li>
+      <li>Sets the <strong>start address</strong> for the data transfer to the DMAC Address Register.</li>
+      <li>Sets the <strong>number of words</strong> to transfer to the DMAC Count Register.</li>
+      <li>CPU enables DMAC to initiate the transfer.</li>
+    </ul>
+  </li>
+  <li>DMAC requests use of system buses <strong>depending</strong> on its mode of operation.</li>
+  <li>CPU responds with DMA Ack when it’s ready to surrender buses.</li>
+</ol>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="processor-architecture">Processor Architecture</h1>
+       
+            <p align="center">
+    <b>Computer architecture</b> concerns the structure and properties of a computer system, as viewed from perspective of a software engineer while <b>computer organisation</b> is the same but as viewed from the perspective of a hardware engineer.
+</p>
+
+<h2 id="microprocessor-organisation">Microprocessor Organisation</h2>
+
+<p>Considerations:</p>
+
+<ul>
+  <li>How large is your main store? (no. of words) x (no. of bits)</li>
+  <li>PC should have enough bits to be able to refer to every word in the main store.</li>
+  <li>How many programmatic instructions (the “function” the mnemonics refer to e.g. <code class="language-plaintext highlighter-rouge">CLEAR</code> or <code class="language-plaintext highlighter-rouge">ADD</code>) do you want to provide to software engineers?
+    <ul>
+      <li>Remember that every processor architecture has a different type of assembly language (assembly language is very processor specific).</li>
+      <li>The size of your opcode will dictate the number of  instructions you can allow programmers to use. E.g. 3-bit opcode = 2<sup>3</sup> = 8 different instructions.</li>
+    </ul>
+  </li>
+  <li>Your subsystems will have to communicate – we do this with shared busses and three-state buffers.</li>
+  <li>How many arithmetic instructions do you have? This directly affects the number of function selects your CU must have. E.g. Lets say your processor has 4 arithmetic instructions: <code class="language-plaintext highlighter-rouge">CLEAR</code>, <code class="language-plaintext highlighter-rouge">DEC1</code>(decrement), <code class="language-plaintext highlighter-rouge">INC1</code>, <code class="language-plaintext highlighter-rouge">ADD#somevalue</code>. Then you will need 2 function selects from your CU to your ALU to specify which arithmetic instruction the ALU is executing.</li>
+</ul>
+
+<h2 id="micro-and-macro-instructions">Micro and Macro Instructions</h2>
+
+<blockquote>
+  <p><strong>Macro instructions</strong> are the set of mnemonics that each represent a specific instruction that your processor understands. These are assembled into opcodes that your CU can take to “know” which sequence of <strong>micro instructions</strong> to carry out.</p>
+
+  <p>Each <strong>micro instruction</strong> corresponds to a specific signal that your CU can assert (we call these control actions), and when carried out in the right sequence, the final result/effect is that of the <strong>macro instruction</strong>.</p>
+</blockquote>
+
+<h3 id="clock-cycles">Clock cycles</h3>
+
+<p>The number of clocks a <strong>macro instruction</strong> takes in total is technically the time the CU takes to execute the instruction. Since the value of the data at the in our registers/certain outputs don’t change unless there is a clock supplied, we can further categorise macro instructions into the number of <strong>clock cycles or control steps</strong> needed.</p>
+
+<p>What this implies is that certain micro instructions can be <strong>executed simultaneously</strong>, as long as their control actions are independent of one another (so their inputs/outputs don’t depend on each other and hence a clock/enable signal).</p>
+
+<h3 id="representation-of-instructions">Representation of Instructions</h3>
+
+<p>We know that instructions have an <strong>opcode</strong>, may have an <strong>operand</strong>, and stored at a particular address in memory which the PC points to. The example below shows how instructions may look like in memory for a processor with a 32x8-bit Main Store, 5-bit PC, 3-bit opcode:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Mnemonic</th>
+      <th>Opcode Operand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td><code class="language-plaintext highlighter-rouge">CLEAR</code></td>
+      <td><code class="language-plaintext highlighter-rouge">000</code> <code class="language-plaintext highlighter-rouge">00000</code></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">LOAD 5</code></td>
+      <td><code class="language-plaintext highlighter-rouge">110</code> <code class="language-plaintext highlighter-rouge">00101</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">ADD #8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">010</code> <code class="language-plaintext highlighter-rouge">01000</code></td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>–</td>
+      <td>–</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is important to note that this is <strong>just an example</strong>; the key takeaway is to a better idea of how <strong>instructions are represented in memory</strong>.</p>
+
+<blockquote>
+  <p>❗❕ Remember that before and in between each instruction shown in the example above, there is an <strong>implicit fetch step</strong> (recall FDE cycle).</p>
+</blockquote>
+
+<p>In RTL this would be:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">[MAR] &lt;- [PC]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[MDR] &lt;- [MS(MAR)]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[IR] &lt;- [MDR]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[PC] &lt;- [PC] + 1</code></li>
+</ol>
+
+<p>Note that the 4<sup>th</sup> step is actually a macro-step because the processor will have to have some mechanism of incrementing the PC, which can be done using the ALU or something else – it all depends on the processor architecture. What’s <strong>crucial</strong> is that you are <strong>aware of all these nuances</strong> and have them in mind when dealing with this topic.</p>
+
+<h2 id="control-unit-design">Control Unit Design</h2>
+
+<p>Before we concern ourselves with the internal design of the CU, let’s analyse it with a <strong>black box approach</strong> which is to analyse it based on its <strong>requirements</strong> and how that affects what inputs and outputs the CU needs.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Requirements of CU</th>
+      <th>Implication</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Needs to operate at or near clock speed of microprocessor</td>
+      <td>Needs to have a clock input.</td>
+    </tr>
+    <tr>
+      <td>Needs to be aware of the state of bits in the CCR</td>
+      <td>Has to be connected to the CCR and its flags.</td>
+    </tr>
+    <tr>
+      <td>Needs to take opcode from the IR</td>
+      <td>Needs an input for Opcode.</td>
+    </tr>
+    <tr>
+      <td>Needs to translate opcode into appropriate sequence of processes to essentially execute opcode instructions.</td>
+      <td>Needs <code class="language-plaintext highlighter-rouge">Enable</code>, <code class="language-plaintext highlighter-rouge">Clock</code>, and <code class="language-plaintext highlighter-rouge">Read/Write</code> lines to all the components/subsystems to assert the sequence of signals to carry out the opcode.</td>
+    </tr>
+    <tr>
+      <td>Needs to specify which arithmetic operation to carry out.</td>
+      <td>Needs to have Function select lines leading to the ALU. The number of function selects = \(log_2(A)\), where \(A\) is the number of arithmetic operations.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The CU executes micro instructions by asserting a sequence of enable and clock signals which have to abide by a <strong>timing diagram</strong> that depends on the particular <strong>macro instruction</strong>. Once we have this timing diagram for every opcode, we can form a truth table that models each macro instruction. This truth table helps us distinguish between control rounds/clock cycles needed and we can use it to help design our CU.</p>
+
+<p><strong>There are two main approaches to control unit design.</strong></p>
+
+<blockquote>
+  <p><strong>Hardwired / “Random Logic”.</strong> Design the CU as a combinatorial logic circuit, transforming its input signals into a set of output signals based on the truth table we mentioned above.</p>
+
+  <p><strong>Microprogrammed.</strong> Each machine instruction is turned into a sequence of primitive microinstructions, which form a microprogram, stored in a ROM called the microprogram memory.</p>
+</blockquote>
+
+<h3 id="hardwired-cu">Hardwired CU</h3>
+
+<p>The dominant technique, since roughly 1980s, for implementing control units in RISC processors.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Sequencer</strong> – takes clock input of our microprocessor</td>
+      <td>Regulates/aligns the operation of the combinatorial logic circuit in the CU with the control steps/rounds we have for each macro instruction. These regulated signals should ideally match the clock frequency.</td>
+    </tr>
+    <tr>
+      <td><strong>Instruction Decoder</strong></td>
+      <td>Depending on the opcode, send a signal to a certain path that corresponds to a particular macro instruction.</td>
+    </tr>
+    <tr>
+      <td><strong>Fetch/Execute flip-flop</strong></td>
+      <td>Depending on the <code class="language-plaintext highlighter-rouge">START_FETCH</code> and <code class="language-plaintext highlighter-rouge">START_EXECUTE</code> signals, the flip-flop ensures that the CPU is only ever <strong>fetching</strong> or carrying out an opcode instruction (XOR relationship).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">START_FETCH</code> &amp; <code class="language-plaintext highlighter-rouge">START_EXECUTE</code></td>
+      <td>When high, these two signals reset the sequencer so that it is in sync with the fetch/execute flip-flop’s signals (either the Enable signal to the opcode decoder or the fetch signal).</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Advantages.</strong> Fast (operates as fast as logic gates).</p>
+
+  <p><strong>Disadvantages.</strong></p>
+
+  <ul>
+    <li>Complex hardware makes it difficult to design and test – many interconnections.</li>
+    <li>Inflexible as it is difficult to change the design if new instructions are added.</li>
+    <li>Long design time.</li>
+  </ul>
+</blockquote>
+
+<figure align="center">
+    <img src="part6.assets/image-20210513110831502.png" alt="image-20210513110831502" style="zoom:50%;" />
+    <figcaption style="text-align: center:">Diagram of hardwired CU</figcaption>
+</figure>
+
+<h3 id="microprogrammed">Microprogrammed</h3>
+
+<p>The dominant technique for implementing CUs, peaking in 1970s, for CISC processors.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Terminology</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Microprogram routine</strong></td>
+      <td>Describes how to generate the CU outputs for one macro instruction. Made up of micro instructions and stored in microprogram memory (a ROM)</td>
+    </tr>
+    <tr>
+      <td><strong>Microaddress</strong></td>
+      <td>A location within microprogram memory</td>
+    </tr>
+    <tr>
+      <td><strong>MicroPC</strong></td>
+      <td>The CU’s internal program counter</td>
+    </tr>
+    <tr>
+      <td><strong>MicroIR</strong></td>
+      <td>Internal IR used to hold current micro instruction</td>
+    </tr>
+    <tr>
+      <td><strong>Microinstruction</strong></td>
+      <td>Holds the CU output values and other fields to control the microprogram flow.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Advantages.</strong></p>
+
+  <ul>
+    <li>Ease of design and implementation</li>
+    <li>Flexibility of design allows families of processors to be built</li>
+    <li>Simple hardware compared to hardwired implementations</li>
+    <li>Microprogram memory can be reprogrammed for new instructions.</li>
+  </ul>
+
+  <p><strong>Disadvantages.</strong></p>
+
+  <ul>
+    <li>Slower than hardwired implementations.</li>
+  </ul>
+</blockquote>
+
+<figure align="center">
+    <img src="part6.assets/image-20210513110735926.png" alt="image-20210513110735926" style="zoom:50%;" />
+    <figcaption style="text-align: center:">Diagram of micro-programmed CU</figcaption>
+</figure>
+
+<h4 id="standard-operation-description">Standard operation description</h4>
+
+<ol>
+  <li>When the microPC is powered, it initialises to <strong>micro-address 0</strong> which corresponds to the <strong>fetch micro-program</strong>.</li>
+  <li>The micro-instruction register (microIR) <strong>receives microinstructions</strong> and this is where the CU <strong>output values</strong> are set to the values <strong>recorded in each micro-instruction</strong> of the program. Hence, the CU is able to generate the <strong>appropriate control signals</strong>, as the micro-program executes, which correspond to the <strong>macro fetch operation</strong>.</li>
+  <li>After each microinstruction has generated CU outputs, the microPC is <strong>typically</strong> incremented to the next microinstruction by a +1 circuit, <strong>except</strong> for the last fetch microinstruction.</li>
+  <li>At this point the processor’s IR has been populated with the next opcode and this is <strong>fed as opcode inputs</strong> into the CU.</li>
+  <li>There is a component in the microIR we can call the “<strong>next microPC calc type</strong>” (I don’t think this is the actual name) that is set to make sure that the microPC is <strong>not</strong> incremented with the +1 circuit but <strong>instead</strong> is set to the <strong>output of an OTOA circuit</strong> (which is essentially a lookup table of opcodes to micro-program addresses).
+    <ul>
+      <li>This enables the microPC to <strong>jump to the microaddress</strong> of the microprogram <strong>specified</strong> by the opcode and the CU can execute that microprogram based on the values set by the micro-instructions inside the program.</li>
+    </ul>
+  </li>
+  <li>When it is finally the <strong>last microinstruction</strong>, the “next microPC calc type” is set such that the microPC is now set to the microIR “<strong>next microaddress</strong>” field.
+    <ul>
+      <li>Opcode microprograms use this facility/mechanism to <strong>set</strong> the microPC <strong>back</strong> to the fetch microprogram address.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="cisc-vs-risc">CISC vs RISC</h2>
+
+<p><em>Complex Instruction Set Computers vs Reduced Instruction Set Computers.</em></p>
+
+<p><strong>Some history.</strong> Initially (1970s), the control store was much faster than main memory and therefore microprogrammed overhead was only 50% of execution time. As hardware got more advanced, both became faster but the control store lost its advantage and was about as fast as main memory. This led to microprogrammed overhead of over 80% of execution time. So even though processors were becoming more “capable” with a growing instruction set size, these were not actually enabling people to build better, more performant code.</p>
+
+<p>Publishing results by Fairclough et al. in IEEE Micro (1982) supported this as it showed that certain groups of instructions are far more commonly used than others.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction Group</th>
+      <th>Frequency of Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data movement (<code class="language-plaintext highlighter-rouge">move</code>, <code class="language-plaintext highlighter-rouge">store</code>, <code class="language-plaintext highlighter-rouge">load</code>)</td>
+      <td>45.28%</td>
+    </tr>
+    <tr>
+      <td>Program flow control (<code class="language-plaintext highlighter-rouge">branch</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">return</code>)</td>
+      <td>28.73%</td>
+    </tr>
+    <tr>
+      <td>Arithmetic (<code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">sub</code>)</td>
+      <td>10.75%</td>
+    </tr>
+    <tr>
+      <td>Compare (<code class="language-plaintext highlighter-rouge">cmp</code>)</td>
+      <td>5.92%</td>
+    </tr>
+    <tr>
+      <td>Logical (<code class="language-plaintext highlighter-rouge">and</code>, <code class="language-plaintext highlighter-rouge">or</code>)</td>
+      <td>3.91%</td>
+    </tr>
+    <tr>
+      <td>Shift</td>
+      <td>2.93%</td>
+    </tr>
+    <tr>
+      <td>Bit manipulation</td>
+      <td>2.05%</td>
+    </tr>
+    <tr>
+      <td>Miscellaneous</td>
+      <td>0.44%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Many people decided to take a fresh look at the situation and a paper by Patterson and Ditzel coined the two terms, RISC and CISC. They proposed a fresh start – a new approach to building our microprocessors (RISC) that did away with backward compatibility.</p>
+
+<p>This sparked a split in industry, where <strong>ARM</strong> is the main proponent for RISC – their approach was to reduce the set of instructions but retain efficiency and synergy between control signal and control steps, sacrificing backwards compatibility.</p>
+
+<p><strong>Intel</strong> took a different approach and serves a market which wants backwards compatibility. They took a hybrid approach where the simplest and most commonly used instructions are executed by a RISC core and the more complex ones are <strong>microprogrammed</strong> (CISC). Performance is competitive and legacy software can still run.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/>
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

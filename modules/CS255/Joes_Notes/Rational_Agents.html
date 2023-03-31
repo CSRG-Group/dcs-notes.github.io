@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Rational Agents</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Rational Agents</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#rational-agents">Rational Agents</a><ul><li><a href="#inputs-to-an-agent">Inputs to an agent</a></li><li><a href="#agent-system">Agent System</a></li><li><a href="#dimensions-of-an-agent">Dimensions of an Agent</a><ul><li><a href="#modularity">Modularity</a></li><li><a href="#planning-horizon">Planning horizon</a></li><li><a href="#representation">Representation</a></li><li><a href="#computational-limits">Computational limits</a></li><li><a href="#learning-from-experience">Learning from experience</a></li><li><a href="#sensing-uncertainty">Sensing uncertainty</a></li><li><a href="#effect-uncertainty">Effect uncertainty</a></li><li><a href="#preference">Preference</a></li><li><a href="#number-of-agents">Number of Agents</a></li><li><a href="#interaction">Interaction</a></li></ul></li><li><a href="#representation-1">Representation</a><ul><li><a href="#requirements">Requirements</a></li></ul></li><li><a href="#solution">Solution</a><ul><li><a href="#quality-of-a-solution">Quality of a solution</a></li></ul></li><li><a href="#decisions-and-outcomes">Decisions and Outcomes</a></li><li><a href="#physical-symbol-hypothesis">Physical symbol Hypothesis</a></li><li><a href="#knowledge-and-symbol-levels">Knowledge and symbol levels</a></li><li><a href="#abstraction">Abstraction</a></li><li><a href="#reasoning-and-acting">Reasoning and acting</a></li><li><a href="#knowledge-base-and-observations">Knowledge base and observations</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Agent_Architectures.html" title="Agent_Architectures.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="rational-agents">Rational Agents</h2>
+
+<p>In a rational agent a <code class="language-plaintext highlighter-rouge">goal</code> can be specified by some performance metric.</p>
+
+<p>A rational agent will choose the the actions that maximizes the expected value.</p>
+
+<h3 id="inputs-to-an-agent">Inputs to an agent</h3>
+
+<ul>
+  <li><strong>Abilities</strong> A set of actions that the agent can perform</li>
+  <li><strong>Goal</strong> What is the agent trying to achieve</li>
+  <li><strong>Prior Knowledge</strong>  What sis the agent kno when it came into being</li>
+  <li><strong>History</strong></li>
+  <li>
+    <ul>
+      <li>Stimuli: The current environment</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Past experiences</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="agent-system">Agent System</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>An agent systems is an agent in an environment
+
+receives **stimuli** and caries out **actions**
+</code></pre></div></div>
+
+<h3 id="dimensions-of-an-agent">Dimensions of an Agent</h3>
+<p>An agent can be defined in many ways or dimensions that specifies its complexity and structure.</p>
+
+<h4 id="modularity">Modularity</h4>
+<p>How is the agent structured</p>
+<ul>
+  <li><strong>Flat</strong> Agent has one level.</li>
+  <li><strong>Modules</strong> Agent has many interlinking modules.</li>
+  <li><strong>Hierarchy</strong> Agent has a hierarchy(recursive) of modules.</li>
+</ul>
+
+<h4 id="planning-horizon">Planning horizon</h4>
+<p>How far ahead is the agent expected to plan</p>
+
+<ul>
+  <li><strong>Static</strong> World does not change.</li>
+  <li><strong>Finite Stages</strong> The agent plans a finite number of steps.</li>
+  <li><strong>Indefinite</strong> The agent plans a finite but unknown number of steps.</li>
+  <li><strong>Infinite</strong> The agent plans continuously.</li>
+</ul>
+
+<h4 id="representation">Representation</h4>
+<p>How is the environment represented</p>
+<ul>
+  <li><strong>Explicit states</strong> A state is one of the ways the world can be.</li>
+  <li><strong>Features or Propositions</strong> States can be described using features.</li>
+  <li><strong>Individuals and relations</strong> Feature of relationships between sets of individuals.
+    <h4 id="computational-limits">Computational limits</h4>
+    <p>How is the agent limited by computation</p>
+  </li>
+  <li>
+    <p><strong>Perfect rationality</strong> The agent can determine the best course of action.</p>
+  </li>
+  <li><strong>Bounded rationality</strong> The agent must make a good decision with computation and memory limitations.</li>
+</ul>
+
+<h4 id="learning-from-experience">Learning from experience</h4>
+<p>does the agent learn form experience</p>
+<ul>
+  <li><strong>Knowledge is given</strong> at creation.</li>
+  <li><strong>Knowledge is learnt</strong> from past experiences.</li>
+</ul>
+
+<h4 id="sensing-uncertainty">Sensing uncertainty</h4>
+<p>How well does the agent know its environment</p>
+<ul>
+  <li><strong>Fully observable</strong> The agent knows its entire environment.</li>
+  <li><strong>Partially observable</strong> There is a limited number of states, the observation is nto true to reality.</li>
+</ul>
+
+<h4 id="effect-uncertainty">Effect uncertainty</h4>
+<p>Cant the result of an effect be known</p>
+<ul>
+  <li><strong>Deterministic</strong> The resulting state can be known form the previous state and action.</li>
+  <li><strong>Stochastic</strong> There us uncertainty about the environment after the action.</li>
+</ul>
+
+<h4 id="preference">Preference</h4>
+<p>What is the agents desire</p>
+<ul>
+  <li><strong>Achievement goal</strong> The agent must reach a goal which could be the result of a complex formulae.</li>
+  <li><strong>Complex preferences</strong> The agent has a range of complex preferences that interact with one another.</li>
+  <li>
+    <ul>
+      <li><strong>Ordinal</strong> Only the order of the preferences matters.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li><strong>Cardinal</strong> The value of the preferences matters.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="number-of-agents">Number of Agents</h4>
+<ul>
+  <li><strong>Single Agent</strong> All other agents are part of the environment.</li>
+  <li><strong>Multiple Agent</strong> Agents will reason about the actions of other.agents</li>
+</ul>
+
+<h4 id="interaction">Interaction</h4>
+<p>How does the agent interact with the environment</p>
+<ul>
+  <li><strong>Reason offline</strong> reason before taking action.</li>
+  <li><strong>Reason online</strong> reason while taking action.</li>
+</ul>
+
+<h3 id="representation-1">Representation</h3>
+<p>To compute a problem the problem must be in a computable representation before an output can be provided</p>
+
+<h4 id="requirements">Requirements</h4>
+<p>An representation should be</p>
+<ul>
+  <li>Rich enough to express the knowledge needed</li>
+  <li>As close to the problem as possible</li>
+  <li>Amenable to efficient computation</li>
+  <li>Able to be acquired</li>
+</ul>
+
+<h3 id="solution">Solution</h3>
+<h4 id="quality-of-a-solution">Quality of a solution</h4>
+<ul>
+  <li><strong>Optimal Solution</strong> The best solution possible</li>
+  <li><strong>Satisfactory solution</strong> A solution that is good enough</li>
+  <li><strong>Approximate solution</strong> A solution that is close to an optimal solution</li>
+  <li><strong>Probable solution</strong> A solution that is likely to be correct</li>
+</ul>
+
+<h3 id="decisions-and-outcomes">Decisions and Outcomes</h3>
+<p>Good decisions can have bad outcomes and Bad decisions can have good outcomes</p>
+
+<p>Information can lead to better decisions.</p>
+
+<p>Computation time can provide a better solution.</p>
+
+<p>An <strong>Any time algorithm</strong> an produce a solution at any time but given more computation time the solution gets better</p>
+
+<p>A worse solution now maybe be better than an optimal solution later.</p>
+
+<h3 id="physical-symbol-hypothesis">Physical symbol Hypothesis</h3>
+
+<p>A symbol is a physical pattern that can be represented.</p>
+
+<p>A symbol-system has the means to manipulate symbols.</p>
+
+<p><strong>hypothesis</strong> a Physical symbol system has the means for general intelligent action</p>
+
+<h3 id="knowledge-and-symbol-levels">Knowledge and symbol levels</h3>
+<ul>
+  <li><strong>Knowledge level</strong> : Agent’s knowledge, beliefs and goals.</li>
+  <li><strong>Symbol level</strong> Describes what reasoning agent does. This is what the agent uses to implement the knowledge level</li>
+</ul>
+
+<h3 id="abstraction">Abstraction</h3>
+<ul>
+  <li><strong>Low level</strong> Easier for machines to understand</li>
+  <li><strong>High level</strong> Easier for humans to understand</li>
+</ul>
+
+<h3 id="reasoning-and-acting">Reasoning and acting</h3>
+<ul>
+  <li><strong>Design time reasoning and computation</strong> Reasoning done by designer to design the agent.</li>
+  <li><strong>Offline computation</strong> Done by agent before it has to act</li>
+  <li><strong>Online computation</strong> Done by agent “on the go”
+    <h3 id="knowledge-base-and-observations">Knowledge base and observations</h3>
+  </li>
+  <li><strong>Knowledge base</strong> Compiled background knowledge and data</li>
+  <li><strong>Observations</strong> Information obtained online</li>
+  <li>Both used to make decisions</li>
+</ul>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

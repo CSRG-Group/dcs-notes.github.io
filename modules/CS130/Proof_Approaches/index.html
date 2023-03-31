@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Proof approaches - Edmund Goodman</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Proof approaches - Edmund Goodman</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#direct-proof">Direct proof</a></li><li><a href="#cases">Cases</a></li><li><a href="#contrapositive-proof">Contrapositive proof</a></li><li><a href="#proof-by-contradiction">Proof by contradiction</a><ul><li><a href="#conditional">Conditional</a></li><li><a href="#non-conditional">Non-conditional</a></li></ul></li><li><a href="#proof-by-induction">Proof by induction</a><ul><li><a href="#weak-induction">Weak induction</a></li><li><a href="#strong-induction">Strong induction</a></li><li><a href="#proof-by-smallest-counterexample">Proof by smallest counterexample</a></li><li><a href="#multi-dimensional-proof-by-induction">Multi-dimensional proof by induction</a></li></ul></li><li><a href="#disproof">Disproof</a><ul><li><a href="#non-conditional-counterexamples">Non-conditional counterexamples</a></li><li><a href="#conditional-counterexamples">Conditional counterexamples</a></li><li><a href="#disproving-existence">Disproving existence</a></li></ul></li><li><a href="#constructive-and-non-constructive-proofs">Constructive and non-constructive proofs</a></li><li><a href="#the-pigeonhole-principle">The pigeonhole principle</a></li><li><a href="#additional-points">Additional points</a><ul><li><a href="#types-of-statements">Types of statements</a></li><li><a href="#mathematical-writing">Mathematical writing</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h1 id="direct-proof">Direct proof</h1>
+
+<p>To prove a claim \(P \implies Q\):</p>
+
+<blockquote>
+  <p><strong>Proposition</strong>	If \(P\), then \(Q\).</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		Suppose \(P\)</p>
+
+  <p>​			…</p>
+
+  <p>​		Therefore \(Q\)</p>
+</blockquote>
+
+<p>Approaches for common questions:</p>
+
+<ul>
+  <li>Proving about odd/even, substitute in \(x = 2y\) or \(x = 2y+1\)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Proving about divisibility, use the definition of divisibility, e.g. $$5</td>
+          <td>a \implies a=5b, \exists b\in \Z$$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h1 id="cases">Cases</h1>
+
+<p>To prove a claim \(P \implies Q\), split the range of \(P\) into a number of cases (which fully cover it in combination), then prove each case is true individually to show that it is true in all possible scenarios:</p>
+
+<blockquote>
+  <p><strong>Proposition</strong>	If \(P\), then \(Q\).</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		In case \(A\), \(P \implies Q\)</p>
+
+  <p>​		In case \(B\), \(P \implies Q\)</p>
+
+  <p>​		In case \(C\), \(P \implies Q\)</p>
+
+  <p>​		\(A\), \(B\), and \(C\) cover all scenarios, therefore \(P \implies Q\)</p>
+</blockquote>
+
+<p>Sometimes, we can write “without loss of generality” (WLOG) to prove a number of cases at once, if they are all very similar, for example, if the only change were variables being flipped.</p>
+
+<p>Good cases to pick are often zero and non-zero, or positive, negative, and zero</p>
+
+<h1 id="contrapositive-proof">Contrapositive proof</h1>
+
+<p>To prove a claim \(P \implies Q\), we directly prove the inverse, \(\neg Q \implies \neg P\):</p>
+
+<blockquote>
+  <p><strong>Proposition</strong>	If \(\neg Q\), then \(\neg P\).</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		Suppose \(\neg Q\)</p>
+
+  <p>​			…</p>
+
+  <p>​		Therefore \(\neg P\)</p>
+</blockquote>
+
+<h1 id="proof-by-contradiction">Proof by contradiction</h1>
+
+<h2 id="conditional">Conditional</h2>
+
+<p>To prove a claim \(P \implies Q\), we assume the opposite, \(P \implies \neg Q\), then show this results in a contradiction:</p>
+
+<blockquote>
+  <p><strong>Proposition</strong>	If \(P\), then \(Q\).</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		Suppose \(P \land \neg Q\)</p>
+
+  <p>​			…</p>
+
+  <p>​		Therefore contradiction (\(C \land \neg C\)), hence \(P \implies Q\)</p>
+</blockquote>
+
+<h2 id="non-conditional">Non-conditional</h2>
+
+<p>To prove a claim \(P\), we assume the opposite, \(\neg P\), then show this results in a contradiction:</p>
+
+<blockquote>
+  <p><strong>Proposition</strong>	\(P\).</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		Suppose \(\neg P\)</p>
+
+  <p>​			…</p>
+
+  <p>​		Therefore contradiction (\(C \land \neg C\)), hence \(P\)</p>
+</blockquote>
+
+<p>It is often easier to use direct or contrapositive proofs, especially since proofs by contradiction can often be simplified down into contrapositive proofs.</p>
+
+<h1 id="proof-by-induction">Proof by induction</h1>
+
+<h2 id="weak-induction">Weak induction</h2>
+
+<p>Proving a statement is true for all values of a number</p>
+
+<blockquote>
+  <p><strong>Proposition</strong>	The statements \(S_1,S_2,S_3,...\) are all true</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		1) Prove that \(S_1\) (the base case) is true</p>
+
+  <p>​		2) Given any integer \(k \geq 1\), prove that the statement \(S_k \implies S_{k+1}\) is true.</p>
+
+  <p>​		Hence, \(S_n\) is true for all values of \(n\)</p>
+</blockquote>
+
+<p>The assumption that \(S_k\) is true is called the inductive hypothesis</p>
+
+<h2 id="strong-induction">Strong induction</h2>
+
+<p><strong>Proposition</strong>	The statements \(S_1,S_2,S_3,...\) are all true</p>
+
+<p><em>Proof</em>:</p>
+
+<p>​		1) Prove that \(S_1\) (the base case) is true</p>
+
+<p>​		2) Given any integer \(k \geq 1\), prove that (\(S_1 \land S_2 \land S_3 ... \land S_k \implies S_{k+1}\))</p>
+
+<p>​		Hence, \(S_n\) is true for all values of \(n\)</p>
+
+<p>This is often helpful if we need more information to prove the inductive hypothesis than just one case</p>
+
+<h2 id="proof-by-smallest-counterexample">Proof by smallest counterexample</h2>
+
+<blockquote>
+  <p><strong>Proposition</strong>	The statements \(S_1,S_2,S_3,...\) are all true</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		1) Prove that \(S_1\) is true</p>
+
+  <p>​		2) For the sake of contradiction, suppose that \(S_n\) is true.</p>
+
+  <p>​		3) Let \(k&gt;1\) be the smallest integer for which \(S_k\) is false</p>
+
+  <p>​		4) Then \(S_{k-1}\) is true and \(S_k\) is false. Use this to find a contradiction</p>
+</blockquote>
+
+<h2 id="multi-dimensional-proof-by-induction">Multi-dimensional proof by induction</h2>
+
+<p>If we need to prove something holds for all cases of two variables, we can simplify the induction process</p>
+
+<p>We need only prove normal induction for one variable with the other being arbitrary but fixed, and then prove induction on the other for a fixed value of the base case of the first.</p>
+
+<h1 id="disproof">Disproof</h1>
+
+<h2 id="non-conditional-counterexamples">Non-conditional counterexamples</h2>
+
+<blockquote>
+  <p><strong>Proposition</strong>	\(\forall x \in S, P(x)\)</p>
+
+  <p><em>Disproof</em>:</p>
+
+  <p>​		Produce an example \(x \in S\) such that \(P(x)\) is false</p>
+</blockquote>
+
+<h2 id="conditional-counterexamples">Conditional counterexamples</h2>
+
+<blockquote>
+  <p><strong>Proposition</strong>	\(P(x) \implies Q(x)\)</p>
+
+  <p><em>Disproof</em>:</p>
+
+  <p>​		Produce an example of \(x\) such that \(P(x)\) is true, and \(Q(x)\) is false</p>
+</blockquote>
+
+<h2 id="disproving-existence">Disproving existence</h2>
+
+<blockquote>
+  <p><strong>Proposition</strong>	\(\exists x \in S, P(x)\)</p>
+
+  <p><em>Disproof</em>:</p>
+
+  <p>​		Show that \(\forall x \in S, \neg P(x)\)</p>
+</blockquote>
+
+<h1 id="constructive-and-non-constructive-proofs">Constructive and non-constructive proofs</h1>
+
+<p>Constructive proofs are when we “Display an explicit example that proves the theorem”, whereas non-constructive proofs “Prove an example without explicitly giving it”.</p>
+
+<h1 id="the-pigeonhole-principle">The pigeonhole principle</h1>
+
+<p>“If \(n\) items are put \(m\) containers, with \(n&gt;m\), then at least one container must contain more than one item”</p>
+
+<p>This seems simple, but can be applied to various proofs, such as proving things cannot exist because there are “collisions”</p>
+
+<h1 id="additional-points">Additional points</h1>
+
+<h2 id="types-of-statements">Types of statements</h2>
+
+<ul>
+  <li>Theorems and propositions are statements known to be true</li>
+  <li>Conjectures are statements whose truth value is unknown</li>
+  <li>Lemmas are statements which are known to be true, but not “large enough” to be considered theorems, which can be used to construct other theorems</li>
+  <li>Corollaries are statements which are known to be true, but are not “large enough” to be considered theorems, and are derived from another previous theorem</li>
+</ul>
+
+<h2 id="mathematical-writing">Mathematical writing</h2>
+
+<ul>
+  <li>Start sentences with words, not mathematical symbols, and end sentences with full stops</li>
+  <li>Separate expressions with words, so they don’t merge together</li>
+  <li>Don’t use symbols in place of words in sentences</li>
+  <li>Don’t introduce unnecessary symbols, and explain clearly what new symbols mean when they are introduced</li>
+  <li>Use first person plural (i.e. “we” and “us”), and the active voice</li>
+  <li>Avoid using the word “it”, as it can be ambiguous what is being referred to</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

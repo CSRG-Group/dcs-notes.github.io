@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>onePage 118 One Page Notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">118 One Page Notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#variables-number-systems-and-io">Variables, Number Systems, and I/O</a><ul><li><a href="#variables">Variables</a></li><li><a href="#number-systems">Number systems</a><ul><li><a href="#twos-complement">Two’s Complement</a><ul><li><a href="#write-out-the-binary-form-of-28">Write out the binary form of +28</a></li><li><a href="#invert-the-digits">Invert the digits</a></li><li><a href="#add-1">Add 1</a></li></ul></li><li><a href="#twos-complement-converting-to-decimal">Two’s Complement: Converting to decimal</a></li><li><a href="#javas-numeric-data-types">Java’s numeric data types</a></li></ul></li><li><a href="#ieee-754-notation-for-floating-point-numbers">IEEE 754 notation for floating point numbers</a><ul><li><a href="#components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</a></li><li><a href="#ieee-754-double-precision-number">IEEE 754 Double-precision Number</a></li><li><a href="#special-values">Special values</a></li></ul></li><li><a href="#output">Output</a></li><li><a href="#casting">Casting</a></li><li><a href="#lazy-and-strict-evaluation">Lazy and strict evaluation</a></li><li><a href="#pre--and-post-increment">Pre- and Post-increment</a></li><li><a href="#operator-precedence-bidmas-on-steroids">Operator precedence (BIDMAS on steroids)</a></li></ul></li><li><a href="#conditionals--iteratives">Conditionals &amp; Iteratives</a><ul><li><a href="#conditional-statements">Conditional Statements</a><ul><li><a href="#if-else-and-ternary">if, else, and ternary</a></li><li><a href="#switch">switch</a></li><li><a href="#switch-vs-if-else">switch vs if-else</a></li></ul></li><li><a href="#iterative-statements">Iterative statements</a><ul><li><a href="#bounded-repetition">Bounded repetition</a><ul><li><a href="#bounded-repetition-criteria">Bounded repetition criteria</a></li></ul></li><li><a href="#unbounded-repetition">Unbounded repetition</a></li><li><a href="#dowhile-statements">do...while statements</a></li><li><a href="#return-of-the-break-keyword">Return of the break keyword</a></li></ul></li></ul></li><li><a href="#arrays-methods-scope-and-recursion">Arrays, Methods, Scope, and Recursion</a><ul><li><a href="#arrays">Arrays</a><ul><li><a href="#example-resizing-an-array">Example: Resizing an array</a></li><li><a href="#multi-dimensional-arrays">Multi-dimensional arrays</a><ul><li><a href="#irregular-array-sizes">Irregular array sizes</a></li></ul></li></ul></li><li><a href="#methods">Methods</a><ul><li><a href="#function-overloading">Function overloading</a></li></ul></li><li><a href="#scope">Scope</a></li><li><a href="#passing-by-value-and-passing-by-reference">Passing by value and passing by reference</a><ul><li><a href="#passing-by-value">Passing by value</a></li><li><a href="#passing-by-reference">Passing by reference</a></li></ul></li><li><a href="#recursion">Recursion</a><ul><li><a href="#example-factorial">Example: factorial</a></li></ul></li></ul></li><li><a href="#object-oriented-programming">Object Oriented Programming</a><ul><li><a href="#the-4-pillars-of-oop">The 4 Pillars of OOP</a></li><li><a href="#imperative-vs-oop">Imperative vs OOP</a></li><li><a href="#objects-and-classes">Objects and Classes</a><ul><li><a href="#why-constructors">Why constructors?</a></li><li><a href="#memory">Memory</a></li></ul></li><li><a href="#encapsulation">Encapsulation</a><ul><li><a href="#interaction-interface-different-from-java-interfaces">Interaction Interface (different from Java Interfaces)</a></li></ul></li><li><a href="#static-and-final">static and final</a></li></ul></li><li><a href="#inheritance-abstract-classes-and-interfaces">Inheritance, Abstract Classes, and Interfaces</a><ul><li><a href="#inheritance">Inheritance</a><ul><li><a href="#the-override-annotation">The @Override annotation</a></li><li><a href="#why-inheritance">Why inheritance?</a></li><li><a href="#the-super-and-this-keyword">The super and this keyword</a></li><li><a href="#super-in-the-subclass-constructor">super in the subclass constructor</a></li><li><a href="#method-overriding">Method overriding</a></li></ul></li><li><a href="#polymorphism">Polymorphism</a><ul><li><a href="#static-polymorphism">Static Polymorphism</a></li><li><a href="#dynamic-polymorphism">Dynamic Polymorphism</a><ul><li><a href="#something-to-note">Something to note:</a></li></ul></li></ul></li><li><a href="#quick-recap">Quick Recap</a><ul><li><a href="#static-vs-dynamic-polymorphism">Static vs Dynamic Polymorphism</a></li><li><a href="#method-overloading-vs-overriding">Method overloading vs overriding</a></li></ul></li><li><a href="#abstract-classes">Abstract Classes</a><ul><li><a href="#properties-of-abstract-classes">Properties of abstract classes</a></li></ul></li><li><a href="#interfaces">Interfaces</a><ul><li><a href="#properties-of-interfaces">Properties of interfaces</a></li></ul></li><li><a href="#multiple-inheritance">Multiple inheritance</a><ul><li><a href="#why-interfaces">Why interfaces?</a><ul><li><a href="#what-does-that-mean">What does that mean?</a></li></ul></li></ul></li></ul></li><li><a href="#error-handling-and-exceptions">Error Handling and Exceptions</a><ul><li><a href="#what-are-exceptions">What are exceptions?</a></li><li><a href="#exception-classes-vs-error-classes">Exception classes vs. Error classes</a></li><li><a href="#how-do-you-use-exceptions-the-try-catch-statement">How do you use exceptions? (The try-catch statement)</a></li><li><a href="#exceptions-and-inheritance">Exceptions and inheritance</a></li><li><a href="#checked-and-unchecked-exceptions">Checked and unchecked exceptions</a><ul><li><a href="#checked-exceptions-throws">Checked exceptions (throws)</a><ul><li><a href="#using-throws">Using throws</a></li></ul></li><li><a href="#unchecked-exceptions">Unchecked exceptions</a></li></ul></li><li><a href="#writing-your-own-exceptions">Writing your own exceptions</a></li><li><a href="#chaining-exceptions">Chaining exceptions</a></li></ul></li><li><a href="#generics-and-the-java-class-library">Generics and the Java Class Library</a><ul><li><a href="#why-generics">Why Generics</a></li><li><a href="#thinking-of-generics">Thinking of Generics</a></li><li><a href="#implementing-generics">Implementing Generics</a><ul><li><a href="#generic-methods">Generic Methods</a></li><li><a href="#the-java-class-library">The Java Class Library</a></li></ul></li><li><a href="#concluding-notes-from-the-author">Concluding notes from the author</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Are defined in the relevant module data file
+-->
+
+
+
+
+
+<!-- not the best and a little O-horrible  but the easiest way to do it --><h1 id="variables-number-systems-and-io">Variables, Number Systems, and I/O</h1>
+       
+            <h2 id="variables">Variables</h2>
+
+<p><strong>Variables</strong> are what we store <em>values</em> in. A value can be anything from a primitive value, all the way up to an object instance. They’re declared like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Creating an integer variable</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+
+<span class="c1">// Creating a String variable</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"I am a string"</span><span class="o">;</span>
+
+<span class="c1">// Instantiating a Scanner object and storing it in a variable</span>
+<span class="nc">Scanner</span> <span class="n">sinput</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+<span class="c1">// You can then call Scanner methods like so:</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sinput</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h2 id="number-systems">Number systems</h2>
+
+<h3 id="twos-complement">Two’s Complement</h3>
+
+<p><em>Useful links: <a href="https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html#:~:text=Two's%20complement%20is%20the%20way,add%20one%20to%20the%20result.&amp;text=That%20is%20how%20one%20would%20write%20%2D28%20in%208%20bit%20binary.">source</a></em> <em><a href="https://www.rapidtables.com/convert/number/decimal-to-binary.html">conversion tool</a></em></p>
+
+<p>Two’s complement is the way in which computers represent integers. To get the two’s complement negative notation of an integer, you perform the following steps:</p>
+
+<ol>
+  <li>Write out the number in binary</li>
+  <li>Invert the digits</li>
+  <li>Add one to the result</li>
+</ol>
+
+<p><strong>It is a given</strong> that if the leftmost bit is a <code class="language-plaintext highlighter-rouge">1</code>, then <strong>this number is negative</strong>.</p>
+
+<p><strong>⚠ Important:</strong> If you are converting a positive integer <em>to</em> two’s complement form, then you simply do a basic conversion. When converting to binary, you only invert the bits if you have a negative number. Similarly, if you see the number <code class="language-plaintext highlighter-rouge">00011110</code>, this is <code class="language-plaintext highlighter-rouge">30</code>- you do not need to do the hokey-pokey inversion magic. If you are reading from a binary number, you can either read the basic decimal number <em>OR</em> the decimal from the signed 2’s complement. In which case, the number <code class="language-plaintext highlighter-rouge">11111101</code> would read <code class="language-plaintext highlighter-rouge">253</code> and <code class="language-plaintext highlighter-rouge">-3</code> respectively.</p>
+
+<p>For example, given 8 bits and the number -28:</p>
+<h4 id="write-out-the-binary-form-of-28">Write out the binary form of +28</h4>
+<p><code class="language-plaintext highlighter-rouge">28 = 0 0 0 1 1 1 0 0</code></p>
+<h4 id="invert-the-digits">Invert the digits</h4>
+<p><code class="language-plaintext highlighter-rouge">0 0 0 1 1 1 0 0 =&gt; 1 1 1 0 0 0 1 1</code></p>
+<h4 id="add-1">Add 1</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 1 1 0 0 0 1 1
+              1 +
+-----------------
+1 1 1 0 0 1 0 0
+</code></pre></div></div>
+
+<h3 id="twos-complement-converting-to-decimal">Two’s Complement: Converting to decimal</h3>
+<p>It is therefore also possible to convert <em>from</em> Two’s Complement; take the number <code class="language-plaintext highlighter-rouge">0xFFFFFFFF</code> as an example. This is the hex representation of <code class="language-plaintext highlighter-rouge">1111 1111 1111 1111 1111 1111 1111 1111</code>.</p>
+
+<p>At first glance, we can tell that <strong>this number is negative</strong>, as it has a leading (leftmost) bit set to <code class="language-plaintext highlighter-rouge">1</code>.</p>
+
+<p>If you want to see what this number is a negative <em>of</em>, then we follow a similar set of steps:</p>
+
+<ol>
+  <li>Invert all the bits</li>
+  <li>Add one</li>
+</ol>
+
+<p>Therefore, inverting all the bits <code class="language-plaintext highlighter-rouge">0xFFFFFFFF</code> results in <code class="language-plaintext highlighter-rouge">0000 0000 0000 0000 0000</code>. Then, adding <code class="language-plaintext highlighter-rouge">1</code> leads to <code class="language-plaintext highlighter-rouge">0000 0000 0000 0001</code>, which is the number <code class="language-plaintext highlighter-rouge">1</code>. Therefore, the <em>negative</em> of <code class="language-plaintext highlighter-rouge">0xFFFFFFFF</code> is 1, and hence the <em>value</em> is <code class="language-plaintext highlighter-rouge">-1</code>.</p>
+
+<h3 id="javas-numeric-data-types">Java’s numeric data types</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Bytes</th>
+      <th>Value in Decimal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">byte</code></td>
+      <td>1 byte (8 bits)</td>
+      <td>-128 to +127</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">short</code></td>
+      <td>2 bytes</td>
+      <td>-32768 to +32767</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td>4 bytes</td>
+      <td>-2<sup>31</sup> to +(2<sup>31</sup> - 1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">long</code></td>
+      <td>8 bytes</td>
+      <td>-2<sup>63</sup> to +(2<sup>63</sup> - 1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We’ve seen how two’s complement is used to represent <strong>integers</strong>. For decimal numbers, like <code class="language-plaintext highlighter-rouge">float</code> and <code class="language-plaintext highlighter-rouge">double</code>, we use floating point notation to store their values (IEEE-754).</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">float</code> is 32-bits and can represent numbers between -3.4e38 and 3.4e38 with 6 to 7 significant digits of accuracy.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">double</code> is 64-bits and can be represent numbers between -1.7e308 and 1.7e308 with 14 to 15 significant digits of accuracy.</p>
+
+<h2 id="ieee-754-notation-for-floating-point-numbers">IEEE 754 notation for floating point numbers</h2>
+
+<p><em>Useful links: <a href="https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/">GeeksforGeeks (source)</a></em> <em><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">Conversion Tool</a></em></p>
+
+<p>Before we begin, a brief reminder on fractional binary: <code class="language-plaintext highlighter-rouge">9.125 = 1001.001</code>. We achieved this result with the following intuition:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Binary place values</th>
+      <th>2<sup>3</sup></th>
+      <th>2<sup>2</sup></th>
+      <th>2<sup>1</sup></th>
+      <th>2<sup>0</sup></th>
+      <th>2<sup>-1</sup></th>
+      <th>2<sup>-2</sup></th>
+      <th>2<sup>-3</sup></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Binary bits</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Decimal values</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.125</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The table is a little janky, but it hopefully gets the point across; you continue in descending powers of 2 as you go rightwards. Anything beyond <code class="language-plaintext highlighter-rouge">2^0</code> is followed by a decimal place, <code class="language-plaintext highlighter-rouge">.</code>.</p>
+
+<h3 id="components-of-the-ieee-754-floating-point-number">Components of the IEEE 754 Floating Point Number</h3>
+
+<p>Before diving into the components, it’s much better to look at an example. Therefore, take the decimal number <code class="language-plaintext highlighter-rouge">43.625</code>; this has binary representation <code class="language-plaintext highlighter-rouge">101011.101</code>. However, we would represent this as <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup>.</p>
+
+<p>In general the value of a floating point number is determined by</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 127</sup></p>
+</blockquote>
+
+<p>There are three basic components which make up the IEEE 754 floating point number:</p>
+<ol>
+  <li>The <strong>Sign Bit</strong>: this is a <em>single bit</em> where a <code class="language-plaintext highlighter-rouge">0</code> represents a positive number, whilst a <code class="language-plaintext highlighter-rouge">1</code> represents a negative number.</li>
+  <li>The <strong>Biased Exponent</strong>: this is an <em>eight bit</em> exponent field which represents both positive and negative exponents. It is <strong>biased</strong> because it is a fixed positive value that is then subtracted by 127 to represent either a positive or negative exponent. For example, given the exponent bits 10000100<sub>2</sub> = 132<sub>10</sub>. We arrive at the index 2<sup>5</sup> because 2<sup>132-127</sup> = 2<sup>5</sup>.</li>
+  <li>The <strong>Mantissa</strong>: this is a <em>twenty-three bit</em> field which makes up the numbers to right of the decimal point <code class="language-plaintext highlighter-rouge">.</code> (as shown in the formula above). The most significant bit (the left most) is 1/2<sup>1</sup>, then 1/2<sup>2</sup>, and so on. In most cases, the value before the <code class="language-plaintext highlighter-rouge">.</code> is 1, however in some cases which we will explain in the <strong>special</strong> cases section below, it may be 0 (this is when it is renormalised).</li>
+</ol>
+
+<p>With these components established, we can rewrite our previous example, <code class="language-plaintext highlighter-rouge">43.625</code>, <code class="language-plaintext highlighter-rouge">1.01011101</code> x 2<sup>5</sup> in IEEE 754 notation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sign (1 bit)</th>
+      <th>Exponent (8 bits)</th>
+      <th>Mantissa (23 bits)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+      <td><code class="language-plaintext highlighter-rouge">10000100</code></td>
+      <td><code class="language-plaintext highlighter-rouge">01011101000000000000000</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Complete representation:</strong> <code class="language-plaintext highlighter-rouge">0 10000100 01011101000000000000000</code></p>
+
+<h3 id="ieee-754-double-precision-number">IEEE 754 Double-precision Number</h3>
+
+<p>Luckily for our computers, there is also a specification for double-precision numbers; it basically uses the same components, except for the fact that there are more bits.</p>
+
+<blockquote>
+  <p>(-1)<sup>(Sign Bit)</sup> x 1.(Mantissa) x 2<sup>(Biased Exponent) - 1023</sup></p>
+</blockquote>
+
+<ul>
+  <li><strong>Sign Bit.</strong> No change in bits.</li>
+  <li><strong>Mantissa.</strong> 52-bits</li>
+  <li><strong>Biased Exponent.</strong> 11-bits</li>
+</ul>
+
+<h3 id="special-values">Special values</h3>
+
+<p>IEEE 754 also has some special values you need to keep in mind:</p>
+
+<p>When the <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">0000 0000</code></p>
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">-0</code>.</li>
+  <li>Otherwise, renormalise the number with this form: (<code class="language-plaintext highlighter-rouge">-1</code>)<sup>sign bit</sup> x <code class="language-plaintext highlighter-rouge">0.(fraction)</code> x 2<sup>-127</sup></li>
+</ul>
+
+<p>The <strong>exponent bits</strong> = <code class="language-plaintext highlighter-rouge">1111 1111</code></p>
+<ul>
+  <li>If the <em>fraction</em> is <code class="language-plaintext highlighter-rouge">0</code>, the value is <code class="language-plaintext highlighter-rouge">+- infinity</code>.</li>
+  <li>Otherwise, the value is <code class="language-plaintext highlighter-rouge">NaN</code>, otherwise known as <strong>not a number</strong>.</li>
+</ul>
+
+<h2 id="output">Output</h2>
+
+<p>The main content I gleamed from this was to be familiar with the three Linux streams:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stream</th>
+      <th>Purpose</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">System.in</code></td>
+      <td>Collect input</td>
+      <td><code class="language-plaintext highlighter-rouge">Scanner</code> uses this stream to collect user input</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">System.out</code></td>
+      <td>Send normal output</td>
+      <td>Your typical <code class="language-plaintext highlighter-rouge">System.out.println()</code> will output to this stream</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">System.err</code></td>
+      <td>Send output when there is an error</td>
+      <td>Some IDE’s such as Eclipse will output to this stream to highlight text in a different colour</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="casting">Casting</h2>
+
+<p>Generally speaking, this is the process of <strong>changing the data type</strong> of one piece of data from one type to another. You need to be familiar with the different types (pun not intended) of casting:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Implicit casting</th>
+      <th>Explicit casting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Definition</strong></td>
+      <td>No loss of precision</td>
+      <td>Possible loss of precision</td>
+    </tr>
+    <tr>
+      <td><strong>Example</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">float pi = 3.141f;</code> <br /><code class="language-plaintext highlighter-rouge">double big_pi = pi;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float pi = 3.141f;</code> <br /><code class="language-plaintext highlighter-rouge">int less_pi = pi;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The compiler will ‘let you know’ (otherwise known as screaming) if you attempt an <strong>explicit cast</strong>. However, if this is intentional you can do it like this.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// lets say you want to cast a variable from a float to an int</span>
+<span class="kt">float</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.144</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">more_pi</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">pi</span><span class="o">;</span> <span class="c1">// essentially tells the compiler not to worry</span>
+</code></pre></div></div>
+
+<h2 id="lazy-and-strict-evaluation">Lazy and strict evaluation</h2>
+
+<p>You will be familiar with both <code class="language-plaintext highlighter-rouge">&amp;/&amp;&amp;</code> and <code class="language-plaintext highlighter-rouge">|/||</code>; if you use either of these, your code will still compile correctly. However, one is <strong>strict</strong> whilst the other is <strong>lazy</strong>. If you need a quick way to remember this, a <strong>SINGLE CHARACTER</strong> means <strong>STRICT</strong> evaluation.</p>
+
+<p>The only difference between a strict and a lazy evaluation is how many of the operands are computed; this means that if you are expecting something to happen on the RHS of a comparison, <strong>only a strict evaluation</strong> will execute the LHs as well as the RHS. In essence, a lazy comparison will only execute both operands if needed.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+
+<span class="c1">// Lazy AND example; the LHS is false, so the overall statement is false. The RHS is not executed, and a = 5.</span>
+<span class="k">if</span> <span class="o">(</span><span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">a</span><span class="o">++</span> <span class="o">==</span> <span class="mi">5</span><span class="o">))</span> <span class="o">{}</span>
+
+<span class="c1">// Strict AND example; the LHS is false, but the RHS is still executed. a = 6 after this, even though the result is false.</span>
+<span class="k">if</span> <span class="o">(</span><span class="kc">false</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">a</span><span class="o">++</span> <span class="o">==</span> <span class="mi">5</span><span class="o">))</span> <span class="o">{}</span>
+
+<span class="c1">// Therefore, a lazy OR operator will not execute the RHS if the LHS is true.</span>
+</code></pre></div></div>
+<h2 id="pre--and-post-increment">Pre- and Post-increment</h2>
+
+<p>There are two ways to increment a numerical variable using the <code class="language-plaintext highlighter-rouge">++</code> operation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prefix <code class="language-plaintext highlighter-rouge">++var</code></th>
+      <th>Postfix <code class="language-plaintext highlighter-rouge">var++</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The value is <em>incremented first</em>, and then returned.</td>
+      <td>The value is <em>returned first</em>, and then it is incremented</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I’ve found that a useful way to remember this is to think of where the <code class="language-plaintext highlighter-rouge">++</code> is; in the prefix case, the <code class="language-plaintext highlighter-rouge">++</code> precedes the variable name. Therefore, you can think of the return always happening when you reach the <code class="language-plaintext highlighter-rouge">var</code>. Hence, prefix <code class="language-plaintext highlighter-rouge">++var</code> incremements and then returns, whilst postfix <code class="language-plaintext highlighter-rouge">var++</code> returns and then increments.</p>
+
+<h2 id="operator-precedence-bidmas-on-steroids">Operator precedence <em>(BIDMAS on steroids)</em></h2>
+
+<p>The Java creators realised that they too wanted to implement operator precedence. It follows this order:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>P</th>
+      <th>U</th>
+      <th>M</th>
+      <th>A</th>
+      <th>S</th>
+      <th>R</th>
+      <th>E</th>
+      <th>S</th>
+      <th>L</th>
+      <th>A</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Postfix</td>
+      <td>Unary</td>
+      <td>Multiplicative</td>
+      <td>Additive</td>
+      <td>Shift</td>
+      <td>Relational</td>
+      <td>Equality</td>
+      <td>Strict Ops</td>
+      <td>Lazy Ops</td>
+      <td>Assignment</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">var++</code></td>
+      <td><code class="language-plaintext highlighter-rouge">++var</code></td>
+      <td><code class="language-plaintext highlighter-rouge">* / %</code></td>
+      <td><code class="language-plaintext highlighter-rouge">+ -</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;&lt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;= &lt; &gt;= &gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">== !=</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&amp;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&amp;&amp;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">= += -= *= /= ...</code></td>
+    </tr>
+  </tbody>
+</table>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="conditionals--iteratives">Conditionals &amp; Iteratives</h1>
+       
+            <h2 id="conditional-statements">Conditional Statements</h2>
+
+<p>This part of the page covers the <code class="language-plaintext highlighter-rouge">if...else</code> statement, the ternary operator, and the <code class="language-plaintext highlighter-rouge">switch</code> statement.</p>
+
+<h3 id="if-else-and-ternary">if, else, and ternary</h3>
+
+<p>There isn’t a significant amount of content beyond the basic <code class="language-plaintext highlighter-rouge">if...else</code> statement; something you may have missed however is the <strong>ternary operator</strong>. This is a shorthand for the <code class="language-plaintext highlighter-rouge">if...else</code> statement and looks like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// Our boolean condition</span>
+<span class="nc">Boolean</span> <span class="n">boolCond</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+<span class="c1">// Your standard if-else</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">boolCond</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="n">valueIfTrue</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="n">valueIfFalse</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// Using a ternary operator to achieve the exact same goal</span>
+<span class="n">value</span> <span class="o">=</span> <span class="o">(</span><span class="n">boolCond</span><span class="o">)</span> <span class="o">?</span> <span class="o">(</span><span class="n">valueIfTrue</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="n">valueIfFalse</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>You may be pleased to know that the ternary operator can be nested; this is basically only useful for code-golf, however.</p>
+
+<p>Additionally, when explaining the semantics of an <code class="language-plaintext highlighter-rouge">if...else</code> statement, we can refer to the <code class="language-plaintext highlighter-rouge">{}</code> (curly brackets) as the <strong>construct</strong>. So we can say:</p>
+
+<blockquote>
+  <p>If the <strong>boolean expression</strong>, <code class="language-plaintext highlighter-rouge">boolCond</code>, evaluates to true, then the body of the statement is executed, otherwise control passes to the next <strong>program statement</strong> after the <strong>construct</strong>.</p>
+</blockquote>
+
+<h3 id="switch">switch</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">switch</code> statement is a way to simplify the <code class="language-plaintext highlighter-rouge">if...else</code> statement whilst also providing some additional control over how each <code class="language-plaintext highlighter-rouge">case</code> can be handled. First, the basic syntax:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="o">(</span><span class="n">variable</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nl">VALUE1:</span> <span class="c1">// Statements here if variable == VALUE1</span>
+    <span class="k">break</span><span class="o">;</span> <span class="c1">// Do not continue executing!</span>
+  <span class="k">case</span> <span class="nl">VALUE2:</span> <span class="c1">// Statements here if variable == VALUE2</span>
+    <span class="k">break</span><span class="o">;</span> <span class="c1">// Do not continue executing!</span>
+  <span class="k">default</span><span class="o">:</span> <span class="c1">// Statements here if neither case has been satisfied; however you can leave this blank.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The eagle-eyed amongst you will notice that each case is matched on an <strong>equality</strong> basis- not using <code class="language-plaintext highlighter-rouge">equals()</code> or <code class="language-plaintext highlighter-rouge">compareTo()</code>. Therefore, <strong>switch cases only work for the following primitives:</strong></p>
+<ul>
+  <li>int</li>
+  <li>short</li>
+  <li>byte</li>
+  <li>char</li>
+</ul>
+
+<p>Switch statements will also work on enumerated types (enums), <code class="language-plaintext highlighter-rouge">String</code>s, and objects that wrap the corresponding primitives:</p>
+<ul>
+  <li>Character</li>
+  <li>Byte</li>
+  <li>Short</li>
+  <li>Integer</li>
+</ul>
+
+<p>An example of a switch on a enum:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+  <span class="kd">enum</span> <span class="nc">Colour</span><span class="o">{</span><span class="no">RED</span><span class="o">,</span><span class="no">GREEN</span><span class="o">,</span><span class="no">BLUE</span><span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Colour</span> <span class="n">c</span> <span class="o">=</span> <span class="nc">Colour</span><span class="o">.</span><span class="na">RED</span><span class="o">;</span>
+    <span class="k">switch</span> <span class="o">(</span><span class="n">c</span><span class="o">){</span> 
+      <span class="k">case</span> <span class="nl">RED:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Colour is red"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+      <span class="k">case</span> <span class="nl">BLUE:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Colour is blue"</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">GREEN:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Colour is green"</span><span class="o">);</span>
+      <span class="k">default</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Default"</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>There are a few caveats to take away from this:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">switch</code> statements are evaluated bottom to top</li>
+  <li>If a <code class="language-plaintext highlighter-rouge">case</code> branch matches the <code class="language-plaintext highlighter-rouge">variable</code>, the expressions in that <code class="language-plaintext highlighter-rouge">case</code> will be evaluated.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">break</code> keyword is <strong>optional</strong>. This means that the <code class="language-plaintext highlighter-rouge">switch</code> statement will continue running top to bottom otherwise, even after satisfying a case. Think about if you would like this behaviour!</li>
+  <li>The <code class="language-plaintext highlighter-rouge">default</code> statement is also <strong>optional</strong>; it is only evaluated if no cases match the variable expression.</li>
+</ul>
+
+<p>Notably, if there is an <strong>absence</strong> of the <code class="language-plaintext highlighter-rouge">break</code> keyword and a specific <code class="language-plaintext highlighter-rouge">case</code> <strong>value</strong> has already matched the <strong>variable</strong>, the <code class="language-plaintext highlighter-rouge">switch</code> statement will continue running all the remaining <em>statements</em> inside each case without checking the <strong>value</strong> of the <code class="language-plaintext highlighter-rouge">case</code>.</p>
+
+<p>For example, if the colour of our <code class="language-plaintext highlighter-rouge">Colour</code> enum above is <code class="language-plaintext highlighter-rouge">BLUE</code>, the output of the switch statement will be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Colour is blue
+Colour is green
+Default
+</code></pre></div></div>
+
+<p>That is because, after <code class="language-plaintext highlighter-rouge">c</code> matches with the value <code class="language-plaintext highlighter-rouge">BLUE</code>, the <code class="language-plaintext highlighter-rouge">switch</code> statement continues executing all the remaining statements without checking the value <code class="language-plaintext highlighter-rouge">GREEN</code>. This can be avoided by using <code class="language-plaintext highlighter-rouge">break</code>.</p>
+
+<h3 id="switch-vs-if-else">switch vs if-else</h3>
+<p>In most cases, deciding between using a <code class="language-plaintext highlighter-rouge">switch</code> or <code class="language-plaintext highlighter-rouge">if...else</code> statement depends on readability and maintainability. However, for a larger number of cases (5 or more), a <code class="language-plaintext highlighter-rouge">switch</code> statement is generally faster. This is because the compiler creates a “jump table” based on each of the <code class="language-plaintext highlighter-rouge">case</code> values. Essentially, these are special byte codes that tell the Java Virtual Machine (JVM) which path of execution to take depending on the <strong>variable</strong> expression. Conversely, the JVM checks the boolean expressions in <code class="language-plaintext highlighter-rouge">if-else</code> statements one at a time, from top to bottom. This is why when there are many cases, a <code class="language-plaintext highlighter-rouge">switch</code> statement will run faster than equivalent logic coded <code class="language-plaintext highlighter-rouge">if-else</code> statements.</p>
+
+<p>The compiler is able to do this because the <strong>values</strong> in a <code class="language-plaintext highlighter-rouge">switch</code> statement are always constant values at compile time, and can be compared easily with the <strong>variable</strong> expression as they are the same type. For <code class="language-plaintext highlighter-rouge">if-else</code> statements, they are boolean expressions that may depend on an arbitrary number of variables and conditions and the compiler cannot assume that the values will be constant.</p>
+
+<h2 id="iterative-statements">Iterative statements</h2>
+
+<p>Whilst you are most likely familiar with <code class="language-plaintext highlighter-rouge">while</code> and <code class="language-plaintext highlighter-rouge">for</code> loops, it is important to understand the <strong>terminology</strong> that seperates the two. A <code class="language-plaintext highlighter-rouge">while</code> loop is <strong>unbounded</strong> repetition whilst a <code class="language-plaintext highlighter-rouge">for</code> loop is <strong>bounded</strong>; you cannot compile code which does not have a terminating condition.</p>
+
+<h3 id="bounded-repetition">Bounded repetition</h3>
+
+<h4 id="bounded-repetition-criteria">Bounded repetition criteria</h4>
+<p>We use bounded repetition when we know all of the following:</p>
+<ul>
+  <li>Where to start</li>
+  <li>Where to end</li>
+  <li>What iterative step to take at each repetition</li>
+</ul>
+
+<p>The Java <code class="language-plaintext highlighter-rouge">for</code> statement is structured with <code class="language-plaintext highlighter-rouge">for (initialisation; booleanCondition; iteration) { statement(s); }</code>. Keep in mind that the sky is the limit when it comes to either of these three components; you do not always have to use <code class="language-plaintext highlighter-rouge">i++</code> to iterate a list in forward direction.</p>
+
+<h3 id="unbounded-repetition">Unbounded repetition</h3>
+
+<p>We can use this when we are <strong>unsure of how many times</strong> we want to repeat something. There is no Java police to enforce which repetition you use, but I would keep in mind how tidy your code is. Moreover, if you find yourself iterating in a while loop, make sure you understand the differences between postfix and prefix operators.</p>
+
+<h3 id="dowhile-statements"><code class="language-plaintext highlighter-rouge">do...while</code> statements</h3>
+
+<p>This is for when you want to execute the loop body <strong>before checking the expression</strong>; this means that <strong>the body will always be ran once</strong>. After the first initialisation, a <code class="language-plaintext highlighter-rouge">do...while</code> statement will only execute the code inside the <code class="language-plaintext highlighter-rouge">do</code> whilst the <code class="language-plaintext highlighter-rouge">while</code> condition evaluates to <code class="language-plaintext highlighter-rouge">true</code>. You may want to use this when <em>generating random numbers, and then checking if these satisfy a condition…</em> 🤖</p>
+
+<h3 id="return-of-the-break-keyword">Return of the <code class="language-plaintext highlighter-rouge">break</code> keyword</h3>
+
+<p>You can use the <code class="language-plaintext highlighter-rouge">break</code> keyword at any point inside a <code class="language-plaintext highlighter-rouge">do...while</code>, <code class="language-plaintext highlighter-rouge">while</code>, or <code class="language-plaintext highlighter-rouge">for</code> statement to halt looping within that scope. For example, this code would stop iterating once a certain limit has been reached:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> 
+    <span class="k">break</span><span class="o">;</span> <span class="c1">// The code would stop looping at i = 5;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="arrays-methods-scope-and-recursion">Arrays, Methods, Scope, and Recursion</h1>
+       
+            <h2 id="arrays">Arrays</h2>
+<p>There are several key points to revise when it comes to answering questions about arrays:</p>
+<ul>
+  <li>They are <strong>monomorphic lists</strong>- this means you can only store one type of data in it.</li>
+  <li>Implementation wise, arrays are allocated on the heap in the JVM. These are contiguous blocks of memory, which means you can access elements by index. This is known as <strong>random access</strong>.</li>
+  <li>You cannot create <strong>arrays of generic types</strong>. This means that you cannot create an array in Java if you do not yet know what type it stores- you can however store arrays of objects, as long as it is determined at compile-time. Therefore, in an exam, <strong>do not create a generic array</strong>. You are better off using a built-in collection such as an <code class="language-plaintext highlighter-rouge">ArrayList</code>.</li>
+  <li>You cannot access elements of an array using pointer syntax, unlike in C. Not that anyone would attempt this when writing code in an exam, nor in practice for Java, but do not attempt it otherwise.</li>
+</ul>
+
+<p>When arrays are <strong>declared</strong> (the name and type are defined), its value will be initialised to the special value <code class="language-plaintext highlighter-rouge">null</code>. This simply means that no value is assigned to the array <strong>yet</strong>, and Java knows that we want <em>some</em> contiguous block of memory to store some values, but this block of memory hasn’t been assigned yet.</p>
+
+<p>To <strong>initialise</strong> an array, you can either use array syntax, or the <code class="language-plaintext highlighter-rouge">new</code> keyword. The <code class="language-plaintext highlighter-rouge">new</code> keyword essentially reserves a contiguous block of memory. Because arrays have fixed sizes once they are initialised, we also have to state/define the size of the array when we initialise it.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Declaring an array of type int</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">declaredArray</span><span class="o">;</span>
+
+<span class="c1">// Also a valid declaration, where the [] goes after the variable name</span>
+<span class="kt">int</span> <span class="n">postfixSquareBracketsArray</span><span class="o">[];</span>
+
+<span class="c1">// These are both set to null- we haven't actually reserved (allocated) any memory for them.</span>
+
+<span class="c1">// This is how we allocate memory with the new keyword- notice how we've allocated in the same line.</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">allocatedArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span> <span class="c1">// We allocated space for 10 integers. This size is not in bytes!</span>
+
+<span class="c1">// This is one way to declare an array and populate it at the same time.</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">populatedArray</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span> <span class="o">};</span>
+</code></pre></div></div>
+
+<p>Since <strong>the size of an array is fixed</strong>, if you want to resize an array, you’ll need to copy across your data from the first array into a <strong>new array variable</strong>, and then reassign the array.</p>
+
+<p>The JVM (Java Virtual Machine) will use garbage collection to automagically delete the original array that is no longer in use- unlike languages like C where you must manually clean up the memory.</p>
+
+<h3 id="example-resizing-an-array">Example: Resizing an array</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Our first array of five integers</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">smallArray</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">};</span>
+
+<span class="c1">// If we wanted to add two more integers, we wouldn't be able to do this.</span>
+<span class="n">smallArray</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span> <span class="c1">// This would fail, as the array is out of bounds! Remember that indexing begins at 0.</span>
+
+<span class="c1">// We instead should create a new array of the size we want.</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">largerArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">7</span><span class="o">];</span>
+
+<span class="c1">// We now need to copy the elements from the original array.</span>
+<span class="c1">// Cast your mind back to bounded and unbounded repetition.</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">smallArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+  <span class="n">largerArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">smallArray</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+
+<span class="c1">// We can now add new data to largerArray. You could continue by reassigning the variable names.</span>
+<span class="n">smallArray</span> <span class="o">=</span> <span class="n">largeArray</span><span class="o">;</span> <span class="c1">// This should replace the data pointed to by smallArray with the data in largeArray.</span>
+                         <span class="c1">// Now, you can access the 6th and 7th elements of smallArray. Don't try this in C.</span>
+</code></pre></div></div>
+
+<p>ICYMI, the <code class="language-plaintext highlighter-rouge">length</code> property, which is a part of all arrays in Java, was used to know when to stop iterating. There is a much neater and quicker way of copying across an array, found in the <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html"><code class="language-plaintext highlighter-rouge">arraycopy</code></a> method in the <code class="language-plaintext highlighter-rouge">System</code> class.</p>
+
+<h3 id="multi-dimensional-arrays">Multi-dimensional arrays</h3>
+<p>It is also possible to create multi-dimensional arrays; one must simply add another set of square brackets after the first set.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1st pair of square brackets refer to the "outer" array and the</span>
+<span class="c1">// 2nd pair refers to the "inner" array. </span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">twoDArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">20</span><span class="o">][</span><span class="mi">20</span><span class="o">];</span>
+
+<span class="c1">// Populating a 2D array</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">twoDArrayTwo</span> <span class="o">=</span> <span class="o">{</span> 
+                           <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span> <span class="o">},</span> <span class="c1">// The first element of the outer array</span>
+                           <span class="o">{</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span> <span class="o">},</span> <span class="c1">// The second element of the outer array</span>
+                           <span class="o">{</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span> <span class="o">}</span>  <span class="c1">// The third element of the outer array</span>
+                       <span class="o">};</span>
+
+<span class="c1">// Assigning to a 2D array</span>
+<span class="n">twoDArrayTwo</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="n">twoDArrayTwo</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+<span class="n">twoDArrayTwo</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>It is crucial to keep in mind that <strong>this is not a matrix</strong>. Although you can easily interpret this as a matrix, there is no table being constructed here - it is an array, where each element is also an array type. It would be much better to think of this as a list of vectors, which although would form a matrix, is not a special type like an array is.</p>
+
+<h4 id="irregular-array-sizes">Irregular array sizes</h4>
+
+<p>If you have an <strong>irregularly sized array</strong>, where the length of the rows are not equal to the length of the columns, you must create the <strong>outer array first</strong> and then create each of the inner arrays.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This 2D-array has only initialised the outer array. The inner array is simply set to null.</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">arrayOfInts</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">][];</span>
+
+<span class="c1">// This creates arrays of increasing size, for each of the 10 elements in the outer array.</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arrayOfInts</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+  <span class="n">arrayOfInts</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="methods">Methods</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">main</code> method is a special method that is the <strong>entry point</strong> for a Java application.</p>
+
+<p>All methods have a <em>signature</em> that defines the access privilege, the return type, the name, and its parameters.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Access privilege</th>
+      <th>Return type</th>
+      <th>Name</th>
+      <th>List of function parameters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Definition</td>
+      <td>Who can access this method from outside the class?</td>
+      <td>What type does this method return?</td>
+      <td>What should the name be?</td>
+      <td>Which arguments can be provided and used by the method?</td>
+    </tr>
+    <tr>
+      <td>Options</td>
+      <td><code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">protected</code>.<br />Private means that no other classes can call this method from instances of this class, and <code class="language-plaintext highlighter-rouge">protected</code> means that only children of the class can call this function.</td>
+      <td>Any object or primitive type, and <code class="language-plaintext highlighter-rouge">void</code> for no return.</td>
+      <td>An ASCII string.</td>
+      <td>This can be left empty- if you provide arguments, they are in the form <code class="language-plaintext highlighter-rouge">[type] nameOfArgument</code>. If this is a list, they are comma separated.</td>
+    </tr>
+    <tr>
+      <td>Example</td>
+      <td><code class="language-plaintext highlighter-rouge">public static</code> - <br />this can be accessed from outside the class by the compiler, or any other classes.</td>
+      <td><code class="language-plaintext highlighter-rouge">void</code><br />The main function returns no type.</td>
+      <td><code class="language-plaintext highlighter-rouge">main</code><br />A special compiler-recognised name that signifies the main entry point.</td>
+      <td><code class="language-plaintext highlighter-rouge">(String[] args)</code> The main method takes an array of strings as an argument.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="function-overloading">Function overloading</h3>
+
+<p>If you have more than one method of the <strong>same name, but different parameter lists</strong>, this is known as <strong>overloading</strong>. The compiler will recognise which method you’ve called based on the parameters you’ve given it.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Two methods with the same name, and return type, but different parameters</span>
+<span class="c1">// If the static keyword scares you, don't worry about it for now.</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">integerMethod</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">a</span><span class="o">;</span> <span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">integerMethod</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span> <span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The parameter method: "</span> <span class="o">+</span> <span class="n">integerMethod</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span> <span class="c1">// Will print "5";</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The non-parameter method: "</span> <span class="o">+</span> <span class="n">integerMethod</span><span class="o">());</span> <span class="c1">// Will print "0";</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="scope">Scope</h2>
+
+<p>Scope refers to how long a variable is relevant for, and when it becomes relevant.</p>
+
+<p>As an analogy, imagine if you just moved into a new house and there’s no furniture. If you tried to sit down on a specific chair, you wouldn’t be able to- there’s no chair in the room. You hop onto IKEA / Amazon, and order a chair, and it arrives in the room. The chair is <em>now in scope</em>. You can now sit on that chair in particular.</p>
+
+<p>Let’s say that you decide not to put the chair away once you’re done. You’d rather keep it in the room you’re in, and you decide to do this for all the furniture you ever need- you never throw anything away. Your room, just like your computer memory, would soon fill up. Therefore, you realise you should throw some old chairs out- this is throwing the chair <em>out of scope</em>. You cannot sit on that chair anymore as you’ve just thrown it out!</p>
+
+<p>In Java, we have the same analogy, roughly speaking. Our ‘room’ is defined between any pair of curly braces: <code class="language-plaintext highlighter-rouge">{ }</code>. Once you reach the end of the curly braces, any variables in there go out of scope. Take a look at this code example:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Room</span> <span class="o">{</span>
+  <span class="c1">// Creating a Door object. This will survive until the very last closing brace.</span>
+  <span class="kd">public</span> <span class="nc">Door</span> <span class="n">doorObject</span><span class="o">;</span>
+  
+  <span class="o">{</span>
+    <span class="c1">// We are creating a chair in this scope.</span>
+    <span class="nc">Chair</span> <span class="n">myChair</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Chair</span><span class="o">();</span> <span class="c1">// Chair object enters scope. Remember, an object is an instance of a class.</span>
+    <span class="n">doChairThings</span><span class="o">(</span><span class="n">myChair</span><span class="o">);</span>
+    <span class="n">shut</span><span class="o">(</span><span class="n">doorObject</span><span class="o">);</span> <span class="c1">// The doorObject is still in scope, as we have not left its closing braces yet.</span>
+  <span class="o">}</span> <span class="c1">// The myChair variable is no longer in scope once we leave these braces.</span>
+  
+  <span class="o">{</span>
+    <span class="c1">// We can create another chair here</span>
+    <span class="nc">Chair</span> <span class="n">myChair</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Chair</span><span class="o">();</span> <span class="c1">// This chair object is not the same as the previous one!</span>
+    <span class="n">smash</span><span class="o">(</span><span class="n">myChair</span><span class="o">);</span> <span class="c1">// We won't be smashing the other chair, as the other one is out of scope- there is no 'other'.</span>
+  <span class="o">}</span>
+  
+  <span class="n">doChairThings</span><span class="o">(</span><span class="n">myChair</span><span class="o">);</span> <span class="c1">// This will fail, as there's no more 'myChair' in scope.</span>
+  
+  <span class="n">slamDoor</span><span class="o">(</span><span class="n">doorObject</span><span class="o">);</span> <span class="c1">// This will work fine, as the doorObject is still in scope.</span>
+  
+<span class="o">}</span> <span class="c1">// The doorObject also goes out of scope here.</span>
+</code></pre></div></div>
+
+<h2 id="passing-by-value-and-passing-by-reference">Passing by value and passing by reference</h2>
+
+<p>When we pass variables to a method, sometimes these variables are passed by value - meaning the value of the variable is passed into the method (not the actual variable itself). Other times, the variables are passed by reference - the memory location of the variable is passed into the method.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">randomMethod</span><span class="o">(</span><span class="kt">int</span> <span class="n">p</span><span class="o">)</span> <span class="o">{...}</span>
+</code></pre></div></div>
+
+<h3 id="passing-by-value">Passing by value</h3>
+<p>Only the 8 primitive types are passed by value - and this is always the case. This means that the <strong>value</strong> of the variable is <strong>cloned</strong> in memory and assigned to the corresponding parameter <strong>name</strong> of the method (e.g. <code class="language-plaintext highlighter-rouge">p</code> in the example above).</p>
+
+<p>Any changes to the variable within the method’s scope do not affect the original variable - it only affects the <strong>cloned</strong> value. If you want to change the value of the original variable you need to  <em>assign</em> a new value to the <strong>original</strong> variable, e.g. <code class="language-plaintext highlighter-rouge">p++</code> which increments the value of <code class="language-plaintext highlighter-rouge">p</code>.</p>
+
+<h3 id="passing-by-reference">Passing by reference</h3>
+<p>Objects and arrays are passed by <strong>reference</strong>. Because objects can be very large and often contain many fields, the <strong>memory address</strong> of the variable is passed to a method (not cloned like primitives). This means changes made inside a method will directly induce changes in the original variable. Therefore, think carefully if you are attempting to <strong>copy a variable</strong> into a new one. (An example of this was when we copied an array previously into a larger one).</p>
+
+<h2 id="recursion">Recursion</h2>
+<p>A recursive function is any function that <strong>calls itself</strong>. There are common applications for this when calculating a Fibonacci number, or a factorial of a number. All recursive functions are made up of the following two components:</p>
+<ul>
+  <li>Base case(s). These can be seen as values that are returned when an upper or lower limit(s) is reached. These cases can also be thought of as the <strong>terminating</strong> conditions for a recursive method (what condition must be fulfilled to stop the recursion).</li>
+  <li>Recursive call(s). These are specific calls to the function again. Remember to use the <code class="language-plaintext highlighter-rouge">return</code> keyword before a recursive call so that you eventually return the series of computations.</li>
+</ul>
+
+<h3 id="example-factorial">Example: factorial</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>f(x) = 1              if x = 0          ==&gt; This is the base case
+f(x) = x * f(x - 1)   if x &gt; 0          ==&gt; This is the recursive call
+</code></pre></div></div>
+
+<p>If you are implementing this in any language, you can make the distinction between a base case and a recursive call by using a simple <code class="language-plaintext highlighter-rouge">if...else</code> statement or a <code class="language-plaintext highlighter-rouge">switch</code> statement. You must remember to <code class="language-plaintext highlighter-rouge">return</code> the result of either.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="object-oriented-programming">Object Oriented Programming</h1>
+       
+            <p>Before this, we have been discussing the von Neumann type architecture of programming (Imperative programming). Now we will move on to OOP. Here I will assume that you know most of the practical stuff like how to create a class and what constructors, fields/properties, and methods are. We will focus more on the “theoretical” part of it like what an object or class is formally and what are the motivations for OOP.</p>
+
+<h2 id="the-4-pillars-of-oop">The 4 Pillars of OOP</h2>
+
+<p>Before we begin, I think it’ll be helpful to list out the 4 pillars of OOP. In this chapter, we will be going over <strong>encapsulation</strong>, while the last 3 will be discussed in further detail in the later few chapters/topics.</p>
+
+<ol>
+  <li><strong>Encapsulation</strong>: Bundling data and operations that can be performed on that data together - leads to data hiding. This is done by using the <em>access modifiers</em> (public, protected, private).</li>
+  <li><strong>Abstraction</strong>: Exposing essential features, while hiding irrelevant detail</li>
+  <li><strong>Inheritance</strong>: Creating new classes from existing ones, reducing programmer effort</li>
+  <li><strong>Polymorphism</strong>: Using objects that can take many forms (different from Generics) - allows us to invoke operations from derived classes while using a base class reference at run-time.</li>
+</ol>
+
+<h2 id="imperative-vs-oop">Imperative vs OOP</h2>
+
+<p>In procedural (or imperative) programming, we convert program specifications to method-based code. We use this in the C programming language, or Pascal. Data and operations on the data are separated.</p>
+
+<p>In OOP, we take procedural programming and we add some more functionality. The main difference is that our data and operations on the data are bundled together in a structured called an <strong>Object</strong>! This lets us define individual objects with their own <strong>pre-set</strong> data very easily (is possible in imperative programming but its a hassle and the code is long).</p>
+
+<h2 id="objects-and-classes">Objects and Classes</h2>
+
+<p>Objects are made up of two main components: <strong>properties</strong> and <strong>methods</strong>.</p>
+
+<blockquote>
+  <p>The <em>properties</em> of an object store its <strong>state</strong> while the <em>methods</em> operate on this data and <em>change</em> its <strong>state</strong>.</p>
+</blockquote>
+
+<p>When working with objects, the first thing to do is to create a <em>blueprint</em> of the object which we call the <strong>Class</strong>. The object itself will be a specific <strong>instance</strong> of this <strong>class</strong>.</p>
+
+<p>A <strong>constructor</strong> is a <em>special method</em> that is meant to set-up the object according to some rules (you can think of it as giving the <strong>object</strong> some starting properties). If you don’t write a constructor, Java will create a <strong>default constructor</strong> - it does not set any values to the object. We can also <strong>overload</strong> constructors.</p>
+
+<h3 id="why-constructors">Why constructors?</h3>
+
+<p>The main reason we use constructors is to define a starting value for some (or all) of the properties of a certain object as it is created. This is usually important when these properties are necessary for the object to “make-sense”. For example, defining a <code class="language-plaintext highlighter-rouge">Circle</code> object without a radius doesn’t really make sense, so it would be good to define a constructor so that all <code class="language-plaintext highlighter-rouge">Circle</code> objects that are created will always have a radius. We will not need constructors when the particular class does not require these properties to function as it is meant to such as for <strong>static</strong> classes. In fact, it would not make sense for <strong>static</strong> classes to have a constructor because they are not meant to have <strong>instances</strong>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// The class must be defined in a Circle.java file.</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circle</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Circle</span><span class="o">(</span><span class="kt">double</span> <span class="n">radius</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Constructor</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">radius</span> <span class="o">=</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">()</span> <span class="o">{...}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">circumference</span><span class="o">()</span> <span class="o">{...}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="memory">Memory</h3>
+
+<p>Objects require a small amount of contiguous memory to store all their properties. To create new <strong>instances</strong> of a class we use the <code class="language-plaintext highlighter-rouge">new</code> keyword.</p>
+
+<p>When we use the <code class="language-plaintext highlighter-rouge">==</code> on two variables, we are actually asking if the 2 variables are pointing to the same part of memory (in other words, whether the two variables are pointing to the same object). To check if objects have the same data/prop, you should know that we use the <code class="language-plaintext highlighter-rouge">equals()</code> method.</p>
+
+<h2 id="encapsulation">Encapsulation</h2>
+
+<p>You should be familiar with the <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">public</code>, and <code class="language-plaintext highlighter-rouge">protected</code> <strong>access modifiers</strong>.</p>
+
+<ul>
+  <li><strong>Public.</strong> Can be accessed outside the class</li>
+  <li><strong>Private.</strong> Can only be accessed from within the class</li>
+  <li><strong>Protected.</strong> Can only be accessed from within the class and by subclasses (children classes).</li>
+  <li><strong>Package private.</strong> Can only be accessed by other Objects in the same package. Java code is often arranged into packages.</li>
+</ul>
+
+<p>Encapsulation is an idea that motivates <strong>data-hiding</strong>, where making data private and some methods public is known as <strong>data-hiding</strong>.</p>
+
+<blockquote>
+  <p>Encapsulation motivates <em>users</em> to use a class by its <strong>external interface</strong> (using public/protected methods).</p>
+</blockquote>
+
+<p>The implementation of the class can be done in whatever way the programmer wants, but the overall external functionality of the class still remains the same. Meaning if its meant to be a bank ATM, the underlying code can be different (and up to the programmers) but its functionality remains the same and users interact with it the same way.</p>
+
+<p>This also makes code <strong>more maintainable</strong> because if you change a particular way your class is implemented, such as changing a type from a <code class="language-plaintext highlighter-rouge">Int</code> to a <code class="language-plaintext highlighter-rouge">Long</code>, other programmers who use your class may have interacted with your public properties directly, instead of through a method. This would probably break their code - encapsulation avoids this.</p>
+
+<p>Hence, encapsulation encourages us to use <strong>access modifiers</strong> they help to</p>
+
+<ul>
+  <li>Restrict access to some data and methods (or to control the access of the data in our objects). Unnecessary detail is hidden.</li>
+  <li>The implementation can change without ruining dependant applications. Maintains a good interface between programmers.</li>
+  <li>Boundaries of responsibility are clear.</li>
+</ul>
+
+<h3 id="interaction-interface-different-from-java-interfaces">Interaction Interface (different from Java Interfaces)</h3>
+
+<p>We often refer to the public/protected methods that allow users to interact with our classes/objects as the interface that links users to your code. So <strong>accessor</strong> and <strong>mutator</strong> methods (getters and setters) which are very common in OOP are just some examples of methods that define the interface.</p>
+
+<h2 id="static-and-final"><code class="language-plaintext highlighter-rouge">static</code> and <code class="language-plaintext highlighter-rouge">final</code></h2>
+
+<p>If we want a variable or method to be shared between instances of a class, we use the <code class="language-plaintext highlighter-rouge">static</code> keyword. This is where that particular variable or method belongs to the entire class - not to any single instance. To use static variables or methods, we do not need to instantiate an instance of a class (aka create an object).</p>
+
+<p>We use <code class="language-plaintext highlighter-rouge">static</code> mainly when it doesn’t make sense to define a particular method/variable for specific instances.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">final</code> keyword is used to prefix variables that we want to be constant. A good example would be <img src="https://render.githubusercontent.com/render/math?math=\pi&amp;mode=inline" />! We will not be able to change the value of variables prefixed with <code class="language-plaintext highlighter-rouge">final</code> once they are assigned/instantiated with a <strong>value</strong>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.1415926543</span><span class="o">;</span>
+</code></pre></div></div>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="inheritance-abstract-classes-and-interfaces">Inheritance, Abstract Classes, and Interfaces</h1>
+       
+            <h2 id="inheritance">Inheritance</h2>
+
+<p>Just like how we inherit certain traits from our parents, <em>subclasses</em> (children classes) inherit <strong>all</strong> methods and fields from their <em>superclass</em> (parent class) at first. After which, we can override or add features to the subclass. This is how we would do it in Java:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Parent class</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// Child/subclass</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{}</span>
+</code></pre></div></div>
+
+<p>In this case, <code class="language-plaintext highlighter-rouge">Cake</code> inherits the <code class="language-plaintext highlighter-rouge">eat()</code> method from the <code class="language-plaintext highlighter-rouge">Food</code> class even though we don’t specify it in the <code class="language-plaintext highlighter-rouge">Cake</code> class. That means we can call the <code class="language-plaintext highlighter-rouge">eat()</code> method from the <code class="language-plaintext highlighter-rouge">Cake</code> class like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Cake</span> <span class="n">chocolate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+    <span class="n">chocolate</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span> <span class="c1">// This is valid!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Because we haven’t specified anything in the <code class="language-plaintext highlighter-rouge">Cake</code> class yet the output we get is still:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This tastes amazing!
+</code></pre></div></div>
+
+<p>Now, if we want to override this method we can do something like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>If we call the <code class="language-plaintext highlighter-rouge">eat()</code> method from the <code class="language-plaintext highlighter-rouge">chocolate</code> now we will get</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This cake tastes amazing!
+</code></pre></div></div>
+
+<h3 id="the-override-annotation">The <code class="language-plaintext highlighter-rouge">@Override</code> annotation</h3>
+
+<p>Before overriding the method in the <code class="language-plaintext highlighter-rouge">Cake</code> example, we write <code class="language-plaintext highlighter-rouge">@Override</code>, which is called a “method annotation”. This indicates to the compiler that method overriding is occurring. This is not required to compile, but it comes with the benefits of:</p>
+
+<ul>
+  <li>Readability, as it is clear when method overriding is occurring</li>
+  <li>Error checking, as the compiler produces a warning if overriding is not occurring, indicating the programmer is not doing what they are intending to</li>
+</ul>
+
+<p>More information is available <a href="https://stackoverflow.com/questions/94361/when-do-you-use-javas-override-annotation-and-why">here</a>, <a href="https://stackoverflow.com/questions/4822954/do-we-really-need-override-and-so-on-when-code-java">here</a>, and <a href="https://beginnersbook.com/2014/07/override-annotation-in-java/">here</a>.</p>
+
+<h3 id="why-inheritance">Why inheritance?</h3>
+
+<p>You probably already know this, but inheritance means that we can reduce repeated code. Another reason to use inheritance is so that <strong>run-time polymorphism</strong> is possible! We will discuss this in further detail below but essentially it allows us to define a general method for a superclass but do something specific to it depending on the eventual subclass that we have no knowledge of at compile time.</p>
+
+<h3 id="the-super-and-this-keyword">The <code class="language-plaintext highlighter-rouge">super</code> and <code class="language-plaintext highlighter-rouge">this</code> keyword</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">this</code> keyword is used to refer to the current instance of the class. In a similar way, the <code class="language-plaintext highlighter-rouge">super</code> keyword is used to refer to the superclass of the current instance.</p>
+
+<h3 id="super-in-the-subclass-constructor"><code class="language-plaintext highlighter-rouge">super</code> in the subclass constructor</h3>
+
+<p>The superclass’s constructor should be the first thing that you call when defining the subclass constructor - especially if there are parameters that the <code class="language-plaintext highlighter-rouge">super</code> constructor must take. Otherwise, Java will call the default (no argument) <code class="language-plaintext highlighter-rouge">super </code> constructor <code class="language-plaintext highlighter-rouge">super()</code> - and if it is meant to take parameters you will get a compile-time error.</p>
+
+<p>If your subclass happens to have 2 constructors then one of them should call the other constructor with <code class="language-plaintext highlighter-rouge">this()</code> and the other should have <code class="language-plaintext highlighter-rouge">super()</code> in it.</p>
+
+<h3 id="method-overriding">Method overriding</h3>
+
+<p>From the example on the <code class="language-plaintext highlighter-rouge">Cake</code> class above, you have seen how we can override a method from a superclass. How about if we just want to extend the method but we don’t want to change anything in the super method? That’s right, we can call the <code class="language-plaintext highlighter-rouge">super</code> method in the subclass method:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Cake class</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Wow I love cake!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The output we get is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This tastes amazing!
+Wow I love cake!
+</code></pre></div></div>
+
+<p>But what if a certain superclass method is <em>private</em>? We won’t be able to access them from the subclass. However, this is where the <strong><em>protected</em></strong> keyword comes in handy, as subclasses can access the <em>protected</em> properties in the superclass. So lets say our <code class="language-plaintext highlighter-rouge">Food</code> class has a <code class="language-plaintext highlighter-rouge">name</code> field now and a setter to set the <code class="language-plaintext highlighter-rouge">name</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>If we define <code class="language-plaintext highlighter-rouge">name</code> as <em>private</em> then the following code will give an error:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This "</span> <span class="o">+</span> <span class="kd">super</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We would have to use the getter method <code class="language-plaintext highlighter-rouge">getName()</code> to get the String value of the <code class="language-plaintext highlighter-rouge">name</code> field in <code class="language-plaintext highlighter-rouge">Food</code>. However, it is <strong>valid</strong> if we set <em>private</em> to <em>protected</em>.</p>
+
+<h2 id="polymorphism">Polymorphism</h2>
+
+<h3 id="static-polymorphism">Static Polymorphism</h3>
+
+<p><strong>Static polymorphism</strong> is essentially method overloading. It is polymorphism because the name of the method can represent different methods and how Java understands which method to call is based on the <strong>type</strong> and/or <strong>number</strong> of parameters!</p>
+
+<p>It is called <strong>static</strong> because when we compile code, Java will be able to decide at compile-time which method will be called based on the parameters provided.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Static polymorphism/Method overloading</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">hi</span><span class="o">();</span>
+    <span class="n">hi</span><span class="o">(</span><span class="s">"cake"</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="c1">// Here we are overloading by number of arguments</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hi</span><span class="o">()</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hi!"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hi</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hi!
+Hi cake!
+</code></pre></div></div>
+
+<h3 id="dynamic-polymorphism">Dynamic Polymorphism</h3>
+
+<p>On the other hand, <strong>Dynamic Polymorphism</strong> is run-time polymorphism - Java will determine what class to treat a specific object when the program is executed.</p>
+
+<p>Lets look an example before elaborating. Adding on to our previous two classes <code class="language-plaintext highlighter-rouge">Food</code> and <code class="language-plaintext highlighter-rouge">Cake</code>, lets introduce two new classes <code class="language-plaintext highlighter-rouge">Apple</code> and <code class="language-plaintext highlighter-rouge">Hungryboi</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Apple</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This apple tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// Hungryboi digests a Food object x which calls x.eat()</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hungryboi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">digest</span><span class="o">(</span><span class="nc">Food</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">x</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>And now if we do this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Hungryboi</span> <span class="n">me</span>    <span class="o">=</span> <span class="k">new</span> <span class="nc">Hungryboi</span><span class="o">();</span>
+    <span class="nc">Food</span> <span class="n">somefood</span>   <span class="o">=</span> <span class="k">new</span> <span class="nc">Food</span><span class="o">();</span>
+    <span class="nc">Food</span> <span class="n">redApple</span>   <span class="o">=</span> <span class="k">new</span> <span class="nc">Apple</span><span class="o">();</span>
+    <span class="nc">Food</span> <span class="n">cheeseCake</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+    <span class="nc">Object</span> <span class="n">random</span>   <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+  
+    <span class="c1">// Remember that the digest method calls the eat method</span>
+    <span class="c1">// in the Food, Apple, and Cake class</span>
+    <span class="n">me</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">somefood</span><span class="o">);</span> 
+    <span class="n">me</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">redApple</span><span class="o">);</span>
+    <span class="n">me</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">cheeseCake</span><span class="o">);</span>
+    <span class="c1">// Print out the results of the instanceof operator </span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Food</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Cake</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Apple</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Hungryboi</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cheeseCake</span> <span class="k">instanceof</span> <span class="nc">Apple</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cheeseCake</span> <span class="k">instanceof</span> <span class="nc">Food</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Our output is (you can check it yourself by copying the code):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This tastes amazing!
+This apple tastes amazing!
+This cake tastes amazing!  
+true
+true
+false
+false
+false
+true
+</code></pre></div></div>
+
+<p>The reason why line 2 and line 3 show the output for the <code class="language-plaintext highlighter-rouge">Apple</code> and <code class="language-plaintext highlighter-rouge">Cake</code> class respectively is because even though they are declared as a <code class="language-plaintext highlighter-rouge">Food</code> type, Java resolves their types at run-time. Java is able to tell that one is the <code class="language-plaintext highlighter-rouge">Apple</code> subclass, and the other is the <code class="language-plaintext highlighter-rouge">Cake</code> subclass, and it calls the appropriate subclass methods.</p>
+
+<p>This <strong>only</strong> works because the <code class="language-plaintext highlighter-rouge">Food</code> class also has the <code class="language-plaintext highlighter-rouge">eat()</code> method defined. If we wanted to use a method that is only defined in the <code class="language-plaintext highlighter-rouge">Cake</code> class, then we would have to cast <code class="language-plaintext highlighter-rouge">cheeseCake</code> to a <code class="language-plaintext highlighter-rouge">Cake</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">admire</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake looks amazing!"</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Food</span> <span class="n">cheeseCake</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+    <span class="n">cheeseCake</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="n">cheeseCake</span><span class="o">.</span><span class="na">admire</span><span class="o">();</span> <span class="c1">// Does not work will produce compile-time error</span>
+    <span class="c1">// The error message will probably be:</span>
+    <span class="c1">// "The method admire() is undefined for the type Food"</span>
+    <span class="o">((</span><span class="nc">Cake</span><span class="o">)</span> <span class="n">cheeseCake</span><span class="o">).</span><span class="na">admire</span><span class="o">();</span> <span class="c1">// Works</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="something-to-note">Something to note:</h4>
+
+<p>If you’re on Java SE 15 or newer and try this line of code below - you will get an error.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cheeseCake</span> <span class="k">instanceof</span> <span class="nc">Hungryboi</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>That’s because at compile-time, Java knows casting fails so <code class="language-plaintext highlighter-rouge">instanceof </code> comparison will fail as well and it tries to warn you to save you time. Click <a href="https://stackoverflow.com/questions/2551337/instanceof-incompatible-conditional-operand-types">here</a> for a better explanation.</p>
+
+<h2 id="quick-recap">Quick Recap</h2>
+
+<h3 id="static-vs-dynamic-polymorphism">Static vs Dynamic Polymorphism</h3>
+
+<p><strong>Static polymorphism</strong> has to deal with polymorphism at compile-time. This usually refers to method overloading where a single method name can refer to a range of methods that differ by either the <strong>type</strong> of their parameters or the <strong>number</strong> of parameters they have. The Java compiler identifies this at compile-time and it is converted into byte-code for the JVM (Java Virtual Machine) to interpret, which then converts the byte-code to the native machine code and executes the program.</p>
+
+<p><strong>Dynamic polymorphism</strong> refers to polymorphism at run-time, this is because the JVM decides which method is to be called only at run-time. At compile-time, calling a method is considered by its reference type (e.g. <code class="language-plaintext highlighter-rouge">Food somefood</code> is of type food where <code class="language-plaintext highlighter-rouge">somefood</code> is the reference). At run-time, the specific method that is called will be decided by the type of the object that the reference is pointing to/holding (e.g. <code class="language-plaintext highlighter-rouge">Food somefood = new Cake()</code>, so the methods that will be called will be from the <code class="language-plaintext highlighter-rouge">Cake</code> class). Here we say that it is resolved at run-time because the compiler does not know if the method has been overridden or not (<a href="https://dzone.com/articles/how-does-jvm-handle-polymorphism-method-overloadin#logical-way:~:text=considered from the reference type. But,object which the reference is holding.">N. Joshi, 2019</a>).</p>
+
+<h3 id="method-overloading-vs-overriding">Method overloading vs overriding</h3>
+
+<p>Two methods are <strong>overloaded</strong> when they have the same name but different types/number of arguments (essentially their list of arguments must look different). Other than that, overloaded methods can return different types, do different things or throw different exceptions. Method overloading can happen in the same class or in subclasses.</p>
+
+<p>A method from a subclass <strong>overrides</strong> a method from a superclass when it has the same name and same type and number of arguments. There are a set of rules that the subclass method must abide to such as having the same return type, must have the same or less restrictive access modifier, and must not throw new or broader checked exceptions. Method overriding can only happen to inherited methods, which imply that it can only happen between subclasses and their superclass(es).</p>
+
+<p>Check out <a href="https://dzone.com/articles/everything-about-method-overloading-vs-method-overriding">this</a> article by Naresh Joshi for a more in-depth explanation.</p>
+
+<h2 id="abstract-classes">Abstract Classes</h2>
+
+<p>If we recall, the motivation behind inheritance is to reduce repeated code and to allow for run-time polymorphism. By now you should realise that each subclass becomes more specific than its superclass, and eventually superclasses become so general that they seem abstract. We can call these general classes <strong>abstract classes</strong>.</p>
+
+<h3 id="properties-of-abstract-classes">Properties of abstract classes</h3>
+
+<p>Firstly, abstract classes <strong>cannot</strong> be instantiated. The reason is that they are meant to capture common properties and behaviours at an abstract level and are meant to be <strong>extended</strong> (or inherited from) to make a subclass that is more specific. Therefore, there should not be a need to instantiate abstract classes.</p>
+
+<p>In fact, it would not make sense to instantiate/define and instance of an abstract class because of <strong>abstract methods</strong>. These are methods that would not make sense for the abstract class to define but makes sense for its <strong>subclasses</strong> to define. <strong>Abstract classes</strong> can contain a mix of <strong>abstract methods</strong> and <strong>concrete methods</strong>.</p>
+
+<p>Lets give an example:</p>
+
+<p>Suppose that we want define an abstract <strong>Food</strong> class for an online supermarket. (I tried to come up with a better example… :pensive: )</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="c1">// Protein, carbs, and fats in grams</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">protein</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">carbs</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">fats</span><span class="o">;</span>
+    <span class="c1">// Return total amount of calories in a Food (Concrete method)</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">calories</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">protein</span> <span class="n">x</span> <span class="mf">4.0</span> <span class="o">+</span> <span class="n">carbs</span> <span class="n">x</span> <span class="mf">4.0</span> <span class="o">+</span> <span class="n">fats</span> <span class="n">x</span> <span class="mf">9.0</span><span class="o">;</span>
+	<span class="o">}</span>
+    <span class="c1">// Abstract methods</span>
+   	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">description</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">double</span> <span class="nf">price</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Here we have defined the <strong>calories</strong> method for the abstract <strong>Food</strong> class. This is a concrete method because all kinds of food will always have a certain amount of <em>protein</em>, <em>carbohyrdates</em>, and <em>fat</em> which will always be 4,4, and 9 calories per gram. Therefore, it makes sense to define a concrete method for all kinds of <strong>Food</strong> (Remember that any subclasses will inherit this method from <strong>Food</strong>).</p>
+
+<p>Next, there are the abstract methods for <strong>description</strong> and <strong>price</strong>. Since every kind of ingredient/type of food that will be sold at the supermarket is going to be different it doesn’t make sense to define a concrete method for all <strong>Food</strong>.</p>
+
+<p>However, we know that we want to have a description and price for each item and hence we define these 2 abstract methods for all kinds of <strong>Food</strong>. This makes it compulsory for subclasses to have a specific and concrete definition of these <strong>abstract methods</strong>. This is useful when using <strong>Generics</strong> because any class that extends the abstract <strong>Food</strong> class is guaranteed to have a definition for <strong>description</strong> and <strong>price</strong>.</p>
+
+<p>Just in case there’s confusion: Inheriting from an abstract class is the same as any normal classes.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NewYorkCheeseCake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{...}</span>
+</code></pre></div></div>
+
+<h2 id="interfaces">Interfaces</h2>
+
+<p>Now that you have an idea of what an <strong>abstract class</strong> is, what its properties are, and what it is kind of used for, interfaces become really easy to understand. Just think of interfaces as the most abstract class in a hierarchy of classes. This is where there are no <strong>concrete methods</strong> at all and all methods are <strong>abstract</strong>.</p>
+
+<p>Here is how we define an interface:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Hi</span> <span class="o">{...}</span>
+</code></pre></div></div>
+
+<p>and this is how we <em>implement</em> an interface (I sincerely apologise for my lack of creativity :sob:)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hi2</span> <span class="kd">implements</span> <span class="nc">Hi</span> <span class="o">{...}</span>
+</code></pre></div></div>
+
+<h3 id="properties-of-interfaces">Properties of interfaces</h3>
+
+<p>As mentioned earlier, interfaces have no <strong>concrete methods</strong> and all methods are <strong>abstract</strong>.</p>
+
+<p>Just like abstract classes, interfaces <strong>cannot be instantiated</strong>.</p>
+
+<p>Additionally, interfaces can <strong>only</strong> contain:</p>
+
+<ol>
+  <li>Fields which are <em>public static final</em> and if not specified are defaulted to this</li>
+  <li>Methods which are not defined/implemented. (They must be left “empty” like abstract methods but they shouldn’t be declared with the keyword <strong>abstract</strong>!)</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Hi</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">var1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">var2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method1</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">method2</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">method3</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="nc">Test</span> <span class="n">b</span><span class="o">);</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="multiple-inheritance">Multiple inheritance</h2>
+
+<p>While Java doesn’t allow multiple inheritance (meaning that we can’t extend from two different superclasses - only 1 superclass per subclass!), Java allows you to implement multiple inheritance because interfaces just require a class that implements it to define a particular method - there is no “inheritance” of a particular definition of a method.</p>
+
+<h3 id="why-interfaces">Why interfaces?</h3>
+
+<p>This all seems pretty useless doesn’t it? If we aren’t defining anything concrete, why bother with interfaces at all? (That’s what I thought too until I was enlightened 🤯).</p>
+
+<p><em>We bother because interfaces are used to <strong>encapsulate</strong> a small subset of functionality/a property.</em></p>
+
+<h4 id="what-does-that-mean">What does that mean?</h4>
+
+<p>Interfaces allow us to give <strong>concrete classes</strong> a certain functionality/property that perhaps isn’t appropriate to define in a subclass-superclass class hierarchy. Lets give an example to explain:</p>
+
+<p>Suppose we have the class hierarchy as shown below, where Animal, Striped, and Plain are abstract classes and the last level of classes are concrete.</p>
+
+<p><img src=".\media\ClassDiagram.png" alt="Class Hierarchy Diagram" style="zoom:40%;display:block;margin-left:auto;margin-right:auto;" /></p>
+
+<p>Suppose now that we want to be able to compare the number of stripes that an animal has. So that we can easily do something like</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Tiger</span> <span class="n">bob</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tiger</span><span class="o">();</span>
+<span class="nc">Zebra</span> <span class="n">tom</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Zebra</span><span class="o">();</span>
+<span class="n">bob</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">tom</span><span class="o">);</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bob</span> <span class="n">has</span> <span class="n">more</span> <span class="n">stripes</span> <span class="n">than</span> <span class="n">tom</span>
+</code></pre></div></div>
+
+<p>To do this we can implement the <strong>Comparable</strong> interface (Its in <code class="language-plaintext highlighter-rouge">Java.util</code>) in the <strong>Striped</strong> class and define the <code class="language-plaintext highlighter-rouge">compareTo()</code> method for the <strong>Striped</strong> class.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Striped</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Striped</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Integer</span> <span class="n">stripes</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">nickname</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getNoOfStripes</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">stripes</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// Custom compareTo method</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Striped</span> <span class="n">animal</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">comp</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">stripes</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">animal</span><span class="o">.</span><span class="na">getNoOfStripes</span><span class="o">());</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">comp</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">nickname</span> <span class="o">+</span> <span class="s">" has more stripes than "</span> <span class="o">+</span> <span class="n">animal</span><span class="o">.</span><span class="na">nickname</span><span class="o">);</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">comp</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"They have the same number of stripes"</span><span class="o">);</span>
+        <span class="k">else</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">nickname</span> <span class="o">+</span> <span class="s">" has fewer stripes than "</span> <span class="o">+</span> <span class="n">animal</span><span class="o">.</span><span class="na">nickname</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">comp</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now any <strong>Animal</strong> that is <strong>Striped</strong> as well can be compared with each other based on the number of stripes that they have. This may allow additional functionality such as sorting striped animals by the number of stripes they have.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="error-handling-and-exceptions">Error Handling and Exceptions</h1>
+       
+            <p>The original delivery of this content loosely introduced what an exception was, then demonstrated the <code class="language-plaintext highlighter-rouge">try-catch</code> statement, before explaining more about exceptions, and <em>then</em> demonstrating the <code class="language-plaintext highlighter-rouge">try-catch-finally</code> statement, before delivering more theory. As a result, I have opted to deliver as much theory as possible at the beginning, before diving into any code examples. If you are looking for the <code class="language-plaintext highlighter-rouge">try-catch</code> statement and its variant, then this can be found at the bottom of the page.</p>
+
+<h2 id="what-are-exceptions">What are exceptions?</h2>
+
+<p>According to <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/definition.html#:~:text=Definition%3A%20An%20exception%20is%20an,off%20to%20the%20runtime%20system.&amp;text=This%20block%20of%20code%20is%20called%20an%20exception%20handler.">official Oracle documentation</a>, an <strong>exception</strong> is an <strong>event</strong>, which occurs during the <strong>execution</strong> of a program, that disrupts the normal flow of the program’s instructions.</p>
+
+<p>Technically speaking, it is useful to know how an exception can arise and how the JVM creates and handles these when your code is running:</p>
+<ol>
+  <li>An error occurs in your method at run-time (for example, you try to access the 10th index of a 9-wide array).</li>
+  <li>The method creates an <strong>exception object</strong> and hands this off to the runtime system. This object contains important information:
+    <ol>
+      <li>The type of error</li>
+      <li>The state of the program when the error occurred</li>
+    </ol>
+  </li>
+  <li>Creating an exception object and handing it to the runtime system is known as <strong>throwing an exception</strong>.</li>
+</ol>
+
+<p>This is an alternative to traditional error-handling techniques, such as performing range-checks (with an <code class="language-plaintext highlighter-rouge">if...else</code> statement) every time you want to access an element from an array. As your code grows and you create more classes and objects, exceptions are a much more elegant way of stopping any run-time errors from occuring.</p>
+
+<p>You will have noticed that these are exception <em>objects</em>, which means they are instances of classes. There are <a href="https://programming.guide/java/list-of-java-exceptions.html">many different Java exception classes</a> from a range of packages, and as you will see shortly, you can choose which type of exception you want to handle based on the specific object the exception takes the form of.</p>
+
+<h2 id="exception-classes-vs-error-classes"><code class="language-plaintext highlighter-rouge">Exception</code> classes vs. <code class="language-plaintext highlighter-rouge">Error</code> classes</h2>
+
+<p>In Java, the <code class="language-plaintext highlighter-rouge">Throwable</code> class is a superclass of both the <code class="language-plaintext highlighter-rouge">Exception</code> and the <code class="language-plaintext highlighter-rouge">Error</code> classes. There is an important distinction to make between the two (Java specification):</p>
+<ol>
+  <li>An <code class="language-plaintext highlighter-rouge">Error</code> is a subclass of <code class="language-plaintext highlighter-rouge">Throwable</code> that indicates a serious problem that a reasonable application <em>should not try</em> to catch.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Exception</code> class and its subclasses are a form of <code class="language-plaintext highlighter-rouge">Throwable</code> that indicates conditions that a resonable application <em>might want</em> to catch.</li>
+</ol>
+
+<h2 id="how-do-you-use-exceptions-the-try-catch-statement">How do you use exceptions? (The <code class="language-plaintext highlighter-rouge">try-catch</code> statement)</h2>
+<p>In order to make your code throw exceptions, you must use a <code class="language-plaintext highlighter-rouge">try-catch</code> statement. They take the following form:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+  <span class="c1">// Code that could generate an exception</span>
+  <span class="n">object</span><span class="o">.</span><span class="na">somethingPossiblyNotOkay</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BadExceptionClass</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// Code to handle the event you come across a BadExceptionClass specifically.</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">AnotherVeryBadExceptionClass</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// Code to handle the event you come across an AnotherVeryBadExceptionClass specifically.</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span> <span class="c1">// This is an optional block.</span>
+  <span class="c1">// Code that will ALWAYS be executed at the end.</span>
+  <span class="c1">// This is executed even if there are return statements in the previous code blocks.</span>
+  <span class="c1">// You may want to use this to close / tidy up any resources.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>How does this work?</p>
+<ol>
+  <li>The code in the <code class="language-plaintext highlighter-rouge">try</code> block is executed, and the JVM will see if an exception is thrown.</li>
+  <li>If an exception of class <code class="language-plaintext highlighter-rouge">BadExceptionClass</code> is thrown, then the code in the first <code class="language-plaintext highlighter-rouge">catch</code> block will be executed. This works vice-versa for any specific exceptions that you catch with a <code class="language-plaintext highlighter-rouge">catch</code> block- similar to a <code class="language-plaintext highlighter-rouge">switch</code> statement.</li>
+  <li>You can query the specific exception with the use of a variable- in this instance, you could use the <code class="language-plaintext highlighter-rouge">e</code> symbol to perform operations on the exception that was caught.</li>
+  <li>If an <strong>optional</strong> <code class="language-plaintext highlighter-rouge">finally</code> block exists, the code in this block will always be executed. This is ideally used to <strong>tidy up any residual resources</strong>, such as <code class="language-plaintext highlighter-rouge">Scanner</code> objects.</li>
+</ol>
+
+<p>If you code doesn’t cause any runtime errors, then none of the code in the <code class="language-plaintext highlighter-rouge">catch</code> blocks will be executed. Moreover, if a non-matching exception is thrown, the JVM will resort to any default error handling.</p>
+
+<h2 id="exceptions-and-inheritance">Exceptions and inheritance</h2>
+
+<p>It is important to note that since exceptions are based on classes, the order in which a superclass exception and a subclass exception is caught has significant implications on your code. Specifically, if the <strong>first <code class="language-plaintext highlighter-rouge">catch</code> block is a superclass</strong> of another <code class="language-plaintext highlighter-rouge">catch</code> block, then <strong>the subclass <code class="language-plaintext highlighter-rouge">catch</code> block will never be executed</strong></p>
+
+<h2 id="checked-and-unchecked-exceptions">Checked and unchecked exceptions</h2>
+
+<p>Now that we are familiar with <code class="language-plaintext highlighter-rouge">try-catch</code> statements, we can delve into the difference between checked and unchecked exceptions, and how they must be handled.</p>
+
+<h3 id="checked-exceptions-throws">Checked exceptions (<code class="language-plaintext highlighter-rouge">throws</code>)</h3>
+<p>A checked exception is any exception that <strong>must be checked at compile-time</strong>. For example, you may want to use the <code class="language-plaintext highlighter-rouge">BufferedReader</code> class to open a file and read the first line, but there are two possible exceptions that could be thrown:</p>
+<ol>
+  <li>The file does not exist, and would throw a <code class="language-plaintext highlighter-rouge">FileNotFound</code> exception.</li>
+  <li>There could be an error when reading a line, which would throw an <code class="language-plaintext highlighter-rouge">IOException</code> exception.</li>
+</ol>
+
+<p>Both of these exceptions are checked and must be ‘caught or declared to be thrown’. Here is an example of code that does not compile due to not checking these exceptions:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">someMethod</span><span class="o">()</span> <span class="o">{</span>
+   <span class="nc">BufferedReader</span> <span class="n">read</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"maybeFile.txt"</span><span class="o">));</span>
+   <span class="nc">String</span> <span class="n">line</span><span class="o">;</span>
+   <span class="k">while</span> <span class="o">((</span><span class="n">line</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Found line: "</span> <span class="o">+</span> <span class="n">line</span><span class="o">);</span>   
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>You have two options when it comes to handling checked errors:</p>
+<ul>
+  <li>Surround the two statements in a try-catch block</li>
+  <li>Re-throw the exception using the <code class="language-plaintext highlighter-rouge">throws</code> keyword</li>
+</ul>
+
+<p>It is almost always better to use the latter option, unless you have a penchant for adding many <code class="language-plaintext highlighter-rouge">try-catch</code> statements into your code.</p>
+
+<h4 id="using-throws">Using <code class="language-plaintext highlighter-rouge">throws</code></h4>
+<p>In the example above, the <code class="language-plaintext highlighter-rouge">FileNotFound</code> exception is a subclass of the <code class="language-plaintext highlighter-rouge">IOException</code> exception. If you <em>cast</em> (🥁) your mind back to the superclass and subclass scenario, this means we only need to catch the <code class="language-plaintext highlighter-rouge">IOException</code>, and could maybe query the exception object specifically. The <code class="language-plaintext highlighter-rouge">throws</code> keyword can be added in the method signature and will handle this for us; we can therefore fix the above code as follows:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">someCompilableMethod</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+   <span class="nc">BufferedReader</span> <span class="n">read</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"maybeFile.txt"</span><span class="o">));</span>
+   <span class="nc">String</span> <span class="n">line</span><span class="o">;</span>
+   <span class="k">while</span> <span class="o">((</span><span class="n">line</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Found line: "</span> <span class="o">+</span> <span class="n">line</span><span class="o">);</span>   
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="unchecked-exceptions">Unchecked exceptions</h3>
+
+<p>These are any exceptions that do not need to be checked at compile time ‘if they can be thrown by the execution of the method or the constructor and propogate outside the method or constructor boundary’. In English, this means that exceptions that are subclasses of <code class="language-plaintext highlighter-rouge">Error</code> and <code class="language-plaintext highlighter-rouge">RuntimeException</code>- for example, trying to divide by 0 will throw the <code class="language-plaintext highlighter-rouge">ArithmeticException</code>. It does not make sense to <em>have</em> to catch this at compile time, but you can choose to check and handle it in a graceful manner. A final way to decide between which type of exception to use is this (from the Java documents):</p>
+
+<p><em>“If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception”</em>.</p>
+
+<h2 id="writing-your-own-exceptions">Writing your own exceptions</h2>
+
+<p>As stated before, any Exception is just a class that extends the Exception class. Therefore, if you are writing your own exceptions, you should <strong>choose the most specific</strong> exception that <strong>encapsulates your Exception</strong>, and then <strong>extend this</strong>.</p>
+
+<p>If however you are extending an <em>unchecked exception</em>, then you should extend a <code class="language-plaintext highlighter-rouge">RuntimeException</code>. (Use the criteria above to decide which exception to extend). It is typical for you to add messages and perhaps chain other exceptions together in any custom exceptions- this can be used to <strong>add detail to previous exceptions</strong>.</p>
+
+<p>It is at this point that we can revert to using <code class="language-plaintext highlighter-rouge">if...else</code> statements to decide when to <code class="language-plaintext highlighter-rouge">throw</code> (<strong>not <code class="language-plaintext highlighter-rouge">throws</code></strong>) our new exception- for example, imagine if you wanted to use a method to raise a number to a certain power, as long as this index was positive:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">raisePower</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+   <span class="c1">// This may or may not be an existing exception- pretend that we've just created it now, and that it extends from an Exception that also takes a debug message to be printed.</span>
+   <span class="k">throw</span> <span class="k">new</span> <span class="nf">NegativeExponentException</span><span class="o">(</span><span class="s">"You asked for a negative exponent: "</span> <span class="o">+</span> <span class="n">index</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="chaining-exceptions">Chaining exceptions</h2>
+
+<p>There are four constructors for most <code class="language-plaintext highlighter-rouge">Exception</code> classes:</p>
+<ul>
+  <li>Default constructor, no parameters</li>
+  <li>Constructor which allows for an error String</li>
+  <li>Two constructors which have space for another <code class="language-plaintext highlighter-rouge">Throwable</code> class, which allows you to chain exceptions together.</li>
+</ul>
+
+<p>You can use the built-in <code class="language-plaintext highlighter-rouge">Throwable</code> member methods to find out more about the exception, which will allow you to chain together information and/or exceptions specifically based on the cause of the run-time error. <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html">This page</a> contains the documentation for the <code class="language-plaintext highlighter-rouge">Throwable</code> class. You can use that page to check through the methods that you think are relevant to your code in particular, rather than them all being listed here.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="generics-and-the-java-class-library">Generics and the Java Class Library</h1>
+       
+            <p>By this point, you’re most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour.</p>
+
+<h2 id="why-generics">Why Generics</h2>
+
+<p>Using <strong>generics</strong> in your code makes it <strong>safer</strong> and <strong>more reusable</strong>, notably it allows</p>
+
+<ol>
+  <li>stronger type checking at compile-time.</li>
+  <li>elimination of type casts</li>
+  <li>implementation of generic algorithms tailored to different types.</li>
+</ol>
+
+<p>The key implication of this is that you are less likely to encounter run-time errors because you can you catch type related errors at <em>compile-time</em>.</p>
+
+<p>Take the following example, where we load a <code class="language-plaintext highlighter-rouge">Stack</code> which one <em>type</em> of object, and try to read this object as another type:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Creating a new stack, it simply holds data of type 'Object'</span>
+<span class="nc">Stack</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">();</span> 
+<span class="c1">// String is a subclass of Object and this operation passses</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span> 
+<span class="c1">// We are attempting to cast the String object to an Integer Object</span>
+<span class="c1">// this isn't possible at runtime.</span>
+<span class="nc">Integer</span> <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Integer</span><span class="o">)</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span> 
+</code></pre></div></div>
+<p>Note how when we created the <code class="language-plaintext highlighter-rouge">Stack</code> object, we didn’t specify what type it would hold- this was defined in the <code class="language-plaintext highlighter-rouge">Stack</code> class itself. This meant there wasn’t necessarily a restriction on whether we decided to store a <code class="language-plaintext highlighter-rouge">String</code> or an <code class="language-plaintext highlighter-rouge">Integer</code> first.</p>
+
+<p>Imagine if we had done the following- we create a new subclass of <code class="language-plaintext highlighter-rouge">Stack</code> that will only store <code class="language-plaintext highlighter-rouge">String</code> objects in an array, so we cannot store any other type. Our code would look like this:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// We create a new type of Stack that only stores Strings</span>
+<span class="nc">StringStack</span> <span class="n">stringStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringStack</span><span class="o">();</span> 
+<span class="c1">// We can push a String onto the StringStack as the class specifies this type.</span>
+<span class="n">stringStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+<span class="c1">// StringStack specifically returns a String from the top of the stack</span>
+<span class="c1">// this cast would fail at compile time, ideally, as the compiler should </span>
+<span class="c1">// know that this is a mismatched type.</span>
+<span class="nc">Integer</span> <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Integer</span><span class="o">)</span> <span class="n">stringStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>It would be incredibly tedious to have to create a new type of <code class="language-plaintext highlighter-rouge">Stack</code> class every time we wanted a different data type to be stored. Luckily, Java enables this behaviour through the use of generics- our code could look roughly like this:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">stringStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+<span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">intStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+
+<span class="n">stringStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span> <span class="c1">// This passes</span>
+<span class="n">intStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span> <span class="c1">// This also passes</span>
+
+<span class="n">intStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span> <span class="c1">// This returns an integer by default</span>
+<span class="n">stringStack</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span> <span class="c1">// This returns a string by default</span>
+</code></pre></div></div>
+
+<h2 id="thinking-of-generics">Thinking of Generics</h2>
+<p>There are two ways I like to think of generics in Java:</p>
+<ul>
+  <li>A screwdriver which has swappable heads, and when you create an object, it’s like choosing the correct head for the screw.</li>
+  <li>Defining a generic in a class is like creating a placeholder which you will fill in later when you instantiate the object.</li>
+</ul>
+
+<p>It therefore goes without saying that you cannot create an object of a class which uses generics without providing which type you’d like to use! In accordance with the analogy above, it would be akin to not putting a head on the screwdriver.</p>
+
+<h2 id="implementing-generics">Implementing Generics</h2>
+<p>Now that you’re convinced of their usefulness, here’s how you would create a class that utilises generics (the example we’ll go for is a <code class="language-plaintext highlighter-rouge">Box</code> that stores only one type): <a id="genref">$\;$</a></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Within this class, we will refer to this generic object as 'E'. This </span>
+<span class="c1">// can be used like a type - imagine it as a synonym for whatever type </span>
+<span class="c1">// you're going to put into the box.'E' is decided on by Java conventions</span>
+<span class="c1">// - it is not enforced by the compiler</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericBox</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="no">E</span> <span class="n">item</span><span class="o">;</span> <span class="c1">// A private member of type E</span>
+  
+  <span class="c1">// We take an element 'e' of type E, and set the item field to this.</span>
+  <span class="kd">public</span> <span class="nf">GenericBox</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">item</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">item</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="no">E</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">item</span><span class="o">;</span> <span class="c1">// item has type E and hence can be returned.</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now, when we instantiate the object, we can decide what types to fill it with at runtime:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">stringBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"A string in a box"</span><span class="o">);</span>
+<span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">intBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">42</span><span class="o">);</span>
+
+<span class="n">stringBox</span><span class="o">.</span><span class="na">get</span><span class="o">();</span> <span class="c1">// Will return "A string in a box" in a String object.</span>
+<span class="n">intBox</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>    <span class="c1">// Will return 42 in an integer object.</span>
+</code></pre></div></div>
+
+<p>You can use multiple generics at the same time- just put the types in a comma-separated list within the diamond brackets:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TwoTypes</span><span class="o">&lt;</span><span class="no">E</span><span class="o">,</span> <span class="no">F</span><span class="o">,</span> <span class="no">G</span><span class="o">&gt;</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+<p>You can also enforce a <strong>specific restriction</strong> for each type - what if you wanted to only store objects that can be compared to one another?</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComparedObjectsOnly</span><span class="o">&lt;</span><span class="no">E</span> <span class="kd">extends</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;&gt;</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p>In this example, the <code class="language-plaintext highlighter-rouge">Comparable</code> class constraint is extended by all objects that can be compared to one another using -1, 0, or 1. This also means you can store your own kinds of comparable objects as a generic - it isn’t limited to build-in classes such as <code class="language-plaintext highlighter-rouge">String</code> or <code class="language-plaintext highlighter-rouge">Integer</code>. It is important to note that <strong>you cannot use primitives with generics</strong>.</p>
+
+<p>As mentioned earlier, there is a convention that exists when deciding which symbols to use for generics:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">E</code> for Element</li>
+  <li><code class="language-plaintext highlighter-rouge">K</code> for Key</li>
+  <li><code class="language-plaintext highlighter-rouge">N</code> for Number</li>
+  <li><code class="language-plaintext highlighter-rouge">T</code> for Type</li>
+  <li><code class="language-plaintext highlighter-rouge">V</code> for Value</li>
+</ul>
+
+<p>Some of these will make more sense when you cast your mind back to CS126, and where each of those ideas are used for various data structures.</p>
+
+<h3 id="generic-methods">Generic Methods</h3>
+
+<p>When defining some methods, it might be useful to write generic method that only operate of particular types. For example, lets say you have a <code class="language-plaintext highlighter-rouge">compare</code> method as shown below:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Pair</span> <span class="n">p1</span><span class="o">,</span> <span class="nc">Pair</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">p1</span><span class="o">.</span><span class="na">getKey</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">getKey</span><span class="o">())</span> <span class="o">&amp;&amp;</span> 
+           <span class="n">p2</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>With this definition the following code will be valid even though the <code class="language-plaintext highlighter-rouge">Pair</code> object might contain types that do not match:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Pair</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pair</span><span class="o">&lt;&gt;(</span><span class="mi">3</span><span class="o">,</span><span class="s">"bleh"</span><span class="o">);</span>
+<span class="nc">Pair</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span>  <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pair</span><span class="o">&lt;&gt;(</span><span class="s">"hi"</span><span class="o">,</span><span class="s">"bye"</span><span class="o">);</span>
+<span class="n">compare</span><span class="o">(</span><span class="n">t1</span><span class="o">,</span><span class="n">t2</span><span class="o">);</span> <span class="c1">// Valid even though it doesn't make sense!</span>
+</code></pre></div></div>
+
+<p>Hence, to specify the generic types that the <code class="language-plaintext highlighter-rouge">compare</code> method will take as parameters, we can define the <code class="language-plaintext highlighter-rouge">compare</code> method like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="kt">boolean</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Pair</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="n">p1</span><span class="o">,</span> <span class="nc">Pair</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// compare...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now when we try to compare <code class="language-plaintext highlighter-rouge">Pair</code> objects that contain mismatched types, a compile-time error will appear.</p>
+
+<p>Do note that we won’t have to specify the generics in the method <strong>if</strong> the generics that you want to refer to in the parameters of the method are already defined at the class-level, like it is in the first line of the <code class="language-plaintext highlighter-rouge">GenericBox</code> class defined <a href="#genref">above</a>.</p>
+
+<h3 id="the-java-class-library">The Java Class Library</h3>
+
+<p>The original lecture for this content spent some time going over the <a href="https://docs.oracle.com/javase/7/docs/api/">Java Class Library</a> I felt it would be improper to include lengthy descriptions here, as there is no way to really define what is useful or not. It is up to you to search through the documentation and decide what you find interesting - for a first start, check out the <a href="https://docs.oracle.com/javase/7/docs/api/"><code class="language-plaintext highlighter-rouge">util</code></a> documentation and try and find some classes you recognise, such as <code class="language-plaintext highlighter-rouge">Stack</code> or <code class="language-plaintext highlighter-rouge">Iterator</code>.</p>
+
+<p>Going through the documentation in this safe space means you can pick up valuable skills on how to read a specification when your IDE does not have any suggestions.</p>
+
+<h2 id="concluding-notes-from-the-author">Concluding notes from the author</h2>
+
+<p>This abruptly brings us to the end of the modular CS118 revision notes! 🎉🎉 Thank you to everyone who submitted content, and remember to contact someone (or submit a pull request) if you spot any errors or would like to make a contribution for any modules, listed or otherwise. I hope by this point, there will be some answers to the questions posed on the CS118 landing page.</p>
+
+<p>Thank you once again for this community effort.</p>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/>
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

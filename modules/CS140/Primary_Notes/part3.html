@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Password Cracking</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Password Cracking</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#methods">Methods</a></li><li><a href="#brute-force-and-dictionary-attacks">Brute Force and Dictionary Attacks</a><ul><li><a href="#brute-force-attacks">Brute Force Attacks</a></li><li><a href="#dictionary-attacks">Dictionary attacks</a></li></ul></li><li><a href="#lookup-tables">Lookup Tables</a></li><li><a href="#reverse-lookup-tables">Reverse Lookup Tables</a><ul><li><a href="#hash-chain">Hash Chain</a><ul><li><a href="#how-rlt-saves-space">How RLT saves space</a></li><li><a href="#false-alarms">False Alarms</a></li></ul></li></ul></li><li><a href="#rainbow-table">Rainbow Table</a><ul><li><a href="#cracking-passwords-in-rainbow-table">Cracking passwords in Rainbow Table</a></li></ul></li><li><a href="#defence">Defence</a><ul><li><a href="#password-salt">Password Salt</a><ul><li><a href="#login-verification">Login verification</a></li><li><a href="#how-does-salting-help-defend-against-table-attacks">How does salting help defend against table attacks?</a></li></ul></li></ul></li><li><a href="#how-are-hashes-stored-in-linux">How are hashes stored in Linux?</a><ul><li><a href="#unix-password-protection">Unix password protection</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part2.html" title="part2.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part4.html" title="part4.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="methods">Methods</h2>
+
+<p>There are a few different methods for cracking a password hash:</p>
+
+<ul>
+  <li>Brute force attack - not the most efficient approach</li>
+  <li>Dictionary attack - tries likely words, short passwords, dictionary lookup. Is likely to have a good chance of success on many systems.</li>
+  <li>Look-up tables - precomputes the hash values of a large number of passwords.</li>
+  <li>Reverse Look-up tables - uses hash chains to reduce the storage space</li>
+  <li>Rainbow tables - an improvement on look-up tables as it reduces chain collisions</li>
+</ul>
+
+<p>We will go through each method</p>
+
+<h2 id="brute-force-and-dictionary-attacks">Brute Force and Dictionary Attacks</h2>
+
+<p>The simplest way to crack a hash, here are the steps/outline:</p>
+
+<ol>
+  <li>Guess password</li>
+  <li>Hash the guess</li>
+  <li>Check if the guess’ hash equals the given hash</li>
+  <li>If the hashes are equal, the guess is the password.</li>
+  <li>If not go back to step 1.</li>
+</ol>
+
+<p>As you can tell this is the slowest method but easiest to implement.</p>
+
+<h3 id="brute-force-attacks">Brute Force Attacks</h3>
+
+<ul>
+  <li>try every possible combination of characters</li>
+  <li>very computationally expensive, the least efficient</li>
+  <li>will eventually find the password after a long time (longer if passwords are more complex and longer)</li>
+</ul>
+
+<h3 id="dictionary-attacks">Dictionary attacks</h3>
+
+<ul>
+  <li>Uses a file containing words, phrases, common passwords, and other string that are likely to be used as a password</li>
+  <li>Theses dictionary files are constructed by extracting words from large bodies of text, and even from real databases of passwords.</li>
+  <li>Further processing is often applied to dictionary files, such as replacing words with their “leet speak: equivalents (hello = h3110)</li>
+</ul>
+
+<h2 id="lookup-tables">Lookup Tables</h2>
+
+<p>In Brute force/dictionary cracking a password is hashed every single time before being guessed.</p>
+
+<p>What look-up tables do is that it pre-computes the hashes of the passwords, store the hashes and the corresponding passwords in a look-up table.</p>
+
+<p>When given a hash, it looks up the table for the matching password - basically dictionary but precomputes hashes. More efficient.</p>
+
+<h2 id="reverse-lookup-tables">Reverse Lookup Tables</h2>
+
+<p>Problem with Dictionary Attack and Lookup Tables</p>
+
+<ul>
+  <li>Stores all password possibilities in a large database</li>
+  <li>Not efficient for long passwords (too much storage)</li>
+</ul>
+
+<p>What Reverse Lookup Tables do</p>
+
+<ul>
+  <li>sacrifice time for storage</li>
+  <li>works better for long passwords</li>
+</ul>
+
+<p>Does this using a technique called <strong>hash chain</strong>.</p>
+
+<h3 id="hash-chain">Hash Chain</h3>
+
+<p>Firstly, we have to define a <strong>reduction function</strong>, <strong><em>R</em></strong>, that maps hash values back into <strong>a</strong> password, <strong>not</strong> the original password (it isn’t an inverse of the hash function) but just some other password that fits a certain criteria.</p>
+
+<p>This criteria is that the password must belong to a domain in <strong><em>P</em></strong> where it is the set of all combinations of length <strong><em>L</em></strong> characters in a character set <strong><em>W</em></strong>. Example, if we want to crack all passwords of length 5, consisting of the characters from the character set [ABC…XYZ0123456789], then <strong><em>P</em></strong> is the set of all combinations of 5 characters from this character set.</p>
+
+<blockquote>
+  <p>The <strong>only requirement</strong> for reduction function is to return a value in P, other than that it can be anything.</p>
+</blockquote>
+
+<p>Let’s say our starting password is “random”. We hash it with the hash function that we are targeting, so MD5, SHA256, etc., then we reduce the hash with <strong><em>R</em></strong>. We do this as many times as we want (this is usually a calculated amount based on how long we expect/want to spend).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hash: "random"                           -&gt; "7ddf32e17a6ac5ce04a8ecbf782ca509"
+R:    "7ddf32e17a6ac5ce04a8ecbf782ca509" -&gt; "ienw3"
+Hash: "ienw3"                            -&gt; "b9322e367ad002d5adf7ca60b8b61e86"
+      ... (1000 times) ...
+Hash: "o1gti"                            -&gt; "27aa4cbd3653a4617e0aec76ba3af9a4"
+</code></pre></div></div>
+
+<h4 id="how-rlt-saves-space">How RLT saves space</h4>
+
+<p>Many passwords and hashes are generated in the hash chain, but because we have the R function and H function we <strong>only store</strong> the <em>start</em> and <em>end</em> passwords (lecture notes). Some sources online say that the start <strong>password</strong> and the end <strong>hash</strong> is stored.</p>
+
+<p>To use this table, lets say we have an input hash taken from a compromised user password database “b9322e367ad002d5adf7ca60b8b61e86”. If we stored the end hash, then what we can do is to first check if this password exists in the table – meaning we are extra lucky and we save loads of time.</p>
+
+<p>Otherwise, if it doesn’t exist or we use the system of storing end passwords (because the probability of finding the end hash immediately is very low) we do the following</p>
+
+<ol>
+  <li>Apply the <strong><em>R</em></strong> function on hashes and <strong><em>H</em></strong> function on passwords.</li>
+  <li>Check if the resultant password/hash (depending on which system you use) exists in the table.</li>
+  <li>Repeat from step 1 until a set limit <strong><em>N</em></strong> (i.e 1000) or until we find a <strong>match</strong>.</li>
+</ol>
+
+\[h-(R)\rightarrow p'1 -(H)\rightarrow h'1 -(R)\rightarrow p'2 -(H)\rightarrow \ldots\]
+
+<p>If at any point we observe a match:</p>
+
+<ul>
+  <li>We can get the corresponding start password (from the look-up table) and use it to recreate the chain</li>
+  <li>There is a good chance that the chain will contain the given hash <em>h</em></li>
+  <li>If so, the password immediately preceding <em>h</em> in the chain is the matching password</li>
+</ul>
+
+<h4 id="false-alarms">False Alarms</h4>
+
+<p>The reduction function we have defined does not represent a 1 to 1 relation between the hash and the password – 2 different hashes when going through the (<strong><em>R</em></strong>) may give the same output.</p>
+
+<blockquote>
+  <p>This is the <strong>main problem</strong> with RLT – hash chain collisions that we call false alarms.</p>
+</blockquote>
+
+<p><strong>Example.</strong> Both following chains contains p2; all info after p2 in both chains will be the same</p>
+
+<p>Chain 1: \(p1-&gt; h1 -&gt; p2 -&gt; h2 -&gt; p3 -&gt; h3 -&gt; p4\)</p>
+
+<p>Chain 2: \(p’1 -&gt; h’1 -&gt; p’2 -&gt; h’2 -&gt; p2 -&gt; h2 -&gt; p3\)</p>
+
+<p>Chain collision wastes space for the attacker</p>
+<ul>
+  <li>this is because after a certain $p_n$all following passwords in both chains will be the same</li>
+  <li>if this chain was in the 10,000, a majority will be the same (wastes space!)</li>
+</ul>
+
+<h2 id="rainbow-table">Rainbow Table</h2>
+
+<blockquote>
+  <p>Rainbow tables are designed to <strong>reduce</strong> chain collisions or false alarms. It does this by using <strong>different R functions</strong> in different reduction stages when generating the hash chain to reduce the probability of chain collisions.</p>
+</blockquote>
+
+<p>The collision between chain 1 and chain 2 is reduced.</p>
+
+<p>Chain 1: \(p1 -&gt; h1 –(R1)-&gt; p2 -&gt; h2 –(R2)-&gt; p3 -&gt; h3 –(R3)-&gt;p4\)</p>
+
+<p>Chain 2: \(p’1 -&gt; h’1 –(R1)-&gt; p’2 -&gt; h’2 –(R2)-&gt; p’’2 –&gt; h’’2 –(R3)-&gt; p’3\)</p>
+
+<h3 id="cracking-passwords-in-rainbow-table">Cracking passwords in Rainbow Table</h3>
+
+<p>Given a hash, $h$, the reduction functions must be applied in the right order when creating the chain.</p>
+
+<p>Lets say we have $k$ reduction functions, anyone of them can be applied first to the given hash.</p>
+
+<p>Assume $R_k$ is first applied to the given hash:</p>
+
+<p>The order of R functions applied is: \(h \;–(R_k)\rightarrow p’1 –(R_1)\rightarrow … –(R_2)\rightarrow, …, –(R_{k-1})\rightarrow …\)</p>
+
+<p>If password not found, means $R_k$ was not the first R function to be applied. Proceed to assume $R_{k−1} $is first applied.</p>
+
+\[R_{k-1}, R_k, R_1, …, R_{k-2}\]
+
+<p>If password not found, continue so on and so forth, until finally $R_1 $is first applied:</p>
+
+\[R_1, R_2, R_3, …, R_{k-1}, R_k\]
+
+<p>If the password still cannot be found after this, we say that the password of the given hash is not embedded in the rainbow table, and we are not able to find it.</p>
+
+<p><a href="https://www.royvanrijn.com/blog/2011/01/rainbow-tables/">Additional resources on reverse lookup tables and rainbow tables</a></p>
+
+<h2 id="defence">Defence</h2>
+
+<p>There is no way to prevent brute-force or dictionary attacks.</p>
+
+<p>But we can use <strong>password salts</strong> to make lookup table, reverse lookup and rainbow tables attacks less effective.</p>
+
+<h3 id="password-salt">Password Salt</h3>
+
+<blockquote>
+  <p>A salt is a randomly generated number. The salt and the password are connected and used by the hash function to generate hash:
+\(h = Hash(password+salt)\)
+<strong>Both</strong> <strong><em>h</em></strong> and the corresponding <strong>salt</strong> are stored in the password file.</p>
+</blockquote>
+
+<h4 id="login-verification">Login verification</h4>
+
+<p>When a user enters a password during the login</p>
+
+<ul>
+  <li>Obtain the <strong>salt</strong> value used to generate the hash for the user</li>
+  <li>Connect the input password with the <strong>salt</strong>​</li>
+  <li>Generate the hash of this input and compare it with the stored hash.</li>
+</ul>
+
+<h4 id="how-does-salting-help-defend-against-table-attacks">How does salting help defend against table attacks?</h4>
+
+<blockquote>
+  <p>In order for the lookup table attack to <strong>succeed</strong>, an attacker <strong>needs to precompute</strong> the tables.</p>
+</blockquote>
+
+<p>Since <strong>salt</strong> is used, we precompute and store the hash of a password for <strong>each possible</strong> <em>salt</em> value, which increases the possible combination of passwords + salts that we have to pre-compute in our lookup tables by <strong>a lot</strong>.</p>
+
+<p>Additionally because the <strong>salt</strong> is not user generated it is more <strong>unpredictable</strong> as well.</p>
+
+<p>For password p, precompute and store:
+\(Hash(p+salt_1), Hash(p+salt_2),..., Hash(p+salt_n)\)</p>
+<blockquote>
+  <p>When the <strong>salt</strong> is large (e.g. 48bits), the required storage space will be <strong>too big</strong> for the <strong>attack to be worthwhile</strong>.</p>
+
+  <p>In order to <strong>precompute</strong> reverse and rainbow tables, an attacker needs to <strong>generate many chains</strong> for the <strong>same password</strong> because it has to <strong>consider each possible <em>salt</em></strong>.</p>
+</blockquote>
+
+<h2 id="how-are-hashes-stored-in-linux">How are hashes stored in Linux?</h2>
+
+<blockquote>
+  <p><strong>TLDR.</strong> When a user is created their info is stored in the <code class="language-plaintext highlighter-rouge">/etc/passwd</code> file and their hash + salt is stored in the <code class="language-plaintext highlighter-rouge">etc/shadow</code> file. Only the user can read <code class="language-plaintext highlighter-rouge">passwd</code> and only root can read <code class="language-plaintext highlighter-rouge">shadow</code>.</p>
+</blockquote>
+
+<p>It is likely that you won’t need the below information for your exam, they were from my notes mainly for the coursework but I thought I’d put it up anyways.</p>
+
+<p>When you create a new user in Linux, Linux creates an entry in the <code class="language-plaintext highlighter-rouge">/etc/passwd</code> and the <code class="language-plaintext highlighter-rouge">/etc/shadow</code> files:</p>
+
+<p><strong>Entry in <code class="language-plaintext highlighter-rouge">/etc/passwd</code></strong></p>
+
+<p>This file can be read by an user. The entry created in passwd file, it contains a number of fields which are separated by colon (:).</p>
+
+<p><img src="part3.assets/image-20201210213226777.png" alt="image-20201210213226777" /></p>
+
+<ol>
+  <li>Username - used when user logs in.</li>
+  <li>Meant for storing ha but hash is typically not stored in /etc/passwd, but in the file /etc/shadow. An <em>x</em> character indicates that the hash is stored in <code class="language-plaintext highlighter-rouge">/etc/shadow</code>.</li>
+  <li>User ID (UID) - UID 0 is reserved for root and UIDs 1-99 are reserved for other predefined accounts. Further UID 100-999 are reserved by system for administrative and system accounts/groups.</li>
+  <li>Group ID (GID) - The primary group ID (stored in <code class="language-plaintext highlighter-rouge">/etc/group</code> file)</li>
+  <li>General Info on User - The comment field. It allows you to add extra information about the users such as user’s full name, phone number etc. This field is used by <code class="language-plaintext highlighter-rouge">finger </code>command</li>
+  <li>Home directory - The absolute path to the directory the user will be in when they log in. If this directory does not exist then user’s directory becomes <code class="language-plaintext highlighter-rouge">/</code></li>
+  <li>Command/shell - The absolute path of a command or shell (<code class="language-plaintext highlighter-rouge">/bin/bash</code>). Typically, this is a shell. Please note that it does note have to be a shell. For e.g., <code class="language-plaintext highlighter-rouge">sysadmin</code> can use the <code class="language-plaintext highlighter-rouge">nologin</code> shell, which acts as a replacement shell for the user accounts. If shell is set to <code class="language-plaintext highlighter-rouge">/sbin/nologin</code> and the user tries to log in to the Linux system directly, the <code class="language-plaintext highlighter-rouge">/sbin/nologin</code> shell closes the connection.</li>
+</ol>
+
+<p><strong>Entry in <code class="language-plaintext highlighter-rouge">/etc/shadow</code></strong></p>
+
+<p>Shadow can only be read by root user. This is how the hash looks like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$6$JVGtK2Il$/s.5q4M1WN/ekw2rM26OHId9TPELOcPMmHG.E7zCzSbalzVPgPPGUIB7f7/2mTfj/Lg3RgoKhAkcsBDkJGAN.1:18554:0:99999:7:::
+</code></pre></div></div>
+
+<p>If the hash is a <code class="language-plaintext highlighter-rouge">*</code> - means that the account is disabled.</p>
+
+<p><code class="language-plaintext highlighter-rouge">!</code> or <code class="language-plaintext highlighter-rouge">!!</code> means that the account is locked</p>
+
+<p>A blank entry means that a password is not required to log in.</p>
+
+<p>The number between 1st 2 dollar signs represents the hash function used by the OS - here 6 represents SHA512.</p>
+
+<p>The characters between the 2nd and 3rd dollar sign is the <em>salt</em>.</p>
+
+<p>All the subsequent bits up till the colon (:) - is the generated <em>hash</em> for the password</p>
+
+<p>Last part (after the colon)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:18554:0:99999:7:::
+</code></pre></div></div>
+
+<ol>
+  <li>The time the password was generated</li>
+  <li>The minimum number of days between authorised password changes. If we set it to be 0, password can be changed immediately. If we set it to 7, we have to use password for 7 days.</li>
+  <li>The maximum number of days a password can last for (compulsory to change after the set number of days)</li>
+  <li>The number of days in advance the system will give you a warning to change password</li>
+</ol>
+
+<h3 id="unix-password-protection">Unix password protection</h3>
+
+<p>Unix system may set the local rules for setting passwords.  For example, it can set the length that password must have, number of upper or lower cases, or even symbols.</p>
+
+<ul>
+  <li>Time before password can be changed or must be changed</li>
+  <li>Salt used (pseudo-random)</li>
+  <li>Type of Hash can be changed as well</li>
+</ul>
+
+<p>These are all ways Unix tries to protect passwords.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

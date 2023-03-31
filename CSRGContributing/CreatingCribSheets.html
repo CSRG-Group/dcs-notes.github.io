@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Creating Crib Sheets</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Creating Crib Sheets</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#single-webpage">Single webpage</a><ul><li><a href="#not-using-index">not using index</a></li></ul></li><li><a href="#single-file-pdf">Single file pdf</a></li><li><a href="#external-site">External Site</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>Crib sheets are easy reference notes, dramatically cut down from the notes and are designed to give someone with a good understanding fo the content reminders on some of the points.</p>
+
+<p>The tutorial for creating them is very similar to the creation in of notes Notes.</p>
+
+<p>Crib sheets have less support for multi-page websites than notes and to prevent crib sheets becoming too long there are no current plans to support them. It is recommends to fit crib sheets into a single file or webpage.</p>
+
+<h2 id="single-webpage">Single webpage</h2>
+<p>The recommend layout for crib sheets</p>
+
+<ol>
+  <li>In <code class="language-plaintext highlighter-rouge">/modules/&lt;code&gt;/</code> create a folder with a descriptive name for your sheet (use _ instead of spaces)</li>
+  <li>In the new folder create a new file called <code class="language-plaintext highlighter-rouge">index.html</code> (for other options see below)</li>
+  <li>add this to the top:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: noteshome
+title: &lt;name&gt;
+description: &lt;desc&gt;
+---
+</code></pre></div>    </div>
+  </li>
+  <li>Alter accordingly replacing <code class="language-plaintext highlighter-rouge">&lt;name&gt;</code>  and <code class="language-plaintext highlighter-rouge">&lt;desc&gt;</code></li>
+  <li>Create an <code class="language-plaintext highlighter-rouge">assets</code> folder</li>
+  <li>Fill in the page or copy your crib sheet over</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">CribSheets:</code> add a new <code class="language-plaintext highlighter-rouge">CribSheets:</code> array if it does not exist
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     - name: &lt;name&gt;
+         description: &lt;Desc&gt;
+         authors:
+         - &lt;your name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Replace the relevant details
+    <ul>
+      <li>name should match your folder name exactly</li>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="not-using-index">not using index</h3>
+<p>If you are not using a file name <code class="language-plaintext highlighter-rouge">index.html</code> or <code class="language-plaintext highlighter-rouge">index.md</code> then please follow the same instructions for single page pdf and replace the link accordingly.</p>
+
+<h2 id="single-file-pdf">Single file pdf</h2>
+<blockquote>
+  <p>we are reviewing our stance on allowing pdf notes
+while they can be useful they are harder to index or search 
+and typed noted would be preferred.</p>
+</blockquote>
+
+<ol>
+  <li>In <code class="language-plaintext highlighter-rouge">/modules/&lt;code&gt;/</code> create a folder with a descriptive name for your notes (use _ instead of spaces)</li>
+  <li>Add your file to the folder</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">CribSheets:</code> add a new <code class="language-plaintext highlighter-rouge">CribSheets:</code> array if it does not exist
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     - name: &lt;name&gt;
+         link: &lt;Link to content&gt;
+         description: &lt;Desc&gt;
+         authors:
+         - &lt;your name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Replace the relevant details
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;Link to content&gt;</code> should be a relative link from the module page e.g <code class="language-plaintext highlighter-rouge">&lt;Your foldername&gt;/myNotes.pdf</code></li>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="external-site">External Site</h2>
+<p>We would appreciate the hosting of content on warwick.guide for community error checking and correcting as-well as a redundant location for hosing however we appreciate not everyone can put in the time tor wants to re-host their content. If using the option of re-hosting the link to the external site should be placed on the index page</p>
+
+<p>linking to an external site:</p>
+<ol>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">CribSheets:</code> add a new <code class="language-plaintext highlighter-rouge">CribSheets:</code> array if it does not exist
+```
+     - name: <name>
+         link: <link to="" site="" />
+         description: <Desc>
+         authors:
+         - <your name=""></your></Desc></name></li>
+</ol>
+
+<p>```</p>
+<ol>
+  <li>Replace the relevant details
+    <ul>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+  <li>The pages should now function correctly test on a local site and submit a pull request</li>
+</ol>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

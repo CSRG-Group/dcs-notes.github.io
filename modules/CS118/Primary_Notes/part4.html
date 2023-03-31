@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Object Oriented Programming</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Object Oriented Programming</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#the-4-pillars-of-oop">The 4 Pillars of OOP</a></li><li><a href="#imperative-vs-oop">Imperative vs OOP</a></li><li><a href="#objects-and-classes">Objects and Classes</a><ul><li><a href="#why-constructors">Why constructors?</a></li><li><a href="#memory">Memory</a></li></ul></li><li><a href="#encapsulation">Encapsulation</a><ul><li><a href="#interaction-interface-different-from-java-interfaces">Interaction Interface (different from Java Interfaces)</a></li></ul></li><li><a href="#static-and-final">static and final</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part3.html" title="part3.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part5.html" title="part5.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>Before this, we have been discussing the von Neumann type architecture of programming (Imperative programming). Now we will move on to OOP. Here I will assume that you know most of the practical stuff like how to create a class and what constructors, fields/properties, and methods are. We will focus more on the “theoretical” part of it like what an object or class is formally and what are the motivations for OOP.</p>
+
+<h2 id="the-4-pillars-of-oop">The 4 Pillars of OOP</h2>
+
+<p>Before we begin, I think it’ll be helpful to list out the 4 pillars of OOP. In this chapter, we will be going over <strong>encapsulation</strong>, while the last 3 will be discussed in further detail in the later few chapters/topics.</p>
+
+<ol>
+  <li><strong>Encapsulation</strong>: Bundling data and operations that can be performed on that data together - leads to data hiding. This is done by using the <em>access modifiers</em> (public, protected, private).</li>
+  <li><strong>Abstraction</strong>: Exposing essential features, while hiding irrelevant detail</li>
+  <li><strong>Inheritance</strong>: Creating new classes from existing ones, reducing programmer effort</li>
+  <li><strong>Polymorphism</strong>: Using objects that can take many forms (different from Generics) - allows us to invoke operations from derived classes while using a base class reference at run-time.</li>
+</ol>
+
+<h2 id="imperative-vs-oop">Imperative vs OOP</h2>
+
+<p>In procedural (or imperative) programming, we convert program specifications to method-based code. We use this in the C programming language, or Pascal. Data and operations on the data are separated.</p>
+
+<p>In OOP, we take procedural programming and we add some more functionality. The main difference is that our data and operations on the data are bundled together in a structured called an <strong>Object</strong>! This lets us define individual objects with their own <strong>pre-set</strong> data very easily (is possible in imperative programming but its a hassle and the code is long).</p>
+
+<h2 id="objects-and-classes">Objects and Classes</h2>
+
+<p>Objects are made up of two main components: <strong>properties</strong> and <strong>methods</strong>.</p>
+
+<blockquote>
+  <p>The <em>properties</em> of an object store its <strong>state</strong> while the <em>methods</em> operate on this data and <em>change</em> its <strong>state</strong>.</p>
+</blockquote>
+
+<p>When working with objects, the first thing to do is to create a <em>blueprint</em> of the object which we call the <strong>Class</strong>. The object itself will be a specific <strong>instance</strong> of this <strong>class</strong>.</p>
+
+<p>A <strong>constructor</strong> is a <em>special method</em> that is meant to set-up the object according to some rules (you can think of it as giving the <strong>object</strong> some starting properties). If you don’t write a constructor, Java will create a <strong>default constructor</strong> - it does not set any values to the object. We can also <strong>overload</strong> constructors.</p>
+
+<h3 id="why-constructors">Why constructors?</h3>
+
+<p>The main reason we use constructors is to define a starting value for some (or all) of the properties of a certain object as it is created. This is usually important when these properties are necessary for the object to “make-sense”. For example, defining a <code class="language-plaintext highlighter-rouge">Circle</code> object without a radius doesn’t really make sense, so it would be good to define a constructor so that all <code class="language-plaintext highlighter-rouge">Circle</code> objects that are created will always have a radius. We will not need constructors when the particular class does not require these properties to function as it is meant to such as for <strong>static</strong> classes. In fact, it would not make sense for <strong>static</strong> classes to have a constructor because they are not meant to have <strong>instances</strong>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// The class must be defined in a Circle.java file.</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circle</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Circle</span><span class="o">(</span><span class="kt">double</span> <span class="n">radius</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// Constructor</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">radius</span> <span class="o">=</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">()</span> <span class="o">{...}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">circumference</span><span class="o">()</span> <span class="o">{...}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="memory">Memory</h3>
+
+<p>Objects require a small amount of contiguous memory to store all their properties. To create new <strong>instances</strong> of a class we use the <code class="language-plaintext highlighter-rouge">new</code> keyword.</p>
+
+<p>When we use the <code class="language-plaintext highlighter-rouge">==</code> on two variables, we are actually asking if the 2 variables are pointing to the same part of memory (in other words, whether the two variables are pointing to the same object). To check if objects have the same data/prop, you should know that we use the <code class="language-plaintext highlighter-rouge">equals()</code> method.</p>
+
+<h2 id="encapsulation">Encapsulation</h2>
+
+<p>You should be familiar with the <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">public</code>, and <code class="language-plaintext highlighter-rouge">protected</code> <strong>access modifiers</strong>.</p>
+
+<ul>
+  <li><strong>Public.</strong> Can be accessed outside the class</li>
+  <li><strong>Private.</strong> Can only be accessed from within the class</li>
+  <li><strong>Protected.</strong> Can only be accessed from within the class and by subclasses (children classes).</li>
+  <li><strong>Package private.</strong> Can only be accessed by other Objects in the same package. Java code is often arranged into packages.</li>
+</ul>
+
+<p>Encapsulation is an idea that motivates <strong>data-hiding</strong>, where making data private and some methods public is known as <strong>data-hiding</strong>.</p>
+
+<blockquote>
+  <p>Encapsulation motivates <em>users</em> to use a class by its <strong>external interface</strong> (using public/protected methods).</p>
+</blockquote>
+
+<p>The implementation of the class can be done in whatever way the programmer wants, but the overall external functionality of the class still remains the same. Meaning if its meant to be a bank ATM, the underlying code can be different (and up to the programmers) but its functionality remains the same and users interact with it the same way.</p>
+
+<p>This also makes code <strong>more maintainable</strong> because if you change a particular way your class is implemented, such as changing a type from a <code class="language-plaintext highlighter-rouge">Int</code> to a <code class="language-plaintext highlighter-rouge">Long</code>, other programmers who use your class may have interacted with your public properties directly, instead of through a method. This would probably break their code - encapsulation avoids this.</p>
+
+<p>Hence, encapsulation encourages us to use <strong>access modifiers</strong> they help to</p>
+
+<ul>
+  <li>Restrict access to some data and methods (or to control the access of the data in our objects). Unnecessary detail is hidden.</li>
+  <li>The implementation can change without ruining dependant applications. Maintains a good interface between programmers.</li>
+  <li>Boundaries of responsibility are clear.</li>
+</ul>
+
+<h3 id="interaction-interface-different-from-java-interfaces">Interaction Interface (different from Java Interfaces)</h3>
+
+<p>We often refer to the public/protected methods that allow users to interact with our classes/objects as the interface that links users to your code. So <strong>accessor</strong> and <strong>mutator</strong> methods (getters and setters) which are very common in OOP are just some examples of methods that define the interface.</p>
+
+<h2 id="static-and-final"><code class="language-plaintext highlighter-rouge">static</code> and <code class="language-plaintext highlighter-rouge">final</code></h2>
+
+<p>If we want a variable or method to be shared between instances of a class, we use the <code class="language-plaintext highlighter-rouge">static</code> keyword. This is where that particular variable or method belongs to the entire class - not to any single instance. To use static variables or methods, we do not need to instantiate an instance of a class (aka create an object).</p>
+
+<p>We use <code class="language-plaintext highlighter-rouge">static</code> mainly when it doesn’t make sense to define a particular method/variable for specific instances.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">final</code> keyword is used to prefix variables that we want to be constant. A good example would be <img src="https://render.githubusercontent.com/render/math?math=\pi&amp;mode=inline" />! We will not be able to change the value of variables prefixed with <code class="language-plaintext highlighter-rouge">final</code> once they are assigned/instantiated with a <strong>value</strong>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.1415926543</span><span class="o">;</span>
+</code></pre></div></div>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

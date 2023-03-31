@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Flask</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Flask</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction">Introduction</a></li><li><a href="#basic">Basic</a><ul><li><a href="#initialisation">Initialisation</a></li><li><a href="#adding-routes">Adding routes</a><ul><li><a href="#escaping">Escaping</a></li></ul></li></ul></li><li><a href="#templates">Templates</a></li><li><a href="#jinja">Jinja</a><ul><li><a href="#setting-variables">Setting Variables</a></li><li><a href="#conditional-statements">Conditional statements</a></li><li><a href="#for-loops">For loops</a></li></ul></li><li><a href="#accessing-requests-data">Accessing Requests Data</a><ul><li><a href="#handling-get-requests">Handling GET requests</a></li><li><a href="#handling-post-requests">Handling POST requests</a></li></ul></li><li><a href="#cookies">Cookies</a><ul><li><a href="#flask-implementation">Flask implementation</a><ul><li><a href="#creating-and-sending-a-cookie">Creating and sending a cookie</a></li><li><a href="#reading-a-cookie">Reading a cookie</a></li></ul></li></ul></li><li><a href="#sessions">Sessions</a><ul><li><a href="#flask-implementation-1">Flask implementation</a><ul><li><a href="#generating-a-session">Generating a session</a></li><li><a href="#reading-from-a-session">Reading from a session</a></li></ul></li></ul></li><li><a href="#flask-sqlalchemy">Flask-SQLAlchemy</a><ul><li><a href="#creating-a-database-schema">Creating a database schema</a></li><li><a href="#creating-the-database">Creating the database</a></li><li><a href="#making-queries">Making queries</a><ul><li><a href="#raw-sql">Raw SQL</a></li><li><a href="#using-functions">Using functions</a><ul><li><a href="#insertion">Insertion</a></li><li><a href="#deletion">Deletion</a></li><li><a href="#making-queries-1">Making queries</a></li></ul></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Python.html" title="Python.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="PHP.html" title="PHP.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="introduction">Introduction</h2>
+
+<p>Flask is a micro-framework used for developing web applications. It utilises python for server-side scripting.</p>
+
+<p>It is classified as a micro-framework as it has comparatively fewer features than other frameworks such as Django. This does not necessarily mean that it is worse or less powerful, as flask is utilised by companies such as Netflix, Reddit and Uber.</p>
+
+<p>Flask was released in 2010 making it much more recent than PHP which was released in 1995</p>
+
+<p>Flask uses templates to generate web pages dynamically based on the client’s request.</p>
+
+<h2 id="basic">Basic</h2>
+
+<p>Notes on installation can be found on the <a href="https://flask.palletsprojects.com/en/2.1.x/installation/">official flask website</a></p>
+
+<h3 id="initialisation">Initialisation</h3>
+
+<ol>
+  <li>Create a python file in your flask project directory</li>
+  <li>Import flask</li>
+  <li>Create an instance of the flask class</li>
+</ol>
+
+<p>A minimal flask application with no routes lookes like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import Flask
+
+app = Flask(__name__)
+
+</code></pre></div></div>
+
+<h3 id="adding-routes">Adding routes</h3>
+
+<p>A route represents a unique URL path that is used to make a request to the webserver. Routes are often used to navigate to a specific web page however they may also be used to pass data to the server or carry out a different function.</p>
+
+<p>A route is defined using a function and a corresponding decorator.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@app.route("/routeName")
+def routeName():
+    #Some computation may occur here
+    return someResource
+</code></pre></div></div>
+
+<p>Whatever is returned by the function is going to be the response of the webserver to the request made by the client.</p>
+
+<h4 id="escaping">Escaping</h4>
+
+<p>When returning HTML, which includes user-provided values, any of the data provided by the user should be escaped to protect against XSS attacks. Escaping involves replacing any special characters which may be used to execute a script with character escapes that are treated as regular text and not interpreted as code.</p>
+
+<p>You can escape text using the <code class="language-plaintext highlighter-rouge">escape()</code> method from the <code class="language-plaintext highlighter-rouge">markupsafe</code> module that is installed alongside flutter.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from markupsafe import escape
+
+@app.route("/&lt;name&gt;")
+def hello(name):
+    return f"Hello, {escape(name)}!"
+</code></pre></div></div>
+
+<h2 id="templates">Templates</h2>
+
+<ul>
+  <li>A template is a html file that acts as a skeleton of a web page which is often combined with some data to generate the full web page so it can be sent as a response to a client’s request.</li>
+  <li>They often contain some static data, which is included in all responses, and placeholders for dynamic data that will be replaced with specific data when a request is made.</li>
+  <li>Templates in Flask are stored in the <code class="language-plaintext highlighter-rouge">templates</code> folder.</li>
+  <li>In order to render a template and send it back as a response, you must use the <code class="language-plaintext highlighter-rouge">render_template()</code> function which needs to be imported from flask.</li>
+  <li>You can pass data to <code class="language-plaintext highlighter-rouge">render_template()</code> using named parameters which can then be used when generating the web page.</li>
+  <li>Flask uses Jinja2 for generating templates</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@app.route("/CS139")
+def CS139():
+    return render_template("coursePage.html", code="139", name="Web Development Technologies")
+</code></pre></div></div>
+
+<p><em>Note that <code class="language-plaintext highlighter-rouge">render_template()</code> automatically escapes any input data hence there is no need to do it manually.</em></p>
+
+<h2 id="jinja">Jinja</h2>
+
+<p>As stated previously, Jinja (AKA Jinja2) is the template generation engine used by Flask. Jinja has its own syntax which is somewhat similar to that of python. All Jinja code should be included within html templates.</p>
+
+<p><code class="language-plaintext highlighter-rouge">{{ }}</code> Is used to add content to the HTML file. Anything between the braces will be added to the final generated web page as content.
+<code class="language-plaintext highlighter-rouge">{% %}</code> Is used to surround program components such as if statements or loops.
+<code class="language-plaintext highlighter-rouge">{# #}</code> Can be used to add comments to your Jinja code.</p>
+
+<h3 id="setting-variables">Setting Variables</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% set var = "&lt;h1&gt;Page Title&lt;/h1&gt;" %}
+{{ var }}
+</code></pre></div></div>
+<p>The second line is used to add the contents of <code class="language-plaintext highlighter-rouge">var</code> to the page.</p>
+
+<p><em>You can define and access lists and tuples in Jinja in the same way that you would in python</em></p>
+
+<h3 id="conditional-statements">Conditional statements</h3>
+<p>Conditional statements can be used to omit certain HTML depending on the data passed to the template. For example, you may decide to only show the login button when the user is logged out, once a user signs in you may want to hide it.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if condition1 %}
+...
+{% elif condition2 %}
+....
+{% else %}
+...
+{% endif %}
+</code></pre></div></div>
+
+<h3 id="for-loops">For loops</h3>
+<p>You can iterate over items in a sequence using <code class="language-plaintext highlighter-rouge">for</code>, very similarly to how you would do it in Python. A for loop can be combined with an else statement that will execute in the case that there are no items to iterate over.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
+{% for user in users %}
+    &lt;li&gt;Username: {{ user.username }}&lt;/li&gt;
+{% else %}
+    &lt;li&gt;No users found&lt;/li&gt;
+{% endfor %}
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<p><em>This is likely all you will need to know about Jinja for the module however if you’re interested in the rest of Jinja’s features, you can read more about it on the <a href="https://jinja.palletsprojects.com/en/3.1.x/">official website</a></em></p>
+
+<h2 id="accessing-requests-data">Accessing Requests Data</h2>
+
+<p>In order to access request data you must import the request module from flask
+<code class="language-plaintext highlighter-rouge">from flask import request</code></p>
+
+<h3 id="handling-get-requests">Handling GET requests</h3>
+
+<p>Flask routes respond to GET requests by default. If any data is passed through the URL as a query string you can access it by defining it in the route name like so:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@app.route("/payBill/&lt;billID&gt;)
+def payBill(billID):
+    pass #Now the billID that was passed using the GET request can be accessed as a normal variable
+</code></pre></div></div>
+
+<h3 id="handling-post-requests">Handling POST requests</h3>
+
+<p>In order to accept POST requests, you must add it to the methods that the route can handle in the function wrapper like so <code class="language-plaintext highlighter-rouge">@app.route("/routeName", methods=["POST", "GET"])</code></p>
+
+<p>To access form data passed through a post request use <code class="language-plaintext highlighter-rouge">request.form</code> which is essentially just a dictionary of key value pairs with the keys corresponding to the name of the input element from the form.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@app.route("/register", methods=["POST", "GET"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        return "User registered successfully"
+</code></pre></div></div>
+
+<p>When handling a post request, it is common to redirect the user once the request has been handled to prevent a duplicate request being sent if the user decides to refresh the page. This can be done using the <code class="language-plaintext highlighter-rouge">redirect()</code> function.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    ...
+    return redirect("/routeName")
+</code></pre></div></div>
+
+<h2 id="cookies">Cookies</h2>
+
+<p>Cookies are one way of maintaining state when using HTTP/S which involves creating a “cookie” file that is sent to a client who doesn’t already possess one. The cookie is then sent by the client in subsequent requests and will include any relevant data about the client and their past sessions (time spend on the site).</p>
+
+<p>Each cookie is a single key:value pair. You can get around this restriction by setting the value to be a JSON string storing multiple key:value pairs which can then be deserialised when sent back to the server. You may also simple set multiple cookies on a single response, ensuring that each one has a different key to prevent overwriting.</p>
+
+<p>When a server sends a cookie to a client the browser will store it locally on the machine so that next time you visit the site it can be sent alongside your requests.</p>
+
+<p>Cookies are often given an expiration date which will allow the browser to determine when they should be deleted. A cookie that does not have an expiry date specified will be deleted when the browser is closed.</p>
+
+<p>An online retailer may use cookies to keep track of what is stored in your shopping cart so it does not have to be rebuilt each time you visit the site.</p>
+
+<h3 id="flask-implementation">Flask implementation</h3>
+
+<h4 id="creating-and-sending-a-cookie">Creating and sending a cookie</h4>
+
+<p>To create and send a cookie in Flask you must first create a response object then set the cookie of that response.</p>
+
+<p>This is achieved using the <code class="language-plaintext highlighter-rouge">make_response()</code> and <code class="language-plaintext highlighter-rouge">set_cookie()</code> functions.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import make_response
+
+@app.route('/')
+def index():
+    resp = make_response(render_template("index.html"))
+    resp.set_cookie('attribute', 'value')
+    return resp
+</code></pre></div></div>
+
+<p>Storing multiple key value pairs in a single cookie:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import make_response
+import json
+
+@app.route('/')
+def index():
+    resp = make_response(render_template("index.html"))
+    resp.set_cookie('attribute', json.dumps({"attr1" : "val1", "attr2" : "val2", "attr3 : val3"}))
+    return resp
+</code></pre></div></div>
+
+<h4 id="reading-a-cookie">Reading a cookie</h4>
+
+<p>A cookie is read from the response object, the <code class="language-plaintext highlighter-rouge">cookies</code> dictionary is used to access all of the cookies sent as a part of the request.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import request
+
+@app.route('/')
+def index():
+    attribute = request.cookies.get('attribute')
+</code></pre></div></div>
+
+<p>if <code class="language-plaintext highlighter-rouge">attribute is None</code> is true then the cookie has not yet been set or has expired.</p>
+
+<p>If the value stored in the cookie is a JSON string you will need to make use of the <code class="language-plaintext highlighter-rouge">json.loads()</code> function from the <code class="language-plaintext highlighter-rouge">json</code> module.</p>
+
+<h2 id="sessions">Sessions</h2>
+
+<p>A session is an alternative way of managing state when using HTTP/S.</p>
+
+<p>There are two main types of sessions, client-side and server-side.</p>
+
+<p>Server-side sessions</p>
+<ul>
+  <li>Data about a session is stored on the server.</li>
+  <li>Client is given a session identifier which is then sent alongside subsequent requests to identify them.</li>
+  <li>No size limit on data stored.</li>
+  <li>Suited to large web applications which store a lot of data about each user.</li>
+</ul>
+
+<p>Client-side sessions</p>
+<ul>
+  <li>Implemented on top of cookies.</li>
+  <li>Cookie signed cryptographically, any modifications will invalidate it unless signed with secret key.</li>
+  <li>Suited to applications which do not store large amounts of data per session.</li>
+  <li>This is the type of session that you can set up using Flask without any additional extensions.</li>
+</ul>
+
+<p>In both cases, session ends when the user closes their browser or logs out of the website. A session may also have an expiry time which will cause the session to expire after a certain period of inactivity.</p>
+
+<p>Less confidential websites such as Facebook may use long-lived sessions to prevent the number of logins you must carry out however websites of banks often have very short-lived sessions to ensure that others cannot access your bank account if you accidentally forgot to log out of it on your computer.</p>
+
+<h3 id="flask-implementation-1">Flask implementation</h3>
+
+<h4 id="generating-a-session">Generating a session</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import session
+
+# Set the secret key to some random bytes. Keep this really secret!
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        session['username'] = request.form['username']
+        return redirect(url_for('index'))
+    return render_template("login.html")
+</code></pre></div></div>
+
+<h4 id="reading-from-a-session">Reading from a session</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask import session
+
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+@app.route('/')
+def index():
+    if 'username' in session:
+        return f'Logged in as {session["username"]}'
+    return 'You are not logged in'
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
+</code></pre></div></div>
+
+<h2 id="flask-sqlalchemy">Flask-SQLAlchemy</h2>
+
+<p>Flask-SQLAlchemy adds support for SQLAlchemy which is allows you to access and modify your database from within your Flask application.</p>
+
+<h3 id="creating-a-database-schema">Creating a database schema</h3>
+
+<p>A Schema is a file which defines the structure and configuration of your database. It acts as a blueprint used when constructing your database.</p>
+
+<p>In SQLAlchemy, each table is represented as a class, the attributes of which represent different columns.</p>
+
+<p>This is the structure of a table defined in SQLAlchemy:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
+
+class tableName(db.Model):
+    __tablename__='tableName'
+    pKey = db.Column(db.Integer, primary_key=True)
+    attribute1 = db.Column(db.type)
+    attribute2 = db.Column(db.type)
+    ...
+    
+    def __init__(self, attribute1, attribute2, ...):
+        self.attribute1 = attribute1
+        self.attribute2 = attribute2
+        ...
+</code></pre></div></div>
+
+<p>The most used column types are:</p>
+<ul>
+  <li>Integer</li>
+  <li>String(size)</li>
+  <li>Text</li>
+  <li>DateTime #Expressed as a datetime object in python</li>
+  <li>Float</li>
+  <li>Boolean</li>
+</ul>
+
+<p>When defining a primary key you should set the <code class="language-plaintext highlighter-rouge">primary_key</code> parameter of <code class="language-plaintext highlighter-rouge">db.Column</code> to true. To define a composite key you must set <code class="language-plaintext highlighter-rouge">primary_key</code> to true on all columns used to create the composite key.</p>
+
+<h3 id="creating-the-database">Creating the database</h3>
+
+<p>To create the database you must run the following commands:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.create_all()
+db.session.commit()
+</code></pre></div></div>
+
+<p><strong>Replace db with whatever you called your SQLAlchemy instance when initialising it</strong></p>
+
+<h3 id="making-queries">Making queries</h3>
+
+<p>In order to access your database you will need to import your database and any of the models you created into your flask application python file.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from db_schema import db, table1, table2, table3
+</code></pre></div></div>
+
+<p>You can either make queries using raw SQL or by using the predefined methods. The second way can be more secure as it prevents SQL injection attacks however it is fine to use raw SQL queries as long as you sanitise and/or validate the input.</p>
+
+<h4 id="raw-sql">Raw SQL</h4>
+
+<p>To execute raw SQL queries use <code class="language-plaintext highlighter-rouge">db.engine.execute()</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = db.session.execute("SELECT * FROM tableName WHERE columnName = value;").fetchall() #Using fetchall() will return a tuple representing the query result
+
+db.session.execute("INSERT INTO tableName (column1, column2) VALUES (value1, value2);")
+db.session.commit() #Used to commit changes to the database.
+</code></pre></div></div>
+
+<h4 id="using-functions">Using functions</h4>
+
+<h5 id="insertion">Insertion</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>newEntry = ModelName("value1", "value2")
+db.session.add(newEntry)
+db.session.commit()
+</code></pre></div></div>
+
+<h5 id="deletion">Deletion</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>db.session.delete(newEntry)
+db.session.commit()
+</code></pre></div></div>
+
+<h5 id="making-queries-1">Making queries</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>results = ModelName.query.filter_by(attribute="value", attribute2="value2") #Checking for equality
+moreComplexQuery = ModelName.query.filter(ModelName.attribute == "value", ModelName.attribute3 &gt; 0) #Use filter for more complex queries
+</code></pre></div></div>
+
+<p>To retrieve a record using a primary key use the <code class="language-plaintext highlighter-rouge">get</code> function:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>userRecord = Users.query.get("primaryKey")
+</code></pre></div></div>
+
+<p>To update a record simply query it, change an attribute then use <code class="language-plaintext highlighter-rouge">db.session.commit()</code> to save the changes to the database.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>queriedRecord.attribute = "newValue"
+db.session.commit()
+</code></pre></div></div>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

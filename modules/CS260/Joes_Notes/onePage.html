@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>onePage CS260 One Page Notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">CS260 One Page Notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#greedy-algorithms-scheduling">Greedy Algorithms Scheduling</a><ul><li><a href="#greedy-algorithms">Greedy Algorithms</a><ul><li><a href="#interval-scheduling">Interval Scheduling</a><ul><li><a href="#the-problem">The Problem</a></li><li><a href="#strategy">Strategy</a><ul><li><a href="#checking-for-compatibility">Checking For compatibility</a></li></ul></li><li><a href="#pseudocode">Pseudocode</a></li><li><a href="#proof">Proof</a></li></ul></li><li><a href="#interval-partitioning-problem">Interval Partitioning Problem</a><ul><li><a href="#strategy-1">Strategy</a></li><li><a href="#checking-for-compatibility-1">**Checking For compatibility</a></li><li><a href="#pseudocode-1">Pseudocode</a></li><li><a href="#proof-1">Proof</a></li></ul></li><li><a href="#minimizing-lateness">Minimizing Lateness</a><ul><li><a href="#strategy-2">Strategy</a></li><li><a href="#pseudocode-2">Pseudocode</a></li><li><a href="#proof-2">Proof</a></li></ul></li><li><a href="#generic-proof-strategies">Generic Proof Strategies</a><ul><li><a href="#greedy-algorithm-stays-ahead">Greedy Algorithm Stays Ahead</a></li><li><a href="#structural">Structural</a></li><li><a href="#exchange">Exchange</a></li></ul></li></ul></li></ul></li><li><a href="#greedy-algorithms-shortest-path">Greedy Algorithms Shortest Path</a><ul><li><a href="#shortest-path-problems">Shortest path problems</a><ul><li><a href="#single-pair-shortest-path-problem">Single-Pair Shortest path problem</a></li><li><a href="#single-source-shortest-path-problem">Single-Source shortest path problem</a></li></ul></li><li><a href="#dijkstras-algorithm-greedy">Dijkstra’s algorithm Greedy</a><ul><li><a href="#proof">Proof</a></li></ul></li><li><a href="#dijkstras-algorithm-efficient">Dijkstra’s algorithm Efficient</a><ul><li><a href="#optimization-1">Optimization 1</a></li><li><a href="#optimization-2">Optimization 2</a></li><li><a href="#implementation">Implementation</a></li><li><a href="#complexity">Complexity</a></li></ul></li></ul></li><li><a href="#minimum-spanning-tree">Minimum Spanning Tree</a><ul><li><a href="#spanning-tree">Spanning Tree</a><ul><li><a href="#properties">Properties</a></li><li><a href="#minimum-spanning-tree">Minimum Spanning Tree</a></li></ul></li><li><a href="#cuts-and-cutset">Cuts and Cutset</a><ul><li><a href="#proposition">Proposition</a></li></ul></li><li><a href="#fundamental-cycle">Fundamental Cycle</a></li><li><a href="#fundamental-cut-set">Fundamental Cut Set</a></li><li><a href="#greedy-algorithms">Greedy Algorithms</a><ul><li><a href="#the-red-rule">The Red Rule</a></li><li><a href="#the-blue-rule">The Blue Rule</a></li><li><a href="#algorithm">Algorithm</a></li></ul></li><li><a href="#proof">Proof</a><ul><li><a href="#step-1">Step 1</a><ul><li><a href="#induction-on-blue-rule">Induction On Blue Rule</a><ul><li><a href="#inductive-step">Inductive Step:</a></li></ul></li><li><a href="#induction-on-red-rule">Induction on Red Rule</a></li></ul></li><li><a href="#step-2">Step 2</a><ul><li><a href="#case-1">Case 1</a></li><li><a href="#case-2">Case 2</a></li></ul></li></ul></li><li><a href="#prims-algorithm">Prim’s Algorithm</a><ul><li><a href="#algorithm-1">Algorithm</a></li><li><a href="#proof-1">Proof</a></li><li><a href="#complexity">Complexity</a></li><li><a href="#pseudocode">Pseudocode</a></li></ul></li><li><a href="#kruskals-algorithms">Kruskal’s Algorithms</a><ul><li><a href="#proof-2">Proof</a></li><li><a href="#complexity-1">Complexity</a></li><li><a href="#pseudocode-1">Pseudocode</a></li></ul></li><li><a href="#reverse-delete-algorithm">Reverse-delete algorithm</a><ul><li><a href="#proof-3">Proof</a></li><li><a href="#complexity-2">Complexity</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Are defined in the relevant module data file
+-->
+
+
+
+
+
+<!-- not the best and a little O-horrible  but the easiest way to do it --><h1 id="greedy-algorithms-scheduling">Greedy Algorithms Scheduling</h1>
+       
+            <h2 id="greedy-algorithms">Greedy Algorithms</h2>
+
+<h3 id="interval-scheduling">Interval Scheduling</h3>
+<h4 id="the-problem">The Problem</h4>
+
+<p>Given a set of jobs with a start and end time. Find the largest set of jobs such that no two jobs are running at the same time (the jobs are compatible).</p>
+
+<blockquote>
+  <p>Input:  A Set of jobs with a start and end time</p>
+</blockquote>
+
+<blockquote>
+  <p>Output: The largest set of jobs such that all are compatible with each other</p>
+</blockquote>
+
+<h4 id="strategy">Strategy</h4>
+
+<ul>
+  <li>Sort the jobs by end time in ascending order</li>
+  <li>Create an empty set of selected jobs</li>
+  <li>Iterate though the set of jobs</li>
+  <li>
+    <ul>
+      <li>If a job is compatible with the current selected jobs then add it</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="checking-for-compatibility">Checking For compatibility</h5>
+
+<ul>
+  <li>keep a record of the last job added</li>
+  <li>if the start time is after, or at the finish time of the last job added the jobs are compatible</li>
+</ul>
+
+<p>The set is compatible with itself and the last job added has the last finish time so any job that occurs after the finish is compatible with the rest fo the set.</p>
+
+<h4 id="pseudocode">Pseudocode</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">jobs</span> <span class="o">&lt;-</span> <span class="nc">The</span> <span class="n">available</span> <span class="n">jobs</span> <span class="n">with</span> <span class="o">.</span><span class="na">start</span> <span class="n">and</span> <span class="o">.</span><span class="na">end</span>
+
+<span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">job</span><span class="o">.</span><span class="na">end</span><span class="o">)</span> <span class="c1">// Sort the job by end time in increasing order O(nlogn)</span>
+<span class="n">selected</span> <span class="o">=</span> <span class="o">[]</span> <span class="c1">// empty set</span>
+<span class="k">for</span><span class="o">(</span> <span class="n">job</span> <span class="o">:</span> <span class="n">jobs</span> <span class="o">){</span>
+    <span class="c1">// the first job is added by default</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">selected</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span><span class="mi">0</span> <span class="o">||</span> <span class="n">last</span><span class="o">.</span><span class="na">finish</span> <span class="o">&lt;=</span> <span class="n">job</span><span class="o">.</span><span class="na">start</span><span class="o">){</span>
+        <span class="n">selected</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">job</span><span class="o">)</span>
+        <span class="n">last</span><span class="o">=</span><span class="n">job</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">selected</span> <span class="c1">// An array of selected Jobs</span>
+</code></pre></div></div>
+<div id="screen1"></div>
+
+<h4 id="proof">Proof</h4>
+<p>It is necessary to prove that this algorithm generates the most efficient set.</p>
+
+<p>proof by contradiction</p>
+
+<ul>
+  <li>Assume the set (\(i_1,i_2,i_3...i_n\)) generated by the algorithm is not the most efficient</li>
+  <li>The most efficient set (\(j_1,j_2,j_3...j_m\)) also exists such that the largest \(r\) can be found</li>
+  <li>Select an \(r\) such that \(\forall v &lt; r : i_v = j_v \land i_r \neq j_r\) (r is the largest value such that all pairs before r are equal)</li>
+</ul>
+
+<p>As $i_r$ is selected by the finish first algorithm; no job exists that is compatible with \(\{ i_1...i_{r-1} \}\) and finishes before \(i_r\) so \(j_r\) finishes after or with \(i_r\)</p>
+
+<p>This implies that \(i_r\) can replace \(j_r\) this is contradictory as it goes against the maximality of \(r\)</p>
+
+<p>A more efficient solution can not be found, so the algorithm provides the most efficient solution</p>
+
+<h3 id="interval-partitioning-problem">Interval Partitioning Problem</h3>
+
+<p>Given a set of jobs (intervals) schedule the jobs into the least number of rooms such that at any given time a room only has one job in it.</p>
+
+<blockquote>
+  <p>Input: A set of jobs with a start and end time</p>
+</blockquote>
+
+<blockquote>
+  <p>Output: A set of schedules for each room</p>
+</blockquote>
+
+<h4 id="strategy-1">Strategy</h4>
+
+<ul>
+  <li>Sort the jobs by start time</li>
+  <li>Going through each job in turn</li>
+  <li>
+    <ul>
+      <li>check if the new schedule and add the job</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="checking-for-compatibility-1">**Checking For compatibility</h4>
+<ul>
+  <li>Store the schedules in a priority queue</li>
+  <li>use the end time of the last job added as the key</li>
+  <li>Check compatibility with queue.Find_Min</li>
+  <li>if is not compatible is not compatible with any</li>
+  <li>if is compatible add to it</li>
+</ul>
+
+<h4 id="pseudocode-1">Pseudocode</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rooms</span><span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span>
+<span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">job</span><span class="o">.</span><span class="na">start</span><span class="o">)</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">job</span> <span class="n">in</span> <span class="n">jobs</span><span class="o">){</span>
+    <span class="c1">// the first job is added by default</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">rooms</span><span class="o">.</span><span class="na">length</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">rooms</span><span class="o">.</span><span class="na">find_Min_Key</span> <span class="o">&lt;=</span> <span class="n">job</span><span class="o">.</span><span class="na">start</span><span class="o">){</span>
+        <span class="n">room</span><span class="o">=</span><span class="n">rooms</span><span class="o">.</span><span class="na">pop_Min</span><span class="o">()</span>
+        <span class="n">room</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">job</span><span class="o">)</span>
+        <span class="n">rooms</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">room</span><span class="o">,</span><span class="n">job</span><span class="o">.</span><span class="na">end</span><span class="o">)</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="n">room</span><span class="o">=[</span><span class="n">job</span><span class="o">]</span>
+        <span class="n">rooms</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">room</span><span class="o">,</span><span class="n">job</span><span class="o">.</span><span class="na">end</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">rooms</span><span class="o">.</span><span class="na">values</span><span class="o">();</span>
+</code></pre></div></div>
+<div id="screen1"></div>
+
+<h4 id="proof-1">Proof</h4>
+
+<p>terminology</p>
+
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">depth</code> of a set of jobs is the maximum number of jobs running at the same time.</p>
+</blockquote>
+
+<p>equally</p>
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">depth</code> of a set of intervals is the maximum number of intervals that contain any given point</p>
+</blockquote>
+
+<p>When rooms.find_Min_Key is called the room with the earliest finish time is found, there are no rooms that has a finish time earlier. This shows the <code class="language-plaintext highlighter-rouge">depth = roomCount</code>. Adding the job means <code class="language-plaintext highlighter-rouge">depth+=1</code> and <code class="language-plaintext highlighter-rouge">roomCount+=1</code>, roomCount matches depth. A more efficient solution can’t be found as <code class="language-plaintext highlighter-rouge">depth</code> \(\nless\) <code class="language-plaintext highlighter-rouge">roomCount</code></p>
+
+<h3 id="minimizing-lateness">Minimizing Lateness</h3>
+
+<p>Given a set of jobs with a running time and deadline, order the jobs to result in the smallest maximum lateness.</p>
+
+<blockquote>
+  <p>Input: Jobs with running time and deadline</p>
+</blockquote>
+
+<blockquote>
+  <p>Output: Schedule of Jobs</p>
+</blockquote>
+
+<h4 id="strategy-2">Strategy</h4>
+
+<ul>
+  <li>Sort the jobs by the deadline</li>
+</ul>
+
+<p>This is the optimal strategy adding start and end times can be added</p>
+
+<h4 id="pseudocode-2">Pseudocode</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">jobs</span> <span class="o">&lt;-</span> <span class="nc">The</span> <span class="n">available</span> <span class="n">jobs</span> <span class="n">with</span> <span class="o">.</span><span class="na">time</span> <span class="n">and</span> <span class="o">.</span><span class="na">deadline</span>
+
+<span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">job</span><span class="o">.</span><span class="na">deadline</span><span class="o">)</span> <span class="c1">// Sort the job by deadline time in increasing order O(nlogn)</span>
+
+<span class="c1">//not needed for correct order just being explicit</span>
+<span class="n">time</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">job</span> <span class="n">in</span> <span class="n">jobs</span><span class="o">){</span>
+    <span class="n">job</span><span class="o">.</span><span class="na">setStart</span><span class="o">(</span><span class="n">time</span><span class="o">);</span>
+    <span class="n">job</span><span class="o">.</span><span class="na">setEnd</span><span class="o">(</span><span class="n">time</span><span class="o">+</span><span class="n">job</span><span class="o">.</span><span class="na">time</span><span class="o">);</span>
+    <span class="n">time</span><span class="o">+=</span><span class="n">job</span><span class="o">.</span><span class="na">time</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">jobs</span>
+</code></pre></div></div>
+
+<h4 id="proof-2">Proof</h4>
+
+<p>Prove that the strategy produces an optimal solution</p>
+
+<blockquote>
+  <p>Observation 1: There exists an optimal solution with no idle time</p>
+</blockquote>
+
+<blockquote>
+  <p>Observation 2: The earliest-deadline-first strategy produces no idle time</p>
+</blockquote>
+
+<blockquote>
+  <p>Definition: Given a schedule S an <strong>inversion</strong> is a pair of jobs \(i\) , \(j\) where \(i \lt j\) (\(i\)’s deadline is before \(j\)’s) however \(j\) appears before \(i\)</p>
+</blockquote>
+
+<blockquote>
+  <p>Observation 3: The earliest-deadline-first strategy produces the unique schedule with no inversions</p>
+</blockquote>
+
+<blockquote>
+  <p>Observation 4: if an idle-free schedule has an inversion it has an adjacent inversion</p>
+
+  <p>Proof:</p>
+  <ul>
+    <li>Let \(i , j\) be the closest inversion</li>
+    <li>Let \(k\) be the element to the right of \(j\)</li>
+    <li>Case 1 [\(j \gt k\)] then \(j ,k\) is an adjacent inversion</li>
+    <li>Case 2 [\(j \lt k\)] then \(i,k\) is a closer inversion as \(i \lt j \lt K\) this is contradictory as \(i,j\) is a closer inversion</li>
+  </ul>
+</blockquote>
+
+<p><strong>Key Claim</strong>:
+Exchanging two adjacent inverted jobs reduces the number of inverses by 1 and does not increase the max lateness. When applied to an optimal solution the result will also be an optimal solution</p>
+
+<p><strong>Proof of claim</strong></p>
+
+<p>let \(l_x\) be the lateness before exchange and \(l'_x\) after for job \(x\).</p>
+
+<p>let \(i,j\) be jobs s.t \(i \lt j\) but \(j\) is before \(i\) in the solution \(S\) (inversion)</p>
+
+<p>\(\forall k \neq i,j : l'_k = l_k\)(1)</p>
+
+<p>\(l'_j \leq l_j\) (2)</p>
+
+<p>if job \(j\) is late (start time is getting later)
+\(l'_j = f'_j -d_j\)(3)
+\(l'_j = f_i -d_j\)(4)
+\(l'_j \leq f_i -d_i\)(5)
+\(l'_j \leq l_i\)(6)</p>
+
+<ol>
+  <li>There is no change from the exchange to the lateness of any other jobs.</li>
+  <li>The start time of \(j\) was moved forward so its new lateness has improved or remained the same</li>
+  <li>The new lateness of \(j\) is \(f'_j-d_j\) definition (finish - delay)</li>
+  <li>The new finish time of \(j\) is equal to the old finish time of \(i\)</li>
+  <li>as \(i \lt j\) by definition \(d_i \lt d_j\) so \(f_i -d_j \leq f_i-d_i\)</li>
+  <li>relying on the definition \(l_i =  f_i-d_i\)</li>
+</ol>
+
+<p>Shows that the new lateness of \(j)\) is no worse than the old lateness of \(i\) so the solution is still just as optimal.</p>
+
+<p><strong>Final Proof</strong></p>
+
+<p>Let \(S\) be the solution generated bu the earliest-deadline-first strategy</p>
+
+<p>Let \(S'\) be an optimal solution with the fewest inversionsGoodVibes</p>
+<ul>
+  <li>Can assume \(S'\) has no idle time (claim 1)</li>
+  <li>Case 1 [\(S'\) has no inversions]</li>
+  <li>
+    <ul>
+      <li>Then \(S'=S\) the optimal solution was found</li>
+    </ul>
+  </li>
+  <li>Case 2 [\(S'\)] has an inversion</li>
+  <li>
+    <ul>
+      <li>let \(i-j\) be an adjacent inversion</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>exchange \(i,j\), is still an optimal solution</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>contradicts the “optimal solution with the fewest inversions”</li>
+    </ul>
+  </li>
+</ul>
+
+<p>So \(S =S'\) the earliest-deadline-first strategy is optimal</p>
+
+<h3 id="generic-proof-strategies">Generic Proof Strategies</h3>
+
+<h4 id="greedy-algorithm-stays-ahead">Greedy Algorithm Stays Ahead</h4>
+<p>Show that at every stage of the the greedy algorithm produces a solution that is better then or as good as an optimal solution.</p>
+
+<h4 id="structural">Structural</h4>
+<p>Discover structural bounds asserting that every solution must have a set value. Then show your algorithm achieves this bound.</p>
+
+<h4 id="exchange">Exchange</h4>
+<p>Gradually transform any optimal solution to the one found by the greedy algorithm without hurting the solution quality.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="greedy-algorithms-shortest-path">Greedy Algorithms Shortest Path</h1>
+       
+            <h2 id="shortest-path-problems">Shortest path problems</h2>
+
+<h3 id="single-pair-shortest-path-problem">Single-Pair Shortest path problem</h3>
+<p><strong>Input</strong>:</p>
+<ul>
+  <li>A weighted graph/digraph</li>
+  <li>A source node(start)</li>
+  <li>A destination node(end)
+<strong>Output</strong>:</li>
+  <li>A shortest path through the graph from the source to the destination</li>
+</ul>
+
+<h3 id="single-source-shortest-path-problem">Single-Source shortest path problem</h3>
+<ul>
+  <li>A weighted graph/digraph</li>
+  <li>A source node(start)
+<strong>Output</strong>:</li>
+  <li>A set of shortest paths through the graph from the source to every node in the graph</li>
+  <li>Can be represented as a tree with the source as the node</li>
+</ul>
+
+<h2 id="dijkstras-algorithm-greedy">Dijkstra’s algorithm Greedy</h2>
+
+<p>Maintain a set of explored nodes \(S\)</p>
+
+<p>let \(d[u]\) be the length of a shortest \(s \rightarrow u\) path</p>
+
+<p>initialize \(S \leftarrow \{s\}\) , \(d[s] \leftarrow 0\)</p>
+
+<p>repeatedly:</p>
+<ul>
+  <li>choose unexplored node \(v\notin S\) that minimises \(\pi(v)\) where:</li>
+</ul>
+
+<p>[\pi(v) = \min_{e = (u,v):u \in S}]</p>
+
+<ul>
+  <li>add \(v\) to \(S\) , \(d[v]\leftarrow \pi(v)\)</li>
+  <li>prev[v] \(\leftarrow e\)</li>
+</ul>
+
+<p>The shortest path can then be found by traversing from any point to the start by following prev</p>
+
+<h3 id="proof">Proof</h3>
+<p>Prove:</p>
+<blockquote>
+  <p>For every node \(u \in S\), \(d[u]\) is the shortest path \(s \rightarrow u\)</p>
+</blockquote>
+
+<p>strategy:
+induction</p>
+
+<p>base Case:</p>
+
+<p>when \(\vert S \vert = 1\) is easy as \(S = \{s\}\), as \(s[s]=0\) there is no shorter solution</p>
+
+<p>Inductive case:</p>
+
+<p>Assume is true for \(\vert S \vert \geq 1\)</p>
+
+<p>Let \(v\) be the next path added to \(S\) and let \((u,v)\) be the edge</p>
+
+<p>A shortest path \(s \rightarrow u\) + \(L(u,v)\) is a \(s \rightarrow v\) path of length \(\pi(v)\)</p>
+
+<p>Consider anther path \(P\)</p>
+<ul>
+  <li>let \(e = (x,y)\) be the first edge in \(P\) that leaves \(S\)
+    <ul>
+      <li>so \(x \in S \land y \notin nS\)</li>
+    </ul>
+  </li>
+  <li>let \(P'\) be the subpath of \(s \rightarrow x\)</li>
+  <li>the length of \(P \geq \pi(v)\) as soon as it reaches y</li>
+</ul>
+
+<p>[L(P) \geq L(P’)+ L(e) \geq d[x]+L(e) \geq \pi(y) \geq \pi(v)]</p>
+
+<p>when L determines the length of a path or edge</p>
+
+<h2 id="dijkstras-algorithm-efficient">Dijkstra’s algorithm Efficient</h2>
+<p>Efficient algorithm can be found by implementing some optimizations on the previous strategy.</p>
+
+<h3 id="optimization-1">Optimization 1</h3>
+<p>For each unexplored node \(v \in S\)</p>
+
+<p>Maintain \(\pi(v)\) instead of computing form the definition</p>
+
+<p>As elements are added to \(S\) for some \(v\notin S , \pi(v)\) can only decrease.</p>
+
+<p>Suppose \(u\) is added to \(S\) if there is an edge \(e=(u,v)\) leaving \(u\)</p>
+
+<p>then:</p>
+
+<p>\(pi(v) \leftarrow \min {\pi(v), \pi(u)+L(e)}\)</p>
+<h3 id="optimization-2">Optimization 2</h3>
+
+<p>Use a min-optimized priority queue to chose an unexplored node that minimises \(\pi(v)\)</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<pre><code class="language-Java">graph &lt;- graph to search
+s &lt;- start node
+
+dist &lt;- array of distances
+prev &lt;- array of previous nodes
+
+//initialize start values
+pq = priorityQueue()
+for each vertex in graph{
+    dist[vertex] = INFINITY
+    prev[vertex] = UNDEFINED
+}
+dist[s] = 0;
+for each vertex in graph{
+    pq.insert(s,dist[s]);
+}
+// calculate minimum path
+while (pq.empty =false){
+    u = pq.removeMin();
+    for edge in graph.edgesFrom(u){
+        v = edge.goingTo() 
+        if (dist[v] &gt; dist[u]+edge.weight){
+            dist[v]=dist[u]+edge.weight
+            pq.decreaseKey(v,dist[v])
+            prev[v]=u
+        }
+    }
+
+}
+</code></pre>
+
+<p>The shortest path for a node can be found by traversing prev from the node to the start</p>
+
+<h3 id="complexity">Complexity</h3>
+<p>The time complexity fo the algorithm depends on the priority queue algorithm chosen and the ratio of edges to nodes.</p>
+
+<p>For a dense graph \(e\) is \(O(n^2)\) (where \(e\) is the number of edges and \(n\) is the number of nodes) using an array bases implementation is optimal as <code class="language-plaintext highlighter-rouge">decreaseKey</code> is \(O(1)\)</p>
+
+<p>For a sparse graph  \(e\) is \(O(n)\) then a heap based method is better as <code class="language-plaintext highlighter-rouge">removeMin</code> is \(O(n)\)</p>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="minimum-spanning-tree">Minimum Spanning Tree</h1>
+       
+            <h2 id="spanning-tree">Spanning Tree</h2>
+<p>A spanning tree fo a graph is a subgraph fot he graph that is both acyclic and connected</p>
+
+<h3 id="properties">Properties</h3>
+<p>if \(H=(V,T)\) is a subgraph of undirected graph \(G=(V,E)\) then the following are equivalent</p>
+<ul>
+  <li>H is a spanning tree of G</li>
+  <li>H is connected and hs \(\vert V \vert -1\) edges</li>
+  <li>H is acyclic and hs \(\vert V \vert -1\) edges</li>
+  <li>H is minimally connected, removing any edge disconnects it</li>
+  <li>H is maximally acyclic, adding an edge creates a cycle</li>
+</ul>
+
+<h3 id="minimum-spanning-tree">Minimum Spanning Tree</h3>
+<p>Given a weighted connected undirected graph a minimum spanning tree is one there the total sum of it’s edges weights are minimized.</p>
+
+<h2 id="cuts-and-cutset">Cuts and Cutset</h2>
+
+<blockquote>
+  <p>Def Cut: A partition of nodes into two non-empty subsets of \(S\) and  \(V \setminus S\)</p>
+</blockquote>
+
+<blockquote>
+  <p>Def Cutset: The cutset of a cut S is the ste of edges with exactly one endpoint in S</p>
+</blockquote>
+
+<h3 id="proposition">Proposition</h3>
+<p>A Cycle and a cutset intersect on an even number of edges</p>
+
+<p>If cycle C is within cut S or outside then the intersection is empty and even</p>
+
+<p>If a node on the Cycle is outside S and the cycle enters S then the cycle must leave, this can be repeated but results in an intersection of even size.</p>
+
+<h2 id="fundamental-cycle">Fundamental Cycle</h2>
+
+<p>let \(H=(V,T)\) be a spanning tree of \(G(V,E)\)</p>
+
+<p>For any edge \(e \in E \notin T : (V,T\cup {e})\) contains a cycle \(C\)</p>
+
+<p>For any edge \(f\in C :  (v,(T\cup{e})\setminus{f})\) is a spanning tree</p>
+
+<p>if \(C_e \leq C_f\) then \((V,T)\) is not a minimum spanning tree.</p>
+
+<h2 id="fundamental-cut-set">Fundamental Cut Set</h2>
+<p>let \(H=(V,T)\) be a spanning tree of \(G(V,E)\)</p>
+
+<p>for any edge \(f \in T : (V,T\setminus{f})\) has two connected components</p>
+
+<p>Let \(D\) denote the cutset between the two components</p>
+
+<p>For any edge \(e \in D : (V,(T\setminus{f})\cup{e})\) is a spanning tree</p>
+
+<p>if \(C_e \leq C_f\) then \((V,T)\) is not a minimum spanning tree.</p>
+
+<h2 id="greedy-algorithms">Greedy Algorithms</h2>
+
+<h3 id="the-red-rule">The Red Rule</h3>
+<p>let \(C\) be a cycle with no red edges</p>
+
+<p>Select an uncolored edge of \(C\) of max cost and color it red.</p>
+
+<h3 id="the-blue-rule">The Blue Rule</h3>
+<p>let \(D\) be a cutset with no blue edges</p>
+
+<p>select an uncolored edge of \(D\) of min cost and color it blue</p>
+
+<h3 id="algorithm">Algorithm</h3>
+<p>Apply the red and blue rules nondeterministically until all edges are blue or red</p>
+
+<p>The blue edges form a minimum spanning tree</p>
+
+<p>Note: We can stop when n-1 edges are colored blue.</p>
+
+<h2 id="proof">Proof</h2>
+<h3 id="step-1">Step 1</h3>
+<blockquote>
+  <p>Color Invariant: There exists a MST \((V,T')\) containing every blue edge and no red edge</p>
+</blockquote>
+
+<h4 id="induction-on-blue-rule">Induction On Blue Rule</h4>
+<p>Base Case: No edges colored \(\implies\) Every MST satisfies invariant</p>
+
+<h5 id="inductive-step">Inductive Step:</h5>
+
+<p>Suppose the color invariant is true before the blue rule</p>
+
+<p>Let \(D\) be a chosen cutset, let \(f \in D\) be a blue edge</p>
+
+<p>If \(f \in T'\) then \(T'\) still satisfies the invariant</p>
+
+<p>Otherwise: Consider fundament cycle \(C\) by adding \(f\) to \(T'\)</p>
+
+<p>let \(e \in C\) be another edge in \(D\)</p>
+
+<p>we can show \(e\)is uncolored and \(C_e \geq C_f\)</p>
+<ul>
+  <li>as \(e \in T' \implies e\) is not red</li>
+  <li>as blue rule \(\implies e\) not blue \(C_e \geq C_f\)</li>
+</ul>
+
+<p>Thus \((T' \cup {f})\setminus {e}\) satisfies the invariant</p>
+
+<h4 id="induction-on-red-rule">Induction on Red Rule</h4>
+<p>Base Case: No edges colored \(\implies\) Every MST satisfies invariant</p>
+
+<p>Suppose the color invariant is true before the red rule</p>
+
+<p>let \(C\) be the chosen cycle and let \(e\) be the edge colored red</p>
+
+<p>If \(e \notin T'\) then the \(T'\) still satisfies the invariant</p>
+
+<p>Otherwise: Consider the fundamental cutset \(D\) by deleting \(e\) form \(T'\)</p>
+
+<p>let \(f \in D\) be an edge in \(C\)</p>
+
+<p>we can show \(f\) is uncolored and \(C_e \geq C_f\)</p>
+<ul>
+  <li>as \(f \notin T' \implies f\) is not blue</li>
+  <li>as red rule \(\implies f\) not red and \(C_e \geq C_f\)</li>
+</ul>
+
+<p>Thus \((T' \cup {f})\setminus {e}\) satisfies the invariant</p>
+
+<h3 id="step-2">Step 2</h3>
+
+<blockquote>
+  <p>Theorem: The algorithm terminates</p>
+</blockquote>
+
+<p>Show that a uncolored edge or any other uncolored ede can be colored red or blue.</p>
+
+<p>Select uncolored edge \(e\)</p>
+
+<p>The blue edges form a forrest</p>
+<h4 id="case-1">Case 1</h4>
+<p>Both endpoints of \(e\) are in the same blue tree</p>
+<ul>
+  <li>Apply red rule to the cycle formed by adidng \(e\) to the forrest</li>
+  <li>Coloring \(e\) red</li>
+</ul>
+
+<h4 id="case-2">Case 2</h4>
+<p>Both endpoints of \(e\) are in different blue trees</p>
+<ul>
+  <li>Apply blue rule to the cutset introduces by either of the two blue trees</li>
+  <li>Some uncolored line in the cutset will be colored</li>
+</ul>
+
+<h2 id="prims-algorithm">Prim’s Algorithm</h2>
+
+<h3 id="algorithm-1">Algorithm</h3>
+<p>initialize \(S = {s}\) for any node \(s\)</p>
+
+<p>let \(T = \emptyset\)</p>
+
+<p>repeat \(n-1\) times</p>
+<ul>
+  <li>Add to \(T\) a minimum cost edge with exactly one endpoint in \(S\)</li>
+  <li>Add the other endpoint to \(S\)</li>
+</ul>
+
+<h3 id="proof-1">Proof</h3>
+<blockquote>
+  <p>Theorem: Prim’s algorithms computes a MST</p>
+</blockquote>
+
+<p>Assume all vertices in \(S\) are connected by a blue edges</p>
+
+<p>All vertices in cutset \(C\) of \(S\) are nto colored can apply blue rule by coloring cheapest edge in \(C\) blue</p>
+
+<h3 id="complexity">Complexity</h3>
+<p>Prims algorithm can run in \(O(m\log n)\) time</p>
+
+<h3 id="pseudocode">Pseudocode</h3>
+
+<pre><code class="language-Java">graph &lt;- graph to find MST
+
+S &lt;- empty set
+T &lt;- empty set
+
+dist &lt;- current known distances
+
+//initialize start values
+pq = priorityQueue()
+for each vertex in graph{
+    dist[vertex] = INFINITY
+    prev[vertex] = UNDEFINED
+}
+S.add( arbitrary node from graph)
+dist[s] = 0;
+for each vertex in graph{
+    pq.insert(s,dist[s]);
+}
+// calculate minimum path
+while (pq.empty =false){
+    u = pq.removeMin();
+    S.add(u)
+    for edge (u,v) where v not in S{
+        if (edge.length &lt; dist[v]){
+            dist[v]=edge.weight
+            pq.decreaseKey(v,dist[v])
+            prev[v]=edge
+        }
+    }
+}
+</code></pre>
+
+<h2 id="kruskals-algorithms">Kruskal’s Algorithms</h2>
+<p>Consider edges in acceding order of coset</p>
+<ul>
+  <li>Add to the tree unless it would form a cycle</li>
+</ul>
+
+<h3 id="proof-2">Proof</h3>
+<p>Theorem: kruskal’s algorithm computes an MST</p>
+
+<p>select edge \(e\)</p>
+
+<p>Case 1: both end points of e in the same blue tree</p>
+<ul>
+  <li>Color e by applying red rule to unique cycle
+Case 2: both endpoints of e in different blue trees</li>
+  <li>Color e blue by applying blue rule to cutset defined by either tree</li>
+</ul>
+
+<h3 id="complexity-1">Complexity</h3>
+<p>Kruskal’s algorithm can run in \(O(m \log m)\)</p>
+
+<h3 id="pseudocode-1">Pseudocode</h3>
+<p>Using union-find data structure to dynamically maintain connected components</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">edges</span> <span class="o">&lt;-</span> <span class="n">edges</span> <span class="n">in</span> <span class="n">the</span> <span class="n">graph</span>
+<span class="n">vertices</span> <span class="o">&lt;-</span> <span class="n">vertices</span> <span class="n">in</span> <span class="n">the</span> <span class="n">graph</span>
+<span class="no">T</span> <span class="o">&lt;-</span> <span class="n">empty</span> <span class="n">set</span>
+
+<span class="nc">Sort</span> <span class="n">edges</span> <span class="n">by</span> <span class="n">cost</span>
+<span class="n">uf</span><span class="o">=</span><span class="nc">UnionFind</span><span class="o">()</span>
+
+<span class="k">for</span> <span class="n">vertex</span> <span class="n">of</span> <span class="n">vertices</span><span class="o">{</span>
+    <span class="n">uf</span><span class="o">.</span><span class="na">makeSet</span><span class="o">(</span><span class="n">vertex</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="k">for</span> <span class="n">edge</span> <span class="n">of</span> <span class="n">edges</span><span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">uf</span><span class="o">.</span><span class="na">getSet</span><span class="o">(</span><span class="n">edge</span><span class="o">.</span><span class="na">start</span><span class="o">)!=</span><span class="n">uf</span><span class="o">.</span><span class="na">getSet</span><span class="o">(</span><span class="n">edge</span><span class="o">.</span><span class="na">end</span><span class="o">)){</span>
+        <span class="no">T</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">edge</span><span class="o">)</span>
+        <span class="n">uf</span><span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">u</span><span class="o">,</span><span class="n">v</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="no">T</span>
+</code></pre></div></div>
+
+<h2 id="reverse-delete-algorithm">Reverse-delete algorithm</h2>
+<p>Start with all edges in T</p>
+
+<p>Sort into descending order</p>
+
+<p>Delete edge form T unless it would disconnect T</p>
+
+<h3 id="proof-3">Proof</h3>
+<p>Theorem the reverse-delete algorithm</p>
+
+<p>Case 1: removing edge does not disconnects \(T\)</p>
+<ul>
+  <li>apply red rule to the cycle the line becomes red
+Case 2: removing edge disconnects \(T\)</li>
+  <li>apply blue rule to cutset \(D\) introduced by either component</li>
+</ul>
+
+<h3 id="complexity-2">Complexity</h3>
+<p>Can be done in \(O(m \log n (\log \log n)^3)\)</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/>
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

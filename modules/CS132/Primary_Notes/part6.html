@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Processor Architecture</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Processor Architecture</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#microprocessor-organisation">Microprocessor Organisation</a></li><li><a href="#micro-and-macro-instructions">Micro and Macro Instructions</a><ul><li><a href="#clock-cycles">Clock cycles</a></li><li><a href="#representation-of-instructions">Representation of Instructions</a></li></ul></li><li><a href="#control-unit-design">Control Unit Design</a><ul><li><a href="#hardwired-cu">Hardwired CU</a></li><li><a href="#microprogrammed">Microprogrammed</a><ul><li><a href="#standard-operation-description">Standard operation description</a></li></ul></li></ul></li><li><a href="#cisc-vs-risc">CISC vs RISC</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="part5.html" title="part5.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p align="center">
+    <b>Computer architecture</b> concerns the structure and properties of a computer system, as viewed from perspective of a software engineer while <b>computer organisation</b> is the same but as viewed from the perspective of a hardware engineer.
+</p>
+
+<h2 id="microprocessor-organisation">Microprocessor Organisation</h2>
+
+<p>Considerations:</p>
+
+<ul>
+  <li>How large is your main store? (no. of words) x (no. of bits)</li>
+  <li>PC should have enough bits to be able to refer to every word in the main store.</li>
+  <li>How many programmatic instructions (the “function” the mnemonics refer to e.g. <code class="language-plaintext highlighter-rouge">CLEAR</code> or <code class="language-plaintext highlighter-rouge">ADD</code>) do you want to provide to software engineers?
+    <ul>
+      <li>Remember that every processor architecture has a different type of assembly language (assembly language is very processor specific).</li>
+      <li>The size of your opcode will dictate the number of  instructions you can allow programmers to use. E.g. 3-bit opcode = 2<sup>3</sup> = 8 different instructions.</li>
+    </ul>
+  </li>
+  <li>Your subsystems will have to communicate – we do this with shared busses and three-state buffers.</li>
+  <li>How many arithmetic instructions do you have? This directly affects the number of function selects your CU must have. E.g. Lets say your processor has 4 arithmetic instructions: <code class="language-plaintext highlighter-rouge">CLEAR</code>, <code class="language-plaintext highlighter-rouge">DEC1</code>(decrement), <code class="language-plaintext highlighter-rouge">INC1</code>, <code class="language-plaintext highlighter-rouge">ADD#somevalue</code>. Then you will need 2 function selects from your CU to your ALU to specify which arithmetic instruction the ALU is executing.</li>
+</ul>
+
+<h2 id="micro-and-macro-instructions">Micro and Macro Instructions</h2>
+
+<blockquote>
+  <p><strong>Macro instructions</strong> are the set of mnemonics that each represent a specific instruction that your processor understands. These are assembled into opcodes that your CU can take to “know” which sequence of <strong>micro instructions</strong> to carry out.</p>
+
+  <p>Each <strong>micro instruction</strong> corresponds to a specific signal that your CU can assert (we call these control actions), and when carried out in the right sequence, the final result/effect is that of the <strong>macro instruction</strong>.</p>
+</blockquote>
+
+<h3 id="clock-cycles">Clock cycles</h3>
+
+<p>The number of clocks a <strong>macro instruction</strong> takes in total is technically the time the CU takes to execute the instruction. Since the value of the data at the in our registers/certain outputs don’t change unless there is a clock supplied, we can further categorise macro instructions into the number of <strong>clock cycles or control steps</strong> needed.</p>
+
+<p>What this implies is that certain micro instructions can be <strong>executed simultaneously</strong>, as long as their control actions are independent of one another (so their inputs/outputs don’t depend on each other and hence a clock/enable signal).</p>
+
+<h3 id="representation-of-instructions">Representation of Instructions</h3>
+
+<p>We know that instructions have an <strong>opcode</strong>, may have an <strong>operand</strong>, and stored at a particular address in memory which the PC points to. The example below shows how instructions may look like in memory for a processor with a 32x8-bit Main Store, 5-bit PC, 3-bit opcode:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Mnemonic</th>
+      <th>Opcode Operand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td><code class="language-plaintext highlighter-rouge">CLEAR</code></td>
+      <td><code class="language-plaintext highlighter-rouge">000</code> <code class="language-plaintext highlighter-rouge">00000</code></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">LOAD 5</code></td>
+      <td><code class="language-plaintext highlighter-rouge">110</code> <code class="language-plaintext highlighter-rouge">00101</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">ADD #8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">010</code> <code class="language-plaintext highlighter-rouge">01000</code></td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>–</td>
+      <td>–</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is important to note that this is <strong>just an example</strong>; the key takeaway is to a better idea of how <strong>instructions are represented in memory</strong>.</p>
+
+<blockquote>
+  <p>❗❕ Remember that before and in between each instruction shown in the example above, there is an <strong>implicit fetch step</strong> (recall FDE cycle).</p>
+</blockquote>
+
+<p>In RTL this would be:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">[MAR] &lt;- [PC]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[MDR] &lt;- [MS(MAR)]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[IR] &lt;- [MDR]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[PC] &lt;- [PC] + 1</code></li>
+</ol>
+
+<p>Note that the 4<sup>th</sup> step is actually a macro-step because the processor will have to have some mechanism of incrementing the PC, which can be done using the ALU or something else – it all depends on the processor architecture. What’s <strong>crucial</strong> is that you are <strong>aware of all these nuances</strong> and have them in mind when dealing with this topic.</p>
+
+<h2 id="control-unit-design">Control Unit Design</h2>
+
+<p>Before we concern ourselves with the internal design of the CU, let’s analyse it with a <strong>black box approach</strong> which is to analyse it based on its <strong>requirements</strong> and how that affects what inputs and outputs the CU needs.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Requirements of CU</th>
+      <th>Implication</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Needs to operate at or near clock speed of microprocessor</td>
+      <td>Needs to have a clock input.</td>
+    </tr>
+    <tr>
+      <td>Needs to be aware of the state of bits in the CCR</td>
+      <td>Has to be connected to the CCR and its flags.</td>
+    </tr>
+    <tr>
+      <td>Needs to take opcode from the IR</td>
+      <td>Needs an input for Opcode.</td>
+    </tr>
+    <tr>
+      <td>Needs to translate opcode into appropriate sequence of processes to essentially execute opcode instructions.</td>
+      <td>Needs <code class="language-plaintext highlighter-rouge">Enable</code>, <code class="language-plaintext highlighter-rouge">Clock</code>, and <code class="language-plaintext highlighter-rouge">Read/Write</code> lines to all the components/subsystems to assert the sequence of signals to carry out the opcode.</td>
+    </tr>
+    <tr>
+      <td>Needs to specify which arithmetic operation to carry out.</td>
+      <td>Needs to have Function select lines leading to the ALU. The number of function selects = \(log_2(A)\), where \(A\) is the number of arithmetic operations.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The CU executes micro instructions by asserting a sequence of enable and clock signals which have to abide by a <strong>timing diagram</strong> that depends on the particular <strong>macro instruction</strong>. Once we have this timing diagram for every opcode, we can form a truth table that models each macro instruction. This truth table helps us distinguish between control rounds/clock cycles needed and we can use it to help design our CU.</p>
+
+<p><strong>There are two main approaches to control unit design.</strong></p>
+
+<blockquote>
+  <p><strong>Hardwired / “Random Logic”.</strong> Design the CU as a combinatorial logic circuit, transforming its input signals into a set of output signals based on the truth table we mentioned above.</p>
+
+  <p><strong>Microprogrammed.</strong> Each machine instruction is turned into a sequence of primitive microinstructions, which form a microprogram, stored in a ROM called the microprogram memory.</p>
+</blockquote>
+
+<h3 id="hardwired-cu">Hardwired CU</h3>
+
+<p>The dominant technique, since roughly 1980s, for implementing control units in RISC processors.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Sequencer</strong> – takes clock input of our microprocessor</td>
+      <td>Regulates/aligns the operation of the combinatorial logic circuit in the CU with the control steps/rounds we have for each macro instruction. These regulated signals should ideally match the clock frequency.</td>
+    </tr>
+    <tr>
+      <td><strong>Instruction Decoder</strong></td>
+      <td>Depending on the opcode, send a signal to a certain path that corresponds to a particular macro instruction.</td>
+    </tr>
+    <tr>
+      <td><strong>Fetch/Execute flip-flop</strong></td>
+      <td>Depending on the <code class="language-plaintext highlighter-rouge">START_FETCH</code> and <code class="language-plaintext highlighter-rouge">START_EXECUTE</code> signals, the flip-flop ensures that the CPU is only ever <strong>fetching</strong> or carrying out an opcode instruction (XOR relationship).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">START_FETCH</code> &amp; <code class="language-plaintext highlighter-rouge">START_EXECUTE</code></td>
+      <td>When high, these two signals reset the sequencer so that it is in sync with the fetch/execute flip-flop’s signals (either the Enable signal to the opcode decoder or the fetch signal).</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Advantages.</strong> Fast (operates as fast as logic gates).</p>
+
+  <p><strong>Disadvantages.</strong></p>
+
+  <ul>
+    <li>Complex hardware makes it difficult to design and test – many interconnections.</li>
+    <li>Inflexible as it is difficult to change the design if new instructions are added.</li>
+    <li>Long design time.</li>
+  </ul>
+</blockquote>
+
+<figure align="center">
+    <img src="part6.assets/image-20210513110831502.png" alt="image-20210513110831502" style="zoom:50%;" />
+    <figcaption style="text-align: center:">Diagram of hardwired CU</figcaption>
+</figure>
+
+<h3 id="microprogrammed">Microprogrammed</h3>
+
+<p>The dominant technique for implementing CUs, peaking in 1970s, for CISC processors.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Terminology</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Microprogram routine</strong></td>
+      <td>Describes how to generate the CU outputs for one macro instruction. Made up of micro instructions and stored in microprogram memory (a ROM)</td>
+    </tr>
+    <tr>
+      <td><strong>Microaddress</strong></td>
+      <td>A location within microprogram memory</td>
+    </tr>
+    <tr>
+      <td><strong>MicroPC</strong></td>
+      <td>The CU’s internal program counter</td>
+    </tr>
+    <tr>
+      <td><strong>MicroIR</strong></td>
+      <td>Internal IR used to hold current micro instruction</td>
+    </tr>
+    <tr>
+      <td><strong>Microinstruction</strong></td>
+      <td>Holds the CU output values and other fields to control the microprogram flow.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Advantages.</strong></p>
+
+  <ul>
+    <li>Ease of design and implementation</li>
+    <li>Flexibility of design allows families of processors to be built</li>
+    <li>Simple hardware compared to hardwired implementations</li>
+    <li>Microprogram memory can be reprogrammed for new instructions.</li>
+  </ul>
+
+  <p><strong>Disadvantages.</strong></p>
+
+  <ul>
+    <li>Slower than hardwired implementations.</li>
+  </ul>
+</blockquote>
+
+<figure align="center">
+    <img src="part6.assets/image-20210513110735926.png" alt="image-20210513110735926" style="zoom:50%;" />
+    <figcaption style="text-align: center:">Diagram of micro-programmed CU</figcaption>
+</figure>
+
+<h4 id="standard-operation-description">Standard operation description</h4>
+
+<ol>
+  <li>When the microPC is powered, it initialises to <strong>micro-address 0</strong> which corresponds to the <strong>fetch micro-program</strong>.</li>
+  <li>The micro-instruction register (microIR) <strong>receives microinstructions</strong> and this is where the CU <strong>output values</strong> are set to the values <strong>recorded in each micro-instruction</strong> of the program. Hence, the CU is able to generate the <strong>appropriate control signals</strong>, as the micro-program executes, which correspond to the <strong>macro fetch operation</strong>.</li>
+  <li>After each microinstruction has generated CU outputs, the microPC is <strong>typically</strong> incremented to the next microinstruction by a +1 circuit, <strong>except</strong> for the last fetch microinstruction.</li>
+  <li>At this point the processor’s IR has been populated with the next opcode and this is <strong>fed as opcode inputs</strong> into the CU.</li>
+  <li>There is a component in the microIR we can call the “<strong>next microPC calc type</strong>” (I don’t think this is the actual name) that is set to make sure that the microPC is <strong>not</strong> incremented with the +1 circuit but <strong>instead</strong> is set to the <strong>output of an OTOA circuit</strong> (which is essentially a lookup table of opcodes to micro-program addresses).
+    <ul>
+      <li>This enables the microPC to <strong>jump to the microaddress</strong> of the microprogram <strong>specified</strong> by the opcode and the CU can execute that microprogram based on the values set by the micro-instructions inside the program.</li>
+    </ul>
+  </li>
+  <li>When it is finally the <strong>last microinstruction</strong>, the “next microPC calc type” is set such that the microPC is now set to the microIR “<strong>next microaddress</strong>” field.
+    <ul>
+      <li>Opcode microprograms use this facility/mechanism to <strong>set</strong> the microPC <strong>back</strong> to the fetch microprogram address.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="cisc-vs-risc">CISC vs RISC</h2>
+
+<p><em>Complex Instruction Set Computers vs Reduced Instruction Set Computers.</em></p>
+
+<p><strong>Some history.</strong> Initially (1970s), the control store was much faster than main memory and therefore microprogrammed overhead was only 50% of execution time. As hardware got more advanced, both became faster but the control store lost its advantage and was about as fast as main memory. This led to microprogrammed overhead of over 80% of execution time. So even though processors were becoming more “capable” with a growing instruction set size, these were not actually enabling people to build better, more performant code.</p>
+
+<p>Publishing results by Fairclough et al. in IEEE Micro (1982) supported this as it showed that certain groups of instructions are far more commonly used than others.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction Group</th>
+      <th>Frequency of Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data movement (<code class="language-plaintext highlighter-rouge">move</code>, <code class="language-plaintext highlighter-rouge">store</code>, <code class="language-plaintext highlighter-rouge">load</code>)</td>
+      <td>45.28%</td>
+    </tr>
+    <tr>
+      <td>Program flow control (<code class="language-plaintext highlighter-rouge">branch</code>, <code class="language-plaintext highlighter-rouge">call</code>, <code class="language-plaintext highlighter-rouge">return</code>)</td>
+      <td>28.73%</td>
+    </tr>
+    <tr>
+      <td>Arithmetic (<code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">sub</code>)</td>
+      <td>10.75%</td>
+    </tr>
+    <tr>
+      <td>Compare (<code class="language-plaintext highlighter-rouge">cmp</code>)</td>
+      <td>5.92%</td>
+    </tr>
+    <tr>
+      <td>Logical (<code class="language-plaintext highlighter-rouge">and</code>, <code class="language-plaintext highlighter-rouge">or</code>)</td>
+      <td>3.91%</td>
+    </tr>
+    <tr>
+      <td>Shift</td>
+      <td>2.93%</td>
+    </tr>
+    <tr>
+      <td>Bit manipulation</td>
+      <td>2.05%</td>
+    </tr>
+    <tr>
+      <td>Miscellaneous</td>
+      <td>0.44%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Many people decided to take a fresh look at the situation and a paper by Patterson and Ditzel coined the two terms, RISC and CISC. They proposed a fresh start – a new approach to building our microprocessors (RISC) that did away with backward compatibility.</p>
+
+<p>This sparked a split in industry, where <strong>ARM</strong> is the main proponent for RISC – their approach was to reduce the set of instructions but retain efficiency and synergy between control signal and control steps, sacrificing backwards compatibility.</p>
+
+<p><strong>Intel</strong> took a different approach and serves a market which wants backwards compatibility. They took a hybrid approach where the simplest and most commonly used instructions are executed by a RISC core and the more complex ones are <strong>microprogrammed</strong> (CISC). Performance is competitive and legacy software can still run.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

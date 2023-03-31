@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Directed Graphs</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Directed Graphs</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#directed-graphs">Directed graphs</a><ul><li><a href="#properties">Properties</a></li><li><a href="#strong-connectivity-algorithm">Strong Connectivity Algorithm</a></li></ul></li><li><a href="#transitive-closure">Transitive closure</a><ul><li><a href="#computing-with-dfs">Computing with DFS</a></li><li><a href="#floyd-warshall-algorithm">Floyd-Warshall Algorithm</a><ul><li><a href="#fw-in-python">FW in Python</a></li><li><a href="#speed-analysis-of-fw">Speed Analysis of FW</a></li></ul></li></ul></li><li><a href="#topological-ordering">Topological ordering</a><ul><li><a href="#topological-sorting-with-dfs">Topological Sorting with DFS</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="graphs.html" title="graphs.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="general-algorithms.html" title="general-algorithms.html">Next👉</a>
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="directed-graphs">Directed graphs</h2>
+
+<blockquote>
+  <p>Directed graphs (digraphs) are graphs where <strong>every edge</strong> is directed. Edge \((a,b)\) goes from \(a\) to \(b\), but not the other way around.</p>
+
+  <p>It can be applied to dependency and scheduling problems. When representing it in concrete implementations, we tend to keep in and out edges separately</p>
+</blockquote>
+
+<h3 id="properties">Properties</h3>
+
+<p>If a <strong>simple</strong> directed graph has \(m\) edges and \(n\) vertices, then \(m \leq n \cdot (n-1)\), since every vertex can connect to every other vertex bar itself</p>
+
+<p>There is more terminology specifically about digraphs:</p>
+
+<ul>
+  <li>One vertex is said to be <strong>reachable</strong> from the other if there <strong>exists a directed path</strong> from the other to it</li>
+  <li>A digraph is said to be <strong>strongly connected</strong> if <strong>each vertex is reachable</strong> from every other vertex</li>
+</ul>
+
+<h3 id="strong-connectivity-algorithm">Strong Connectivity Algorithm</h3>
+
+<p>We can identify strong connectivity by running DFS on a chosen vertex \(v\) in \(G\) and \(G’\), where \(G’\) is \(G\) but with the directed edges <strong>reversed</strong>.</p>
+
+<ul>
+  <li>Firstly, we perform DFS from \(v\) in \(G\). If there is a vertex \(u\) <strong>not visited</strong>, then \(G\) is <strong>not</strong> strongly connected. Otherwise, it shows that there exists a path from \(v\) to every other vertex.</li>
+  <li>Next we perform DFS from \(v\) in \(G’\). Again, if there is a vertex \(u\) not visited it is not strongly connected. Otherwise, it shows that there exists a path from every other vertex to \(v\).</li>
+  <li>If both DFS show that there is no such vertex \(u\), then \(G\) is strongly connected.</li>
+</ul>
+
+<p>This has a running time of \(O(n+m)\).</p>
+
+<p>It is also possible to create maximal subgraphs with every vertex being reachable in \(O(n+m)\) time, but this is more involved.</p>
+
+<h2 id="transitive-closure">Transitive closure</h2>
+
+<blockquote>
+  <p>Given a digraph \(G\), the transitive closure of \(G\) is the digraph \(G^*\) such that</p>
+
+  <ul>
+    <li>
+      <p>\(G^*\) has the same vertices as \(G\)</p>
+    </li>
+    <li>
+      <p>If \(G\) has a directed path from \(u\) to \(v\), and \(u \neq v\), then \(G^*\) has a directed edge from \(u\) to \(v\)</p>
+    </li>
+  </ul>
+
+  <p>The transitive closure provides reachability information about a digraph, allowing us to answer reachability questions <strong>fast</strong>.</p>
+</blockquote>
+
+<p>Informally, this means that every pair of vertices with a path between them is adjacent in a transitive closure.</p>
+
+<p><img src=".\images\transitiveClosure.png" alt="transitiveClosure" class="center" style="zoom:50%;" /></p>
+
+<h3 id="computing-with-dfs">Computing with DFS</h3>
+
+<p>One way of computing the transitive closure of a graph is to perform DFS on each vertex in graph to identify every reachable edge from it, then setting edges between them.</p>
+
+<p>Every run of DFS will take \(O(n+m)\) time and because we are running it on every edge so this will take \(O(n \cdot (n+m))\) time.</p>
+
+<blockquote>
+  <p>For sparse graphs, adjacency list/adjacency map representations, or very large graphs (many nodes), DFS is a good solution.</p>
+</blockquote>
+
+<h3 id="floyd-warshall-algorithm">Floyd-Warshall Algorithm</h3>
+
+<blockquote>
+  <p>Another way to compute the transitive closure is to use the <strong>Floyd-Warshall algorithm</strong>, a dynamic programming solution.</p>
+</blockquote>
+
+<p>The \(G^*\) graph starts off identical to \(G\) with only the initial edges. We then add a direct edge between nodes which have a path of length 2 between them (only one other node separating the two nodes).</p>
+
+<p><img src=".\images\floydWarshall.png" alt="floydWarshall" class="center" /></p>
+
+<p>With each iteration, we pick a “pivot” (this is my own way of saying it) node \(k\) and we loop through all \(i\) and \(j\) to check if there is an edge \(i\rightarrow k\) and \(k\rightarrow j\) – if this is true, then we insert an edge \(i \rightarrow j\).</p>
+
+<p>After every edge is inserted, this forms a new path of length 2 between two nodes, which is then considered in a later iteration.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">FloydWarshall</span><span class="o">(</span><span class="no">G</span><span class="o">)</span>
+    <span class="nl">Input:</span> <span class="n">digraph</span> <span class="no">G</span>
+    <span class="nl">Output:</span> <span class="n">transitive</span> <span class="n">closure</span> <span class="no">G</span><span class="o">*</span> <span class="n">of</span> <span class="no">G</span>
+    <span class="n">i</span> <span class="o">&lt;-</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+        <span class="n">label</span> <span class="n">v</span> <span class="n">with</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">&lt;-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">G_new</span> <span class="o">&lt;-</span> <span class="no">G</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span> <span class="k">do</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="nf">n</span><span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">k</span><span class="o">)</span> <span class="k">do</span>
+        	<span class="k">for</span> <span class="n">j</span> <span class="o">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="nf">n</span><span class="o">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">k</span><span class="o">)</span> <span class="k">do</span>
+            	<span class="k">if</span> <span class="n">G_new</span><span class="o">.</span><span class="na">areAdjacent</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">k</span><span class="o">)</span> <span class="o">&amp;</span> <span class="n">G_new</span><span class="o">.</span><span class="na">areAdjacent</span><span class="o">(</span><span class="n">k</span><span class="o">,</span><span class="n">j</span><span class="o">)</span> <span class="o">&amp;</span> <span class="o">!</span><span class="n">G_new</span><span class="o">.</span><span class="na">areAdjacent</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">j</span><span class="o">)</span>
+                    <span class="n">G_new</span><span class="o">.</span><span class="na">insertDirectedEdge</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">j</span><span class="o">,</span><span class="n">edge_k</span><span class="o">)</span>
+    <span class="k">return</span> <span class="n">G_new</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>We say this is a dynamic programming algorithm because we only have to consider paths of length 2 and update the graph immediately. By resolving the transitive closure for every \(k\) with every other \(i\) and every other \(j\), the end result is one that considers all possible closures and the final graph is transitively closed.</p>
+</blockquote>
+
+<h4 id="fw-in-python">FW in Python</h4>
+
+<p>I found a good explanation of this algorithm on <a href="https://www.youtube.com/watch?v=OO8Jfs9uZnc">Youtube</a> which also includes a github gist of the Python implementation of this algorithm. This takes an adjacency matrix <code class="language-plaintext highlighter-rouge">M</code> which encodes the graph</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">warshall</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">M</span><span class="p">.</span><span class="n">nrows</span><span class="p">()</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">M</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="ow">or</span> <span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="ow">and</span> <span class="n">W</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">W</span>
+</code></pre></div></div>
+
+<h4 id="speed-analysis-of-fw">Speed Analysis of FW</h4>
+
+<p>The running time is dominated by the 3 for-loops. If we assume that the <code class="language-plaintext highlighter-rouge">areAdjacent</code> method takes \(O(1)\) time (which is true for <strong>adjacency matrices</strong>) then this algorithm is of \(O(n^3)\) time.</p>
+
+<blockquote>
+  <p>For dense graphs, and adjacency matrix representations, the Floyd-Warshall algorithm is better than using DFS. Additionally, it is also algorithmically simpler.</p>
+</blockquote>
+
+<h2 id="topological-ordering">Topological ordering</h2>
+
+<p>A topological ordering of a digraph is a numbering \(v_1,\ldots,v_n\) of the vertices such that for every directed edge \(v_i,v_j\), we have that \(i&lt;j\).</p>
+
+<blockquote>
+  <p><strong>Theorem.</strong> A digraph has a <strong>topological ordering</strong> if it is a <strong>directed acyclic graph</strong> (DAG – has no directed cycles). Having cycles would informally be self-dependencies</p>
+</blockquote>
+
+<p>To prove the theorem above, we need to prove both ways. Showing that a digraph with a topological ordering contains no directed cycles is <strong>trivial</strong> (left to right). We will employ DFS to prove the other way (right to left).</p>
+
+<h3 id="topological-sorting-with-dfs">Topological Sorting with DFS</h3>
+
+<blockquote>
+  <p>This DFS implementation of <strong>topological sorting</strong> consists of two functions that are overloaded.</p>
+
+  <ul>
+    <li>The first function takes a graph <code class="language-plaintext highlighter-rouge">G</code> and starts labelling all vertices as <code class="language-plaintext highlighter-rouge">unexplored</code>.</li>
+    <li>Then for every vertex, if the label is <code class="language-plaintext highlighter-rouge">unexplored</code> we call the <strong>second</strong> function.</li>
+  </ul>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">)</span> <span class="c1">// First function</span>
+    <span class="nl">Input:</span> <span class="no">DAG</span> <span class="no">G</span>
+    <span class="nl">Output:</span> <span class="nc">Topological</span> <span class="n">ordering</span> <span class="n">of</span> <span class="no">G</span>
+    <span class="n">n</span> <span class="o">&lt;-</span> <span class="no">G</span><span class="o">.</span><span class="na">numVertices</span><span class="o">()</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">u</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+        <span class="n">setLabel</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="s">"unexplored"</span><span class="o">)</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">v</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">vertices</span><span class="o">()</span>
+        <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">v</span><span class="o">)</span> <span class="o">==</span> <span class="s">"unexplored"</span>
+            <span class="n">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">v</span><span class="o">)</span>     <span class="c1">// 2nd Function</span>
+</code></pre></div></div>
+
+<p>Here we set the starting vertex <code class="language-plaintext highlighter-rouge">v</code> to <code class="language-plaintext highlighter-rouge">visited</code>, and then for all edges that originate from <code class="language-plaintext highlighter-rouge">v</code> we check if the destination vertex <code class="language-plaintext highlighter-rouge">w</code> is <code class="language-plaintext highlighter-rouge">unexplored</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Algorithm</span> <span class="nf">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">v</span><span class="o">)</span> <span class="c1">// 2nd Function</span>
+    <span class="nl">Input:</span> <span class="n">graph</span> <span class="no">G</span> <span class="n">and</span> <span class="n">a</span> <span class="n">start</span> <span class="n">vertex</span> <span class="n">v</span> <span class="n">of</span> <span class="no">G</span>
+    <span class="nl">Output:</span> <span class="nc">Labelling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vertices</span> <span class="n">of</span> <span class="no">G</span> <span class="n">in</span> <span class="n">the</span> <span class="n">connected</span> <span class="n">component</span> <span class="n">of</span> <span class="n">v</span>
+    <span class="nf">setLabel</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="s">"visited"</span><span class="o">)</span>
+    <span class="k">for</span> <span class="n">all</span> <span class="n">e</span> <span class="n">in</span> <span class="no">G</span><span class="o">.</span><span class="na">outEdges</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+        <span class="n">w</span> <span class="o">&lt;-</span> <span class="n">opposite</span><span class="o">(</span><span class="n">v</span><span class="o">,</span><span class="n">e</span><span class="o">)</span>
+        <span class="k">if</span> <span class="nf">getLabel</span><span class="o">(</span><span class="n">w</span><span class="o">)</span> <span class="o">==</span> <span class="s">"unexplored"</span> <span class="c1">// e is a discovery edge</span>
+            <span class="n">topologicalDFS</span><span class="o">(</span><span class="no">G</span><span class="o">,</span><span class="n">w</span><span class="o">)</span>
+            <span class="n">setLabel</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="s">"cross"</span><span class="o">)</span>
+        <span class="c1">// else we do nothing</span>
+    <span class="nc">Label</span> <span class="n">v</span> <span class="n">with</span> <span class="n">topological</span> <span class="n">number</span> <span class="n">n</span>
+    <span class="n">n</span> <span class="o">&lt;-</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>Taking the following graph as an example, let’s start at vertex <code class="language-plaintext highlighter-rouge">A</code>. We first begin by labelling vertex <code class="language-plaintext highlighter-rouge">A</code> as <code class="language-plaintext highlighter-rouge">visited</code> and we loop through all the vertices that <code class="language-plaintext highlighter-rouge">A</code> has an edge to.</p>
+
+<p><img src="./images/toposort1.svg" class="center" /></p>
+
+<p>If any are unexplored, then the edge has <strong>not been traversed</strong> before and we call the 2nd function on the destination vertex recursively, in this case lets say the loop starts with <code class="language-plaintext highlighter-rouge">G</code>. Then the same thing happens to <code class="language-plaintext highlighter-rouge">G</code> (as it is a recursive call).</p>
+
+<p>This will continue until we arrive at a vertex <code class="language-plaintext highlighter-rouge">D</code> with <strong>no outgoing unexplored edge</strong>.</p>
+
+<ul>
+  <li>When this happens, we label <code class="language-plaintext highlighter-rouge">D</code> with the current number for the topological ordering (this number starts at \(n = \text{number of vertices in G}\)). After which, we decrement <code class="language-plaintext highlighter-rouge">n</code>.</li>
+  <li>Then as <strong>an effect</strong> of the recursive calls, the algorithm <strong>backtracks</strong> to the previous vertex \(d_x\) (i.e <code class="language-plaintext highlighter-rouge">J</code>).
+    <ul>
+      <li>All remaining outgoing edges of \(d_x\) are checked and there will be <strong>further recursive calls</strong> to the 2nd function if any edges have <strong>not</strong> been traversed.</li>
+      <li>The next vertex with no outgoing edge \(d_{n-1}\) will be labelled with <code class="language-plaintext highlighter-rouge">n-1</code>. In our example this is <code class="language-plaintext highlighter-rouge">J</code>.</li>
+    </ul>
+  </li>
+  <li>This goes on, and we will notice that after every exit from a recursive call, there will always be a vertex with no outgoing unexplored edge.</li>
+</ul>
+
+<p>Hence, we will be able to arrive at a topological ordering of \(G\).</p>
+
+<p><img src="./images/toposort2.svg" class="center" /></p>
+
+<blockquote>
+  <p><strong>Note.</strong> You may observer that if we start at a different root vertex (for example if we started from <code class="language-plaintext highlighter-rouge">B</code> instead of <code class="language-plaintext highlighter-rouge">A</code>), the topological ordering will be different. Hence, it is possible for one DAG to have multiple topological orderings.</p>
+</blockquote>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

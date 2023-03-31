@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Lazy Evaluation & Recursion</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Lazy Evaluation & Recursion</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#evaluation-strategies">Evaluation Strategies</a><ul><li><a href="#strictness">Strictness</a></li><li><a href="#call-by-value">Call-by-value</a></li><li><a href="#call-by-name">Call-by-name</a></li><li><a href="#cbn-vs-cbv">CBN vs CBV</a></li><li><a href="#lazy-evaluation">Lazy evaluation</a><ul><li><a href="#sharing">Sharing</a></li><li><a href="#lazy-evaluation-walk-through">Lazy evaluation Walk-through</a></li></ul></li></ul></li><li><a href="#closures">Closures</a><ul><li><a href="#dynamic-closures">Dynamic Closures</a></li></ul></li><li><a href="#recursive-functions">Recursive Functions</a><ul><li><a href="#optimised-recursive-functions-in-haskell">Optimised Recursive Functions in Haskell</a></li><li><a href="#useful-recursive-functions">Useful recursive functions</a><ul><li><a href="#quick-sort">Quick sort</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part1.html" title="part1.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part3.html" title="part3.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="evaluation-strategies">Evaluation Strategies</h2>
+
+<blockquote>
+  <p><strong>Evaluation strategies</strong> determine the order in which we reduce expressions. An expression that can be reduced is called a <strong>redex.</strong></p>
+</blockquote>
+
+<h3 id="strictness">Strictness</h3>
+
+<blockquote>
+  <p>A programming language is <strong>strict</strong> if only strict functions (functions whose parameters must be evaluated completely before they may be called) may be defined by the user.</p>
+</blockquote>
+
+<h3 id="call-by-value">Call-by-value</h3>
+
+<blockquote>
+  <p>A <strong>strict evaluation strategy</strong> where all function arguments are <strong>reduced to normal forms</strong> (values) before being passed as such to the function.</p>
+</blockquote>
+
+<p><strong>Example.</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fac'</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">fac'</span> <span class="mi">0</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
+<span class="n">fac'</span> <span class="n">n</span> <span class="n">m</span> <span class="o">=</span> <span class="n">fac'</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">fac</span> <span class="mi">2</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="mi">2</span> <span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="mi">1</span> <span class="mi">2</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+   <span class="o">...</span>
+</code></pre></div></div>
+
+<h3 id="call-by-name">Call-by-name</h3>
+
+<blockquote>
+  <p>A <strong>non-strict evaluation strategy</strong> where expressions are given to functions as arguments are <strong>not reduced</strong> before the function call is made.</p>
+
+  <p>Expressions are only reduced when their value is <strong>needed</strong>.</p>
+</blockquote>
+
+<p><strong>When is a value needed?</strong></p>
+
+<p>A case expression is the only thing that enforces the evaluation of a particular expression (we’re only evaluating something if its in a case expression). We <strong>need the value</strong> of an expression when we <strong>cannot proceed</strong> with the case expression <strong>until we reduce</strong> the expression.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fac'</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">fac'</span> <span class="mi">0</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
+<span class="n">fac'</span> <span class="n">n</span> <span class="n">m</span> <span class="o">=</span> <span class="n">fac'</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">fac</span> <span class="mi">2</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="mi">2</span> <span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="kr">case</span> <span class="mi">2</span> <span class="kr">of</span>
+     <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+     <span class="kr">_</span> <span class="o">-&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kr">case</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span> <span class="kr">of</span>
+     <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="mi">1</span>
+     <span class="kr">_</span> <span class="o">-&gt;</span> <span class="n">fac'</span> <span class="p">((</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">((</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">1</span><span class="p">))</span>
+<span class="o">=&gt;</span> <span class="kr">case</span> <span class="mi">1</span> <span class="kr">of</span>
+     <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="mi">1</span>
+     <span class="kr">_</span> <span class="o">-&gt;</span> <span class="n">fac'</span> <span class="p">((</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">((</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>When <code class="language-plaintext highlighter-rouge">2-1</code> (from the 2nd last step) is <strong>reduced</strong> to <code class="language-plaintext highlighter-rouge">1</code>, it is the first time in the example that an expression is <strong>reduced</strong>. This only happens because the value of the redex <code class="language-plaintext highlighter-rouge">2-1</code> is needed for the case expression to continue.</p>
+
+<h3 id="cbn-vs-cbv">CBN vs CBV</h3>
+
+<p><em>call by name vs call by value</em></p>
+
+<blockquote>
+  <p>In a language which uses call-by-name evaluation, such as Haskell, expressions are only evaluated when it becomes clear that their value is needed. In call-by-value, function arguments are always evaluated before the function is called.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Call-by-value</th>
+      <th>Call-by-name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reduce function arguments to normal forms before calling the function</td>
+      <td>Only reduce expressions when their value is needed</td>
+    </tr>
+    <tr>
+      <td>We may evaluate arguments even if they are <strong>never needed</strong>.</td>
+      <td>We may end up reducing the same expression <strong>over and over</strong>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="lazy-evaluation">Lazy evaluation</h3>
+
+<p>From above, we see that call-by-name and call-by-value each have its flaws.</p>
+
+<blockquote>
+  <p>This is essentially <strong>call-by-name + sharing</strong>, where we avoid duplicate evaluation but also only ever evaluate expressions that are needed.</p>
+</blockquote>
+
+<p>Lazy evaluation is the default evaluation strategy in Haskell. Since Haskell is a <strong>non-strict programming language</strong>, it can be strict if the <strong>compiler</strong> (the compiler does everything for us 🥳) thinks its better or if we force it to be strict with the <code class="language-plaintext highlighter-rouge">$!</code> operator.</p>
+
+<h4 id="sharing">Sharing</h4>
+
+<p>This is the technique that helps us avoid duplicate evaluation.</p>
+
+<blockquote>
+  <p>Sharing turns arguments to function into local definitions.</p>
+
+  <p><strong>TLDR.</strong> Normally for call-by-name, expressions are represented by <strong>closures</strong> (memory locations on the heap) and pointers to them are then passed to functions as arguments. If an argument is used more than once within a function, then it will be <strong>evaluated multiple times</strong>. Sharing is an optimisation which allows these <strong>closures</strong> to be <strong>updated</strong> with their result once they have been evaluated, meaning they only have to evaluated once.</p>
+</blockquote>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                              <span class="n">fac'</span> <span class="n">n</span> <span class="n">m</span> <span class="o">=</span> <span class="kr">case</span> <span class="n">n</span> <span class="kr">of</span>
+<span class="n">fac'</span> <span class="n">n</span> <span class="n">m</span> <span class="o">=</span> <span class="kr">case</span> <span class="n">n</span> <span class="kr">of</span>            <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">m</span>
+  <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">m</span>                 <span class="o">==&gt;</span>    <span class="kr">_</span> <span class="o">-&gt;</span> <span class="kr">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+  <span class="kr">_</span> <span class="o">-&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>                  <span class="n">y</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">m</span>
+                                     <span class="kr">in</span> <span class="n">fac'</span> <span class="n">x</span> <span class="n">y</span>
+</code></pre></div></div>
+
+<p>This ensures that functions are always applied to either <strong>values</strong> or a <strong>variable</strong> defined in a <code class="language-plaintext highlighter-rouge">let</code> (or <code class="language-plaintext highlighter-rouge">where</code>) bound. This means that if a variable (e.g. <code class="language-plaintext highlighter-rouge">x0 = 2-1</code>) has to be evaluated, its RHS is evaluated (so <code class="language-plaintext highlighter-rouge">2-1=1</code>) and <code class="language-plaintext highlighter-rouge">x0</code> is updated with the value of the expression, so <code class="language-plaintext highlighter-rouge">x0 = 1</code>. Also see <a href="#dynamic-closures">dynamic closures</a>.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">fac</span> <span class="mi">2</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="mi">2</span> <span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="kr">case</span> <span class="mi">2</span> <span class="kr">of</span>
+     <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>
+     <span class="kr">_</span> <span class="o">-&gt;</span> <span class="kr">let</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
+              <span class="n">y0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">1</span>
+          <span class="kr">in</span> <span class="n">fac'</span> <span class="n">x0</span> <span class="n">y0</span>
+<span class="o">=&gt;</span> <span class="kr">let</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
+       <span class="n">y0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">1</span>
+   <span class="kr">in</span> <span class="n">fac'</span> <span class="n">x0</span> <span class="n">y0</span>
+<span class="o">=&gt;</span> <span class="kr">let</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
+       <span class="n">y0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">1</span>
+   <span class="kr">in</span> <span class="kr">case</span> <span class="n">x0</span> <span class="kr">of</span>             <span class="c1">-- x0 has to be evaluated as its value is</span>
+        <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">y0</span>              <span class="c1">-- needed for the case expression to continue</span>
+        <span class="kr">_</span> <span class="o">-&gt;</span> <span class="kr">let</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x0</span><span class="o">-</span><span class="mi">1</span>
+                 <span class="n">y1</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">y0</span>
+             <span class="kr">in</span> <span class="n">fac'</span> <span class="n">x1</span> <span class="n">y1</span>
+<span class="o">=&gt;</span> <span class="kr">let</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1">-- x0 has been updated with the result of </span>
+       <span class="n">y0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">1</span>              <span class="c1">-- evaluating RHS</span>
+   <span class="kr">in</span> <span class="kr">case</span> <span class="n">x0</span> <span class="kr">of</span>
+        <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">y0</span>
+        <span class="kr">_</span> <span class="o">-&gt;</span> <span class="kr">let</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x0</span><span class="o">-</span><span class="mi">1</span>
+                 <span class="n">y1</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">y0</span>
+             <span class="kr">in</span> <span class="n">fac'</span> <span class="n">x1</span> <span class="n">y1</span>
+<span class="o">=&gt;</span> <span class="kr">let</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>                
+       <span class="n">y0</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">1</span>               
+   <span class="kr">in</span> <span class="kr">case</span> <span class="mi">1</span> <span class="kr">of</span>             <span class="c1">-- x0 can now be replaced by 1</span>
+        <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">y0</span>
+        <span class="kr">_</span> <span class="o">-&gt;</span> <span class="kr">let</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x0</span><span class="o">-</span><span class="mi">1</span>
+                 <span class="n">y1</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">y0</span>
+             <span class="kr">in</span> <span class="n">fac'</span> <span class="n">x1</span> <span class="n">y1</span>
+</code></pre></div></div>
+
+<p>When we refer to <code class="language-plaintext highlighter-rouge">x0</code> again, we have access to its evaluated value (because we evaluated it before) and there will be <strong>no need</strong> to evaluate it again and again, all while using <strong>call-by-name.</strong></p>
+
+<h4 id="lazy-evaluation-walk-through">Lazy evaluation Walk-through</h4>
+
+<blockquote>
+  <p>Given the following expression, show how it is evaluated with lazy evaluation (do not skip steps).</p>
+</blockquote>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="mi">2</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<p>When tackling this kind of question it is helpful to refer to the definitions of the functions that are used. These are usually specified/given to you/made by you in an earlier question, otherwise its difficult to evaluate it properly without knowing the exact definition.</p>
+
+<p>Here the definitions we use are.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">length</span> <span class="o">::</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">length</span> <span class="kt">[]</span>     <span class="o">=</span> <span class="mi">0</span>
+<span class="n">length</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="n">xs</span>
+
+<span class="n">take</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+<span class="n">take</span> <span class="mi">0</span> <span class="kr">_</span>     <span class="o">=</span> <span class="kt">[]</span>
+<span class="n">take</span> <span class="n">n</span> <span class="kt">[]</span>    <span class="o">=</span> <span class="kt">[]</span>
+<span class="n">take</span> <span class="n">n</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">:</span> <span class="n">take</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">xs</span>
+
+<span class="n">map</span> <span class="o">::</span> <span class="p">(</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span>
+<span class="n">map</span> <span class="n">f</span> <span class="kt">[]</span>     <span class="o">=</span> <span class="kt">[]</span>
+<span class="n">map</span> <span class="n">f</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span> <span class="n">x</span> <span class="o">:</span> <span class="n">map</span> <span class="n">f</span> <span class="n">xs</span>
+</code></pre></div></div>
+
+<p><strong>Answer.</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="mi">2</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="o">=&gt;</span> <span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="mi">2</span> <span class="p">(</span><span class="n">even</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="o">=&gt;</span> <span class="n">length</span> <span class="p">(</span><span class="n">even</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">take</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="mi">1</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="mi">1</span> <span class="p">(</span><span class="n">even</span> <span class="mi">2</span> <span class="o">:</span> <span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="p">(</span><span class="n">even</span> <span class="mi">2</span> <span class="o">:</span> <span class="n">take</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])))</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="mi">0</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])))</span> 
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="kt">[]</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<p>Questions may ask about call-by-value and call-by-name too, so know this topic well.</p>
+
+<h2 id="closures">Closures</h2>
+
+<blockquote>
+  <p>A structure in memory at runtime that represents a function and its environments (i.e scope).</p>
+</blockquote>
+
+<p>We can think of it as an array of pointers</p>
+
+<ul>
+  <li>1st pointer points to some code</li>
+  <li>other pointers point to other closures.</li>
+</ul>
+
+<p><strong>Example.</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">not</span> <span class="o">::</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">not</span> <span class="kt">True</span> <span class="o">=</span> <span class="kt">False</span>
+<span class="n">not</span> <span class="kt">False</span> <span class="o">=</span> <span class="kt">True</span>
+</code></pre></div></div>
+
+<p>In memory, you have a particular memory location/address that stores a pointer to the code (we don’t have to worry about where the code is.)</p>
+
+<ul>
+  <li>Every usage of <code class="language-plaintext highlighter-rouge">not</code> in the code is a pointer to this memory location.</li>
+</ul>
+
+<blockquote>
+  <p>Functions in Haskell (and other functional programming languages) are first class values, which means they can be returned by other functions or given to functions as arguments (higher-order-functions).</p>
+</blockquote>
+
+<p><strong>Example.</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="kr">let</span> <span class="n">g</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+      <span class="kr">in</span> <span class="n">g</span>
+</code></pre></div></div>
+
+<p>In memory, we have a static closure of <code class="language-plaintext highlighter-rouge">f</code> as mentioned above for <code class="language-plaintext highlighter-rouge">not</code></p>
+
+<ul>
+  <li>Initially when the program is started, there is no closure for <code class="language-plaintext highlighter-rouge">g</code>. Only have closures for top-level definitions like <code class="language-plaintext highlighter-rouge">f</code> here when program starts.</li>
+  <li>When we start evaluating <code class="language-plaintext highlighter-rouge">f</code>, every call to <code class="language-plaintext highlighter-rouge">f</code> will dynamically allocate a closure to <code class="language-plaintext highlighter-rouge">g</code> on the heap (this is only for that particular invocation of <code class="language-plaintext highlighter-rouge">f</code>)
+    <ul>
+      <li>This closure is comprised of a pointer to code for <code class="language-plaintext highlighter-rouge">g</code> and a pointer to <code class="language-plaintext highlighter-rouge">x</code></li>
+      <li>The reason for this is because the body of <code class="language-plaintext highlighter-rouge">g</code> refers to <code class="language-plaintext highlighter-rouge">x</code>, which is a parameter of <code class="language-plaintext highlighter-rouge">f</code>.</li>
+      <li>Because <code class="language-plaintext highlighter-rouge">g</code> is defined within the scope of <code class="language-plaintext highlighter-rouge">f</code>, it has access to whatever is in scope of <code class="language-plaintext highlighter-rouge">f</code>, which <code class="language-plaintext highlighter-rouge">x</code> is.</li>
+    </ul>
+  </li>
+  <li>It doesn’t matter if the stack frame for <code class="language-plaintext highlighter-rouge">f</code> is removed because <code class="language-plaintext highlighter-rouge">g</code> still has a reference to what <code class="language-plaintext highlighter-rouge">x</code> <strong>was</strong>.</li>
+</ul>
+
+<h3 id="dynamic-closures">Dynamic Closures</h3>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">length</span> <span class="p">(</span><span class="n">take</span> <span class="mi">2</span> <span class="p">(</span><span class="n">map</span> <span class="n">even</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span> 
+<span class="c1">-- is translated into</span>
+<span class="kr">let</span> <span class="n">zs4</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">:</span> <span class="kt">[]</span>
+    <span class="n">zs3</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">:</span> <span class="n">zs4</span>
+    <span class="n">zs2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">:</span> <span class="n">zs3</span>
+    <span class="n">zs</span>  <span class="o">=</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">zs2</span>
+    <span class="n">ys</span>  <span class="o">=</span> <span class="n">map</span> <span class="n">even</span> <span class="n">zs</span>
+    <span class="n">xs</span>  <span class="o">=</span> <span class="n">take</span> <span class="mi">2</span> <span class="n">ys</span>
+<span class="kr">in</span> <span class="n">length</span> <span class="n">xs</span>
+<span class="c1">-- by the compiler</span>
+</code></pre></div></div>
+
+<p>When this expression gets evaluated at runtime, a closure is <strong>dynamically allocated</strong> for each of these “variables” (so <code class="language-plaintext highlighter-rouge">zs4</code>, <code class="language-plaintext highlighter-rouge">zs3</code>, … , <code class="language-plaintext highlighter-rouge">xs</code>).</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">length</code> is just a pointer to the static closure for the <code class="language-plaintext highlighter-rouge">length</code> function.</li>
+  <li><code class="language-plaintext highlighter-rouge">xs</code> is a pointer to the closure that is dynamically allocated for <code class="language-plaintext highlighter-rouge">xs</code> shown above.</li>
+</ul>
+
+<h2 id="recursive-functions">Recursive Functions</h2>
+
+<p>In C, Java, and most imperative languages, function calls push frames onto the stack which is where local variables are stored. Each recursive function call is evaluated before the final value is calculated. To illustrate take the <code class="language-plaintext highlighter-rouge">factorial</code> function as an example:</p>
+
+<pre><code class="language-C">int fac (int n) {
+  if (n == 0) return 1;
+  int r = fac(n - 1);
+  return n * r;
+}
+</code></pre>
+
+<p>In C, each value of <code class="language-plaintext highlighter-rouge">n-1</code> for each call to <code class="language-plaintext highlighter-rouge">fac</code> is evaluated before the multiplication of <code class="language-plaintext highlighter-rouge">n</code> and <code class="language-plaintext highlighter-rouge">r</code>, so we get something like this in the stack:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- The Stack</span>
+<span class="n">fac</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="o">:</span> <span class="n">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">...</span>
+<span class="n">fac</span><span class="p">(</span><span class="mi">497</span><span class="p">)</span><span class="o">:</span> <span class="n">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span><span class="p">(</span><span class="mi">498</span><span class="p">)</span><span class="o">:</span> <span class="n">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span><span class="p">(</span><span class="mi">499</span><span class="p">)</span><span class="o">:</span> <span class="n">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">:</span> <span class="n">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Only when we get to the <strong>base case</strong> <code class="language-plaintext highlighter-rouge">n==0</code>, we get a value for <code class="language-plaintext highlighter-rouge">r</code> which is 1. Then the stack is popped and the next call to <code class="language-plaintext highlighter-rouge">fac</code> at the top will be evaluated until the initial call to <code class="language-plaintext highlighter-rouge">fac(500)</code>. If we defined this in Haskell, this would probably look like:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fac</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span> 
+<span class="n">fac</span> <span class="mi">0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">fac</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fac</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">fac</span> <span class="mi">500</span>
+<span class="o">=&gt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="n">fac</span> <span class="p">(</span><span class="mi">500</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="n">fac</span> <span class="mi">499</span>
+<span class="o">=&gt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="mi">499</span> <span class="o">*</span> <span class="n">fac</span> <span class="p">(</span><span class="mi">499</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="o">=&gt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="mi">499</span> <span class="o">*</span> <span class="n">fac</span> <span class="mi">498</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="mi">499</span> <span class="o">*</span> <span class="p">(</span><span class="mi">498</span> <span class="o">*</span> <span class="n">fac</span> <span class="p">(</span><span class="mi">498</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+	 <span class="o">...</span>
+<span class="o">=&gt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="mi">499</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="n">fac</span> <span class="mi">0</span>
+<span class="o">=&gt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="mi">499</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="mi">1</span> <span class="c1">-- multiplication can finally be evaluated</span>
+<span class="o">=&gt;</span> <span class="n">multiplication</span> <span class="n">is</span> <span class="n">evaluated</span>
+</code></pre></div></div>
+
+<p>This <strong>naive way</strong> of evaluating recursion builds up large expressions (with lots of closures) because <strong>nothing forces</strong> the expressions to get evaluated at intermediate steps.</p>
+
+<ul>
+  <li>The multiplication can never be reduced until the end because at <strong>no</strong> point do we have the <strong>second argument</strong> until we reach the base case.</li>
+  <li>Hence, <strong>deep recursion</strong> in imperative languages could cause your program to run out of memory, which is called a <strong>stack overflow.</strong></li>
+</ul>
+
+<blockquote class="extra"><b>FYI.</b> There is a “trick” called <a href="https://en.wikipedia.org/wiki/Tail_call">tail-call optimisation</a> that programming languages can use to prevent a stack overflow for certain kinds of recursive functions. 
+  <br /><br />In functional programming languages, tail call optimisation is often guaranteed by the language standard, as it allows tail recursion to use a similar amount of memory as a loop in an imperative language. If you are interested, read more <a href="https://www.codurance.com/publications/2017/12/05/on-tail-call-optimisation">here</a>.</blockquote>
+
+<h3 id="optimised-recursive-functions-in-haskell">Optimised Recursive Functions in Haskell</h3>
+
+<p>The Haskell compiler optimises this for us by recreating the function we call (i.e <code class="language-plaintext highlighter-rouge">fac</code>) with another function that has an <strong>accumulating parameter</strong>.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Here m is the accumulating parameter</span>
+<span class="n">fac'</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">fac'</span> <span class="mi">0</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
+<span class="n">fac'</span> <span class="n">n</span> <span class="n">m</span> <span class="o">=</span> <span class="n">fac'</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
+<span class="c1">-- fac is then rewritten with fac'</span>
+<span class="n">fac</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">fac</span> <span class="n">n</span> <span class="o">=</span> <span class="n">fac'</span> <span class="n">n</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>What this does is that the result of earlier calls to <code class="language-plaintext highlighter-rouge">fac</code> is evaluated and “accumulates” in the second argument <code class="language-plaintext highlighter-rouge">m</code></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">fac</span> <span class="mi">500</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="mi">500</span> <span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">500</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">500</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span> <span class="c1">-- 500-1 needs to be evaluated to continue</span>
+<span class="o">=&gt;</span> <span class="kr">case</span> <span class="n">x0</span> <span class="kr">of</span>           <span class="c1">-- Since x0 = 500 - 1 and needs to be evaluated</span>
+     <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">y0</span>
+     <span class="kr">_</span> <span class="o">-&gt;</span> <span class="n">fac'</span> <span class="n">x1</span> <span class="n">y1</span>
+   <span class="kr">where</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">500</span> <span class="o">-</span> <span class="mi">1</span>
+         <span class="n">y0</span> <span class="o">=</span> <span class="mi">500</span><span class="o">*</span><span class="mi">1</span>
+         <span class="n">x1</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="mi">1</span>
+         <span class="n">y1</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">y0</span>
+<span class="o">=&gt;</span> <span class="kr">case</span> <span class="n">x0</span> <span class="kr">of</span>           
+     <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">y0</span>
+     <span class="kr">_</span> <span class="o">-&gt;</span> <span class="n">fac'</span> <span class="n">x1</span> <span class="n">y1</span>
+   <span class="kr">where</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">499</span>       <span class="c1">-- We evaluate 500 - 1 = 499, and x0 is updated with </span>
+         <span class="n">y0</span> <span class="o">=</span> <span class="mi">500</span><span class="o">*</span><span class="mi">1</span>     <span class="c1">-- this new value, and now the case expression can</span>
+         <span class="n">x1</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="mi">1</span>    <span class="c1">-- proceed</span>
+         <span class="n">y1</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">y0</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">499</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">499</span><span class="o">*</span><span class="mi">500</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span> <span class="c1">-- This continues for (499-1), (498-1) ...</span>
+<span class="o">=&gt;</span> <span class="n">fac'</span> <span class="p">(</span><span class="mi">498</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">498</span><span class="o">*</span><span class="p">(</span><span class="mi">499</span><span class="o">*</span><span class="p">(</span><span class="mi">500</span><span class="o">*</span><span class="mi">1</span><span class="p">)))</span>
+   <span class="o">...</span>
+</code></pre></div></div>
+
+<p>As you can see, <code class="language-plaintext highlighter-rouge">fac'</code> <strong>forces</strong> the evaluation of the first argument at <strong>every step</strong> by pattern-matching on it. While the second argument will build up into a long list of closures if is evaluated <strong>lazily</strong>, the difference with <strong>naive recursion</strong> is that it <strong>can</strong> be <strong>forced</strong> to be evaluated because all arguments are present for <strong>multiplication</strong>.</p>
+
+<h3 id="useful-recursive-functions">Useful recursive functions</h3>
+
+<p>There are a number of recursive functions which are useful to be able to lookup to see the schema, or just to be able to reproduce in some contexts</p>
+
+<h4 id="quick-sort">Quick sort</h4>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">quicksort</span> <span class="o">::</span> <span class="p">(</span><span class="kt">Ord</span> <span class="n">a</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>  
+    <span class="n">quicksort</span> <span class="kt">[]</span> <span class="o">=</span> <span class="kt">[]</span>  
+    <span class="n">quicksort</span> <span class="p">(</span><span class="n">x</span><span class="o">:</span><span class="n">xs</span><span class="p">)</span> <span class="o">=</span>   
+        <span class="kr">let</span> <span class="n">smallerSorted</span> <span class="o">=</span> <span class="n">quicksort</span> <span class="p">[</span><span class="n">a</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&lt;-</span> <span class="n">xs</span><span class="p">,</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">]</span>  
+            <span class="n">biggerSorted</span> <span class="o">=</span> <span class="n">quicksort</span> <span class="p">[</span><span class="n">a</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&lt;-</span> <span class="n">xs</span><span class="p">,</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">]</span>  
+        <span class="kr">in</span>  <span class="n">smallerSorted</span> <span class="o">++</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">++</span> <span class="n">biggerSorted</span>  
+</code></pre></div></div>
+
+<p>Implementation taken from <em>Learn You a Haskell for Great Good! A Beginner’s Guide, Lipovaca, Miran</em></p>
+
+<p>This can be expressed more neatly than merge sort, as due to the implementation of lists as linked lists, it is less efficient to split arrays in two in Haskell as is required for merge sort</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

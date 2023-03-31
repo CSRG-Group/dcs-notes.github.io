@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Arrays and Lists</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Arrays and Lists</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#abstract-data-type-adt">Abstract Data Type (ADT)</a></li><li><a href="#arrays-adt">Arrays (ADT)</a><ul><li><a href="#implementation">Implementation</a></li></ul></li><li><a href="#lists-adt">Lists (ADT)</a><ul><li><a href="#array-based-implementation">Array based implementation</a></li></ul></li><li><a href="#positional-lists-adt">Positional lists (ADT)</a></li><li><a href="#linked-lists-adt">Linked lists (ADT)</a><ul><li><a href="#singly-linked-lists">Singly linked lists</a></li><li><a href="#doubly-linked-lists">Doubly Linked Lists</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="algorithm-analysis.html" title="algorithm-analysis.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="abstract-data-type-adt">Abstract Data Type (ADT)</h2>
+
+<blockquote>
+  <p>An abstract data type (ADT) is an <strong>abstraction</strong> of a data structure that specifies</p>
+
+  <ul>
+    <li>The data that is stored.</li>
+    <li>The operations that can be performed on said data.</li>
+    <li>The error conditions associated with said operations.</li>
+  </ul>
+
+  <p>The ADT does not define the implementation of the data structure but <strong>seeks to describe</strong> what it does.</p>
+</blockquote>
+
+<h2 id="arrays-adt">Arrays (ADT)</h2>
+
+<blockquote>
+  <p>Arrays are <strong>indexable</strong>, <strong>fixed length</strong>, sequence of variables of a <strong>single type</strong> (homogenous).</p>
+
+  <ul>
+    <li>They are homogenous as it is otherwise much harder to calculate the memory address of the data to look up given an index.</li>
+  </ul>
+</blockquote>
+
+<p>Arrays have the following fundamental operations:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">get(i)</code></td>
+      <td>The item at the <code class="language-plaintext highlighter-rouge">i</code>th index in the array</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">set(i,e)</code></td>
+      <td>-</td>
+      <td>Set the item at the <code class="language-plaintext highlighter-rouge">i</code>th index in the array to the value <code class="language-plaintext highlighter-rouge">e</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>The size of the array</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>Whether the array is empty</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This table is an overview of the time complexity of certain operations for an array.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Methods/Operations</th>
+      <th>Time</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">get(i)</code>, <code class="language-plaintext highlighter-rouge">set(i,e)</code></td>
+      <td>O(1)</td>
+      <td>Indexable</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>O(1)</td>
+      <td>Arrays are of fixed size when created, they know their size.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>O(n)</td>
+      <td>Has to check every index</td>
+    </tr>
+    <tr>
+      <td>Insertion, Deletion</td>
+      <td>O(n)</td>
+      <td>Fixed length – have to shift proceeding elements up or down to accommodate inserted/deleted element</td>
+    </tr>
+    <tr>
+      <td>Resizing the array</td>
+      <td>O(n)</td>
+      <td>Fixed length – have to create a larger array, then copy contents over.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="implementation">Implementation</h3>
+
+<p>Arrays can be <strong>concretely</strong> implemented by <strong>allocating</strong> a <strong>contiguous section</strong> of memory, with cells being indexable by memory location, as the data at an index can be found at:</p>
+
+\[S + D \cdot I\]
+
+<p>where \(S\) is the pointer to the start of the array, \(D\) is the size of the data type, and \(I\) is the index.</p>
+
+<h2 id="lists-adt">Lists (ADT)</h2>
+<blockquote>
+  <p><strong>Lists</strong> are a finite sequence of ordered values, which may contain duplicates (more abstract than an array). A list is called homogenous if every element it contains is of the same type.</p>
+</blockquote>
+
+<h3 id="array-based-implementation">Array based implementation</h3>
+
+<p><em>Concrete implementation of lists</em></p>
+
+<blockquote>
+  <p>Arrays provide all the required properties, except being able to change size. To “grow” an array, we make a new array of a larger size, and copy all the data across to it.</p>
+</blockquote>
+
+<p>To do this, we need to decide how large the new array should be. There are two strategies which are commonly used to do this:</p>
+
+<ul>
+  <li><strong>Incremental strategy</strong> – when the capacity is exceeded, grow it by a constant number of elements <strong><em>c</em></strong>
+    <ul>
+      <li>Amortized (average) time of each push is Ω(n<sup>2</sup>)</li>
+      <li>Space grows linearly, so quite space efficient</li>
+    </ul>
+  </li>
+  <li><strong>Doubling strategy</strong> – when the capacity is exceeded, double it
+    <ul>
+      <li>Amortized (average) time of each push is Ω(n)</li>
+      <li>Space grows exponentially, so less space efficient</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Array based implementations have the fundamental operations</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">get(i)</code></td>
+      <td>The item at the <code class="language-plaintext highlighter-rouge">i</code>th index in the list</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">set(i,e)</code></td>
+      <td>-</td>
+      <td>Set the item at the <code class="language-plaintext highlighter-rouge">i</code>th index in the list to the value <code class="language-plaintext highlighter-rouge">e</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">add(e)</code></td>
+      <td>-</td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> to the end of the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remove(i)</code></td>
+      <td>-</td>
+      <td>Remove the value at the <code class="language-plaintext highlighter-rouge">i</code>th index of the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>The size of the array</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>Whether the array is empty</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="positional-lists-adt">Positional lists (ADT)</h2>
+
+<blockquote>
+  <p><strong>Positional lists</strong> are a “general abstraction of a sequence of elements with the ability to identify the location of an element, without indices”</p>
+
+  <p><em>“Data Structures and Algorithms in Java”, Goodrich, Tamassia, Goldwasser</em></p>
+</blockquote>
+
+<p>A “position” is a marker within the list, which is unaffected by changes elsewhere. For example, insertion or deletion of other elements doesn’t change it, the only time it changes is when it itself is deleted.</p>
+
+<p>Positional lists have the fundamental operations</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addFirst(e)</code></td>
+      <td>-</td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> to the beginning of the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addLast(e)</code></td>
+      <td>-</td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> to the end of the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addBefore(p,e)</code></td>
+      <td>-</td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> below the position <code class="language-plaintext highlighter-rouge">p</code> in the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addAfter(p,e)</code></td>
+      <td>-</td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> after the position <code class="language-plaintext highlighter-rouge">p</code> in the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">set(p,e)</code></td>
+      <td>-</td>
+      <td>Set the item at the position <code class="language-plaintext highlighter-rouge">p</code> in the list to the value <code class="language-plaintext highlighter-rouge">e</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remove(p)</code></td>
+      <td>-</td>
+      <td>Remove the item at the position <code class="language-plaintext highlighter-rouge">p</code> in the list</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is generally implemented as a <a href="#doubly-linked-lists">doubly linked list</a>.</p>
+
+<h2 id="linked-lists-adt">Linked lists (ADT)</h2>
+
+<blockquote>
+  <p><strong>Linked lists</strong> are a collection of elements that can be accessed in a sequential way, meaning they are not indexable. <a href="https://lucasmagnum.medium.com/sidenotes-linked-list-abstract-data-type-and-data-structure-fd2f8276ab53">Additional resource.</a></p>
+</blockquote>
+
+<p>This means they can more easily implement non-homogenous lists, as opposed to using arrays, as cells can be of different “sizes”, so different data types requiring different amounts of data can be stored.</p>
+
+<h3 id="singly-linked-lists">Singly linked lists</h3>
+
+<p><em>Concrete implementation of linked lists</em></p>
+
+<blockquote>
+  <p><strong>Singly linked lists</strong> are a sequence of nodes, each of which stores both a value and a pointer to the next node in the sequence. There is a pointer to the first node in the sequence, and the final node in the sequence is a null pointer ∅</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method/Operation</th>
+      <th>Time</th>
+      <th>Reason | Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">set(p,e)</code>, <code class="language-plaintext highlighter-rouge">addAfter(p,e)</code>, get,</td>
+      <td>O(n)</td>
+      <td>Need to go through the list from head until index.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addFirst(e)</code></td>
+      <td>O(1)</td>
+      <td>Quick to add items to head because we have a pointer reference</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remove(p)</code> (Deletion), Insertion</td>
+      <td>O(n)</td>
+      <td>Similar to getting and <code class="language-plaintext highlighter-rouge">set</code>, but pointers are changed instead of values, either to bypass or include a new node in the sequence.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Singly linked lists have the fundamental operations</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addFirst(e)</code></td>
+      <td>-</td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> to the beginning of the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addAfter(p,e)</code></td>
+      <td>-</td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> after the position <code class="language-plaintext highlighter-rouge">p</code> in the list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">set(p,e)</code></td>
+      <td>-</td>
+      <td>Set the item at the position <code class="language-plaintext highlighter-rouge">p</code> in the list to the value <code class="language-plaintext highlighter-rouge">e</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remove(p)</code></td>
+      <td>-</td>
+      <td>Remove the item at the position <code class="language-plaintext highlighter-rouge">p</code> in the list</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="doubly-linked-lists">Doubly Linked Lists</h3>
+
+<p><em>Concrete implementation of positional lists and linked lists</em></p>
+
+<blockquote>
+  <p><strong>Doubly linked lists</strong> are a sequence of nodes, each of which stores both a value and a pointer to both the <strong>next</strong> and the <strong>previous</strong> node in the sequence. At <strong>each end</strong> there are <strong>special header</strong> and <strong>trailer nodes</strong>, which are <strong>just references</strong> to the first and last nodes in the sequence</p>
+</blockquote>
+
+<p>Similarly to singly linked lists, getting, setting, insertion, deletion all O(n) – need to iterate from start to end of the list to get to the position of the item.</p>
+
+<p>Head and tail operations are O(1) – head and tail references (pointers) and the list can be traversed <strong>both</strong> forwards and backwards.</p>
+
+<p>Doubly linked lists have the same fundamental operations as positional lists, as they are a concrete implementation of them</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

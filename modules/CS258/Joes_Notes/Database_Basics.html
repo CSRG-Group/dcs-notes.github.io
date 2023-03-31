@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Database Basics</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Database Basics</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#data">Data</a></li><li><a href="#data-modeling">Data Modeling</a></li><li><a href="#database-management-systems--dbms-">Database Management Systems ( DBMS )</a><ul><li><a href="#manage-the-data">Manage the data</a></li><li><a href="#data-integrity">Data integrity</a></li></ul></li><li><a href="#schema">Schema</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Relational_Data_Model.html" title="Relational_Data_Model.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="data">Data</h2>
+<p>Data is typically stores on</p>
+<ul>
+  <li>non-volatile memory</li>
+  <li>Decentralized servers (cloud)</li>
+</ul>
+
+<p>Data has two flavours</p>
+<ul>
+  <li>Structured
+    <ul>
+      <li>tables with predefined columns</li>
+    </ul>
+  </li>
+  <li>Unstructured
+    <ul>
+      <li>text Docs, images , videos</li>
+    </ul>
+  </li>
+  <li>semi-structures
+    <ul>
+      <li>XML, JSON , webpages(maybe)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Databases are designed for structured data.</p>
+
+<p>Unstructured data may be linked and then retrieved on request</p>
+
+<h2 id="data-modeling">Data Modeling</h2>
+<p>Defines the data space</p>
+
+<p>considering the:</p>
+<ul>
+  <li>Data items to be stored</li>
+  <li>What are the data attributes</li>
+  <li>What are the relationships</li>
+  <li>Any attributes of the relationships</li>
+</ul>
+
+<p>A data model can be developed</p>
+
+<h2 id="database-management-systems--dbms-">Database Management Systems ( DBMS )</h2>
+<p>Pieces of software to manage the data they will typically</p>
+<ul>
+  <li>Manage the data</li>
+  <li>Access the data</li>
+  <li>Store the data</li>
+  <li>Manage access controls</li>
+  <li>Ensure the integrity of the data</li>
+</ul>
+
+<p>Can be viewed of as  “black box” there is little need to know what happens internally just what goes in and what will come out.</p>
+
+<h3 id="manage-the-data">Manage the data</h3>
+<p>The DBMS will attempt to mange the data to ensure easy retrieval and insertion</p>
+<ul>
+  <li>Create indexes to speed up data requests</li>
+  <li>Find the best way to execute a query</li>
+  <li>Find the best way to perform relational row operations</li>
+</ul>
+
+<h3 id="data-integrity">Data integrity</h3>
+<p>The DBMS needs to ensure that the data remains internally consistent with</p>
+<ul>
+  <li>Attempts at unauthorized changes</li>
+  <li>Changes and update to teh data</li>
+  <li>Failures, program crashes, power outages hardware failure</li>
+  <li>Concurrent changes happening at the same time</li>
+</ul>
+
+<h2 id="schema">Schema</h2>
+<p>The conceptual schema is a layout of the logical DB,</p>
+<ul>
+  <li>Shows entities, data types, relations.constraints.</li>
+  <li>Hides The physical layout, how it the data stored, where is the data</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

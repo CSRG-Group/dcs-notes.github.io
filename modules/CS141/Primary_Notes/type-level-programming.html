@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Type Level Programming</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Type Level Programming</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#kinds">Kinds</a><ul><li><a href="#kinds--better-code">Kinds = Better Code</a></li><li><a href="#finding-the-kind">Finding the kind</a></li></ul></li><li><a href="#type-promotion">Type promotion</a></li><li><a href="#gadts">GADTs</a><ul><li><a href="#singleton-types">Singleton Types</a></li></ul></li><li><a href="#reification">Reification</a><ul><li><a href="#proxy-types">Proxy Types</a></li><li><a href="#additional-example-type-application">Additional Example (Type Application)</a></li><li><a href="#concluding-reification">Concluding Reification</a></li></ul></li><li><a href="#type-families">Type Families</a><ul><li><a href="#closed-type-families">Closed Type Families</a><ul><li><a href="#how-to-test-in-repl">How to test in REPL</a></li></ul></li><li><a href="#associated-open-type-families">Associated (Open) Type Families</a><ul><li><a href="#associated-type-families-to-the-rescue">Associated type families to the rescue</a></li></ul></li><li><a href="#overloaded-lists">Overloaded Lists</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="FAM.html" title="FAM.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="kinds">Kinds</h2>
+
+<blockquote>
+  <p>Just like how expressions have <strong>types</strong>, types have <strong>kinds</strong>.</p>
+</blockquote>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">expression</span> <span class="o">::</span> <span class="kr">type</span> <span class="c1">-- type signature</span>
+<span class="kr">type</span>  <span class="o">::</span> <span class="n">kind</span>      <span class="c1">-- kind signature</span>
+<span class="kt">Bool</span>  <span class="o">::</span> <span class="o">*</span>
+<span class="kt">Maybe</span> <span class="o">::</span> <span class="o">*</span> <span class="o">-&gt;</span> <span class="o">*</span>
+</code></pre></div></div>
+
+<p>For example, the type <code class="language-plaintext highlighter-rouge">Bool</code> has kind <code class="language-plaintext highlighter-rouge">*</code> (star) because <code class="language-plaintext highlighter-rouge">Bool</code> has no parameters. On the other hand, <code class="language-plaintext highlighter-rouge">Maybe</code> is of kind <code class="language-plaintext highlighter-rouge">* -&gt; *</code> (star to star), as we know that <code class="language-plaintext highlighter-rouge">Maybe</code> is a <strong>type constructor</strong> and has 1 parameter.</p>
+
+<p><code class="language-plaintext highlighter-rouge">* -&gt; *</code> basically says that if you give this <strong>kind</strong> a type as an argument, then it gives back a type.</p>
+
+<p><code class="language-plaintext highlighter-rouge">[] :: * -&gt; *</code> is another example – given a type <code class="language-plaintext highlighter-rouge">a</code> to the <strong>list</strong> type constructor and it will give <code class="language-plaintext highlighter-rouge">[a]</code> (a list of <code class="language-plaintext highlighter-rouge">a</code>).</p>
+
+<h3 id="kinds--better-code">Kinds = Better Code</h3>
+
+<p>Kinds help us code instances better, as long as we understand it.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Monad</span> <span class="o">::</span> <span class="p">(</span><span class="o">*</span> <span class="o">-&gt;</span> <span class="o">*</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Constraint</span>
+<span class="kr">instance</span> <span class="kt">Monad</span> <span class="kt">Either</span> <span class="kr">where</span> <span class="o">...</span> 
+<span class="c1">-- Error: Expected kind * -&gt; * but Either has kind * -&gt; * -&gt; *</span>
+</code></pre></div></div>
+
+<p>In this example, it is easy to see why we get an error, because <code class="language-plaintext highlighter-rouge">Monad</code> is a type class that takes a type of kind <code class="language-plaintext highlighter-rouge">* -&gt; *</code> (basically a type constructor) and gives a <code class="language-plaintext highlighter-rouge">Constraint</code>. So giving it a type of kind <code class="language-plaintext highlighter-rouge">* -&gt; * -&gt; *</code> violates this constraint.</p>
+
+<p>You can think of type classes as a constraint constructor, although this isn’t a standard term so don’t use it!</p>
+
+<h3 id="finding-the-kind">Finding the kind</h3>
+
+<p>In the Haskell repl, we have seen we can use <code class="language-plaintext highlighter-rouge">:t &lt;VALUE&gt;</code> to find the type of a given value or variable. Similarly, we can find the kind of a type using <code class="language-plaintext highlighter-rouge">:k &lt;TYPE&gt;</code>, and additionally reduce the type to a normal form with <code class="language-plaintext highlighter-rouge">:kind! &lt;TYPE&gt;</code>.</p>
+
+<h2 id="type-promotion">Type promotion</h2>
+
+<p>Using Haskell language extensions, we are able to create our own <strong>kinds</strong> of types. This feature is not in Haskell by default, so we need to add a language extension to use it. We can use the Haskell extension <code class="language-plaintext highlighter-rouge">XDataKinds</code> in three ways:</p>
+
+<ol>
+  <li>
+    <p>Writing the following at the top of our source file, as <em>language pragma</em>:</p>
+
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{-# LANGUAGE XDataKinds #-}</span>
+   
+<span class="kr">module</span> <span class="nn">Program</span> <span class="kr">where</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Modifying the <code class="language-plaintext highlighter-rouge">.cabal</code> file for the entire target</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library
+        ...
+    default-extensions: DataKinds
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>With flags on the command line (requires specification every time)</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ghc Program.hs <span class="nt">-XDataKinds</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Usually we use Language Pragmas.</p>
+
+<blockquote>
+  <p><strong>DataKinds</strong> is the language extension that allows us to create our own <strong>kinds</strong>.</p>
+</blockquote>
+
+<p>With <code class="language-plaintext highlighter-rouge">DataKinds</code> enabled, each data type we define not only introduces a type with some constructor but also introduces</p>
+
+<ul>
+  <li>a new kind which has the same name as the data type</li>
+  <li>additional data types – have the same name as the data constructors but preceded with a <code class="language-plaintext highlighter-rouge">'</code>.
+    <ul>
+      <li>These additional data types are of the new kind that is introduced.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Example.</strong> Here we are getting a <strong>type-level</strong> boolean of <strong>kind</strong> <code class="language-plaintext highlighter-rouge">Bool</code>.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kt">True</span> <span class="o">|</span> <span class="kt">False</span>
+  <span class="kt">True</span>  <span class="o">::</span> <span class="kt">Bool</span> <span class="c1">-- type signature</span>
+  <span class="kt">False</span> <span class="o">::</span> <span class="kt">Bool</span>
+<span class="c1">-- With DataKinds enabled, the 'True and 'False data types are introduced</span>
+  <span class="kt">'True</span>  <span class="o">::</span> <span class="kt">Bool</span> <span class="c1">-- kind signature (do not confuse with typings)</span>
+  <span class="kt">'False</span> <span class="o">::</span> <span class="kt">Bool</span>
+</code></pre></div></div>
+
+<p>To visualise this you can look at the table below. The right-most column is what the <code class="language-plaintext highlighter-rouge">DataKinds</code> language extension adds in addition to what happens normally when you define a type with <code class="language-plaintext highlighter-rouge">data</code>.</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Normally</th>
+      <th style="text-align: center">DataKinds Additions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Kind-Level</strong></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Bool</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Type-Level</strong></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Bool</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">'True</code> and <code class="language-plaintext highlighter-rouge">'False</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Value-level</strong></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">True</code> and <code class="language-plaintext highlighter-rouge">False</code></td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="gadts">GADTs</h2>
+
+<blockquote>
+  <p><strong>Generalised Algebraic Data Types</strong> (GADTs) allow us to define <strong>more expressive</strong> data type definitions. The language extension is <code class="language-plaintext highlighter-rouge">GADTs</code>.</p>
+</blockquote>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ADT syntax</span>
+<span class="kr">data</span> <span class="kt">Vector</span> <span class="n">a</span> <span class="o">=</span> <span class="kt">Nil</span> <span class="o">|</span> <span class="kt">Cons</span> <span class="n">a</span> <span class="p">(</span><span class="kt">Vector</span> <span class="n">a</span><span class="p">)</span>
+  <span class="cm">{- 
+     Behind the scenes we get 
+       Nil :: Vector a
+       Cons :: a -&gt; Vector a -&gt; Vector a 
+  -}</span>
+<span class="c1">-- with GADT syntax</span>
+<span class="kr">data</span> <span class="kt">Vector</span> <span class="n">a</span> <span class="kr">where</span>
+  <span class="kt">Nil</span>  <span class="o">::</span> <span class="kt">Vector</span> <span class="n">a</span>
+  <span class="kt">Cons</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Vector</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Vector</span> <span class="n">a</span>
+</code></pre></div></div>
+
+<p>Currently, the <code class="language-plaintext highlighter-rouge">head</code> function on <code class="language-plaintext highlighter-rouge">lists</code> will break if given an empty list. So we can fix that by returning a <code class="language-plaintext highlighter-rouge">Maybe</code> or <code class="language-plaintext highlighter-rouge">Either</code> type and then deal with the result in another function.</p>
+
+<p>But <code class="language-plaintext highlighter-rouge">GADTs</code> together with <strong>another extension,</strong> <code class="language-plaintext highlighter-rouge">XKindSignatures</code>, will allow us to define a <code class="language-plaintext highlighter-rouge">head</code> function for <code class="language-plaintext highlighter-rouge">Vector</code> that will reject an empty list at compile-time – removing the need for us to handle the results of <code class="language-plaintext highlighter-rouge">Maybe</code> or <code class="language-plaintext highlighter-rouge">Either</code>.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">Vector</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="n">a</span> <span class="kr">where</span>
+  <span class="kt">Nil</span>  <span class="o">::</span> <span class="kt">Vector</span> <span class="kt">'Zero</span>
+  <span class="kt">Cons</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Vector</span> <span class="n">n</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Vector</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="n">n</span><span class="p">)</span> <span class="n">a</span>
+  
+<span class="n">vhead</span> <span class="o">::</span> <span class="kt">Vector</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="n">n</span><span class="p">)</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span>
+<span class="n">vhead</span> <span class="p">(</span><span class="kt">Cons</span> <span class="n">x</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span>
+
+<span class="kr">data</span> <span class="kt">Nat</span> <span class="kr">where</span>         <span class="c1">-- Behind the scenes we get </span>
+  <span class="kt">Zero</span> <span class="o">::</span> <span class="kt">Nat</span>          <span class="c1">--   'Zero :: Nat</span>
+  <span class="kt">Succ</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">Nat</span>   <span class="c1">--   'Succ :: Nat -&gt; Nat</span>
+</code></pre></div></div>
+
+<p>In the new definition of <code class="language-plaintext highlighter-rouge">Vector</code> we have placed a specification on the 1st parameter <code class="language-plaintext highlighter-rouge">n</code>. <code class="language-plaintext highlighter-rouge">(n :: Nat)</code> essentially says that the type <code class="language-plaintext highlighter-rouge">n</code> has to be of <strong>kind</strong> <code class="language-plaintext highlighter-rouge">Nat</code>. And in the new definition of <code class="language-plaintext highlighter-rouge">Nil</code> and <code class="language-plaintext highlighter-rouge">Cons</code>, we are able to specify that <code class="language-plaintext highlighter-rouge">Nil</code> will only accept an element of type <code class="language-plaintext highlighter-rouge">Vector 'Zero</code> and <code class="language-plaintext highlighter-rouge">Cons</code> will always give a <code class="language-plaintext highlighter-rouge">Vector</code> 1 element larger.</p>
+
+<p>In this example, GADTs allow us to specify <strong>more constrained</strong> return types for data constructors.</p>
+
+<h3 id="singleton-types">Singleton Types</h3>
+
+<blockquote>
+  <p>Types where there is a 1:1 correspondence between types and values. Essentially a particular singleton type will only ever have one value that is associated with it.</p>
+</blockquote>
+
+<p>From above we have seen that with <code class="language-plaintext highlighter-rouge">DataKinds</code> and <code class="language-plaintext highlighter-rouge">GADTs</code> we are able to encode information about the value of a certain element through its <strong>type</strong>. In specific cases, we may want to make use of this to define <strong>singleton types</strong>.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">SNat</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="kr">where</span>
+  <span class="kt">SZero</span> <span class="o">::</span> <span class="kt">SNat</span> <span class="kt">'Zero</span>
+  <span class="kt">SSucc</span> <span class="o">::</span> <span class="kt">SNat</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="kt">SNat</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="n">n</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In this example, we are defining a singleton type for natural numbers. If we try to define <code class="language-plaintext highlighter-rouge">sone</code> or <code class="language-plaintext highlighter-rouge">stwo</code>, their types will be unique.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sone</span> <span class="o">::</span> <span class="kt">SNat</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="kt">'Zero</span><span class="p">)</span>
+<span class="n">sone</span> <span class="o">=</span> <span class="kt">SSucc</span> <span class="kt">SZero</span>
+
+<span class="n">stwo</span> <span class="o">::</span> <span class="kt">SNat</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="kt">'Zero</span><span class="p">))</span>
+<span class="n">stwo</span> <span class="o">::</span> <span class="kt">SSucc</span> <span class="n">sone</span>
+</code></pre></div></div>
+
+<h2 id="reification">Reification</h2>
+
+<blockquote>
+  <p>Reification is the process of <strong>converting types to values</strong>, typically using <strong>type classes</strong>.</p>
+</blockquote>
+
+<p>There are a few ways to implement the instances for the type classes and one way (which is used in the lectures) is to use <strong>proxy types</strong>.</p>
+
+<h3 id="proxy-types">Proxy Types</h3>
+
+<p>We don’t have types at runtime due to <strong>type erasure</strong>, so we can’t write a function that takes types as arguments in Haskell, even though we sometimes want to.</p>
+
+<blockquote>
+  <p>Functions only accept arguments whose types are of kind <code class="language-plaintext highlighter-rouge">*</code>. Proxy types are used to establish a link between types of other kinds and types of kind <code class="language-plaintext highlighter-rouge">*</code>, thus “carrying” types of other kinds into the scope of a function’s type.</p>
+</blockquote>
+
+<p><strong>For example,</strong> we might want to define a function</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fromNat</span> <span class="o">::</span> <span class="n">forall</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+</code></pre></div></div>
+
+<p>which takes a type-level natural number <code class="language-plaintext highlighter-rouge">n</code> of kind <code class="language-plaintext highlighter-rouge">Nat</code> as input and returns the corresponding <code class="language-plaintext highlighter-rouge">Int</code> value. However, <strong>only</strong> types of kind <code class="language-plaintext highlighter-rouge">*</code> have values at run-time in Haskell. Since there are <strong>no values</strong> of types of kind <code class="language-plaintext highlighter-rouge">Nat</code>, we cannot define a <code class="language-plaintext highlighter-rouge">fromNat</code> function of the given type.</p>
+
+<blockquote>
+  <p>Proxy types provide a partial work around Haskell’s limitations <strong>for cases where</strong> knowing what type is given to a function as its “argument” at compile-time is sufficient.</p>
+
+  <p><strong>TLDR.</strong> A proxy type is a type of kind <code class="language-plaintext highlighter-rouge">k -&gt; *</code> (where <code class="language-plaintext highlighter-rouge">k</code> can be specialised to the kind of whatever types you want to give to a function as argument). Only types of kind <code class="language-plaintext highlighter-rouge">*</code> have values, so we apply our proxy <strong>type constructor</strong> to some argument of kind <code class="language-plaintext highlighter-rouge">k</code> to get a type of kind <code class="language-plaintext highlighter-rouge">*</code> which then makes a suitable parameter for a function.</p>
+</blockquote>
+
+<p>In the following <strong>example</strong>, we will show how this allows us to convert a type into a corresponding value. In other words, we show how to take information from the <strong>type level</strong> and convert it to information at the <strong>value level</strong> (reification).</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">NatProxy</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="o">=</span> <span class="kt">MkProxy</span>
+</code></pre></div></div>
+
+<p>Here, the <code class="language-plaintext highlighter-rouge">NatProxy</code> <strong>type constructor</strong> is of kind <code class="language-plaintext highlighter-rouge">Nat -&gt; *</code>, meaning it takes some type <code class="language-plaintext highlighter-rouge">n</code> of kind <code class="language-plaintext highlighter-rouge">Nat</code> and gives back a type of kind <code class="language-plaintext highlighter-rouge">*</code> which has a value at run-time. <code class="language-plaintext highlighter-rouge">MkProxy</code> is the <strong>data constructor</strong> for <code class="language-plaintext highlighter-rouge">NatProxy</code> and is of type <code class="language-plaintext highlighter-rouge">NatProxy n</code>.</p>
+
+<p>Now with our <strong>proxy type</strong>, we can define a <code class="language-plaintext highlighter-rouge">fromNat</code> function with a slightly modified type. Since <code class="language-plaintext highlighter-rouge">NatProxy :: Nat -&gt; *</code>, <code class="language-plaintext highlighter-rouge">NatProxy n</code> is a valid parameter type for a function since it is of kind <code class="language-plaintext highlighter-rouge">*</code>. We use a type class to overload this <code class="language-plaintext highlighter-rouge">fromNat</code> function so that we can provide different implementations for it, depending on which type <code class="language-plaintext highlighter-rouge">n</code> is. For example, if <code class="language-plaintext highlighter-rouge">n</code> is <code class="language-plaintext highlighter-rouge">'Zero</code> we just define <code class="language-plaintext highlighter-rouge">fromNat</code> to return <code class="language-plaintext highlighter-rouge">0</code> as shown:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">class</span> <span class="kt">FromNat</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="kr">where</span>
+  <span class="n">fromNat</span> <span class="o">::</span> <span class="kt">NatProxy</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+
+<span class="kr">instance</span> <span class="kt">FromNat</span> <span class="kt">'Zero</span> <span class="kr">where</span> <span class="c1">-- 'Zero is a type defined by Nat in GADT section</span>
+  <span class="c1">-- fromNat :: NatProxy 'Zero -&gt; Int</span>
+  <span class="n">fromNat</span> <span class="kr">_</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p><strong>Next,</strong> the instance for any other <code class="language-plaintext highlighter-rouge">n</code> requires us to constrain the <code class="language-plaintext highlighter-rouge">n</code> in the instance head to be an instance of <code class="language-plaintext highlighter-rouge">FromNat</code> so that we can define the instance for <code class="language-plaintext highlighter-rouge">'Succ n</code> <strong>recursively</strong>. The recursive call to <code class="language-plaintext highlighter-rouge">fromNat</code> is given <code class="language-plaintext highlighter-rouge">MkProxy</code> as argument, with an <strong>explicit type annotation</strong> instructing the compiler to choose the <code class="language-plaintext highlighter-rouge">fromNat</code> implementation for <code class="language-plaintext highlighter-rouge">n</code>. (Read the comments in the code snippet.)</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{-# LANGUAGE ScopedTypeVariables #-}</span>
+<span class="kr">instance</span> <span class="kt">FromNat</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="kt">FromNat</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="n">n</span><span class="p">)</span> <span class="kr">where</span>
+  <span class="c1">-- fromNat :: FromNat n =&gt; NatProxy ('Succ n) -&gt; Int</span>
+  <span class="n">fromNat</span> <span class="kr">_</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">fromNat</span> <span class="p">(</span><span class="kt">MkProxy</span> <span class="o">::</span> <span class="kt">NatProxy</span> <span class="n">n</span><span class="p">)</span>
+  <span class="c1">-- (MkProxy :: NatProxy n) essentially means the n in "NatProxy n" </span>
+  <span class="c1">-- is the same n as that in the instance head. </span>
+  <span class="c1">-- ScopedTypeVariables extension has to be enabled for this to work.</span>
+  
+  <span class="n">vlength</span> <span class="o">::</span> <span class="n">forall</span> <span class="n">n</span> <span class="n">a</span> <span class="o">.</span> <span class="kt">FromNat</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="kt">Vector</span> <span class="n">n</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Int</span> 
+  <span class="n">vlength</span> <span class="kr">_</span> <span class="o">=</span> <span class="n">fromNat</span> <span class="p">(</span><span class="kt">MkProxy</span> <span class="o">::</span> <span class="kt">NatProxy</span> <span class="n">n</span><span class="p">)</span>
+  <span class="c1">-- Here "forall n a" is required for ScopedTypeVariables to work correctly</span>
+</code></pre></div></div>
+
+<p>Although we use proxy types to implement the reification process here, they are <strong>independent techniques</strong>. That is, proxy types have uses outside of reification and reification can be accomplished without proxy types, which is <strong>not</strong> covered in the module.</p>
+
+<h3 id="additional-example-type-application">Additional Example (Type Application)</h3>
+
+<blockquote class="extra">
+  <b>FYI.</b> This section is additional material and is not tested in the exams.
+  I have included an example that Michael showed me, to illustrate how we may reify types without using proxy types. 
+</blockquote>
+
+<p>Quoting Michael,</p>
+
+<p><em>“I just typed straight into Slack, so it may not compile as is, but conceptually this [is how we would do it]”</em></p>
+
+<p>This example makes use of a few language extensions which are shown.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{-# LANGUAGE TypeApplication, AllowAmbiguousTypes, ScopedTypeVariables #-}</span>
+<span class="kr">class</span> <span class="kt">FromNat</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="kr">where</span>
+   <span class="n">fromNat</span> <span class="o">::</span> <span class="kt">Int</span>
+   
+<span class="kr">instance</span> <span class="kt">FromNat</span> <span class="kt">Zero</span> <span class="kr">where</span>
+   <span class="n">fromNat</span> <span class="o">=</span> <span class="mi">0</span>
+   
+<span class="kr">instance</span> <span class="kt">FromNat</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="kt">FromNat</span> <span class="p">(</span><span class="kt">Succ</span> <span class="n">n</span><span class="p">)</span> <span class="kr">where</span>
+   <span class="n">fromNat</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">fromNat</span> <span class="o">@</span><span class="n">n</span>
+   
+<span class="kr">type</span> <span class="kt">Test</span> <span class="o">=</span> <span class="kt">Succ</span> <span class="p">(</span><span class="kt">Succ</span> <span class="kt">Zero</span><span class="p">)</span>
+
+<span class="n">test</span> <span class="o">::</span> <span class="kt">Int</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">fromNat</span> <span class="o">@</span><span class="kt">Test</span>
+</code></pre></div></div>
+
+<p>Here, <code class="language-plaintext highlighter-rouge">@</code> is type application which is used to explicitly supply an argument for a universal quantifier. Universal quantifiers are usually implicit in Haskell, but in some cases it is useful to make them explicit when writing down typings. In the case of <code class="language-plaintext highlighter-rouge">fromNat</code>, its type is as follows with the universal quantifiers made explicit:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fromNat</span> <span class="o">::</span> <span class="n">forall</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="o">.</span> <span class="kt">FromNat</span> <span class="n">n</span> <span class="o">=&gt;</span> <span class="kt">Int</span>
+</code></pre></div></div>
+
+<p>When we write <code class="language-plaintext highlighter-rouge">fromNat @Test</code> (last line), the <code class="language-plaintext highlighter-rouge">n</code> gets instantiated with <code class="language-plaintext highlighter-rouge">Test</code> and we get <code class="language-plaintext highlighter-rouge">FromNat Test =&gt; Int</code> as the type. Because <code class="language-plaintext highlighter-rouge">Test</code> expands to something that has an instance of <code class="language-plaintext highlighter-rouge">FromNat</code>, the constraint is satisfied and the compiler can pick the right implementation of <code class="language-plaintext highlighter-rouge">fromNat</code> to use, which is how the reification “works”.</p>
+
+<blockquote>
+  <p>Type application can be used with other variables, for example <code class="language-plaintext highlighter-rouge">something</code>. As long as these have an instance of <code class="language-plaintext highlighter-rouge">FromNat</code> defined for them. So if we write <code class="language-plaintext highlighter-rouge">fromNat @something</code> then <code class="language-plaintext highlighter-rouge">n</code> will be instantiated with <code class="language-plaintext highlighter-rouge">something</code>.</p>
+</blockquote>
+
+<h3 id="concluding-reification">Concluding Reification</h3>
+
+<p>Here, we have provided two examples of how we can reify types. You have seen how useful type classes  are as they allow us overload the <code class="language-plaintext highlighter-rouge">fromNat</code> function for different types of <code class="language-plaintext highlighter-rouge">n</code>. This <strong>resolves</strong> to the <strong>correct instances</strong> at <strong>compile-time</strong> so the <strong>right implementation</strong> of the function is <strong>evaluated at runtime</strong>.</p>
+
+<h2 id="type-families">Type Families</h2>
+
+<p><em>Language extension:</em> <code class="language-plaintext highlighter-rouge">TypeFamilies</code></p>
+
+<p>Type families are type-level functions and allow us to <strong>perform computation</strong> at the type-level. There are two main types of type families, <strong>closed type families</strong> and <strong>associated (open) type families</strong>.</p>
+
+<blockquote>
+  <p><strong>Associated (open) type families</strong> are “attached” to <strong>type classes</strong> and is open to further extension when defining <strong>instances</strong>.</p>
+
+  <p><strong>Closed type families</strong> are very much like “normal” functions in the sense that you “know” what kind of types the <strong>type family</strong> will deal with and the effect to be achieved, and you just define it as such.</p>
+</blockquote>
+
+<h3 id="closed-type-families">Closed Type Families</h3>
+
+<p>I think the best way to explain this is through an example. As you can see, the syntax for <strong>type families</strong> is different from anything we’ve seen before. The example below should be pretty self explanatory and you can see that the head of definition sort of resembles the type signature of a normal function, and the definition of the actual <code class="language-plaintext highlighter-rouge">Add</code> function is just pattern matching on the type of <code class="language-plaintext highlighter-rouge">Nat</code>.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{-# LANGUAGE TypeFamilies #-}</span>
+<span class="kr">type</span> <span class="n">family</span> <span class="kt">Add</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="p">(</span><span class="n">m</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="kr">where</span>
+  <span class="c1">-- Add :: Nat -&gt; Nat -&gt; Nat</span>
+  <span class="kt">Add</span> <span class="kt">'Zero</span> <span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
+  <span class="kt">Add</span> <span class="p">(</span><span class="kt">'Succ</span> <span class="n">n</span><span class="p">)</span> <span class="n">m</span> <span class="o">=</span> <span class="kt">'Succ</span> <span class="p">(</span><span class="kt">Add</span> <span class="n">n</span> <span class="n">m</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If we enable the <code class="language-plaintext highlighter-rouge">TypeOperators</code> language extension, we can use operators in our <strong>type family</strong> definition, which in turn allow us to use it very nicely in the <code class="language-plaintext highlighter-rouge">vappend</code> example below.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{-# LANGUAGE TypeOperators #-}</span>
+<span class="kr">type</span> <span class="n">family</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="p">(</span><span class="n">m</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="kr">where</span>
+<span class="c1">-- or</span>
+<span class="kr">type</span> <span class="n">family</span> <span class="p">(</span><span class="n">n</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">m</span> <span class="o">::</span> <span class="kt">Nat</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="kr">where</span>
+
+<span class="n">vappend</span> <span class="o">::</span> <span class="kt">Vector</span> <span class="n">n</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Vector</span> <span class="n">m</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Vector</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">m</span><span class="p">)</span> <span class="n">a</span>
+<span class="n">vappend</span> <span class="kt">Nil</span>         <span class="n">ys</span> <span class="o">=</span> <span class="n">ys</span>
+<span class="n">vappend</span> <span class="p">(</span><span class="kt">Cons</span> <span class="n">x</span> <span class="n">xs</span><span class="p">)</span> <span class="n">ys</span> <span class="o">=</span> <span class="kt">Cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">vappend</span> <span class="n">xs</span> <span class="n">ys</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="how-to-test-in-repl">How to test in REPL</h4>
+
+<p>We can get REPL to evaluate types for us by using the <code class="language-plaintext highlighter-rouge">:kind!</code> syntax. This evaluates the type to its normal form.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Lecture</span><span class="o">&gt;</span> <span class="o">:</span><span class="n">kind</span><span class="o">!</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="kt">'Zero</span> <span class="kt">'Zero</span>
+<span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="kt">'Zero</span> <span class="kt">'Zero</span> <span class="o">::</span> <span class="kt">Nat</span>
+<span class="o">=</span> <span class="kt">'Zero</span>
+</code></pre></div></div>
+
+<h3 id="associated-open-type-families">Associated (Open) Type Families</h3>
+
+<blockquote>
+  <p><strong>Motivation for Associated Type Families.</strong> Sometimes, when we define a certain type class, we want it to be as general as possible but because of certain constraint requirements for different instances of the type class, it is difficult without type families.</p>
+</blockquote>
+
+<p><strong>Example.</strong> Let’s say we want to define a <strong>type class</strong> <code class="language-plaintext highlighter-rouge">Collection</code> for various data structures like lists or trees etc.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">class</span> <span class="kt">Collection</span> <span class="n">c</span> <span class="kr">where</span>
+  <span class="c1">-- c :: * -&gt; *</span>
+  <span class="n">empty</span>  <span class="o">::</span> <span class="n">c</span> <span class="n">a</span> 
+  <span class="n">insert</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">c</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">c</span> <span class="n">a</span>
+  <span class="n">member</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">c</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="c1">-- Checks if `a` is part of a collection</span>
+</code></pre></div></div>
+
+<p>Now when we try to define an instance of <code class="language-plaintext highlighter-rouge">Collection</code> for lists, we could try to implement it this way. However, we get a type error due to our usage of <code class="language-plaintext highlighter-rouge">elem</code>, which requires elements in the list to have the <code class="language-plaintext highlighter-rouge">Eq</code> constraint.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">instance</span> <span class="kt">Collection</span> <span class="kt">[]</span> <span class="kr">where</span>
+  <span class="n">empty</span>       <span class="o">=</span> <span class="kt">[]</span>
+  <span class="n">insert</span> <span class="n">x</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">x</span> <span class="o">:</span> <span class="n">xs</span>
+  <span class="n">member</span> <span class="n">x</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">x</span> <span class="p">`</span><span class="n">elem</span><span class="p">`</span> <span class="n">xs</span> 
+  <span class="c1">-- however we get a type error:</span>
+  <span class="c1">-- No instance for Eq a arising from use of elem</span>
+</code></pre></div></div>
+
+<p>We could add an <code class="language-plaintext highlighter-rouge">Eq a</code> constraint onto the <strong>type class</strong> definition for member. However, this makes the <code class="language-plaintext highlighter-rouge">Collection</code> type class too <strong>restrictive</strong> for other data structures. Furthermore, we can’t predict what kind of data structures that other people will create, and <code class="language-plaintext highlighter-rouge">Collection</code> should be as <strong>general</strong> as possible.</p>
+
+<h4 id="associated-type-families-to-the-rescue">Associated type families to the rescue</h4>
+
+<p>Associated type families allow us to associate a <strong>type family</strong> with our <strong>type class</strong>. This allows to do “something” based on the instance of the type class which depends on the problem we are trying to solve.</p>
+
+<blockquote>
+  <p>Regarding the example above, our goal is to have some way of placing constraints on the <strong>type</strong> of the elements contained inside <code class="language-plaintext highlighter-rouge">c</code>, so that our instances for the <strong>type class</strong> type checks.</p>
+</blockquote>
+
+<p>So for any instance of collection, the <code class="language-plaintext highlighter-rouge">Elem</code> type family, given <code class="language-plaintext highlighter-rouge">c</code>, will return the type of elements in <code class="language-plaintext highlighter-rouge">c</code>. This establishes a relation between <code class="language-plaintext highlighter-rouge">c</code> and some type of kind <code class="language-plaintext highlighter-rouge">*</code>.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">class</span> <span class="kt">Collection</span> <span class="n">c</span> <span class="kr">where</span>
+  <span class="kr">type</span> <span class="n">family</span> <span class="kt">Elem</span> <span class="n">c</span> <span class="o">::</span> <span class="o">*</span>
+  
+  <span class="n">empty</span>  <span class="o">::</span> <span class="n">c</span>
+  <span class="n">insert</span> <span class="o">::</span> <span class="kt">Elem</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="n">c</span>
+  <span class="n">member</span> <span class="o">::</span> <span class="kt">Elem</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+</code></pre></div></div>
+
+<p>If we write down the specialised type signatures for <code class="language-plaintext highlighter-rouge">insert</code> and <code class="language-plaintext highlighter-rouge">member</code> for this instance of <code class="language-plaintext highlighter-rouge">Collection</code> for lists, we can see that the associated type family <code class="language-plaintext highlighter-rouge">Elem</code> tells the compiler that the <code class="language-plaintext highlighter-rouge">a</code> contained inside the list, is the same <code class="language-plaintext highlighter-rouge">a</code> that is used in the rest of the instance definition. We can now place an <code class="language-plaintext highlighter-rouge">Eq</code> constraint on <code class="language-plaintext highlighter-rouge">a</code> and everything type checks.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">instance</span> <span class="kt">Eq</span> <span class="n">a</span> <span class="o">=&gt;</span> <span class="kt">Collection</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="kr">where</span> 
+  <span class="kr">type</span> <span class="kt">Elem</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="c1">-- this isn't a type alias; it's a type family instance.</span>
+  
+  <span class="n">empty</span>       <span class="o">=</span> <span class="kt">[]</span>
+  <span class="c1">-- insert :: Elem [a] -&gt; [a] -&gt; [a] (Specialised type signature)</span>
+  <span class="n">insert</span> <span class="n">x</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">x</span> <span class="o">:</span> <span class="n">xs</span>
+  <span class="c1">-- member :: Elem [a] -&gt; [a] -&gt; Bool</span>
+  <span class="n">member</span> <span class="n">x</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">x</span> <span class="p">`</span><span class="n">elem</span><span class="p">`</span> <span class="n">xs</span>
+</code></pre></div></div>
+
+<h3 id="overloaded-lists">Overloaded Lists</h3>
+
+<p><em>Language Extension:</em> <code class="language-plaintext highlighter-rouge">OverloadedLists</code></p>
+
+<p>This is a neat language extension that allows us to use list notation for other data types as long as the data type has an instance of <code class="language-plaintext highlighter-rouge">IsList</code> defined for it.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Without</span>
+<span class="n">poultree</span> <span class="o">::</span> <span class="kt">Tree</span> <span class="kt">String</span>
+<span class="n">poultree</span> <span class="o">=</span> <span class="kt">Node</span> <span class="kt">Black</span>
+             <span class="p">(</span><span class="kt">Node</span> <span class="kt">Black</span> <span class="kt">Leaf</span> <span class="s">"Chicken"</span> <span class="kt">Leaf</span><span class="p">)</span>
+             <span class="s">"Duck"</span>
+             <span class="p">(</span><span class="kt">Node</span> <span class="kt">Black</span> <span class="kt">Leaf</span> <span class="s">"Goose"</span> <span class="kt">Leaf</span><span class="p">)</span>
+<span class="c1">-- With</span>
+<span class="cp">{-# LANGUAGE OverloadedLists #-}</span>
+<span class="n">poultree</span> <span class="o">::</span> <span class="kt">Tree</span> <span class="kt">String</span>
+<span class="n">poultree</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Duck"</span><span class="p">,</span> <span class="s">"Goose"</span><span class="p">,</span> <span class="s">"Chicken"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Below we show an example with the <code class="language-plaintext highlighter-rouge">Tree</code> data structure from one of the labs.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- IsList is defined in GHC.Exts</span>
+<span class="kr">class</span> <span class="kt">IsList</span> <span class="n">l</span> <span class="kr">where</span>
+  <span class="kr">type</span> <span class="n">family</span> <span class="kt">Item</span> <span class="n">l</span> <span class="o">::</span> <span class="o">*</span>
+  
+  <span class="n">fromList</span>  <span class="o">::</span> <span class="p">[</span><span class="kt">Item</span> <span class="n">l</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">l</span>
+  <span class="n">fromListN</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Item</span> <span class="n">l</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">l</span>
+  <span class="n">fromListN</span> <span class="kr">_</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">fromList</span> <span class="n">xs</span>
+  <span class="n">toList</span>    <span class="o">::</span> <span class="n">l</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Item</span> <span class="n">l</span><span class="p">]</span>
+  
+<span class="kr">instance</span> <span class="kt">Ord</span> <span class="n">a</span> <span class="o">=&gt;</span> <span class="kt">IsList</span> <span class="p">(</span><span class="kt">L</span><span class="o">.</span><span class="kt">Tree</span> <span class="n">a</span><span class="p">)</span> <span class="kr">where</span>
+  <span class="kr">type</span> <span class="kt">Item</span> <span class="p">(</span><span class="kt">L</span><span class="o">.</span><span class="kt">Tree</span> <span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span>
+  
+  <span class="n">toList</span> <span class="o">=</span> <span class="kt">L</span><span class="o">.</span><span class="n">toList</span>
+  <span class="n">fromList</span> <span class="o">=</span> <span class="n">foldr</span> <span class="p">(</span><span class="n">flip</span> <span class="kt">L</span><span class="o">.</span><span class="n">insert</span><span class="p">)</span> <span class="kt">L</span><span class="o">.</span><span class="n">empty</span>
+</code></pre></div></div>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Memory Systems</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Memory Systems</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#memory-hierarchy">Memory hierarchy</a></li><li><a href="#cache-memory">Cache Memory</a><ul><li><a href="#moores-law">Moore’s Law</a></li></ul></li><li><a href="#memory-cell-organisation">Memory Cell Organisation</a><ul><li><a href="#semiconductor-memory-main-store">Semiconductor Memory (main store)</a></li></ul></li><li><a href="#organising-memory">Organising memory</a><ul><li><a href="#memory-cells">Memory cells</a></li><li><a href="#storing-single-words">Storing single words</a></li><li><a href="#storing-multiple-words">Storing multiple words</a></li></ul></li><li><a href="#detecting-and-correcting-errors">Detecting and Correcting Errors</a><ul><li><a href="#noise">Noise</a><ul><li><a href="#digital-logic-devices">Digital logic devices</a><ul><li><a href="#illustrating-noise-immunity-a-trademarked-akram-analogy">Illustrating noise immunity, a trademarked Akram Analogy™</a></li></ul></li></ul></li><li><a href="#detecting-single-errors">Detecting single errors</a><ul><li><a href="#parity-systems">Parity systems</a><ul><li><a href="#finite-automaton-to-calculate-parity">Finite automaton to calculate parity</a></li><li><a href="#hardware-to-calculate-parity">Hardware to calculate parity</a></li></ul></li></ul></li><li><a href="#detecting-multiple-errors">Detecting multiple errors</a><ul><li><a href="#bit-column-parity">Bit-column parity</a></li><li><a href="#error-correcting-codes-row-and-column-parity">Error Correcting Codes: row and column parity</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part3.html" title="part3.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part5.html" title="part5.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="memory-hierarchy">Memory hierarchy</h2>
+<p>When deciding on a memory technology, you must consider the following factors:</p>
+<ul>
+  <li>Frequency of access</li>
+  <li>Access time</li>
+  <li>Capacity required</li>
+  <li>Financial cost</li>
+</ul>
+
+<blockquote>
+  <p>The <strong>designer’s dilemma</strong> is the conflict that is caused by choosing between low cost, high capacity but slow access storage <strong>and</strong> high cost, low capacity, but fast access storage.</p>
+
+  <p>Ideally, we would want our storage access to be frequent, quick, and spatially efficient – the balance of these three leads to the cost of the storage.</p>
+</blockquote>
+
+<p>The <strong>memory hierarchy</strong> is a way of addressing the designer’s dilemma to get the best out of each type of storage.</p>
+
+<blockquote>
+  <p>In practice, most programs exhibit locality, which our memory systems can take advantage of.</p>
+
+  <p><strong>Temporal Locality</strong> – If a particular memory location is referenced, it is likely that the same location will be referenced again in the near future. Loops are excellent examples of temporal locality in programs.</p>
+
+  <p><strong>Spatial Locality</strong> – If a particular memory location is referenced, it is likely that nearby memory locations will be referenced in the near future. Nearly every program exhibits spatial locality, because instructions are usually executed in sequence. Loops exhibit both temporal and spatial locality.</p>
+</blockquote>
+
+<ul>
+  <li>Due to spatial locality, a reasonable assumption to make is that 90% of memory access is within &amp;pm;2KB of the previous program counter location.</li>
+  <li>Additionally, temporal locality states that these accessed memory locations are likely to be accessed again in the near future.</li>
+</ul>
+
+<p>Thus, in such cases, data in these memory locations should be stored in memory that is as close to the CPU as possible (registers, cache, main store). However, this cannot be used for everything as it would <strong>incur a high manufacturing cost</strong>, and the <strong>total capacity would be limited</strong>. Data that is <strong>less frequently accessed</strong> should be stored in memory that is slower, higher capacity, and cheaper because the high speed of access is <strong>not needed</strong>.</p>
+
+<p><img src="part4res/4-1.png" alt="Memory hierarchy diagram" class="center" /></p>
+
+<blockquote>
+  <p>Locality is not only a hardware feature – it is important for programmers to also write code which has ‘good locality’ – however, this is not typically a concern we have when writing higher level languages than assembly such as C or C++. I assume that the compiler will be optimising the code itself to ensure that the assembled code reflects these principles, as it leads to higher performance – if we have to keep accessing main store because we have exceeded the amount of cache available to us, or the information is not in higher levels of cache, then the access time can increase by orders of magnitude.</p>
+</blockquote>
+
+<h2 id="cache-memory">Cache Memory</h2>
+
+<blockquote>
+  <p>Cache memory is a small amount (typically tens of kilobytes) of memory that can be built into the microprocessor or is very close to it, and can be accessed very quickly. Cache memory is used to store values in memory which are likely to be retrieved, so the read times are quicker than the main store.</p>
+
+  <ul>
+    <li>Cache is <strong>kept small to limit cost</strong>; it is also <strong>transparent to the programmer</strong>. However, this does allow <em>some</em> control over what is stored in it.</li>
+    <li>A cache access is known as a <strong>‘cache hit’</strong>.</li>
+    <li>Cache speed is incredibly important – moving down the memory hierarchy will take orders of magnitude more time for similar memory hits.</li>
+  </ul>
+</blockquote>
+
+<p>Because of spatial locality, cache memory often prefetches the memory locations around the last PC memory location before it is needed, which means that in many cases the cache already has the memory needed, increasing read speeds of order of magnitudes as compared to fetching from the main store.</p>
+
+<p>Due to temporal locality, the first time the processor reads from an address in main memory, a copy is stored in the cache. The next time the same address is needed, the copy in the cache can be used instead. So, commonly accessed data is stored in the faster cache memory.</p>
+
+<p><a href="https://courses.cs.washington.edu/courses/cse378/10sp/lectures/lec16.pdf">Additional resource.</a></p>
+
+<h3 id="moores-law">Moore’s Law</h3>
+
+<blockquote>
+  <p><strong>Moore’s Law</strong> is focused on the transistor count within integrated circuits. It states that this count doubles roughly every two years.</p>
+</blockquote>
+
+<p>Currently, single core frequency is tailing off; this has lead the industry to focus on multicore performance instead. Comparatively, memory access speed is improving much more slowly; access time and capacity can become a huge bottleneck when it comes to creating performant systems.</p>
+
+<blockquote class="extra">
+  <b>Note.</b> Cache concepts are not fully included in these notes as they are not fully examined, and also do not feature in the revision videos. There are however several exam questions relating to cache which appear every year.
+</blockquote>
+
+<h2 id="memory-cell-organisation">Memory Cell Organisation</h2>
+<p>Now that we’re familiar with different parts of the memory hierarchy, it’s crucial that we understand how this memory is actually constructed (down to the metal almost).</p>
+
+<h3 id="semiconductor-memory-main-store">Semiconductor Memory (main store)</h3>
+<p>Semiconductor memory is the most common form of main store memory, otherwise known as <strong>RAM</strong>. It can be broken up into several groups:</p>
+<ul>
+  <li><strong>Static RAM</strong> (SRAM)
+    <ul>
+      <li>SRAM uses a <strong>flip-flop</strong> as storage element for each bit.</li>
+    </ul>
+  </li>
+  <li><strong>Dynamic RAM</strong> (DRAM)
+    <ul>
+      <li>For each bit, the <strong>presence or absence of charge</strong> in a capacitor to determine a <code class="language-plaintext highlighter-rouge">1</code> or <code class="language-plaintext highlighter-rouge">0</code>.</li>
+      <li>The capacitor charge <strong>leaks away over time</strong>, which requires <strong>periodic refreshing</strong>.</li>
+      <li>DRAM is typically cheaper than SRAM which is why we accommodate for the higher overhead.
+        <blockquote>
+          <p>Refreshing DRAM incurs a <strong>constant overhead</strong>, which means that it <strong>does not increase per bit</strong>. This is because it is just a one-off cost for one group of DRAM cells.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Both <strong>SRAM and DRAM are volatile</strong> memory storage – therefore, power must continuously be applied to <strong>retain memory</strong>. Once power is removed, you cannot assume that the data is still stored. However, the similarities end there and it is crucial to recognise the differences between the two memory cells.</p>
+
+<blockquote>
+  <p>Always ask yourself about the cost of these memory technologies – it is the reason we have decided to use semiconductor memory as our main store.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>SRAM cells</th>
+      <th>DRAM cells</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>More complex – 5 to 6 transistors per cell</td>
+      <td>Simpler – usually just 1 transistor per cell</td>
+    </tr>
+    <tr>
+      <td>Provides <strong>better read/write times</strong> because of <strong>higher switching speeds</strong>.</td>
+      <td>Because it is simpler it is more compact, which allows for <strong>greater memory cell density</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Cache memory</strong>, both on and off chip, is implemented as SRAM</td>
+      <td>Cheaper to produce than equivalent SRAM memory, and hence is used for <strong>main memory</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>DRAM can be organised even further:</p>
+<ul>
+  <li>Synchronous DRAM (SDRAM)</li>
+  <li>Rambus DRAM (RDRAM)</li>
+  <li>Double Data Rate Synchronous (DDR SDRAM)</li>
+  <li>Cache DRAM (CDRAM)</li>
+</ul>
+
+<h2 id="organising-memory">Organising memory</h2>
+
+<h3 id="memory-cells">Memory cells</h3>
+<p>Before we begin organising memory, it’s useful to know what the individual memory cells will look like. Think of them as single boxes with the following properties:</p>
+<ul>
+  <li>They only store two states (<code class="language-plaintext highlighter-rouge">1</code> or <code class="language-plaintext highlighter-rouge">0</code>).</li>
+  <li>They are capable of being written to as well as read from. This is controlled by a \(R / \bar{W}\) line which determines which direction the information will flow from.</li>
+  <li>They are enabled when a single pin, such as a <code class="language-plaintext highlighter-rouge">SELECT</code> line, is powered.</li>
+</ul>
+
+<p><img src="part4res/4-2.png" alt="Memory cell diagram" class="center" style="zoom: 50%;" /></p>
+
+<blockquote>
+  <p>You can think of a memory cell as a means of storing a single bit.</p>
+</blockquote>
+
+<h3 id="storing-single-words">Storing single words</h3>
+
+<p>In order to store multiple bits together (i.e. words), we will simply store a series of memory cells next to each other. We will need some column selecting I/O to handle selecting the individual bits of the word correctly.</p>
+
+<p><img src="part4res/4-3.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<h3 id="storing-multiple-words">Storing multiple words</h3>
+
+<p>Now that we have organised individual words, we want to store multiple words in memory. We can use this grid arrangement to arrange the words in parallel as follows (imagine we wanted to store four of the 4-bit words shown above):</p>
+
+<p><img src="part4res/4-4.png" alt="Memory cell words diagram" style="zoom: 50%;" /></p>
+
+<p>In our <strong>address decoder</strong>, we have \(log_{2} (W)\) many control pins, where \(W\) is the number of words we want to store in memory. (This is because each pin can be high or low, and hence refer to two distinct words). <strong>Address decoders</strong> are used to select a row of memory cells and the <strong>Column I/O</strong> specifies the exact cell to read or write to.</p>
+
+<p><strong>We want to maintain a square grid of cells.</strong> We could simply have a 16-bit word, which we partition into four individual words (it is possible to put smaller words into the registers of larger ones). However, this would require 16 data lines on the column selection IO, with each bit requiring power; this would be rather lopsided and would result in a column selector doing all the work. Maintaining a square grid means that we can balance the number of required pins across two different pieces of IO, each with their own power requirements.</p>
+
+<blockquote>
+  <p>We are trying to avoid long, narrow arrays when we design our memory cell arrays. We want to <strong>maximise space for memory cells</strong> and minimise space taken up by IO.</p>
+</blockquote>
+
+<h2 id="detecting-and-correcting-errors">Detecting and Correcting Errors</h2>
+
+<blockquote>
+  <p>Although this topic is within the memory systems lecture, it is fundamental to error detection on the whole and hence has its own section here.</p>
+</blockquote>
+
+<p>Broadly speaking, there are two types of errors:</p>
+<ul>
+  <li>Errors that occur <strong>within a system</strong>, e.g. in a memory system.</li>
+  <li>Errors that occur in the <strong>communication between systems</strong>, e.g., in the transmission of messages or data between systems. This is what we will focus on.</li>
+</ul>
+
+<h3 id="noise">Noise</h3>
+
+<ul>
+  <li>We typically <strong>send information through channels</strong>- when these channels become affected by <strong>unwanted information</strong>, they become <strong>noisy</strong>.</li>
+  <li>Noise will arise from the <strong>physical properties</strong> of devices:
+    <ul>
+      <li>Thermal noise</li>
+      <li>Noise of electronic components</li>
+      <li>Noise of transmission circuits</li>
+    </ul>
+  </li>
+  <li><strong>Magnetic media</strong> will also have a “classic form of noise” due to the “random alignment of magnetic fields”.</li>
+</ul>
+
+<blockquote>
+  <p>Noise is <strong>always present</strong>. If it doesn’t come from the components themselves, it’ll come from external sources such as radiation. Noise is hence one of the <strong>limiting factors</strong> in computer systems.</p>
+
+  <p>In magnetic stores, when we have <strong>decreased area</strong> to store a bit, <strong>noise gets worse</strong> which increases the likelihood of errors.</p>
+</blockquote>
+
+<h4 id="digital-logic-devices">Digital logic devices</h4>
+
+<blockquote>
+  <p>We choose binary systems for our number systems as it provides us a <strong>high degree of noise immunity</strong>.</p>
+
+  <p>We also need to consider the <strong>tolerances of the components we use</strong></p>
+</blockquote>
+
+<h5 id="illustrating-noise-immunity-a-trademarked-akram-analogy">Illustrating noise immunity, a trademarked Akram Analogy™</h5>
+
+<p><em>If you are comfortable with the idea of noise immunity and transistor-transistor logic voltage levels, you probably won’t need to read this.</em></p>
+
+<p>To illustrate the first point, consider the following thought experiment:</p>
+<ul>
+  <li>You and your friend have found a massive tunnel (assuming CS students step outdoors). <strong>The tunnel has water dripping and some other ambiguous sounds.</strong></li>
+  <li>You both stand at either end of the tunnel, and you realise now you want to say something to your friend. You have two choices:
+    <ul>
+      <li>You can choose to simply clap your hands to get their attention (a binary communication system), OR</li>
+      <li>You can choose to say a magic password that only they will respond to (a base-26 communication system).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Given the ambiguous sounds in the tunnel, which do you think your friend will be able to distinguish better? Would they be able to distinguish a clap above a specific volume? Or would they be able to distinguish the spoken magic password? How do you know when a sound is finally loud enough to constitute you communicating with one another?</p>
+
+<p>This idea of a small window where we do not consider a signal high or low is widest when we use a binary system- if we had any more possible values, we would need to find even more ranges which we consider ‘nothing’ (<em><strong>i.e. neither 0 nor anything else)</strong></em>.</p>
+
+<blockquote>
+  <p>Using binary means that we only focus on two logical values.</p>
+</blockquote>
+
+<p>In the image below, you can see the illustrated example for the above analogy, with annotated TTL voltage levels for context.</p>
+
+<p><img src="part4res/4-5.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<p><img src="part4res/4-6.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<p>There is a point at which <strong>if there is too much noise</strong>, i.e. a train suddenly passes through the tunnel, your clap will never be heard and is permanently lost- this is known as a <strong>loss/ collapse of immunity</strong>.</p>
+
+<h3 id="detecting-single-errors">Detecting single errors</h3>
+<p>If we <em>assume</em> that errors occur <strong>at random</strong> due to noise, one could naively ask you to clap three times and hope that your friend hears majority of them- i.e., you could send the message several times and take a vote. However, this is a very expensive affair (you would get tired quickly).</p>
+
+<p>We can make the further assumption that <strong>if the probability of one error is low, the probability of two errors close together is even lower</strong>. Using this knowledge, we can add a <strong>parity bit</strong> to the message which can <strong>summarise the property of the message</strong>. We can check that this property is intact to see whether the message has been altered; using a parity bit is typically <strong>cheaper and adequate</strong> in many situations.</p>
+
+<h4 id="parity-systems">Parity systems</h4>
+
+<blockquote>
+  <p>There are many different types of parity systems, but the two main ones you should be focused on are the <strong>even parity</strong> and the <strong>odd parity</strong> system.</p>
+
+  <p>Each system will add an extra bit to the message which makes the <strong>number of logical 1’s even or odd</strong> depending on the system chosen.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Non-parity message (7 bits)</th>
+      <th>Even parity bit added</th>
+      <th>Odd parity bit added</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">100 0001</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0100 0001</code> (two <code class="language-plaintext highlighter-rouge">1</code>’s)</td>
+      <td><code class="language-plaintext highlighter-rouge">1100 0001</code> (three <code class="language-plaintext highlighter-rouge">1</code>s)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is possible to calculate the parity bit using hardware or software.</p>
+
+<h5 id="finite-automaton-to-calculate-parity">Finite automaton to calculate parity</h5>
+
+<p>The lecture slides contain a two-state finite automaton – this diagram shows how, for a message <code class="language-plaintext highlighter-rouge">110</code> travelling on an <strong>even parity system</strong>, we can use the automaton to reach a parity bit of <code class="language-plaintext highlighter-rouge">0</code>, so the message to be sent is <code class="language-plaintext highlighter-rouge">0110</code>.</p>
+
+<p><img src="part4res/4-7.png" alt="Memory cell word diagram" style="zoom: 50%;" /></p>
+
+<h5 id="hardware-to-calculate-parity">Hardware to calculate parity</h5>
+
+<p>You can calculate the parity bit for a message by <strong>XORing each bit with one another</strong>. You can achieve this by connecting each pair of bits to an XOR gate; for an odd number of input bits, add a <code class="language-plaintext highlighter-rouge">0</code> for an <strong>even</strong> parity system and a <code class="language-plaintext highlighter-rouge">1</code> for an <strong>odd</strong> parity system.</p>
+
+<h3 id="detecting-multiple-errors">Detecting multiple errors</h3>
+
+<blockquote>
+  <p>In the real world, it is more likely that <strong>errors will appear in bursts</strong>.</p>
+</blockquote>
+
+<p>Burst errors can be caused by number of reasons, including but not limited to network or communication dropouts for a few milliseconds.</p>
+
+<p>In this scenario, there may be errors in multiple bits and single-bit parity will still hold. Therefore, we must move to <strong>checksums</strong> to check entire columns.</p>
+
+<h4 id="bit-column-parity">Bit-column parity</h4>
+<p>One way in which we can identify errors in multiple columns (i.e. multiple bits) is to use bit-column parity.</p>
+
+<p>Take the message, <code class="language-plaintext highlighter-rouge">Message</code>, which is made up of seven 7-bit ASCII characters:</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Character</th>
+      <th>7 Bits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">M</code></td>
+      <td><code class="language-plaintext highlighter-rouge">100 1101</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">e</code></td>
+      <td><code class="language-plaintext highlighter-rouge">110 0101</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0011</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0011</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">a</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0001</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">g</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0111</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">e</code></td>
+      <td><code class="language-plaintext highlighter-rouge">111 0101</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By arranging each column into its own message, we can then calculate a parity bit for each message:</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Column number</th>
+      <th>7-bit column</th>
+      <th>Even parity bit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code class="language-plaintext highlighter-rouge">111 1111</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code class="language-plaintext highlighter-rouge">011 1111</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code class="language-plaintext highlighter-rouge">001 1000</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code class="language-plaintext highlighter-rouge">100 0000</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code class="language-plaintext highlighter-rouge">110 0011</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><code class="language-plaintext highlighter-rouge">001 1010</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><code class="language-plaintext highlighter-rouge">111 1111</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We can then take <em>this</em> column and turn it into a 7-bit message: <code class="language-plaintext highlighter-rouge">1001011</code> spells out ASCII <code class="language-plaintext highlighter-rouge">K</code>. Now, we can add <code class="language-plaintext highlighter-rouge">K</code> to the end of our original message, and send the final message <code class="language-plaintext highlighter-rouge">MessageK</code>.</p>
+
+<blockquote>
+  <p>This system will detect all burst errors of less than 14 bits; it will fail if an even number of errors occur in a bit-column (i.e., a message equal to 8 characters).</p>
+</blockquote>
+
+<h4 id="error-correcting-codes-row-and-column-parity">Error Correcting Codes: row and column parity</h4>
+
+<p>The above example only detects errors in columns- but it doesn’t stop us from using row correction at the exact same time. If we have both row parity and column parity, then we begin by checking if each column has correct parity. If we find a column with incorrect parity, we immediately begin going through the rows, and checking the parity of each row. If we find a mistake in a row as well, we simply need to invert the bit found in the column with an error. This ECC enables us to detect multiple errors and fix single errors.</p>
+
+<footer class="site-footer" style="border-top:none;">Otherwise stated, all diagrams on this page belong to <a href="https://github.com/arkamnite">Akram Ahmad</a>.</footer>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

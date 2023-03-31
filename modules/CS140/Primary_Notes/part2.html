@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Authentication</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Authentication</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#why-authentication">Why Authentication?</a></li><li><a href="#passwords">Passwords</a><ul><li><a href="#the-problem-with-passwords">The Problem with Passwords</a><ul><li><a href="#peoples-tendency-in-setting-passwords">People’s tendency in setting passwords</a></li><li><a href="#user-overload">User Overload</a></li></ul></li></ul></li><li><a href="#password-cracking">Password Cracking</a><ul><li><a href="#cracking-speed">Cracking Speed</a></li><li><a href="#password-strength">Password Strength</a><ul><li><a href="#human-generated-passwords">Human Generated Passwords</a></li></ul></li><li><a href="#password-hashing">Password Hashing</a></li></ul></li><li><a href="#other-authentication-methods">Other Authentication Methods</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part1.html" title="part1.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part3.html" title="part3.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="why-authentication">Why Authentication?</h2>
+
+<p>The general intention of computer security is to prevent unauthorised access and to ensure authorised users can access systems quickly.</p>
+
+<blockquote>
+  <p>First step of control is to identify who a user is (Identification) and verify this identification (authentication)</p>
+
+  <ul>
+    <li>Identification: Identity by username</li>
+    <li>Authentication: a process of verifying if the users are really who they claim they are</li>
+  </ul>
+</blockquote>
+
+<h2 id="passwords">Passwords</h2>
+
+<blockquote>
+  <p>A basic but very useful authentication method</p>
+
+  <ul>
+    <li>
+      <p>invaluable first line of security defence</p>
+    </li>
+    <li>
+      <p>easy to use and implement</p>
+    </li>
+  </ul>
+</blockquote>
+
+<h3 id="the-problem-with-passwords">The Problem with Passwords</h3>
+
+<ul>
+  <li>Weak passwords (People set weak passwords)</li>
+  <li>People often repeat passwords for different accounts</li>
+  <li>Even if people have good password habits, some sites store passwords in plaintext</li>
+  <li>Some sites allow unlimited login attempts</li>
+  <li>Some sites/systems don’t salt passwords – makes it easy to crack with computers.</li>
+</ul>
+
+<h4 id="peoples-tendency-in-setting-passwords">People’s tendency in setting passwords</h4>
+
+<ul>
+  <li>According to one survey, 12% of employees used “password” as their password</li>
+  <li>Password length is short</li>
+  <li><strong>1/4</strong> of hashed passwords were cracked using a dictionary and combinations of the username.</li>
+  <li>Around 12% use dictionary words</li>
+  <li>81% use alphanumeric passwords</li>
+</ul>
+
+<h4 id="user-overload">User Overload</h4>
+
+<ul>
+  <li>On one hand, we should not set simple passwords but should set different passwords for different accounts</li>
+  <li>On the other hand, we have many different accounts
+    <ul>
+      <li>Microsoft studied users’ password behaviour
+        <ul>
+          <li>The average user has 25 password accounts</li>
+          <li>But the average user has 6.5 different passwords.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote class="extra">
+    Edmund shared an <a href="https://xkcd.com/936/">XKCD</a> the other day that summarises the problem with passwords.
+</blockquote>
+
+<h2 id="password-cracking">Password Cracking</h2>
+
+<p>The time taken to crack a password with brute force depends on the number of combinations,
+\(\text{Let length = L, and character set size = W} \\
+Total \; Combinations= W^{L}\)</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Password</th>
+      <th>Combinations (C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>26 characters - length 4</td>
+      <td>26<sup>4</sup> = 456,976</td>
+    </tr>
+    <tr>
+      <td>52 characters - length 4</td>
+      <td>52<sup>4</sup> = 7.3 × 10<sup>6</sup></td>
+    </tr>
+    <tr>
+      <td>94 characters - length 8</td>
+      <td>94<sup>8</sup> = 6.1 × 10<sup>15</sup></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="cracking-speed">Cracking Speed</h3>
+
+<p>Indicative speeds using current tools like <strong>hashcat</strong> or <strong>John the Ripper</strong></p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Hash</th>
+      <th>Using</th>
+      <th>Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MD5</td>
+      <td>Good PC</td>
+      <td>10<sup>7</sup> guess/second</td>
+    </tr>
+    <tr>
+      <td>SHA256</td>
+      <td>Good PC</td>
+      <td>10<sup>6</sup> g/s</td>
+    </tr>
+    <tr>
+      <td>MD5</td>
+      <td>PC + Graphics Card</td>
+      <td>10<sup>10</sup> g/s</td>
+    </tr>
+    <tr>
+      <td>SHA256</td>
+      <td>PC + Graphics Card</td>
+      <td>10<sup>9</sup> g/s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>With a GPU cluster, passwords can be cracked even faster – heavily depends on <strong>hardware</strong>.</p>
+
+<p>Expected time to crack a password, \(Time = (Total\; Combinations)/Speed\)</p>
+
+<h3 id="password-strength">Password Strength</h3>
+
+<p>Often expressed as an entropy value, <em>x</em> – the number of bits needed to represent W<sup>L</sup>.</p>
+
+<p>Therefore, \(x = log_2W^L\).</p>
+
+<p><strong>Examples</strong>:</p>
+
+\[Entropy = 2 \times log_226 \approx 2 \times 4.7 = 9\]
+
+\[Entropy = 4 \times log_252 \approx 4\times 5.7 = 22.8\]
+
+<h4 id="human-generated-passwords">Human Generated Passwords</h4>
+
+<p>While entropy measures the “uncertainty” of a password - it is the maximum level of uncertainty. However, humans don’t choose random passwords; they use words or a pattern of characters - much less uncertainty in user-generated password. This leads to some reasons behind certain password cracking techniques like look-up tables, which we will look at in the next chapter.</p>
+
+<h3 id="password-hashing">Password Hashing</h3>
+
+<p>We should never store passwords in plaintext. Instead we store the hash:</p>
+
+<ul>
+  <li>Hash is generated by a one-way hash function</li>
+  <li>Hash function produces a fixed length hash value from the input</li>
+  <li>Hashes are not meant to be reversible. Easy to compute f(x) but very hard to compute x from f(x).
+    <ul>
+      <li>If the input changes by even a bit - the resulting hash should be completely different</li>
+      <li>Hash function types: MD5, SHA256, SHA512 etc…</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="other-authentication-methods">Other Authentication Methods</h2>
+
+<p>Passwords are just one way of providing authentication, what other methods are there?</p>
+
+<p><strong>Biometrics.</strong> Does not have a clear cut yes or no - there is room for false negatives or even false positives (which are worse).</p>
+
+<p>Here are some statistics on the various  non-password authentication methods</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th>Biometric</th>
+      <th>False Pos</th>
+      <th>False Negative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Face</td>
+      <td>1%</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Fingerprint</td>
+      <td>1%</td>
+      <td>0.1%</td>
+    </tr>
+    <tr>
+      <td>Hand Geometry</td>
+      <td>2%</td>
+      <td>0.1%</td>
+    </tr>
+    <tr>
+      <td>Iris</td>
+      <td>0.94%</td>
+      <td>0.99%</td>
+    </tr>
+    <tr>
+      <td>Retina</td>
+      <td>0.0001%</td>
+      <td>0.2%</td>
+    </tr>
+    <tr>
+      <td>Keystrokes</td>
+      <td>7%</td>
+      <td>0.1%</td>
+    </tr>
+    <tr>
+      <td>Voices</td>
+      <td>2%</td>
+      <td>10%</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

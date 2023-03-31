@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes PHP</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">PHP</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction">Introduction</a></li><li><a href="#basic">Basic</a><ul><li><a href="#simple-commands">Simple Commands</a><ul><li><a href="#print-f">print f</a></li><li><a href="#null-coalescing-operator">NUll Coalescing Operator</a></li></ul></li></ul></li><li><a href="#variables">Variables</a><ul><li><a href="#constants">constants</a></li></ul></li><li><a href="#data-types">Data Types</a><ul><li><a href="#strings">Strings</a></li><li><a href="#arrays">Arrays</a><ul><li><a href="#numeric-array">Numeric Array</a></li><li><a href="#associative-array">Associative Array</a></li></ul></li></ul></li><li><a href="#operators">Operators</a><ul><li><a href="#arithmetic-operators">Arithmetic Operators</a></li><li><a href="#comparison-operators">Comparison Operators</a></li><li><a href="#logical-operators">Logical Operators</a></li><li><a href="#array-operators">Array Operators</a></li></ul></li><li><a href="#branching">Branching</a><ul><li><a href="#if">If</a></li><li><a href="#switch">Switch</a></li></ul></li><li><a href="#looping">Looping</a><ul><li><a href="#for-loop">For loop</a></li><li><a href="#while-loop">While Loop</a></li><li><a href="#do-while-loop">do while loop</a></li><li><a href="#array-iteration">Array Iteration</a></li></ul></li><li><a href="#function">Function</a><ul><li><a href="#pass-by-reference">Pass by Reference</a></li><li><a href="#global">Global</a></li></ul></li><li><a href="#html-forms">HTML Forms</a></li><li><a href="#php-from-another-file">PHP From Another File</a></li><li><a href="#objects-and-classes">Objects and Classes</a><ul><li><a href="#call-methods">Call Methods</a></li><li><a href="#constructor">Constructor</a></li><li><a href="#access-modifier">Access Modifier</a></li><li><a href="#inheritance">Inheritance</a></li></ul></li><li><a href="#cookies">Cookies</a></li><li><a href="#sessions">Sessions</a></li><li><a href="#password-hashing">Password Hashing</a></li><li><a href="#login-verification">Login Verification</a></li><li><a href="#sql">SQL</a></li><li><a href="#serialization">Serialization</a></li><li><a href="#reading-and-writing-files">Reading and Writing Files</a><ul><li><a href="#stream-access">Stream Access</a></li><li><a href="#in-memory-access">In-memory Access</a></li></ul></li><li><a href="#errors">Errors</a><ul><li><a href="#reporting">Reporting</a></li></ul></li><li><a href="#superglobals">Superglobals</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Flask.html" title="Flask.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="JavaScript.html" title="JavaScript.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="introduction">Introduction</h2>
+
+<p>PHP is a server side scripting language</p>
+
+<p>Stands for PHP hypertext programing (go and figure what that stands for)</p>
+
+<p>Released in 1995</p>
+
+<p>Has some issues:</p>
+
+<ul>
+  <li>30% of vulnerabilities are related to PHP</li>
+  <li>Sloppy code leads to errors.</li>
+</ul>
+
+<p>PHP is run on the server side can collect data from:</p>
+<ul>
+  <li>databases</li>
+  <li>web services</li>
+  <li>files</li>
+  <li>email</li>
+  <li>other software</li>
+</ul>
+
+<h2 id="basic">Basic</h2>
+<p>the file name needs to be changes from <code class="language-plaintext highlighter-rouge">.html</code> to <code class="language-plaintext highlighter-rouge">.php</code></p>
+
+<p>all php code must be written inside <code class="language-plaintext highlighter-rouge">&lt;?php</code> and <code class="language-plaintext highlighter-rouge">?&gt;</code></p>
+
+<p>all php statements end with a semicolon</p>
+
+<p>comments are:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">//single line</code></li>
+  <li><code class="language-plaintext highlighter-rouge">/* multi-line */</code></li>
+</ul>
+
+<h3 id="simple-commands">Simple Commands</h3>
+
+<p><code class="language-plaintext highlighter-rouge">echo</code> inserts the output into the larger html page including any tags</p>
+
+<p><code class="language-plaintext highlighter-rouge">echo &lt;p&gt;&lt;strong&gt; Hello &lt;/strong&gt;&lt;/p&gt;</code></p>
+
+<h4 id="print-f">print f</h4>
+<p><code class="language-plaintext highlighter-rouge">print f</code> produces formatted statements form variables</p>
+
+<p><code class="language-plaintext highlighter-rouge">printf("String",variables)</code></p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$product</span><span class="o">=</span> <span class="n">box</span><span class="p">;</span>
+<span class="nv">$weight</span> <span class="o">=</span> <span class="mf">1.756723</span><span class="p">;</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">"the %s is %.2f kilos"</span><span class="p">,</span><span class="nv">$product</span><span class="p">,</span><span class="nv">$weight</span><span class="p">);</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Specifier</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>%f</td>
+      <td>float</td>
+    </tr>
+    <tr>
+      <td>%s</td>
+      <td>string</td>
+    </tr>
+    <tr>
+      <td>%d</td>
+      <td>decimal</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="null-coalescing-operator">NUll Coalescing Operator</h4>
+<p><code class="language-plaintext highlighter-rouge">??</code> can be used to assign a value if a variable is null
+<code class="language-plaintext highlighter-rouge">$username= $GET_["username"]??default</code></p>
+
+<p><a href="https://www.php.net/manual/en/function.printf.php">more here</a></p>
+
+<h2 id="variables">Variables</h2>
+<ul>
+  <li>Variable prefixed with $</li>
+  <li>must start with letter or <code class="language-plaintext highlighter-rouge">_</code></li>
+  <li>only contain alphanumerical characters and <code class="language-plaintext highlighter-rouge">_</code></li>
+  <li>No spaces</li>
+  <li>case sensitive</li>
+  <li>Dynamically typed</li>
+</ul>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$a</span><span class="o">+</span><span class="nv">$b</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="constants">constants</h3>
+<p>Use <code class="language-plaintext highlighter-rouge">define()</code></p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">define</span><span class="p">(</span><span class="s2">"PI"</span><span class="p">,</span><span class="mf">3.141592653</span><span class="p">);</span>
+<span class="nv">$pi</span><span class="o">=</span><span class="no">PI</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="data-types">Data Types</h2>
+<p>Scalar types</p>
+<ul>
+  <li>integer</li>
+  <li>float / double (these are the same)</li>
+  <li>boolean</li>
+  <li>string</li>
+</ul>
+
+<p>Compound Types</p>
+<ul>
+  <li>Array</li>
+  <li>Object</li>
+</ul>
+
+<h3 id="strings">Strings</h3>
+<p>need double quotes</p>
+
+<p>concatenation uses <code class="language-plaintext highlighter-rouge">.</code>
+can use <code class="language-plaintext highlighter-rouge">.=</code> for append</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$a</span> <span class="o">=</span> <span class="s2">"Hello"</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="s2">"World"</span>
+
+<span class="nv">$c</span> <span class="o">=</span> <span class="nv">$a</span><span class="mf">.</span><span class="s2">" "</span><span class="mf">.</span><span class="nv">$b</span>
+<span class="nv">$a</span> <span class="mf">.</span><span class="o">=</span> <span class="s2">" "</span>
+<span class="nv">$a</span> <span class="mf">.</span><span class="o">=</span> <span class="nv">$a</span>
+
+<span class="o">--</span>
+<span class="nv">$a</span> <span class="o">-&gt;</span> <span class="nc">Hello</span> <span class="nc">World</span>
+<span class="nv">$c</span> <span class="o">-&gt;</span> <span class="nc">Hello</span> <span class="nc">World</span>
+</code></pre></div></div>
+
+<h3 id="arrays">Arrays</h3>
+<p>Two types</p>
+<ul>
+  <li>Numeric Array</li>
+  <li>Associative array</li>
+</ul>
+
+<h4 id="numeric-array">Numeric Array</h4>
+
+<p>Creation:
+<code class="language-plaintext highlighter-rouge">$courses=("CS139","CS132","CS133");</code></p>
+
+<p>You can also do:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$courses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s2">"CS139"</span><span class="p">;</span>
+<span class="nv">$courses</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s2">"CS132"</span><span class="p">;</span>
+<span class="nv">$courses</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s2">"CS133"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="associative-array">Associative Array</h4>
+<p>Creation:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$courses=("CS139"=&gt;"Web Dev","CS132"=&gt;"Not A Cult","CS133"=&gt;"Professional Skills");</code></p>
+
+<p>You can also do Representation:</p>
+
+<h2 id="operators">Operators</h2>
+
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td>Addition</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>Subtraction</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td>Multiplication</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">/</code></td>
+      <td>Division</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td>Modulus</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">++</code></td>
+      <td>Pre/Post increment</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">--</code></td>
+      <td>Pre/Post decrement</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="comparison-operators">Comparison Operators</h3>
+<p>gh-pages
+Operator | Name
+–|–
+<code class="language-plaintext highlighter-rouge">==</code> | Equal
+<code class="language-plaintext highlighter-rouge">===</code> | Identical
+<code class="language-plaintext highlighter-rouge">!=</code> | Not Equal
+<code class="language-plaintext highlighter-rouge">!===</code> | Not identical
+<code class="language-plaintext highlighter-rouge">&lt;</code> | Less than
+<code class="language-plaintext highlighter-rouge">&gt;</code> | Greater than
+<code class="language-plaintext highlighter-rouge">&lt;=</code> | Less than or equal
+<code class="language-plaintext highlighter-rouge">&gt;=</code> | Greater than or equal</p>
+
+<p>Identical same value <strong>and</strong> same type 5 is not identical to “5”</p>
+
+<h3 id="logical-operators">Logical Operators</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&amp;&amp;</code></td>
+      <td>AND</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">||</code></td>
+      <td>OR</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!</code></td>
+      <td>NOT</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="array-operators">Array Operators</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$arr1 +$arr2</code></td>
+      <td>Union</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$arr1 == $arr2</code></td>
+      <td>Equal</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$arr1 === $arr2</code></td>
+      <td>Identical</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="branching">Branching</h2>
+
+<h3 id="if">If</h3>
+
+<p>similar to Java</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nv">$course</span> <span class="o">==</span> <span class="s2">"CS139"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Web Dev"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$course</span> <span class="o">==</span><span class="s2">"CS132"</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">"not a cult"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Not Web Dev and not not a cult"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>can use <code class="language-plaintext highlighter-rouge">:</code> instead of {}</p>
+
+<h3 id="switch">Switch</h3>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span><span class="p">(</span><span class="nv">$course</span><span class="p">){</span>
+    <span class="k">case</span> <span class="s2">"CS139"</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"Web Dev"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">"CS132"</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"not a cult"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"Not Web Dev and not not a cult"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>only judges by equality by if they are identical.</p>
+
+<h2 id="looping">Looping</h2>
+<h3 id="for-loop">For loop</h3>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="nv">$x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nv">$x</span> <span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="nv">$x</span><span class="o">++</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="nv">$x</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="while-loop">While Loop</h3>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$x</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="nv">$x</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+    <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="do-while-loop">do while loop</h3>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="nv">$x</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+    <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$x</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div></div>
+<h3 id="array-iteration">Array Iteration</h3>
+<p>iterate over an array obtaining the value at each location</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="nv">$item</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>for associative arrays</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">foreach</span><span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="nv">$key</span><span class="mf">.</span><span class="s2">"is"</span><span class="mf">.</span><span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="function">Function</h2>
+<p>Functions that have a return value can also (optionally) have a a return type</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="n">FunctionName</span> <span class="p">(</span><span class="nv">$arg1</span><span class="p">,</span><span class="nv">$arg2</span><span class="p">):</span><span class="kt">string</span><span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$arg1</span><span class="mf">.</span><span class="nv">$arg2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="pass-by-reference">Pass by Reference</h3>
+<p>Adding an <code class="language-plaintext highlighter-rouge">&amp;</code> in front passes by reference, a variable
+change in a function is reflected outside the function scope</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="n">add</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$arg</span><span class="p">){</span>
+    <span class="nv">$arg</span><span class="o">+=</span><span class="mi">100</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="global">Global</h3>
+<p>Global scoped variables can be included in functions with global</p>
+
+<p>SHOULD BE AVOIDED</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$a</span> <span class="o">=</span><span class="s2">"a"</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span><span class="s2">"b"</span><span class="p">;</span>
+<span class="k">function</span> <span class="n">findAB</span><span class="p">(){</span>
+    <span class="k">global</span> <span class="nv">$a</span><span class="p">,</span><span class="nv">$b</span>
+    <span class="k">echo</span> <span class="nv">$a</span><span class="mf">.</span><span class="nv">$b</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="html-forms">HTML Forms</h2>
+<p>In PHP the data is converted from the requests to associative arrays.
+Post requests are <code class="language-plaintext highlighter-rouge">$_POST</code> get requests are <code class="language-plaintext highlighter-rouge">$_GET</code></p>
+
+<h2 id="php-from-another-file">PHP From Another File</h2>
+<p>Php can insert the contents of another file</p>
+
+<p><code class="language-plaintext highlighter-rouge">require &lt;script.php&gt;</code>, script stops if file can’t be found</p>
+
+<p><code class="language-plaintext highlighter-rouge">include &lt;script.php&gt;</code>, script attempts to continue if file cant be found</p>
+
+<p>also</p>
+
+<p><code class="language-plaintext highlighter-rouge">include_once</code> , <code class="language-plaintext highlighter-rouge">require_once</code></p>
+
+<p>Elements such as header or nav bar only need to be made once then can be copied over</p>
+
+<h2 id="objects-and-classes">Objects and Classes</h2>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">class</span> <span class="nc">Person</span><span class="p">{</span>
+    <span class="k">var</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">function</span> <span class="n">get_name</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">function</span> <span class="n">set_name</span><span class="p">(</span><span class="nv">$new</span> <span class="kt">_name</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">name</span><span class="o">=</span><span class="nv">$new_name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>All object variables need to be specified through <code class="language-plaintext highlighter-rouge">$this-&gt;</code></p>
+
+<h3 id="call-methods">Call Methods</h3>
+<p>To call a method 
+<code class="language-plaintext highlighter-rouge">$object-&gt;method(&lt;args&gt;)</code></p>
+
+<h3 id="constructor">Constructor</h3>
+<p>The constructor function is always  <code class="language-plaintext highlighter-rouge">__construct()</code></p>
+
+<p>Objects can be created through the <code class="language-plaintext highlighter-rouge">new</code> keyword</p>
+
+<p><code class="language-plaintext highlighter-rouge">$James= new Person();</code></p>
+<h3 id="access-modifier">Access Modifier</h3>
+<ul>
+  <li>public</li>
+  <li>private</li>
+  <li>protected</li>
+</ul>
+
+<p>can all be used to define access these should replace the <code class="language-plaintext highlighter-rouge">var</code> keyword or put in front of a function</p>
+
+<h3 id="inheritance">Inheritance</h3>
+<p><code class="language-plaintext highlighter-rouge">class Admin extends User</code></p>
+
+<p>parent class method id called by</p>
+
+<p><code class="language-plaintext highlighter-rouge">parent::method();</code></p>
+
+<h2 id="cookies">Cookies</h2>
+<p>Cookies can be added with the <code class="language-plaintext highlighter-rouge">setcookie()</code> function</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$expiry</span> <span class="o">=</span> <span class="nb">time</span><span class="p">()</span><span class="o">+</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">7</span><span class="p">;</span>
+<span class="nv">$name</span><span class="o">=</span><span class="s2">"Username"</span><span class="p">;</span>
+<span class="nv">$value</span><span class="o">=</span><span class="s2">"James"</span><span class="p">;</span>
+<span class="nb">setcookie</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span><span class="nv">$value</span><span class="p">,</span><span class="nv">$expiry</span><span class="p">);</span>
+</code></pre></div></div>
+<p>cookies can be fetched using <code class="language-plaintext highlighter-rouge">$_COOKIE[value]</code></p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s2">"Username"</span><span class="p">])){</span>
+    <span class="k">echo</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="s2">"Username"</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="sessions">Sessions</h2>
+<p>To create a session use <code class="language-plaintext highlighter-rouge">session_start()</code> this must occur
+at the start of the file</p>
+
+<p>can be used with <code class="language-plaintext highlighter-rouge">$_SESSION[]</code></p>
+
+<p>set with <code class="language-plaintext highlighter-rouge">$_SESSION['Key'] = $value;</code></p>
+
+<p>and retrieve with  <code class="language-plaintext highlighter-rouge">$value =$_SESSION['Key'];</code></p>
+
+<p>values can be checked with <code class="language-plaintext highlighter-rouge">isset($_SESSION['Key'])</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">session_destroy()</code> can be used for logging out and removing all values</p>
+
+<p>example to check if a user is logged in</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'UserID'</span><span class="p">])){</span>
+    <span class="c1">// show page content here</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="nb">header</span><span class="p">(</span><span class="sb">`location:HomePage.php`</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<h2 id="password-hashing">Password Hashing</h2>
+<p>Passwords should be hashed for storing to ensure security the hashes can be created with <code class="language-plaintext highlighter-rouge">password_hash()</code>
+and verified with <code class="language-plaintext highlighter-rouge">password_verify($password,$hashedPassword)</code></p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'username'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">])){</span>
+    <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">];</span>
+    <span class="nv">$hashedPassword</span> <span class="o">=</span> <span class="nf">getHashedPassword</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'username'</span><span class="p">]);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">password_verify</span><span class="p">(</span><span class="nv">$password</span> <span class="p">,</span><span class="nv">$hashedPassword</span><span class="p">)){</span>
+        <span class="nb">header</span><span class="p">(</span><span class="sb">`location:restrictedPage.php`</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nb">header</span><span class="p">(</span><span class="sb">`location:HomePage.php`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="nb">header</span><span class="p">(</span><span class="sb">`location:HomePage.php`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="login-verification">Login Verification</h2>
+<p>It is important to verify that a user is logged in before they can access a page</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="sb">`access.php`</span><span class="p">;</span>
+<span class="nf">require_login</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+<p>can be put at the top of pages to check if the user is logged in.</p>
+
+<p>inside access.php:</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="n">require_login</span><span class="p">(){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])){</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Location:index.php"</span><span class="p">);</span>
+        <span class="k">exit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+<p>if <code class="language-plaintext highlighter-rouge">$_SESSION['id']</code> is set when the user logs in this will prevent users
+from accessing pages unless they have logged in</p>
+<h2 id="sql">SQL</h2>
+<p>first a database connection must be established</p>
+
+<p><code class="language-plaintext highlighter-rouge">$db =  new SQLite3('database.db');</code></p>
+
+<p>the database can then be queried</p>
+
+<p><code class="language-plaintext highlighter-rouge">$db-&gt;exec(&lt;SQL&gt;)</code> for result less queries</p>
+
+<p><code class="language-plaintext highlighter-rouge">$db-&gt;query(&lt;SQL&gt;)</code> which returns a result</p>
+
+<p>handing a query result</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">query</span><span class="p">(</span><span class="s2">"SELECT * FROM Users"</span><span class="p">);</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="nf">fetchArray</span><span class="p">()){</span>
+    <span class="k">echo</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'username'</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="serialization">Serialization</h2>
+<p>can be used for storing objects and complex data as a string
+<code class="language-plaintext highlighter-rouge">$string = serialize($object);</code></p>
+
+<p>the text can then be un-serialized 
+<code class="language-plaintext highlighter-rouge">$object= unserialize($string);</code></p>
+
+<h2 id="reading-and-writing-files">Reading and Writing Files</h2>
+<p>two types oif access stream access, will read a small portion at a time. All-in-Memory access can read the entire file to memory.</p>
+
+<h3 id="stream-access">Stream Access</h3>
+<p>similar to ‘C’</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">fopen()</code> - opens the file</li>
+  <li><code class="language-plaintext highlighter-rouge">fgets()</code> - gets a portion of the file</li>
+  <li><code class="language-plaintext highlighter-rouge">fclose()</code>- closes the file</li>
+</ul>
+
+<h3 id="in-memory-access">In-memory Access</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">file()</code> Reads the entire file and returns an array of each line in the file</li>
+  <li><code class="language-plaintext highlighter-rouge">file_get_contents()</code> Read the entire file and return a string</li>
+  <li><code class="language-plaintext highlighter-rouge">file_put_contents()</code> Writes the contents of a string variable to a file</li>
+</ul>
+
+<h2 id="errors">Errors</h2>
+<p>3 types of errors</p>
+<ul>
+  <li>Expected Errors - typing in the wrong name</li>
+  <li>Warnings - thing to warn the user about, start before end dates</li>
+  <li>Fatal Errors - things that stop the process, should still be recoverable</li>
+</ul>
+
+<h3 id="reporting">Reporting</h3>
+<p>error reporting can be done with</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">error_reporting</span><span class="p">(</span><span class="kc">E_ALL</span><span class="p">);</span>
+<span class="nb">ini_set</span><span class="p">(</span><span class="s2">"display_errors"</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="superglobals">Superglobals</h2>
+<p>Name | Description
+–|–
+$Globals | Array For storing data that needs the superglobal scope
+$_Cookies | Array of cookie data passed via HTTP request
+$_ENV | Array of server environment data
+$_FILES | Array of files uploaded to the server
+$_GET | Array fo query string data passed to the server via the URL
+$_POST | Array fo query string data passed to the server via the HTTP header
+$_REQUEST | Array containing the contents of $_GET, $_POST, $_COOKIES
+$_SESSION | Array containing session data
+$_SERVER | Array containing information about the request and the server</p>
+
+<p><code class="language-plaintext highlighter-rouge">$_SERVER["HTTP_REFERRER"]</code> information about where the user came from</p>
+
+<p><code class="language-plaintext highlighter-rouge">$_FILES</code> used with post requests HTTP should have a file input type for a form</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">$_FILES["File1"]["name"]</code> - anme fo the file</li>
+  <li><code class="language-plaintext highlighter-rouge">$_FILES["File1"]["type"]</code> - e.g img.png</li>
+  <li><code class="language-plaintext highlighter-rouge">$_FILES["File1"]["tmp_name"]</code> where is was upladed to</li>
+  <li><code class="language-plaintext highlighter-rouge">$_FILES["File1"]["error"]</code> “UPLOAD_ERR_OK” if no error</li>
+  <li><code class="language-plaintext highlighter-rouge">$_FILES["File1"]["size"]</code> in bytes</li>
+</ul>
+
+<p>then 
+<code class="language-plaintext highlighter-rouge">move_uploaded_file($tmp_file,$new_file);</code></p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

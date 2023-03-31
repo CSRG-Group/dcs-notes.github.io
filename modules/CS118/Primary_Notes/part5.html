@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Inheritance, Abstract Classes, and Interfaces</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Inheritance, Abstract Classes, and Interfaces</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#inheritance">Inheritance</a><ul><li><a href="#the-override-annotation">The @Override annotation</a></li><li><a href="#why-inheritance">Why inheritance?</a></li><li><a href="#the-super-and-this-keyword">The super and this keyword</a></li><li><a href="#super-in-the-subclass-constructor">super in the subclass constructor</a></li><li><a href="#method-overriding">Method overriding</a></li></ul></li><li><a href="#polymorphism">Polymorphism</a><ul><li><a href="#static-polymorphism">Static Polymorphism</a></li><li><a href="#dynamic-polymorphism">Dynamic Polymorphism</a><ul><li><a href="#something-to-note">Something to note:</a></li></ul></li></ul></li><li><a href="#quick-recap">Quick Recap</a><ul><li><a href="#static-vs-dynamic-polymorphism">Static vs Dynamic Polymorphism</a></li><li><a href="#method-overloading-vs-overriding">Method overloading vs overriding</a></li></ul></li><li><a href="#abstract-classes">Abstract Classes</a><ul><li><a href="#properties-of-abstract-classes">Properties of abstract classes</a></li></ul></li><li><a href="#interfaces">Interfaces</a><ul><li><a href="#properties-of-interfaces">Properties of interfaces</a></li></ul></li><li><a href="#multiple-inheritance">Multiple inheritance</a><ul><li><a href="#why-interfaces">Why interfaces?</a><ul><li><a href="#what-does-that-mean">What does that mean?</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part4.html" title="part4.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part6.html" title="part6.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="inheritance">Inheritance</h2>
+
+<p>Just like how we inherit certain traits from our parents, <em>subclasses</em> (children classes) inherit <strong>all</strong> methods and fields from their <em>superclass</em> (parent class) at first. After which, we can override or add features to the subclass. This is how we would do it in Java:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Parent class</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// Child/subclass</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{}</span>
+</code></pre></div></div>
+
+<p>In this case, <code class="language-plaintext highlighter-rouge">Cake</code> inherits the <code class="language-plaintext highlighter-rouge">eat()</code> method from the <code class="language-plaintext highlighter-rouge">Food</code> class even though we don’t specify it in the <code class="language-plaintext highlighter-rouge">Cake</code> class. That means we can call the <code class="language-plaintext highlighter-rouge">eat()</code> method from the <code class="language-plaintext highlighter-rouge">Cake</code> class like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Cake</span> <span class="n">chocolate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+    <span class="n">chocolate</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span> <span class="c1">// This is valid!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Because we haven’t specified anything in the <code class="language-plaintext highlighter-rouge">Cake</code> class yet the output we get is still:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This tastes amazing!
+</code></pre></div></div>
+
+<p>Now, if we want to override this method we can do something like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>If we call the <code class="language-plaintext highlighter-rouge">eat()</code> method from the <code class="language-plaintext highlighter-rouge">chocolate</code> now we will get</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This cake tastes amazing!
+</code></pre></div></div>
+
+<h3 id="the-override-annotation">The <code class="language-plaintext highlighter-rouge">@Override</code> annotation</h3>
+
+<p>Before overriding the method in the <code class="language-plaintext highlighter-rouge">Cake</code> example, we write <code class="language-plaintext highlighter-rouge">@Override</code>, which is called a “method annotation”. This indicates to the compiler that method overriding is occurring. This is not required to compile, but it comes with the benefits of:</p>
+
+<ul>
+  <li>Readability, as it is clear when method overriding is occurring</li>
+  <li>Error checking, as the compiler produces a warning if overriding is not occurring, indicating the programmer is not doing what they are intending to</li>
+</ul>
+
+<p>More information is available <a href="https://stackoverflow.com/questions/94361/when-do-you-use-javas-override-annotation-and-why">here</a>, <a href="https://stackoverflow.com/questions/4822954/do-we-really-need-override-and-so-on-when-code-java">here</a>, and <a href="https://beginnersbook.com/2014/07/override-annotation-in-java/">here</a>.</p>
+
+<h3 id="why-inheritance">Why inheritance?</h3>
+
+<p>You probably already know this, but inheritance means that we can reduce repeated code. Another reason to use inheritance is so that <strong>run-time polymorphism</strong> is possible! We will discuss this in further detail below but essentially it allows us to define a general method for a superclass but do something specific to it depending on the eventual subclass that we have no knowledge of at compile time.</p>
+
+<h3 id="the-super-and-this-keyword">The <code class="language-plaintext highlighter-rouge">super</code> and <code class="language-plaintext highlighter-rouge">this</code> keyword</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">this</code> keyword is used to refer to the current instance of the class. In a similar way, the <code class="language-plaintext highlighter-rouge">super</code> keyword is used to refer to the superclass of the current instance.</p>
+
+<h3 id="super-in-the-subclass-constructor"><code class="language-plaintext highlighter-rouge">super</code> in the subclass constructor</h3>
+
+<p>The superclass’s constructor should be the first thing that you call when defining the subclass constructor - especially if there are parameters that the <code class="language-plaintext highlighter-rouge">super</code> constructor must take. Otherwise, Java will call the default (no argument) <code class="language-plaintext highlighter-rouge">super </code> constructor <code class="language-plaintext highlighter-rouge">super()</code> - and if it is meant to take parameters you will get a compile-time error.</p>
+
+<p>If your subclass happens to have 2 constructors then one of them should call the other constructor with <code class="language-plaintext highlighter-rouge">this()</code> and the other should have <code class="language-plaintext highlighter-rouge">super()</code> in it.</p>
+
+<h3 id="method-overriding">Method overriding</h3>
+
+<p>From the example on the <code class="language-plaintext highlighter-rouge">Cake</code> class above, you have seen how we can override a method from a superclass. How about if we just want to extend the method but we don’t want to change anything in the super method? That’s right, we can call the <code class="language-plaintext highlighter-rouge">super</code> method in the subclass method:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Cake class</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Wow I love cake!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The output we get is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This tastes amazing!
+Wow I love cake!
+</code></pre></div></div>
+
+<p>But what if a certain superclass method is <em>private</em>? We won’t be able to access them from the subclass. However, this is where the <strong><em>protected</em></strong> keyword comes in handy, as subclasses can access the <em>protected</em> properties in the superclass. So lets say our <code class="language-plaintext highlighter-rouge">Food</code> class has a <code class="language-plaintext highlighter-rouge">name</code> field now and a setter to set the <code class="language-plaintext highlighter-rouge">name</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>If we define <code class="language-plaintext highlighter-rouge">name</code> as <em>private</em> then the following code will give an error:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This "</span> <span class="o">+</span> <span class="kd">super</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We would have to use the getter method <code class="language-plaintext highlighter-rouge">getName()</code> to get the String value of the <code class="language-plaintext highlighter-rouge">name</code> field in <code class="language-plaintext highlighter-rouge">Food</code>. However, it is <strong>valid</strong> if we set <em>private</em> to <em>protected</em>.</p>
+
+<h2 id="polymorphism">Polymorphism</h2>
+
+<h3 id="static-polymorphism">Static Polymorphism</h3>
+
+<p><strong>Static polymorphism</strong> is essentially method overloading. It is polymorphism because the name of the method can represent different methods and how Java understands which method to call is based on the <strong>type</strong> and/or <strong>number</strong> of parameters!</p>
+
+<p>It is called <strong>static</strong> because when we compile code, Java will be able to decide at compile-time which method will be called based on the parameters provided.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Static polymorphism/Method overloading</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">hi</span><span class="o">();</span>
+    <span class="n">hi</span><span class="o">(</span><span class="s">"cake"</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="c1">// Here we are overloading by number of arguments</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hi</span><span class="o">()</span> <span class="o">{</span> 
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hi!"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hi</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"!"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hi!
+Hi cake!
+</code></pre></div></div>
+
+<h3 id="dynamic-polymorphism">Dynamic Polymorphism</h3>
+
+<p>On the other hand, <strong>Dynamic Polymorphism</strong> is run-time polymorphism - Java will determine what class to treat a specific object when the program is executed.</p>
+
+<p>Lets look an example before elaborating. Adding on to our previous two classes <code class="language-plaintext highlighter-rouge">Food</code> and <code class="language-plaintext highlighter-rouge">Cake</code>, lets introduce two new classes <code class="language-plaintext highlighter-rouge">Apple</code> and <code class="language-plaintext highlighter-rouge">Hungryboi</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Apple</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This apple tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// Hungryboi digests a Food object x which calls x.eat()</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hungryboi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">digest</span><span class="o">(</span><span class="nc">Food</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">x</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>And now if we do this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Hungryboi</span> <span class="n">me</span>    <span class="o">=</span> <span class="k">new</span> <span class="nc">Hungryboi</span><span class="o">();</span>
+    <span class="nc">Food</span> <span class="n">somefood</span>   <span class="o">=</span> <span class="k">new</span> <span class="nc">Food</span><span class="o">();</span>
+    <span class="nc">Food</span> <span class="n">redApple</span>   <span class="o">=</span> <span class="k">new</span> <span class="nc">Apple</span><span class="o">();</span>
+    <span class="nc">Food</span> <span class="n">cheeseCake</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+    <span class="nc">Object</span> <span class="n">random</span>   <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+  
+    <span class="c1">// Remember that the digest method calls the eat method</span>
+    <span class="c1">// in the Food, Apple, and Cake class</span>
+    <span class="n">me</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">somefood</span><span class="o">);</span> 
+    <span class="n">me</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">redApple</span><span class="o">);</span>
+    <span class="n">me</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">cheeseCake</span><span class="o">);</span>
+    <span class="c1">// Print out the results of the instanceof operator </span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Food</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Cake</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Apple</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span> <span class="k">instanceof</span> <span class="nc">Hungryboi</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cheeseCake</span> <span class="k">instanceof</span> <span class="nc">Apple</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cheeseCake</span> <span class="k">instanceof</span> <span class="nc">Food</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Our output is (you can check it yourself by copying the code):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This tastes amazing!
+This apple tastes amazing!
+This cake tastes amazing!  
+true
+true
+false
+false
+false
+true
+</code></pre></div></div>
+
+<p>The reason why line 2 and line 3 show the output for the <code class="language-plaintext highlighter-rouge">Apple</code> and <code class="language-plaintext highlighter-rouge">Cake</code> class respectively is because even though they are declared as a <code class="language-plaintext highlighter-rouge">Food</code> type, Java resolves their types at run-time. Java is able to tell that one is the <code class="language-plaintext highlighter-rouge">Apple</code> subclass, and the other is the <code class="language-plaintext highlighter-rouge">Cake</code> subclass, and it calls the appropriate subclass methods.</p>
+
+<p>This <strong>only</strong> works because the <code class="language-plaintext highlighter-rouge">Food</code> class also has the <code class="language-plaintext highlighter-rouge">eat()</code> method defined. If we wanted to use a method that is only defined in the <code class="language-plaintext highlighter-rouge">Cake</code> class, then we would have to cast <code class="language-plaintext highlighter-rouge">cheeseCake</code> to a <code class="language-plaintext highlighter-rouge">Cake</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake tastes amazing!"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">admire</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This cake looks amazing!"</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Food</span> <span class="n">cheeseCake</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cake</span><span class="o">();</span>
+    <span class="n">cheeseCake</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="n">cheeseCake</span><span class="o">.</span><span class="na">admire</span><span class="o">();</span> <span class="c1">// Does not work will produce compile-time error</span>
+    <span class="c1">// The error message will probably be:</span>
+    <span class="c1">// "The method admire() is undefined for the type Food"</span>
+    <span class="o">((</span><span class="nc">Cake</span><span class="o">)</span> <span class="n">cheeseCake</span><span class="o">).</span><span class="na">admire</span><span class="o">();</span> <span class="c1">// Works</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="something-to-note">Something to note:</h4>
+
+<p>If you’re on Java SE 15 or newer and try this line of code below - you will get an error.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cheeseCake</span> <span class="k">instanceof</span> <span class="nc">Hungryboi</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>That’s because at compile-time, Java knows casting fails so <code class="language-plaintext highlighter-rouge">instanceof </code> comparison will fail as well and it tries to warn you to save you time. Click <a href="https://stackoverflow.com/questions/2551337/instanceof-incompatible-conditional-operand-types">here</a> for a better explanation.</p>
+
+<h2 id="quick-recap">Quick Recap</h2>
+
+<h3 id="static-vs-dynamic-polymorphism">Static vs Dynamic Polymorphism</h3>
+
+<p><strong>Static polymorphism</strong> has to deal with polymorphism at compile-time. This usually refers to method overloading where a single method name can refer to a range of methods that differ by either the <strong>type</strong> of their parameters or the <strong>number</strong> of parameters they have. The Java compiler identifies this at compile-time and it is converted into byte-code for the JVM (Java Virtual Machine) to interpret, which then converts the byte-code to the native machine code and executes the program.</p>
+
+<p><strong>Dynamic polymorphism</strong> refers to polymorphism at run-time, this is because the JVM decides which method is to be called only at run-time. At compile-time, calling a method is considered by its reference type (e.g. <code class="language-plaintext highlighter-rouge">Food somefood</code> is of type food where <code class="language-plaintext highlighter-rouge">somefood</code> is the reference). At run-time, the specific method that is called will be decided by the type of the object that the reference is pointing to/holding (e.g. <code class="language-plaintext highlighter-rouge">Food somefood = new Cake()</code>, so the methods that will be called will be from the <code class="language-plaintext highlighter-rouge">Cake</code> class). Here we say that it is resolved at run-time because the compiler does not know if the method has been overridden or not (<a href="https://dzone.com/articles/how-does-jvm-handle-polymorphism-method-overloadin#logical-way:~:text=considered from the reference type. But,object which the reference is holding.">N. Joshi, 2019</a>).</p>
+
+<h3 id="method-overloading-vs-overriding">Method overloading vs overriding</h3>
+
+<p>Two methods are <strong>overloaded</strong> when they have the same name but different types/number of arguments (essentially their list of arguments must look different). Other than that, overloaded methods can return different types, do different things or throw different exceptions. Method overloading can happen in the same class or in subclasses.</p>
+
+<p>A method from a subclass <strong>overrides</strong> a method from a superclass when it has the same name and same type and number of arguments. There are a set of rules that the subclass method must abide to such as having the same return type, must have the same or less restrictive access modifier, and must not throw new or broader checked exceptions. Method overriding can only happen to inherited methods, which imply that it can only happen between subclasses and their superclass(es).</p>
+
+<p>Check out <a href="https://dzone.com/articles/everything-about-method-overloading-vs-method-overriding">this</a> article by Naresh Joshi for a more in-depth explanation.</p>
+
+<h2 id="abstract-classes">Abstract Classes</h2>
+
+<p>If we recall, the motivation behind inheritance is to reduce repeated code and to allow for run-time polymorphism. By now you should realise that each subclass becomes more specific than its superclass, and eventually superclasses become so general that they seem abstract. We can call these general classes <strong>abstract classes</strong>.</p>
+
+<h3 id="properties-of-abstract-classes">Properties of abstract classes</h3>
+
+<p>Firstly, abstract classes <strong>cannot</strong> be instantiated. The reason is that they are meant to capture common properties and behaviours at an abstract level and are meant to be <strong>extended</strong> (or inherited from) to make a subclass that is more specific. Therefore, there should not be a need to instantiate abstract classes.</p>
+
+<p>In fact, it would not make sense to instantiate/define and instance of an abstract class because of <strong>abstract methods</strong>. These are methods that would not make sense for the abstract class to define but makes sense for its <strong>subclasses</strong> to define. <strong>Abstract classes</strong> can contain a mix of <strong>abstract methods</strong> and <strong>concrete methods</strong>.</p>
+
+<p>Lets give an example:</p>
+
+<p>Suppose that we want define an abstract <strong>Food</strong> class for an online supermarket. (I tried to come up with a better example… :pensive: )</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Food</span> <span class="o">{</span>
+    <span class="c1">// Protein, carbs, and fats in grams</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">protein</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">carbs</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">fats</span><span class="o">;</span>
+    <span class="c1">// Return total amount of calories in a Food (Concrete method)</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">calories</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">protein</span> <span class="n">x</span> <span class="mf">4.0</span> <span class="o">+</span> <span class="n">carbs</span> <span class="n">x</span> <span class="mf">4.0</span> <span class="o">+</span> <span class="n">fats</span> <span class="n">x</span> <span class="mf">9.0</span><span class="o">;</span>
+	<span class="o">}</span>
+    <span class="c1">// Abstract methods</span>
+   	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">description</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">double</span> <span class="nf">price</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Here we have defined the <strong>calories</strong> method for the abstract <strong>Food</strong> class. This is a concrete method because all kinds of food will always have a certain amount of <em>protein</em>, <em>carbohyrdates</em>, and <em>fat</em> which will always be 4,4, and 9 calories per gram. Therefore, it makes sense to define a concrete method for all kinds of <strong>Food</strong> (Remember that any subclasses will inherit this method from <strong>Food</strong>).</p>
+
+<p>Next, there are the abstract methods for <strong>description</strong> and <strong>price</strong>. Since every kind of ingredient/type of food that will be sold at the supermarket is going to be different it doesn’t make sense to define a concrete method for all <strong>Food</strong>.</p>
+
+<p>However, we know that we want to have a description and price for each item and hence we define these 2 abstract methods for all kinds of <strong>Food</strong>. This makes it compulsory for subclasses to have a specific and concrete definition of these <strong>abstract methods</strong>. This is useful when using <strong>Generics</strong> because any class that extends the abstract <strong>Food</strong> class is guaranteed to have a definition for <strong>description</strong> and <strong>price</strong>.</p>
+
+<p>Just in case there’s confusion: Inheriting from an abstract class is the same as any normal classes.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NewYorkCheeseCake</span> <span class="kd">extends</span> <span class="nc">Food</span> <span class="o">{...}</span>
+</code></pre></div></div>
+
+<h2 id="interfaces">Interfaces</h2>
+
+<p>Now that you have an idea of what an <strong>abstract class</strong> is, what its properties are, and what it is kind of used for, interfaces become really easy to understand. Just think of interfaces as the most abstract class in a hierarchy of classes. This is where there are no <strong>concrete methods</strong> at all and all methods are <strong>abstract</strong>.</p>
+
+<p>Here is how we define an interface:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Hi</span> <span class="o">{...}</span>
+</code></pre></div></div>
+
+<p>and this is how we <em>implement</em> an interface (I sincerely apologise for my lack of creativity :sob:)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hi2</span> <span class="kd">implements</span> <span class="nc">Hi</span> <span class="o">{...}</span>
+</code></pre></div></div>
+
+<h3 id="properties-of-interfaces">Properties of interfaces</h3>
+
+<p>As mentioned earlier, interfaces have no <strong>concrete methods</strong> and all methods are <strong>abstract</strong>.</p>
+
+<p>Just like abstract classes, interfaces <strong>cannot be instantiated</strong>.</p>
+
+<p>Additionally, interfaces can <strong>only</strong> contain:</p>
+
+<ol>
+  <li>Fields which are <em>public static final</em> and if not specified are defaulted to this</li>
+  <li>Methods which are not defined/implemented. (They must be left “empty” like abstract methods but they shouldn’t be declared with the keyword <strong>abstract</strong>!)</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Hi</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">var1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">var2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method1</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">method2</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">method3</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="nc">Test</span> <span class="n">b</span><span class="o">);</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="multiple-inheritance">Multiple inheritance</h2>
+
+<p>While Java doesn’t allow multiple inheritance (meaning that we can’t extend from two different superclasses - only 1 superclass per subclass!), Java allows you to implement multiple inheritance because interfaces just require a class that implements it to define a particular method - there is no “inheritance” of a particular definition of a method.</p>
+
+<h3 id="why-interfaces">Why interfaces?</h3>
+
+<p>This all seems pretty useless doesn’t it? If we aren’t defining anything concrete, why bother with interfaces at all? (That’s what I thought too until I was enlightened 🤯).</p>
+
+<p><em>We bother because interfaces are used to <strong>encapsulate</strong> a small subset of functionality/a property.</em></p>
+
+<h4 id="what-does-that-mean">What does that mean?</h4>
+
+<p>Interfaces allow us to give <strong>concrete classes</strong> a certain functionality/property that perhaps isn’t appropriate to define in a subclass-superclass class hierarchy. Lets give an example to explain:</p>
+
+<p>Suppose we have the class hierarchy as shown below, where Animal, Striped, and Plain are abstract classes and the last level of classes are concrete.</p>
+
+<p><img src=".\media\ClassDiagram.png" alt="Class Hierarchy Diagram" style="zoom:40%;display:block;margin-left:auto;margin-right:auto;" /></p>
+
+<p>Suppose now that we want to be able to compare the number of stripes that an animal has. So that we can easily do something like</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Tiger</span> <span class="n">bob</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tiger</span><span class="o">();</span>
+<span class="nc">Zebra</span> <span class="n">tom</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Zebra</span><span class="o">();</span>
+<span class="n">bob</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">tom</span><span class="o">);</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bob</span> <span class="n">has</span> <span class="n">more</span> <span class="n">stripes</span> <span class="n">than</span> <span class="n">tom</span>
+</code></pre></div></div>
+
+<p>To do this we can implement the <strong>Comparable</strong> interface (Its in <code class="language-plaintext highlighter-rouge">Java.util</code>) in the <strong>Striped</strong> class and define the <code class="language-plaintext highlighter-rouge">compareTo()</code> method for the <strong>Striped</strong> class.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">Striped</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Striped</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Integer</span> <span class="n">stripes</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="n">nickname</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getNoOfStripes</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">stripes</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// Custom compareTo method</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Striped</span> <span class="n">animal</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">comp</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">stripes</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">animal</span><span class="o">.</span><span class="na">getNoOfStripes</span><span class="o">());</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">comp</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">nickname</span> <span class="o">+</span> <span class="s">" has more stripes than "</span> <span class="o">+</span> <span class="n">animal</span><span class="o">.</span><span class="na">nickname</span><span class="o">);</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">comp</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"They have the same number of stripes"</span><span class="o">);</span>
+        <span class="k">else</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">nickname</span> <span class="o">+</span> <span class="s">" has fewer stripes than "</span> <span class="o">+</span> <span class="n">animal</span><span class="o">.</span><span class="na">nickname</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">comp</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now any <strong>Animal</strong> that is <strong>Striped</strong> as well can be compared with each other based on the number of stripes that they have. This may allow additional functionality such as sorting striped animals by the number of stripes they have.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

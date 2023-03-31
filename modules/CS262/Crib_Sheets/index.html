@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>Computer Science Revision Guides</title>
+  </head>
+  <body>
+    <header class="page-header" role="banner">
+      
+      
+      <h1 class="project-name">Logic and Verification</h1>
+      <h2 class="project-tagline">A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick</h2>
+      
+      <a href="https://github.com/CSRG-Group/dcs-notes.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <!-- Layout for Module Homepages -->
+
+<a href="../">📚Home</a>
+
+<h2 id="logic-crib-sheet">Logic crib sheet</h2>
+
+<h3 id="propositional-consequence">Propositional consequence</h3>
+
+<p>We say that a formula \(X\) is a <strong>consequence</strong> of a set \(S\) of formulas, denoted \(S \vDash X\) , provided that \(X\) maps to \(T\) under every valuation that
+maps every member of \(S\) to \(T\) .</p>
+
+<p>X is a tautology if and only if \(\empty \vDash X\) , which we write as \(\vDash X\).</p>
+
+<h3 id="boolean-algebra-laws">Boolean algebra laws</h3>
+
+<p><img src="./images/booleanAlgebraLaws.png" alt="booleanAlgebraLaws" /></p>
+
+<h3 id="alpha-and-beta-formula">\(\alpha\) and \(\beta\) formula</h3>
+
+<p><img src="./images/alphaBetaFormula.png" alt="alphaBetaFormula" /></p>
+
+<h3 id="generalised-operands">Generalised operands</h3>
+
+<h4 id="generalised-disjunction">Generalised disjunction</h4>
+
+<ul>
+  <li>
+\[[X_1, X_2, ..., X_n] = X_1 \vee X_2 \vee ... \vee X_n\]
+  </li>
+  <li>\(v([X_1, X_2, ..., X_n]) = T\) if and only if \(v(X_i) = T, \quad \exists V_i\)</li>
+  <li>
+\[v([]) = v(\bot) = F\]
+  </li>
+</ul>
+
+<h4 id="generalised-conjunction">Generalised conjunction</h4>
+
+<ul>
+  <li>
+\[\langle X_1, X_2, ..., X_n \rangle = X_1 \wedge X_2 \wedge ... \wedge X_n\]
+  </li>
+  <li>\(v(\langle X_1, X_2, ..., X_n \rangle) = T\) if and only if \(v(X_i) = T, \quad \forall V_i\)</li>
+  <li>
+\[v(\langle \rangle) = v(\top) = T\]
+  </li>
+</ul>
+
+<h3 id="normal-forms">Normal forms</h3>
+
+<h4 id="disjunctive-normal-form">Disjunctive normal form</h4>
+
+<p>Start with \([ \langle X \rangle ]\), then repeatedly apply the following rules to the expression, terminating when only literals remain:</p>
+
+<p><img src="./images/DNFrules.png" alt="DNFrules" /></p>
+
+<ul>
+  <li>\(\beta\)-expansion = replace the conjunction containing \(\beta\) with two conjunctions containing all the same elements except \(\beta\), which is replaced by \(\beta_1\) and \(\beta\) respectively</li>
+  <li>\(\alpha\)-expansion = replace the \(\alpha\) within the conjunction with the two formulae \(\alpha_1\) and \(\alpha_2\) still within the conjunction</li>
+</ul>
+
+<h4 id="conjunctive-normal-form">Conjunctive normal form</h4>
+
+<p>Start with \(\langle [ X ] \rangle\), then repeatedly apply the following rules to the expression, terminating when only literals remain:</p>
+
+<p><img src="./images/CNFrules.png" alt="CNFrules" /></p>
+
+<ul>
+  <li>
+    <p>\(\beta\)-expansion = replace the \(\beta\) within the disjunction with the two formulae \(\beta_1\) and \(\beta_2\) still within the disjunction</p>
+  </li>
+  <li>
+    <p>\(\alpha\)-expansion = replace the disjunction containing \(\alpha\) with two disjunctions containing all the same elements except \(\alpha\), which is replaced by \(\alpha_1\) and \(\alpha_2\) respectively</p>
+  </li>
+</ul>
+
+<h3 id="proof-systems">Proof systems</h3>
+
+<h4 id="semantic-tableau-expansion">Semantic tableau expansion</h4>
+
+<p>Start with \(\neg X\) as the root node, as it is a refutation system, and we are looking for contradictions.</p>
+
+<p>In each step, select a branch and a non-literal formula on that branch, then apply the following rules (same as DNF):</p>
+
+<p><img src="./images/DNFrules.png" alt="DNFrules" /></p>
+
+<ul>
+  <li>
+    <p>\(\beta\)-expansion = add two new child vertices \(\beta_1\) and \(\beta_2\) to the end of the current branch</p>
+  </li>
+  <li>
+    <p>\(\alpha\)-expansion = add a child and grandchild vertices \(\alpha_1\) and \(\alpha_2\) respectively to the end of the current branch</p>
+  </li>
+</ul>
+
+<p>A closed branch is when either both \(N\) and \(\neg N\), or \(\bot\) occur on a branch. If all branches of the expansion are closed, the algorithm terminates.</p>
+
+<p>A tableau is called strict if each vertex in the tree only has one rule applied to it.</p>
+
+<p>A tableau proof of \(X\) is a closed tableau for \(\neg X\), and we write \(\vdash_t X\) to denote this.</p>
+
+<h4 id="resolution-expansion">Resolution expansion</h4>
+
+<p>Start with \(\neg X\) as the first disjunction, as it is a refutation system, and we are looking for contradictions.</p>
+
+<p>In each step, select a disjunction and a non-literal formula \(N\) within it, then apply the following rules to \(N\) (same as CNF):</p>
+
+<p><img src="./images/CNFrules.png" alt="CNFrules" /></p>
+
+<ul>
+  <li>
+    <p>\(\beta\)-expansion = split into two elements within the disjunction</p>
+  </li>
+  <li>
+    <p>\(\alpha\)-expansion = add two new lines</p>
+  </li>
+</ul>
+
+<p>There is another rule called the resolution rule.</p>
+
+<blockquote>
+  <p>Suppose \(D_1\) and \(D_2\) are two disjunctions, with \(N\) occurring in \(D_1\) and \(\neg N\) in \(D_2\).</p>
+
+  <p>Let \(D\) be the result of the following:</p>
+
+  <p>1) Delete all occurrences of \(N\) from \(D_1\)
+2) Delete all occurrences of \(\neg N\) from \(D_2\)
+3) Combine the resulting disjunctions</p>
+
+  <p>Finally, add \(D\) as a new line in the proof</p>
+
+  <p>There is a special case of when a disjunction \(D\) contains \(\bot\), in which case remove all instances of \(\bot\) from the \(D\)</p>
+</blockquote>
+
+<p>A resolution is called strict if each disjunction in the proof only has one rule applied to it.</p>
+
+<p>A resolution proof of \(X\) is a closed resolution for \(\neg X\), and we write \(\vdash_r X\) to denote this.</p>
+
+<h4 id="natural-deduction">Natural deduction</h4>
+
+<p>A system of assumptions, with sub-ordinate proofs (lemmas), enclosed within boxes, which can then be used later in the proof. The first formula in a box is an assumption, which is taken as axiomatic, only within the scope of that.</p>
+
+<p>The following rules can be applied:</p>
+
+<p><img src="./images/naturalDeductionAxiomaticRules1.png" alt="naturalDeductionAxiomaticRules1" /></p>
+
+<p><img src="./images/naturalDeductionAxiomaticRules2.png" alt="naturalDeductionAxiomaticRules2" /></p>
+
+<p><img src="./images/naturalDeductionDerivedRules.png" alt="naturalDeductionDerivedRules" /></p>
+
+<ul>
+  <li>Horizontal line indicates given the element(s) above it, the element(s) below it can be added within the same scope</li>
+  <li>Box indicates that given a lemma with an initial assumption and final conclusion within it, the element below it can be added to the outer scope</li>
+</ul>
+
+<p>Proof strategies:</p>
+
+<ul>
+  <li>Work inwards from both the start and the end</li>
+  <li>Split an implication \(X \rightarrow Y\), by assuming \(X\), then showing \(Y\) can be deduced from it, so hence \(X \rightarrow Y\)</li>
+  <li>Assume the \(\neg X\), show that \(\bot\) can be deduced from it, hence \(X\)</li>
+</ul>
+
+<p>We write \(\vdash_d X\) to denote a natural deduction proof of \(X\)</p>
+
+<h4 id="s-introduction">S-introduction</h4>
+
+<p>The above proof methods just prove tautologies. These allow us to prove propositional consequences by “introducing” premises from a proposition \(S\).</p>
+
+<h5 id="semantic-tableau">Semantic tableau</h5>
+
+<p>Any formula \(Y \in S\) can be added to the end of any tableau branch. We write \(S \vdash_t X\) if there is a closed tableau for \(\neg X\) from \(S\), allowing the S-introduction rule for tableau.</p>
+
+<h5 id="resolution">Resolution</h5>
+
+<p>For any formula \(Y \in S\), the line \([ Y ]\) can be added as a line to a resolution expansion. We write \(S \vdash_r X\) if there is a closed resolution expansion for \(\neg X\) from \(S\), allowing the S-introduction rule for resolution.</p>
+
+<h5 id="natural-deduction-1">Natural deduction</h5>
+
+<p>For any formula \(Y \in S\), the line \(Y\) can be added as a line anywhere within the natural deduction. We write \(S \vdash_d X\) if there is a natural deduction derivation for \(X\) from \(S\) , allowing the S-introduction rule for resolution.</p>
+
+
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+      
+      </footer>
+    </main>
+  </body>
+</html>

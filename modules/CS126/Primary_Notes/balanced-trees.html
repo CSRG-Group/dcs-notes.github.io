@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Binary Search & Self-Balancing Trees</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Binary Search & Self-Balancing Trees</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#ordered-maps">Ordered Maps</a></li><li><a href="#binary-search-trees">Binary Search Trees</a><ul><li><a href="#operations">Operations</a><ul><li><a href="#searching">Searching</a></li><li><a href="#insertion">Insertion</a></li><li><a href="#deletion">Deletion</a></li></ul></li><li><a href="#algorithm">Algorithm</a></li></ul></li><li><a href="#avl-trees">AVL trees</a><ul><li><a href="#properties-of-avl-trees">Properties of AVL Trees</a></li><li><a href="#operations-1">Operations</a></li><li><a href="#trinode-restructuring">Trinode Restructuring</a><ul><li><a href="#double-rotation">Double Rotation</a></li><li><a href="#rebalancing">Rebalancing</a></li></ul></li></ul></li><li><a href="#performance">Performance</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="skip-lists.html" title="skip-lists.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="graphs.html" title="graphs.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="ordered-maps">Ordered Maps</h2>
+
+<blockquote>
+  <p><strong>Binary search trees</strong> can be used as a concrete implementation of <strong>ordered maps</strong>, with items being stored in the tree ordered by their key. (Keys are assumed to come from a total order)</p>
+</blockquote>
+
+<p><strong>Search tables</strong> are <strong>another concrete implementation</strong> of ordered maps, but instead use a sorted sequence, normally an array, which is searchable with <strong>binary search</strong> in \(O(log\ n)\), <strong>but</strong> requires \(O(n)\) for insertion and removal.</p>
+
+<ul>
+  <li>This means they are <strong>only effective</strong> for either <strong>small maps</strong>, or cases where there are <strong>few</strong> insertions and deletions</li>
+</ul>
+
+<p>Ordered maps support nearest neighbour queries, finding next highest and next lowest items.</p>
+
+<h2 id="binary-search-trees">Binary Search Trees</h2>
+
+<p>The properties of binary search trees are:</p>
+
+<ul>
+  <li>External nodes store no items</li>
+  <li>All <strong>left children</strong> of any internal node have a <strong>smaller key</strong> than their <strong>parent node</strong></li>
+  <li>All <strong>right children</strong> of any internal node have a <strong>larger key</strong> than their <strong>parent node</strong></li>
+  <li><strong>In-order traversals</strong> yield a sequence of the keys in <strong>ascending order</strong></li>
+</ul>
+
+<h3 id="operations">Operations</h3>
+
+<h4 id="searching">Searching</h4>
+
+<p>Start at the root, and recursively proceed down the appropriate subtrees until the key or an external node is found</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Let</span> <span class="n">r</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">root</span> <span class="n">node</span> <span class="n">of</span> <span class="n">the</span> <span class="n">tree</span> <span class="n">to</span> <span class="n">search</span>
+<span class="nc">Let</span> <span class="n">k</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">key</span> <span class="n">to</span> <span class="n">search</span> <span class="k">for</span>
+<span class="nf">Search</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">k</span><span class="o">)</span>
+  
+<span class="nc">Function</span> <span class="nf">Search</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">k</span><span class="o">)</span> <span class="c1">// n for node, k for key</span>
+	<span class="k">if</span> <span class="n">n</span> <span class="n">is</span> <span class="n">an</span> <span class="n">external</span> <span class="n">node</span>
+		<span class="k">return</span> <span class="kc">null</span> <span class="c1">// key is not in the tree</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">.</span><span class="na">key</span><span class="o">()</span>
+		<span class="k">return</span> <span class="nf">Search</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">leftChild</span><span class="o">(),</span> <span class="n">k</span><span class="o">)</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">.</span><span class="na">key</span><span class="o">()</span>
+		<span class="k">return</span> <span class="nf">Search</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">rightChild</span><span class="o">(),</span> <span class="n">k</span><span class="o">)</span>
+	<span class="k">else</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="o">.</span><span class="na">key</span><span class="o">()</span>
+		<span class="k">return</span> <span class="n">n</span> <span class="c1">// key is at the current node, n</span>
+</code></pre></div></div>
+
+<h4 id="insertion">Insertion</h4>
+
+<p>Perform the searching operation, but when an external node is found, instead of returning that the key is not present, set that internal node as the key to insert, and give it two external child nodes</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Function</span> <span class="nf">Insert</span><span class="o">(</span><span class="n">n</span><span class="o">)</span> <span class="c1">// node to insert is n</span>
+	<span class="nc">Start</span> <span class="n">at</span> <span class="n">root</span> <span class="n">and</span> <span class="n">search</span> <span class="n">until</span> <span class="n">external</span> <span class="n">node</span> <span class="n">is</span> <span class="n">found</span>
+		<span class="n">e</span> <span class="o">&lt;-</span> <span class="n">the</span> <span class="n">external</span> <span class="n">node</span> <span class="n">terminating</span> <span class="n">the</span> <span class="n">search</span> <span class="n">algorithm</span>
+		<span class="n">e</span> <span class="o">&lt;-</span> <span class="n">n</span>
+	<span class="n">e</span><span class="o">.</span><span class="na">leftChild</span> <span class="o">&lt;-</span> <span class="kc">null</span>  <span class="c1">// Add two external child nodes </span>
+	<span class="n">e</span><span class="o">.</span><span class="na">rightChild</span> <span class="o">&lt;-</span> <span class="kc">null</span> <span class="c1">// to e so that it is now internal</span>
+</code></pre></div></div>
+
+<h4 id="deletion">Deletion</h4>
+
+<p>Dependent on the number of children of the node to delete, different operations are needed to delete the node</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Function</span> <span class="nf">Delete</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="c1">// delete node with key k</span>
+	<span class="nc">Use</span> <span class="nf">Search</span><span class="o">(</span><span class="n">root</span><span class="o">,</span> <span class="n">k</span><span class="o">)</span> <span class="n">to</span> <span class="n">find</span> <span class="n">node</span><span class="o">,</span> <span class="n">n</span><span class="o">,</span> <span class="n">with</span> <span class="n">key</span> <span class="n">k</span>
+	<span class="k">if</span> <span class="n">the</span> <span class="n">node</span> <span class="n">has</span> <span class="n">no</span> <span class="n">internal</span> <span class="n">children</span>
+		<span class="c1">// Overwrite the node to become an empty external node</span>
+		<span class="n">n</span> <span class="o">&lt;-</span> <span class="kc">null</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="n">the</span> <span class="n">node</span> <span class="n">has</span> <span class="n">only</span> <span class="mi">1</span> <span class="n">internal</span> <span class="n">child</span>
+		<span class="c1">// Overwrite it with the internal child node</span>
+		<span class="n">n</span> <span class="o">&lt;-</span> <span class="n">either</span> <span class="n">leftChild</span> <span class="n">or</span> <span class="n">rightChild</span>
+	<span class="k">else</span> <span class="c1">// the node has two internal children</span>
+		<span class="n">i</span> <span class="o">&lt;-</span> <span class="n">node</span> <span class="n">that</span> <span class="n">immediately</span> <span class="n">follows</span> <span class="n">it</span> <span class="n">in</span> <span class="n">an</span> <span class="n">in</span><span class="o">-</span><span class="n">order</span> <span class="n">traversal</span>
+		<span class="c1">// i is the left-most descendent of n.rightChild()</span>
+		<span class="n">n</span> <span class="o">&lt;-</span> <span class="n">i</span>
+		<span class="n">i</span> <span class="o">&lt;-</span> <span class="kc">null</span> <span class="c1">// Set i to be empty external node</span>
+</code></pre></div></div>
+
+<h3 id="algorithm">Algorithm</h3>
+
+<p>In all cases, the <strong>space complexity</strong> is \(O(n)\)</p>
+
+<p>The time complexity for searching, inserting and deleting is dependent on the height of the tree:</p>
+<ul>
+  <li>If the tree is <strong>balanced</strong>, then the height is \(log\ n\), so the time for these operations is \(O(log\ n)\)</li>
+  <li>In the worst case, the tree can be <strong>totally unbalanced</strong>, just a straight line of internal nodes, in which case the height is \(n\), so the time for these operations is \(O(n)\)</li>
+</ul>
+
+<h2 id="avl-trees">AVL trees</h2>
+
+<blockquote>
+  <p><strong>AVL trees</strong> are a concrete implementation of <strong>self-balancing</strong> binary search tree, with insertion and deletion operations designed to re-arrange the tree to ensure it remains balanced. It is named after its creators, Adelson-Velsky and Landis</p>
+</blockquote>
+
+<p>Other self-balancing binary search trees exist, such as red-black trees, but this is a common approach to implementing such an ADT.</p>
+
+<h3 id="properties-of-avl-trees">Properties of AVL Trees</h3>
+
+<p><em>These are also properties of balanced binary trees in general.</em></p>
+
+<blockquote>
+  <p>For every internal node in the tree, the <strong>heights of the child subtrees</strong> can differ by <strong>at most 1</strong>.</p>
+
+  <p>This ensure that the height of the balanced tree storing \(n\) keys is \(O(log\ n)\).</p>
+</blockquote>
+
+<p><strong>Proof of Height. Induction.</strong> Le use bound \(n(h)\): the minimum number of internal nodes of an AVL tree of height \(h\).</p>
+
+<ul>
+  <li>We can see that \(n(1) = 1\) and \(n(2) =2\)</li>
+  <li>For \(n &gt; 2\), an AVL Tree of height \(h\) contains the root node, one AVL subtree of height \(n-1\) and another of height \(n-2\) at most.</li>
+  <li>That is, \(n(h) = 1 + n(h-1) + n(h-2)\)</li>
+  <li>Knowing that \(n(h-1) &gt; n(h-2) \Rightarrow n(h) &gt; 2n(h-2) \Rightarrow n(h) &gt; 2^{\frac{h}{2}-1}\)</li>
+  <li>Therefore, \(h &lt; 2log_2(n(h)) + 2\)</li>
+</ul>
+
+<p>Thus height of AVL Tree is \(O(log\ n)\).</p>
+
+<h3 id="operations-1">Operations</h3>
+
+<p><strong>Searching</strong>, <strong>insertion</strong> and <strong>deletion</strong> is approached as it is in a normal binary search tree. However, after every <strong>insertion</strong> and <strong>deletion</strong> the AVL Tree is <strong>restructured</strong> to make sure it is <strong>balanced</strong>. This is because insertions and deletions change the number of nodes in the tree and this <strong>may</strong> make it unbalanced.</p>
+
+<h3 id="trinode-restructuring">Trinode Restructuring</h3>
+
+<p>We will refer to the height of a node \(n\), as the height of the <strong>subtree</strong> that \(n\) is the <strong>root</strong> of. Whenever a particular node \(p\), we know that it’s children nodes \(l\) and \(r\) have heights that differ by <strong>at least 2</strong>.</p>
+
+<div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode1.svg" />
+  <img src="./part10.assets/trinode2.svg" />
+</div>
+
+<p>To rebalance \(p\), we have to make the <strong>”taller”</strong> child the new <strong>parent</strong>. To do this</p>
+
+<ul>
+  <li>If \(p\) is smaller than the “taller” child (means \(r\) is taller), then we set \(p\) <strong>new</strong> right child to \(r\)‘s <strong>current</strong> left child and set \(p\) as \(r\)’s <strong>new</strong> left child. Otherwise, we set \(p\) <strong>new</strong> left child to \(l\)‘s <strong>current</strong> right child, and set \(p\) as \(l\)’s <strong>new</strong> right child.</li>
+</ul>
+
+<figure>
+  <div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode2.svg" />
+  <img src="./part10.assets/rightarrow.svg" />
+  <img src="./part10.assets/trinode2.1.svg" />
+  <img src="./part10.assets/rightarrow.svg" />
+  <img src="./part10.assets/trinode2.2.svg" />
+</div>
+    <figcaption>Left Child is Taller</figcaption>
+</figure>
+
+<p>This is known as a <strong>single rotation</strong>. There is another case where, a <strong>double rotation</strong> is required to properly rebalance \(p\).</p>
+
+<figure>
+  <div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode4.svg" />
+  <img src="./part10.assets/trinode5.svg" />
+</div>
+  <figcaption>Double Rotation Cases</figcaption>
+</figure>
+
+<h4 id="double-rotation">Double Rotation</h4>
+
+<p>The idea behind it is the same, the only thing is that we have to rotate the “taller” child left or right for \(l\) and \(r\) respectively, to arrive at the <strong>single rotation case</strong>.</p>
+
+<figure>
+  <div align="center" style="display:flex;justify-content:space-evenly;">
+  <img src="./part10.assets/trinode5.svg" />
+  <img src="./part10.assets/rightarrow.svg" />
+    <img src="./part10.assets/trinode5.1.svg" />
+    <img src="./part10.assets/rightarrow.svg" />
+    <img src="./part10.assets/trinode5.2.svg" />
+</div>
+    <figcaption>Double Rotation when Right Child is Taller</figcaption>
+</figure>
+
+<h4 id="rebalancing">Rebalancing</h4>
+
+<blockquote>
+  <p>The reason I have used the <code class="language-plaintext highlighter-rouge">..</code> and <code class="language-plaintext highlighter-rouge">...</code> symbols in the diagram above is to emphasise that the sub-trees may <strong>extend</strong> by an <strong>arbitrary amount</strong>, but as long as they were previously <strong>rebalanced</strong> we only need to consider the few nodes shown in the diagram to <strong>rebalance</strong> node \(p\).</p>
+</blockquote>
+
+<p>Consequently, after the <strong>insertion</strong> or <strong>deletion</strong> of a node, the tree may be unbalanced somewhere higher up in the tree. If \(p\) is not the <strong>overall</strong> root node, we will have to continue scanning upwards to check if any nodes are unbalanced.</p>
+
+<h2 id="performance">Performance</h2>
+
+<p>In all cases, the <strong>space complexity</strong> is \(O(n)\), and <strong>searching</strong> takes \(O(log\ n)\) time -  as with any balanced binary tree.</p>
+
+<p><strong>Insertion</strong> and <strong>deletion</strong> are also \(O(log\ n)\). This is because searching for the element is \(O(log\ n)\), and then restructuring the tree to maintain the balance property is \(O(log\ n)\) because scanning upwards from an external node to the root is proportional to the height of the tree</p>
+
+<p>So the total time complexity for these 2 operations is also \(O(log\ n)\).</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

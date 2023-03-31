@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8"><!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>Computer Science Revision Guides</title>
+  </head>
+  <body>
+    <header class="page-header" role="banner">
+      
+      
+      <h1 class="project-name">Contributing</h1>
+      <h2 class="project-tagline">A Tutorial on modifying and adding contributors to the site</h2>
+      
+      <a href="https://github.com/CSRG-Group/dcs-notes.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="introduction">Introduction</h1>
+
+<p>Contributing is a key part of the function of warwick.guide credit so a systems to credit contributes has been created not just on the front page but for individual pages and question submissions.</p>
+
+<p>Contributors can now add contact details so other students who are having difficulty or have found an error can contact those who have a good knowledge of the content. Declaring yourself as a contributor and adding contact details is optional however teaching others is good revision and it is useful to be able to contact the person who wrote the question.</p>
+
+<h1 id="new-contributors">New Contributors</h1>
+<p>Contributors now have a page with the name and contact information and example can be seen <a href="/contributors/index.html?name=Joseph%20Evans">here</a></p>
+
+<p>To add a contributor a new contributor needs to be addded to the <code class="language-plaintext highlighter-rouge">_contributors/contributors.json</code> file an example is shown below</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Joseph Evans"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="s2">"https://avatars.githubusercontent.com/u/72259471?v=4"</span><span class="p">,</span><span class="w">
+      </span><span class="err">*</span><span class="w"> </span><span class="nl">"github"</span><span class="p">:</span><span class="s2">"LoudShadow"</span><span class="p">,</span><span class="w">
+      </span><span class="err">*</span><span class="w"> </span><span class="nl">"nick"</span><span class="p">:</span><span class="s2">"Joseph"</span><span class="p">,</span><span class="w">
+      </span><span class="err">*</span><span class="w"> </span><span class="nl">"discord"</span><span class="p">:</span><span class="s2">"sharpshot2566#2529"</span><span class="p">,</span><span class="w">
+      </span><span class="err">*</span><span class="w"> </span><span class="nl">"info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"more info"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>items shown with a * are optional</p>
+
+<h2 id="additional-info">Additional info</h2>
+<p>More details can be added by adding a new key and value to the json object they will be displayed in plain text in the table</p>
+
+<h3 id="key-link-pairs">Key link pairs</h3>
+<p>You may wish additional details to be added with a link for example to your website this can be done with a value link object in the vale</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"website":{"value": "my Site","link": "http://www.mysite.com/"}
+</code></pre></div></div>
+<h2 id="special-keys">Special keys</h2>
+<p>Some of the keys have additional formatting to improve usability and their use may differ from standard</p>
+
+<h3 id="name">name</h3>
+<p>This will be displayed at the page header and is used to reference the page across the site</p>
+
+<h3 id="nick">nick</h3>
+<p>If this is set it will replace instances of the name on your page</p>
+<h3 id="image">Image</h3>
+<p>This should be a url that points to your profile image a url can be obtained from your github profile by right clicking on your picture and selecting <code class="language-plaintext highlighter-rouge">copy image address</code></p>
+
+<h3 id="github">Github</h3>
+<p>This should be your github name and will add a link you your github profile</p>
+<h3 id="discord">Discord</h3>
+<p>this must be your full discord username and will create a link to your profile</p>
+
+<h1 id="using-contributors">Using contributors</h1>
+
+<h2 id="note-pages">Note Pages</h2>
+<p>contributors can be credited in the notes by using the contributors value in the YAML font matter at the top of the page. THis name should be the same as the supplied name</p>
+
+<p>credit will then be added to the page footer</p>
+
+<p>this should work with any page that has a layout deriving from <code class="language-plaintext highlighter-rouge">notes.html</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>contributors:
+  - Person1
+  - Person2
+</code></pre></div></div>
+
+<h2 id="module-index-pages">module index pages</h2>
+<p>Credit can be given to the notes pages on tht index page by adding your name to the authors or contributors on the module yml page in <code class="language-plaintext highlighter-rouge">_data</code></p>
+
+<h2 id="quiz-questions">Quiz questions</h2>
+<p>The use of contributors in the question see the Quiz tutorial will add a small link under the question linking to your page.</p>
+
+<h2 id="direct-link">Direct link</h2>
+<p>A direct link to your page is found at <code class="language-plaintext highlighter-rouge">https://warwick.guide/contributors/index.html?name=&lt;Your%20Name&gt;</code></p>
+
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+      
+      </footer>
+    </main>
+  </body>
+</html>

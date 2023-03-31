@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes HTML</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">HTML</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction">Introduction</a></li><li><a href="#html-nesting-structure">HTML Nesting Structure</a><ul><li><a href="#parent">Parent</a></li><li><a href="#child">Child</a></li><li><a href="#ancestor">Ancestor</a></li><li><a href="#descendant">Descendant</a></li><li><a href="#sibling">Sibling</a></li></ul></li><li><a href="#document-object-model">Document Object Model</a></li><li><a href="#basic-syntax">Basic Syntax</a><ul><li><a href="#empty-tags">Empty Tags</a></li></ul></li><li><a href="#html-nesting">HTML Nesting</a></li><li><a href="#character-entities">Character Entities</a></li><li><a href="#block-vs-inline">Block vs Inline</a></li><li><a href="#validation">Validation</a></li><li><a href="#common-tags">Common Tags</a><ul><li><a href="#doctypes-r">Doctypes (R)</a></li><li><a href="#html-r">HTML (R)</a></li><li><a href="#head-r">Head (R)</a></li><li><a href="#title">Title</a></li><li><a href="#meta--text-encoding">Meta / Text encoding</a></li><li><a href="#body-r">Body (R)</a></li><li><a href="#headings">Headings</a></li><li><a href="#a-links">A (Links)</a></li><li><a href="#img-image">Img (Image)</a></li><li><a href="#strong">Strong</a></li><li><a href="#p">P</a></li></ul></li><li><a href="#div-division">Div (Division)</a><ul><li><a href="#abbr-abbreviation">Abbr (Abbreviation)</a></li><li><a href="#br-break">Br break</a></li><li><a href="#code">Code</a></li><li><a href="#em-emphasis">Em (emphasis)</a></li><li><a href="#mark">Mark</a></li><li><a href="#small">Small</a></li><li><a href="#span">Span</a></li><li><a href="#lists">Lists</a></li></ul></li><li><a href="#tables">Tables</a><ul><li><a href="#modifying-tables">Modifying tables</a><ul><li><a href="#table-header">table header</a></li><li><a href="#table-footer">table footer</a></li><li><a href="#caption">caption</a></li><li><a href="#rowspan">rowspan</a></li><li><a href="#column-span">column span</a></li></ul></li></ul></li><li><a href="#html-forms">HTML Forms</a><ul><li><a href="#form-elements">Form Elements</a><ul><li><a href="#input">Input</a><ul><li><a href="#other-attributes">Other Attributes</a></li></ul></li><li><a href="#select">Select</a></li></ul></li><li><a href="#accessibility">Accessibility</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="CSS.html" title="CSS.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="introduction">Introduction</h2>
+<p>Stands for HyperText Markup Language.</p>
+
+<p>HTML is a <strong>semantic</strong> language it describes the structure of the document and not the content.</p>
+
+<h2 id="html-nesting-structure">HTML Nesting Structure</h2>
+<h3 id="parent">Parent</h3>
+<p>A tag is a parent of another if it immediately encloses the tag.</p>
+<h3 id="child">Child</h3>
+<p>A tag is a child of another if it is immediately enclosed by the tag.</p>
+<h3 id="ancestor">Ancestor</h3>
+<p>A tag is an ancestor if it is the parent or the parent of an ancestor of a tag.</p>
+<h3 id="descendant">Descendant</h3>
+<p>A tag is an descendant if it is the child or the child of a descendant of a tag.</p>
+<h3 id="sibling">Sibling</h3>
+<p>Two tags are siblings if they share a parent.</p>
+
+<h2 id="document-object-model">Document Object Model</h2>
+<p>The HTML document object Model is a tree of the objects within a documet</p>
+
+<p>starts with the document ant root element <code class="language-plaintext highlighter-rouge">&lt;html&gt;</code> includes all the tags in a structured tree to allow for navigation.</p>
+
+<h2 id="basic-syntax">Basic Syntax</h2>
+<p>HTML uses code tags for opening and closing to give information about the content inside, opening use <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> and closing starts with a backslash <code class="language-plaintext highlighter-rouge">&lt;/&gt;</code></p>
+
+<p>The tags can also contain attributes with additional information like the class or ids.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Desc</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Opening tag</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;a href="www.google.com"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>element Name</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;a</code></td>
+    </tr>
+    <tr>
+      <td>Attribute</td>
+      <td><code class="language-plaintext highlighter-rouge">href="www.google.com"</code></td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td><code class="language-plaintext highlighter-rouge">a search engine</code></td>
+    </tr>
+    <tr>
+      <td>closing tag</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;/a&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example of a HTML tag: <code class="language-plaintext highlighter-rouge">&lt;a href="www.google.com"&gt; a search engine &lt;/a&gt;</code></p>
+
+<h3 id="empty-tags">Empty Tags</h3>
+
+<p>Some tags have no content and so are empty, a closing tag is not needed.
+<code class="language-plaintext highlighter-rouge">&lt;meta charset="utf-8"&gt;</code></p>
+
+<h2 id="html-nesting">HTML Nesting</h2>
+<p>All closing tags should occur in the reverse order they were opened. e.g</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;h1&gt; Share your &lt;strong&gt; Travels &lt;/strong&gt;&lt;h1&gt;</code></p>
+
+<p>is correct</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;h1&gt; Share your &lt;strong&gt; Travels &lt;h1&gt;&lt;/strong&gt;</code></p>
+
+<p>is incorrect</p>
+
+<h2 id="character-entities">Character Entities</h2>
+<p>Some symbols need to be represented with special characters so they are formatted correctly.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entity</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&amp;nbsp;</code></td>
+      <td>non breakable space</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&amp;lt;</code></td>
+      <td>&lt;</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&amp;gt;</code></td>
+      <td>&gt;</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&amp;copy;</code></td>
+      <td>©</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&amp;trade;</code></td>
+      <td>™</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="block-vs-inline">Block vs Inline</h2>
+<p>Some elements are blocks these start and end with a new line. Examples are:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;p&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;table&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;div&gt;</code></li>
+</ul>
+
+<p>Other elements are inline and can normally be integrated into a line of text without breaking it up.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;a&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;img&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;span&gt;</code></li>
+</ul>
+
+<h2 id="validation">Validation</h2>
+<p>for validation visit 
+<a href="https://validator.w3.org/">W3c</a>
+There is also a live html validation extension in VSCODE called: VS Code W3C Validation extention.</p>
+
+<h2 id="common-tags">Common Tags</h2>
+
+<h3 id="doctypes-r">Doctypes (R)</h3>
+<p>Every HTML document has a doctype definition 
+Variations of HTML, tells the browser what to expect.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;!DOCTYPE html&gt;</code></p>
+
+<h3 id="html-r">HTML (R)</h3>
+<p>Specifies content as html.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;html&gt; Content &lt;/html&gt;</code></p>
+
+<h3 id="head-r">Head (R)</h3>
+<p>Typically contains information about the page title etc.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;head&gt;  &lt;/head&gt;</code></p>
+
+<h3 id="title">Title</h3>
+<p>Title of the page shown in the browser tab.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;title&gt; Title of the page &lt;/title&gt;</code></p>
+
+<h3 id="meta--text-encoding">Meta / Text encoding</h3>
+<p>character encoding can be declared using the meta tag.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;meta charset="utf-8"&gt;</code></p>
+
+<h3 id="body-r">Body (R)</h3>
+<p>contains the main page of information.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;body&gt; content &lt;/body&gt;</code></p>
+
+<h3 id="headings">Headings</h3>
+<p>uses h1 through h6 in decreasing size.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;h1&gt;Welcome to cs136&lt;/h1&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;h2&gt;Welcome to cs136&lt;/h2&gt;</code></li>
+  <li>…..</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;h6&gt;Welcome to cs136&lt;/h6&gt;</code></li>
+</ul>
+
+<h3 id="a-links">A (Links)</h3>
+<p>produces a link that whn clicking on the content redirects to another page
+uses attribute href to specify page.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;a href="www.google.com"&gt; a search engine &lt;/a&gt;</code></p>
+
+<p>href can link to external sites but can also link to within the page e.g <code class="language-plaintext highlighter-rouge">href="#top"</code> will move the page to a tag with id top.</p>
+
+<h3 id="img-image">Img (Image)</h3>
+<p>Displays an image on the page.</p>
+
+<p>Uses attribute src to specify location.</p>
+
+<p><code class="language-plaintext highlighter-rouge">alt</code> attribute is a description for software to interpret the image.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;img src="file.gif" alt="file"&gt;</code></p>
+
+<h3 id="strong">Strong</h3>
+<p>makes any content bold</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;strong&gt; content &lt;/strong&gt;</code></p>
+
+<h3 id="p">P</h3>
+<p>specifies a paragraph of text</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;p&gt; paragraph &lt;/p&gt;</code></p>
+
+<h2 id="div-division">Div (Division)</h2>
+<p>defines site structure</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;div&gt; content &lt;/div&gt;</code></p>
+
+<h3 id="abbr-abbreviation">Abbr (Abbreviation)</h3>
+<p>used to define an abbreviation</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt; was founded in 1948</code></p>
+
+<h3 id="br-break">Br break</h3>
+<p>a break similar to newline no content</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;br&gt;</code></p>
+
+<h3 id="code">Code</h3>
+<p>give content a code like look</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;code&gt; this is code &lt;/code&gt;</code></p>
+
+<h3 id="em-emphasis">Em (emphasis)</h3>
+<p>provides emphasis usually italics</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;em&gt; no &lt;/em&gt;</code></p>
+
+<h3 id="mark">Mark</h3>
+<p>highlights the content</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;mark&gt; highlight &lt;/mark&gt;</code></p>
+
+<h3 id="small">Small</h3>
+<p>makes text small</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;small&gt; small text &lt;/small&gt;</code></p>
+
+<h3 id="span">Span</h3>
+<p>used to specify text for specific font and color changes</p>
+
+<p><code class="language-plaintext highlighter-rouge">the sky is &lt;span style="color:blue;font-weight:bold"&gt;blue&lt;/span&gt;</code></p>
+
+<h3 id="lists">Lists</h3>
+
+<ul>
+  <li>ordered list <code class="language-plaintext highlighter-rouge">&lt;ol&gt;</code>
+    <ul>
+      <li>List item <code class="language-plaintext highlighter-rouge">&lt;li&gt;</code></li>
+    </ul>
+  </li>
+  <li>Unordered list <code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code>
+    <ul>
+      <li>List item <code class="language-plaintext highlighter-rouge">&lt;li&gt;</code></li>
+    </ul>
+  </li>
+  <li>descriptive list <code class="language-plaintext highlighter-rouge">&lt;dl&gt;</code>
+    <ul>
+      <li>list terms <code class="language-plaintext highlighter-rouge">&lt;dt&gt;</code></li>
+      <li>List descriptions <code class="language-plaintext highlighter-rouge">&lt;dd&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tables">Tables</h2>
+<p>Allows displaying data in rows and columns uses 3 tags.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;table&gt; &lt;/table&gt;</code>  overall table</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;tr&gt; &lt;/tr&gt;</code> table row</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;td&gt; &lt;/td&gt;</code> table data</li>
+</ul>
+
+<p>example:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Name<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Age <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>Kate<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>24 <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>James<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>35 <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>John<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>56 <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+</code></pre></div></div>
+
+<p>Tables default to no lines. To include lines they should be specified in css.</p>
+
+<h3 id="modifying-tables">Modifying tables</h3>
+<h4 id="table-header">table header</h4>
+<p>using <code class="language-plaintext highlighter-rouge">&lt;thead&gt;</code> around the first <code class="language-plaintext highlighter-rouge">&lt;tr&gt;</code> specifies it as a header row</p>
+<h4 id="table-footer">table footer</h4>
+<p>using <code class="language-plaintext highlighter-rouge">&lt;tfoot&gt;</code> around the last <code class="language-plaintext highlighter-rouge">&lt;tr&gt;</code> specifies it as a footer row</p>
+<h4 id="caption">caption</h4>
+<p>Just inside the table a caption can be added using
+<code class="language-plaintext highlighter-rouge">&lt;caption&gt; &lt;/caption&gt;</code></p>
+
+<h4 id="rowspan">rowspan</h4>
+
+<p>Data can cross multiple rows through the use of rowspan</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;td rowspan="3"&gt; Data &lt;/td&gt;</code></p>
+
+<h4 id="column-span">column span</h4>
+<p>Data can cross multiple columns through the use of colspan</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;td colspan="2"&gt; Data &lt;/td&gt;</code></p>
+
+<h2 id="html-forms">HTML Forms</h2>
+
+<p>These are a way of gathering data form the user specified by <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> and providing them to the server
+has attributes:</p>
+<ul>
+  <li>action - what to do when the data is submitted</li>
+  <li>method - The way the data is sent Get or Set</li>
+  <li>accept-charset - The charset accepted by the form</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;form method ="post" action="auth.php"</code></p>
+<h3 id="form-elements">Form Elements</h3>
+<p>A form element allows the user to add information to the form for submission there are several types</p>
+
+<p>The element can also have a name attribute this can be used to reference the data the user entered</p>
+
+<h4 id="input">Input</h4>
+<p>used to select data form the user can have many different types</p>
+
+<ul>
+  <li>text - text input</li>
+  <li>password - input only shows dots</li>
+  <li>submit - a button the user can use to submit the form</li>
+  <li>radio - a circular checkbox can only select one in a group ,grouped by the attribute <code class="language-plaintext highlighter-rouge">name</code>, need attribute <code class="language-plaintext highlighter-rouge">value</code>, use <code class="language-plaintext highlighter-rouge">checked</code> for the default</li>
+</ul>
+
+<p>other types</p>
+<ul>
+  <li>color</li>
+  <li>date</li>
+  <li>datetime</li>
+  <li>datetime-local</li>
+  <li>email</li>
+  <li>month</li>
+  <li>number</li>
+  <li>range</li>
+  <li>search</li>
+  <li>tel</li>
+  <li>time</li>
+  <li>url</li>
+  <li>week
+support is patchy and not uniform across browsers
+    <h5 id="other-attributes">Other Attributes</h5>
+  </li>
+  <li>value - the default value needed to be deleted before entering info</li>
+  <li>placeholder - the suggested value is a ghost value</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;input type="text", name="name"&gt;</code></p>
+
+<h4 id="select">Select</h4>
+<p>Allows the user to select from pre-chosen options uses option</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"location"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option&gt;</span> Choose a country<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span> France<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span> United Kingdom <span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span> Germany <span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></div></div>
+<p>in options</p>
+
+<p>attribute <code class="language-plaintext highlighter-rouge">value</code> can be used but defaults to the content
+attribute <code class="language-plaintext highlighter-rouge">selected</code> can be used to select the default</p>
+<h3 id="accessibility">Accessibility</h3>
+<p>A label can be created with the attribute <code class="language-plaintext highlighter-rouge">for</code>, by making it equal to an element software can interpret it to aid in accessability for people with assistive tools.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">first_name</span><span class="nt">&gt;</span>First Name:<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"fname"</span> <span class="na">id=</span><span class="s">"first_name"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

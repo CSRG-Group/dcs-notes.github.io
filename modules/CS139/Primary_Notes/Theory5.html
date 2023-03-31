@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Web Browsers, servers and state</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Web Browsers, servers and state</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#web-browsers">Web Browsers</a></li><li><a href="#web-servers">Web Servers</a></li><li><a href="#state">State</a><ul><li><a href="#solutions">Solutions</a><ul><li><a href="#query-strings">Query Strings</a></li><li><a href="#cookies">Cookies</a></li><li><a href="#sessions">Sessions</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Theory4.html" title="Theory4.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory6.html" title="Theory6.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="web-browsers">Web Browsers</h2>
+<p>Web browsers interprets data into one in a recognized form</p>
+
+<p>Converting HTML page and rendering as a readable web page</p>
+
+<p>Each browser behaved differently and <strong>loosely</strong> conform to standards</p>
+
+<p>Each page makes multiple requests</p>
+
+<p>Local caching can reduce load times</p>
+
+<p>Most offer additional features, Search engine auto complete etc…</p>
+
+<h2 id="web-servers">Web Servers</h2>
+
+<p>Typically powerful computer to respond to HTTP requests.</p>
+
+<p>Often running NGINX or Apache</p>
+
+<p>Also contains</p>
+<ul>
+  <li>Operating System (Linux, Windows….)</li>
+  <li>Database Software (MySQL , MongoDB)</li>
+  <li>Scripting Language (PHP, python..)</li>
+</ul>
+
+<h2 id="state">State</h2>
+<p>HTTP is a state-less protocol , in a local process the computer only knowns about current memory and instructions</p>
+
+<p>The Server treats every request as a completely new request</p>
+
+<p>Many servers can be responding to many users making it hard to store data.</p>
+
+<p>Rest is used to transfer the current state of the communication between the client and the server. Most common operations are GET and POST</p>
+
+<h3 id="solutions">Solutions</h3>
+<p>there are 3 solutions to store state across requests</p>
+
+<h4 id="query-strings">Query Strings</h4>
+<p>limited to 2048 on a get Request
+A simple store of variables and names</p>
+
+<p>Typically used for requesting Data from a server</p>
+
+<p>Can alow for more dynamic URLS by having a more unique query string that can 
+be more easily interpreted</p>
+
+<h4 id="cookies">Cookies</h4>
+
+<p>Data unique to the client is created by the server</p>
+
+<p>The cookie is sent to the client when the first request is made</p>
+
+<p>The client includes the cookie in subsequent requests</p>
+
+<p>Cookies can expire - Server sets this</p>
+
+<h4 id="sessions">Sessions</h4>
+
+<p>Store state like cookies but just for the time the user is active with the site</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

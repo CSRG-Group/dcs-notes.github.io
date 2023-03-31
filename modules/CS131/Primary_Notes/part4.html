@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Sequences and Series</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Sequences and Series</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#sequences">Sequences</a><ul><li><a href="#convergent-sequences">Convergent Sequences</a><ul><li><a href="#combination-rules-for-convergent-sequences">Combination Rules for Convergent Sequences</a></li><li><a href="#exercise">Exercise</a></li></ul></li><li><a href="#bounded-sequences">Bounded sequences</a></li><li><a href="#subsequences">Subsequences</a></li><li><a href="#basic-properties-of-convergent-sequences">Basic Properties of Convergent Sequences</a><ul><li><a href="#exercise-1">Exercise</a></li></ul></li><li><a href="#divergent-sequences">Divergent Sequences</a></li><li><a href="#basic-convergent-sequences">Basic convergent sequences</a></li></ul></li><li><a href="#series">Series</a><ul><li><a href="#basic-properties-of-convergent-series">Basic Properties of Convergent Series</a></li><li><a href="#the-comparison-test">The Comparison Test</a><ul><li><a href="#exercises">Exercises</a></li></ul></li><li><a href="#the-ratio-test">The Ratio Test</a></li><li><a href="#basic-convergent-series">Basic Convergent Series</a></li><li><a href="#basic-divergent-series">Basic Divergent Series</a></li><li><a href="#power-series">Power series</a><ul><li><a href="#basic-properties-of-power-series">Basic Properties of Power Series</a></li></ul></li><li><a href="#radius-of-convergence">Radius of convergence</a></li><li><a href="#addendum-partial-fractions">Addendum: Partial Fractions</a></li></ul></li><li><a href="#recurrences">Recurrences</a><ul><li><a href="#homogenous-recurrences">Homogenous recurrences</a></li><li><a href="#exercise-2">Exercise</a></li><li><a href="#non-homogenous-recurrences">Non-homogenous recurrences</a></li></ul></li><li><a href="#decimal-representation-of-reals">Decimal Representation of Reals</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part3.html" title="part3.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part5.html" title="part5.html">Next👉</a>
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="sequences">Sequences</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note15.pdf">Link to the PDF.</a></p>
+
+<p>A sequence \((a_n)\) is an infinite list of numbers \((a_0, a_1,...)\). We
+can define sequences through <em>nth term</em> rules or <em>recursively</em>.</p>
+
+<h3 id="convergent-sequences">Convergent Sequences</h3>
+
+<p>A sequence \(a_n\) is said to <strong>converge</strong> to a
+<strong>limit</strong> \(l \in \mathbb{R}\) if for every small \(\epsilon &gt; 0\) there is
+a related integer \(N\) such that \(|a_n - l| &lt; \epsilon \; \forall n &gt; N\).
+This is denoted as</p>
+
+\[\begin{align}  &amp; \lim_{n \rightarrow \infty} a_n
+= l;  &amp; a_n \rightarrow l. \end{align}\]
+
+<p>In layman's terms, if a sequence converges, then for every
+(increasingly small) positive number, the difference between the
+sequence's terms and the limit will be eventually smaller.</p>
+
+<p>\(N\) here is like a <em>threshold indicator</em>, where every term of the
+sequence after \(N\) will be within the \(\epsilon\) difference.</p>
+
+<p>We generally worth with \(n \in \mathbb{N}\).</p>
+
+<p><strong><em>Example.</em></strong> The sequence \(a_n = \frac{1}{n}\) converges to 0. We can
+prove this by going to the definition - let us have a small
+\(\epsilon &gt; 0\).</p>
+
+<p>Then \(\exists N : a_N - 0 &lt; \epsilon\), or \(\frac{1}{N} &lt; \epsilon\). We
+can choose any integer \(N &gt; \frac{1}{e}\), to demonstrate that this is
+possible for any \(\epsilon\). For any \(n &gt; N\):
+\(|\frac{1}{n} - 0| = \frac{1}{n} &lt; \frac{1}{N} &lt; \epsilon,\) to write it
+out as an equation.</p>
+
+<p>If possible, try break a large sequence down into simpler components.
+They can be combined using the following:</p>
+
+<h4 id="combination-rules-for-convergent-sequences">Combination Rules for Convergent Sequences</h4>
+
+<p>For convergent
+sequences
+\(a_n \rightarrow \alpha, b+n \rightarrow \beta, c_n \rightarrow \gamma\):</p>
+
+<ol>
+  <li><strong>Sum</strong> rule: \(a_n + b_n \rightarrow \alpha + \beta\)</li>
+  <li><strong>Scalar multiple</strong> rule:
+\(\lambda a_n \rightarrow \lambda\alpha, \; \lambda \in \mathbb{R}\)</li>
+  <li><strong>Product</strong> rule: \(a_n b_n \rightarrow \alpha\beta\)</li>
+  <li><strong>Reciprocal</strong> rule: \(\frac{1}{a_n} \rightarrow \frac{1}{\alpha}\)</li>
+  <li><strong>Quotient</strong> rule:
+\(\frac{b_n}{a_n} \rightarrow \frac{\beta}{\alpha}\)</li>
+  <li><strong><em>Hybrid</em></strong> rule:
+\(\frac{b_n c_n}{a_n} \rightarrow \frac{\beta\gamma}{\alpha}\)</li>
+</ol>
+
+<h4 id="exercise">Exercise</h4>
+
+<p>Show that the following sequence converges, find its
+limit: \(a_n = \frac{(n+2)(2n-1)}{3n^2 + 1}\)</p>
+
+<p><strong><em>Solution.</em></strong> The components do not converge themselves, a technique here is <em>dividing
+by the fastest increasing term</em>. Dividing by \(n^2\),
+\(a_n = \frac{\frac{(n+2)}{n}\frac{(2n-1)}{n}}{\frac{3n^2 +1}{n^2}} = \frac{(1 + \frac{2}{n})(2 - \frac{1}{n})}{3 + \frac{1}{n^2}}.\)</p>
+
+<p>Now the components \(\frac{1}{n}\) and \(\frac{1}{n^2}\) converge to 0, so
+applying combination rules we can get
+\(a_n \rightarrow \frac{(1+0)(2-0)}{3+0} = \frac{2}{3}.\)</p>
+
+<h3 id="bounded-sequences">Bounded sequences</h3>
+
+<p>A sequence \(a_n\) is <strong>bounded above</strong> if there is a number
+\(U : a_n \leq U \forall n\). \(a_n\) is <strong>bounded below</strong> if there is a
+number \(L : L \leq a_n \forall n\). A sequence is <strong>bounded</strong> if it is
+bounded both above and below.</p>
+
+<h3 id="subsequences">Subsequences</h3>
+
+<p>A <strong>subsequence</strong> of a sequence is obtained from the original sequence
+by deleting some terms. We can say \(a_{2n}, a_{2n+1}\) are the even and
+odd subsequences respectively of \(a_n\).</p>
+
+<p>A sequence \(a_n\) is an <strong>increasing</strong> sequence if
+\(a_{n+1} \geq a_n \;\forall n\). It is a <strong>decreasing</strong> sequence if
+\(a_{n+1} \leq a_n \;\forall n\).</p>
+
+<h3 id="basic-properties-of-convergent-sequences">Basic Properties of Convergent Sequences</h3>
+
+<ol>
+  <li>A convergent sequence has a <em>unique</em> limit.</li>
+  <li>If \(a_n \rightarrow l\) then <em>every subsequence</em> of \(a_n\) also
+converges to \(l\).</li>
+  <li>If \(a_n \rightarrow l\) then \(\|a_n\| \rightarrow \|l\|\).</li>
+  <li><strong>The squeeze rule.</strong> If
+\(a_n \rightarrow l, b_n \rightarrow l; a_n &lt; c_n &lt; b_n \; \forall n\)
+then \(c_n \rightarrow l\).</li>
+  <li>A convergent sequence is always bounded.</li>
+  <li>An increasing sequence which is bounded above converges. A
+decreasing sequence which is bounded below converges.</li>
+</ol>
+
+<p>The sequence \(c_n\) is "squeezed" between two sequences which both
+converge to the same limit, so naturally it will too.\(\exists B &gt; 0 : - B \leq a_n \leq B, \; \forall n\).</p>
+
+<p>You can demonstrate an alternating sequence (e.g. \((-1)^n\)) doesn't
+converge by looking at <em>subsequences</em>.</p>
+
+<h4 id="exercise-1">Exercise</h4>
+
+<p>Show that for \(x \geq 0, n &gt; 0\), this:
+\((1+x)^{\frac{1}{n}} \leq 1 + \frac{x}{n}\).</p>
+
+<p>Hence deduce/show that if \(c &gt; 0\) then \(c^\frac{1}{n} \rightarrow 1\).</p>
+
+<p>Reminder: the binomial theorem is
+\((1 + x)^n = 1 + nx + \frac{n(n-1)}{2!}x^2 + ... + \frac{n!}{k!(n-k)!}x^k\)</p>
+
+<p><strong><em>Solution.</em></strong> Firstly, we can rearrange and use the binomial theorem.</p>
+
+\[\begin{align} 1 + x  &amp; \leq (1 + \frac{x}{n})^n. \\ (1 +
+\frac{x}{n})^n  &amp; = 1 + n\frac{x}{n} + \textrm{ (other positive terms)
+via binomial exp, so} \\ 1 + x  &amp; \leq 1 + x + \textrm{ (other
+positive terms)} \\ \end{align}\]
+
+<p>Thus if we take \(n^\textrm{th}\) roots
+of each side we will demonstrate that
+\((1+x)^\frac{1}{n} \leq 1 + \frac{x}{n}.\)</p>
+
+<p>For the second part, we need to consider separately the cases \(c \geq 1\)
+and \(c &lt; 1\).</p>
+
+<p>If \(c \geq 1\) then \(c^\frac{1}{n} \geq 1\). If we use the inequality we
+demonstrated in the first part, letting \(x = c-1 \geq 0\) we get
+\(1 \leq c^\frac{1}{n} \leq 1 + \frac{c-1}{n}.\)</p>
+
+<p>By the squeeze rule, we can (in an ideal world) see that
+\(c^\frac{1}{n} \rightarrow 1\).</p>
+
+<p>Finally if \(c &lt; 1\) then \(\frac{1}{c} &gt; 1\) and by the reciprocal rule
+\(\frac{1}{c^\frac{1}{n}} \rightarrow 1\).</p>
+
+<p>Did you get that? Me neither.</p>
+
+<h3 id="divergent-sequences">Divergent Sequences</h3>
+
+<p>A sequence \(a_n\) is said to <strong>diverge to
+infinity</strong> if
+\(\forall K \in \mathbb{R}\; \exists N : n &gt; N \implies a_n &gt; K\).</p>
+
+<p>In plain English, there is a point in \(a_n\) where the terms are greater
+than any real number one picks.</p>
+
+<p>We denote this as \(a_n \rightarrow \infty\). \(a_n\) diverges to \(-\infty\)
+if \(-a_n \rightarrow \infty\).</p>
+
+<p>A divergent sequence that doesn't go off to infinity is said to
+<strong>oscillate</strong>.</p>
+
+<h3 id="basic-convergent-sequences">Basic convergent sequences</h3>
+
+\[\begin{align}  &amp;  \lim_{n
+\rightarrow \infty} \frac{1}{n^p} = 0  &amp;  \forall p &gt; 0 \\  &amp; 
+\lim_{n \rightarrow \infty} c^n = 0  &amp;  \forall c : \|c\| &lt; 1 \\
+ &amp;  \lim_{n \rightarrow \infty} c^\frac{1}{n} = 1  &amp;  \forall c &gt; 0
+\\  &amp;  \lim_{n \rightarrow \infty} n^p c^n = 0  &amp;  \forall p &gt; 0
+\land \|c\| &lt; 1 \\  &amp;  \lim_{n \rightarrow \infty}
+\frac{c^n}{n!} = 0  &amp;  \forall c \in \mathbb{R} \\  &amp;  \lim_{n
+\rightarrow \infty} (1 + \frac{c}{n})^n = e^c  &amp;  \forall c \in
+\mathbb{R} \end{align}\]
+
+<h2 id="series">Series</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note17.pdf">Link to the PDF.</a></p>
+
+<p>A series \(\sum a_n\) is a pair of sequences:</p>
+
+<ol>
+  <li>A sequence \(a_n\) called the <strong>sequence of terms</strong></li>
+  <li>A sequence \(s_n\) called the <strong>sequence of partial sums</strong> defined as
+\(s_n = \sum_{k=0}^{n} a_k.\)</li>
+</ol>
+
+<p>If the sequence of partial sums converges to \(s\), then the series
+converges to the sum \(s\); \(\sum_{n=0}^{\infty} a_n = s.\) Divergent if
+not.</p>
+
+<p>A standard one is the geometric series, \(\sum r^n\) which will always
+converge to \(\frac{1}{1-r}\) when \(|r| &lt; 1\). You can prove this by
+working out \(rs_n - s_n\).</p>
+
+\[\begin{align} s_n - rs_n = 1 - r^{n+1}
+ &amp; \Longleftrightarrow s_n(1-r) = 1 - r^{n+1}\\  &amp; \Longleftrightarrow
+s_n = \frac{1 - r^{n+1}}{1-r}. \end{align}\]
+
+<p>And \(|r| &lt; 1\) means that
+\(r\)-power will converge to 0.</p>
+
+<p>A standard divergent series is the harmonic series, \(\sum \frac{1}{n}\).
+You can prove this by estimating partial sums
+\(s_2, s_4, s_8, s_{16}, ...\) and see that it will forever build to
+\(1 + 0.5 + 0.5 + 0.5 + ...\). \(s_{2^n} &gt; 1 + \frac{n}{2}.\) Though any
+series \(\sum \frac{1}{n^k}\) where \(k &gt; 1\) will always converge.</p>
+
+<h3 id="basic-properties-of-convergent-series">Basic Properties of Convergent Series</h3>
+
+<ol>
+  <li><strong>Sum rule</strong>, \(\sum a_n\) converges to \(s,\; \sum b_n\) converges to
+\(t \implies \sum (a_n + b_n)\) converges to \(s + t\).</li>
+  <li><strong>Multiple rule</strong>, \(\sum a_n\) converges to
+\(s, \; \lambda \in \mathbb{R} \implies \sum \lambda a_n\) converges
+to \(\lambda s\).</li>
+  <li>\(\sum a_n\) converges \(\implies a_n \rightarrow 0\).</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$$\sum</td>
+          <td>a_n</td>
+          <td>\(converges\)\implies \sum a_n$$ also converges.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<p>No. 4 is only useful really when you have an "oscillating" series,
+like \(\sum \frac{(-1)^n}{2^n}\).</p>
+
+<h3 id="the-comparison-test">The Comparison Test</h3>
+
+<p>Suppose that \(0 \leq a_n \leq b_n\) for all
+\(n\),</p>
+
+<ol>
+  <li>If \(\sum b_n\) converges then so does \(\sum a_n\)</li>
+  <li>If \(\sum a_n\) diverges then so does \(\sum b_n\).</li>
+</ol>
+
+<p>Usually with comparison test questions you just pull out equations from
+thin air, but (especially with rational functions) there's usually a
+technique for doing so based on the largest power of \(n\), and slowly
+chipping away a piece at a time until we get a very simple expression.</p>
+
+<h4 id="exercises">Exercises</h4>
+
+<p>Determine whether the following series converges or
+diverges:</p>
+
+<ol>
+  <li>
+\[\sum \frac{n+2}{n^3 - n^2 + 1}\]
+  </li>
+  <li>
+\[\sum \frac{n^2 + 4}{2n^3 - n + 1}\]
+  </li>
+</ol>
+
+<p><strong><em>Solution 1.</em></strong> Take a look at the fraction \(\frac{n+2}{n^3 - n^2 + 1}\).
+If we want to find a smaller fraction, we want a smaller numerator and a
+larger denominator than our current fraction.</p>
+
+\[\begin{align}  &amp;  n+2 \geq
+n  &amp;  n^3 - n^2 + 1 \geq n^3 \end{align}\]
+
+<p>So we get the fraction
+\(\frac{n}{n^3}\) or \(\frac{1}{n^2}\) which we know will converge as a
+series. No help there.</p>
+
+<p>For a larger fraction, we want a bigger numerator and a smaller
+denominator;</p>
+
+\[\begin{align} n+2  &amp; \leq n + 2n \textrm{ or } 3n \\n^3 - n^2 + 1 \geq n^3 - n^2 \textrm{ or } n^2 (n -1)  &amp; \geq \frac{n^3}{2}. \end{align}\]
+
+<p>Admittedly, at the end we were pulling
+expressions out of thin air a bit but hopefully you can see that it's
+all valid. Thus \(\frac{n+2}{n^3 - n^2 + 1} \leq \frac{6}{n^2}\) and since
+we know \(\sum \frac{6}{n^2}\) converges (\(6 \sum \frac{1}{n^2}\)) the
+original one must too.</p>
+
+<p><strong><em>Solution 2.</em></strong> We're gonna be cheat-y and say that this sequence does
+diverge. To show this, let's find a smaller fraction which diverges.</p>
+
+\[\begin{align} n^2 + 4  &amp; \geq n^2 \\ 2n^3 -n + 1  &amp; \leq 2n^3
+\end{align}\]
+
+<p>(the \(-n\) more than cancels out the \(+1\)) and we can see
+that this gives us \(\frac{1}{2n} \leq \frac{n^2 + 4}{2n^3 -n+1}\) And oh
+no, \(\sum \frac{1}{2n}\) diverges (multiple rule) so the original one
+must too.</p>
+
+<h3 id="the-ratio-test">The Ratio Test</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>If $$</td>
+      <td>\frac{a_{n+1}}{a_n}</td>
+      <td>\rightarrow L$$ then</td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>\(0 \leq L &lt; 1 \implies \sum a_n\) converges.</li>
+  <li>\(L &gt; 1\) or \(L \textrm{ is } \infty \implies \sum a_n\) diverges.</li>
+  <li>\(L = 1 \implies\) the test is inconclusive.</li>
+</ol>
+
+<p>Useful in dealing with factorials.</p>
+
+<h3 id="basic-convergent-series">Basic Convergent Series</h3>
+
+<ul>
+  <li>\(\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}\) for all \(r : \|r\| &lt; 1\)</li>
+  <li>\(\sum \frac{1}{n^k}\) converges for all \(k &gt; 1\)</li>
+  <li>\(\sum n^k r^n\) converges for \(k &gt; 0 \land \|r\| &lt; 1\)</li>
+  <li>\(\sum_{n=0}^{\infty} \frac{c^n}{n!} = e^c\) for all
+\(c \in \mathbb{R}\)</li>
+</ul>
+
+<h3 id="basic-divergent-series">Basic Divergent Series</h3>
+
+<ul>
+  <li>\(\sum \frac{1}{n^k}\) diverges for all \(k &lt; 1\).</li>
+</ul>
+
+<h3 id="power-series">Power series</h3>
+
+<p>A <strong>power series</strong> is one of the form \(\sum a_n x^n\). Usually we start
+at \(n = 0\), such that the sequence goes \(a_0, a_1x, a_2x^2, ...\)</p>
+
+<h4 id="basic-properties-of-power-series">Basic Properties of Power Series</h4>
+
+<p>Let</p>
+
+\[\begin{align} f(x)  &amp; =
+\sum_{n=0}^{\infty} a_nx^n  &amp;  x \in (-R_1, R_1) \\ g(x)  &amp; =
+\sum_{n=0}^{\infty} b_nx^n  &amp;  x \in (-R_2, R_2) \end{align}\]
+
+<p>For
+positive \(R_1, R_2\), and let \(R = \min(R_1, R_2)\). Then for all
+\(x \in (-R , R)\),</p>
+
+<ol>
+  <li>If \(f(x) = g(x)\) then \(a_n = b_n\) for all \(n\)</li>
+  <li><strong>Sum rule,</strong> \(f(x) + g(x) = \sum_{n=0}^{\infty} (a_n + b_n) x^n\)</li>
+  <li><strong>Multiple rule,</strong>
+\(\lambda f(x) = \sum_{n=0}^{\infty} \lambda a_nx^n \; \forall \lambda \in \mathbb{R}\)</li>
+  <li><strong>Product rule,</strong>
+\(f(x)g(x) = \sum_{n=0}^{\infty} (a_0b_n + a_1b_{n-1} + ... + a_{n-1}b_1 + a_nb_0)x^n\).</li>
+</ol>
+
+<p>This also gives the general binomial theorem, which for any
+\(q \in \mathbb{Q}, x \in (-1, 1)\)</p>
+
+\[\begin{align} (1+x)^q  &amp; =
+\sum_{n=0}^{\infty} {q \choose n} x^n \\ {q \choose n}  &amp; =
+\frac{q!}{n!(q-n)!} \end{align}\]
+
+<h3 id="radius-of-convergence">Radius of convergence</h3>
+
+<p><strong><em>Lemma.</em></strong> If \(\sum a_n R^n\) converges for some \(R \geq 0\), then
+\(\sum a_n x^n\) converges \(\forall x : \|x\| &lt; R\). <em>(proof in notes)</em></p>
+
+<p>\(R \geq 0\) is the <strong>radius of convergence</strong> of a power series
+\(\sum a_n x^n\) if it converges according to the above, and diverges if
+\(|x| &gt; R\). If a series converges \(\forall x\) then the radius is
+infinity.</p>
+
+<p>If the series \(\sum a_n x^n\) has a conv. rad \(R\) then it defines a
+function</p>
+
+\[\begin{align}  &amp; f(x) = \sum_{n=0}^{\infty} a_nx^n
+ &amp; \forall x \in (-R, R) \end{align}\]
+
+<p>You can find the <a href="https://www.youtube.com/watch?v=4L9dSZN5Nvg">radius of convergence using ratio
+test</a>, essentially
+evaluate \(\lim_{n \rightarrow \infty} \|\frac{a_{n+1}}{a_n}\| &lt; 1.\) and
+you will get an \(\|x\| &lt; ...\) where that something is your radius.</p>
+
+<h3 id="addendum-partial-fractions">Addendum: Partial Fractions</h3>
+
+<p>Partial fractions can be important in series.</p>
+
+<p>Where a rational function is decomposed into a sum of simpler fractions,
+such as \(\frac{cx+d}{(x-a)(x-b)} = \frac{A}{x-a} + \frac{B}{x-b}.\)</p>
+
+<p>When there is no repeated factor, simply substituting \(x = a, x=b\) can
+eliminate a term and make it easy to find the unknowns \(A, B\). When
+there is however, we need to just pick values of \(x\) and solve from
+there.</p>
+
+<p>If there is a repeated factor \((x-a)^n\), the partial sum will have all
+the fractions with denominations \((x-a), (x-a)^2,...\) up to \((x-a)^n\)</p>
+
+<p>If the degree of the numerator is higher than the denominator, then we
+have to divide out the numerator (polynomial long division) to get a
+valid separable fraction,
+\(\frac{x^3 + 3x}{(x+1)(x-3)} = x+2 + \frac{10x+6}{(x+1)(x-3)}.\)</p>
+
+<h2 id="recurrences">Recurrences</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf">Link to the PDF.</a></p>
+
+<p><em>Like the differential equations of sequences.</em></p>
+
+<p>A recurrence is a sequence defined, funnily enough, recursively.</p>
+
+<p>For example, the Fibonacci sequence \(F_n\) is defined as
+\(F_n = F_{n-1} + F_{n-2}\) \(F_0 = 0, F_1 = 1.\)</p>
+
+<p>The <em>Towers of Hanoi</em> game's number of steps taken was computed to be
+the recurrence \(T_n = 2T_{n-1} + 1.\) For \(T_0 = 0\) this gives
+\(0, 1, 3, 7, 15, ...\) which we can see is \(T_n = 2^n - 1\). This latter
+form is the <strong>closed form</strong> of \(T_n\) and allows for immediate
+computation.</p>
+
+<p>We are looking at solving linear recurrences with constant coefficients,
+of the form \(x_n + a_1x_{n-1} + ... a_kx_{n-k} = f(n)\) where \(f\) is a
+given function. (If the terms from 1 to k are given, then this describes
+a unique sequence.)</p>
+
+<h3 id="homogenous-recurrences">Homogenous recurrences</h3>
+
+<p>More importantly, we will look at <strong>homogenous</strong> (\(f(n) = 0\))
+recurrences with \(k = 2\). Thus, we want the general solution of
+\(x_n + ax_{n-1} + bx_{n-2} =0.\)</p>
+
+<p>In the general case, we want to look for solutions of the form
+\(A\lambda^n\) where \(\lambda, A\) are constants. A bit of deriving later,
+we can get the auxiliary equation in lambda.</p>
+
+<p>The <strong>auxiliary equation</strong> of the recurrence
+\(x_n + ax_{n-1} + bx_{n-2} = 0\) is \(\lambda^2 + a\lambda + b = 0.\)</p>
+
+<p><strong><em>General Solution.</em></strong> of the recurrence
+\(x_n + ax_{n-1} + bx_{n-2} = 0\),</p>
+
+<p>Let \(\lambda_1, \lambda_2\) be the roots of the  auxiliary equation.</p>
+
+<ul>
+  <li>
+\[\lambda_1 \neq \lambda 2 \implies x_n = A\lambda_1^n + B\lambda_2^n\]
+  </li>
+  <li>
+\[\lambda_1 = \lambda_2 \implies x_n = A\lambda_1^n + Bn\lambda_2^n\]
+  </li>
+</ul>
+
+<p>For constants \(A, B\), which can be found if the first two terms of the
+sequence are known.</p>
+
+<h3 id="exercise-2">Exercise</h3>
+
+<p>Find a closed form for the Fibonacci sequence.</p>
+
+<p><strong><em>Solution.</em></strong> We have \(F_n = F_{n-1} + F_{n-2}\) so
+\(F_n - F_{n-1} - F_{n-2} = 0\). The auxiliary equation is
+\(\lambda^2 - \lambda - 1 = 0\) Which has roots
+\(\lambda = \frac{1 \pm \sqrt{5}}{2}\) Or \(\phi\) and \(-(\frac{1}{\phi})\)
+(the golden ratio phi). Hence
+\(F_n = A(\frac{1 + \sqrt{5}}{2}) + B(\frac{1 - \sqrt{5}}{2}).\) We know
+\(F_0 = 0, F_1 = 1\) so if we substitute these values in, we get that
+\(A = \frac{1}{\sqrt{5}}, B = -\frac{1}{\sqrt{5}}\).</p>
+
+\[\begin{align} F_n
+ &amp; = \frac{1}{\sqrt{5}}(\frac{1 + \sqrt{5}}{2})
+-\frac{1}{\sqrt{5}}(\frac{1 - \sqrt{5}}{2}). \\  &amp; =
+\frac{1}{\sqrt{5}}(\phi^n + \phi^{-n}). \end{align}\]
+
+<p>Actually by some magic we can further simplify down to
+\(F_n = \left \lfloor{\frac{\phi^n}{\sqrt{5}}}\right \rfloor\)</p>
+
+<p>Non-homogenous recurrences have the \(f(n)\) bit not 0.</p>
+
+<h3 id="non-homogenous-recurrences">Non-homogenous recurrences</h3>
+
+<p>Finding solutions to non-homogenous recurrences of the form
+\(x_n + ax_{n-1} + bx_{n-2} = f(n)\)</p>
+
+<ol>
+  <li>Find the general solution \(x_n = h_n\) of the homogenous recurrence:
+\(x_n + ax_{n-1} + bx_{n-2} = 0.\) (will have 2 arbitrary constants)</li>
+  <li>Find <em>any</em> particular solution \(x_n = p_n\) of the original
+recurrence.</li>
+  <li>The general solution will be \(x_n = h_n + p_n\).</li>
+</ol>
+
+<p>Finding the particular solution \(p_n\) is not straight forward, but the
+technique is to try solutions that are <em>similar in form</em> to \(f(n)\).
+Substitute these into the original recurrence (as they are solutions!)
+and try solve.</p>
+
+<p>If \(f(n)\) is a constant, try find a constant \(k\).</p>
+
+<p>If \(f(n)\) is a polynomial, try find a <em>same degree</em> polynomial.
+(substitute in a general polynomial)</p>
+
+<p>Etc. just like differential equations.</p>
+
+<h2 id="decimal-representation-of-reals">Decimal Representation of Reals</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part3/note16.pdf">Link to the PDF.</a></p>
+
+<p>Rational numbers can be represented by expansions, so can repeating
+decimals.</p>
+
+<p>Repeating decimals can be expressed as a fraction by summing an
+appropriate geometric series.</p>
+
+<p>For example, \(0.4\overline{9}\) can be expanded as follows;</p>
+
+\[\begin{align} 0.4\overline{9}  &amp; = \frac{4}{10} + \frac{0}{10^2} +
+\frac{9}{10^3} + ... \\  &amp; = \frac{4}{10} + \frac{9}{10}(1 +
+\frac{1}{10} + \frac{1}{10^2} + ...) \\  &amp; = \frac{4}{10} +
+\frac{9}{100}(\frac{1}{1-0.1}) = \frac{4}{10} + \frac{9}{90} =
+\frac{4}{10} + \frac{1}{10} = \frac{1}{2}. \end{align}\]
+
+<p>The decimal expansion of any arbitrary real can be computed by
+squeezing between two converging sequences.</p>
+
+<p>Expand if you really want to see...</p>
+
+<p>If that real \(x\) is not an integer, it is between one integer and the
+next consecutive one. Now divide the integer gap into 10 fractions - if
+\(x\) is not on a fraction then it is between two consecutive division
+points, \(a_0 + \frac{a_1}{10} &lt; x &lt; a_0 + \frac{a_1 + 1}{10}\) Where
+\(a_1 \in \{0..9\}\). We can then repeat to get
+\(a_0 + \frac{a_1}{10} + \frac{a_2}{10^2} &lt; x &lt; a_0 + \frac{a_1}{10} + \frac{a_2 + 1}{10^2}\)
+etc etc.</p>
+
+<p>Every rational has a terminating or repeating decimal, there's some
+formal <em>rigorous</em> waffle and then you compute it via long division
+really.</p>
+
+<p>Not sure why this is here save the fact that yes decimals are related to
+series.</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

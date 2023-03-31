@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Public Key Cryptography</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Public Key Cryptography</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#congruence">Congruence</a></li><li><a href="#modular-arithmetic-identities">Modular arithmetic identities</a></li><li><a href="#one-way-function">One Way Function</a></li><li><a href="#the-primitive-root">The Primitive Root</a></li><li><a href="#public-key-encryption">Public Key Encryption</a><ul><li><a href="#rsa-encryption">RSA Encryption</a><ul><li><a href="#how-to-generate-public-key">How to generate public key</a></li><li><a href="#message-encryption">Message Encryption</a></li><li><a href="#how-to-generate-the-private-key">How to generate the private key</a><ul><li><a href="#how-do-we-find-d">How do we find d?</a></li></ul></li><li><a href="#ciphertext-decryption">Ciphertext Decryption</a></li><li><a href="#example-of-rsa">Example of RSA</a></li></ul></li><li><a href="#why-is-rsa-secure">Why is RSA secure?</a></li></ul></li><li><a href="#public-key-vs-secret-key-encryption">Public key vs Secret key Encryption</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part4.html" title="part4.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part6.html" title="part6.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="congruence">Congruence</h2>
+
+<p>Two numbers \(a\) and \(b\) are called <strong>congruent</strong> if they have the same remainder when divided by an arbitrary third number \(n\). We write this as
+\(a \equiv b\ MOD\ n\)
+Congruence mod \(n\) forms \(n\) equivalence classes of values \([0; n-1]\) on the integer numbers, with each class having infinitely many elements, of the form \(\{c + kn\ \|\ \forall k \in \mathbb{Z}\}\), with \(c \in [0; n-1]\)</p>
+
+<h2 id="modular-arithmetic-identities">Modular arithmetic identities</h2>
+
+<p>The following are equivalent to each other:</p>
+
+\[\begin{matrix}
+(a + b)\ MOD\ n    &amp;\equiv &amp;((a\ MOD\ n) + b)\ MOD\ n     &amp;\equiv &amp;((a\ MOD\ n) + (b\ MOD\ n))\ MOD\ n \\\\
+(a \cdot b)\ MOD\ n &amp;\equiv &amp;((a\ MOD\ n) \cdot b)\ MOD\ n &amp;\equiv &amp;((a\ MOD\ n) \cdot (b\ MOD\ n))\ MOD\ n \\\\
+x^{ab}\ MOD\ n     &amp;\equiv &amp;(x^a\ MOD\ n)^b\ MOD\ n       &amp;\equiv &amp;(x^b\ MOD\ n)^a\ MOD\ n
+\end{matrix}\]
+
+<h2 id="one-way-function">One Way Function</h2>
+
+<blockquote>
+  <p>A o<strong>ne-way function</strong> is a function is easy to compute in one direction, but <strong>computationally infeasible</strong> to calculate in reverse.</p>
+
+  <p>In other words, given some inputs, it is easy to get the output, but given an output it is difficult to reverse the function to find the original input(s).</p>
+</blockquote>
+
+<p><strong>Example of 1 way functions.</strong></p>
+
+<ol>
+  <li>Modular exponentiation function (\(k = y^x \!\!\mod p\))</li>
+  <li>Prime factorisation (\(p\cdot q = n\), where \(p\) and \(q\) are large prime numbers).</li>
+</ol>
+
+<h2 id="the-primitive-root">The Primitive Root</h2>
+
+<blockquote>
+  <p>The function below is an example of a one-way function if</p>
+
+  <ul>
+    <li>\(y\) is the <strong>primitive root mod \(p\)</strong></li>
+    <li>\(p\) is an enormous number (e.g. 512-bits).</li>
+  </ul>
+
+\[k = y^x \!\!\!\mod p\]
+
+  <p>This is because if we try a value of \(x\) for a given \(k\), the probability that \(x\) is <strong>correct</strong> is \(\frac1{p-1}\) as the value of  \(k\) is equally likely to be any number in \([1, p - 1]\).</p>
+</blockquote>
+
+<p><strong>Conditions</strong> for \(y\) to be the “primitive root mod \(p\)”</p>
+
+<ol>
+  <li>Successive powers of \(y\) that takes \(\text{mod } p\) will generate results that loop from 1 to \(p - 1\).</li>
+  <li>The generated numbers \(k\) are distributed uniformly in the range of \([1, p - 1]\).</li>
+</ol>
+
+<h2 id="public-key-encryption">Public Key Encryption</h2>
+
+<blockquote>
+  <p>The problem with secret key encryption is that it takes a lot of <strong>effort</strong> to transfer the key safely. There are a few ways:</p>
+
+  <ul>
+    <li>Physical Transfer</li>
+    <li>Key Distribution Centre</li>
+    <li>Online transfer by breaking the key up to ensure security.</li>
+  </ul>
+</blockquote>
+
+<p>However, public key encryption provides a more <strong>elegant</strong> solution using a <strong>one-way function</strong> like the one <a href="#the-primitive-root">above</a>.</p>
+
+<p>The idea is that each communication party generates a pair of keys, one private and one public – KP<sub>a</sub> and KU<sub>a</sub> respectively where <em>a</em> represents one specific party/individual.</p>
+
+<ul>
+  <li>Sender of a message uses receiver’s public key to encrypt</li>
+  <li>Receiver uses their own private key to decrypt.</li>
+</ul>
+
+<h3 id="rsa-encryption">RSA Encryption</h3>
+
+<p align="center"><i>RSA is one of the oldest types of public key encryption schemes.</i></p>
+
+<p>Here we cover</p>
+<ol>
+  <li>How the public key is generated</li>
+  <li>How a message is encrypted</li>
+  <li>How a private key is generated</li>
+  <li>How to decrypt a message</li>
+</ol>
+
+<h4 id="how-to-generate-public-key">How to generate public key</h4>
+
+<p><strong>Firstly,</strong> choose 2 <strong>large secret prime numbers</strong>, \(p\) and \(q\), and calculate their product \(n = p \times q\). \(n\) is the <strong>public key</strong>.</p>
+
+<p><strong>Next,</strong> select another value \(e\), that is</p>
+
+<ul>
+  <li>relatively prime (coprime) to \(p-1\), \(q-1\), and \((p-1) \times (q-1)\).</li>
+  <li>and \(1 \lt e \lt (p-1)(q-1)\)</li>
+</ul>
+
+<h4 id="message-encryption">Message Encryption</h4>
+
+<p><strong>To encrypt a message</strong>, we use this formula 
+\(C = M^e\!\!\!\mod n\)
+where \(C\) is the ciphertext and \(M\) is the message.</p>
+
+<blockquote>
+  <p>If an eavesdropper gets \(C\), it is <strong>computationally infeasible</strong> to calculate \(M\).</p>
+</blockquote>
+
+<h4 id="how-to-generate-the-private-key">How to generate the private key</h4>
+
+<p>We find a number \(d\) such that</p>
+
+\[e \times d = 1 \!\!\!\mod ((p - 1)\cdot(q - 1))\]
+
+<p>Here, \(d\) is the private key owned by Alice and is called the multiplicative inverse of \(e \!\!\!\mod (p-1)(q-1)\).</p>
+
+<h5 id="how-do-we-find-d">How do we find <em>d</em>?</h5>
+
+<p>There is a formal method of finding the <a href="https://people.csail.mit.edu/rivest/Rsapaper.pdf">private key</a> (it’s a 15 page paper).</p>
+
+<p>Another way is by iteration. The goal is to find a multiple of \(e\), which is 1 greater than some multiple of \((p–1)(q–1)\). So iterate through the multiples of \((p–1)(q–1)\) and add 1, if that value is a multiple of \(e\) you have found a \(d\), otherwise continue to the next multiple.</p>
+
+<h4 id="ciphertext-decryption">Ciphertext Decryption</h4>
+
+<p><strong>To decrypt the ciphertext</strong>, we use the formula,
+\(M= C^d\!\!\!\mod n\)
+As you can see, it is very easy to decrypt the ciphertext given the private key. All that the receiver has to do is to keep the private key <strong>safe.</strong></p>
+
+<h4 id="example-of-rsa">Example of RSA</h4>
+
+<p>Let us take the two starting prime numbers as:
+\(p=11, q=3\)
+We can then find the public key \(n\) as their product:
+\(n = pq = 11 \times 3 = 33\)
+We can now select a value \(e\) which fulfils the properties of being relatively prime to \(10\), \(2\), and \(20\), and in the range \(1 &lt; e &lt; 20\), for example
+\(e = 7\)
+Then, we calculate the private key \(d\) from the equation:
+\(e \cdot d = 1\ MOD\ (p-1)(q-1)\)
+For which \(d=3\) is a valid solution, as \(7 \times 3 = 21 = 1\ MOD\ 20\). The easiest way to do this is just by trial and error</p>
+
+<p>Then, suppose we want to encrypt a message \(M=7\) using the public key, we can find the ciphertext \(C\) as:
+\(C = M^e\ MOD\ n
+= 7^7\ MOD\ 33 = 28\)
+This can then be decrypted using the secret key as:
+\(M = C^d\ MOD\ n = 28^3\ MOD\ 33 = 7\)</p>
+
+<h3 id="why-is-rsa-secure">Why is RSA secure?</h3>
+
+<p>To break RSA an attacker must</p>
+
+<ul>
+  <li>Either reverse the <strong>one-way function</strong> which is computationally difficult</li>
+  <li>Or know <strong><em>d</em></strong>, which means to know <strong><em>p and q</em></strong> which means to know <strong><em>n</em></strong> – but n = p × q is also a <strong>one-way function</strong>.</li>
+  <li>The only way is <strong>brute force</strong> – but a <strong>large enough key size</strong> will make this <strong>infeasible</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>To match the security of a 256-bit secret key, the RSA key needs 15460-bits. RSA started with 512-bit public key, but now it is 2048-bits and will need to increase again to 3072-bits from 2030 onwards.</p>
+</blockquote>
+
+<p>Another implication of a longer key length, k, is encryption and decryption time increases as well</p>
+
+<ul>
+  <li>Encryption time = O(k<sup>2</sup>)</li>
+  <li>Decryption time = O(k<sup>3</sup>)</li>
+</ul>
+
+<h2 id="public-key-vs-secret-key-encryption">Public key vs Secret key Encryption</h2>
+
+<blockquote>
+  <p>DES is between 1000 and 10000 times faster than RSA (encryption &amp; decryption)</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Secret</th>
+      <th>Public</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Uses XOR, substitution, permutation – <strong>fast</strong></td>
+      <td>Uses a one-way function – <strong>slower</strong></td>
+    </tr>
+    <tr>
+      <td>Key is secret – attacker knows less information and hence requires shorter key for <strong>same</strong> level of security<br />It is <strong>faster</strong> to perform operations on a shorter key.</td>
+      <td>Only relies on the length of public key to prevent the crack with brute force<br />The longer the key the **slower **the operation.</td>
+    </tr>
+    <tr>
+      <td>Key distribution is <strong>complicated</strong></td>
+      <td>Key distribution is <strong>easy</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

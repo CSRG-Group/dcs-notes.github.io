@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Search Optimizations</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Search Optimizations</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#cycle-checking">Cycle Checking</a><ul><li><a href="#solution">Solution</a></li><li><a href="#implementation">Implementation</a></li></ul></li><li><a href="#multiple-path-pruning">Multiple Path Pruning</a><ul><li><a href="#solutions">Solutions</a></li><li><a href="#implementation-1">Implementation</a></li><li><a href="#implementation-with-a">Implementation with A*</a></li></ul></li><li><a href="#monotone-restriction">Monotone Restriction</a></li><li><a href="#direction-of-a-search">Direction of a Search</a></li><li><a href="#bi-directional-search">Bi-directional Search</a></li><li><a href="#island-driven-search">Island Driven Search</a></li><li><a href="#dynamic-programming">Dynamic Programming</a></li><li><a href="#bounded-depth-first-search">Bounded Depth-first search</a><ul><li><a href="#iterative-deepening-search">Iterative-deepening search</a></li><li><a href="#depth-first-branch-and-bound">Depth-first Branch-and-Bound</a><ul><li><a href="#initializing-bound">Initializing Bound</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Informed_Search.html" title="Informed_Search.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Heuristics.html" title="Heuristics.html">Next👉</a>
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="cycle-checking">Cycle Checking</h2>
+<p>The search encounters a node on a path that it has already encountered (the path traversed a cycle)</p>
+
+<h3 id="solution">Solution</h3>
+<p>Prune the path as it is not an optimal path so does not need to be explored</p>
+
+<h3 id="implementation">Implementation</h3>
+<p>Keeping the nodes in the path in a hash table allows for checking in constant \(O(1)\) time.</p>
+
+<h2 id="multiple-path-pruning">Multiple Path Pruning</h2>
+<p>Two paths may meet at the same note, one taking a longer path anther a shorter one.</p>
+
+<h3 id="solutions">Solutions</h3>
+<ul>
+  <li>If the expanding path is shorter it can be pruned</li>
+  <li>Otherwise if the expanding path \(&lt;s,..n&gt;_1\) is shorter than the current path \(&lt;s,..n,..m&gt;_2\) for subpath \(&lt;s,..n&gt;_2\) then
+    <ul>
+      <li>Employ a strategy to prevent this from happening</li>
+      <li>Remove all paths from the frontier that include subpath \(&lt;s,..n&gt;_2\)</li>
+      <li>Change the initial segment of the paths on the frontier to use the shorter path. All paths containing \(&lt;s,..n&gt;_2\) has the subpath replaced with \(&lt;s,..n&gt;_1\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="implementation-1">Implementation</h3>
+<p>Maintain a set of explored set (<strong>closed list</strong>) of nodes.</p>
+
+<p>Initially the closed list is empty</p>
+
+<p>When a path is selected if the endpoint in the closed list then a conflict has emerged otherwise add the endpoint to the closed list.</p>
+
+<h3 id="implementation-with-a">Implementation with A*</h3>
+<p>Suppose path \(p'\) to \(n'\) was selected but there is a lower cost path to \(n'\) Suppose this is via point \(p\) on the frontier.</p>
+
+<p>let path \(p\) end at node \(n\)</p>
+
+<p>by A* \(p'\) was selected before \(p\) i.e \(f(p')&lt;f(p)\)</p>
+
+\[cost(p') + h(p') \leq cost(p)+h(p)\]
+
+<p>The path of \(n'\) via \(p\) is lower cost than via \(p'\)</p>
+
+\[cost(p)+ cost(n,n') \lt cost(p')\]
+
+\[cost(n,n') \lt cost(p')- cost(p) \leq h(p) -h(p') = h(n)-h(n')\]
+
+<p>we can ensure that this does not occur if</p>
+
+\[\vert h(n) - h(n') \vert \leq cost(n,n')\]
+
+<p>The heuristic is a <strong>monotone restriction</strong></p>
+
+<h2 id="monotone-restriction">Monotone Restriction</h2>
+<p>A heuristic function satisfies the monotone restriction if \(\vert h(m) - h(n) \vert \leq cost(m,n)\) for every arc \(&lt;m,n&gt;\)</p>
+
+<p>If h satisfies the monotone function is is consistent meaning \(h(m) \lt cost(m,n) + h(n)\)</p>
+
+<p>A* with a consistent heuristic and multiple path pruning always finds the shortest path to a goal</p>
+
+<h2 id="direction-of-a-search">Direction of a Search</h2>
+
+<p>A search can be thought of as symmetric</p>
+
+<p>Shortest path from start to end</p>
+
+<p>equals</p>
+
+<p>Shortest path from end to start</p>
+
+<p><strong>Forward branching factor</strong> number of arcs that are leaving ths node</p>
+
+<p><strong>Backwards branching factor</strong> number of arcs that are entering ths node</p>
+
+<p>Search complexity is b^n so use forward is forward branching factor \(\lt\) backwards branching factor.</p>
+
+<p>However when a graph is dynamically constructed the backwards graph may not be available.</p>
+
+<h2 id="bi-directional-search">Bi-directional Search</h2>
+<p>Search backwards from the goal and the start simultaneously</p>
+
+<p>This can be effective since \(2b^{k/2} \lt b^k\)</p>
+
+<p>Implementation can vary however one strategy is to do a breath first stack to generate a rangd of targets then to do anther strategy like depth first to find the most optimal strategy.</p>
+
+<h2 id="island-driven-search">Island Driven Search</h2>
+
+<p>This process expands on the idea of multiple hops to many hops between islands.</p>
+
+<p>Find a set of m islands between the start and end.</p>
+
+<p>There are m smaller problems \(mb^k/m \lt b^k\)</p>
+
+<p>There are issues to overcome:</p>
+<ul>
+  <li>Identifying island can be difficult</li>
+  <li>Hard to guarantee optimality</li>
+</ul>
+
+<h2 id="dynamic-programming">Dynamic Programming</h2>
+
+<p>For statically stored graphs, build a table of dist(n) the actual distance form node n to a gaol</p>
+
+<p>This can be build backwards from the goal:</p>
+
+<p>This can be used locally to determine what to do</p>
+
+<p>There are two main problems</p>
+<ul>
+  <li>It requires enough space</li>
+  <li>The dist function needs to be recomputed for each goal</li>
+</ul>
+
+<h2 id="bounded-depth-first-search">Bounded Depth-first search</h2>
+
+<p>A bounded depth first search takes a bound (cost or depth) and does nto exceed paths that exceed the bound</p>
+<ul>
+  <li>Explores part of the search graph</li>
+  <li>Uses space linear in the depth of the Search</li>
+</ul>
+
+<h3 id="iterative-deepening-search">Iterative-deepening search</h3>
+<ul>
+  <li>start with a bound b=0</li>
+  <li>Do a bounded depth-first search with bound b</li>
+  <li>If a solution is found return that solution</li>
+  <li>Otherwise, increment b and repeat</li>
+</ul>
+
+<p>Finds the same first solution as breadth first search.</p>
+
+<p>As is based on depth first uses linear space.</p>
+
+<p>Iterative deepening has an overhead of \((\frac{b}{b-1}) *\) cost of expanding nodes at depth \(k\).</p>
+
+<p>When \(b=2\) there is an overhead factor of \(2\) when \(b=3\) there is an overhead of \(1.5\) as b gets higher, the overhead factor reduces.</p>
+
+<h3 id="depth-first-branch-and-bound">Depth-first Branch-and-Bound</h3>
+
+<p>Combines depth-first search with heuristic information and finds the optimal solution.</p>
+
+<p>Most useful when there are multiple solutions and we want an optimal one.</p>
+
+<p>Uses the space of depth-first search.</p>
+
+<p>let bound be the lowest-cost path found to a goal.</p>
+
+<p>If the search encounters a path p where \(cost(p)+h(p) \geq bound\) the path can be pruned.</p>
+
+<p>If a non - pruned path to the goal is found then bound can be set to \(cost(p)\) and p is set to the best solution.</p>
+
+<h4 id="initializing-bound">Initializing Bound</h4>
+<ul>
+  <li>Bound can be initialized to \(\infty\)</li>
+  <li>Bound can be set to an estimate of the optimal path cost</li>
+  <li>After depth-first search terminates either
+    <ul>
+      <li>A solution was found</li>
+      <li>No solution was found and no path was pruned</li>
+      <li>No solution was found and a Path was pruned</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Can be combined with iterative deepening to increase the bound until either a solution is found or to show there is no solution</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

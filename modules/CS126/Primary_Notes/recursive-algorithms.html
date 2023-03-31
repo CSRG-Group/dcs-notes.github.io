@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Recursive algorithms</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Recursive algorithms</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#definition">Definition</a></li><li><a href="#structure">Structure</a></li><li><a href="#examples">Examples</a></li><li><a href="#types-of-recursion">Types of recursion</a></li><li><a href="#divide-and-conquer">Divide and Conquer</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="algorithm-analysis.html" title="algorithm-analysis.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="stacks-and-queues.html" title="stacks-and-queues.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="definition">Definition</h2>
+
+<p>Recursion can be defined in various ways:</p>
+
+<blockquote>
+  <p>“When a method calls itself”</p>
+
+  <p>– <em>Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser</em></p>
+
+  <p>“A method which is expressed in terms of calls to simpler cases of itself, and a base case”</p>
+
+  <p>– <em>CSRG, Edmund Goodman</em> (It’s a recursive reference, get it?) 🙃</p>
+</blockquote>
+
+<h2 id="structure">Structure</h2>
+
+<p>Recursive functions tend to include two main components:</p>
+
+<ol>
+  <li>Base cases</li>
+  <li>Recursive calls</li>
+</ol>
+
+<blockquote>
+  <p><strong>Base cases</strong> tend to be simple input values where the return value is a known constant, so no recursive calls are made. They are <strong>required</strong> for a recursive function <strong>to finish evaluating</strong>, so there must be <strong>at least</strong> one</p>
+
+  <p><strong>Recursive calls</strong> are ones to the same recursive function making the call, with a simpler input (since it must “<strong>move towards</strong>” the base case for it to ever finish evaluating)</p>
+</blockquote>
+
+<p>We can visualise recursion by drawing diagrams of functions, with functions as boxes and arrows indicating calls and return values. This is fairly self-explanatory.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>We can often express many functions both iteratively and recursively, such as a <strong>binary search</strong>, which can be implemented recursively with:</p>
+<ul>
+  <li>The input being a list,</li>
+  <li>The recursive call being the half of the list the search has been narrowed down to</li>
+  <li>The base cases being a single item, returning the index of that item if it is the item being searched for, or an indicator of absence if not</li>
+</ul>
+
+<p>See the page on general algorithms for the <a href="https://csrg-group.github.io/dcs-notes.github.io/CS126/part12.html#recursive-algorithm">pseudocode for a recursive binary search</a></p>
+
+<h2 id="types-of-recursion">Types of recursion</h2>
+
+<p><strong>Linear recursion.</strong> Each functional call makes only one recursive call (there may be multiple different possible calls, but only one is selected), or none if it is a base case.</p>
+
+<p><strong>Binary and multiple recursion.</strong> Each functional call makes two or multiple recursive calls, unless it is a base case.</p>
+
+<h2 id="divide-and-conquer">Divide and Conquer</h2>
+
+<blockquote>
+  <p>A <strong>design pattern</strong> that enables efficient problem solving. It consists of the following 3 steps:</p>
+
+  <ol>
+    <li><strong>Divide:</strong> Divide input data into 2 or more disjoint subsets <strong>unless</strong> the input size is smaller than a certain threshold – if it is smaller then solve the problem directly using a straightforward method and return the solution obtained.</li>
+    <li><strong>Conquer:</strong> Recursively solve the <strong>subproblems</strong> associated with each subset.</li>
+    <li><strong>Combine:</strong> Take the solutions to the <strong>subproblems</strong> and <strong>merge</strong> them into a solution to the original problem.</li>
+  </ol>
+</blockquote>
+
+<p>This design pattern is widely used in algorithms like <strong>merge sort</strong> and <strong>quick sort</strong>.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Number Systems</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Number Systems</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#integers">Integers</a><ul><li><a href="#decimal-to-binary-conversion-algorithm">Decimal to Binary Conversion Algorithm</a><ul><li><a href="#problems">Problems</a></li></ul></li><li><a href="#generic-base-conversion-algorithm">Generic Base Conversion Algorithm</a></li><li><a href="#division-algorithm">Division Algorithm</a></li><li><a href="#euclidean-algorithm">Euclidean algorithm</a><ul><li><a href="#problems-1">Problems</a></li></ul></li><li><a href="#modular-arithmetic">Modular Arithmetic</a></li><li><a href="#twos-complement">Two’s complement</a></li></ul></li><li><a href="#reals">Reals</a><ul><li><a href="#properties-of-real-numbers">Properties of real numbers</a><ul><li><a href="#exercises">Exercises</a></li><li><a href="#problems-2">Problems</a></li></ul></li><li><a href="#intervals">Intervals</a></li><li><a href="#nth-roots">Nth roots</a></li><li><a href="#modulus-or-absolute-function">Modulus or absolute function</a></li><li><a href="#bounds">Bounds</a><ul><li><a href="#completeness-axiom">Completeness axiom</a></li></ul></li></ul></li><li><a href="#complex-numbers">Complex Numbers</a><ul><li><a href="#complex-conjugates">Complex conjugates</a></li><li><a href="#polar-coordinates">Polar coordinates</a></li><li><a href="#complex-modulus">Complex modulus</a></li><li><a href="#de-moivres-theorem">De Moivre's Theorem</a></li><li><a href="#fundamental-theorem-of-algebra">Fundamental Theorem of Algebra</a></li><li><a href="#other-notation">Other Notation</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part2.html" title="part2.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="integers">Integers</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note1.pdf">Link to the PDF.</a></p>
+
+<p>Integers, denoted \(\mathbb{Z}\). We use a denary/decimal (base-10) system
+with 10 digits, but there is also binary, which uses 2 digits.</p>
+
+<p>Subscripts are used to denote base;
+\(10011_{\textrm{two}} = 19_{\textrm{ten}}\) or \(10011_{2} = 19_{10}\).</p>
+
+<h3 id="decimal-to-binary-conversion-algorithm">Decimal to Binary Conversion Algorithm</h3>
+
+<p>Divide decimal number repeatedly
+by 2 to get remainders \(r_0, r_1, r_2,...r_n\). The binary representation
+is \(r_{n}r_{n-1}...r_{1}r_0\) (note the switched order).</p>
+
+<h4 id="problems">Problems</h4>
+
+<ol>
+  <li>Convert \(244_{10}\) to binary.</li>
+  <li>The <em>hexadecimal</em> system is base 16, with digits
+0123456789ABCDEF. Convert \(21BAD_{16}\) to decimal.</li>
+</ol>
+
+<h3 id="generic-base-conversion-algorithm">Generic Base Conversion Algorithm</h3>
+
+<p>Let us have an integer \(b\). To
+convert a base 10 integer to a base \(b\) integer, divide repeatedly by
+\(b\) to get remainders \(r_0, r_1,...,r_n\), thus the base \(b\)
+representation would be \(r_{n},r_{n-1},...,r_{1},r_0\) (note the switched
+order).</p>
+
+<h3 id="division-algorithm">Division Algorithm</h3>
+
+<p>If \(a, b \in \mathbb{Z}\) with \(b \neq 0\), then
+there exist unique \(q, r \in \mathbb{Z}\) with</p>
+
+\[\begin{align}  &amp; a = qb +
+r,  &amp; 0 \leq r &lt; \|b\| \end{align}\]
+
+<p>Where \(q\) is the <strong>quotient</strong> and
+\(r\) the <strong>remainder</strong>.</p>
+
+<p>If \(0 &lt; b &lt; a\) then an algorithm to compute \(q, r\) would be to
+iteratively compute \(a - b, a - 2b, ..., a-nb, a - (n-1)b\) where
+\(a - (n-1)b &lt; 0\) is the first strictly negative number. Then
+\(q = n, r = a-nb\).</p>
+
+<p>If \(a = qb\) (all integers) then \(b\) <em>divides</em> \(a\). The greatest common
+denominator is denoted \(\gcd(a, b)\).</p>
+
+\[\gcd(0, n) = n \; \forall n \in \mathbb{Z}^+\]
+
+<h3 id="euclidean-algorithm">Euclidean algorithm</h3>
+
+<p>Let \(r_1, r_0\) be integers s.t.
+\(0 &lt; r_1 &lt; r_0\).</p>
+
+<ol>
+  <li>For each \(i\), define \(r_{i+1}\) as the remainder of
+\(\frac{r_{i-1}}{r_i}\).<br />
+The <strong>last</strong> non-zero remainder \(r_N = \gcd(r_1, r_0)\).</li>
+  <li>\(r_{i-1} = q_i r_i + r_{i+1} \; (1 \leq 1 \leq N\) can be used to
+write this last nonzero remainder, thus
+\(\gcd(r_1, r_0) = xr_1 + yr_0 \textrm{ for some integers } x, y.\)</li>
+</ol>
+
+<p>A python implementation of this algorithm is as follows, and can be downloaded <a href="./gcd.py">here</a>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/python3
+</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log10</span><span class="p">,</span> <span class="n">ceil</span>
+
+<span class="k">def</span> <span class="nf">printTableRow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">r</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"| {} | {} | {} |"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">).</span><span class="n">ljust</span><span class="p">(</span><span class="n">strPad</span><span class="p">),</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">).</span><span class="n">ljust</span><span class="p">(</span><span class="n">strPad</span><span class="p">),</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">).</span><span class="n">ljust</span><span class="p">(</span><span class="n">strPad</span><span class="p">)</span>
+    <span class="p">))</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the first number: "</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter the second number: "</span><span class="p">))</span>
+<span class="n">strPad</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">log10</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">log10</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span>
+<span class="n">r</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">while</span> <span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+    <span class="n">printTableRow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">r</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"GCD = {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<h4 id="problems-1">Problems</h4>
+
+<ol>
+  <li>Find the greatest common divisor of 16579 and 30031, and
+determine integers \(x\) and \(y\) such that
+\(\gcd(16579, 30031) = x16579 + y30031\).</li>
+</ol>
+
+<h3 id="modular-arithmetic">Modular Arithmetic</h3>
+
+<p>Two integers \(a, b\) are congruent modulo \(n\)
+(another integer) if \(a-b = kn \; k \in \mathbb{Z}\), i.e. \(a = b + kn\).
+Written \(a \equiv b \mod n\) or \(a \stackrel{\mod{}}{\equiv} b\).</p>
+
+<p>Two congruencies with the same mod \(n\) can be added, subtracted,
+multiplied just like normal equations.</p>
+
+<h3 id="twos-complement">Two’s complement</h3>
+
+<p>In a computer, for negative integers we use two's complement, see
+<a href="../cs132/index.html#datarep">here</a>.</p>
+
+<p>We are also working with a system modulo \(2^N\) where \(N\) is the number
+of bits. Thus the 32 bit limit of \([2^{31}, 2^{31} - 1]\) which is
+\(2^{32}\) integers.</p>
+
+<h2 id="reals">Reals</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note2.pdf">Link to the PDF.</a></p>
+
+<p>Reals are denoted \(\mathbb{R}\), and have a subset \(\mathbb{Q}\) which are
+numbers definable as \(\frac{m}{n}, \; m, n \in \mathbb{Z}, \; n \neq 0\).
+We can always pick rationals such that \(n \geq 1\) and \(\gcd(m, n) = 1\).
+Every nonzero rational has an inverse.</p>
+
+<p>Reals which are the solutions of polynomial equations are called
+<strong>algebraic</strong>, an example would be \(\sqrt{2}\) (being the solution of
+\(x^2 = 2\)).</p>
+
+<p>Those which are not are called <strong>transcendental</strong>, such as \(\pi, e\).</p>
+
+<p>A real number can be thought of as a sequence of rational numbers, which
+converges to said real. e.g. \(\pi\) is the limit of
+\(3, 3.1, 3.14, 3.141, 3.1415...\)</p>
+
+<h3 id="properties-of-real-numbers">Properties of real numbers</h3>
+
+<p>All properties of real numbers come from <strong>13 axioms</strong>, of which 1-8 are
+<strong>algebraic</strong> properties, and 9-12 are <strong>order properties</strong>.</p>
+
+<p>For all \(x, y, z \in \mathbb{R}\):</p>
+
+<ol>
+  <li><strong>Commutativity</strong>: \(x + y = y + x, \; xy = yx\)</li>
+  <li><strong>Associativity</strong>: \(x + (y + z) = (x + y) + z\) (same with
+multiplication)</li>
+  <li>Multiply <strong>distributes</strong> over add: \(x(y + z) = xy + xz\)</li>
+  <li><strong>Additive Identity</strong>: \(\exists 0 \in \mathbb{R }: x + 0 = x\)</li>
+  <li><strong>Multiplicative identity</strong>:
+\(\exists 1 \in \mathbb{R} : x \cdot 1 = x\)</li>
+  <li>Multiplicative and additive identites are <strong>distinct</strong>: \(1 \neq 0\)</li>
+  <li>Every element has an <strong>additive inverse</strong>:
+\(\exists (-x) \in \mathbb{R}: x + (-x) = 0\)</li>
+  <li>Every \(\neq 0\) element has a <strong>mul. inverse</strong>:
+\(x \neq 0 \implies \exists x^{-1} \in \mathbb{R} : x \cdot x^{-1} = 1\)</li>
+  <li><strong>Transitivity</strong> of ordering: \(x &lt; y \land y &lt; z \implies x &lt; z\)</li>
+  <li><strong>Trichotomy Law</strong>: only <strong>one</strong> of \(x &lt; y,\; x &gt; y,\; x = y\)</li>
+  <li><strong>Order preserved</strong> under add: \(x &lt; y \implies x + z &lt; y + z\)</li>
+  <li><strong>Order preserved</strong> under mul: \(0 &lt; z \land x &lt; y \implies xz &lt; yz\)</li>
+  <li><strong>Completeness</strong>: <em>Every non-empty subset of \(\mathbb{R}\) that is
+bounded above has a least upper bound</em></li>
+</ol>
+
+<h4 id="exercises">Exercises</h4>
+
+<p><strong>1.</strong> Show that \(0 &lt; 1\).</p>
+
+<p>We first need a lemma.</p>
+
+<p><strong><em>Lemma 1.</em></strong> \(\forall x ,\; x^2 \geq 0\).</p>
+
+<p><strong><em>Proof of Lemma 1.</em></strong> Consider the cases where \(x &lt; 0\) and \(x \geq 0\).</p>
+
+<p>When \(x \geq 0\),</p>
+
+\[\begin{align} x \geq 0  &amp; \implies x^2 \geq 0 \cdot
+0 \textrm{ by ax. 12}\\  &amp; \implies \geq 0. \end{align}\]
+
+<p>When \(x &lt; 0\), \(-x \geq 0\), so:</p>
+
+\[\begin{align} x^2 = x \cdot x  &amp; =
+(-x)(-x) \\  &amp; \geq 0 \cdot 0 \textrm{ by prev case}\\  &amp; \geq 0.
+ &amp; \triangleright \end{align}\]
+
+<p>Then, we can prove.
+<strong><em>Proof.</em></strong></p>
+
+\[\begin{align} 1^2  &amp; \geq 0 \textrm{ by lemma}\\
+\implies 1  &amp; \geq 0\\ 1  &amp; \neq 0 \textrm{ by ax. 6 } \therefore 1 &gt; 0.
+ &amp; \triangleright \end{align}\]
+
+<p><strong>2.</strong> Show that \(a &gt; 0 \implies \frac{1}{a} &gt; 0\).</p>
+
+<p><strong><em>Proof.</em></strong> Let \(a &gt; 0\)</p>
+
+\[\begin{align} \textrm{If } \frac{1}{a}  &amp; = 0
+\\ \implies 1  &amp; = a(\frac{1}{a}) = a \cdot 0 = 0 \\
+ &amp; \textrm{which is a contradiction to ax. 6.} \end{align}\]
+
+\[\begin{align} \textrm{If } \frac{1}{a}  &amp; &lt; 0 \\ \implies a
+(\frac{1}{a})  &amp; &lt; a \cdot 0 \textrm{ by ax. 12} \\ \implies 1  &amp; = 0
+\textrm{ which is a contradiction.} \end{align}\]
+
+<p>By axiom 10 we get
+that \(\frac{1}{a} &gt; 0. \quad \triangleright\)</p>
+
+<h4 id="problems-2">Problems</h4>
+
+<ol>
+  <li>
+    <p>Show if \(a, b &gt; 0\) then \(a &lt; b \Longleftrightarrow a^2 &lt; b^2\).
+<em>Note: you have to prove both ways.</em></p>
+  </li>
+  <li>
+    <p>Show if \(a &lt; b \land c &lt; 0 \implies ac &gt; bc\).</p>
+  </li>
+</ol>
+
+<h3 id="intervals">Intervals</h3>
+
+<p><strong>Intervals</strong> are ranges represented by brackets. \((a, b)\) ranges are
+called <strong>open</strong>, \([a, b), \; (a, b]\) are called <strong>semi-open</strong> or
+<strong>semi-closed</strong> and \([a, b]\) ranges are called <strong>closed</strong>. \(\infty\) is
+not a real number and cannot appear in closed ranges.</p>
+
+<h3 id="nth-roots">Nth roots</h3>
+
+<p>Let \(n \in \mathbb{Z}^+\). For any
+\(a \in \mathbb{R}_{\geq 0}, \; \exists! x \geq 0\) with \(x^n = a\). This
+\(x\) is the <strong>\(n^{th}\) root</strong> of \(a\), \(a^{\frac{1}{n}}\). For any positive
+real \(a, b\) and \(n \in \mathbb{Z}^+\) we have
+\(a &lt; b \Longleftrightarrow a^{\frac{1}{n}} &lt; b^{\frac{1}{n}}\) There's
+also of course \(a^\frac{1}{2} \equiv \sqrt{a}\) and all that comes with
+it.</p>
+
+<h3 id="modulus-or-absolute-function">Modulus or absolute function</h3>
+
+<p>The <strong>Modulus or Absolute</strong> of \(x\), \(|x|\) is basically \(x\) but without
+negatives. \(\|x\| = \sqrt{x^2}, \quad \forall x \in \mathbb{R}\).</p>
+
+<p>There are 4 properties of modulus:</p>
+
+<ol>
+  <li>
+\[-\|x\| \leq x \leq \|x\|\]
+  </li>
+  <li>
+\[\|xy\| = \|x\|\|y\|\]
+  </li>
+  <li>
+\[\|x + y\| \leq \|x\|+\|y\|\]
+  </li>
+  <li>
+\[\|\|x\| - \|y\|\| \leq \|x - y\|\]
+  </li>
+</ol>
+
+<h3 id="bounds">Bounds</h3>
+
+<p>For a set of real numbers \(S\)</p>
+
+<ul>
+  <li>\(u\) is an <strong>upper bound</strong> of S if \(u \geq x \forall x \in S\)</li>
+  <li>\(U\) is the <strong>least upper bound (supremum)</strong> of S if \(U\) is an UB of
+S and \(U \leq u \forall u\)</li>
+  <li>\(l\) is a <strong>lower bound</strong> of S if \(l \leq x \forall x \in S\)</li>
+  <li>\(L\) is the <strong>greatest lower bound (infimum)</strong> of S if \(L\) is a LB of
+S and \(L \geq l \forall l\)</li>
+</ul>
+
+<p><img src="./images/bounds.svg" alt="boundsDiagram" /></p>
+
+<h4 id="completeness-axiom">Completeness axiom</h4>
+
+<p>The <em>completeness axiom</em> suggests that for every set which has a lower
+bound has a greatest lower bound.</p>
+
+<p><strong>Important consequences of the completeness axiom:</strong></p>
+
+<ul>
+  <li><strong>The ARCHIMEDIAN PROPERTY</strong> of \(\mathbb{R}\):<br />
+if \(\epsilon \in \mathbb{R}; \epsilon &gt; 0\) then
+\(\exists n \in \mathbb{Z}^+ : n\epsilon &gt; 1\).</li>
+  <li>Between any two real numbers there are both rational and irrational
+numbers.</li>
+  <li>Every real number can be represented by a (possibly infinite)
+decimal expansion.</li>
+</ul>
+
+<h2 id="complex-numbers">Complex Numbers</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part1/note3.pdf">Link to the PDF.</a></p>
+
+<p>In the set \(\mathbb{C}\), of the form \(a + ib\) where \(i^2 = -1\).
+Often denoted \(z\).</p>
+
+<p>Representable by an ordered pair \(z = (a, b)\) where \(Re_z = a\) and
+\(Im_z = b\). Also representable as a point on a 2d plane, the <em>complex
+plane</em> or <em>argand diagram</em>.</p>
+
+<p>For \(a, b \in \mathbb{R}\) the <strong>complex conjugate</strong> of \(z = a + ib\) is
+\(\overline{z} = a - ib\) (overline). Effectively reflecting along x axis.</p>
+
+<h3 id="complex-conjugates">Complex conjugates</h3>
+
+<p><strong>Properties of complex conjugates (\(\forall z, w \in \mathbb{C}\)):</strong></p>
+
+<ul>
+  <li>
+\[\overline{z + w} = \overline{z} + \overline{w}\]
+  </li>
+  <li>
+\[\overline{zw} = \overline{z}\overline{w}\]
+  </li>
+  <li>
+\[\overline{(\frac{z}{w})} = \frac{\overline{z}}{\overline{w}}\]
+  </li>
+  <li>
+\[\overline{\overline{z}} = z\]
+  </li>
+  <li>
+\[z \in \mathbb{R} \Longleftrightarrow \overline{z} = z\]
+  </li>
+  <li>
+\[Re_z = \frac{z + \overline{z}}{2}\]
+  </li>
+  <li>
+\[Im_z = \frac{z - \overline{z}}{2i}\]
+  </li>
+</ul>
+
+<h3 id="polar-coordinates">Polar coordinates</h3>
+
+<p>If \(x, y \in \mathbb{R}\) and \(x + iy \neq 0\) we can express \(x\) and \(y\)
+in polar coordinates,</p>
+
+\[\begin{align}  &amp; x = r \cos(\theta)  &amp; y = r
+\sin(\theta) \end{align}\]
+
+\[\therefore x + iy = r(\cos(\theta) + i\sin(\theta).\]
+
+\[\begin{align}  &amp; r
+= \sqrt{x^2 + y^2}  &amp; \theta \textrm{ satisfies } \tan(\theta) =
+\frac{y}{x}. \end{align}\]
+
+<p>\(\theta\) is the <strong>argument</strong>, with the
+<strong>principal argument</strong> being a \(\theta \in (-\pi, \pi]\).</p>
+
+<p>You can multiply two complex numbers in polar form,
+\(r_{1} (\cos(\theta) + i\sin(\theta)) \cdot r_{2} (\cos(\phi) + i\sin(\phi)) = r_{1}r_{2}(\cos(\theta + \phi) + i\sin(\theta + \phi))\).</p>
+
+<h3 id="complex-modulus">Complex modulus</h3>
+
+<p>\(r\) is the <strong>modulus</strong>, often denoted \(\|x + iy\|\).</p>
+
+<p><strong>Properties of modulus</strong>, for all \(z, w \in \mathbb{C}\):</p>
+
+<ul>
+  <li>
+\[\|z\| = \|\overline{z}\|\]
+  </li>
+  <li>
+\[\|z\| = \sqrt{z\overline{z}}\]
+  </li>
+  <li>
+\[z\overline{z} = \|z\|^2\]
+  </li>
+  <li>
+\[\|zw\| = \|z\|\|w\|\]
+  </li>
+  <li>\(\|z + w\| \leq \|z\| + \|w\|\), <em>(triangle inequality)</em></li>
+  <li>
+\[\|\|z\| - \|w\|\| \leq \|z - w\|\]
+  </li>
+</ul>
+
+<p>Proof of the triangle inequality is omitted.</p>
+
+<h3 id="de-moivres-theorem">De Moivre's Theorem</h3>
+
+<p>\(\forall n \in \mathbb{Z}\):
+\((r(\cos{\theta} + i\sin \theta))^n = r^{n}(\cos{n\theta} + i\sin{n\theta}).\)</p>
+
+<p><strong><em>Q.</em></strong> Find all complex numbers \(z : z^3 = 1\).</p>
+
+<h3 id="fundamental-theorem-of-algebra">Fundamental Theorem of Algebra</h3>
+<p>(Gauss) states that an \(n\)
+degree polynomial must have \(n\) roots.</p>
+
+<h3 id="other-notation">Other Notation</h3>
+
+<p>The conjugate \(\overline{z}\) can also be written \(z*\).</p>
+
+<p>Sometimes (often in engineering) \(i\) is instead written as \(j\), as \(i\) often refers to current.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

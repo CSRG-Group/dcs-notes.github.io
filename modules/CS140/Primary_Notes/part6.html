@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Digital Signature & Certificates</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Digital Signature & Certificates</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#integrity-authentication--non-repudiation">Integrity, Authentication &amp; Non-repudiation</a></li><li><a href="#digital-signatures-ds">Digital Signatures (DS)</a><ul><li><a href="#differences-between-encryption-and-ds">Differences between Encryption and DS</a></li></ul></li><li><a href="#message-authentication-code-mac">Message Authentication Code (MAC)</a><ul><li><a href="#why-mac">Why MAC?</a></li></ul></li><li><a href="#digital-certificates-ca">Digital Certificates (CA)</a><ul><li><a href="#authentication-through-certificates">Authentication through certificates</a></li><li><a href="#strong-authentication-with-certificate">Strong Authentication with Certificate</a></li><li><a href="#authentication-chain">Authentication Chain</a></li></ul></li><li><a href="#web-of-trust">Web of Trust</a><ul><li><a href="#how-is-validity-determined">How is validity determined?</a></li></ul></li><li><a href="#summary--ca-vs-wot">Summary – CA vs WoT</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part5.html" title="part5.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="secure-email.html" title="secure-email.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="integrity-authentication--non-repudiation">Integrity, Authentication &amp; Non-repudiation</h2>
+
+<blockquote>
+  <p><strong>Symmetry of Public Key Encryption.</strong> We can encrypt and decrypt starting with the public key then the private key, or the other way around! This works according to the property 6 of modular arithmetic stated above.</p>
+</blockquote>
+
+<p>We encrypt with private keys for anyone and everyone to be able to decrypt because it provides</p>
+
+<ul>
+  <li><strong>Integrity.</strong> We don’t care about the privacy of the message, but we want to be sure that no one tampers with it</li>
+  <li><strong>Authentication.</strong> I want my receiver to know that the message definitely came from me.</li>
+  <li><strong>Non-repudiation.</strong> If someone sends a malicious message, the system will be able to identify who the owner of the public key is.</li>
+</ul>
+
+<p>To provide <strong>integrity</strong>, we send an encrypted message along with a plaintext message (remember we don’t care if people see the message, we just don’t want them to tamper with it.)</p>
+
+<blockquote>
+  <p>When our receiver decrypts the message, and <strong>compares the 2 messages</strong> (plaintext, and decrypted), if they are the same – <strong>integrity is guaranteed</strong>.</p>
+
+  <ul>
+    <li>This is because if someone tampers with our message, they <strong>don’t have the private key</strong> to encrypt the message they changed, so we will know if someone has tampered with the message.</li>
+    <li>They also have a <strong>low probability</strong> of being able to <strong>reverse the one-way function</strong> to re-encrypt the tampered message such that the tampered plaintext and tampered ciphertext is the same.</li>
+  </ul>
+</blockquote>
+
+<p>As a result if a ciphertext can be decrypted by my public key, it must mean that the message was encrypted by my private key and hence came from me. This ensures <strong>integrity</strong> and <strong>non-repudiation</strong>. This does not necessarily grant authentication and we will see why in the authentication protocols chapter.</p>
+
+<h2 id="digital-signatures-ds">Digital Signatures (DS)</h2>
+
+<p><strong>One problem however,</strong> encrypting an entire message may be <strong>costly</strong> (time-wise), for the purpose of integrity <strong>we don’t actually need to encrypt the entire message</strong>.</p>
+
+<blockquote>
+  <p>What we do is</p>
+
+  <ol>
+    <li>Calculate the hash of the message (also called digest)</li>
+    <li>Encrypt the hash using the private key. This will be our <strong>digital signature</strong>.</li>
+  </ol>
+
+  <p>Digital signatures are <strong>attached to plain text message</strong>, and are used to <strong>verify integrity</strong>.</p>
+
+  <p>The final message is: <strong>e + [hash(e)]<sub>ku</sub></strong></p>
+</blockquote>
+
+<p>On the receiver’s end, to <strong>verify integrity</strong>..</p>
+
+<ul>
+  <li>Use the sender’s public key to decrypt the digital signature to recover the hash.</li>
+  <li>Generate a hash of the received plaintext using the same hash algorithm used by the sender.</li>
+  <li>Compare the two hashes.</li>
+</ul>
+
+<blockquote class="extra">We often denote with square brackets, <b>[hash(e)]<sub>ku</sub></b>, that something is encrypted and the subscript states whether it is a private (u) or public (p) key.</blockquote>
+
+<h3 id="differences-between-encryption-and-ds">Differences between Encryption and DS</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Encryption Scheme</th>
+      <th>Digital Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Maintains confidentiality</td>
+      <td>Provide integrity check, authentication, and non-repudiation</td>
+    </tr>
+    <tr>
+      <td>Can recover plaintext</td>
+      <td>Cannot recover plaintext</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="message-authentication-code-mac">Message Authentication Code (MAC)</h2>
+
+<p>Another way of providing integrity</p>
+
+<blockquote>
+  <p>The hash of an input file is computed and encrypted using a shared secret key.</p>
+</blockquote>
+
+<p>This can <strong>guarantee integrity</strong> but <strong>cannot provide non-repudiation</strong></p>
+
+<ul>
+  <li>because MAC is created with the secret key</li>
+  <li>Secret key is <strong>shared</strong> by more than one party</li>
+</ul>
+
+<h3 id="why-mac">Why MAC?</h3>
+
+<p>MAC is used because it is much faster than DS as it uses secret key encryption instead of public.</p>
+
+<ul>
+  <li><strong>Recall</strong> secret key uses XOR, shift etc.</li>
+  <li>Public key encryption uses modular exponentiation which takes more time to compute.</li>
+</ul>
+
+<h2 id="digital-certificates-ca">Digital Certificates (CA)</h2>
+
+<p>Digital certificates are provided by a trusted 3rd party called the <strong>Certificate Authority</strong>. These certify that a public key indeed belongs to somebody.</p>
+
+<blockquote>
+  <p>X.509 cert format is used to compose certificates which includes</p>
+
+  <ul>
+    <li>Subject: <strong>distinguished name</strong> of the user</li>
+    <li>Subject’s public key</li>
+    <li>Certificate Authority’s subject</li>
+    <li>Digital signature of CA</li>
+  </ul>
+</blockquote>
+
+<p>The format of the distinguished name is</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>O=University of Warwick, 
+OU=Department of Computer Science, 
+CN=Ligang He 
+</code></pre></div></div>
+
+<p>(O: organisation, OU: Organisation Unit, CN: Common Name)</p>
+
+<h3 id="authentication-through-certificates">Authentication through certificates</h3>
+
+<ol>
+  <li>A asks for B’s certificate, and B sends it over.</li>
+  <li>A uses the CA’s public key to verify B’s certificate.</li>
+  <li>If B’s certificate is genuine, B’s public key contained in B’s certificate is genuine.</li>
+</ol>
+
+<p>This is one way authentication, where A <strong>can authenticate</strong> B’s identity.</p>
+
+<p><img src=".\part6.assets\authenticationWithCertificates.png" alt="authenticationWithCertificates" /></p>
+
+<h3 id="strong-authentication-with-certificate">Strong Authentication with Certificate</h3>
+
+<ol>
+  <li>A’s cert proves that public key belongs to A</li>
+  <li>Use A’s public key to verify the message is really signed by A’s private key</li>
+  <li>If so, the message must come from A</li>
+</ol>
+
+<p><img src=".\part6.assets\strongAuthenticationWithCertificates.png" alt="strongAuthenticationWithCertificates" /></p>
+
+<h3 id="authentication-chain">Authentication Chain</h3>
+
+<blockquote>
+  <p>In addition to issuing certs to users, CA can also set up a sub-CA e.g. CA sets up CA1</p>
+
+  <ul>
+    <li>CA1 can also issue certs to users</li>
+    <li>The certs issued by CA1 are signed by CA1</li>
+    <li>CA1 also issues a root cert to itself</li>
+  </ul>
+</blockquote>
+
+<p><img src=".\part6.assets\authenticationChains.png" alt="authenticationChains" /></p>
+
+<p><strong>Using the authentication chain</strong></p>
+
+<ol>
+  <li>A sends A’s DC and CA1’s DC to B</li>
+  <li>B uses CA’s public key to verify CA1’s DC</li>
+  <li>B uses CA1’s public key to verify A’s DC</li>
+  <li>B uses A’s public key to verify the integrity of the signed message</li>
+</ol>
+
+<h2 id="web-of-trust">Web of Trust</h2>
+
+<p>There is <strong>no centralised certificate authority</strong> (CA). Each user establishes their personal web of trust</p>
+
+<ul>
+  <li>Each user <strong>creates a cert</strong> and <strong>can sign</strong> other users’ cert</li>
+</ul>
+
+<p>There are 2 attributes about a user. <strong>Validity</strong> and <strong>Trust.</strong></p>
+
+<blockquote>
+  <p><strong>Validity</strong> indicates the <strong>confidence</strong> others have that a certain user’s public key <strong>actually</strong> belongs to them.</p>
+
+  <p><strong>Trust</strong> indicates the <strong>confidence</strong> others have that a certain user is <strong>careful</strong> when signing other users’ certificates.</p>
+</blockquote>
+
+<p>Users can rate validity and trust of another user as <strong>unknown</strong>, <strong>marginal</strong>, <strong>full</strong>, or <strong>ultimate</strong>.</p>
+
+<h3 id="how-is-validity-determined">How is validity determined?</h3>
+
+<p>Validity between a user A and C is determined by 4 main factors</p>
+
+<ul>
+  <li>Threshold distance</li>
+  <li>Validity and Trust score</li>
+  <li>Number of users trusted</li>
+  <li>Number of valid users</li>
+</ul>
+
+<p><strong>Example</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">=</span> 
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="err">✅</span>
+<span class="c1">-- VS --</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">=</span> 
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">marginal</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="err">❌</span>
+<span class="c1">-- VS --                 </span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B1</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">-</span>
+  <span class="o">-&gt;</span> <span class="kt">B2</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="err">✅</span>
+  <span class="o">-&gt;</span> <span class="kt">B3</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">marginal</span><span class="p">)</span> <span class="o">-</span>
+<span class="c1">--                            ^ This indicates that all B1, B2, B3 point to C</span>
+</code></pre></div></div>
+
+<p>User C’s key is considered valid by user A if the key has been signed</p>
+
+<ul>
+  <li>by at least one user with “full” trust set by A</li>
+  <li>by at least <strong><em>n</em></strong> users with “marginal” trust set by A, where <strong><em>n</em></strong> is predefined in the web of trust scheme.</li>
+</ul>
+
+<p><strong>Further example</strong></p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B1</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">B2</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">B3</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> 
+<span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="o">=</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">marginal</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">full</span><span class="p">)</span> <span class="err">❌</span>
+<span class="c1">-- VS --</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">B1</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">B2</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> 
+<span class="o">-&gt;</span> <span class="kt">B3</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="o">=</span>
+<span class="kt">A</span> <span class="o">-&gt;</span> <span class="kt">C</span><span class="p">(</span><span class="kt">V</span><span class="o">:</span> <span class="n">full</span><span class="p">,</span> <span class="kt">T</span><span class="o">:</span> <span class="n">ultimate</span><span class="p">)</span> <span class="err">✅</span>
+</code></pre></div></div>
+
+<p>In the first example even if all users are of full trust on the chain from A to C, C’s key is not considered valid by A if the distance (number of arrows/links) between the 2 users is bigger than a pre-set threshold (i.e 4).</p>
+
+<blockquote>
+  <p><strong>However</strong>, if the trust level is ultimate throughout, it breaks the restriction of threshold distance.</p>
+</blockquote>
+
+<p><img src=".\part6.assets\webOfTrust.png" alt="webOfTrust" /></p>
+
+<h2 id="summary--ca-vs-wot">Summary – CA vs WoT</h2>
+
+<p><em>Certificate Authority vs Web of Trust</em></p>
+
+<p>CA is a centralised third party that issues <strong>digital certificates</strong> to users or other CAs. These CAs are assumed to be reputable and trustworthy. If an authentication chain can be established from a CA to a particular certificate, then the trustworthiness of the certificate is assumed.</p>
+
+<p>Contrastingly, the Web of Trust requires a chain of signatures to be established from each user to the certificate in question, each user acting his own Authority. Users can rate the <strong>validity</strong> and <strong>trustworthiness</strong> of other users, and this along with other parameters like the authentication chain length, number of separate chains affect the final score of a particular certificate. This final score determines if it should be trusted or not. This usually relies on personal knowledge of other users, and it should be people they know personally or otherwise have verified the identity of offline.</p>
+
+<blockquote>
+  <p><strong>Disclaimer.</strong> Some information here were not directly sourced from the notes and if anything seems “wrong” then please submit a pull request to fix it! <a href="https://andrewgdotcom.wordpress.com/2014/11/13/wot-ca/#:~:text=An%20Authority%20is%20a%20person,both%20well%2Dknown%20and%20trustworthy.&amp;text=By%20contrast%2C%20a%20Web%20of,acting%20as%20his%20own%20Authority.">Main source</a> I referred to. (yes it’s a wordpress blog, idk how reliable it is but seems to match whatever is covered in the lectures.)</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">CAs</th>
+      <th style="text-align: center">WoT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">More convenient for the end user because CA are assumed to be trustworthy.</td>
+      <td style="text-align: center">Less convenient for end users as they have to continually assess the reliability of certificates.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">If one CA certificate is compromised, the attacker can impersonate any site on the internet as all CAs have the authority to sign any certificate.</td>
+      <td style="text-align: center">Integrity of the WoT depends on how well-maintained it is by its users.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Usually one authentication chain for any certificate, so every chain has a single point of failure.</td>
+      <td style="text-align: center">Usually has multiple signature chains for one certificate. With more chains, a particular certificate is more trustworthy.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

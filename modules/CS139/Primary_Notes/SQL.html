@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes SQL</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">SQL</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#key-commands">Key Commands</a></li><li><a href="#database-theory">Database Theory</a><ul><li><a href="#sql">SQL</a></li><li><a href="#relational-database">Relational Database</a></li><li><a href="#database-management">Database Management</a></li><li><a href="#nosql">NoSQL</a></li><li><a href="#acid-compliance">ACID Compliance</a></li><li><a href="#database-table">Database Table</a></li><li><a href="#links">Links</a><ul><li><a href="#one-to-one">One to One</a></li><li><a href="#one-to-many">One to Many</a></li><li><a href="#many-to-many">Many to Many</a></li></ul></li><li><a href="#identifiers">Identifiers</a></li><li><a href="#schema">Schema</a></li></ul></li><li><a href="#detailed-commands">Detailed Commands</a><ul><li><a href="#data-types">Data Types</a><ul><li><a href="#data-modifiers">Data Modifiers</a><ul><li><a href="#auto-increment">Auto increment</a></li></ul></li></ul></li><li><a href="#table-operations">Table Operations</a><ul><li><a href="#create-table">Create Table</a></li><li><a href="#delete-table">Delete Table</a></li></ul></li><li><a href="#add-data">Add Data</a></li><li><a href="#updating-records">Updating Records</a></li><li><a href="#deleting-records">Deleting Records</a></li><li><a href="#find-data">Find Data</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="JavaScript.html" title="JavaScript.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory1.html" title="Theory1.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="key-commands">Key Commands</h2>
+
+<h2 id="database-theory">Database Theory</h2>
+<p>“Keep what changes abd what stays the same separate”</p>
+
+<p>Keep structure and date separate</p>
+
+<h3 id="sql">SQL</h3>
+<p>Structures Query Language</p>
+
+<p>interact with a relational database</p>
+
+<h3 id="relational-database">Relational Database</h3>
+<p>Data is linked to other data through the use of, unique id and links/ references</p>
+
+<h3 id="database-management">Database Management</h3>
+<p>Databases need to be managed</p>
+
+<p>Users, password access rights</p>
+
+<p>Mostly beyond scope of this course</p>
+
+<h3 id="nosql">NoSQL</h3>
+<p>Store data in Key value Pairs</p>
+
+<p>Similar to accusative arrays</p>
+
+<p>Fast retrieval through hash functions
+Uses HAsh functions rather ehn</p>
+
+<h3 id="acid-compliance">ACID Compliance</h3>
+<p>ensures transactions are robust</p>
+<ul>
+  <li>atomicity - each transaction is a single unit</li>
+  <li>consistency - only take the database from one valid state to another</li>
+  <li>isolation - Transactions occurring in parallel are result in the same result as transactions in series</li>
+  <li>durability - Once a transaction has occurs it will remain regardless of system failure</li>
+</ul>
+
+<h3 id="database-table">Database Table</h3>
+
+<p>Place to store data of the same type</p>
+
+<p>Columns are decides on creation</p>
+
+<p>Rows are data that is entered</p>
+
+<p>Unlimited number of rows are available but fixed number of columns.</p>
+
+<h3 id="links">Links</h3>
+<h4 id="one-to-one">One to One</h4>
+<p>One record is associated with one and only one record.</p>
+
+<ul>
+  <li>one person has one passport
+    <h4 id="one-to-many">One to Many</h4>
+    <p>One record points to many records.</p>
+  </li>
+  <li>A User has many posts</li>
+  <li>A post has one user</li>
+</ul>
+
+<h4 id="many-to-many">Many to Many</h4>
+<p>Many records are related to many records.</p>
+
+<ul>
+  <li>One student attends many courses</li>
+  <li>One course is attend by many Students</li>
+</ul>
+
+<h3 id="identifiers">Identifiers</h3>
+<p>Each data row has an ID that can be used to reference the data.</p>
+
+<h3 id="schema">Schema</h3>
+<p>A script used to create a database from scratch, used to define tables.</p>
+
+<p>The script may also contain default/ demo values</p>
+
+<h2 id="detailed-commands">Detailed Commands</h2>
+
+<h3 id="data-types">Data Types</h3>
+
+<ul>
+  <li>integer - whole Numbers</li>
+  <li>real - decimal numbers</li>
+  <li>text</li>
+  <li>varchar (length)- fixed length text</li>
+  <li>date</li>
+  <li>datetime - date and time</li>
+  <li>blob - binary data</li>
+</ul>
+
+<h4 id="data-modifiers">Data Modifiers</h4>
+<h5 id="auto-increment">Auto increment</h5>
+<p><code class="language-plaintext highlighter-rouge">id integer PRIMARY KEY</code>
+when inserting values use NULL</p>
+
+<h3 id="table-operations">Table Operations</h3>
+<h4 id="create-table">Create Table</h4>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="k">table</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="n">column1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Datatype</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">column2</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Datatype</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">column3</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Datatype</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">column4</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Datatype</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="delete-table">Delete Table</h4>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">table1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="add-data">Add Data</h3>
+<pre><code class="language-SQL">INSERT INTO table1 VALUES (value1,value2,value3,....);
+</code></pre>
+<h3 id="updating-records">Updating Records</h3>
+<pre><code class="language-SQL">UPDATE table1 SET column1 = value1 WHERE column2=value2;
+
+Multiple records
+UPDATE table1 SET column1 = value1,column2 = value2 WHERE column3=value3;
+</code></pre>
+
+<h3 id="deleting-records">Deleting Records</h3>
+<pre><code class="language-SQL">DELETE FROM table1 WHERE &lt;column1=value1;
+</code></pre>
+<h3 id="find-data">Find Data</h3>
+
+<pre><code class="language-SQL">SELECT column1,column2,.. FROM table1 WHERE column1=value1;
+</code></pre>
+<p><code class="language-plaintext highlighter-rouge">*</code> is a wildcard can be used in place of fields for all fields</p>
+
+<p>can add order</p>
+<pre><code class="language-SQL">ORDER BY column1,column2 ASC|DESC ;
+</code></pre>
+
+<p>Multiple Tables</p>
+
+<pre><code class="language-SQL">Select * from table1,table2 where column1=value2 AND column1=table2.column2;
+</code></pre>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

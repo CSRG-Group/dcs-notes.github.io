@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Crib sheet for CS130 - Edmund Goodman</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Crib sheet for CS130 - Edmund Goodman</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#logic-and-predicates">Logic and predicates</a><ul><li><a href="#material-implication">Material implication</a></li><li><a href="#equivalence">Equivalence</a></li><li><a href="#logic-laws">Logic laws</a></li></ul></li><li><a href="#sets">Sets</a><ul><li><a href="#set-builder-definitions-of-operations">Set builder definitions of operations</a></li><li><a href="#proofs-on-sets">Proofs on sets</a></li></ul></li><li><a href="#relations">Relations</a><ul><li><a href="#properties-of-relations">Properties of relations</a></li><li><a href="#types-of-relations">Types of relations</a></li></ul></li><li><a href="#functions">Functions</a></li><li><a href="#graphs">Graphs</a><ul><li><a href="#graph-isomorphism">Graph isomorphism</a></li><li><a href="#types-of-graph">Types of graph</a></li><li><a href="#types-of-traversals">Types of traversals</a></li><li><a href="#other-definitions">Other definitions</a></li><li><a href="#graph-theorems">Graph theorems</a></li></ul></li><li><a href="#trees">Trees</a></li><li><a href="#combinatorics">Combinatorics</a></li><li><a href="#probability">Probability</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h1 id="logic-and-predicates">Logic and predicates</h1>
+
+<h2 id="material-implication">Material implication</h2>
+
+<p>Implication is defined as: \((x \implies y) \iff (\neg x \lor y)\)</p>
+
+<p>It has the truth table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(x\)</th>
+      <th>\(y\)</th>
+      <th>\(x \implies y\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="equivalence">Equivalence</h2>
+
+<p>Equivalence is defined as: \((x \equiv y) \iff (x \land y) \lor (\neg x \land \neg y) \iff (x\) XNOR \(y)\)</p>
+
+<p>It has the truth table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(x\)</th>
+      <th>\(y\)</th>
+      <th>\(x \implies y\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>And it can be proven by:</p>
+
+<blockquote>
+  <p><strong>Proposition</strong>	\(P \iff Q\)</p>
+
+  <p><em>Proof</em>:</p>
+
+  <p>​		1) Prove that \(P \implies Q\)</p>
+
+  <p>​		2) Prove that \(Q \implies P\)</p>
+</blockquote>
+
+<h2 id="logic-laws">Logic laws</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Conjunction (“and” form)</th>
+      <th>Disjunction (“or” form)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Associativity</td>
+      <td>\((x \land y) \land z \equiv x \land (y \land z)\)</td>
+      <td>\((x \lor y) \lor z \equiv x \lor (y \lor z)\)</td>
+    </tr>
+    <tr>
+      <td>Commutativity</td>
+      <td>\(x \land y \equiv y \land x\)</td>
+      <td>\(x \lor y \equiv y \lor x\)</td>
+    </tr>
+    <tr>
+      <td>Negation</td>
+      <td>\(\neg (\neg x) \equiv x\)</td>
+      <td>\(\neg (\neg x) \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Identity</td>
+      <td>\(x \land T \equiv x\)</td>
+      <td>\(x \lor F \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Annihilation</td>
+      <td>\(x \land F \equiv F\)</td>
+      <td>\(x \lor T \equiv T\)</td>
+    </tr>
+    <tr>
+      <td>Idempotence</td>
+      <td>\(x \land x \equiv x\)</td>
+      <td>\(x \lor x \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Excluded middle</td>
+      <td>\(x \land \neg x \equiv F\)</td>
+      <td>\(x \lor \neg x \equiv T\)</td>
+    </tr>
+    <tr>
+      <td>De Morgan’s</td>
+      <td>\(\neg (x \land y) \equiv \neg x \lor \neg y\)</td>
+      <td>\(\neg (x \lor y) \equiv \neg x \land \neg y\)</td>
+    </tr>
+    <tr>
+      <td>Absorption</td>
+      <td>\(x \land (x \lor y) \equiv x\)</td>
+      <td>\(x \lor (x \land y) \equiv x\)</td>
+    </tr>
+    <tr>
+      <td>Distributivity</td>
+      <td>\(x \lor (y \land z) \equiv (x \lor y) \land (x \lor z)\)</td>
+      <td>\(x \land (y \lor z) \equiv (x \land y) \lor (x \land z)\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note that these laws occur act the similarly for some other binary operators, including:</p>
+
+<ul>
+  <li>\((\land) \rightarrow (\cap)\) and \((\lor) \rightarrow (\cup)\)</li>
+  <li>\((\land) \rightarrow (\exists)\) and \((\lor) \rightarrow (\forall)\)</li>
+</ul>
+
+<p>Proving absorption from other laws:
+\(x \lor (x \land y) \\
+(x \land T) \lor (x \lor y) \quad\quad (reverse\ identity) \\
+x \land (T \lor y) \quad\quad (distibutivity) \quad\quad\quad\quad \\
+x \land T  \quad\quad (annihilation) \quad\quad\quad\quad\quad\quad \\
+x \quad\quad (identity) \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\)</p>
+
+<h1 id="sets">Sets</h1>
+
+<h2 id="set-builder-definitions-of-operations">Set builder definitions of operations</h2>
+
+<p>We can express the main set operations in set builder notation as follows:</p>
+
+<p>\(A \cap B = \{x : x \in A \land x \in B\}\)
+\(A \cup B = \{x : x \in A \lor x \in B\}\)
+\(A \setminus B = A \cap \overline{B} = \{x : x \in A \land x \notin B\}\)
+\(A \times B = \{(x,y) : x \in A, y \in B\}\)</p>
+
+<h2 id="proofs-on-sets">Proofs on sets</h2>
+
+<ul>
+  <li>
+    <p>Proving an item is an element of a set</p>
+
+    <blockquote>
+      <p><strong>Proposition</strong>	\(a \in \{x \in S : P(x)\}\)</p>
+
+      <ol>
+        <li>Verify that \(x \in S\)</li>
+        <li>Verify that \(P(a)\) is true</li>
+      </ol>
+    </blockquote>
+  </li>
+  <li>
+    <p>Proving a set is a subset of another set, we want to prove that \(a \in A \implies a \in B\) for an arbitrary \(a\)</p>
+
+    <blockquote>
+      <p><strong>Proposition</strong>	\(A \subseteq B\)</p>
+
+      <p><em>Proof</em>:</p>
+
+      <p>​		Suppose \(a \in A\), for an arbitrary \(a\)</p>
+
+      <p>​			…</p>
+
+      <p>​		Therefore \(a \in B\)</p>
+
+      <p>​		Hence, every element in \(A\) is also in \(B\), so \(A\) is a subset of \(B\)</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Proving two sets are equal</p>
+
+    <blockquote>
+      <p><strong>Proposition</strong>	\(A = B\)</p>
+
+      <p><em>Proof</em>:</p>
+
+      <p>​		Prove that \(A \subseteq B\)</p>
+
+      <p>​		Prove that \(B \subseteq A\)</p>
+
+      <p>​		Therefore, since they are subsets of each other, \(A=B\)</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>When doing proofs about set subtraction, generally re-writing as unions and intersections then applying laws is helpful</p>
+  </li>
+  <li>
+    <p>When doing proofs on power sets or containment of elements, generally picking an arbitrary set/element is helpful</p>
+  </li>
+  <li>
+    <p>When doing proofs on set multiplication, set builder notation is generally helpful</p>
+  </li>
+</ul>
+
+<h1 id="relations">Relations</h1>
+
+<h2 id="properties-of-relations">Properties of relations</h2>
+
+<p>Consider a relation \(R : A \rightarrow B\)</p>
+
+<ul>
+  <li>A relation is reflexive if \(aRa \quad \forall a\), i.e. every element is related to itself</li>
+  <li>A relation is symmetric if \(aRb \implies bRa \quad \forall a,b\), i.e. all relations are bi-directional</li>
+  <li>A relation is antisymmetric if \(aRb \land bRa \implies a = b \quad \forall a,b\), i.e. all bi-directional relations are from an item to itself</li>
+  <li>A relation is transitive if \(aRb \land bRc \implies aRc \quad \forall a,b,c\)</li>
+</ul>
+
+<p><img src="./relations.png" alt="Relation diagram" /></p>
+
+<p><a href="https://math.libretexts.org/Bookshelves/Mathematical_Logic_and_Proof/Book%3A_Book_of_Proof_(Hammack)/11%3A_Relations/11.02%3A_Properties_of_Relations">Diagram source</a></p>
+
+<h2 id="types-of-relations">Types of relations</h2>
+
+<ul>
+  <li>Equivalence relations are reflexive, symmetric and transitive</li>
+  <li>Partial order relations are reflexive, antisymmetric, and transitive
+    <ul>
+      <li>In partial order relations, some elements have named properties, including:
+        <ul>
+          <li>Maximal, an element which relates to no other element (\(\exists x \in P, \forall y \in P \quad \| \quad x \nprec y\))</li>
+          <li>Minimal, an element which is related to by no other element (\(\exists x \in P, \forall y \in P \quad \| \quad y \nprec x\))</li>
+          <li>Greatest, an element which is related to by every other element (\(\exists x \in P, \forall y \in P \quad \| \quad y \prec x\))</li>
+          <li>Least, an element which relates to every other element (\(\exists x \in P, \forall y \in P \quad \| \quad x \prec y\))</li>
+        </ul>
+      </li>
+      <li>Two elements are incomparable if there is no relation between them in either direction (\(x,y \in P \quad \| \quad x \nprec y \land y \nprec x\))</li>
+    </ul>
+  </li>
+  <li>Total order relations are partial order relations where every element either relates to is or related to by every other element</li>
+  <li>Equivalence classes
+    <ul>
+      <li>An equivalence classes is the set of elements within the domain which have all have an equivalence relation to each other</li>
+      <li>The equivalence classes of a relation are all disjoint, and cover the entire set, i.e. they partition the relations input set</li>
+      <li>The set of all equivalence classes for a relation is called the quotient of the input set, as it divides it up into partitions</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="functions">Functions</h1>
+
+<p>Consider the relation \(f : A \rightarrow B\)</p>
+
+<ul>
+  <li>
+    <p>For a relation to be a function, it must only map values into the co-domain, and every value in the domain maps to exactly one value in the range. Formally, we write this as \(\forall x \in A, \exists! y \in B \quad x \sim y\)</p>
+
+    <p>To prove this:</p>
+
+    <ul>
+      <li>For small domains and ranges, we can just enumerate all the mappings</li>
+      <li>Plotting a graph and looking for discontinuities can be a quick way to see any obvious issues</li>
+      <li>To disprove, the easiest approach is a counterexample</li>
+    </ul>
+  </li>
+  <li>
+    <p>Function composition \(g \circ f (x)\) is applied outwards, resulting in \(g(f(x))\)</p>
+  </li>
+  <li>
+    <p>A function is called injective (one-to-one) if every value in the range is mapped to by only one value in domain. This is formally written as:
+ \(\forall x,y \in A \quad f(x) = f(y) \implies x = y\)</p>
+  </li>
+  <li>
+    <p>A function is called surjective (onto) if all the elements in the co-domain are covered in the range. This is formally written as:
+\(\forall y \in B, \exists x \in A \quad y = f(x)\)</p>
+  </li>
+  <li>
+    <p>A function is called bijective if it is both injective and surjective, and only bijective functions have well-defined inverse functions.
+ To find the inverse, generally, take the function definition \(y = f(x)\), and manipulate it to express \(x\) in terms of \(y\), leaving \(x = f^{-1}(y)\). You can verify the inverse is correct by checking that \(f \circ f^{-1} (x) = x\)</p>
+  </li>
+  <li>
+    <p>Sets are called equinumerous if there is a bijective function between them. Two sets can be proved to be equinumerous by either defining the function, or writing pseudocode which directly maps one set to the other.</p>
+  </li>
+</ul>
+
+<h1 id="graphs">Graphs</h1>
+
+<ul>
+  <li>A set of vertices connected by edges, which can be formally defined as \(G = (V, E)\) where \(V\) is the set of edges, and \(E\) is a collection (set allowing multiplicity to allow parallel edges) of 2-tuples, storing the start and end vertices of the edge. In undirected graphs, the tuples are unordered, in directed graphs they are ordered, to indicate direction with the first being start and the second end vertices.</li>
+  <li>
+    <p>The set of edges  \(E\) can be considered a relation \(E : E \rightarrow E\), since \(E \subseteq V \times V\).</p>
+
+    <ul>
+      <li>\(E\) is a symmetric relation for all undirected graphs</li>
+      <li>\(E\) is an irreflexive relation for all acyclic graphs (graphs without loops)</li>
+    </ul>
+  </li>
+  <li>We can “label” edges and vertices by creating a function which maps the set of edges/vertices to their labels</li>
+</ul>
+
+<h2 id="graph-isomorphism">Graph isomorphism</h2>
+
+<ul>
+  <li>
+    <p>Graph isomorphism (\(\cong\)) is when two graphs are topologically identical (<a href="https://homepages.warwick.ac.uk/~masgar/Teach/2005_428/2005_09_08lecture_isomorphism.pdf">Additional notes</a>), formally:</p>
+
+    <p>Two graphs \(G\) and \(H\) are isomorphic if there is a bijection \(f : V(G)\rightarrow V(H)\) so that, for any \(v,w \in V(G)\), the number of edges connecting \(v\) to \(w\) is the same as the number of edges connecting \(f(v)\) to \(f(w)\).</p>
+
+    <p>Proving/disproving isomorphism</p>
+    <ul>
+      <li>Disproof (“litmus tests” - quick things to check which indicate two graphs are not isomorphic)
+        <ul>
+          <li>The unordered list of the number of edges of the nodes in each graph must be equal</li>
+          <li>The unordered list of the shortest path lengths between all leaf nodes in each graph must be equal</li>
+        </ul>
+      </li>
+      <li>Proof
+        <ul>
+          <li>Bijective function between node labels which mean they can be “drawn” the same (the number of edges connecting the nodes in the domain is equal to the number of edges connecting the nodes in the range)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="types-of-graph">Types of graph</h2>
+
+<ul>
+  <li>Empty graphs are when there are no edges (but there may be vertices)</li>
+  <li>Complete graphs are when every vertex is adjacent to every other vertex, and are written as \(K_n\) where \(n\) is the number of vertices in the graph</li>
+  <li>Cyclic graphs must contain at least one cycle</li>
+  <li>Bi-partite graphs are when the vertices can be divided into two disjoint sets such that every edge connects between the two sets (no edges exist between vertices within the same set).
+Complete bi-partite graphs are when every vertex in one set is connected to every vertex in the other set, and are written as \(K_{n,m}\) where \(n\) and \(m\) are the sizes of the two sets</li>
+  <li>Planar graphs can be embedded in a 2-D plane with no edges intersecting</li>
+</ul>
+
+<h2 id="types-of-traversals">Types of traversals</h2>
+
+<ul>
+  <li>Walks are a finite sequence starting and ending in a vertex, alternating vertices and edges, for example \(V_0, (V_0, V_1), V_1, ..., (V_{n-1}, V_n), V_n\), which can be written as \(V_0 \rightarrow V_1 \rightarrow ... \rightarrow V_n\).</li>
+  <li>A path is a walk where no edges are repeated</li>
+  <li>A simple path is a walk where no vertices are repeated</li>
+  <li>A tour is a walk where the start and end vertices are the same</li>
+  <li>A cycle is a tour where no edges are repeated</li>
+  <li>A simple cycle is a tour where no vertices are repeated</li>
+  <li>A vertex is reachable from another vertex if there exists a path between them</li>
+  <li>Eulerian cycles are cycles which traverse every edge in the graph exactly once</li>
+  <li>Hamiltonian cycles are cycles which traverse every node in the graph exactly once</li>
+</ul>
+
+<h2 id="other-definitions">Other definitions</h2>
+
+<ul>
+  <li>
+    <p>Graph colouring is allocating labels called “colours” to vertices, and is called “proper” when no adjacent vertices have the same colour. A graph is called \(k\)-colourable if there exists a proper colouring using only \(k\) colours</p>
+  </li>
+  <li>
+    <p>Subdividing in a graph is adding an additional vertex in the middle of an edge</p>
+
+    <h2 id="graph-theorems">Graph theorems</h2>
+
+    <ul>
+      <li>Handshaking theorem: The sum of the degrees of every vertex in an undirected graph is twice the number of edges in the graph</li>
+      <li>In an undirected graph, the reachability relation on \(V\) is an equivalence relation</li>
+      <li>Bi-partite graphs (and trees) are 2-colourable</li>
+      <li>Euler’s (&amp; Hierholzer) theorem: A connected undirected graph contains an eulerian cycle if and only if each vertex has an even degree</li>
+      <li>Kuratowski’s theorem: All non-planar graphs contain a subgraph isomorphic to either \(K_5\) or \(K_{3,3}\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="trees">Trees</h1>
+
+<p>Five definitions of a tree \(T = (V, E)\)</p>
+
+<ul>
+  <li>Acyclic and connected</li>
+  <li>Acyclic and \(\|E\| = \|V\|-1\)</li>
+  <li>Connected and \(\|E\| = \|V\|-1\)</li>
+  <li>Connected, but removing any edge makes it disconnected</li>
+  <li>Acyclic, but adding any edge between existing vertices makes it cyclic</li>
+</ul>
+
+<h1 id="combinatorics">Combinatorics</h1>
+
+<p>Full explanations are given, as sometimes the question requires more than just the formula</p>
+
+<ul>
+  <li>
+    <p>Multiplication principle</p>
+
+    <ul>
+      <li>If two independent operations are performed in succession, and the first can be performed in \(n\) ways, and the second \(m\) ways, then the total number of ways of performing the pair of operations is \(n \cdot m\)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Arrangements - “The number of ways to order a sequence of \(n\) distinct items”</p>
+
+    <p>The number of items which could be selected first is the total number of items, then the number of items which could be selected second is one minus the total, as one of the items is already in place in the sequence. This continues until there is only one item left, so it is a factorial function \(n!\)</p>
+  </li>
+  <li>
+    <p>Permutations - “The number of ways to order \(r\) selections from \(n\) distinct items”</p>
+
+    <p>This is similar to arrangements (which are in fact just \(nPn\)), however, only \(r\) items are selected, not all \(n\), so we don’t multiply the last \(n-r\) selections into the total number of ways. Hence, the formula is:
+\(nPr = n \cdot (n-1) \cdot (n-2) ... (n-r) = \frac{n!}{(n-r)!}\)</p>
+  </li>
+  <li>
+    <p>Combinations - “The number of possible unordered selections of length \(r\) from \(n\) distinct items”</p>
+
+    <p>This is like permutations, however, or does not matter. To account for this, as well as dividing by the \((n-r)!\) unselected items as in permutations, we also divide by number of ways the selected items could be arranged to remove the ordering, which we know from arrangements is just \(r!\) . Hence, the formula is:
+\(nCr = \frac{n!}{r! \cdot (n-r)!}\)</p>
+  </li>
+  <li></li>
+  <li>
+    <p>The “stars and bars” technique - Additional sources <a href="https://brilliant.org/wiki/integer-equations-star-and-bars/">here</a> and <a href="https://math.stackexchange.com/a/2416934">here</a></p>
+
+    <p>The formula for the number of ways to place \(n\) indistinguishable items into \(k\) labelled boxes is:
+\({n+k-1 \choose n}\)</p>
+  </li>
+</ul>
+
+<h1 id="probability">Probability</h1>
+
+<ul>
+  <li>The probability an event \(A\) has of occurring <em>given</em> event \(B\) occurs can be calculated by:</li>
+</ul>
+
+\[P(A|B) = \frac{P(A \cap B)}{P(B)}\]
+
+<ul>
+  <li>Two events are independent if:</li>
+</ul>
+
+\[P(A \cap B) = P(A) . P(B) \\
+P(A|B) = P(A)\]
+
+<ul>
+  <li>Bayes theorem is used if we have a hypothesis, and we want to update our evaluation of its likelihood given evidence
+\(P(H|E) = \frac{P(H) . P(E | H)}{P(E)}\)
+Where \(H\) denotes the hypothesis event which might occur, and \(E\) denotes the “evidence” which affects the probability of the hypothesis event occurring</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

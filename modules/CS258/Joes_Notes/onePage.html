@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>onePage CS258 One Page Notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">CS258 One Page Notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#database-basics">Database Basics</a><ul><li><a href="#data">Data</a></li><li><a href="#data-modeling">Data Modeling</a></li><li><a href="#database-management-systems--dbms-">Database Management Systems ( DBMS )</a><ul><li><a href="#manage-the-data">Manage the data</a></li><li><a href="#data-integrity">Data integrity</a></li></ul></li><li><a href="#schema">Schema</a></li></ul></li><li><a href="#relational-data-model">Relational Data Model</a><ul><li><a href="#informal-definition">Informal definition</a></li><li><a href="#formal-definition">Formal Definition</a><ul><li><a href="#schema">Schema</a></li><li><a href="#domain">Domain</a></li><li><a href="#tuple-of-a-relation">tuple of a relation</a></li><li><a href="#relation-state">Relation State</a></li><li><a href="#relation-instance">Relation instance</a></li><li><a href="#short-hand">Short hand</a></li><li><a href="#other-terminology">Other Terminology</a></li><li><a href="#database">Database</a></li><li><a href="#database-schema">Database Schema</a></li><li><a href="#intension">Intension</a></li><li><a href="#extension">Extension</a></li><li><a href="#metadata">Metadata</a></li></ul></li><li><a href="#informal-to-formal">Informal to formal</a></li><li><a href="#sql">SQL</a></li></ul></li><li><a href="#relational-database-constraints">Relational Database Constraints</a><ul><li><a href="#superkey">SuperKey</a><ul><li><a href="#minimal-superkey">Minimal SuperKEy</a></li></ul></li><li><a href="#entity-integrity-constraint">Entity Integrity Constraint</a></li><li><a href="#referential-integrity">Referential Integrity</a></li><li><a href="#updating-with-constraints">Updating with Constraints</a><ul><li><a href="#insert">Insert</a><ul><li><a href="#domain">Domain</a></li><li><a href="#key">Key</a></li><li><a href="#referential-integrity-1">Referential integrity</a></li><li><a href="#entity-integrity">Entity integrity</a></li></ul></li><li><a href="#update">Update</a><ul><li><a href="#domain-1">Domain</a></li><li><a href="#key-1">Key</a></li><li><a href="#referential-integrity-2">Referential integrity</a></li><li><a href="#entity-integrity-1">Entity integrity</a></li></ul></li><li><a href="#delete">Delete</a><ul><li><a href="#referential-integrity-3">Referential integrity</a></li></ul></li></ul></li><li><a href="#functional-dependencies">Functional Dependencies</a><ul><li><a href="#definition">Definition</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Are defined in the relevant module data file
+-->
+
+
+
+
+
+<!-- not the best and a little O-horrible  but the easiest way to do it --><h1 id="database-basics">Database Basics</h1>
+       
+            <h2 id="data">Data</h2>
+<p>Data is typically stores on</p>
+<ul>
+  <li>non-volatile memory</li>
+  <li>Decentralized servers (cloud)</li>
+</ul>
+
+<p>Data has two flavours</p>
+<ul>
+  <li>Structured
+    <ul>
+      <li>tables with predefined columns</li>
+    </ul>
+  </li>
+  <li>Unstructured
+    <ul>
+      <li>text Docs, images , videos</li>
+    </ul>
+  </li>
+  <li>semi-structures
+    <ul>
+      <li>XML, JSON , webpages(maybe)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Databases are designed for structured data.</p>
+
+<p>Unstructured data may be linked and then retrieved on request</p>
+
+<h2 id="data-modeling">Data Modeling</h2>
+<p>Defines the data space</p>
+
+<p>considering the:</p>
+<ul>
+  <li>Data items to be stored</li>
+  <li>What are the data attributes</li>
+  <li>What are the relationships</li>
+  <li>Any attributes of the relationships</li>
+</ul>
+
+<p>A data model can be developed</p>
+
+<h2 id="database-management-systems--dbms-">Database Management Systems ( DBMS )</h2>
+<p>Pieces of software to manage the data they will typically</p>
+<ul>
+  <li>Manage the data</li>
+  <li>Access the data</li>
+  <li>Store the data</li>
+  <li>Manage access controls</li>
+  <li>Ensure the integrity of the data</li>
+</ul>
+
+<p>Can be viewed of as  “black box” there is little need to know what happens internally just what goes in and what will come out.</p>
+
+<h3 id="manage-the-data">Manage the data</h3>
+<p>The DBMS will attempt to mange the data to ensure easy retrieval and insertion</p>
+<ul>
+  <li>Create indexes to speed up data requests</li>
+  <li>Find the best way to execute a query</li>
+  <li>Find the best way to perform relational row operations</li>
+</ul>
+
+<h3 id="data-integrity">Data integrity</h3>
+<p>The DBMS needs to ensure that the data remains internally consistent with</p>
+<ul>
+  <li>Attempts at unauthorized changes</li>
+  <li>Changes and update to teh data</li>
+  <li>Failures, program crashes, power outages hardware failure</li>
+  <li>Concurrent changes happening at the same time</li>
+</ul>
+
+<h2 id="schema">Schema</h2>
+<p>The conceptual schema is a layout of the logical DB,</p>
+<ul>
+  <li>Shows entities, data types, relations.constraints.</li>
+  <li>Hides The physical layout, how it the data stored, where is the data</li>
+</ul>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="relational-data-model">Relational Data Model</h1>
+       
+            <h2 id="informal-definition">Informal definition</h2>
+<ul>
+  <li><strong>Relation</strong> is a table of values made from
+    <ul>
+      <li>A set of rows, the data elements in each row represents certain facts that correspond to a real-world entity or relationship.</li>
+      <li>Each column Represents a particular characteristic or attributes
+        <ul>
+          <li>Gives meaning to the data</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Key of a relation</strong>
+    <ul>
+      <li>Each row must me uniquely identifiable, the key of the row does this</li>
+      <li>Sometimes row-id or sequential numbers are assigned as keys</li>
+    </ul>
+  </li>
+  <li><strong>Relational Database Model</strong>
+    <ul>
+      <li>Based on tables, table name and attribute (name,type) pairs</li>
+      <li><strong>Formulating Queries</strong>
+        <ul>
+          <li>Specify the table name and attribute of interest</li>
+          <li>Specify constraints (predicates) needed to be satisfied for data to be of interest</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="formal-definition">Formal Definition</h2>
+
+<h3 id="schema">Schema</h3>
+<p>also the description of a relation
+    * With <strong>Attributes</strong> of \(A_1\),\(A_2\)…,\(A_n\)
+    * where <strong>R</strong> is the name of the relation
+    * is denoted by R(\(A_1\),\(A_2\)…,\(A_n\))</p>
+
+<h3 id="domain">Domain</h3>
+<p>The set of all possible values that a particular attribute could be.</p>
+<ul>
+  <li>A domain may be re-used for several attributes</li>
+  <li>Typically contains ranged and/or format</li>
+  <li>The domain of <em>name</em> could be the set fo all strings of length 2 to 25</li>
+</ul>
+
+<h3 id="tuple-of-a-relation">tuple of a relation</h3>
+<p>An ordered set of values</p>
+<ul>
+  <li>represented using (&lt;..&gt;)</li>
+  <li>Each value is within the a defined domain</li>
+  <li>A relation is an unordered set of such tuples</li>
+</ul>
+
+<h3 id="relation-state">Relation State</h3>
+<p>The set of tuples currently in the relation</p>
+<ul>
+  <li>Is a subset of all the cartesian product of the domains of it’s attributes</li>
+</ul>
+
+<h3 id="relation-instance"><strong>Relation instance</strong></h3>
+<p>A set of tuples for a relation schema</p>
+<ul>
+  <li>Denoted by <strong>r(R)</strong>
+    <h3 id="short-hand">Short hand</h3>
+    <p>given R(\(A_1\),\(A_2\)…,\(A_n\))</p>
+  </li>
+  <li><strong>Relation Schema</strong>: R(\(A_1\),\(A_2\)…,\(A_n\))</li>
+  <li><strong>Relation Name</strong>: R</li>
+  <li><strong>Relation Attributes</strong>: \(A_1\),\(A_2\)…,\(A_n\)</li>
+  <li><strong>r(R)</strong>: {\(t_1\),\(t_2\)…,\(t_n\)}
+    <ul>
+      <li>is a specific state of a relation with a set of tuples</li>
+      <li>r(R) \(\subset\) dom(\(A_1\)) \(x\) dom(\(A_2\)) … dom(\(A_n\))</li>
+    </ul>
+  </li>
+  <li><strong>\(t_i\)</strong>: &lt;\(v_1\),\(v_2\)…,\(v_n\)&gt;</li>
+</ul>
+
+<h3 id="other-terminology">Other Terminology</h3>
+
+<h3 id="database">Database</h3>
+<p>A collection of relations</p>
+<h3 id="database-schema">Database Schema</h3>
+<p>A set of all relation schemas in the database</p>
+
+<h3 id="intension">Intension</h3>
+<ul>
+  <li>Schema
+    <h3 id="extension">Extension</h3>
+  </li>
+  <li>Values /data
+    <h3 id="metadata">Metadata</h3>
+  </li>
+  <li>Schema</li>
+  <li>Other key info about the relations</li>
+</ul>
+
+<h2 id="informal-to-formal">Informal to formal</h2>
+<ul>
+  <li><strong>Table</strong> = <strong>Relation</strong></li>
+  <li><strong>Column Headers</strong> = <strong>Attributes</strong></li>
+  <li><strong>Row</strong> = <strong>Tuple</strong></li>
+  <li><strong>Table Elements</strong> = <strong>Relation instance</strong></li>
+</ul>
+
+<h2 id="sql">SQL</h2>
+
+<p>Sql is built on <strong>Bags</strong> not sets a back is a set that can have multiple of the same value e.g</p>
+
+<p><code class="language-plaintext highlighter-rouge">SELECT fname FROM users WHERE Sname = "Smith"</code>
+will return many instances of John</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="relational-database-constraints">Relational Database Constraints</h1>
+       
+            <p>Constraints determine the permissible states of relation instances</p>
+
+<p>Explicit schema based constraints</p>
+<ul>
+  <li>Key constraints</li>
+  <li>Entity integrity constraints</li>
+  <li>Referential integrity constraints</li>
+</ul>
+
+<p>There are other domain constraints</p>
+<ul>
+  <li>Type</li>
+  <li>Maximum , minimum</li>
+  <li>is NULL allowed</li>
+</ul>
+
+<p>Constraints are typically at relation creation or with the <code class="language-plaintext highlighter-rouge">CREATE TABLE</code> statement in sql</p>
+<h2 id="superkey">SuperKey</h2>
+<p>The super key of a relation R is a subset SK of R such that:</p>
+<ul>
+  <li>in any valid state of r(R)
+    <ul>
+      <li>for an distinct tuples in r(R) \(t_1\),\(t_2\)
+        <ul>
+          <li>t1[SK] \(\neq\)  t2[SK]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="minimal-superkey">Minimal SuperKEy</h3>
+<p>Any key is a <strong>minimal</strong> superKey or <strong>candidate</strong> key, if the removal of any of the attributes would result in the key not being a superKey.</p>
+
+<p>If the relation hs several candidate keys one will be chosen arbitrarily to be the primary key</p>
+
+<h2 id="entity-integrity-constraint">Entity Integrity Constraint</h2>
+<p>The primary key cannot be null of any tuple</p>
+
+<p>Any other attribute of R may or may not have null values and can be specified at the table creation.</p>
+
+<h2 id="referential-integrity">Referential Integrity</h2>
+<p>covers cross table relationships, a table may be linked to another table, by using a foreign key (FK) to reference a primary key (PK) in another table.</p>
+
+<p>The domain of the foreign key in R1 that references R2 is the set of primary keys in r(R2) \(\cup\) {NULL}.</p>
+
+<p>alternatively:</p>
+<ul>
+  <li>if \(t_i\) in R1 references \(t_j\) in R2</li>
+  <li>then \(t_i\)[FK] = \(t_j\)[PK]</li>
+  <li>OR \(t_i\)[FK] is NULL</li>
+</ul>
+
+<h2 id="updating-with-constraints">Updating with Constraints</h2>
+<p>The values in a relation instance can change on update so with each update checks are made to ensure that the update conforms to the constraints</p>
+
+<p>If the update does nto meet the constraints the DBMS can:</p>
+<ul>
+  <li>Reject the update and return an error.</li>
+  <li>Inform the user fo the database.</li>
+  <li>Attempt to perform correcting updates.</li>
+</ul>
+
+<h3 id="insert">Insert</h3>
+<p>When adding new tuples to the database any of the constraint could be violated.</p>
+<h4 id="domain">Domain</h4>
+<p>One of the attributes may not be in the attribute domain</p>
+<h4 id="key">Key</h4>
+<p>The value of the key attribute(s) may already exist in another tuple</p>
+<h4 id="referential-integrity-1">Referential integrity</h4>
+<p>A foreign key in the tuple may refer to a primary key value that does not exist</p>
+<h4 id="entity-integrity">Entity integrity</h4>
+<p>The primary key may not be NULL for any of it’s attributes</p>
+
+<h3 id="update">Update</h3>
+<h4 id="domain-1">Domain</h4>
+<p>One of the attributes may not be in the attribute domain</p>
+<h4 id="key-1">Key</h4>
+<p>Changing the key attribute(s) may mean it already exist in another tuple</p>
+<h4 id="referential-integrity-2">Referential integrity</h4>
+<p>A new foreign key in the tuple may refer to a primary key value that does not exist</p>
+
+<p>Changing the primary key may mean a foreign key is no-longer pointint to it</p>
+<h4 id="entity-integrity-1">Entity integrity</h4>
+<p>The primary key may not be changed to NULL</p>
+
+<h3 id="delete">Delete</h3>
+<h4 id="referential-integrity-3">Referential integrity</h4>
+<p>Removing the primary key may mean a foreign key is pointing to an instance that does not exist</p>
+
+<h2 id="functional-dependencies">Functional Dependencies</h2>
+<p>A formal tool that allows derivation of good DB designs.</p>
+<h3 id="definition">Definition</h3>
+<p>Assume</p>
+<ul>
+  <li>X,Y,Z are attributes</li>
+  <li>A,B,C are single attributes</li>
+  <li>notation ABC = {A,B,C}</li>
+</ul>
+
+<p>Then</p>
+<ul>
+  <li>x \(\rArr\) Y</li>
+  <li>If the values of Y depends on the values of X</li>
+  <li>If two tuples of the attribute agree on a value of X then they must agree on a value of y</li>
+  <li>t1[X]=t2[X] \(\Arr\) t1[Y]=t2[Y]</li>
+</ul>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/>
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Designing For Mobile</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Designing For Mobile</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#mobile-sites">Mobile Sites</a><ul><li><a href="#responsive-web-design">Responsive Web Design</a></li><li><a href="#separate-mobile-layout">Separate Mobile Layout</a></li></ul></li><li><a href="#best">Best?</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Theory9.html" title="Theory9.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory11.html" title="Theory11.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="mobile-sites">Mobile Sites</h2>
+
+<p>Large amount of mobile web traffic over the past few years</p>
+
+<p>Different interface</p>
+<ul>
+  <li>smaller screens</li>
+  <li>Touch Based Interaction</li>
+</ul>
+
+<p>Two techniques</p>
+<ul>
+  <li>Responsive Web design</li>
+  <li>Separate mobile platforms</li>
+</ul>
+
+<h3 id="responsive-web-design">Responsive Web Design</h3>
+<p>using an advanced css feature is <code class="language-plaintext highlighter-rouge">media</code></p>
+
+<p>CAn be used to access the device</p>
+<ul>
+  <li>Height/ width of Window</li>
+  <li>Height/ width of device</li>
+  <li>Orientation - landscape / portrait</li>
+  <li>Resolution</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">media</code> can be used</p>
+<ul>
+  <li>In the CSS files</li>
+  <li>To add different css files in the head element</li>
+</ul>
+
+<p>Adding to the CSS file example</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">480px</span><span class="p">){</span>
+    <span class="nt">div</span><span class="nf">#Wrapper</span> <span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">400px</span>
+    <span class="p">}</span>
+    <span class="nf">#navigation</span> <span class="p">{</span>
+        <span class="nl">float</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>These are applied only to screens smaller than 480px wide</p>
+
+<p>These also override any other styles specified elsewhere</p>
+
+<p>Easier then rewriting pages</p>
+
+<h3 id="separate-mobile-layout">Separate Mobile Layout</h3>
+<p>Previously common not so anymore</p>
+
+<p>Redirects can be done based on the browsers user agent based in the header</p>
+
+<p>can access the user agent against <code class="language-plaintext highlighter-rouge">$_SERVER["HTTP_USER_AGENT"]</code></p>
+
+<p>however needs updating as new devices come out</p>
+
+<ul>
+  <li>Pros
+    <ul>
+      <li>Easy to create fixed views</li>
+      <li>Hard to dynamically cater to all screen sizes</li>
+    </ul>
+  </li>
+  <li>Cons
+    <ul>
+      <li>Many not work if new devices are created</li>
+      <li>Can be a lot of work to double the number of pages</li>
+      <li>Two sets of pages need updating</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="best">Best?</h2>
+<p>Each has its merits</p>
+
+<p>Some content can work best with different designs</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Assembler</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Assembler</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#microprocessor-fundamentals">Microprocessor Fundamentals</a><ul><li><a href="#the-fetch-decode-execute-cycle">The fetch-decode-execute cycle</a><ul><li><a href="#fetch-stage">Fetch stage</a></li><li><a href="#decode-stage">Decode stage</a></li><li><a href="#execute-stage">Execute stage</a></li></ul></li></ul></li><li><a href="#registers">Registers</a><ul><li><a href="#data-registers">Data registers</a></li><li><a href="#status-registers">Status registers</a></li><li><a href="#address-register">Address register</a><ul><li><a href="#stack-pointer">Stack pointer</a></li></ul></li><li><a href="#program-counter">Program counter</a></li></ul></li><li><a href="#register-transfer-language">Register Transfer Language</a><ul><li><a href="#example-instruction-fetching">Example: Instruction fetching</a></li></ul></li><li><a href="#assembly-language">Assembly Language</a><ul><li><a href="#assembler-format">Assembler Format</a></li><li><a href="#assembly-language-conventions">Assembly Language Conventions</a></li><li><a href="#data-types-and-assembler-instructions">Data types and assembler instructions</a></li></ul></li><li><a href="#instruction-set-aspects">Instruction set aspects</a><ul><li><a href="#data-movement-instructions">Data Movement Instructions</a></li><li><a href="#arithmetic-instructions">Arithmetic Instructions</a></li><li><a href="#logical-instructions">Logical instructions</a></li><li><a href="#branch-instructions">Branch instructions</a></li><li><a href="#subroutines-and-stacks">Subroutines and Stacks</a></li></ul></li><li><a href="#addressing-modes">Addressing modes</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part2.html" title="part2.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part4.html" title="part4.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="microprocessor-fundamentals">Microprocessor Fundamentals</h2>
+
+<p>Before diving into assembler, we need to be familiar with the <strong>key components of all CPUs</strong>. No matter how complex a CPU is, they always have the two following components.</p>
+
+<ul>
+  <li><strong>Arithmetic Logic Unit</strong> (ALU): this performs <strong>math and logic</strong></li>
+  <li><strong>Control Unit</strong> (CU): this decodes program <strong>instructions</strong> and handles <strong>logistics</strong> for execution</li>
+  <li><strong>Program Counter</strong> (PC): this tracks the <strong>memory address</strong> of the <strong>next instruction</strong> for execution</li>
+  <li><strong>Instruction Register</strong> (IR): contains the <strong>most recent instruction</strong> fetched</li>
+  <li><strong>Memory Address Register</strong> (MAR): contains the address of the <em>region</em> of memory for read/write purposes</li>
+  <li><strong>Memory Data Register</strong> (MDR): contains <strong>fetched data</strong> from memory or <strong>data ready to be written</strong> to memory. The MDR is also sometimes referred to as the Memory Buffer Register (MBR).</li>
+</ul>
+
+<p>Remember that the <strong>Control Unit</strong> is connected to all components</p>
+
+<p>In the Von Neumann architecture of microprocessor design, both instructions and data are stored in the same memory (In Harvard architecture they are separated)</p>
+
+<p>Each instruction is split into two parts, the opcode and the operands. The opcode indicates which instruction it is, and the operand the parameters of the instruction</p>
+
+<h3 id="the-fetch-decode-execute-cycle">The fetch-decode-execute cycle</h3>
+
+<p>The CPU works by executing instructions in sequence to perform a task. Since the instructions are stored in memory, we need three steps to do this called the <strong>fetch-decode-execute cycle</strong>:</p>
+
+<blockquote>
+  <p>The CPU will constantly perform the following instruction cycle (the <strong>fetch-decode-execute cycle</strong>):</p>
+
+  <ul>
+    <li>Retrieve instructions from memory</li>
+    <li>Decode to form recognisable operations</li>
+    <li>Execute to impact the current state</li>
+  </ul>
+</blockquote>
+
+<p>❕❗ <strong>Learn the fetch-decode-execute cycle</strong>. Think of it every time you look at a CPU, or a series of instructions. Think about which of the components (the CU or the ALU) are operating and when.</p>
+
+<p>The instruction cycle takes place over <strong>several CPU clock cycles</strong> – the same clock cycles we saw in <strong>sequential logic circuits</strong>. The fetch-decode-execute cycle relies on several CPU components interacting with one another.</p>
+
+<p>The operations composing the cycle are:</p>
+
+<h4 id="fetch-stage">Fetch stage</h4>
+
+<ol>
+  <li>Copy the address of the next instruction stored in the program counter to the memory address register</li>
+  <li>Read the instruction in the main store at the address in the memory address register into the memory data register</li>
+  <li>Copy the instruction from the memory data register to the instruction register</li>
+  <li>The instruction is sent from the instruction register to the control unit to be decoded in the next stage</li>
+  <li>Increment the program counter to point to the address of the next instruction</li>
+</ol>
+
+<p>In <em>register transfer language</em>, fetching would look like</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="kt">MAR</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">PC</span><span class="p">]</span>
+<span class="p">[</span><span class="kt">MBR</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">MS</span><span class="p">([</span><span class="kt">MAR</span><span class="p">])]</span>
+<span class="p">[</span><span class="kt">IR</span><span class="p">]</span>  <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">MBR</span><span class="p">]</span>
+<span class="kt">CU</span>    <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">IR</span><span class="p">(</span><span class="n">opcode</span><span class="p">)]</span>
+<span class="p">[</span><span class="kt">PC</span><span class="p">]</span>  <span class="o">&lt;-</span> <span class="p">[</span><span class="kt">PC</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>This is explained in further detail <a href="#example-instruction-fetching">here</a>.</p>
+
+<p><strong>Note that the in different resources, the time at which the PC is incremented sometimes differs - most of the time (and in Matt’s notes) it is said to be at the very end of the fetch stage <a href="https://www.robots.ox.ac.uk/~dwm/Courses/2CO_2014/2CO-N2.pdf">source #1</a>, <a href="https://www.futurelearn.com/info/courses/how-computers-work/0/steps/49284">source #2</a>, but sometimes it is said to be immediately after it is copied into the memory address register <a href="http://theteacher.info/index.php/fundamentals-of-cs/1-hardware-and-communication/topics/2599-registers-and-the-fetch-decode-execute-cycle">source #3</a> - this is likely due to differences in implementation</strong></p>
+
+<h4 id="decode-stage">Decode stage</h4>
+
+<ol>
+  <li>
+    <p>The control unit extracts and decodes the opcode from the instruction in the instruction register</p>
+  </li>
+  <li>
+    <p>The effective address is read to establish opcode type</p>
+
+    <p>If indirect addressing is used, more data needs to be read from the main store (MS) before the instruction is executed, but if direct addressing is used, the execution can proceed immediately</p>
+  </li>
+</ol>
+
+<h4 id="execute-stage">Execute stage</h4>
+
+<ol>
+  <li>The control unit signals to functional CPU components, e.g. to indicate which busses to enable, or set whether the main store should be read from or written to</li>
+  <li>Changes in the state of the machine, e.g. data registers, program counter, main store, resulting from the execution of the instruction may occur</li>
+</ol>
+
+<h2 id="registers">Registers</h2>
+
+<p>Now that we have the FDE cycle established, we need <strong>registers</strong> to help store intermediate information- this can either be in the form of memory or system flags. The Motorola 68008 will be used to give context to each type of register:</p>
+
+<blockquote>
+  <p>You can think of a register as a parallel set of bits which can be toggled on or off.</p>
+</blockquote>
+
+<h3 id="data-registers">Data registers</h3>
+<ul>
+  <li>These are useful for storing <strong>frequently used values</strong> or <strong>intermediate results</strong> of calculations.</li>
+  <li>You typically <strong>only need one</strong> data register <strong>on chip</strong> – however, the advantage of having many registers is that <strong>fewer references to external memory are needed</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>The 68008 has 32 bit data registers. This is a <em>long</em> register; 16 bits form a <em>word</em>, and 8 bits form a <em>byte</em>.</p>
+</blockquote>
+
+<h3 id="status-registers">Status registers</h3>
+<ul>
+  <li>These have various status bits that are set or reset by the <strong>ALU</strong>.</li>
+  <li>They are a <em>set of flags</em>:
+    <ul>
+      <li>Half are for the <strong>system</strong> (CU)</li>
+      <li>The <strong>conditional control register</strong> is a <strong>subset of flags</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">⬅ System byte ➡</th>
+      <th style="text-align: center">⬅ User byte ➡</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">8 bits</td>
+      <td style="text-align: center">8 bits, where a few bits will make up the CCR</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>The CCR is made up of several bits representing statuses such as <em>extend, negative, zero, overflow, carry</em>. If you wanted to check the status of the computer in a program, you could use bitwise <strong>AND</strong> against a bitmask (the string of bits you want toggled) and seeing if the final result is the flag you wanted to see.</p>
+</blockquote>
+
+<h3 id="address-register">Address register</h3>
+<ul>
+  <li>These are used as <strong>pointer registers</strong> in the calculation of operand addresses.</li>
+  <li>Operations on these addresses <strong>do not alter the CCR</strong>.</li>
+  <li>Only the <strong>ALU</strong> has the capacity to incur changes in status (through operations on non-addresses).</li>
+</ul>
+
+<h4 id="stack-pointer">Stack pointer</h4>
+<ul>
+  <li>This is an <strong>address register</strong> that points to the <strong>next free location</strong>; it can hold <strong>subroutine return addresses</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>The 68008 has pointer registers <code class="language-plaintext highlighter-rouge">A0-A6</code> whilst <code class="language-plaintext highlighter-rouge">A7</code> is used as a system stack pointer.</p>
+</blockquote>
+
+<h3 id="program-counter">Program counter</h3>
+<p>We are already familiar with what the PC does – it is a <strong>32 bit</strong> register on the 68008 that keeps track of the address at which the next instruction will be found.</p>
+
+<blockquote>
+  <p>If you were writing a software emulator, think of the memory as an array of strings (each string is an opcode). The PC would be an integer; your code would access <code class="language-plaintext highlighter-rouge">memory[PC]</code> to find out which opcode to pull from the memory and decode. Therefore, by incrementing the PC (an 8-bit, 16-bit, or 32-bit integer in your code) you can increment through the memory array. You can sometimes increment the PC by multiple amounts.
+Generally speaking, if you were to be writing an emulator for any CPU, you <em>could</em> represent each register as an n-bit unsigned integer as you can toggle bits and perform bitwise operations, including bitshifts, on each integer variable. You would typically want to implement memory as a simple array of m-bit integers, where m is the word length of your CPU.</p>
+</blockquote>
+
+<h2 id="register-transfer-language">Register Transfer Language</h2>
+
+<blockquote>
+  <p>RTL is used to describe the operations of the microprocessor as it is executing program instructions.
+It is also a way of making sure we access the correct parts of the microprocessor – <strong>do not confuse it with assembler instructions</strong>.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Example RTL</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[MAR] ⬅ [PC]</code></td>
+      <td><em>Transfer</em> the contents of the PC <strong>to</strong> the MAR</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[MS(12345)]</code></td>
+      <td>The <em>contents</em> of memory <em>location</em> 12345 in the <em>main store</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[D1(0:7)] &lt;- [D0(0:7)]</code></td>
+      <td><i>Transfer</i> the contents of the 1st 8bits of <code class="language-plaintext highlighter-rouge">D0</code> to the 1st 8bits of <code class="language-plaintext highlighter-rouge">D1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-instruction-fetching">Example: Instruction fetching</h3>
+<p>Given a series of instructions in words, we can find a way to represent this in RTL. Consider the following example:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Plain words</th>
+      <th>RTL equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Contents of PC transferred to MAR address buffers</td>
+      <td><code class="language-plaintext highlighter-rouge">[MAR] ⬅ [PC]</code></td>
+    </tr>
+    <tr>
+      <td>Load MBR from external memory, and set \(R / \bar W\) to Read</td>
+      <td><code class="language-plaintext highlighter-rouge">[MBR] ⬅ [MS([MAR])]</code>; \(R / \bar W\) to Read</td>
+    </tr>
+    <tr>
+      <td>Transfer opcode to IR from MBR</td>
+      <td><code class="language-plaintext highlighter-rouge">[IR] ⬅ [MBR]</code></td>
+    </tr>
+    <tr>
+      <td>Decode the instruction</td>
+      <td><code class="language-plaintext highlighter-rouge">CU ⬅ [IR(opcode)]</code></td>
+    </tr>
+    <tr>
+      <td>Increment the PC</td>
+      <td><code class="language-plaintext highlighter-rouge">[PC] ⬅ [PC] + 1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you wanted to add a constant byte to a register (take <code class="language-plaintext highlighter-rouge">D0</code> from the 68008), you would engage the ALU and then transfer this into a register:</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="n">continue</span> <span class="n">previous</span> <span class="n">cycle</span> <span class="p">}</span>
+<span class="p">[</span><span class="kt">MBR</span><span class="p">]</span> <span class="err">⬅</span> <span class="p">[</span><span class="kt">MS</span><span class="p">([</span><span class="kt">MAR</span><span class="p">])]</span>
+<span class="kt">ALU</span> <span class="err">⬅</span> <span class="p">[</span><span class="kt">MBR</span><span class="p">]</span> <span class="o">+</span> <span class="kt">D0</span>
+<span class="p">[</span><span class="kt">DO</span><span class="p">]</span> <span class="err">⬅</span> <span class="kt">ALU</span>
+</code></pre></div></div>
+<p>As you can see, RTL describes how we can specifically set values in registers and interact with components in a standardised language.</p>
+
+<h2 id="assembly-language">Assembly Language</h2>
+
+<p><em>You should be able to explain the motivations, applications, and characteristics of high-level and low-level programming languages.</em></p>
+
+<p>Code written in high-level programming languages typically go through a compiler, or for some languages like Python an <a href="https://www.computerscience.gcse.guru/theory/translators">interpreter</a> (FYI only), and is eventually <strong>translated</strong> into machine code that your microprocessor understands. Low-level assembly code is <strong>assembled</strong> by an assembler into machine code.</p>
+
+<blockquote class="extra">
+    Sometimes, the compilation process first compiles code into a lower-level assembly language and then the assembler assembles it into machine code, but in other cases high-level languages can be translated directly to machine code.
+    I previously had the misunderstanding that high-level languages are
+    <strong>always</strong> compiled to some kind of assembler language and is then 
+    assembled to machine code, but this is not the case.
+</blockquote>
+
+<p>The <strong>motivation</strong> for low-level languages is to give programmers more <strong>control</strong> of how the microprocessor executes a particular program, as it allows you to define the exact sequence of instructions that will be executed by the microprocessor. High-level programming languages don’t have the capability to provide such specific instructions. Sometimes, this means that the resultant machine code has <strong>greater performance</strong> than one that was compiled from a high-level language.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">High-level Language</th>
+      <th style="text-align: center">Machine Code</th>
+      <th style="text-align: center">Assembler Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Human readable. <br />Difficult to translate into performant machine code whilst retaining original intention.</td>
+      <td style="text-align: center">Not readable.</td>
+      <td style="text-align: center">More readable than machine code but more precise than high-level languages.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Assembly language saves us from machine code by using <strong>mnemonics</strong>. We can provide <strong>memory locations</strong> and <strong>constants</strong>, as well as <strong>symbolic names</strong>. These features are not afforded to us by RTL!</p>
+</blockquote>
+
+<h3 id="assembler-format">Assembler Format</h3>
+
+<p>Assembly language typically takes the following form:</p>
+
+<table class="centeredtable">
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Label (Optional)</th>
+      <th style="text-align: center">Opcode</th>
+      <th style="text-align: center">Operand</th>
+      <th style="text-align: center">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Example</strong></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">START:</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">move.b</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">#5, D0</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">|load D0 with 5</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="assembly-language-conventions">Assembly Language Conventions</h3>
+
+<p>There are several conventions of Assembly language to keep in mind:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number Symbol</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">#</code></td>
+      <td>Indicates a constant. A number without <code class="language-plaintext highlighter-rouge">#</code> is an address. By default, numbers are in base 10.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$</code></td>
+      <td>A <strong>hex</strong> value. E.g. <code class="language-plaintext highlighter-rouge">ORG $4B0 | this program starts at hex 4B0</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td>A <strong>binary</strong> value. E.g. <code class="language-plaintext highlighter-rouge">add.b #%11, D0 | add 3 to D0</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Directives</th>
+      <th>Definition</th>
+      <th>Convention</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Label names</td>
+      <td>You can assign labels to represent bytes or instructions</td>
+      <td>Label or name followed by <code class="language-plaintext highlighter-rouge">:</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ANS: DS.B 1</code> will leave 1 byte of memory empty and name it ANS</td>
+    </tr>
+    <tr>
+      <td>Defining storage (<code class="language-plaintext highlighter-rouge">DS</code>)</td>
+      <td>Instruct the assembler to reserve some memory</td>
+      <td><code class="language-plaintext highlighter-rouge">DS.{data type} {amount}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DS.B 1</code> will leave 1 byte of memory free. See data types further on.</td>
+    </tr>
+    <tr>
+      <td>Origin (<code class="language-plaintext highlighter-rouge">ORG</code>)</td>
+      <td>Tells the assembler where in memory to start putting the instructions or data</td>
+      <td><code class="language-plaintext highlighter-rouge">ORG</code> followed by value</td>
+      <td><code class="language-plaintext highlighter-rouge">ORG $4B0</code> starts the program at hex <code class="language-plaintext highlighter-rouge">4B0</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you want to string together an assembler instruction, you typically write them in the form
+<code class="language-plaintext highlighter-rouge">operation.datatype</code>  <code class="language-plaintext highlighter-rouge">source,</code>   <code class="language-plaintext highlighter-rouge">destination</code></p>
+
+<h3 id="data-types-and-assembler-instructions">Data types and assembler instructions</h3>
+
+<p>Previously, we saw how the <code class="language-plaintext highlighter-rouge">DS</code> directive requires a data type and then an amount of data to set aside; Assembler language defines three types of data type:</p>
+<ul>
+  <li><strong>8 bits / byte</strong>: <code class="language-plaintext highlighter-rouge">.b</code></li>
+  <li><strong>2 bytes / word</strong>: <code class="language-plaintext highlighter-rouge">.w</code></li>
+  <li><strong>4 bytes / long word</strong>: <code class="language-plaintext highlighter-rouge">.l</code></li>
+</ul>
+
+<blockquote>
+  <p>You can typically omit the data type and <code class="language-plaintext highlighter-rouge">.</code> if you are working with a <strong>word</strong>.</p>
+</blockquote>
+
+<h2 id="instruction-set-aspects">Instruction set aspects</h2>
+
+<p>Generally speaking, there are two aspects to a CPU instruction set:</p>
+<ul>
+  <li><strong>Instructions</strong> which tell the processor which operations to perform
+    <ul>
+      <li>Data movement: this is similar to what we have already seen with RTL</li>
+      <li>Arithmetic instructions: keep in mind whether your CPU can operate on fractional numbers</li>
+      <li>Logical instructions</li>
+      <li>Branch instructions</li>
+      <li>System control instructions</li>
+    </ul>
+  </li>
+  <li><strong>Addressing modes</strong> tell the processor which ways it can access data or memory locations, or how they may be calculated by the CPU.</li>
+</ul>
+
+<blockquote>
+  <p>Addressing modes can provide data, specify where it is, and how to go find it.
+You may describe direct addresses, or relative addresses where you compare one address to another to find it.</p>
+</blockquote>
+
+<h3 id="data-movement-instructions">Data Movement Instructions</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">move</code> operations are similar to RTL, just pay attention to the data type.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>move.b D0,D1  | [D1(0:7)] &lt;- [D0(0:7)]
+moveb  D0,D1  | same
+exg.b  D4,D5  | exchange contents of two registers
+swap   D2     | swap lower and upper words of D2
+lea  $F20,A3  | load effective address [A3] &lt;- [$F20]
+</code></pre></div></div>
+
+<h3 id="arithmetic-instructions">Arithmetic Instructions</h3>
+
+<p>Depending on your processor architecture, you may or may not have floating point support.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add.l  Di,Dj  | [Dj] &lt;- [Di] + [Dj]
+addx.w Di,Dj  | also add in x bit from CCR
+mulu.w Di,Dj  | [Dj(0:31)] &lt;- [Di(0:15)] * [Dj(0:15)] signed multiplication
+</code></pre></div></div>
+
+<p>You also have <code class="language-plaintext highlighter-rouge">sub</code> (subtract), <code class="language-plaintext highlighter-rouge">mulu</code> (unsigned mult), <code class="language-plaintext highlighter-rouge">divu</code> and <code class="language-plaintext highlighter-rouge">divs</code>. You don’t have to memorise or know these very well but the key takeaways are</p>
+
+<ul>
+  <li>The “variables” (around the comma <code class="language-plaintext highlighter-rouge">,</code>) are operated on sequentially (left to right).</li>
+  <li>The result of the operation is stored in the second variable (after the comma <code class="language-plaintext highlighter-rouge">,</code>).</li>
+  <li>You can add or subtract bits from the CCR</li>
+  <li>Division and multiplication use the first half of the bits available (unless specified) because the resultant register has a fixed bit length (32 bits in the above example).</li>
+</ul>
+
+<h3 id="logical-instructions">Logical instructions</h3>
+
+<p>We can often use <strong>bitmasks</strong> to achieve our goals in conjunction with <strong>bitwise operations</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AND.B #%11110000, D3 | bitwise AND on 1111 0000 and first 8bits of D3
+</code></pre></div></div>
+
+<p>Additional pointers:</p>
+
+<ul>
+  <li><strong>Shift operations</strong> are fundamental; for example, you can multiply by 2 using left shift operations.</li>
+  <li>Other operations such as rotations also exist.</li>
+</ul>
+
+<h3 id="branch-instructions">Branch instructions</h3>
+<p>These are crucial for <strong>control flow statements</strong>; we typically branch based on <strong>conditions set in the CCR</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LDA NumA | Read the value "NumA"
+CMP NumB | Compare against "NumB"
+BCC Loc  | Go to label "Loc" if "NumA" &lt; "NumB", or in RTL: [PC] &lt;- Loc
+</code></pre></div></div>
+
+<p><a href="https://www.c64-wiki.com/wiki/BCC">Example</a> for illustration purposes (we don’t need to know what <code class="language-plaintext highlighter-rouge">LDA</code> or <code class="language-plaintext highlighter-rouge">CMP</code> is exactly just roughly understand the syntax). Branch instructions cause the processor to branch (jump) to a labelled address.</p>
+
+<ul>
+  <li>CCR flags are set by the previous instruction</li>
+  <li>The current instruction can test the state of the CCR bits and branch if a certain <strong>condition</strong> is met.</li>
+</ul>
+
+<h3 id="subroutines-and-stacks">Subroutines and Stacks</h3>
+<p>Subroutines (<code class="language-plaintext highlighter-rouge">JSR</code>; jump, <code class="language-plaintext highlighter-rouge">RTS</code>; return) let you use the <strong>same code repeatedly</strong> reducing program size and improving readability. It is similar to functions.</p>
+
+<p>Typically when a subroutine is called (with <code class="language-plaintext highlighter-rouge">JSR &lt;subroutine label&gt;</code>), the current address in the PC is <strong>pushed</strong> to a stack and your stack pointer points to the newly pushed address (current address). The address of the subroutine is “loaded” into the PC and the instructions in the subroutine is executed.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">RTS</code> is called, the stack is <strong>popped</strong> and the <strong>popped address</strong> is put into the PC; the stack pointer points to the next address at the top of the stack.</p>
+
+<h2 id="addressing-modes">Addressing modes</h2>
+<p>As mentioned earlier, there are several ways for the CPU to access memory; you should be familiar with the following, and they are found on many CPUs (not just the 68008):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address type</th>
+      <th>Definition</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Direct address</td>
+      <td>The address to act on is <strong>held within a specified register</strong> (in this case <code class="language-plaintext highlighter-rouge">D2</code> and <code class="language-plaintext highlighter-rouge">D3</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">move D3, D2</code></td>
+    </tr>
+    <tr>
+      <td>Immediate address</td>
+      <td>The <strong>operand</strong> forms part of the instruction and <strong>remains constant</strong> - no fetch from memory is made</td>
+      <td><code class="language-plaintext highlighter-rouge">move.b #$42, D5</code></td>
+    </tr>
+    <tr>
+      <td>Absolute address</td>
+      <td>The <strong>operand</strong> contains the address as an <strong>explicit constant</strong> – not useful because programs are stored at different addresses at each run-time.</td>
+      <td><code class="language-plaintext highlighter-rouge">move.l D2, $7FFF0</code> which moves the long value held in D2 to address <code class="language-plaintext highlighter-rouge">$7FFF0</code></td>
+    </tr>
+    <tr>
+      <td>Relative address</td>
+      <td>These all <strong>relate to the program counter</strong> to write <strong>position independent code</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">move d16(PC), D3</code> move contents that are located in the address +16 addresses from PC to <code class="language-plaintext highlighter-rouge">D3</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Indirect addressing is never on the exam; however, this is where we add offsets, increments, or indexed addressing to access memory or data.</p>
+</blockquote>
+
+<p><a href="http://www.cs.iit.edu/~cs561/cs350/addressing/addsclm.html">Additional source #1</a>, <a href="https://www.geeksforgeeks.org/addressing-modes/">Additional source #2</a></p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

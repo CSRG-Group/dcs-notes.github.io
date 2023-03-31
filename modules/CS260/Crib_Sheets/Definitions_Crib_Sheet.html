@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>Computer Science Revision Guides</title>
+  </head>
+  <body>
+    <header class="page-header" role="banner">
+      
+      
+      <h1 class="project-name">Definitions Crib Sheet</h1>
+      <h2 class="project-tagline">Crib sheet of helpful things for the algorithms class test</h2>
+      
+      <a href="https://github.com/CSRG-Group/dcs-notes.github.io" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <!-- Layout for Module Homepages -->
+
+<a href="../">📚Home</a>
+
+<h2 id="definitions">Definitions</h2>
+
+<ul>
+  <li>Partition of a graph \(G=(V,E)\)</li>
+  <li>Cut of a graph \(G=(V,E)\)
+    <ul>
+      <li>A partition of the nodes of the graph into two non-empty subsets  \(S\) and $$V \setminus S$</li>
+    </ul>
+  </li>
+  <li>Cutset of a graph \(G=(V,E)\)
+    <ul>
+      <li>The cutset of a cut \(S\) is the set of edges with exactly one endpoint in $$S$</li>
+    </ul>
+  </li>
+  <li>Spanning tree of a graph \(G=(V,E)\)
+    <ul>
+      <li>A fully connected acyclic subgraph of \(G\)</li>
+      <li>Connected and \(\vert E \vert  = \vert V \vert - 1\)</li>
+      <li>Acyclic and \(\vert E\vert  = \vert V\vert - 1\)</li>
+      <li>Minimally connected subgraph of \(G\) (removing any edge makes it disconnected)</li>
+      <li>Maximally acyclic subgraph of \(G\) (adding any edge makes it cyclic)</li>
+      <li>Cayley’s Theorem states there are \(n^{n-2}\) spanning trees of any graph, so not brute forcable</li>
+    </ul>
+  </li>
+  <li>Minimum spanning tree of a graph $$G=(V,E)$
+    <ul>
+      <li>The spanning tree of \(G\) with the minimum total cost of weights on edges included</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="problems-and-their-algorithms">Problems and their algorithms</h2>
+
+<ul>
+  <li>Interval scheduling
+    <ul>
+      <li>Given a  set of jobs with start and finish time.<br />
+Select the largest number of jobs that dProblem definition</li>
+    </ul>
+  </li>
+  <li>Interval partitioning
+    <ul>
+      <li>Problem definition</li>
+      <li>Earliest start time first greedy
+        <ul>
+          <li> \(O(n)\)Problem definition</li>
+          <li> \(O(n)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Shortest path in graph of non-negative edges
+    <ul>
+      <li>Problem definition</li>
+      <li>Djikstra’s algorithm (greedy on first node discovered?)
+        <ul>
+          <li>Array implementation \(\Theta(n^2)\), Binary heap implementation \(O(m \ log\ n)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Minimum spanning trees
+    <ul>
+      <li>Problem definition</li>
+      <li>Proposed greedy algorithmProblem definition</li>
+      <li>Merge sort (divide and conquer)
+        <ul>
+          <li> \(O(n\ log\ n)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Closest pair of points
+    <ul>
+      <li>Problem definition</li>
+      <li>Divide and conquer algorithm
+        <ul>
+          <li> \(O(n\ log\ n)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Integer multiplicationProblem definition)
+    <ul>
+      <li> \(\Theta(n^{log_2\ 3})\)</li>
+    </ul>
+  </li>
+  <li>Weighted interval scheduling problem
+    <ul>
+      <li>Problem definition</li>
+      <li>Dynamic programming solution
+        <ul>
+          <li> \(O(n\ log\ n)\)Problem definition</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Integer Knapsack problem
+    <ul>
+      <li>Problem definition</li>
+      <li>Dynamic programming solution
+        <ul>
+          <li> \(\Theta(nW)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Sequence alignment problem
+    <ul>
+      <li>Problem definition</li>
+      <li>Dynamic programming solution
+        <ul>
+          <li> \(\Theta(nm)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Shortest path in graph including negative edges
+    <ul>
+      <li>Problem definition</li>
+      <li>Bellman-ford algorithm (dynamic programming solution)
+        <ul>
+          <li> \(\Theta(mn)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="list-of-np-complete-problems">List of NP-Complete problems</h3>
+
+<ul>
+  <li>Independent set problem
+    <ul>
+      <li>Problem definition</li>
+      <li>No tractable algorithm known to solve it
+        <ul>
+          <li>NP-Complete problem</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Vertex cover problem
+    <ul>
+      <li>Problem definition</li>
+      <li>No tractable algorithm known to solve it
+        <ul>
+          <li>NP-Complete problem</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Set cover problem
+    <ul>
+      <li>Problem definition</li>
+      <li>No tractable algorithm known to solve it
+        <ul>
+          <li>NP-Complete problem</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Satisfiability (SAT) problem
+    <ul>
+      <li>Problem definition</li>
+      <li>No tractable algorithm known to solve it
+        <ul>
+          <li>NP-Complete problem</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>3-SAT problem
+    <ul>
+      <li>Problem definition</li>
+      <li>No tractable algorithm known to solve it
+        <ul>
+          <li>NP-Complete problem</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Subset sum problem
+    <ul>
+      <li>Problem definition</li>
+      <li>No tractable algorithm known to solve it
+        <ul>
+          <li>NP-Complete problem</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+      
+      </footer>
+    </main>
+  </body>
+</html>

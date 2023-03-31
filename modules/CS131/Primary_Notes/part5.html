@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Calculus</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Calculus</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#limits-and-continuity">Limits and Continuity</a><ul><li><a href="#floor-and-ceiling-functions">Floor and Ceiling functions</a><ul><li><a href="#exercise">Exercise</a></li></ul></li><li><a href="#combination-rules-for-limits">Combination rules for limits</a></li><li><a href="#squeeze-rule-for-limits">Squeeze rule for limits</a></li><li><a href="#continuous-functions">Continuous functions</a><ul><li><a href="#combination-rules-for-continuous-functions">Combination rules for continuous functions</a></li><li><a href="#basic-continuous-functions">Basic continuous functions</a></li></ul></li><li><a href="#intermediate-value-theorem">Intermediate Value Theorem</a><ul><li><a href="#exercise-1">Exercise</a></li></ul></li><li><a href="#extreme-value-theorem">Extreme Value Theorem</a></li></ul></li><li><a href="#differentiation">Differentiation</a><ul><li><a href="#combination-rules-for-derivatives">Combination Rules for Derivatives</a></li><li><a href="#trig-derivatives">Trig derivatives</a></li><li><a href="#the-chain-rule">The Chain Rule</a></li><li><a href="#differentiation-of-functions-def-by-power-series">Differentiation of functions def' by power series</a><ul><li><a href="#exercise-2">Exercise</a></li></ul></li></ul></li><li><a href="#properties-of-differentiable-functions">Properties of Differentiable Functions</a><ul><li><a href="#turning-point-theorem">Turning Point Theorem</a></li><li><a href="#rolles-theorem">Rolle's Theorem</a></li><li><a href="#mean-value-theorem">Mean Value Theorem</a><ul><li><a href="#consequences-of-the-mvt">Consequences of the MVT</a></li></ul></li></ul></li><li><a href="#lhopitals-rule-and-implicit-differentiation">L'Hopital's Rule and Implicit Differentiation</a><ul><li><a href="#lhopitals-rule">L'Hopital's Rule</a></li><li><a href="#implicit-differentiation">Implicit differentiation</a><ul><li><a href="#exercise-3">Exercise</a></li></ul></li></ul></li><li><a href="#differentiating-inverse-functions">Differentiating Inverse Functions</a><ul><li><a href="#example">Example</a></li><li><a href="#trigonometric-inverse-derivatives">Trigonometric Inverse Derivatives</a></li></ul></li><li><a href="#integration">Integration</a><ul><li><a href="#definition-of-integration">Definition of integration</a></li><li><a href="#integration-by-substitution">Integration by Substitution</a></li><li><a href="#integration-by-parts">Integration by Parts</a></li><li><a href="#properties-of-definite-intervals">Properties of definite intervals</a></li><li><a href="#fundamental-theorems-of-calculus">Fundamental theorems of calculus</a><ul><li><a href="#first-fundamental-theorem-of-calculus">First Fundamental Theorem of Calculus</a></li><li><a href="#second-fundamental-theorem-of-calculus">Second Fundamental Theorem of Calculus</a></li></ul></li></ul></li><li><a href="#logs-and-exponentials">Logs and Exponentials</a><ul><li><a href="#properties-of-logarithms">Properties of Logarithms</a></li><li><a href="#properties-of-exponentials">Properties of Exponentials</a></li></ul></li><li><a href="#taylors-theorem">Taylor's Theorem</a><ul><li><a href="#taylors-theorem-1">Taylor's Theorem</a></li><li><a href="#taylor-series">Taylor series</a></li><li><a href="#nth-derivative-test-for-the-nature-of-stationary-points">Nth derivative test for the nature of stationary points</a></li><li><a href="#maclaurin-series">Maclaurin Series</a><ul><li><a href="#important-maclaurin-series">Important Maclaurin Series</a></li></ul></li></ul></li><li><a href="#first-order-odes">First Order ODEs</a><ul><li><a href="#separable-equations">Separable Equations</a></li><li><a href="#homogenous-equations">Homogenous Equations</a><ul><li><a href="#exercise-4">Exercise</a></li></ul></li><li><a href="#linear-equations">Linear Equations</a><ul><li><a href="#exercise-5">Exercise</a></li></ul></li></ul></li><li><a href="#second-order-odes">Second Order ODEs</a><ul><li><a href="#solving-homogenous-equations">Solving homogenous equations</a></li><li><a href="#finding-particular-solutions">Finding particular solutions</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="part4.html" title="part4.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="limits-and-continuity">Limits and Continuity</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note19.pdf">Link to the PDF.</a></p>
+
+<p><em>(Definitions)</em> let a function \(f: I \longrightarrow \mathbb{R}\) be
+defined on an interval \(I\). We're interested in a point \(a\) in that
+interval, where \(f\) may or may not be defined.</p>
+
+<p>When \(f(x)\) tends to a value \(l\) as \(x\) tends towards \(a\) from the left
+(negative side), we write the limit \(\lim_{x \rightarrow a-} f(x) = l\)
+Conversely, if \(f(x)\) tends to \(l\) as \(x\) to \(a\) from the other side we
+write \(\lim_{x \rightarrow a+} f(x) = l\) If
+\(\lim_{x \rightarrow a-} f(x) = l\) and
+\(\lim_{x \rightarrow a+} f(x) = l\) then
+\(\lim_{x \rightarrow a} f(x) = l.\) What this says that if every sequence
+\(x_n\) in \(I\) which converges to \(a\), \(x_n \neq a\), then \(\forall n\) the
+sequence \(f(x_n)\) converges to \(l\).</p>
+
+<h3 id="floor-and-ceiling-functions">Floor and Ceiling functions</h3>
+
+<p>The \(\left \lfloor{\textrm{floor}}\right \rfloor\) and
+\(\left \lceil{\textrm{ceiling}}\right \rceil\) functions always round
+down and up respectively to the nearest integer.</p>
+
+<p>\(\forall k \in \mathbb{Z}\):</p>
+
+\[\begin{align}  &amp;  \lim_{x \rightarrow k-}
+\left \lfloor{x}\right \rfloor = k-1,  &amp;  \lim_{x \rightarrow k+}
+\left \lfloor{x}\right \rfloor = k; \end{align}\]
+
+\[\begin{align}  &amp; 
+\lim_{x \rightarrow k-} \left \lceil{x}\right \rceil = k,  &amp; 
+\lim_{x \rightarrow k+} \left \lceil{x}\right \rceil = k+1.
+\end{align}\]
+
+<h4 id="exercise">Exercise</h4>
+
+<p>Prove that \(\lim_x \rightarrow 0 \frac{1}{x}\) does not
+exist.</p>
+
+<p><strong><em>Proof.</em></strong> We need to find a sequence \(x_n \rightarrow 0\) where
+\(f(x_n)\) does not converge. We can magic the sequence
+\(x_n = \frac{1}{n}\) which does converge to 0, but \(f(x_n) = n\) is an
+unbounded sequence which does not converge. Hence, the limit does not
+exist.</p>
+
+<h3 id="combination-rules-for-limits">Combination rules for limits</h3>
+
+<p>If \(\lim_{x \rightarrow a} f(x) = l\)</p>
+
+<p>and \(\lim_{x \rightarrow a} g(x) = m\) then</p>
+
+<ul>
+  <li><strong>Sum</strong> rule: \(\lim_{x \rightarrow a} (f(x) + g(x)) = l + m\)</li>
+  <li><strong>Multiple</strong> rule:
+\(\lim_{x \rightarrow a} \lambda f(x) = \lambda l\),
+\(\lambda \in \mathbb{R}\)</li>
+  <li><strong>Product</strong> rule: \(\lim_{x \rightarrow a} f(x)g(x) = lm\)</li>
+  <li><strong>Quotient</strong> rule:
+\(\lim_{x \rightarrow a} \frac{f(x)}{g(x)} = \frac{l}{m}\) provided
+\(m \neq 0\)</li>
+</ul>
+
+<h3 id="squeeze-rule-for-limits">Squeeze rule for limits</h3>
+
+<p>If \(f(x) \leq g(x) \leq h(x)\) for all
+\(x \neq a\),</p>
+
+\[\lim_{x \rightarrow a} f(x) = l \land \lim_{x \rightarrow a} h(x) = l \implies \lim_{x \rightarrow a} g(x) = l.\]
+
+<h3 id="continuous-functions">Continuous functions</h3>
+
+<p>A continuous function is one with no "jumps" -</p>
+
+<p>A function \(f : D \longrightarrow \mathbb{R}\) (\(D \subseteq \mathbb{R}\))
+is <strong>continuous at a point \(a\)</strong> if \(\lim{x \rightarrow a} f(x)\) exists
+and equals \(f(a)\). \(f\) is continuous if it is continuous at every point in
+the interval.</p>
+
+<h4 id="combination-rules-for-continuous-functions">Combination rules for continuous functions</h4>
+
+<p>If \(f, g\) are
+continuous at \(a\), then so are</p>
+
+<ul>
+  <li>The sum \(f+g\)</li>
+  <li>The scalar multiple \(\lambda f\) (\(\lambda \in \mathbb{R}\))</li>
+  <li>The product \(fg\)</li>
+  <li>The quotient \(\frac{f}{g}\) provided \(g(a) \neq 0\)</li>
+</ul>
+
+<p>If \(f\) is continuous at \(a\) and \(g\) is continuous at \(f(a)\), then the
+composite \(g \circ f\) is also continuous at \(a\).</p>
+
+<p><em>\(g \circ f \equiv g(f(x))\).</em></p>
+
+<h4 id="basic-continuous-functions">Basic continuous functions</h4>
+
+<ul>
+  <li>polynomials and rational functions*</li>
+  <li>The modulus/absolute function</li>
+  <li>The square root function, and nth root function where
+\(n \in \mathbb{Z}^+\)</li>
+  <li>Trig functions</li>
+  <li>Exponential functions</li>
+  <li>Functions defined by power series</li>
+</ul>
+
+<p>*The domain of rational functions exclude the divide by zero bit and so
+is continuous.</p>
+
+<h3 id="intermediate-value-theorem">Intermediate Value Theorem</h3>
+
+<p>If
+\(f : [a, b] \longrightarrow \mathbb{R}\) is continuous, \(f(a), f(b)\) have
+opposite signs, then there is a point \(c\) between \(: f(c) = 0\).</p>
+
+<h4 id="exercise-1">Exercise</h4>
+
+<p>Show that there is a number
+\(x : x^{179} + \frac{163}{1 + x^2} = 119\).</p>
+
+<p><strong><em>Proof.</em></strong> Rearrange, let
+\(f(x) = x^{179} + \frac{163}{1 + x^2} - 119\).</p>
+
+<p>\(f(0) &gt; 0,\; f(1) &lt; 0\) thus by intermediate value theorem
+\(\exists x \in [1, 0] : f(x) = 0\).</p>
+
+<p><em>(You do have to conjure numbers to do this question)</em></p>
+
+<h3 id="extreme-value-theorem">Extreme Value Theorem</h3>
+
+<p>If \(f : [a, b] \longrightarrow \mathbb{R}\)
+is continuous, then \(\exists m, M \in [a, b]:\)</p>
+
+\[\begin{align}  &amp; f(m)
+\leq f(x) \leq f(M)  &amp; \forall x \in [a, b] \end{align}\]
+
+<p>Basically, there's a maximum and minimum value of a function in a
+bound.</p>
+
+<h2 id="differentiation">Differentiation</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note20.pdf">Link to the PDF.</a></p>
+
+<p>If the limit of a real function \(f(x)\) at point \(a\)
+\(lim_{h \rightarrow 0} \frac{f(a + h) - f(a)}{h}\) exists, then \(f(x)\) is
+differentiable at \(a\), we get \(f'(a)\).</p>
+
+<p>The \(\frac{d}{dx}\) thing is called Leibniz notation.</p>
+
+<p><strong><em>Theorem.</em></strong> If \(f\) is differentiable at \(a\), \(f\) is also continuous
+at \(a\). However, \(f\) may be continuous but <em>not</em> differentiable.</p>
+
+<p>For example, the function \(f(x) = |x|\) is continuous at 0 but not
+differentiable, because at 0 the relevant limit does not exist (there's
+a crinkle).</p>
+
+<p>Also though the notes is very from principles <em>""RIGOUR""</em>
+\(\frac{d(x^n)}{dx} = nx^{n-1}\) - in case you didn't know.</p>
+
+<h3 id="combination-rules-for-derivatives">Combination Rules for Derivatives</h3>
+
+<p>If \(f, g\) are differentiable, the
+following are also differentiable and follow these rules:</p>
+
+<ul>
+  <li><strong>Sum</strong> rule (\(f + g\)): \((f +g)' = f' + g'\)</li>
+  <li><strong>Multiple</strong> rule (\(lambda f:\lambda \in \mathbb{R}\)):
+\((\lambda f)' = \lambda f'\)</li>
+  <li><strong>Product</strong> rule (\(fg\)): \((fg)' = fg' + gf'\)</li>
+  <li><strong>Quotient</strong> rule (\(f/g\)):
+    \((\frac{f}{g})' = \frac{gf' - fg'}{g^2}\)</li>
+</ul>
+
+<h3 id="trig-derivatives">Trig derivatives</h3>
+
+\[\begin{array}{ccc}  &amp;  \frac{d(\sin x)}{dx} = \cos x  &amp;  \frac{d(\cos
+x)}{dx} = -\sin x  &amp; \frac{d(\tan x)}{dx} = \frac{1}{\cos ^2 x} =
+\sec ^2 x. \end{array}\]
+
+<h3 id="the-chain-rule">The Chain Rule</h3>
+
+<p>Providing the functions \(y = f(z), \; z = g(x)\) are differentiable</p>
+
+\[\begin{align} \frac{dy}{dx}  &amp; = \frac{dy}{dz} \times \frac{dz}{dx}
+\\ \textrm{or } (f \circ g)'(x)  &amp; = g'(x) f'(g(x)) \end{align}\]
+
+<h3 id="differentiation-of-functions-def-by-power-series">Differentiation of functions def' by power series</h3>
+
+<p>If \(\sum(a_nx^n\) is a
+power series with radius of convergence R, and \(f\) is defined
+\(f(x) = \sum_{n=0}^\infty a_nx^n : x \in (-R, R)\) then it is differentiable
+and \(f'(x) = \sum_{n=1}^\infty na_nx^{n-1}\)</p>
+
+<p><em>Pay attention: \(n=0\) changes to \(n=1\)</em></p>
+
+<p>The exponential function \(\exp(x)\) or \(e^x\) can be defined as a power
+series (its Maclaurin series) and thus differentiable to get... \(e^x\).</p>
+
+<h4 id="exercise-2">Exercise</h4>
+
+<p>Find \(\sum_{n=1}^\infty \frac{n}{2^n}\).</p>
+
+<p><strong><em>Solution.</em></strong> You've got to bear with me on this one, because the given
+solution is clearly written by someone who knew the answer already and
+have left out a lot of the logic leaps.</p>
+
+<p>We start with a standard definition, for \(|x| = 1\)
+\(\sum_{n=0}^\infty x^n = \frac{1}{1-x}\) We differentiate the left to get
+\(\sum_{n=1}^\infty nx^{n-1} = \frac{d}{dx} (\frac{1}{1-x}).\) And the
+right resolves into \((1-x)^{-2}\).</p>
+
+<p>This derivative form of the power set is very similar to the sum we want
+to find, so much so that if we take \(x = \frac{1}{2}\),
+\(\sum_{n=1}^\infty n(\frac{1}{2})^{n-1} = \sum_{n=1}^\infty \frac{n}{2^{n-1}}\)
+Which resolves down into \(4\) since we can just sub in \(x\) to the other
+side. Note that if we want to get to \(\frac{n}{2^n}\) from
+\(\frac{n}{2^n-1}\) we have to multiply by \(\frac{1}{2}\), so we multiply
+both sides by a half to get \(\sum_{n=1}^\infty \frac{n}{2^n} = 2.\)</p>
+
+<h2 id="properties-of-differentiable-functions">Properties of Differentiable Functions</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note21.pdf">Link to the PDF.</a></p>
+
+<p><em>(Things to be aware of)</em> Turning points, of which are local <em>maxima</em>
+and <em>minima</em>.</p>
+
+<h3 id="turning-point-theorem">Turning Point Theorem</h3>
+
+<p>If a differentiable function \(f\) has a turning
+point at \(a\), \(f'(a) = 0\).</p>
+
+<p>All points \(a\) where \(f(a) = 0\) are called <strong>stationary points</strong>, which
+aren't necessarily turning points. A stationary point which is neither
+a local maximum nor minimum is a <strong>point of inflection</strong></p>
+
+<p>To locate maxima and minima of a continuous function in a range \([a, b]\), we
+need only consider values at</p>
+
+<ul>
+  <li>The stationary points of \(f\) in \([a, b]\)</li>
+  <li>The end points \(a, b\)</li>
+</ul>
+
+<h3 id="rolles-theorem">Rolle's Theorem</h3>
+
+<p>If \(f : [a, b] \longrightarrow \mathbb{R}\) is
+continuous, is differentiable on \(a, b\) and \(f(a) = f(b)\) then there is a
+point \(c \in a, b : f'(c) = 0\)</p>
+
+<p>You have two end points with the same \(y\) value, so in the middle there
+must be <em>some</em> value which is a stationary point. (on horizontal lines,
+all the points work.)</p>
+
+<h3 id="mean-value-theorem">Mean Value Theorem</h3>
+
+<p>If \(f\) is continuous and differentiable over
+\([a, b]\) then \(\exists c \in [a,b] :\) \(f'(c) = \frac{f(b) - f(a)}{b-a}.\)</p>
+
+<p>Which is just Rolle's theorem but on a angled graph.</p>
+
+<h4 id="consequences-of-the-mvt">Consequences of the MVT</h4>
+
+<p>Suppose \(f\) is continuous on \([a,b]\) and
+differentiable on \((a,b)\),</p>
+
+<ol>
+  <li>
+    <ul>
+      <li>\(f'(x) = 0 \forall x \in (a, b) \implies f\) is constant on
+\([a, b]\)</li>
+      <li>\(f'(x) &gt; 0 \forall x \in (a, b) \implies f\) is <em>strictly</em>
+increasing</li>
+      <li>\(f'(x) &lt; 0 \forall x \in (a, b) \implies f\) is <em>strictly</em>
+decreasing</li>
+    </ul>
+  </li>
+  <li><strong>Second Derivative Test.</strong> Suppose \(f'(c) = 0\).
+\(f''(c) &gt; 0 \implies f\) has local <em>mini</em>mum; \(f''(c) &lt; 0 \implies f\)
+has local <em>maxi</em>mum.</li>
+</ol>
+
+<p>For curve sketching:</p>
+
+<ul>
+  <li>Find stationary points, their co-ordinates, and their nature
+(max/min/inflection)</li>
+  <li>Find where \(f(x) = 0\), i.e. intersects \(x\) axis</li>
+  <li>Find \(f\) where \(x = 0\), i.e. y-intercept</li>
+  <li>Determine what happens to \(f(x)\) as \(x \rightarrow \pm\infty\)
+(asymptotes?)</li>
+  <li>Investigate near where (if) \(f(x) \rightarrow \infty\), where a
+divide by zero is found or some other asymptote.</li>
+</ul>
+
+<h2 id="lhopitals-rule-and-implicit-differentiation">L'Hopital's Rule and Implicit Differentiation</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note22.pdf">Link to the
+PDF.</a></p>
+
+<h3 id="lhopitals-rule">L'Hopital's Rule</h3>
+
+<p>Suppose that \(f(a) = 0, g(a) = 0\). If</p>
+
+<p>\(\lim_{x \rightarrow a} \frac{f'(x)}{g'(x)}\) exists then so does
+\(\lim_{x \rightarrow a} \frac{f(x)}{g(X)}\) also exists,
+\(\lim_{x\rightarrow a} \frac{f(x)}{g(x)} = \lim_{x \rightarrow a} \frac{f'(x)}{g'(x)}.\)</p>
+
+<p>You can repeat this and keep on differentiating if you keep getting
+\(\frac{0}{0}\), however there is no guarantee that you will get anywhere.</p>
+
+<h3 id="implicit-differentiation">Implicit differentiation</h3>
+
+<p>Implicit differentiation deals with functions not of the form
+\(y = f(x)\), such as \(x^2 + y^2 = 1\).</p>
+
+<p>Two methods (that work the same):</p>
+
+<ul>
+  <li>Either consider a \(y\) term as a function of \(x\), thus because of
+chain rule append a \(\frac{dy}{dx}\) to the end of each \(y\) term,
+differentiate \(x\) terms as normal.</li>
+</ul>
+
+\[\begin{align} \therefore
+    d(x^2 + y^2 = 0)/dx  &amp; \implies 2x + 2y\frac{dy}{dx} = 0 \\
+     &amp; \implies \frac{dy}{dx} = -\frac{2x}{2y} = -\frac{x}{y}.
+    \end{align}\]
+
+<ul>
+  <li>Or, consider both as functions and append a \(dx\) or \(dy\).</li>
+</ul>
+
+\[\begin{align} \therefore d(x^2 + y^2 = 0)/dx  &amp; \implies 2xdx +
+    2ydy = 0\\  &amp; \implies 2ydy = -2xdx\\  &amp; \implies \frac{dy}{dx} =
+    -\frac{2x}{2y} = -\frac{x}{y}. \end{align}\]
+
+<h4 id="exercise-3">Exercise</h4>
+
+<p>Find \(\frac{dy}{dx}\) of \(y \sin x + \tan^{-1} y = 0\) in
+terms of \(y, x\).</p>
+
+<p><strong><em>Solution.</em></strong> First, differentiate \(y \sin x\). By product rule,</p>
+
+<p>\(d(y \sin x) = \sin(x)dy + y\cos(x)dx\) Then \(\tan^{-1} y\) is a standard
+derivative, \(d(\tan^{-1} y) = \frac{1}{1+y^2} dy\) Thus we get
+\(\sin(x)dy + y\cos(x)dx + \frac{1}{1+y^2}dy = 0\) Collecting terms,
+\((\sin(x) + \frac{1}{1+y^2})dy = (-y\cos(x))dx\) Dividing through,
+\(\frac{dy}{dx} = \frac{-y \cos x}{\sin x + \frac{1}{1+ y^2}}\) Which one
+can simplify if they wish.</p>
+
+<h2 id="differentiating-inverse-functions">Differentiating Inverse Functions</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note23.pdf">Link to the PDF.</a></p>
+
+<p>Recall from 130 <a href="../cs130/index.html#func-2">Injection, Bijection, and
+Surjection</a>. Recall also the range of
+a function \(f : A \longrightarrow B\) is
+\(\{y \in B : f(x) = y, x \in A \}\).</p>
+
+<p>Let
+\(f : [a, b] \longrightarrow \mathbb{R}\) be a continuous function. If \(f\)
+differentiable on \((a, b)\) and
+\(f'(x) &gt; 0 \lor f'(x) &lt; 0 \; \forall x \in (a, b)\), then \(f\) has an
+inverse function \(f^{-1}\) which is differentiable. Let \(y = f(x);\)</p>
+
+\[\begin{align}  &amp;  (f^{-1})'(y) = \frac{1}{f'(x)} \equiv  &amp; 
+\frac{dx}{dy} = \frac{1}{\frac{dy}{dx}} \end{align}\]
+
+<h3 id="example">Example</h3>
+
+<p>To find the derivative of \(f\) given
+\(f(x) = x^\frac{1}{n}\) for some fixed \(n &gt; 0\). The inverse function is
+gotten by writing \(y = x^\frac{1}{n}\), such that \(x = y^n\), thus
+\(f^{-1}(x) = y^n\). So</p>
+
+\[\begin{align}  &amp; \frac{dx}{dy} = ny^{n-1}  &amp;  \frac{dy}{dx} =
+\frac{1}{ny^{n-1}}. \end{align}\]
+
+<p>\(y = x^\frac{1}{n}\) so \(\frac{dy}{dx} = y^{n-1} = x^\frac{n-1}{n}\), thus</p>
+
+\[\begin{align} f\'(x)  &amp; = \frac{dy}{dx} = \frac{1}{nx^\frac{n-1}{n}}
+\\  &amp; = \frac{1}{n} x^\frac{1}{n-1}. \end{align}\]
+
+<p>We can differentiate any rational power of \(x\) by the following:
+\(\frac{d}{dx}x^\frac{p}{q} = ... = \frac{p}{q} x^{\frac{p}{q}-1}.\) same
+way for regular differentiation.</p>
+
+<h3 id="trigonometric-inverse-derivatives">Trigonometric Inverse Derivatives</h3>
+
+<ul>
+  <li>\(\mathbf{sin}^{-1}\). The inverse for the function
+\(\sin : [\frac{-\pi}{2}, \frac{\pi}{2}] \longrightarrow [-1, 1]\);</li>
+</ul>
+
+\[\begin{align}  &amp; \frac{d}{dx}\sin^{-1}(x) = \frac{1}{\sqrt{1 -
+    x^2}}  &amp; (-1&lt;x&lt;1) \end{align}\]
+
+<ul>
+  <li>\(\mathbf{cos}^{-1}\). The inverse for the function
+\(\cos : [0, \pi] \longrightarrow [-1, 1]\);</li>
+</ul>
+
+\[\begin{align}
+     &amp; \frac{d}{dx}\cos^{-1}(x) = \frac{-1}{\sqrt{1-x^2}}  &amp; (-1 &lt; x
+    &lt; 1) \end{align}\]
+
+<ul>
+  <li>\(\mathbf{tan}^{-1}\). The inverse for the function
+\((\frac{-\pi}{2}, \frac{\pi}{2}) \longrightarrow \mathbb{R}\);</li>
+</ul>
+
+\[\begin{align}  &amp; \frac{d}{dx}\tan^{-1}(x) = \frac{1}{1+x^2}  &amp;  (x
+    \in \mathbb{R}) \end{align}\]
+
+<h2 id="integration">Integration</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note24.pdf">Link to the
+PDF.</a></p>
+
+<h3 id="definition-of-integration">Definition of integration</h3>
+
+<p>Let \(f:[a, b] \longrightarrow\mathbb{R}\) be a bounded function. A
+<strong>partition</strong> of \([a,b]\) is a set \(P = \{x_0, x_1, x_2,...,x_n\} :\)
+\(a = x_0 &lt; x_1 &lt; x_2 &lt; ... &lt; x_{n-1} &lt; x_n = b.\) For such a partition P
+let</p>
+
+<ul>
+  <li>\(m_r\) as the greatest lower bound
+\(\{f(x): x_{r-1} \leq x \leq x_r\}\)</li>
+  <li>\(M_r\) as the least upper bound \(\{f(x): x_{r-1} \leq x \leq x_r\}\)</li>
+</ul>
+
+<p>Also let the lower sum \(L(f, P\) and the upper sum \(U(f, P)\)</p>
+
+\[\begin{align} L(f, P)  &amp; = \sum_{r=1}^{n} (x_r - x_{r-1})m_r, \\
+U(f, P)  &amp; = \sum_{r=1}^{n} (x_r - x_{r-1})M_r. \end{align}\]
+
+<p>These
+are the lower and upper estimates of the area under the graph of \(f\).
+For more points in the partition, we get a better estimate of an area.</p>
+
+<p>If there is a unique number A: \(L(f,P) \leq A \leq U(f,P)\) for every
+partition P of \([a, b]\) then we say that \(f\) is <strong>integrable</strong> over
+\([a, b]\). A is the <strong>definite integral</strong> of \(f\) between \(a, b\).
+\(\vartriangleright\)</p>
+
+\[\begin{align}  &amp; \int_{a}^{a} f(x)dx = 0  &amp; \int_{a}^{b} f(x)dx = -
+\int_{b}^{a} f(x)dx. \end{align}\]
+
+<p>Some basic integrable functions (referring to the range \([a, b]\)):</p>
+
+<ol>
+  <li>Any continuous function.</li>
+  <li>Any function which is increasing.</li>
+  <li>Any function which is decreasing.</li>
+</ol>
+
+<p>After this section are basic rules for integrals. However, I'm going to
+put collapsible sections in here for more integration techniques one can
+use.</p>
+
+<h3 id="integration-by-substitution">Integration by Substitution</h3>
+
+<p>Like reverse-engineering a chain
+rule, this methods relies on the integrand being able to be written in
+the following form: \(\int f(g(x))g'(x)dx\) Where the function \(g(x)\) is
+contained within a bigger function, and its derivative is outside as a
+separate factor.</p>
+
+<p>We replace \(g(x)\) with a new variable, such as \(u\) and \(g'(x)dx\) with
+\(du\), and integrate over just the function of \(u\), \(\int f(u) du\),
+replacing in what \(u\) is meant to be afterwards.</p>
+
+<p>Why it works...</p>
+
+<p>Let \(u = g(x)\). If we differentiate \(g(x)\) we get
+\(\frac{du}{dx} = g'(x)\) Now, look at the integral,
+\(\int f(g(x))g'(x)dx\). Replace every \(g\) instance with the equivalent
+\(u\) form to get</p>
+
+\[\begin{align} \int f(g(x))g\'(x)dx  &amp; = \int f(u)
+\frac{du}{dx} dx \\  &amp; = \int f(u) du. \end{align}\]
+
+<p>Try working out \(\int 2x\cos(x^2) dx\) this way, and
+\(\int \frac{9x^2 + 2}{3x^3+2x+7} dx\).</p>
+
+<p>Answers...</p>
+
+<ol>
+  <li>
+\[-\sin(x^2)\]
+  </li>
+  <li>
+\[\ln(3x^3 + 2x + 7)\]
+  </li>
+</ol>
+
+<p>Tangentially related is the <strong>reverse chain rule</strong> itself. Say we have
+an integral, \(\int \cos(3x^2+2x) dx\), we can note that
+\(\sin (3x^2 + 2x)\) differentiates into \((6x+2) \cos(3x^2+2x) dx\) by
+chain rule, so integrating the original integrand back we divide by this
+extra factor, to get \(\frac{\sin(3x^2+2x)}{6x + 2}\).</p>
+
+<p>In certain cases (i.e. like \(\int \frac{1}{1 + x^2} dx\)) we would have
+to substitute trig functions - in this case \(x = \tan \theta\).
+(\(dx = \sec^2 (\theta)d\theta\).) Then when we substitute, using said
+example we get \(\int \frac{1}{\sec^2 \theta} \sec^2 \theta \: d\theta\).
+This is just \(\int 1 d\theta\) and is \(\theta + c\), or \(\tan^{-1} x + c\).</p>
+
+<h3 id="integration-by-parts">Integration by Parts</h3>
+
+<p>Integration by parts is just a formula:</p>
+
+\[\begin{align}  &amp;  \int f(x)g(x)dx = f(x) \int g(x)dx - \int f'(x)
+[\int g(x) dx] dx, \\ \textrm{or }  &amp;  \int uv\: dx = u \int v\:
+dx - \int u' [\int v \: dx]\: dx. \end{align}\]
+
+<p>It can
+alternatively be written \(\int u \: dv = uv + \int v \: du\)</p>
+
+<p>Try work out \(\int x \cos (x )dx\).</p>
+
+<p>Answer...</p>
+
+\[\begin{align} \int x \cos (x )dx  &amp; = x \sin(x) - \int 1 \sin(x) dx
+\\  &amp; = x \sin x + \cos x + c. \end{align}\]
+
+<h3 id="properties-of-definite-intervals">Properties of definite intervals</h3>
+
+<ol>
+  <li><strong>Sum rule:</strong> \(f, g\) are integrable then so is \(f+g\), and
+\(\int_{a}^{b} (f(x) + g(x))dx = \int_{a}^{b} f(x)dx + \int_{a}^{b} g(x)dx.\)</li>
+  <li><strong>Multiple (scalar) rule:</strong> \(f\) integrable,
+\(\lambda \in \mathbb{R}\), then \(\lambda f\) integrable, and
+\(\int_a^b \lambda f(x)dx = \lambda \int_a^b f(x)dx.\)</li>
+  <li>\(f\) integrable over \([a,c]\) and \([c,b]\), then \(f\) also integrable
+over \([a,b]\), and
+\(\int_a^b f(x)dx = \int_a^c f(x)dx + \int_c^b f(x)dx.\)</li>
+  <li>If \(f(x) \leq g(x) \; \forall x \in [a, b]\) then provided both
+integrals exist, \(\int_a^b f(x)dx \leq \int_a^b g(x)dx.\)</li>
+</ol>
+
+<h3 id="fundamental-theorems-of-calculus">Fundamental theorems of calculus</h3>
+
+<h4 id="first-fundamental-theorem-of-calculus">First Fundamental Theorem of Calculus</h4>
+
+<p>Let
+\(f : [a,b] \longrightarrow \mathbb{R}\) be integrable, and define
+\(F : [a,b] \longrightarrow \mathbb{R}\) as \(F(x) = \int_a^x f(t)dt.\) If
+\(f\) continuous at \(c \in (a, b)\) then \(F\) is differentiable at \(c\), and
+\(F'(c) = f(c).\)</p>
+
+<h4 id="second-fundamental-theorem-of-calculus">Second Fundamental Theorem of Calculus</h4>
+
+<p>Let
+\(f : [a,b] \longrightarrow \mathbb{R}\) be continuous and suppose \(F\) is
+a differentiable function : \(F' = f\), then \(\int_a^b f(x)dx = [F(x)]^b_a\)
+Where \([F(x)]^b_a\) denotes \(F(b) - F(a)\)</p>
+
+<p>Alternatively, \(\frac{d}{dx}F(x) = f(x) \; \forall x\), and \(f\)
+continuous, then \(\int f(x)dx = F(x) + c\) for some c.</p>
+
+<h2 id="logs-and-exponentials">Logs and Exponentials</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note25.pdf">Link to the PDF.</a></p>
+
+<p>In the notes \(\log x\) means the <em>natural</em> log of \(x\), but here I will
+use \(\ln x\). It is always useful to specify.</p>
+
+<p>For each \(x &gt; 0\); \(\ln x = \int_1^x \frac{1}{t}dt.\)</p>
+
+<h3 id="properties-of-logarithms">Properties of Logarithms</h3>
+
+<ol>
+  <li>
+\[\ln(1) = 0.\]
+  </li>
+  <li>log is a strictly increasing function.</li>
+  <li>log is a differentiable function, \(\frac{d(\ln x)}{dx}\)</li>
+  <li>
+\[\ln(xy) = \ln x + \ln y\]
+  </li>
+  <li>
+\[\ln(\frac{x}{y}) = \ln x - \ln y\]
+  </li>
+  <li>\(\ln : (0, \infty) \longrightarrow \mathbb{R}\) is bijective</li>
+</ol>
+
+<p>Since \(\ln : (0, \infty) \longrightarrow \mathbb{R}\) is bijective, it
+has an inverse function \(\exp : \mathbb{R} \longrightarrow (0, \infty)\).
+\(e = \exp(1); e^x = \exp(x)\).</p>
+
+<h3 id="properties-of-exponentials">Properties of Exponentials</h3>
+
+<p>For any \(x, y \in \mathbb{R}\),</p>
+
+<ol>
+  <li>\(\exp(x+y) = \exp(x)\exp(y)\) but likewise \(e^{x+y} = e^xe^y\)</li>
+  <li>\(\frac{d(\exp(x))}{dx} = \exp(x)\), \(\exp(0) = 1\)</li>
+  <li>
+\[\exp(x) = \lim_{n \rightarrow \infty} (1 + (\frac{x}{n})^n\]
+  </li>
+  <li>
+\[\exp(x) = \sum_{n=0}^{\infty} \frac{x^n}{n!}\]
+  </li>
+</ol>
+
+<p>For \(a &gt; 0, x \in \mathbb{R}\), any exponential can be defined by
+\(a^x = e^{x \ln a}\) Then for \(a, b &gt; 0; x, y \in \mathbb{R}\) the
+following properties hold:</p>
+
+\[\begin{align}  &amp; \ln (a^x) = x \ln a
+ &amp; (ab)^x = a^xb^x \\  &amp; a^xa^y = a^{x+y}  &amp; (a^x)^y = a^{xy} =
+(a^y)^x. \end{align}\]
+
+<p>We can change bases of logarithms (provided \(b \neq 1\));
+\(\log_b x = \frac{\ln x}{\ln b}\)</p>
+
+<h2 id="taylors-theorem">Taylor's Theorem</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note26.pdf">Link to the PDF.</a></p>
+
+<h3 id="taylors-theorem-1">Taylor's Theorem</h3>
+
+<p>Let \(f\) be an \(n+1\) times differentiable function
+on an open interval containing some points \(a, x\). Then
+\(f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n + R_n(x)\)
+Where \(R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}\) For some number
+\(c\) between \(a, x\).</p>
+
+<p>The resulting polynomial from evaluating some \(n\) terms is called the
+<strong>Taylor polynomial of degree \(n\) of \(f\) at \(a\)</strong>. This is however an
+<em>approximation</em>, and so the end term \(R_n(x)\) is the error in the
+approximation.</p>
+
+<h3 id="taylor-series">Taylor series</h3>
+
+<p>If we can show \(R_n (x) \rightarrow 0\) as \(n \rightarrow \infty\) then we
+get a sequence of better and better approximations until we get the
+<strong>Taylor series</strong>,
+\(f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n\) This will only
+converge for values of \(x\) within the radius of convergence of the power
+series. They can be used to approximate functions.</p>
+
+<p>When \(n = 0\), Taylor's reduces down to the mean value theorem. <em>(Proof
+of Taylor's is omitted)</em></p>
+
+<h3 id="nth-derivative-test-for-the-nature-of-stationary-points">Nth derivative test for the nature of stationary points</h3>
+
+<p>Suppose
+a function \(f\) has a stationary point at \(a\) however
+\(f'(a) = f''(a) = ... = f^{(n-1)} = 0\), while \(f^{n}(a) \neq 0\). If
+\(f^{n}(a)\) is continuous,</p>
+
+<ol>
+  <li>\(n\) even, \(f^{(n)}(a) &gt; 0\); \(f\) has a local maximum</li>
+  <li>\(n\) even, \(f^{(n)}(a) &lt; 0\); \(f\) has a local minimum</li>
+  <li>\(n\) odd; \(f\) has a point of inflection at \(a\)</li>
+</ol>
+
+<h3 id="maclaurin-series">Maclaurin Series</h3>
+
+<p>When \(a = 0\), we get the Maclaurin's series, which is a special case of
+Taylor's series \(f(x) = \sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^n\)</p>
+
+<h4 id="important-maclaurin-series">Important Maclaurin Series</h4>
+
+\[\begin{align} e^x  &amp; = 1 + x + \frac{x^2}{2!} + ... +
+\frac{x^n}{n!}  &amp; (x \in \mathbb{R}) \\ \sin x  &amp; = x -
+\frac{x^3}{3!} + \frac{x^5}{5!} - ... +
+\frac{(-1)^nx^{2n}}{(2n)!}  &amp; (x \in \mathbb{R}) \\ \cos x  &amp; = 1 -
+\frac{x^2}{2!} + \frac{x^4}{4!} - ... +
+\frac{(-1)^nx^{2n}}{(2n)!}  &amp; (x \in \mathbb{R}) \\ (1+x)^a  &amp; = 1 +
+ax + \frac{a(a-1)x^2}{2!} + ... + {a \choose n}x^n  &amp;  (x \in
+\mathbb{R}) \\ \ln (1 + x)  &amp; = x - \frac{x^2}{2} + \frac{x^3}{3}- ... + \frac{(-1)^{n+1}x^n}{n}  &amp; (\|x\| &lt; 1) \\ -\ln (1-x)  &amp; = x \frac{x^2}{2} + \frac{x^3}{3} + ... + \frac{x^n}{n}  &amp; (\|x\| &lt;
+1) \end{align}\]
+
+<p>These are all expressible as sums using the nth term, though bear in
+mind the last two start from \(n=1\).</p>
+
+<h2 id="first-order-odes">First Order ODEs</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note27.pdf">Link to the PDF.</a></p>
+
+<p>ODEs, Ordinary Differential Equations, are equations including
+derivatives, such as \(y' = 4x\) or \(y'' + 4y = x\), etc.</p>
+
+<p>The <strong>order</strong> of a DE represents the <em>highest derivative</em> contained
+within it. This section looks at 1st orders.</p>
+
+<p>First order equations of the form \(y' = f(x)\) can be easily solved via
+integration. This will give us a <em>general solution</em> with the \(+ c\),
+representing a <em>family</em> of curves. If we are given constraints, we can
+get a <em>particular solution</em>.</p>
+
+<h3 id="separable-equations">Separable Equations</h3>
+
+<p><strong>A [1st order] ODE is called a **separable</strong>
+equation if it can be written in the form \(\frac{dy}{dx} = f(x)g(y)\)
+Since this can be rewritten as
+\(\frac{1}{g(y)} \frac{dy}{dx} = f(x) \textrm{ or } \frac{1}{g(y)}dy = f(x)dx\)
+Which can be directly integrated,
+\(\int \frac{1}{g(y)} dy = \int f(x)dx.\)</p>
+
+<p>An example of a separable equation is \(\frac{dy}{dx} + xy = 0\).</p>
+
+<h3 id="homogenous-equations">Homogenous Equations</h3>
+
+<p>An ODE is called <strong>homogenous</strong> if it can be
+written in the form \(\frac{dy}{dx} = f(\frac{y}{x})\) We let some
+variable \(v = \frac{y}{x} : y = xv\), thus
+\(\frac{d(xv)}{dx} = f(v) \Longleftrightarrow x\frac{dv}{dx} + v = f(v) \Longleftrightarrow \frac{dv}{dx} = \frac{f(v) -v}{x}\)
+This brings it into a separable form, into</p>
+
+\[\begin{align}
+\frac{1}{f(v)-v}dv = \frac{1}{x}dx  &amp; \implies \int \frac{1}{x} dx =
+\int \frac{1}{f(v)-v} dv \\  &amp; \implies \ln x = \int
+\frac{1}{f(v)-v} dv. \end{align}\]
+
+<p>And replace \(v\) by \(\frac{y}{x}\) to
+get the original general equation.</p>
+
+<p>The following exercise <em>may</em> help.</p>
+
+<h4 id="exercise-4">Exercise</h4>
+
+<p>Solve \(2xy \frac{dy}{dx} = y^2 - x^2.\)</p>
+
+<p><strong><em>Solution.</em></strong> We can rearrange;
+\(\implies \frac{dy}{dx} = \frac{y^2-x^2}{2xy} = \frac{1}{2}(\frac{y^2}{xy} - \frac{x^2}{xy}) = \frac{1}{2}(\frac{y}{x}-\frac{x}{y}).\)
+This is homogenous, so we apply the above principle to this equation;</p>
+
+\[\begin{align} \implies \frac{d(vx)}{dx} = \frac{1}{2}(v -
+\frac{1}{v})  &amp; \implies x\frac{dv}{dx} + v = \frac{1}{2}(v -
+\frac{1}{v}) \\  &amp; \implies \frac{dv}{dx} =
+-\frac{1}{x}(\frac{1+v^2}{2v}) \end{align}\]
+
+<p>Which is now in separable
+form. Now, skipping straight to \(\ln x = \dots\) form,</p>
+
+\[\begin{align}
+\implies \ln x = \int \frac{-2v}{1 + v^2}dv  &amp;  \implies \ln x =
+-\ln (1 + v^2) + c \\  &amp; \implies x(1+v^2) = e^c. \end{align}\]
+
+<p>Let
+the constant \(k = e^c\) and replacing \(v\) by \(\frac{y}{x}\). Thus
+\(x(1 + \frac{y^2}{x^2}) = k \Longleftrightarrow x^2 + y^2 = kx.\)</p>
+
+<h3 id="linear-equations">Linear Equations</h3>
+
+<p>An ODE is called <strong>linear</strong> if it has the form
+\(\frac{dy}{dx} + P(x)y = Q(x).\)</p>
+
+<p>Related to this is the <strong>integrating factor</strong>,
+\(I(x) = e^{\int P(x) dx}\). This can be derived if \(Q(x) = 0\).</p>
+
+<p>We multiply both sides of the equation by \(I(x)\), to get
+\(\frac{dy}{dx}I(x) + yI(x)P(x) = Q(x)I(x)\) Note the LHS is the result of
+the implicit differentiation of \(yI(x)\), thus</p>
+
+\[\begin{align}
+\frac{d}{dx}(yI(x))  &amp; = Q(x)I(x) \\ yI(x)  &amp; = \int Q(x)I(x) dx.
+\end{align}\]
+
+<h4 id="exercise-5">Exercise</h4>
+
+<p>Find the general solution to
+\((1+x^2)\frac{dy}{dx} + xy = x\sqrt{1+x^2},\) and the particular solution
+which satisfies \(y = \frac{1}{2}, x=0\).</p>
+
+<p><strong><em>Solution.</em></strong> We can rearrange the equation to
+\(\frac{dy}{dx} + \frac{xy}{1+x^2} = \frac{x}{\sqrt{1+x^2}}\) The
+integrating factor is thus
+\(e^{\int \frac{x}{1+x^2}dx} = e^{\frac{1}{2} \ln (1+x^2)} = (1 + x^2)^{\frac{1}{2}}.\)
+Multiplying by this integrating factor,</p>
+
+\[\begin{align} \sqrt{1+x^2}
+\frac{dy}{dx} + \frac{xy}{\sqrt{1+x^2}}  &amp; = x \\
+\frac{d}{dx}(\sqrt{1+x^2} y)  &amp; = x \end{align}\]
+
+<p>Hence the general
+solution is \(\sqrt{1+x^2}y = x^2 / 2 + c.\) The particular solution is
+when you substitute the values for \(y, x\) into the equation to find c,
+and \(c = \frac{1}{2}\). That gives you the final specific curve.</p>
+
+<h2 id="second-order-odes">Second Order ODEs</h2>
+
+<p><a href="https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/part4/note28.pdf">Link to the PDF.</a></p>
+
+<p>These are where there is a \(y''\) term, and are dealt with very similarly
+to recurrences. They take the form \(ay'' + by' + cy = f(x)\)</p>
+
+<p>If \(f(x) = 0\), then the equation is <strong>homogenous</strong>. To find the general
+solution, find the <em>general solution</em> of \(ay'' + by' + cy = 0\) find the
+<em>particular solution</em> of \(ay'' + by' + cy = f(x)\) and add them together.</p>
+
+<h3 id="solving-homogenous-equations">Solving homogenous equations</h3>
+
+<p>For the homogenous equation
+\(ay'' + by' + cy = 0\)</p>
+
+<p>There's a lot of waffle, but we have an <em>auxiliary equation</em> that is
+relevant, which is \(a\lambda^2 + b\lambda + c = 0\)</p>
+
+<p>The roots of this equation determine the form of the general solution.</p>
+
+<ul>
+  <li><em>Roots are real and distinct.</em> The general solution is
+\(y = Ae^{\lambda_1 x} + Be^{\lambda_2 x}\).</li>
+  <li><em>Roots are equal.</em> The general solution is
+\(y = Ae^{\lambda x} + Bxe^{\lambda x} = (A + Bx) e^{\lambda x}\).</li>
+  <li><em>Complex Roots.</em> Let \(\lambda_1 = \alpha + i\beta\) and
+\(\lambda_2 = \alpha - i\beta\). Then, the general equation is
+\(y = e^{\alpha x} (A \cos \beta x + B \sin \beta x)\).</li>
+</ul>
+
+<h3 id="finding-particular-solutions">Finding particular solutions</h3>
+
+<p>For the equation
+\(ay'' + by' + cy = f(x)\) Like in recurrences, we want <em>like</em> functions.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Form of \(f(x)\)</th>
+      <th>Form for a particular solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(e^{\alpha x}\)</td>
+      <td>-   \(y = Ae^{\alpha x}\) if \(\alpha\) is not a root of the auxiliary equation<br /> -   \(y = Axe^{\alpha x}\) if \(\alpha\) is one root<br /> -   \(y = Ax^2 e^{\alpha x}\) if \(\alpha\) is the repeated roots</td>
+    </tr>
+    <tr>
+      <td>Polynomial of degree \(n\)</td>
+      <td>-   Polynomial of degree \(n\) if 0 is not a root<br />-   Polynomial of degree \(n+1\) if 0 is a non-repeated root<br />-   Polynomial of degree \(n+2\) if 0 is a repeated root</td>
+    </tr>
+    <tr>
+      <td>\(A \cos \alpha x + B \sin \alpha x\)</td>
+      <td>-   \(y = C \cos \alpha x + D \sin\alpha x\) if \(\alpha i\) is not a root of the auxiliary equation<br />-   \(y = x(C \cos \alpha x + D \sin \alpha x)\) otherwise</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

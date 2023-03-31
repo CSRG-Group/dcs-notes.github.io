@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Stacks and Queues</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Stacks and Queues</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#stacks-adt">Stacks (ADT)</a><ul><li><a href="#array-based-implementation">Array Based Implementation</a></li></ul></li><li><a href="#queues-adt">Queues (ADT)</a><ul><li><a href="#array-based-implementation-1">Array Based Implementation</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="recursive-algorithms.html" title="recursive-algorithms.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="maps-hash-tables-and-sets.html" title="maps-hash-tables-and-sets.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="stacks-adt">Stacks (ADT)</h2>
+<blockquote>
+  <p><strong>Stacks</strong> are a “Last in, first out” (LIFO) data structure, with both insertions and deletions always occurring at the front of the stack.</p>
+</blockquote>
+
+<p>These insertions and deletions are the fundamental operations of the stack, called pushing and popping respectively.</p>
+
+<p>There is an edge case of popping from an empty stack, which normally either returns null or throws an error</p>
+
+<p>Stacks have the fundamental operations:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">push(e)</code></td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> to the top of the stack</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pop()</code></td>
+      <td>The most recently pushed item from the top of the stack</td>
+      <td>Remove the most recently pushed item from the top of the stack</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>The size of the stack</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>Whether the stack is empty</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="array-based-implementation">Array Based Implementation</h3>
+
+<p>Index of head stored, and incremented/decremented on pushing/popping operations</p>
+
+<ul>
+  <li>
+    <p><em>O(n)</em> space complexity</p>
+  </li>
+  <li>
+    <p><em>O(1)</em> time complexity of fundamental operations</p>
+  </li>
+</ul>
+
+<p><img src="./images/stackArrayImplementation.png" alt="stackArrayImplementation" class="center" /></p>
+
+<h2 id="queues-adt">Queues (ADT)</h2>
+
+<blockquote>
+  <p><strong>Queues</strong> are a “First in, first out” (FIFO) data structure, with insertions occurring at the rear and removals at the front of the queue.</p>
+</blockquote>
+
+<p>These insertions and deletions are the fundamental operations of the stack, called enqueueing and dequeuing respectively.</p>
+
+<p>There is an edge case of dequeuing from an empty queue, normally either returns null or throws an error</p>
+
+<p>Queues have the fundamental operations</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">enqueue(e)</code></td>
+      <td>Add the value <code class="language-plaintext highlighter-rouge">e</code> to the tail of the queue</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dequeue()</code></td>
+      <td>The least recently enqueued item from the head of the queue</td>
+      <td>Remove the least recently enqueued item from the head of the queue</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>The size of the queue</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>Whether the queue is empty</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="array-based-implementation-1">Array Based Implementation</h3>
+
+<p>Uses and array with data wrapping (so like using an array in a <code class="language-plaintext highlighter-rouge">Queue</code> class with extra fields/properties) around as it is added and removed. Both the index of the head <strong><em>f</em></strong> <strong>and</strong> the size of the queue <strong><em>s</em></strong> need to be stored.</p>
+
+<p>The rear of the queue (index to insert to next) is <em>(f + s)</em> mod <em>N</em>, with <em>N</em> as the array size</p>
+
+<p><img src="./images/queueArrayImplementation.png" alt="queueArrayImplementation" class="center" /></p>
+
+<ul>
+  <li><em>O(n)</em> space complexity</li>
+  <li><em>O(1)</em> time complexity of fundamental operations</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

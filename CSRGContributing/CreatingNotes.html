@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Creating notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Creating notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#in-depth-typed">In depth typed</a></li><li><a href="#external-site">External Site</a></li><li><a href="#single-webpage">Single webpage</a><ul><li><a href="#not-using-index">not using index</a></li></ul></li><li><a href="#single-file-pdf">Single file pdf</a></li><li><a href="#multi-file-pdf">Multi-file pdf</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>There are many supported formats for notes the common supported formats are:</p>
+<ul>
+  <li>In depth typed</li>
+  <li>External Site</li>
+  <li>Single webpage</li>
+  <li>Single document pdf</li>
+  <li>Multi-document pdf 
+the instructions for each of these are shown below. other formats can typically be derived form these for more information see the docs.</li>
+</ul>
+
+<h2 id="in-depth-typed">In depth typed</h2>
+
+<p>these notes have many typed pages and the pages can be structured into a logical ordering. They have the following structure</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Notes
+┣ Assets
+┃ ┣  image1.png
+┃ ┣  image2.png
+┃ ┋
+┣ Index.md
+┣ onePage.md
+┣ page1.md
+┣ page2.md
+┋
+</code></pre></div></div>
+<p>To create this set of notes:</p>
+<ol>
+  <li>In <code class="language-plaintext highlighter-rouge">/modules/&lt;code&gt;/</code> create a folder with a descriptive name for your notes (use _ instead of spaces)</li>
+  <li>In the new folder create a new file called <code class="language-plaintext highlighter-rouge">index.md</code></li>
+  <li>add this to the top:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: noteshome
+title: &lt;code&gt;
+description: &lt;name&gt;
+---
+</code></pre></div>    </div>
+  </li>
+  <li>Alter accordingly replacing <code class="language-plaintext highlighter-rouge">&lt;code&gt;</code> (all caps e.g. <code class="language-plaintext highlighter-rouge">CS133</code>) and <code class="language-plaintext highlighter-rouge">&lt;name&gt;</code></li>
+  <li>In the folder create a new file called <code class="language-plaintext highlighter-rouge">onePage.html</code></li>
+  <li>Add this to the top:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: onePage
+title: &lt;code&gt; One Page Notes
+--- 
+</code></pre></div>    </div>
+  </li>
+  <li>replace <code class="language-plaintext highlighter-rouge">&lt;code&gt;</code> accordingly</li>
+  <li>Create an <code class="language-plaintext highlighter-rouge">assets</code> folder</li>
+  <li>Add any number of markdown pages named after topic in the module</li>
+  <li>Add the following to the top of each of them
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: notes
+title: &lt;section name&gt;
+---
+</code></pre></div>    </div>
+  </li>
+  <li>fill in the pages see <a href="">here</a> for a markdown tutorial and <a href="">here</a> for our formatting guidelines</li>
+  <li>Add a contents section linking to each of the pages (<code class="language-plaintext highlighter-rouge">[page1](page1.html)</code>) to the <code class="language-plaintext highlighter-rouge">index.md</code> file and a link to the <code class="language-plaintext highlighter-rouge">onePage.html</code> page
+    <blockquote>
+      <p>To ensure that the prev and next buttons and onePage is working correctly the order of the  pages needs defining this is done with YMAL a brief tutorial can be found <a href="https://en.wikipedia.org/wiki/YAML#Basic_components">here</a></p>
+    </blockquote>
+  </li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">Notes:</code> add a new <code class="language-plaintext highlighter-rouge">Notes:</code> array if it does not exist
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    Notes:
+      - name: &lt;folder name&gt;
+        description &lt;brief description&gt;
+        authors:
+          - &lt;your name&gt;
+        order:
+          - &lt;file1&gt;.html
+          - &lt;file2&gt;.html
+          - &lt;file3&gt;.html
+          ....
+</code></pre></div>    </div>
+  </li>
+  <li>Replace the relevant details
+    <ul>
+      <li>name should match your folder name exactly</li>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+  <li>The pages should now function correctly test on a local site and submit a pull request</li>
+</ol>
+
+<h2 id="external-site">External Site</h2>
+<p>We would appreciate the hosting of content on warwick.guide for community error checking and correcting as-well as a redundant location for hosing however we appreciate not everyone can put in the time tor wants to re-host their content. If using the option of re-hosting the link to the external site should be placed on the index page</p>
+
+<p>linking to an external site:</p>
+<ol>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">Notes:</code> add a new <code class="language-plaintext highlighter-rouge">Notes:</code> array if it does not exist
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     Notes: 
+       - name: &lt;name&gt;
+         link: &lt;Link to site&gt;
+         description: &lt;Desc&gt;
+         authors:
+           - &lt;your name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Replace the relevant details
+    <ul>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+  <li>The pages should now function correctly test on a local site and submit a pull request</li>
+</ol>
+
+<h2 id="single-webpage">Single webpage</h2>
+<p>Occasionally a note may be placed on a single markdown file or html site.</p>
+
+<ol>
+  <li>In <code class="language-plaintext highlighter-rouge">/modules/&lt;code&gt;/</code> create a folder with a descriptive name for your notes (use _ instead of spaces)</li>
+  <li>In the new folder create a new file called <code class="language-plaintext highlighter-rouge">index.html</code> (for other options see below)</li>
+  <li>add this to the top:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: noteshome
+title: &lt;code&gt;
+description: &lt;name&gt;
+---
+</code></pre></div>    </div>
+  </li>
+  <li>Alter accordingly replacing <code class="language-plaintext highlighter-rouge">&lt;code&gt;</code> (all caps e.g. <code class="language-plaintext highlighter-rouge">CS133</code>) and <code class="language-plaintext highlighter-rouge">&lt;name&gt;</code></li>
+  <li>Create an <code class="language-plaintext highlighter-rouge">assets</code> folder</li>
+  <li>Fill in the page or copy your note over</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">Notes:</code> add a new <code class="language-plaintext highlighter-rouge">Notes:</code> array if it does not exist
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     - name: &lt;name&gt;
+       description: &lt;Desc&gt;
+       authors:
+         - &lt;your name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Replace the relevant details
+    <ul>
+      <li>name should match your folder name exactly</li>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="not-using-index">not using index</h3>
+<p>If you are not using a file name <code class="language-plaintext highlighter-rouge">index.html</code> or <code class="language-plaintext highlighter-rouge">index.md</code> then please follow the same instructions for single page pdf and replace the link accordingly.</p>
+
+<h2 id="single-file-pdf">Single file pdf</h2>
+<blockquote>
+  <p>we are reviewing our stance on allowing pdf notes
+while they can be useful they are harder to index or search 
+and typed noted would be preferred.</p>
+</blockquote>
+
+<ol>
+  <li>In <code class="language-plaintext highlighter-rouge">/modules/&lt;code&gt;/</code> create a folder with a descriptive name for your notes (use _ instead of spaces)</li>
+  <li>Add your file to the folder</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">Notes:</code> add a new <code class="language-plaintext highlighter-rouge">Notes:</code> array if it does not exist
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     - name: &lt;name&gt;
+       link: &lt;Link to content&gt;
+       description: &lt;Desc&gt;
+       authors:
+         - &lt;your name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Replace the relevant details
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&lt;Link to content&gt;</code> should be a relative link form the module page e.g <code class="language-plaintext highlighter-rouge">&lt;Your foldername&gt;/myNotes.pdf</code></li>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="multi-file-pdf">Multi-file pdf</h2>
+<blockquote>
+  <p>we are reviewing our stance on allowing pdf notes
+while they can be useful they are harder to index or search 
+and typed noted would be preferred.</p>
+</blockquote>
+
+<p>The strategy for multiple pdf files is to use a html or markdown index page that forms a contents page for the pdfs.</p>
+
+<ol>
+  <li>In <code class="language-plaintext highlighter-rouge">/modules/&lt;code&gt;/</code> create a folder with a descriptive name for your notes (use _ instead of spaces)</li>
+  <li>Add your files to the folder</li>
+  <li>In the new folder create a new file called <code class="language-plaintext highlighter-rouge">index.md</code></li>
+  <li>add this to the top:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: noteshome
+title: &lt;code&gt;
+description: &lt;name&gt;
+---
+</code></pre></div>    </div>
+  </li>
+  <li>Alter accordingly replacing <code class="language-plaintext highlighter-rouge">&lt;code&gt;</code> (all caps e.g. <code class="language-plaintext highlighter-rouge">CS133</code>) and <code class="language-plaintext highlighter-rouge">&lt;name&gt;</code></li>
+  <li>Add a contents section linking to each of the pages (<code class="language-plaintext highlighter-rouge">[page1](page1.pdf)</code>) to the <code class="language-plaintext highlighter-rouge">index.md</code></li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">_data/&lt;code&gt;.yml</code> add the text below to <code class="language-plaintext highlighter-rouge">Notes:</code> add a new <code class="language-plaintext highlighter-rouge">Notes:</code> array if it does not exist
+    <pre><code class="language-YAML">     - name: &lt;name&gt;
+       description: &lt;Desc&gt;
+       authors:
+         - &lt;your name&gt;
+</code></pre>
+  </li>
+  <li>Replace the relevant details
+    <ul>
+      <li>name should match your folder name exactly</li>
+      <li>authors is optional you may remove the whole segment if you do not want credit</li>
+      <li>for information of setting up the authors page see <a href="contributors.html">here</a></li>
+    </ul>
+  </li>
+</ol>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

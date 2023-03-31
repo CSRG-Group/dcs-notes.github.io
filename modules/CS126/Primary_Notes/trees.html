@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Trees</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Trees</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#trees-adt">Trees (ADT)</a></li><li><a href="#tree-traversals">Tree Traversals</a><ul><li><a href="#in-order-traversal">In-Order Traversal</a></li><li><a href="#pre-order-traversal">Pre-order traversal</a></li><li><a href="#post-order-traversal">Post-order traversal</a></li></ul></li><li><a href="#binary-trees-adt">Binary trees (ADT)</a><ul><li><a href="#properties">Properties</a></li><li><a href="#implementations">Implementations</a></li><li><a href="#linked-structure">Linked structure</a></li><li><a href="#array-based">Array based</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="maps-hash-tables-and-sets.html" title="maps-hash-tables-and-sets.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="priority-queues.html" title="priority-queues.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="trees-adt">Trees (ADT)</h2>
+<blockquote>
+  <p><strong>Trees</strong> are “an abstract model of a hierarchical structure. A tree consists of nodes with a parent-child relation.”</p>
+
+  <p>*Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental Operation</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">size()</code></td>
+      <td>Number of nodes in the tree</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEmpty()</code></td>
+      <td>Whether the tree is empty</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">iterator()</code></td>
+      <td>An iterator for the tree</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">positions()</code></td>
+      <td>An iterable container of all nodes in the tree</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">root()</code></td>
+      <td>The root node</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">parent(p)</code></td>
+      <td>The parent of the node <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">children(p)</code></td>
+      <td>An iterable container of the children of the node <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">numChildren(p)</code></td>
+      <td>The number of children of the node <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isInternal(p)</code></td>
+      <td>Whether the node <code class="language-plaintext highlighter-rouge">p</code> is an <strong>internal node</strong> (node with at least 1 child)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isExternal(p)</code></td>
+      <td>Whether the node <code class="language-plaintext highlighter-rouge">p</code> is an <strong>external node</strong> (node with no children)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isRoot(p)</code></td>
+      <td>Whether the node <code class="language-plaintext highlighter-rouge">p</code> is a <strong>root node</strong> (node without parent)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">insert(p,e)</code></td>
+      <td>-</td>
+      <td>Add a node of value <code class="language-plaintext highlighter-rouge">e</code> as a child of the node <code class="language-plaintext highlighter-rouge">p</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">update(p,e)</code></td>
+      <td>-</td>
+      <td>Update the value of the node <code class="language-plaintext highlighter-rouge">p</code> to be <code class="language-plaintext highlighter-rouge">e</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">delete(p)</code></td>
+      <td>The value of the node <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>Delete the node <code class="language-plaintext highlighter-rouge">p</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The methods for insertion, deletion, and searching are more complicated, and so are outlined in more detail in the binary search tree section</p>
+
+<h2 id="tree-traversals">Tree Traversals</h2>
+
+<p>There are various ways a tree can be traversed. Shown here is a figure of a binary tree.</p>
+
+<p><img src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVEQ7XG5cdEEgLS0tIEI7XG5cdEEgLS0tIEM7XG5cdEIgLS0tIEQ7XG5cdEIgLS0tIEU7IFxuXHRDIC0tLSBGO1xuXHRDIC0tLSBHO1xuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0" class="center" /></p>
+
+<p><strong>In-order (Left, Root, Right).</strong> DBE A FCG</p>
+
+<p><strong>Pre-order (Root, Left, Right).</strong> A BDE CFG</p>
+
+<p><strong>Post-order (Left, Right, Root).</strong> DEB FGC A</p>
+
+<p><strong>Breadth First/Level Order.</strong> ABCDEFG</p>
+
+<p>We will come back to breadth first traversal in a later topic (Breadth First Search). For now we will focus on the first 3.</p>
+
+<h3 id="in-order-traversal">In-Order Traversal</h3>
+
+<p>For every node, we print the left child, the node itself, then the right child. Since this is a recursive function, if we start at a node <strong><em>n</em></strong>, the algorithm will start from the left-most child <strong>of the tree</strong>, then that child’s parent then its sibling and on for the entire tree that the <strong><em>n</em></strong> is the <strong>root</strong> of.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Function</span> <span class="nf">inOrder</span><span class="o">(</span><span class="n">n</span><span class="o">)</span>
+  <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span>
+    <span class="nf">inOrder</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">leftChild</span><span class="o">())</span>
+    <span class="nc">Print</span> <span class="n">n</span>
+    <span class="nf">inOrder</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">rightChild</span><span class="o">())</span>
+</code></pre></div></div>
+
+<p>Note that the above algorithm applies only to <strong>binary trees</strong>, for a more general form of in-order traversal, there will need to be an <strong>additional</strong> definition of what makes a node a “left child”. This can either be that left child nodes have a smaller value than the parent/root, or left children are just the first <strong><em>m</em></strong> number of nodes etc.</p>
+
+<h3 id="pre-order-traversal">Pre-order traversal</h3>
+
+<p>Each node is printed before its descendants, and descendants are taking in ascending order</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Function</span> <span class="nf">preOrder</span><span class="o">(</span><span class="n">n</span><span class="o">)</span>
+  <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span>
+    <span class="nc">Print</span> <span class="n">n</span>
+    <span class="nc">For</span> <span class="n">each</span> <span class="n">child</span> <span class="n">m</span> <span class="n">of</span> <span class="n">n</span>
+      <span class="nf">preOrder</span><span class="o">(</span><span class="n">n</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h3 id="post-order-traversal">Post-order traversal</h3>
+
+<p>Each node is printed after its descendants, and descendants are taking in ascending order</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Function</span> <span class="nf">postOrder</span><span class="o">(</span><span class="n">n</span><span class="o">)</span>
+  <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span>
+    <span class="nc">For</span> <span class="n">each</span> <span class="n">child</span> <span class="n">m</span> <span class="n">of</span> <span class="n">n</span>
+      <span class="nf">postOrder</span><span class="o">(</span><span class="n">n</span><span class="o">)</span>
+    <span class="nc">Print</span> <span class="n">n</span>
+</code></pre></div></div>
+
+<h2 id="binary-trees-adt">Binary trees (ADT)</h2>
+
+<blockquote>
+  <p><strong>Binary trees</strong> are a specialised tree where each node has at most two children, called left and right</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fundamental Operations</th>
+      <th>Value returned</th>
+      <th>Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">left(p)</code></td>
+      <td>The left child of node <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">right(p)</code></td>
+      <td>The right child of node <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sibling(p)</code></td>
+      <td>The sibling of node <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="properties">Properties</h3>
+
+<p>A binary tree with \(n\) nodes, \(e\) external nodes, \(i\) internal nodes, and a height \(h\) has the properties</p>
+
+\[\begin{gather}
+e = i + 1 \tag1
+\\\\ n = 2e - 1 \tag2 
+\\\\ h \leq i \tag3
+\\\\ h \leq \frac{(n-1)}{2} \tag4
+\\\\ e \leq 2^h \tag5
+\\\\ h \geq log_2 e \tag6
+\\\\ h \geq log_2 (n+1) - 1 \iff n = 2^{h+1} -1 \tag7
+\end{gather}\]
+
+<p>As mentioned <a href="#in-order-traversal">earlier</a>, Binary Trees by definition have a <strong>discrete middle node</strong>, and inherently support <strong>in-order traversal</strong>.</p>
+
+<h3 id="implementations">Implementations</h3>
+
+<p>There are two common concrete implementations of binary trees</p>
+
+<ul>
+  <li>Linked structure</li>
+  <li>Array based</li>
+</ul>
+
+<h3 id="linked-structure">Linked structure</h3>
+
+<p>In the linked structure implementation, each node is an object which stores its value, references to its child nodes (and sometimes a reference to its parent), as shown in the diagram below:</p>
+
+<p><img src="./images/binaryTreeLinkedStructure.png" alt="binaryTreeLinkedStructure" class="center" /></p>
+
+<p>This has a linear space complexity irrespective of the balance of the tree, and has a lookup time of \(O(log_2n)\) for lookup operations.</p>
+
+<h3 id="array-based">Array based</h3>
+
+<p>In the array based implementation, node values are stored in an array, and their children can be found at indices based on arithmetic operations of their own index</p>
+
+<ul>
+  <li>
+\[index(root) = 0\]
+  </li>
+  <li>If \(l\) is the left child of \(n\), then \(index(l) = 2 \cdot index(n) + 1\)</li>
+  <li>If \(r\) is the right child of \(n\), then \(index(r) = 2 \cdot index(n) + 2\)</li>
+</ul>
+
+<p>This can be very inefficient for unbalanced trees, for example, a tree which is just a “line” of nodes would grow with \(O(2^n)\) space, but it has a similarly good lookup time of \(O(log_2n)\)</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

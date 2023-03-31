@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Error Handling and Exceptions</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Error Handling and Exceptions</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#what-are-exceptions">What are exceptions?</a></li><li><a href="#exception-classes-vs-error-classes">Exception classes vs. Error classes</a></li><li><a href="#how-do-you-use-exceptions-the-try-catch-statement">How do you use exceptions? (The try-catch statement)</a></li><li><a href="#exceptions-and-inheritance">Exceptions and inheritance</a></li><li><a href="#checked-and-unchecked-exceptions">Checked and unchecked exceptions</a><ul><li><a href="#checked-exceptions-throws">Checked exceptions (throws)</a><ul><li><a href="#using-throws">Using throws</a></li></ul></li><li><a href="#unchecked-exceptions">Unchecked exceptions</a></li></ul></li><li><a href="#writing-your-own-exceptions">Writing your own exceptions</a></li><li><a href="#chaining-exceptions">Chaining exceptions</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part5.html" title="part5.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part7.html" title="part7.html">Next👉</a>
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>The original delivery of this content loosely introduced what an exception was, then demonstrated the <code class="language-plaintext highlighter-rouge">try-catch</code> statement, before explaining more about exceptions, and <em>then</em> demonstrating the <code class="language-plaintext highlighter-rouge">try-catch-finally</code> statement, before delivering more theory. As a result, I have opted to deliver as much theory as possible at the beginning, before diving into any code examples. If you are looking for the <code class="language-plaintext highlighter-rouge">try-catch</code> statement and its variant, then this can be found at the bottom of the page.</p>
+
+<h2 id="what-are-exceptions">What are exceptions?</h2>
+
+<p>According to <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/definition.html#:~:text=Definition%3A%20An%20exception%20is%20an,off%20to%20the%20runtime%20system.&amp;text=This%20block%20of%20code%20is%20called%20an%20exception%20handler.">official Oracle documentation</a>, an <strong>exception</strong> is an <strong>event</strong>, which occurs during the <strong>execution</strong> of a program, that disrupts the normal flow of the program’s instructions.</p>
+
+<p>Technically speaking, it is useful to know how an exception can arise and how the JVM creates and handles these when your code is running:</p>
+<ol>
+  <li>An error occurs in your method at run-time (for example, you try to access the 10th index of a 9-wide array).</li>
+  <li>The method creates an <strong>exception object</strong> and hands this off to the runtime system. This object contains important information:
+    <ol>
+      <li>The type of error</li>
+      <li>The state of the program when the error occurred</li>
+    </ol>
+  </li>
+  <li>Creating an exception object and handing it to the runtime system is known as <strong>throwing an exception</strong>.</li>
+</ol>
+
+<p>This is an alternative to traditional error-handling techniques, such as performing range-checks (with an <code class="language-plaintext highlighter-rouge">if...else</code> statement) every time you want to access an element from an array. As your code grows and you create more classes and objects, exceptions are a much more elegant way of stopping any run-time errors from occuring.</p>
+
+<p>You will have noticed that these are exception <em>objects</em>, which means they are instances of classes. There are <a href="https://programming.guide/java/list-of-java-exceptions.html">many different Java exception classes</a> from a range of packages, and as you will see shortly, you can choose which type of exception you want to handle based on the specific object the exception takes the form of.</p>
+
+<h2 id="exception-classes-vs-error-classes"><code class="language-plaintext highlighter-rouge">Exception</code> classes vs. <code class="language-plaintext highlighter-rouge">Error</code> classes</h2>
+
+<p>In Java, the <code class="language-plaintext highlighter-rouge">Throwable</code> class is a superclass of both the <code class="language-plaintext highlighter-rouge">Exception</code> and the <code class="language-plaintext highlighter-rouge">Error</code> classes. There is an important distinction to make between the two (Java specification):</p>
+<ol>
+  <li>An <code class="language-plaintext highlighter-rouge">Error</code> is a subclass of <code class="language-plaintext highlighter-rouge">Throwable</code> that indicates a serious problem that a reasonable application <em>should not try</em> to catch.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Exception</code> class and its subclasses are a form of <code class="language-plaintext highlighter-rouge">Throwable</code> that indicates conditions that a resonable application <em>might want</em> to catch.</li>
+</ol>
+
+<h2 id="how-do-you-use-exceptions-the-try-catch-statement">How do you use exceptions? (The <code class="language-plaintext highlighter-rouge">try-catch</code> statement)</h2>
+<p>In order to make your code throw exceptions, you must use a <code class="language-plaintext highlighter-rouge">try-catch</code> statement. They take the following form:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+  <span class="c1">// Code that could generate an exception</span>
+  <span class="n">object</span><span class="o">.</span><span class="na">somethingPossiblyNotOkay</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">BadExceptionClass</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// Code to handle the event you come across a BadExceptionClass specifically.</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">AnotherVeryBadExceptionClass</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// Code to handle the event you come across an AnotherVeryBadExceptionClass specifically.</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span> <span class="c1">// This is an optional block.</span>
+  <span class="c1">// Code that will ALWAYS be executed at the end.</span>
+  <span class="c1">// This is executed even if there are return statements in the previous code blocks.</span>
+  <span class="c1">// You may want to use this to close / tidy up any resources.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>How does this work?</p>
+<ol>
+  <li>The code in the <code class="language-plaintext highlighter-rouge">try</code> block is executed, and the JVM will see if an exception is thrown.</li>
+  <li>If an exception of class <code class="language-plaintext highlighter-rouge">BadExceptionClass</code> is thrown, then the code in the first <code class="language-plaintext highlighter-rouge">catch</code> block will be executed. This works vice-versa for any specific exceptions that you catch with a <code class="language-plaintext highlighter-rouge">catch</code> block- similar to a <code class="language-plaintext highlighter-rouge">switch</code> statement.</li>
+  <li>You can query the specific exception with the use of a variable- in this instance, you could use the <code class="language-plaintext highlighter-rouge">e</code> symbol to perform operations on the exception that was caught.</li>
+  <li>If an <strong>optional</strong> <code class="language-plaintext highlighter-rouge">finally</code> block exists, the code in this block will always be executed. This is ideally used to <strong>tidy up any residual resources</strong>, such as <code class="language-plaintext highlighter-rouge">Scanner</code> objects.</li>
+</ol>
+
+<p>If you code doesn’t cause any runtime errors, then none of the code in the <code class="language-plaintext highlighter-rouge">catch</code> blocks will be executed. Moreover, if a non-matching exception is thrown, the JVM will resort to any default error handling.</p>
+
+<h2 id="exceptions-and-inheritance">Exceptions and inheritance</h2>
+
+<p>It is important to note that since exceptions are based on classes, the order in which a superclass exception and a subclass exception is caught has significant implications on your code. Specifically, if the <strong>first <code class="language-plaintext highlighter-rouge">catch</code> block is a superclass</strong> of another <code class="language-plaintext highlighter-rouge">catch</code> block, then <strong>the subclass <code class="language-plaintext highlighter-rouge">catch</code> block will never be executed</strong></p>
+
+<h2 id="checked-and-unchecked-exceptions">Checked and unchecked exceptions</h2>
+
+<p>Now that we are familiar with <code class="language-plaintext highlighter-rouge">try-catch</code> statements, we can delve into the difference between checked and unchecked exceptions, and how they must be handled.</p>
+
+<h3 id="checked-exceptions-throws">Checked exceptions (<code class="language-plaintext highlighter-rouge">throws</code>)</h3>
+<p>A checked exception is any exception that <strong>must be checked at compile-time</strong>. For example, you may want to use the <code class="language-plaintext highlighter-rouge">BufferedReader</code> class to open a file and read the first line, but there are two possible exceptions that could be thrown:</p>
+<ol>
+  <li>The file does not exist, and would throw a <code class="language-plaintext highlighter-rouge">FileNotFound</code> exception.</li>
+  <li>There could be an error when reading a line, which would throw an <code class="language-plaintext highlighter-rouge">IOException</code> exception.</li>
+</ol>
+
+<p>Both of these exceptions are checked and must be ‘caught or declared to be thrown’. Here is an example of code that does not compile due to not checking these exceptions:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">someMethod</span><span class="o">()</span> <span class="o">{</span>
+   <span class="nc">BufferedReader</span> <span class="n">read</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"maybeFile.txt"</span><span class="o">));</span>
+   <span class="nc">String</span> <span class="n">line</span><span class="o">;</span>
+   <span class="k">while</span> <span class="o">((</span><span class="n">line</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Found line: "</span> <span class="o">+</span> <span class="n">line</span><span class="o">);</span>   
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>You have two options when it comes to handling checked errors:</p>
+<ul>
+  <li>Surround the two statements in a try-catch block</li>
+  <li>Re-throw the exception using the <code class="language-plaintext highlighter-rouge">throws</code> keyword</li>
+</ul>
+
+<p>It is almost always better to use the latter option, unless you have a penchant for adding many <code class="language-plaintext highlighter-rouge">try-catch</code> statements into your code.</p>
+
+<h4 id="using-throws">Using <code class="language-plaintext highlighter-rouge">throws</code></h4>
+<p>In the example above, the <code class="language-plaintext highlighter-rouge">FileNotFound</code> exception is a subclass of the <code class="language-plaintext highlighter-rouge">IOException</code> exception. If you <em>cast</em> (🥁) your mind back to the superclass and subclass scenario, this means we only need to catch the <code class="language-plaintext highlighter-rouge">IOException</code>, and could maybe query the exception object specifically. The <code class="language-plaintext highlighter-rouge">throws</code> keyword can be added in the method signature and will handle this for us; we can therefore fix the above code as follows:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">someCompilableMethod</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+   <span class="nc">BufferedReader</span> <span class="n">read</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">FileReader</span><span class="o">(</span><span class="s">"maybeFile.txt"</span><span class="o">));</span>
+   <span class="nc">String</span> <span class="n">line</span><span class="o">;</span>
+   <span class="k">while</span> <span class="o">((</span><span class="n">line</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Found line: "</span> <span class="o">+</span> <span class="n">line</span><span class="o">);</span>   
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="unchecked-exceptions">Unchecked exceptions</h3>
+
+<p>These are any exceptions that do not need to be checked at compile time ‘if they can be thrown by the execution of the method or the constructor and propogate outside the method or constructor boundary’. In English, this means that exceptions that are subclasses of <code class="language-plaintext highlighter-rouge">Error</code> and <code class="language-plaintext highlighter-rouge">RuntimeException</code>- for example, trying to divide by 0 will throw the <code class="language-plaintext highlighter-rouge">ArithmeticException</code>. It does not make sense to <em>have</em> to catch this at compile time, but you can choose to check and handle it in a graceful manner. A final way to decide between which type of exception to use is this (from the Java documents):</p>
+
+<p><em>“If a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception”</em>.</p>
+
+<h2 id="writing-your-own-exceptions">Writing your own exceptions</h2>
+
+<p>As stated before, any Exception is just a class that extends the Exception class. Therefore, if you are writing your own exceptions, you should <strong>choose the most specific</strong> exception that <strong>encapsulates your Exception</strong>, and then <strong>extend this</strong>.</p>
+
+<p>If however you are extending an <em>unchecked exception</em>, then you should extend a <code class="language-plaintext highlighter-rouge">RuntimeException</code>. (Use the criteria above to decide which exception to extend). It is typical for you to add messages and perhaps chain other exceptions together in any custom exceptions- this can be used to <strong>add detail to previous exceptions</strong>.</p>
+
+<p>It is at this point that we can revert to using <code class="language-plaintext highlighter-rouge">if...else</code> statements to decide when to <code class="language-plaintext highlighter-rouge">throw</code> (<strong>not <code class="language-plaintext highlighter-rouge">throws</code></strong>) our new exception- for example, imagine if you wanted to use a method to raise a number to a certain power, as long as this index was positive:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">raisePower</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+   <span class="c1">// This may or may not be an existing exception- pretend that we've just created it now, and that it extends from an Exception that also takes a debug message to be printed.</span>
+   <span class="k">throw</span> <span class="k">new</span> <span class="nf">NegativeExponentException</span><span class="o">(</span><span class="s">"You asked for a negative exponent: "</span> <span class="o">+</span> <span class="n">index</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="chaining-exceptions">Chaining exceptions</h2>
+
+<p>There are four constructors for most <code class="language-plaintext highlighter-rouge">Exception</code> classes:</p>
+<ul>
+  <li>Default constructor, no parameters</li>
+  <li>Constructor which allows for an error String</li>
+  <li>Two constructors which have space for another <code class="language-plaintext highlighter-rouge">Throwable</code> class, which allows you to chain exceptions together.</li>
+</ul>
+
+<p>You can use the built-in <code class="language-plaintext highlighter-rouge">Throwable</code> member methods to find out more about the exception, which will allow you to chain together information and/or exceptions specifically based on the cause of the run-time error. <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html">This page</a> contains the documentation for the <code class="language-plaintext highlighter-rouge">Throwable</code> class. You can use that page to check through the methods that you think are relevant to your code in particular, rather than them all being listed here.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

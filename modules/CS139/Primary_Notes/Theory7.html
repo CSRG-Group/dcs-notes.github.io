@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes XML and JSON</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">XML and JSON</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#xml">XML</a><ul><li><a href="#valid-names">Valid Names</a></li><li><a href="#attributes">Attributes</a></li><li><a href="#well-formed">Well Formed</a></li></ul></li><li><a href="#data-types">Data Types</a></li><li><a href="#syntax">Syntax</a></li><li><a href="#example">Example</a></li><li><a href="#conversion">conversion</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Theory6.html" title="Theory6.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory8.html" title="Theory8.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h3 id="xml">XML</h3>
+<p>Extensible MArkup language
+Similar to HTML</p>
+
+<p>Human and machine readable</p>
+
+<p>emphasis’s simplicity  generality and usability</p>
+
+<p>Textual data format</p>
+
+<p>RSS, Atom SOAP are all XML formatted</p>
+
+<p>An XML Element is everything from the start tag to the end tag</p>
+
+<p>XML element is everything form the start tot he end tag</p>
+
+<p>No standard for names aside form the software creating and interpreting the data</p>
+
+<ul>
+  <li><strong>Structure</strong> - Defining appropriate tag names</li>
+  <li><strong>Content</strong> - The data contained within the structure</li>
+</ul>
+
+<p>Element may contain
+    Other Elements
+    test
+    attributes</p>
+
+<p>an Example Food Menu:</p>
+<pre><code class="language-XML">&lt;menu&gt;
+    &lt;food&gt;
+        &lt;name&gt; Pizza &lt;name&gt;
+        &lt;price currency="£"&gt; 50.00 &lt;/price&gt;
+    &lt;/food&gt;
+    &lt;food&gt;
+        &lt;name&gt; Pasta &lt;name&gt;
+        &lt;price currency="£"&gt; 25.00 &lt;/price&gt;
+    &lt;/food&gt;
+    &lt;drink&gt;
+        &lt;name&gt; Red Wine &lt;name&gt;
+        &lt;price currency="£"&gt; 20.00 &lt;price&gt;
+        &lt;volume unit="cl"&gt; 200 &lt;/volume&gt;
+    &lt;/drink&gt;
+&lt;/menu&gt;
+</code></pre>
+<h4 id="valid-names">Valid Names</h4>
+<ul>
+  <li>Can contain Letter, Numbers, and other characters
+Names cannot</li>
+  <li>Start with a number or punctuation</li>
+  <li>Start with the letters XML (case insensitive)</li>
+  <li>Cannot contain spaces</li>
+</ul>
+
+<h4 id="attributes">Attributes</h4>
+<p>Attributes provide additional information about the data</p>
+
+<p>They may contain metadata , such as software used to create the XML</p>
+
+<p>Can be used to help parse the data</p>
+
+<h4 id="well-formed">Well Formed</h4>
+<p>XML is well formed if ti meets the following requirements</p>
+<ul>
+  <li>The document contains only unicode characters</li>
+  <li>None of the special characters appear (e.g &lt; and &amp;)</li>
+  <li>Begin, end and empty tags are correctly nested</li>
+  <li>Element tags are case-sensitive</li>
+  <li>A single root element contains all the other elements</li>
+</ul>
+
+<h2 id="json">JSON</h2>
+<p>Javascript Object Notation</p>
+
+<p>XML can be too clunky needed creating and parsing</p>
+
+<p>JSON is smaller and can more easily be converted</p>
+
+<p>JSON is less human readable than XML</p>
+
+<p>Data amy or may not exit for example if there are no ratings for a product the
+rating data may be empty under some structures an null under others is is important to check that the variables exist if this is the case.</p>
+
+<h3 id="data-types">Data Types</h3>
+<ul>
+  <li>Number</li>
+  <li>String</li>
+  <li>Boolean</li>
+  <li>Array</li>
+  <li>Object (Collection of Key Value Pairs)</li>
+  <li>null (empty)</li>
+</ul>
+
+<h3 id="syntax">Syntax</h3>
+<ul>
+  <li>Data is in Key,value pairs</li>
+  <li>Data is comma seperated</li>
+  <li><code class="language-plaintext highlighter-rouge">{ }</code> hold objects</li>
+  <li><code class="language-plaintext highlighter-rouge">[ ]</code> hold arrays</li>
+  <li>Whitespace is not relevant can make it more readable</li>
+</ul>
+
+<h3 id="example">Example</h3>
+<pre><code class="language-JSON">{
+    "Food" : [
+        {
+            "Name" : "Pizza",
+            "Price" : 50.00
+        },
+        {
+            "Name" : "Pasta",
+            "Price" : 25.00
+        }
+    ]
+    ,
+    "Drink" : [        
+        {
+            "Name" : "Red Wine",
+            "Price" : 20.00,
+            "volume" : 200
+        }
+    ]
+}
+
+</code></pre>
+<h3 id="conversion">conversion</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JSON.parse()</code> Create an object form a json string</li>
+  <li><code class="language-plaintext highlighter-rouge">JSON.stringify()</code> Create a json string from an object</li>
+</ul>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Generics and the Java Class Library</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Generics and the Java Class Library</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#why-generics">Why Generics</a></li><li><a href="#thinking-of-generics">Thinking of Generics</a></li><li><a href="#implementing-generics">Implementing Generics</a><ul><li><a href="#generic-methods">Generic Methods</a></li><li><a href="#the-java-class-library">The Java Class Library</a></li></ul></li><li><a href="#concluding-notes-from-the-author">Concluding notes from the author</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="part6.html" title="part6.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>By this point, you’re most likely familiar with how to create your own classes, how to create subclasses, and how you can use abstract classes and interfaces to broadly define behaviour.</p>
+
+<h2 id="why-generics">Why Generics</h2>
+
+<p>Using <strong>generics</strong> in your code makes it <strong>safer</strong> and <strong>more reusable</strong>, notably it allows</p>
+
+<ol>
+  <li>stronger type checking at compile-time.</li>
+  <li>elimination of type casts</li>
+  <li>implementation of generic algorithms tailored to different types.</li>
+</ol>
+
+<p>The key implication of this is that you are less likely to encounter run-time errors because you can you catch type related errors at <em>compile-time</em>.</p>
+
+<p>Take the following example, where we load a <code class="language-plaintext highlighter-rouge">Stack</code> which one <em>type</em> of object, and try to read this object as another type:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Creating a new stack, it simply holds data of type 'Object'</span>
+<span class="nc">Stack</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">();</span> 
+<span class="c1">// String is a subclass of Object and this operation passses</span>
+<span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span> 
+<span class="c1">// We are attempting to cast the String object to an Integer Object</span>
+<span class="c1">// this isn't possible at runtime.</span>
+<span class="nc">Integer</span> <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Integer</span><span class="o">)</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span> 
+</code></pre></div></div>
+<p>Note how when we created the <code class="language-plaintext highlighter-rouge">Stack</code> object, we didn’t specify what type it would hold- this was defined in the <code class="language-plaintext highlighter-rouge">Stack</code> class itself. This meant there wasn’t necessarily a restriction on whether we decided to store a <code class="language-plaintext highlighter-rouge">String</code> or an <code class="language-plaintext highlighter-rouge">Integer</code> first.</p>
+
+<p>Imagine if we had done the following- we create a new subclass of <code class="language-plaintext highlighter-rouge">Stack</code> that will only store <code class="language-plaintext highlighter-rouge">String</code> objects in an array, so we cannot store any other type. Our code would look like this:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// We create a new type of Stack that only stores Strings</span>
+<span class="nc">StringStack</span> <span class="n">stringStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringStack</span><span class="o">();</span> 
+<span class="c1">// We can push a String onto the StringStack as the class specifies this type.</span>
+<span class="n">stringStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+<span class="c1">// StringStack specifically returns a String from the top of the stack</span>
+<span class="c1">// this cast would fail at compile time, ideally, as the compiler should </span>
+<span class="c1">// know that this is a mismatched type.</span>
+<span class="nc">Integer</span> <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Integer</span><span class="o">)</span> <span class="n">stringStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>It would be incredibly tedious to have to create a new type of <code class="language-plaintext highlighter-rouge">Stack</code> class every time we wanted a different data type to be stored. Luckily, Java enables this behaviour through the use of generics- our code could look roughly like this:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">stringStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+<span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">intStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+
+<span class="n">stringStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span> <span class="c1">// This passes</span>
+<span class="n">intStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span> <span class="c1">// This also passes</span>
+
+<span class="n">intStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span> <span class="c1">// This returns an integer by default</span>
+<span class="n">stringStack</span><span class="o">.</span><span class="na">pop</span><span class="o">()</span> <span class="c1">// This returns a string by default</span>
+</code></pre></div></div>
+
+<h2 id="thinking-of-generics">Thinking of Generics</h2>
+<p>There are two ways I like to think of generics in Java:</p>
+<ul>
+  <li>A screwdriver which has swappable heads, and when you create an object, it’s like choosing the correct head for the screw.</li>
+  <li>Defining a generic in a class is like creating a placeholder which you will fill in later when you instantiate the object.</li>
+</ul>
+
+<p>It therefore goes without saying that you cannot create an object of a class which uses generics without providing which type you’d like to use! In accordance with the analogy above, it would be akin to not putting a head on the screwdriver.</p>
+
+<h2 id="implementing-generics">Implementing Generics</h2>
+<p>Now that you’re convinced of their usefulness, here’s how you would create a class that utilises generics (the example we’ll go for is a <code class="language-plaintext highlighter-rouge">Box</code> that stores only one type): <a id="genref">$\;$</a></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Within this class, we will refer to this generic object as 'E'. This </span>
+<span class="c1">// can be used like a type - imagine it as a synonym for whatever type </span>
+<span class="c1">// you're going to put into the box.'E' is decided on by Java conventions</span>
+<span class="c1">// - it is not enforced by the compiler</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericBox</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="no">E</span> <span class="n">item</span><span class="o">;</span> <span class="c1">// A private member of type E</span>
+  
+  <span class="c1">// We take an element 'e' of type E, and set the item field to this.</span>
+  <span class="kd">public</span> <span class="nf">GenericBox</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">item</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">item</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="no">E</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">item</span><span class="o">;</span> <span class="c1">// item has type E and hence can be returned.</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now, when we instantiate the object, we can decide what types to fill it with at runtime:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">stringBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"A string in a box"</span><span class="o">);</span>
+<span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">intBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericBox</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;(</span><span class="mi">42</span><span class="o">);</span>
+
+<span class="n">stringBox</span><span class="o">.</span><span class="na">get</span><span class="o">();</span> <span class="c1">// Will return "A string in a box" in a String object.</span>
+<span class="n">intBox</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>    <span class="c1">// Will return 42 in an integer object.</span>
+</code></pre></div></div>
+
+<p>You can use multiple generics at the same time- just put the types in a comma-separated list within the diamond brackets:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TwoTypes</span><span class="o">&lt;</span><span class="no">E</span><span class="o">,</span> <span class="no">F</span><span class="o">,</span> <span class="no">G</span><span class="o">&gt;</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+<p>You can also enforce a <strong>specific restriction</strong> for each type - what if you wanted to only store objects that can be compared to one another?</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComparedObjectsOnly</span><span class="o">&lt;</span><span class="no">E</span> <span class="kd">extends</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;&gt;</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p>In this example, the <code class="language-plaintext highlighter-rouge">Comparable</code> class constraint is extended by all objects that can be compared to one another using -1, 0, or 1. This also means you can store your own kinds of comparable objects as a generic - it isn’t limited to build-in classes such as <code class="language-plaintext highlighter-rouge">String</code> or <code class="language-plaintext highlighter-rouge">Integer</code>. It is important to note that <strong>you cannot use primitives with generics</strong>.</p>
+
+<p>As mentioned earlier, there is a convention that exists when deciding which symbols to use for generics:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">E</code> for Element</li>
+  <li><code class="language-plaintext highlighter-rouge">K</code> for Key</li>
+  <li><code class="language-plaintext highlighter-rouge">N</code> for Number</li>
+  <li><code class="language-plaintext highlighter-rouge">T</code> for Type</li>
+  <li><code class="language-plaintext highlighter-rouge">V</code> for Value</li>
+</ul>
+
+<p>Some of these will make more sense when you cast your mind back to CS126, and where each of those ideas are used for various data structures.</p>
+
+<h3 id="generic-methods">Generic Methods</h3>
+
+<p>When defining some methods, it might be useful to write generic method that only operate of particular types. For example, lets say you have a <code class="language-plaintext highlighter-rouge">compare</code> method as shown below:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Pair</span> <span class="n">p1</span><span class="o">,</span> <span class="nc">Pair</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">p1</span><span class="o">.</span><span class="na">getKey</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">getKey</span><span class="o">())</span> <span class="o">&amp;&amp;</span> 
+           <span class="n">p2</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">p2</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>With this definition the following code will be valid even though the <code class="language-plaintext highlighter-rouge">Pair</code> object might contain types that do not match:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Pair</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pair</span><span class="o">&lt;&gt;(</span><span class="mi">3</span><span class="o">,</span><span class="s">"bleh"</span><span class="o">);</span>
+<span class="nc">Pair</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span>  <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pair</span><span class="o">&lt;&gt;(</span><span class="s">"hi"</span><span class="o">,</span><span class="s">"bye"</span><span class="o">);</span>
+<span class="n">compare</span><span class="o">(</span><span class="n">t1</span><span class="o">,</span><span class="n">t2</span><span class="o">);</span> <span class="c1">// Valid even though it doesn't make sense!</span>
+</code></pre></div></div>
+
+<p>Hence, to specify the generic types that the <code class="language-plaintext highlighter-rouge">compare</code> method will take as parameters, we can define the <code class="language-plaintext highlighter-rouge">compare</code> method like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="kt">boolean</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Pair</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="n">p1</span><span class="o">,</span> <span class="nc">Pair</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="n">p2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// compare...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now when we try to compare <code class="language-plaintext highlighter-rouge">Pair</code> objects that contain mismatched types, a compile-time error will appear.</p>
+
+<p>Do note that we won’t have to specify the generics in the method <strong>if</strong> the generics that you want to refer to in the parameters of the method are already defined at the class-level, like it is in the first line of the <code class="language-plaintext highlighter-rouge">GenericBox</code> class defined <a href="#genref">above</a>.</p>
+
+<h3 id="the-java-class-library">The Java Class Library</h3>
+
+<p>The original lecture for this content spent some time going over the <a href="https://docs.oracle.com/javase/7/docs/api/">Java Class Library</a> I felt it would be improper to include lengthy descriptions here, as there is no way to really define what is useful or not. It is up to you to search through the documentation and decide what you find interesting - for a first start, check out the <a href="https://docs.oracle.com/javase/7/docs/api/"><code class="language-plaintext highlighter-rouge">util</code></a> documentation and try and find some classes you recognise, such as <code class="language-plaintext highlighter-rouge">Stack</code> or <code class="language-plaintext highlighter-rouge">Iterator</code>.</p>
+
+<p>Going through the documentation in this safe space means you can pick up valuable skills on how to read a specification when your IDE does not have any suggestions.</p>
+
+<h2 id="concluding-notes-from-the-author">Concluding notes from the author</h2>
+
+<p>This abruptly brings us to the end of the modular CS118 revision notes! 🎉🎉 Thank you to everyone who submitted content, and remember to contact someone (or submit a pull request) if you spot any errors or would like to make a contribution for any modules, listed or otherwise. I hope by this point, there will be some answers to the questions posed on the CS118 landing page.</p>
+
+<p>Thank you once again for this community effort.</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

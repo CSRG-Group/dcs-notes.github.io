@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Uninformed Search</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Uninformed Search</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#tree-search">Tree Search</a><ul><li><a href="#algorithm">Algorithm</a></li></ul></li><li><a href="#graph-search">Graph Search</a></li><li><a href="#analysis">Analysis</a></li><li><a href="#breath-first">Breath first</a><ul><li><a href="#complexity">Complexity</a></li></ul></li></ul></li><li><a href="#depth-first">Depth first</a><ul><li><a href="#complexity-1">Complexity</a></li></ul></li></ul></li><li><a href="#lowest-cost-first">Lowest Cost First</a></li><li><a href="#comparison">Comparison</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Problem_Formulation.html" title="Problem_Formulation.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Informed_Search.html" title="Informed_Search.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>Getting from a to b on a simple directed graph with no prior knowledge</p>
+
+<p>following an informed search through a graph can simulate th exploration fo the state space</p>
+<h2 id="tree-search">Tree Search</h2>
+
+<h3 id="algorithm">Algorithm</h3>
+<p>The exploration of an uninformed tree search tends follows the following algorithm.</p>
+
+<pre><code class="language-Java">node &lt;- Root or starting node
+goal &lt;- a target goal
+frontier &lt;- some data store
+
+
+frontier.add(node)
+while (items in frontier){
+    current= frontier.RemoveTop()
+    if (current==goal){
+        return current
+    }
+    for (neighbor of current){
+        frontier.push(neighbor)
+    }
+}
+return none &lt;- no solutions found
+</code></pre>
+
+<ul>
+  <li><strong>node</strong> An element in a graph, continuing a parent and actions needed to reach its children</li>
+  <li><strong>frontier</strong> the nodes currently explored the type of data structure depends on the algorithm</li>
+</ul>
+
+<h2 id="graph-search">Graph Search</h2>
+
+<p>With tree search state space with loops give rises to repeated states that cause inefficiencies.</p>
+
+<p>Graph search is a practical way of exploring a state space that can account to such repetitions.</p>
+
+<p>Rather than holding nodes in the frontier a graph search instead holds the path of nodes needed to reach the current point in the frontier.</p>
+
+<pre><code class="language-Java">node &lt;- Root or starting node
+goal &lt;- a target goal
+frontier &lt;- some data store
+
+
+frontier.add([node])
+while (items in frontier){
+    current= frontier.RemoveTop()
+    if (current[last]==goal){
+        return current
+    }
+    for (neighbor of current[last]){
+        current.add(neighbor)
+        frontier.push(current)
+    }
+}
+return none &lt;- no solutions found
+</code></pre>
+<h2 id="analysis">Analysis</h2>
+
+<p>An algorithm can be judged by different metrics</p>
+
+<ul>
+  <li><strong>Completeness</strong> can the solution be found</li>
+  <li><strong>optimality</strong> does the solution find the solution with the least cost</li>
+  <li><strong>Complexity</strong>
+    <ul>
+      <li>Judged by several factors
+        <ul>
+          <li><strong>b</strong> Maximum branch factor</li>
+          <li><strong>d</strong> Depth of least cost</li>
+          <li><strong>m</strong> maximum depth can be infinite</li>
+        </ul>
+      </li>
+      <li><strong>time complexity</strong> how does the time taken scale</li>
+      <li><strong>space complexity</strong> how many nodes in memory</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="breath-first">Breath first</h2>
+<p>A <strong>queue</strong> is used for the frontier data store</p>
+
+<p>Prioritizes expanding horizontally over expanding vertically</p>
+
+<h4 id="complexity">Complexity</h4>
+<ul>
+  <li>
+    <p><strong>completeness</strong> will always find a solution if b is finite</p>
+  </li>
+  <li><strong>time</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(b^d)\)</li>
+  <li>
+    <p><strong>space</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(b^d)\)</p>
+  </li>
+  <li><strong>Optimal</strong> Yes if cost is a function of depth, not optimal in general</li>
+</ul>
+
+<p>Space complexity is the biggest issue with this type of search</p>
+
+<h2 id="depth-first">Depth first</h2>
+<p>A <strong>stack</strong> is used for the frontier data store
+Prioritizes expanding vertically over expanding horizontally</p>
+
+<h4 id="complexity-1">Complexity</h4>
+<ul>
+  <li><strong>completeness</strong> Fails with infinite depth or loops
+    <ul>
+      <li>can be modified to avoid loops</li>
+    </ul>
+  </li>
+  <li><strong>time</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(b^d)\)</li>
+  <li>
+    <p><strong>space</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(bm)\)</p>
+  </li>
+  <li><strong>Optimal</strong> No</li>
+</ul>
+
+<p>Not optimal but cuts down on space complexity a lot</p>
+
+<h2 id="lowest-cost-first">Lowest Cost First</h2>
+<p>A <strong>priority queue</strong> is used for the frontier data store where the key is the cost of the path.</p>
+
+<p>The <strong>cost</strong> of a path is the current is the sum of the cost of each of it’s arcs.</p>
+
+<p>The path of least cost is chosen first from the frontier to expand.</p>
+
+<p>When arc costs are equal simply produces a breath first search.</p>
+
+<h2 id="comparison">Comparison</h2>
+<p>|Strategy|Frontier Selection|Complete|Halts| Space |
+|-|-|-|-|-|
+|Breadth-first| First node added| Yes | No | Exp|
+| Depth-first | Last node added | No | No | Linear|
+| Lowest cost first| minimal cost | Yes | No | Exp|</p>
+
+<ul>
+  <li>complete- Guaranteed to fins a solution if one exists.</li>
+  <li>Halts - on a finite graph (maybe with cycles).</li>
+  <li>Space as a function of the length of the current path.</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

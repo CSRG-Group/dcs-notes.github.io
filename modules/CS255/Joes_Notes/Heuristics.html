@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Heuristics</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Heuristics</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#characterizing-heuristics">Characterizing Heuristics</a></li><li><a href="#deriving-heuristics">Deriving heuristics</a><ul><li><a href="#relaxed-problems">Relaxed problems</a></li><li><a href="#pattern-databases">Pattern Databases</a></li><li><a href="#other-approaches">Other approaches</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="Search_Optimizations.html" title="Search_Optimizations.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>The choice of a heuristic to choose can have a large impact in the efficiency and running time of the search.</p>
+
+<h2 id="characterizing-heuristics">Characterizing Heuristics</h2>
+
+<blockquote>
+  <p>Def: If an A* tree-search expands N nodes and solution depth is d, then the <strong>effective branching factor</strong> b*, is the branching factor a uniform tree of depth d would have to contain N nodes.</p>
+</blockquote>
+
+\[N = 1 + b* + (b*)^2 + .. + (b*)^d\]
+
+<p>It is desirable to obtain a branching factor as close to one as possible, a smaller branching factor allows a larger problem to be solved.</p>
+
+<p>We can estimate b* experimentally and it is usually consistent when performed over multiple runs.</p>
+
+<p>If the branching factor of one heuristic is smaller then it should be used.</p>
+
+<p>More specifically if</p>
+
+\[h_1(n) \geq h_2(n) \forall n\]
+
+<p>then \(h_1\) <strong>dominates</strong> \(h_2\)</p>
+
+<p>A* expands all nodes with \(f(n) &lt;f*\) where \(f*\) is the cost of the optimal path.
+All nodes with \(h(n)\lt f*=g(n)\)  expanded</p>
+
+<p>An admissable heuristic with higher values is better.</p>
+
+<p>The computation for the heuristic should be taken into account as well.</p>
+
+<h2 id="deriving-heuristics">Deriving heuristics</h2>
+<h3 id="relaxed-problems">Relaxed problems</h3>
+<p>Admissible heuristics can be derived from a relaxed problem.</p>
+
+<p>A relaxed problem is obtained by reducing the restrictions on operations.</p>
+
+<p>e.g</p>
+<ul>
+  <li>Get from the start node to the end node by traversing the graph</li>
+  <li>Get from the start node to the end node</li>
+</ul>
+
+<p>If there are several heuristics and none dominate then the maximum heuristic from the set may be chosen for any given value of \(n\), more formally:</p>
+
+\[h(n) = max(h_1(n) , h_2(n) ...)\]
+
+<h3 id="pattern-databases">Pattern Databases</h3>
+<p>Store exact solution costs for each possible sub problem instance.</p>
+
+<p>Heuristic \(h_{DB}\) = cost of solution ot corresponding subproblem.</p>
+
+<p>Construct database by searching backwards from goal.</p>
+
+<h3 id="other-approaches">Other approaches</h3>
+
+<ul>
+  <li>Statistical approaches
+    <ul>
+      <li>Gather probable heuristics from training problems</li>
+      <li>e.g if \(95%\) of all cases \(cost(n,goal)\) is 20 then \(n(n)=20\)</li>
+      <li>Not admissable but still likely to expand less</li>
+    </ul>
+  </li>
+  <li>Select Features of a state to contribute to the heuristic
+    <ul>
+      <li>e.g For Chess number/ type of pieces left</li>
+      <li>Can use learning to determine weighting</li>
+    </ul>
+  </li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Setting up a Real Website</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Setting up a Real Website</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#deploying-applications">Deploying Applications</a><ul><li><a href="#registering-a-domain-name">Registering a Domain Name</a></li><li><a href="#server-for-applications">Server for Applications</a></li><li><a href="#software-stack-choices">Software Stack Choices</a></li><li><a href="#configuring-the-system">Configuring the System</a></li><li><a href="#updating-the-dns">Updating the DNS</a></li><li><a href="#securing-the-server">Securing the Server</a></li><li><a href="#maintenance">Maintenance</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="Theory11.html" title="Theory11.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="deploying-applications">Deploying Applications</h2>
+
+<h3 id="registering-a-domain-name">Registering a Domain Name</h3>
+<ul>
+  <li>Make it memorable</li>
+  <li>Shorter is better</li>
+  <li>Most registrars charge £10 - £12 per year</li>
+</ul>
+
+<h3 id="server-for-applications">Server for Applications</h3>
+<ul>
+  <li>use a small computer you own</li>
+  <li>Use a shard host with the domain registrar of Platform as a service
+    <ul>
+      <li>Advantages
+        <ul>
+          <li>Server is preconfigured</li>
+          <li>Simple to use</li>
+        </ul>
+      </li>
+      <li>Disadvantages
+        <ul>
+          <li>Large cost as scale</li>
+          <li>Limited control over software stack</li>
+          <li>May not be able to run certain messages e.g Message Queues</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Use a cloud based virtual server
+    <ul>
+      <li>Advantages
+        <ul>
+          <li>Can have fill control over the software stack</li>
+          <li>Cheap to run</li>
+        </ul>
+      </li>
+      <li>Disadvantages
+        <ul>
+          <li>Security can be your problem</li>
+          <li>Limited Hardware</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Buy a server and find a data centre
+    <ul>
+      <li>Advantages
+        <ul>
+          <li>Free Hardware choice</li>
+          <li>Full software choice</li>
+        </ul>
+      </li>
+      <li>Disadvantages
+        <ul>
+          <li>Security</li>
+          <li>Cost</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Build you own data centre
+    <ul>
+      <li>Disadvantages
+        <ul>
+          <li>Expensive</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="software-stack-choices">Software Stack Choices</h3>
+<p>Database options include</p>
+<ul>
+  <li>mySQL</li>
+  <li>PostgreSQL</li>
+</ul>
+
+<p>Many different versions <strong>Don’t use SQLite3</strong></p>
+
+<p>Webserver Apache / nginx are both good choices</p>
+
+<h3 id="configuring-the-system">Configuring the System</h3>
+<p>After the OS is installed the software stack can be installed form the source or with a package manager</p>
+
+<ol>
+  <li>Install apache <code class="language-plaintext highlighter-rouge">apt-get install apache2</code></li>
+  <li>Setup the virtual <code class="language-plaintext highlighter-rouge">host file in /etc/apache2/sites-available/example.com</code></li>
+  <li>Create the directories <code class="language-plaintext highlighter-rouge">/srv/www/example.com/public_html</code> and <code class="language-plaintext highlighter-rouge">logs</code></li>
+  <li>Enable the sire <code class="language-plaintext highlighter-rouge">a2ensite example.com</code></li>
+  <li>Reload apache <code class="language-plaintext highlighter-rouge">service apache reload</code></li>
+</ol>
+
+<p>Installing mysql</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">apt-get install mysql-server</code></li>
+  <li>Secure the basic installation <code class="language-plaintext highlighter-rouge">mysql_secure_installation</code></li>
+  <li>Start a database session <code class="language-plaintext highlighter-rouge">mysql -u root -p</code></li>
+  <li>Create a user for the application</li>
+  <li>Create a database for you application</li>
+  <li>Grant privileges for your application</li>
+</ol>
+
+<p>Installing PHP</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">apt-get install php8.0 php8.0-mysql</code></li>
+  <li>restart apache <code class="language-plaintext highlighter-rouge">service apache2 reload</code></li>
+</ol>
+
+<p>Additional Software</p>
+<ol>
+  <li><strong>Imagemagik</strong> - Manipulating uploaded images</li>
+  <li><strong>sendmail</strong> - Acts as a mail server</li>
+  <li><strong>logrotate</strong> - To rotate the log files and delete old ones</li>
+</ol>
+
+<h3 id="updating-the-dns">Updating the DNS</h3>
+<ol>
+  <li>Got to the registrar and register the IP address with the Domain Name</li>
+  <li>Add a record for <code class="language-plaintext highlighter-rouge">www.</code> which points to the server</li>
+  <li>Save changes</li>
+  <li>It can take some time for any changes to propagate</li>
+</ol>
+
+<h3 id="securing-the-server">Securing the Server</h3>
+<p>As a minimum always</p>
+<ul>
+  <li>Install <code class="language-plaintext highlighter-rouge">fail2ban</code> blocks ssh users form an IP for failed logins</li>
+  <li>Configure the firewall to only accept SSH and HTTP(s) traffic</li>
+  <li>Modify SSH to only accept key based logins from non designated IPs</li>
+</ul>
+
+<h3 id="maintenance">Maintenance</h3>
+<ul>
+  <li>Keep an eye on the server</li>
+  <li>Need to install monitoring Software to alert you to issues</li>
+  <li>Check logs on a daily basis
+    <ul>
+      <li>Setup an email script</li>
+    </ul>
+  </li>
+  <li>Monitor usage to ensure everyone can use the site</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

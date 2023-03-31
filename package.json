@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "all-contributors-cli": "^6.20.0"
+  },
+  "scripts": {
+    "conbot:gen": "all-contributors generate",
+    "conbot:add": "all-contributors add"
+  }
+}

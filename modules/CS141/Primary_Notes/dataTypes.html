@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Data Types</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Data Types</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#data-type-definition">Data Type Definition</a><ul><li><a href="#parametrised-data-constructors">Parametrised Data Constructors</a></li></ul></li><li><a href="#recursive-data-types">Recursive Data Types</a></li><li><a href="#type-aliases">Type Aliases</a></li><li><a href="#derivable-type-classes">Derivable Type Classes</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part3.html" title="part3.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="equationalReasoning.html" title="equationalReasoning.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="data-type-definition">Data Type Definition</h2>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kt">False</span> <span class="o">|</span> <span class="kt">True</span>
+<span class="kr">data</span> <span class="kt">Module</span> <span class="o">=</span> <span class="kt">CS141</span> <span class="o">|</span> <span class="kt">CS256</span> <span class="o">|</span> <span class="kt">CS118</span> <span class="o">|</span> <span class="kt">CS132</span> <span class="o">...</span>
+<span class="kr">data</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="kt">Unit</span>
+<span class="n">not</span> <span class="o">::</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">not</span> <span class="kt">True</span>  <span class="o">=</span> <span class="kt">False</span> <span class="c1">-- Pattern matching on constructors</span>
+<span class="n">not</span> <span class="kt">False</span> <span class="o">=</span> <span class="kt">True</span>  <span class="c1">-- Constructors as values</span>
+</code></pre></div></div>
+
+<p>This is the definition of the data type for <code class="language-plaintext highlighter-rouge">Bool</code>. “Bool” is the name of the type, and “False” and “True” are <strong>data constructors.</strong></p>
+
+<ul>
+  <li>We can pattern-match on data constructors</li>
+  <li>We can use data constructors as values</li>
+  <li>We can have as many number of data constructors as we want</li>
+  <li>Name of the type is not the same as the data constructor (although we can name them the same)</li>
+  <li>Data constructors can have parameters.</li>
+</ul>
+
+<h3 id="parametrised-data-constructors">Parametrised Data Constructors</h3>
+
+<p>We can add parameters to a data constructor by adding their types after the constructor’s name.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">Shape</span> <span class="o">=</span> <span class="kt">Rect</span> <span class="kt">Double</span> <span class="kt">Double</span>
+           <span class="o">|</span> <span class="kt">Circle</span> <span class="kt">Double</span>
+</code></pre></div></div>
+
+<p>We can treat data constructors like a function.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Rect</span>   <span class="o">::</span> <span class="kt">Double</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="o">-&gt;</span> <span class="kt">Shape</span>
+<span class="kt">Circle</span> <span class="o">::</span> <span class="kt">Double</span> <span class="o">-&gt;</span> <span class="kt">Shape</span>
+</code></pre></div></div>
+
+<h2 id="recursive-data-types">Recursive Data Types</h2>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">Nat</span> <span class="o">=</span> <span class="kt">Zero</span> <span class="o">|</span> <span class="kt">Succ</span> <span class="kt">Nat</span>
+</code></pre></div></div>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">BinTree</span> <span class="n">a</span> <span class="o">=</span> <span class="kt">Leaf</span> <span class="n">a</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">BinTree</span> <span class="n">a</span><span class="p">)</span> <span class="p">(</span><span class="kt">BinTree</span> <span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="type-aliases">Type Aliases</h2>
+
+<p>We can define aliases for a certain type.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">type</span> <span class="kt">String</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Char</span><span class="p">]</span>
+<span class="kr">type</span> <span class="kt">Memory</span> <span class="o">=</span> <span class="p">[(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)]</span> <span class="c1">-- Recall coursework 2</span>
+<span class="kr">type</span> <span class="kt">Predicate</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+</code></pre></div></div>
+
+<h2 id="derivable-type-classes">Derivable Type Classes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Type Classes</th>
+      <th style="text-align: center">Extension needed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Eq</code>, <code class="language-plaintext highlighter-rouge">Ord</code>, <code class="language-plaintext highlighter-rouge">Enum</code>, <code class="language-plaintext highlighter-rouge">Bounded</code>, <code class="language-plaintext highlighter-rouge">Show</code>, <code class="language-plaintext highlighter-rouge">Read</code></td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Typeable</code>, <code class="language-plaintext highlighter-rouge">Data</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">XDeriveDataTypeable</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Generic</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">XDeriveGeneric</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Functor</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">XDeriveFunctor</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Foldable</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">XDeriveFoldable</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Traversable</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">XDeriveTraversable</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Agent Architectures</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Agent Architectures</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#agent-architectures">Agent architectures</a><ul><li><a href="#body">Body</a></li><li><a href="#controller">Controller</a></li><li><a href="#agent-logic">Agent logic</a><ul><li><a href="#traces">Traces</a></li><li><a href="#belief-status">Belief Status</a></li></ul></li><li><a href="#single-level-hierarchy">Single level hierarchy</a><ul><li><a href="#functions">functions</a></li><li><a href="#advantages">Advantages</a></li><li><a href="#disadvantages">Disadvantages</a></li></ul></li><li><a href="#multi-level-hierarchy">Multi level hierarchy</a></li><li><a href="#functions-1">functions</a></li><li><a href="#agent-types">Agent Types</a><ul><li><a href="#ideal-mapping">Ideal Mapping</a></li><li><a href="#simple-reflex-agents">Simple Reflex agents</a></li><li><a href="#reflex-agent-with-state">Reflex agent with State</a></li><li><a href="#goal-based-agents">Goal based agents</a></li><li><a href="#utility-based-agents">Utility based agents</a></li><li><a href="#learning-agent">Learning Agent</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Rational_Agents.html" title="Rational_Agents.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Problem_Formulation.html" title="Problem_Formulation.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="agent-architectures">Agent architectures</h2>
+
+<h3 id="body">Body</h3>
+<p>The agent interacts with the environment through the body</p>
+
+<p>The body:</p>
+<ul>
+  <li>Perceives stimuli form the environment and creates precepts for the controller</li>
+  <li>Receives commands form the controller and generates actions on the environment</li>
+  <li>In some cases may have actions that are not controlled</li>
+</ul>
+
+<h3 id="controller">Controller</h3>
+<p>The controller is the brains of the agent and generates commands based on current and previous precepts.
+Controllers have a limited memory and computational resources</p>
+
+<h3 id="agent-logic">Agent logic</h3>
+<h4 id="traces">Traces</h4>
+<ul>
+  <li><strong>Percept Trace</strong> A sequence of all percepts, past present and future.</li>
+  <li><strong>Command Trace</strong> A sequence of all commands, past present and future.</li>
+  <li><strong>Agent History</strong> A sequence of past and present commands and precepts at to time \(t\).</li>
+  <li><strong>transduction</strong> A function from percept traces to command traces.</li>
+  <li><strong>History</strong> Percepts to time \(t\) (including time \(t\)) + Commands to time \(t\) = History at \(t\)</li>
+  <li><strong>Causal transduction</strong> History at time \(t\) -&gt; Command at \(t\)</li>
+  <li><strong>Controller</strong> An implementation of a causal transduction.</li>
+</ul>
+
+<h4 id="belief-status">Belief Status</h4>
+<p>An agent has limited memory</p>
+
+<p>It must decide what subset of its history to remember</p>
+
+<p>This is the agents <strong>memory</strong></p>
+
+<p>At every step the controller needs to decide</p>
+<ol>
+  <li>What to do</li>
+  <li>What to remember</li>
+</ol>
+
+<p>A belief status should approximate the environment</p>
+<h3 id="single-level-hierarchy">Single level hierarchy</h3>
+<p>In a single level hierarchy the agent has one body and a single controller.</p>
+
+<p><img src="./assets/single_level_hierarchy.png" alt="Single level hierarchy diagram" /></p>
+
+<h4 id="functions">functions</h4>
+<ul>
+  <li><strong>Belief state function</strong> controls the next belief state / memories.</li>
+  <li><strong>Command state function</strong> decides on the commands the controller should produce.</li>
+</ul>
+
+<p><img src="./assets/single_level_funcitons.png" alt="Single level function diagram" /></p>
+
+<h4 id="advantages">Advantages</h4>
+<p>Simpler and can be easier to program</p>
+
+<h4 id="disadvantages">Disadvantages</h4>
+<p>All problems are processes together, e.g collision detection and long term planning</p>
+
+<p>This can slow down the goals that need a quick response time</p>
+
+<h3 id="multi-level-hierarchy">Multi level hierarchy</h3>
+
+<p>Made from a body and many layers of controllers.</p>
+
+<p>Each controller acts as a virtual body to the controller above. It receives precepts and commands from the controller below it and sends selected precepts and commands to the controller above.</p>
+
+<p><img src="assets/multiple_level_hierarchy.png" alt="Multiple level hierarchy" /></p>
+
+<h3 id="functions-1">functions</h3>
+<ul>
+  <li><strong>Belief state function</strong> controls the next belief state / memories.</li>
+  <li><strong>Command state function</strong> decides on the commands the controller should produce.</li>
+  <li><strong>Precept function</strong> decides what commands to send to the higher controller</li>
+</ul>
+
+<p><img src="assets/miltiple_level_functions.png" alt="Multi level function diagram" /></p>
+
+<h3 id="agent-types">Agent Types</h3>
+<h4 id="ideal-mapping">Ideal Mapping</h4>
+<p>In principle an agent can be though of as an mapping from the set of precepts to the set of commands. There is a theoretical <strong>Ideal mapping</strong> where the ideal action is taken at each step.
+The simple approach would be a lookup table:</p>
+<ul>
+  <li>Table too large</li>
+  <li>Time to build</li>
+</ul>
+
+<p>The goal of an agent is to approximate this ideal mapping</p>
+
+<h4 id="simple-reflex-agents">Simple Reflex agents</h4>
+<p>Simple agents based on a series of if -&gt; else statements</p>
+
+<p>Can achieve fairly complex behavior.</p>
+
+<p>Can be run quickly</p>
+
+<h4 id="reflex-agent-with-state">Reflex agent with State</h4>
+<p>similar to the simple Reflex Agents but retains knowledge</p>
+
+<p>Needs an internal state</p>
+
+<p>Can keep track of a changing world</p>
+<h4 id="goal-based-agents">Goal based agents</h4>
+<p>Keeps track of what is trying to be achieved</p>
+
+<p>More flexible than a reflex agent</p>
+
+<h4 id="utility-based-agents">Utility based agents</h4>
+
+<p>Uses a <strong>Utility function</strong> to judge the state of the world</p>
+
+<p>Allows for a choice of which goals to achieve and can select the one with the highest utility.</p>
+
+<p>If goal outcomes are uncertain a probability formula can be used.</p>
+
+<h4 id="learning-agent">Learning Agent</h4>
+<p>Adds in several components</p>
+<ul>
+  <li><strong>critic</strong> Using a <strong>performance standard</strong> informs the learning agent how well it is doing.</li>
+  <li><strong>performance element</strong> responsible for acting based on the improvements from the learning agent.</li>
+  <li><strong>learning element</strong> responsible for making improvements with knowledge of the agents success.</li>
+  <li><strong>problem generator</strong> responsible for suggesting actions for new experiences to attempt to prevent being stuck at a local maximum</li>
+</ul>
+
+<p>Takes information about hove the performance agent is doing and attempts to optimise the agent to improve performance.
+Learning provides the agent with autonomy.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

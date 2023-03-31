@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Cryptography</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Cryptography</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#terminology">Terminology</a></li><li><a href="#different-types-of-encryption">Different types of encryption</a></li><li><a href="#encryption-technique-properties">Encryption Technique Properties</a></li><li><a href="#secret-key-encryption">Secret key encryption</a></li><li><a href="#techniques-of-encryption">Techniques of Encryption</a><ul><li><a href="#steganography">Steganography</a><ul><li><a href="#hiding-data-in-an-image">Hiding data in an image</a><ul><li><a href="#lsb-insertion">LSB Insertion</a></li></ul></li></ul></li><li><a href="#code-words">Code Words</a></li><li><a href="#transpositionpermutation-cipher">Transposition/Permutation Cipher</a></li><li><a href="#monoalphabetic-substitution-cipher">Monoalphabetic Substitution Cipher</a></li><li><a href="#polyalphabetic-substitution-cipher">Polyalphabetic Substitution Cipher</a></li><li><a href="#one-time-pad">One time pad</a></li><li><a href="#combining-message-and-key">Combining message and key</a></li></ul></li><li><a href="#data-encryption-standard-des">Data Encryption Standard (DES)</a><ul><li><a href="#fiestal-approach-overview">Fiestal Approach Overview</a></li><li><a href="#the-round-function">The Round Function</a></li><li><a href="#subkey-generation-key-schedule">Subkey Generation (Key Schedule)</a><ul><li><a href="#permuted-choice-1">Permuted Choice 1</a></li><li><a href="#permuted-choice-2">Permuted Choice 2</a></li></ul></li></ul></li><li><a href="#advanced-encryption-standard-aes">Advanced Encryption Standard (AES)</a><ul><li><a href="#sub-operations">Sub-Operations</a><ul><li><a href="#subbytes">SubBytes</a></li><li><a href="#shiftrows">ShiftRows</a></li><li><a href="#mixcolumns">MixColumns</a></li><li><a href="#addroundkey">AddRoundKey</a></li></ul></li><li><a href="#is-aes-secure">Is AES secure?</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="part3.html" title="part3.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="part5.html" title="part5.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="terminology">Terminology</h2>
+
+<ul>
+  <li>Plaintext, the original message</li>
+  <li>Ciphertext , the result of encrypting the message</li>
+  <li>Encryption/decryption , the process of transforming plaintext to ciphertext (or reverse)</li>
+</ul>
+
+<h2 id="different-types-of-encryption">Different types of encryption</h2>
+
+<p><strong>Secret key</strong>:</p>
+
+<ul>
+  <li>The key is a secret, only known to the communicating parties</li>
+  <li>The same key is used for encryption and decryption</li>
+</ul>
+
+<p><strong>Public key:</strong></p>
+
+<ul>
+  <li>Use a key to encrypt the message</li>
+  <li>This encryption key can be publicly  known</li>
+  <li>User another key to decrypt the message</li>
+  <li>The decryption key is kept private</li>
+  <li>Clever maths are used</li>
+</ul>
+
+<h2 id="encryption-technique-properties">Encryption Technique Properties</h2>
+
+<p>Good encryption techniques should have 4 properties</p>
+
+<ol>
+  <li>
+    <p>Confusion</p>
+
+    <ul>
+      <li>If we change a bit/a letter of they <strong>key</strong>, multiple parts of the ciphertext will change</li>
+      <li>hide the relationship between ciphertext and key</li>
+    </ul>
+  </li>
+  <li>
+    <p>Diffusion</p>
+
+    <ul>
+      <li>If we change a bit/a letter of the <strong>plaintext</strong>, then half of bits of the ciphertext should change</li>
+      <li>Spread the statistical structure of plaintext over multiple parts of the ciphertext</li>
+      <li>hide the relation between plaintext and ciphertext</li>
+    </ul>
+  </li>
+  <li>
+    <p>Cipher text is hard to break even with the most generous assumptions</p>
+
+    <ul>
+      <li>Know the encryption process - so no “security through obscurity”</li>
+      <li>know the initial settings (e.g. key length, block length)</li>
+      <li>as long as the key is secret the ciphertext is still secure</li>
+    </ul>
+  </li>
+  <li>
+    <p>Management of the encryption scheme must be feasible and cost-effective</p>
+
+    <ul>
+      <li>Long key may be very secure - but how can it be manged?</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="secret-key-encryption">Secret key encryption</h2>
+
+<p>Also known as symmetric key, shared key, single key encryption.</p>
+
+<p>Modern “standard algorithm”:</p>
+
+<ul>
+  <li>First was the Data Encryption Standard (DES)</li>
+  <li>then the Advanced Encryption Standard (AES)</li>
+</ul>
+
+<p><strong>How it works.</strong></p>
+
+<ol>
+  <li>A secret key is shared by sender and receiver.</li>
+  <li>This secret key is used together with a known public algorithm (like AES)</li>
+  <li>The ciphertext is transmitted</li>
+  <li>The receivers decrypt the ciphertext with the known algorithm and the secret key to get plaintext.</li>
+</ol>
+
+<h2 id="techniques-of-encryption">Techniques of Encryption</h2>
+
+<p>There are many different encryption techniques, some better than others.</p>
+
+<h3 id="steganography">Steganography</h3>
+
+<blockquote>
+  <p>Steganography is a means of hiding an encrypted message.</p>
+
+  <ul>
+    <li>Often when an encrypted message is sent, it is suspicious because it is unreadable.</li>
+    <li>Steganography is used to hide the encrypted message in something unsuspicious.</li>
+  </ul>
+</blockquote>
+
+<p><strong>Steganographic Process</strong></p>
+
+<p><em>(cover medium) + (hidden data) + (stegano key) = stegano medium</em></p>
+
+<ul>
+  <li><strong>cover medium</strong>: the file in which we will hide the hidden_data</li>
+  <li><strong>hidden data</strong>: may be encrypted using stegano key or another key</li>
+  <li><strong>stegano medium</strong>: is the file we send.</li>
+</ul>
+
+<p>The <strong>cover medium</strong> (and thus <strong>stegano medium</strong>) are typically image or audio files.</p>
+
+<h4 id="hiding-data-in-an-image">Hiding data in an image</h4>
+
+<p>Images typically used either 8-bit or 24-bit colour</p>
+
+<p>Lets take 24-bit colour as an example:</p>
+
+<ul>
+  <li>Each pixel is represented by three bytes</li>
+  <li>Each of the three bytes representing the intensity of the three primary colours red, green, blue (RGB)</li>
+</ul>
+
+<p>Using Least Significant Bit (LSB) insertion - we can hide data in the image.</p>
+
+<h5 id="lsb-insertion">LSB Insertion</h5>
+
+<p>Uses binary representation of the <em>hidden_data</em> to overwrite the LSB of each byte in the <em>cover_image</em></p>
+
+<p>If we are using 24-bit colour, the amount of change will be minimal and indiscernible to the human eye.</p>
+
+<p><strong>Example.</strong></p>
+
+<p>Given three pixels:</p>
+
+<ol>
+  <li>10010101 00001101 11001001</li>
+  <li>10010110 00001111 11001010</li>
+  <li>1001111 00010000 11001011</li>
+</ol>
+
+<p>We can hide the 9 bits of data in the above three pixels:</p>
+
+<ol>
+  <li>1001010<strong>1</strong> 0000110<strong>0</strong> 1100100<strong>1</strong></li>
+  <li>1001011<strong>1</strong> 0000111<strong>0</strong> 1100101<strong>1</strong></li>
+  <li>1001111<strong>1</strong> 0001000<strong>0</strong> 1100101<strong>1</strong></li>
+</ol>
+
+<p>Hidden message is: <strong>101101101</strong></p>
+
+<h3 id="code-words">Code Words</h3>
+
+<p>Define code for each vocabulary in a code book which is like a dictionary. You lookup the dictionary to decipher the code word.</p>
+
+<h3 id="transpositionpermutation-cipher">Transposition/Permutation Cipher</h3>
+
+<p><strong><em>Confusion</em></strong></p>
+
+<p>Re-arrange plaintext into columns/rows of a fixed length and then send the message read the other way</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Plaintext</span><span class="pi">:</span>  <span class="s">HISECRETMESSAGE</span>
+<span class="na">Rearrange</span><span class="pi">:</span>  <span class="s">H E E E A</span>
+            <span class="s">I C T S G</span>
+            <span class="s">S R M S E</span>
+<span class="na">Ciphertext</span><span class="pi">:</span> <span class="s">HEEEAICTSGSRMSE</span>
+</code></pre></div></div>
+
+<p>Letters are the same, but in a different order. The <strong>shared secret</strong> is knowing what permutation is carried out. This rearrangement can be done any number of times.</p>
+
+<p>A more <strong>confusing</strong> version of this is double transposition, where your rearranged plaintext uses a code word and a number to decide how the text should be rearranged further. In the example below, we have rearrange the grid of letters from the first round according to the numbers specified (if there are not enough letters in the column to fill the row, you just continue with the next column).</p>
+
+<pre><code class="language-YAML">Codeword: C A K E S         C A K E S
+Number:   2 5 1 4 3         2 5 1 4 3
+          H E E E A ------&gt; E T M H I
+          I C T S G         S A G E E
+          S R M S E         S S E C R
+</code></pre>
+
+<h3 id="monoalphabetic-substitution-cipher">Monoalphabetic Substitution Cipher</h3>
+
+<p><strong><em>Confusion</em></strong></p>
+
+<p>If you are familiar with the caesar cipher – this is it. Basically have a ciphertext alphabet, where each symbol maps to the normal alphabet.</p>
+
+<blockquote>
+  <p><strong>Not the best</strong> technique because there is a <strong>linear relation</strong> between the letters/symbols and attackers can easily figure out the encryption key.</p>
+</blockquote>
+
+<p><em>Supposed A … Z = 0 … 25, then y = x + a mod 26 (a is the encryption key)</em></p>
+
+<p><strong>Another way</strong> is to use a keyword e.g. “zebras”</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Plaintext alphabet</span><span class="pi">:</span>  <span class="s">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<span class="na">Ciphertext alphabet</span><span class="pi">:</span> <span class="s">ZEBRASCDFGHIJKLMNOPQTUVWXY</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Disadvantage.</strong> There is no “linear relation” but a long ciphertext can be easily cracked by <strong>frequency analysis</strong>.</p>
+</blockquote>
+
+<p><strong>Frequency analysis</strong> relies on the fact that some letters are used more than others. By counting the letter frequency of a certain symbol in the ciphertext, someone can make an intelligent guess on which letter in the alphabet it represents.</p>
+
+<p>To prevent this, multiple ciphertext alphabets are used…</p>
+
+<h3 id="polyalphabetic-substitution-cipher">Polyalphabetic Substitution Cipher</h3>
+
+<p><strong><em>Confusion</em></strong></p>
+
+<p>A key is used to decide which ciphertext alphabet is applied in each substitution. An example is the Vigenere cipher. Here is table that works together with the vignere cipher.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>A</th>
+      <th>B</th>
+      <th>…</th>
+      <th>Y</th>
+      <th>Z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A</strong></td>
+      <td>A</td>
+      <td>B</td>
+      <td>…</td>
+      <td>Y</td>
+      <td>Z</td>
+    </tr>
+    <tr>
+      <td><strong>B</strong></td>
+      <td>B</td>
+      <td>C</td>
+      <td>…</td>
+      <td>Z</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td><strong>…</strong></td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+    <tr>
+      <td><strong>Y</strong></td>
+      <td>Y</td>
+      <td>Z</td>
+      <td>…</td>
+      <td>W</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td><strong>Z</strong></td>
+      <td>Z</td>
+      <td>A</td>
+      <td>…</td>
+      <td>X</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Using this table, and a secret key: <strong>abattis</strong> – we check the cell that corresponds to the pair (Plaintext_letter)(Key_symbol) = Ciphertext Symbol</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Plaintext</span><span class="pi">:</span>  <span class="s">EXAMPLE</span>
+<span class="na">Keystream</span><span class="pi">:</span>  <span class="s">abattis</span>
+<span class="na">Ciphertext</span><span class="pi">:</span> <span class="s">EYAFITW</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Disadvantage.</strong> Still has the same statistical flaw for the letters that use the same key alphabet. This can be mitigated by using a longer keyword and is the most secure (in theory) if the key is the same length as the plaintext.</p>
+</blockquote>
+
+<h3 id="one-time-pad">One time pad</h3>
+
+<p>This is where each letter in the message is encrypted with a different alphabet set. This is as secure as you can get but the <strong>problem</strong> lies with how the key is <strong>shared</strong> as both parties have to know the key which is as long as the plaintext.</p>
+
+<blockquote>
+  <p><strong>Disadvantage.</strong> As a result, one time pad is not a practical solution because of key generation, key distribution, key protection.</p>
+</blockquote>
+
+<h3 id="combining-message-and-key">Combining message and key</h3>
+
+<p>In a computer, <strong>plaintext</strong> and the <strong>key</strong> are an arrangement of bits. The best way to combine them is to use bitwise <strong>XOR</strong>.</p>
+
+<ul>
+  <li>Bitwise operations are not as computationally expensive as addition operations. (If you study 132, 1 just needs a logic gate, the other needs an entire adder/subtractor).</li>
+  <li><strong>AND</strong> and <strong>OR</strong> are not good as they do not produce unique encryption – so they are not good for decryption.</li>
+</ul>
+
+<p><strong>XOR</strong> on the other hand produces a unique encryption - using XOR, ciphertext can be decrypted by performing XOR over ciphertext and key. So it is very easy to encrypt and to decrypt, you just need the <strong>key</strong>.</p>
+
+<h2 id="data-encryption-standard-des">Data Encryption Standard (DES)</h2>
+
+<p><em>The first standardised encryption method. Is based on the Feistal approach.</em></p>
+
+<ul>
+  <li>Uses block cipher: 64-bit plaintext block size.</li>
+  <li>Uses a 56-bit secret key (technically 64-bit, but the 8th bit of each 8-bits are parity bits which are dropped after the permutated choice 1)</li>
+  <li>Goes through 16 rounds of encryption operations per block</li>
+  <li>Uses substitution (confusion)</li>
+  <li>Uses permutation (diffusion)</li>
+  <li>Encryption operations are all public - but it is still hard to crack because the <strong>secret key</strong> is safe.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Block Cipher.</strong> Encrypts blocks of data one a time (DES)</p>
+
+  <p><strong>Stream Cipher.</strong> Encrypts each input element (bit or byte etc.) one at a time, producing the machine output element as the process goes along.</p>
+</blockquote>
+
+<h3 id="fiestal-approach-overview">Fiestal Approach Overview</h3>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Feistel_cipher_diagram_en.svg" style="width:328px;height:480px;" class="center" />
+        <figcaption style="text-align:center;">Fiestal Cipher Diagram, <a href="https://commons.wikimedia.org/wiki/File:Feistel_cipher_diagram_en.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<ol>
+  <li>Plaintext block is split into two equal parts (L<sub>0</sub> and R<sub>0</sub>), each of 32 bits.</li>
+  <li>Run one side of  (i.e R<sub>0</sub>) through a “feistal” function that is fed a key, K<sub>0</sub>.</li>
+  <li>The output of the function, R<sub>0</sub>K<sub>0</sub>, is <strong>XORed</strong> with the other half (L<sub>0</sub>).</li>
+  <li>The output of this <strong>XOR</strong> is used as the input for the round function of the <strong>next round</strong>, while the initial R<sub>0</sub> will be <strong>XORed</strong> with this 2nd round function output.</li>
+  <li>This continues for a total of 16 rounds, where the final blocks are the ciphertext.</li>
+</ol>
+
+<blockquote>
+  <p>A characteristic of all <strong>Feistal ciphers</strong> is that the process for <strong>decryption</strong> follows the exact same steps as encryption – <strong>only thing</strong> is that the round keys need to be used in the reverse order.</p>
+</blockquote>
+
+<p>Each round this is computed:
+\(L_{i+1} = R_i, \; R_{i+1} = L_i \oplus F(R_i,K_i)\)</p>
+
+<h3 id="the-round-function">The Round Function</h3>
+
+<p>There are 4 operations in the function</p>
+
+<ol>
+  <li><strong>Expansion</strong>
+    <ul>
+      <li>32 bits half-block is expanded to 48 bits by duplicating half of the bits
+        <ul>
+          <li>32 bits organised into 8 pieces each with 4 bits</li>
+          <li>Duplicate the first and fourth bit in each piece</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Key Combination</strong>
+    <ul>
+      <li>The output of the expansion is <strong>XORed</strong> with the current round key, K<sub>i</sub></li>
+    </ul>
+  </li>
+  <li><strong>Substitution</strong>
+    <ul>
+      <li>The result of the <strong>XOR</strong> is broken into 8 6-bit pieces and each is passed through a unique substitution box or S-Box</li>
+      <li>This uses the vectorial boolean function to convert 6-bit input to a 4-bit output
+        <ul>
+          <li>There is a lookup table to store the mapping from 6-bit input to 4-bit output</li>
+          <li>E.g. <strong>1</strong>0110<strong>0</strong>. The bits in bold is the row name and the bits in between is the column. The cells in the lookup table specify the final substitution value that becomes the output. Refer to the table below.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Permutation</strong>
+    <ul>
+      <li>The result of that is passed through a permutation function P (diffusion)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>In each row, the lookup table cell values will are unique – meaning row-wise the values are from 0-16 (because 2<sup>4</sup> bits) but is not in order.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>-0000-</th>
+      <th>…</th>
+      <th>-1111-</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0xxxx0</td>
+      <td>14</td>
+      <td>…</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>0xxxx1</td>
+      <td>0</td>
+      <td>…</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>1xxxx0</td>
+      <td>4</td>
+      <td>…</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1xxxx1</td>
+      <td>15</td>
+      <td>…</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="subkey-generation-key-schedule">Subkey Generation (Key Schedule)</h3>
+
+<p>We said that the DES takes 1 64-bit key, but from the <a href="#fiestal-approach-overview">Feistal Diagram</a> above we see that each round function takes a different key – this is because subkeys are generated with permutation functions.</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/DES-key-schedule.png" class="center" />
+        <figcaption style="text-align:center;">DES key schedule, <a href="https://commons.wikimedia.org/wiki/File:DES-key-schedule.png">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="permuted-choice-1">Permuted Choice 1</h4>
+
+<p>This function has 2 purposes:</p>
+
+<ol>
+  <li>To drop the 8th bit of each of the eight 8-bit blocks, as they are the parity bits</li>
+  <li>Permute the remaining bits (56)</li>
+</ol>
+
+<p>After PC1 is done, the generation of the DES round keys (keys for each round function): In each round</p>
+
+<ol>
+  <li>The key is split into two 28-bit halves.</li>
+  <li>Each half is shifted left by a set amount that may vary per round but will always be the same for encryption or decryption.</li>
+  <li>The shifted halves are permuted with PC2 – shuffle and select 48-bits from 56-bits (28 × 2)</li>
+  <li>The shifted halves are also transferred to the next round where they are shifted again (the shifts are cumulative).</li>
+</ol>
+
+<h4 id="permuted-choice-2">Permuted Choice 2</h4>
+
+<p>As mentioned above, the algorithm takes a 56-bit subkey as input and produces a 48-bit round key for each round function.</p>
+
+<blockquote class="extra">
+    <b>FYI.</b> Each bit of the initial 56-bit key is used in an average of 14 of 16 round keys.
+</blockquote>
+
+<h2 id="advanced-encryption-standard-aes">Advanced Encryption Standard (AES)</h2>
+
+<p>The DES is now considered to be insecure due to the short key – it has been broken by brute-force methods.</p>
+
+<p>The <strong>AES</strong> is chosen as the new standard. Compared to DES it has a longer block size (128-bits), longer key (variable: 128, 192, or 256 bits) and faster implementation (only uses 1 S-box, while DES uses 8 distinct ones)</p>
+
+<p>Similar block cipher features but uses a substitution-permutation network (SPN) – <strong>mainly operations over matrices</strong> which is designed for more <strong>inherent parallelism</strong> and hence <strong>faster</strong>.</p>
+
+<h3 id="sub-operations">Sub-Operations</h3>
+
+<p>Encryption in AES uses 4 main operations. In the main rounds (not every round but most rounds) of encryption they are applied in the following order:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input -&gt; SubBytes -&gt; ShiftRows -&gt; MixColumns -&gt; AddRoundKey -&gt; ouput
+</code></pre></div></div>
+
+<p>There are additional details, like the key scheduler for AES, which are not covered in the lectures and further reading can be done <a href="https://www.commonlounge.com/discussion/e32fdd267aaa4240a4464723bc74d0a5">here</a>. <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard#The_SubBytes_step">Wikipedia</a> is a good resource too.</p>
+
+<h4 id="subbytes">SubBytes</h4>
+
+<p>This involved splitting the input into bytes and passing each through a Substitution Box (S-box). Unlike the DES, the AES uses the same S-box for all bytes.</p>
+
+<p>Each byte from the input is replaced by a SubByte using an 8-bit substitution box (essentially a lookup table). Because we are dealing with a 128-bit block size, so each cell in the table is a byte (128/16 = 8).</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/AES-SubBytes.svg" class="center" />
+        <figcaption style="text-align:center;">AES sub bytes, <a href="https://commons.wikimedia.org/wiki/File:AES-SubBytes.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="shiftrows">ShiftRows</h4>
+
+<p>Here, each row of the 128-bit internal state (input of <code class="language-plaintext highlighter-rouge">ShiftRows</code> which is output of <code class="language-plaintext highlighter-rouge">SubBytes</code>) of the cipher is shifted by a certain offset. In AES the top row is not shifted at all, the next row is shifted by 1 and 2 then 3 for the next two rows. This results in each column of the output state composed of bytes from each column of the input state.</p>
+
+<blockquote>
+  <p>This is important to avoid the columns being encrypted independently, because that would make AES into 4 independent block ciphers.</p>
+</blockquote>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/AES-ShiftRows.svg" class="center" />
+        <figcaption style="text-align:center;">AES shift rows, <a href="https://commons.wikimedia.org/wiki/File:AES-ShiftRows.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="mixcolumns">MixColumns</h4>
+
+<p>Here the output matrix of the <code class="language-plaintext highlighter-rouge">ShiftRows</code> step is pre-multiplied with a fixed matrix – this helps with diffusion because if you change a<sub>0,1</sub> (even by 1-bit) the entire output column will change (as you know from matrix multiplication).</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/AES-MixColumns.svg" class="center" />
+        <figcaption style="text-align:center;">AES mix columns, <a href="https://commons.wikimedia.org/wiki/File:AES-MixColumns.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h4 id="addroundkey">AddRoundKey</h4>
+
+<p>The only operation in AES that directly operates on the AES round key. In this operation, the input to the round is <strong>XORed</strong> with the round key.</p>
+
+<figure align="center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/AES-AddRoundKey.svg" class="center" />
+        <figcaption style="text-align:center;">AES add round key, <a href="https://commons.wikimedia.org/wiki/File:AES-AddRoundKey.svg">Wikimedia Commons</a></figcaption>
+</figure>
+
+<h3 id="is-aes-secure">Is AES secure?</h3>
+
+<p>A computer that can break DES in 8 seconds will take 1.3 × 10<sup>15</sup> years to break AES-128.</p>
+
+<p>AES-256 can also provides post-quantum computing assurance.</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

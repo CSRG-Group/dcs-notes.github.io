@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Relational Database Constraints</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Relational Database Constraints</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#superkey">SuperKey</a><ul><li><a href="#minimal-superkey">Minimal SuperKEy</a></li></ul></li><li><a href="#entity-integrity-constraint">Entity Integrity Constraint</a></li><li><a href="#referential-integrity">Referential Integrity</a></li><li><a href="#updating-with-constraints">Updating with Constraints</a><ul><li><a href="#insert">Insert</a><ul><li><a href="#domain">Domain</a></li><li><a href="#key">Key</a></li><li><a href="#referential-integrity-1">Referential integrity</a></li><li><a href="#entity-integrity">Entity integrity</a></li></ul></li><li><a href="#update">Update</a><ul><li><a href="#domain-1">Domain</a></li><li><a href="#key-1">Key</a></li><li><a href="#referential-integrity-2">Referential integrity</a></li><li><a href="#entity-integrity-1">Entity integrity</a></li></ul></li><li><a href="#delete">Delete</a><ul><li><a href="#referential-integrity-3">Referential integrity</a></li></ul></li></ul></li><li><a href="#functional-dependencies">Functional Dependencies</a><ul><li><a href="#definition">Definition</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Relational_Data_Model.html" title="Relational_Data_Model.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Structured_Query_Language.html" title="Structured_Query_Language.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>Constraints determine the permissible states of relation instances</p>
+
+<p>Explicit schema based constraints</p>
+<ul>
+  <li>Key constraints</li>
+  <li>Entity integrity constraints</li>
+  <li>Referential integrity constraints</li>
+</ul>
+
+<p>There are other domain constraints</p>
+<ul>
+  <li>Type</li>
+  <li>Maximum , minimum</li>
+  <li>is NULL allowed</li>
+</ul>
+
+<p>Constraints are typically at relation creation or with the <code class="language-plaintext highlighter-rouge">CREATE TABLE</code> statement in sql</p>
+<h2 id="superkey">SuperKey</h2>
+<p>The super key of a relation R is a subset SK of R such that:</p>
+<ul>
+  <li>in any valid state of r(R)
+    <ul>
+      <li>for an distinct tuples in r(R) \(t_1\),\(t_2\)
+        <ul>
+          <li>t1[SK] \(\neq\)  t2[SK]</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="minimal-superkey">Minimal SuperKEy</h3>
+<p>Any key is a <strong>minimal</strong> superKey or <strong>candidate</strong> key, if the removal of any of the attributes would result in the key not being a superKey.</p>
+
+<p>If the relation hs several candidate keys one will be chosen arbitrarily to be the primary key</p>
+
+<h2 id="entity-integrity-constraint">Entity Integrity Constraint</h2>
+<p>The primary key cannot be null of any tuple</p>
+
+<p>Any other attribute of R may or may not have null values and can be specified at the table creation.</p>
+
+<h2 id="referential-integrity">Referential Integrity</h2>
+<p>covers cross table relationships, a table may be linked to another table, by using a foreign key (FK) to reference a primary key (PK) in another table.</p>
+
+<p>The domain of the foreign key in R1 that references R2 is the set of primary keys in r(R2) \(\cup\) {NULL}.</p>
+
+<p>alternatively:</p>
+<ul>
+  <li>if \(t_i\) in R1 references \(t_j\) in R2</li>
+  <li>then \(t_i\)[FK] = \(t_j\)[PK]</li>
+  <li>OR \(t_i\)[FK] is NULL</li>
+</ul>
+
+<h2 id="updating-with-constraints">Updating with Constraints</h2>
+<p>The values in a relation instance can change on update so with each update checks are made to ensure that the update conforms to the constraints</p>
+
+<p>If the update does nto meet the constraints the DBMS can:</p>
+<ul>
+  <li>Reject the update and return an error.</li>
+  <li>Inform the user fo the database.</li>
+  <li>Attempt to perform correcting updates.</li>
+</ul>
+
+<h3 id="insert">Insert</h3>
+<p>When adding new tuples to the database any of the constraint could be violated.</p>
+<h4 id="domain">Domain</h4>
+<p>One of the attributes may not be in the attribute domain</p>
+<h4 id="key">Key</h4>
+<p>The value of the key attribute(s) may already exist in another tuple</p>
+<h4 id="referential-integrity-1">Referential integrity</h4>
+<p>A foreign key in the tuple may refer to a primary key value that does not exist</p>
+<h4 id="entity-integrity">Entity integrity</h4>
+<p>The primary key may not be NULL for any of it’s attributes</p>
+
+<h3 id="update">Update</h3>
+<h4 id="domain-1">Domain</h4>
+<p>One of the attributes may not be in the attribute domain</p>
+<h4 id="key-1">Key</h4>
+<p>Changing the key attribute(s) may mean it already exist in another tuple</p>
+<h4 id="referential-integrity-2">Referential integrity</h4>
+<p>A new foreign key in the tuple may refer to a primary key value that does not exist</p>
+
+<p>Changing the primary key may mean a foreign key is no-longer pointint to it</p>
+<h4 id="entity-integrity-1">Entity integrity</h4>
+<p>The primary key may not be changed to NULL</p>
+
+<h3 id="delete">Delete</h3>
+<h4 id="referential-integrity-3">Referential integrity</h4>
+<p>Removing the primary key may mean a foreign key is pointing to an instance that does not exist</p>
+
+<h2 id="functional-dependencies">Functional Dependencies</h2>
+<p>A formal tool that allows derivation of good DB designs.</p>
+<h3 id="definition">Definition</h3>
+<p>Assume</p>
+<ul>
+  <li>X,Y,Z are attributes</li>
+  <li>A,B,C are single attributes</li>
+  <li>notation ABC = {A,B,C}</li>
+</ul>
+
+<p>Then</p>
+<ul>
+  <li>x \(\rArr\) Y</li>
+  <li>If the values of Y depends on the values of X</li>
+  <li>If two tuples of the attribute agree on a value of X then they must agree on a value of y</li>
+  <li>t1[X]=t2[X] \(\Arr\) t1[Y]=t2[Y]</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes JavaScript</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">JavaScript</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction">Introduction</a><ul><li><a href="#uses">Uses</a></li></ul></li><li><a href="#basic">Basic</a><ul><li><a href="#commands">Commands</a></li><li><a href="#variables">Variables</a></li><li><a href="#datatypes">DataTypes</a></li><li><a href="#arrays">Arrays</a><ul><li><a href="#common-methods">Common Methods</a></li></ul></li><li><a href="#functions">Functions</a></li></ul></li><li><a href="#control-flow">Control Flow</a><ul><li><a href="#if">IF</a></li><li><a href="#switch">Switch</a></li><li><a href="#for-loop">For Loop</a></li><li><a href="#while-loop">While Loop</a></li></ul></li><li><a href="#objects">Objects</a><ul><li><a href="#constructor-function">Constructor Function</a></li><li><a href="#classes">Classes</a></li></ul></li><li><a href="#navigating-the-dom">Navigating the DOM</a></li><li><a href="#event-handling">Event Handling</a><ul><li><a href="#forms">Forms</a></li></ul></li><li><a href="#jquery">jQuery</a><ul><li><a href="#starting-scripts">Starting Scripts</a></li><li><a href="#magical-objects">Magical Objects</a><ul><li><a href="#many-items">Many Items</a></li></ul></li><li><a href="#methods">Methods</a></li><li><a href="#jquery-events">JQuery Events</a><ul><li><a href="#event-binding">Event Binding</a></li></ul></li><li><a href="#event-bubbling">Event Bubbling</a></li></ul></li><li><a href="#animation">Animation</a></li><li><a href="#ajax">AJAX</a><ul><li><a href="#steps">Steps</a></li><li><a href="#implementations">Implementations</a></li><li><a href="#jquery-and-ajax">JQuery and AJAX</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="PHP.html" title="PHP.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="SQL.html" title="SQL.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="introduction">Introduction</h2>
+
+<p>Javascript is an interpreted programming language</p>
+
+<p>developed by Brendan Eich at Netscape in 1990s</p>
+
+<p>Formalized as ECMAScript language standard</p>
+
+<p>Mostly Client side but can be used server side</p>
+
+<h3 id="uses">Uses</h3>
+
+<p>Dynamically creating HTML</p>
+
+<p>Changing existing html</p>
+
+<p>Responding to user events</p>
+
+<p>Validating input</p>
+
+<p>Background upload of data</p>
+
+<h2 id="basic">Basic</h2>
+
+<p>Javascript is written between <code class="language-plaintext highlighter-rouge">&lt;script&gt; &lt;/script&gt;</code> tags in html</p>
+
+<p>Alternatively can be written in an external file using</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;script src="myjs.js" type="text/javascript" charset="utf=8"&gt;&lt;/script&gt;</code></p>
+
+<p>All statement lines end with a colon.</p>
+
+<p>Javascript is executed when the page loads</p>
+
+<h3 id="commands">Commands</h3>
+
+<p><code class="language-plaintext highlighter-rouge">alert("");</code> Displays a popup to the user</p>
+
+<p><code class="language-plaintext highlighter-rouge">document.write("");</code> Writes content to the web page</p>
+
+<p><code class="language-plaintext highlighter-rouge">console.log(""):</code> Can add text to the hidden browser console</p>
+
+<h3 id="variables">Variables</h3>
+<p>Variables are loosely typed</p>
+
+<p>Names must start with letters <code class="language-plaintext highlighter-rouge">$</code> or <code class="language-plaintext highlighter-rouge">_</code> and are case sensitive</p>
+
+<p>created with <code class="language-plaintext highlighter-rouge">var</code> keyword</p>
+
+<p><code class="language-plaintext highlighter-rouge">Var x = 2;</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">var y = "Hello";</code></p>
+
+<h3 id="datatypes">DataTypes</h3>
+<ul>
+  <li>strings - text inside single or double quotes</li>
+  <li>Numbers - both decimals and integers</li>
+  <li>Boolean - true/false</li>
+  <li>Arrays</li>
+  <li>objects</li>
+  <li>Null - Empty variable</li>
+  <li>Undefined - unset variable</li>
+  <li>Function</li>
+</ul>
+
+<h3 id="arrays">Arrays</h3>
+
+<p>Arrays are 0 indexed</p>
+
+<pre><code class="language-javaScript">var animals = new Array();
+animals[0]="Dog";
+animals[1]="Cat";
+animals[3]=2;
+</code></pre>
+<p>Arrays can sore different object types</p>
+
+<h4 id="common-methods">Common Methods</h4>
+
+<ul>
+  <li>length - <code class="language-plaintext highlighter-rouge">animals.length</code></li>
+  <li>index  - <code class="language-plaintext highlighter-rouge">animals.indexOf("Cat")</code></li>
+</ul>
+
+<h3 id="functions">Functions</h3>
+
+<p>a java script function can be created with the keyword <code class="language-plaintext highlighter-rouge">function</code></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Name</span><span class="p">(</span><span class="nx">args</span><span class="p">){</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+<p>can return a value using the <code class="language-plaintext highlighter-rouge">return</code> keyword</p>
+
+<h2 id="control-flow">Control Flow</h2>
+<h3 id="if">IF</h3>
+<pre><code class="language-javaScript">if (course==`cs139`){
+    alert("Web dev");
+}else if (course == 'cs132'){
+    alert("Not a Cult");
+}else{
+    alert("Something else");
+}
+</code></pre>
+<h3 id="switch">Switch</h3>
+<pre><code class="language-Javascript">switch (course){
+    case 'cs139':
+        alert("Web dev");
+        break;
+    case 'cs132':
+        alert("Not a Cult");
+        break;
+    default:
+        alert("Something else");
+}
+</code></pre>
+<h3 id="for-loop">For Loop</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">,</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="while-loop">While Loop</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">x</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">x</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="objects">Objects</h2>
+
+<p>Objects are a collection of properties similar to Key-value pairs.</p>
+
+<p><code class="language-plaintext highlighter-rouge">var person = {first_name:"Adam",last_name:"Chester"};</code></p>
+
+<p>As variables can be functions methods are handles the same way</p>
+
+<p>Properties can be accessed using dot notation <code class="language-plaintext highlighter-rouge">person.first_name</code></p>
+
+<p>Properties can be created arbitrarily <code class="language-plaintext highlighter-rouge">person.age = 60</code></p>
+
+<h3 id="constructor-function">Constructor Function</h3>
+<p>JavaScript can create an object from a single function</p>
+
+<p>Uses the <code class="language-plaintext highlighter-rouge">this</code> keyword to reference object variables</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span><span class="nx">lastName</span><span class="p">,</span><span class="nx">age</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">FirstName</span><span class="o">=</span><span class="nx">FirstName</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">LastName</span><span class="o">=</span><span class="nx">LastName</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="o">=</span><span class="nx">age</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">bio</span><span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="o">+</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="o">+</span><span class="dl">"</span><span class="s2"> is </span><span class="dl">"</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="o">+</span><span class="dl">"</span><span class="s2"> years old</span><span class="dl">"</span><span class="p">;</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">Smith</span><span class="dl">"</span><span class="p">,</span><span class="mi">60</span><span class="p">);</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">bio</span><span class="p">());</span>
+</code></pre></div></div>
+<h3 id="classes">Classes</h3>
+<p>Full javascript object classes do exist but were not discussed in the videos.</p>
+
+<h2 id="navigating-the-dom">Navigating the DOM</h2>
+<p>Javascript can manipulate the objects within the document object model</p>
+
+<p>Number of ways to refer to a HTML element</p>
+
+<ul>
+  <li>by ID <code class="language-plaintext highlighter-rouge">document.getElementById("");</code></li>
+  <li>by tag Name <code class="language-plaintext highlighter-rouge">document.getElementsByTagName("");</code></li>
+  <li>by the class <code class="language-plaintext highlighter-rouge">document.getElementsByClassName("");</code></li>
+</ul>
+
+<p>Changing the inner element:</p>
+
+<p><code class="language-plaintext highlighter-rouge">document.getElementById("").innerHTML="Changed it";</code></p>
+
+<p>Changing the attributes, in this example <code class="language-plaintext highlighter-rouge">src</code> is the image source attribute:</p>
+
+<p><code class="language-plaintext highlighter-rouge">document.getElementById("image").src="new.gif";</code></p>
+
+<p>Changing the style can be accessed with <code class="language-plaintext highlighter-rouge">style</code> then altering the style properties:</p>
+
+<p><code class="language-plaintext highlighter-rouge">document.getElementById("main").style.color="blue";</code></p>
+
+<p>other commands</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;element&gt;.parentNode</code></li>
+  <li><code class="language-plaintext highlighter-rouge">document.createElement("")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;element&gt;.InsertBefore(newNode,ReferenceNode)</code></li>
+</ul>
+
+<p>elements can be stored in variables</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">heading</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">heading</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">heading</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="dl">"</span><span class="s2">Changed it</span><span class="dl">"</span>
+</code></pre></div></div>
+
+<h2 id="event-handling">Event Handling</h2>
+<p>one way to handle events is using attributes:</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;h1 onclick="this.innerHTML='changed'"&gt; CLICK ME &lt;/h1&gt;</code></p>
+
+<p>Function can be used for the onclick attribute</p>
+
+<p>Can be aded programmatically:</p>
+
+<p><code class="language-plaintext highlighter-rouge">document.getElementById("main").onclick = alert("hello");</code></p>
+
+<h3 id="forms">Forms</h3>
+
+<p>Forms have a special event handler called <code class="language-plaintext highlighter-rouge">onsubmit</code></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">validateForm</span><span class="p">(){</span>
+    <span class="nx">username</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">Username</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">username</span><span class="o">==</span><span class="kc">null</span> <span class="o">||</span> <span class="nx">username</span><span class="o">==</span><span class="dl">""</span><span class="p">){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">No username</span><span class="dl">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Can be used in the form with:</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;form onsubmit="return validateForm()" action="submit.php"&gt;</code></p>
+
+<h2 id="jquery">jQuery</h2>
+<p>JQuery is a framework to shorten document navigation and event handling</p>
+
+<p>Attempts to standardize a lot commands across browsers</p>
+
+<p>JQuery can be added in the same was as an external javaScript program</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf=8"&gt;&lt;/script&gt;</code></p>
+
+<p>jQuery uses the $ function</p>
+<h3 id="starting-scripts">Starting Scripts</h3>
+<p>Typically it is desirable for scripts to start after the while file has loaded
+this can be achieved using the DOM ready event.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$(document).ready(function(){...});</code></p>
+
+<p>When using the jQuery function a jQuery object is crated this wraps the HTML and provided it with additional functionality.</p>
+
+<h3 id="magical-objects">Magical Objects</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">$('H1')</code> - all of the H1 elements on a a page</li>
+  <li><code class="language-plaintext highlighter-rouge">$("#header")</code> - element with id header</li>
+  <li><code class="language-plaintext highlighter-rouge">$('.title')</code> - elements with a class of title</li>
+</ul>
+
+<h4 id="many-items">Many Items</h4>
+<p>There are also several ways fo obtainging the first itme of sevveral</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">$('H1')[0]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">$('H1:first')</code></li>
+  <li><code class="language-plaintext highlighter-rouge">$('H1').first()</code>
+all get the first element</li>
+</ul>
+
+<h3 id="methods">Methods</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">html();</code> - gets the inner html of an object</li>
+  <li><code class="language-plaintext highlighter-rouge">html('HERE');</code> - sets the inner html of an object</li>
+  <li><code class="language-plaintext highlighter-rouge">append("More content");</code> - add content to the end of the element</li>
+  <li><code class="language-plaintext highlighter-rouge">prepend("More content");</code> - add content to the start of the element</li>
+  <li><code class="language-plaintext highlighter-rouge">remove();</code> - removes an element</li>
+</ul>
+
+<p>Traversing</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">parent()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">children()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">siblings()</code></li>
+</ul>
+
+<p>Styling</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">addClass("newClass")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">removeClass("newClass")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">toggleclass("newClass")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">hasClass("newClass")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">height()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">width()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">css("background-color")</code> - gets the css values</li>
+  <li><code class="language-plaintext highlighter-rouge">css("background-color","green")</code> - sets the css values</li>
+</ul>
+
+<p>I the html content has changed the jQuery variables must be refreshed by calling the jQuery function again</p>
+
+<h3 id="jquery-events">JQuery Events</h3>
+<p>To bind events in jQuery</p>
+<ol>
+  <li>Give the element an ID</li>
+  <li>Tell jQuery that something should happen to the element</li>
+  <li>Give JQuery the code ot run when the event occurs</li>
+</ol>
+
+<p>Example
+HTML</p>
+<pre><code class="language-HTML">&lt;button id='hello'&gt;Say hello&lt;/button&gt;
+</code></pre>
+<p>JS</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#hello</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>There are many different Events</p>
+
+<p>Keyboard</p>
+<ul>
+  <li>focusIn - user clicks on the element</li>
+  <li>focusOut - user leaves element</li>
+  <li>keyDown</li>
+  <li>KeyUp</li>
+  <li>keyPress - up/down combination</li>
+</ul>
+
+<p>Mouse Events</p>
+<ul>
+  <li>click</li>
+  <li>dblClick</li>
+  <li>hover</li>
+  <li>mousedown/ mouseup</li>
+  <li>mouseenter / mouseleave</li>
+</ul>
+
+<p>There can be multiple handlers for a single event type</p>
+
+<p>There is no guarantee about what order the events are called</p>
+
+<h4 id="event-binding">Event Binding</h4>
+<p>Events can only be bound when an element exists.</p>
+
+<p>This can be fixed by creating an event listener that captures all squares</p>
+
+<p>Uses JQuery’s built in ON</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#container</span><span class="dl">'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">.square</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">()){</span>
+    <span class="nx">$this</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">background-color</span><span class="dl">"</span><span class="p">,</span><span class="nx">generateColor</span><span class="p">());</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>This monitors the parent for events then checks the chid it check if it matches
+no updated events are needed for newly created elements</p>
+
+<h3 id="event-bubbling">Event Bubbling</h3>
+<p>DOM elements are nested</p>
+
+<p>When an event is triggered on an element is it is triggered on the parent
+clicking on a paragraph also clicks the body</p>
+
+<p>This can be stopped with <code class="language-plaintext highlighter-rouge">event.stopPropagation()</code> and is placed inside the function.</p>
+
+<h2 id="animation">Animation</h2>
+<p>JQuery can do simple animations</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">show()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">hide()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">fadeIn()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">fadeOut()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">fadeToggle()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">slideUp()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">slideDown()</code></li>
+</ul>
+
+<p>and more</p>
+
+<h2 id="ajax">AJAX</h2>
+<p>Traditionally webpages were static. However now new data and information is needed from the server</p>
+
+<p>Ajax Asynchronous JavaScript and XML is a collection of inter related web technologies that can sent and receive data form a server without a full refresh.</p>
+
+<p>Data can be sent in the background the user can do other things</p>
+
+<p>Data can be returned  as XML</p>
+
+<p>More likely to bs JSON, Javascript Object Notation</p>
+
+<h3 id="steps">Steps</h3>
+<ol>
+  <li>An Event occurs</li>
+  <li>Crate an XMLHttpRequest object</li>
+  <li>Send HTTPRequest</li>
+  <li>Server receives and processes that data</li>
+  <li>Server sends a response to the browser</li>
+  <li>Browser receives response using javascript</li>
+  <li>Update page content</li>
+</ol>
+
+<h3 id="implementations">Implementations</h3>
+
+<p>using the XMLHttpRequestObject which can be created using <code class="language-plaintext highlighter-rouge">XMLHttpRequest();</code></p>
+
+<p>The request can the be opened using <code class="language-plaintext highlighter-rouge">xmlhttp.open("method","url","asynchronous");</code></p>
+<ul>
+  <li>Method - typically GET or POST</li>
+  <li>URL - the resource location</li>
+  <li>asynchronous true/false</li>
+</ul>
+
+<p>To send the data to the server</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">xmlhttp.send():</code> for GET requests</li>
+  <li><code class="language-plaintext highlighter-rouge">xmlhttp.send(string):</code> for POST requests</li>
+</ul>
+
+<p>When the request is sent an <code class="language-plaintext highlighter-rouge">onreadystatechange</code> event is triggered</p>
+
+<p>the <code class="language-plaintext highlighter-rouge">readyState</code> attribute holds the status of the event as an integer</p>
+<ol>
+  <li>request not initialized</li>
+  <li>Server connection established</li>
+  <li>Request received</li>
+  <li>Processing request</li>
+  <li>Request finished and response complete</li>
+</ol>
+
+<p>The response can be accessed with tht following</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">responseText</code> - the response data as a string</li>
+  <li><code class="language-plaintext highlighter-rouge">responseXML</code> - the response data as XML</li>
+</ul>
+
+<p>example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">status</span><span class="o">==</span><span class="mi">200</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">myDiv</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerHTML</span><span class="o">=</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">names.php?var=&lt;DATA&gt;</span><span class="dl">"</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></div></div>
+<h3 id="jquery-and-ajax">JQuery and AJAX</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">names.php?var=&lt;DATA&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#myDiv</span><span class="dl">"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>another way</p>
+
+<pre><code class="language-javaScript">$.ajax({
+    url="/names.php",
+    data: "{var:'&lt;DATA&gt;'}"
+    success: updatePage();
+});
+</code></pre>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">url</code></li>
+  <li><code class="language-plaintext highlighter-rouge">data</code> - json data to be passed to the server</li>
+  <li><code class="language-plaintext highlighter-rouge">success</code>- A function to call when the request completes</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

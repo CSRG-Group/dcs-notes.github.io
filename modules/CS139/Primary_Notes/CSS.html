@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes CSS</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">CSS</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction">Introduction</a></li><li><a href="#placement-of-styles">Placement of Styles</a><ul><li><a href="#inside-respective-tags">Inside Respective Tags</a></li><li><a href="#in-a-style-tag">In a Style Tag</a></li><li><a href="#in-a-separate-file">In a Separate File</a></li></ul></li><li><a href="#types-of-stylesheet">Types of Stylesheet</a></li><li><a href="#syntax">Syntax</a></li><li><a href="#box-model">Box Model</a></li><li><a href="#positioning">Positioning</a></li><li><a href="#selectors">Selectors</a><ul><li><a href="#using-the-tag-name">Using the Tag Name</a></li><li><a href="#using-a-class-selector">Using a Class Selector</a></li><li><a href="#using-an-id">Using an Id</a></li><li><a href="#attribute-selectors">Attribute Selectors</a></li><li><a href="#pseudo-selectors">Pseudo Selectors</a></li><li><a href="#contextual-selectors">Contextual Selectors</a></li></ul></li><li><a href="#properties">Properties</a></li><li><a href="#table-styling">Table Styling</a><ul><li><a href="#table-borders">Table Borders</a></li><li><a href="#text-alignment">Text Alignment</a></li><li><a href="#styling">Styling</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="HTML.html" title="HTML.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Python.html" title="Python.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="introduction">Introduction</h2>
+<p>CSS stands for Cascading Style Sheets</p>
+
+<p>Intended to modify the appearance of HTML documents</p>
+
+<h2 id="placement-of-styles">Placement of Styles</h2>
+<p>The code for the stylesheet can be placed in 3 possible locations.</p>
+
+<h3 id="inside-respective-tags">Inside Respective Tags</h3>
+<p>This method is often discouraged because it causes HTML code to be very messy and if you want to change the styling, you have to go to individual HTML tags.
+<code class="language-plaintext highlighter-rouge">&lt;h1 style ="color:blue"&gt; content &lt;/h1&gt;</code></p>
+
+<h3 id="in-a-style-tag">In a Style Tag</h3>
+<p>Inside the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> tag:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+ <span class="nt">h1</span> <span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">blue</span><span class="p">;}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+<p>This method is used for certain styles.</p>
+
+<h3 id="in-a-separate-file">In a Separate File</h3>
+<p>The file containing the stylesheet is then linked in the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> tag. This method is most commonly used.
+<code class="language-plaintext highlighter-rouge">&lt;link rel="stylesheet" href="styles.css"&gt;</code></p>
+
+<h2 id="types-of-stylesheet">Types of Stylesheet</h2>
+
+<p>There are 3 types of stylesheet</p>
+
+<ul>
+  <li>Author created style sheets</li>
+  <li>User created style sheets</li>
+  <li>Browser style sheets</li>
+</ul>
+
+<p>These are in decreasing importance the browser will always look for the most
+immediate style sheet for any definition</p>
+
+<p>The browser will <strong>Cascade</strong> onto the next style sheet up in the hierarchy if
+one there is no definition for the current style sheet
+ and will be applied in the following order</p>
+<ol>
+  <li>Browser Default</li>
+  <li>External Stylesheet</li>
+  <li>internal stylesheet (<code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>)</li>
+  <li>inline styling</li>
+</ol>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>CSS is formed from selectors and declarations.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Selector</td>
+      <td><code class="language-plaintext highlighter-rouge">h1</code></td>
+    </tr>
+    <tr>
+      <td>Declaration</td>
+      <td><code class="language-plaintext highlighter-rouge">{color:blue;  ....}</code></td>
+    </tr>
+    <tr>
+      <td>property</td>
+      <td><code class="language-plaintext highlighter-rouge">color:</code></td>
+    </tr>
+    <tr>
+      <td>value</td>
+      <td><code class="language-plaintext highlighter-rouge">blue;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example:</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">h1</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span><span class="no">blue</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span><span class="m">12px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="box-model">Box Model</h2>
+
+<p>Every element is made form boxes and contains</p>
+<ol>
+  <li>Content</li>
+  <li>Padding</li>
+  <li>Border</li>
+  <li>Margin</li>
+</ol>
+
+<p>These can be use to adjust size and location .
+using properties like <code class="language-plaintext highlighter-rouge">margin</code> and <code class="language-plaintext highlighter-rouge">border</code></p>
+
+<h2 id="positioning">Positioning</h2>
+
+<p><strong>Static</strong> is the default and positions boxes according to the normal flow</p>
+
+<p>Other ways include <strong>fixed</strong> and <strong>floating</strong></p>
+
+<h2 id="selectors">Selectors</h2>
+
+<p>There are 3 ways of specifying a html element</p>
+
+<h3 id="using-the-tag-name">Using the Tag Name</h3>
+<p>This will modify all tags of that type</p>
+
+<p><code class="language-plaintext highlighter-rouge">h1 {color:blue;}</code></p>
+
+<h3 id="using-a-class-selector">Using a Class Selector</h3>
+<p>uses to modify just some elements uses <code class="language-plaintext highlighter-rouge">.</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">.large {color:blue;}</code></p>
+
+<h3 id="using-an-id">Using an Id</h3>
+<p>id is unique used to modify a single element</p>
+
+<p><code class="language-plaintext highlighter-rouge">#page_title {color:blue;}</code></p>
+
+<h3 id="attribute-selectors">Attribute Selectors</h3>
+
+<p>attribute selectors style HTML elements that contain an attribute
+use <code class="language-plaintext highlighter-rouge">[]</code> to specify an attribute</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Selector</th>
+      <th>Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[]</code></td>
+      <td>A specific attribute</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[=]</code></td>
+      <td>an attribute with a specific value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[~=]</code></td>
+      <td>A specific attribute whose value matches at at least one of the words in a space delimited list of words</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[^=]</code></td>
+      <td>A specific attribute whose value begins with a specified value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[*=]</code></td>
+      <td>A specific attribute whose value contains a substring</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[$=]</code></td>
+      <td>A specific attribute whose value ends with a specified value</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">[title=main]</code> would match <code class="language-plaintext highlighter-rouge">&lt;h1 title="main"&gt;</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">[title*=subtitle]</code> would match <code class="language-plaintext highlighter-rouge">&lt;h1 title="first_subtitle"&gt;</code></p>
+
+<h3 id="pseudo-selectors">Pseudo Selectors</h3>
+
+<p>A pseudo-element selector is recognized but does not explicitly point to an html element</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>::first-letter{}
+::first-line{}
+::selection{}
+</code></pre></div></div>
+
+<p>A pseudo-class selector targets a particular state or relationship</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a:link{}
+a:visited{}
+a:hover{}
+a:active{}
+</code></pre></div></div>
+
+<h3 id="contextual-selectors">Contextual Selectors</h3>
+<p>A contextual selector targets other tags within the document hierarchy</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Selector</th>
+      <th>Matches</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Descendant</td>
+      <td>A specified element contained within another specified element</td>
+      <td>div p</td>
+    </tr>
+    <tr>
+      <td>Child</td>
+      <td>A specified element that is a direct child of the specified element</td>
+      <td>div&gt;p</td>
+    </tr>
+    <tr>
+      <td>Adjacent Sibling</td>
+      <td>A specified element that is the next sibling of the specified element</td>
+      <td>h3+p</td>
+    </tr>
+    <tr>
+      <td>General Sibling</td>
+      <td>A specified element that shares the same parent as the other specified element</td>
+      <td>h3~p</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="properties">Properties</h2>
+
+<p>There are hundreds of properties, some key ones you should know are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property-type</th>
+      <th>Property</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fonts</td>
+      <td>font</td>
+    </tr>
+    <tr>
+      <td>Fonts</td>
+      <td>font-family</td>
+    </tr>
+    <tr>
+      <td>Fonts</td>
+      <td>font-size</td>
+    </tr>
+    <tr>
+      <td>Fonts</td>
+      <td>font-style</td>
+    </tr>
+    <tr>
+      <td>Fonts</td>
+      <td>font-weight</td>
+    </tr>
+    <tr>
+      <td>Text</td>
+      <td>letter-spacing</td>
+    </tr>
+    <tr>
+      <td>Text</td>
+      <td>line-height</td>
+    </tr>
+    <tr>
+      <td>Text</td>
+      <td>text-align</td>
+    </tr>
+    <tr>
+      <td>Text</td>
+      <td>text-decoration</td>
+    </tr>
+    <tr>
+      <td>Text</td>
+      <td>text-indent</td>
+    </tr>
+    <tr>
+      <td>Text color</td>
+      <td>color</td>
+    </tr>
+    <tr>
+      <td>Background</td>
+      <td>background</td>
+    </tr>
+    <tr>
+      <td>Background</td>
+      <td>background-color</td>
+    </tr>
+    <tr>
+      <td>Background</td>
+      <td>background-image</td>
+    </tr>
+    <tr>
+      <td>Background</td>
+      <td>background-position</td>
+    </tr>
+    <tr>
+      <td>Background</td>
+      <td>background-repeat</td>
+    </tr>
+    <tr>
+      <td>Color</td>
+      <td>opacity</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>border</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>border-color</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>border-width</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>border-style</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>border-top , border-left …..</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>border-image</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>border-radius</td>
+    </tr>
+    <tr>
+      <td>Borders</td>
+      <td>box-shadow</td>
+    </tr>
+    <tr>
+      <td>Spacing</td>
+      <td>padding</td>
+    </tr>
+    <tr>
+      <td>Spacing</td>
+      <td>padding-bottom , padding-left ….</td>
+    </tr>
+    <tr>
+      <td>Spacing</td>
+      <td>margin</td>
+    </tr>
+    <tr>
+      <td>Spacing</td>
+      <td>margin-bottom, marin-left…..</td>
+    </tr>
+    <tr>
+      <td>Sizing</td>
+      <td>height</td>
+    </tr>
+    <tr>
+      <td>Sizing</td>
+      <td>max-height</td>
+    </tr>
+    <tr>
+      <td>Sizing</td>
+      <td>max-width</td>
+    </tr>
+    <tr>
+      <td>Sizing</td>
+      <td>min-height</td>
+    </tr>
+    <tr>
+      <td>Sizing</td>
+      <td>min-width</td>
+    </tr>
+    <tr>
+      <td>Sizing</td>
+      <td>width</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Different properties take different values.</p>
+<ul>
+  <li>Color properties can use RGB, hex, RGBa .. values</li>
+  <li>Size based properties can use px, em , % , in , cm , pt</li>
+</ul>
+
+<p>Know the different value types for the main properties</p>
+
+<h2 id="table-styling">Table Styling</h2>
+<h3 id="table-borders">Table Borders</h3>
+<p>Borders around tables can increase readability</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">table</span><span class="o">,</span> <span class="nt">th</span><span class="o">,</span> <span class="nt">td</span> <span class="p">{</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>The border collapse property collapses the borders into a single line over 2 in parallel</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">table</span> <span class="p">{</span>
+  <span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="text-alignment">Text Alignment</h3>
+<p>Text in Tabels can be aligned within the cells</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">td</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="styling">Styling</h3>
+<p>Tables can be stripted usin <code class="language-plaintext highlighter-rouge">nth-child()</code></p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">tr</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">even</span><span class="o">)</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#f2f2f2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>color can be altered</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">th</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#4CAF50</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+
+
+                <footer class="site-footer">
+
+                    
+                        Contributions made by &%9<a href="/contributors/index.html?name=LoudShadow">LoudShadow</a>&thinsp;<a href="/contributors/index.html?name=Mat">Mat</a>&thinsp;
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

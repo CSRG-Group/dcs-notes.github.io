@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Analysis of algorithms</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Analysis of algorithms</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#running-time">Running time</a></li><li><a href="#experimental-trials">Experimental trials</a></li><li><a href="#theoretical-analysis">Theoretical analysis</a></li><li><a href="#common-functions-of-running-time">Common functions of running time</a></li><li><a href="#random-access-machine-ram-model">Random Access Machine (RAM) model</a></li><li><a href="#asymptotic-algorithm-analysis">Asymptotic Algorithm Analysis</a><ul><li><a href="#big-o-notation">Big-O Notation</a><ul><li><a href="#big-o-of-a-function">Big-O of a Function</a></li></ul></li><li><a href="#worst-case-analysis-on">Worst Case Analysis \(O(n)\)</a></li><li><a href="#big-omega-omegan">Big-Omega \(\Omega(n)\)</a></li><li><a href="#big-theta-thetan">Big-Theta \(\Theta(n)\)</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="arrays-and-lists.html" title="arrays-and-lists.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="recursive-algorithms.html" title="recursive-algorithms.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="running-time">Running time</h2>
+
+<p>To assess how good an algorithm is, we often use the metric of running time compared with the size of the input to the algorithm.</p>
+
+<ul>
+  <li><strong>Worst case</strong> \(O(n)\) – which we usually focus on, since it is both <strong>easy to analyse and useful</strong></li>
+  <li><strong>Average Case</strong> \(\Theta(n)\) – often more <strong>difficult to assess</strong></li>
+  <li><strong>Best Case</strong> \(\Omega(n)\) – often <strong>not sufficiently representative</strong> of the algorithm</li>
+</ul>
+
+<h2 id="experimental-trials">Experimental trials</h2>
+
+<blockquote>
+  <p>One of the ways to assess the running time is to write a program implementing the algorithm, then running for inputs of different sizes. Then fit curves to a plot of the results to try to classify the algorithm.</p>
+</blockquote>
+
+<p>This has a few <strong>drawbacks</strong> though</p>
+
+<ul>
+  <li>Need to implement the algorithm – might be difficult.</li>
+  <li>Many ways to implement – reason for analysis is to decide which one to implement</li>
+  <li>Not all inputs can be covered – not representative</li>
+  <li>Dependent on machine hardware and software environments – difficult to equate between different tests, same specs and same environment needed.</li>
+</ul>
+
+<h2 id="theoretical-analysis">Theoretical analysis</h2>
+
+<blockquote>
+  <p>Theoretical analysis is given a high-level description of the algorithm (not a full implementation), expressing the running time as a function of the input size \(n\).</p>
+
+  <p>Pseudocode is used for this high-level description, which lies between English prose and program code. It has <strong>no formal syntax</strong>, and allows omission of some aspects of the implementation to make analysis easier.</p>
+</blockquote>
+
+<p>This has the benefits of:</p>
+
+<ul>
+  <li>Allowing all possible inputs to be covered</li>
+  <li>Being independent of machine hardware and software environments, so easier to equate between different tests</li>
+</ul>
+
+<h2 id="common-functions-of-running-time">Common functions of running time</h2>
+
+<p><img src="https://miro.medium.com/max/2928/1*5ZLci3SuR0zM_QlZOADv8Q.jpeg" alt="Complexity chart" class="center" /></p>
+
+<p><a href="https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7">Image source</a></p>
+
+<h2 id="random-access-machine-ram-model">Random Access Machine (RAM) model</h2>
+
+<blockquote>
+  <p>To analyse programs, we use a <strong>simplified model</strong> of how computers work to <strong>help</strong> think about the time an high level operation takes to run by expressing it as fundamental operations which are equivocal to real computers.</p>
+</blockquote>
+
+<p>In the RAM model, we consider a computer with (assumptions):</p>
+<ul>
+  <li>A single CPU executing a single program</li>
+  <li>An arbitrarily large indexable array of memory</li>
+  <li>A set of registers memory can be copied into</li>
+  <li>Basic arithmetic and memory allocation operations</li>
+</ul>
+
+<p>Generally, we tend to abstract beyond this model to just consider a set of <strong>primitive operations</strong> (usually single lines of pseudocode) that take constant time <strong>irrespective</strong> of input size in the RAM model.</p>
+
+<blockquote>
+  <p>We then <strong>analyse performance</strong> by <strong>counting</strong> the number of operations needed, as their number is proportional to running time.</p>
+</blockquote>
+
+<p>This allows us to express the running time of the program as being between the best and worst cases of number of operations needed, multiplied their running time</p>
+<ul>
+  <li>Let \(T(n)\) denote the running time, \(b(n)\) the best case, \(w(n)\) the worst case, and \(t\) the time taken for 1 primitive operation</li>
+  <li>The running time is bounded as \(t \times b(n) \leq T(n) \leq t \times w(n)\)</li>
+  <li>This metric of running time \(T(n)\) is <strong>not dependent</strong> on machine hardware or software environment – it is an <strong>intrinsic property</strong> of the algorithm.</li>
+</ul>
+
+<h2 id="asymptotic-algorithm-analysis">Asymptotic Algorithm Analysis</h2>
+
+<blockquote>
+  <p><strong>Asymptotic algorithm analysis</strong> is a way we can take pseudocode and use it to analyse an algorithm.</p>
+</blockquote>
+
+<p>We most commonly conduct worst case analysis, \(O(n)\), but there is also \(\Omega(n)\) (best case) and \(\Theta(n)\) (average case).</p>
+
+<h3 id="big-o-notation">Big-O Notation</h3>
+
+<blockquote>
+  <p><strong>Big-O</strong> is a way of quantifying the running time of an algorithm, allowing easy comparison. Given the functions \(f(n)\) and \(g(n)\), we say that \(f(n)\) is \(O(g(n))\) if:</p>
+
+\[\begin{align}
+&amp;f(n) \leq g(n) \cdot c,&amp; &amp;\text{for all } n \geq n_0, n \in \mathbb{N}&amp; \\
+&amp;&amp; &amp;\text{with some positive} \\ 
+&amp;&amp; &amp;\text{constants } c \text{ and } n_0
+\end{align}\]
+
+  <p>Informally, this means that \(f(n)\) is “overtaken” by \(g(n)\) for all values above <strong>some threshold</strong> \(n _0\) usually we consider \(n \rightarrow \infty\), <strong>allowing scaling</strong> by a linear factor \(c\).</p>
+</blockquote>
+
+<p>This can be phrased as “\(f(n)\) is \(O(g(n))\) if \(g(n)\) grows as fast or faster than \(f(n)\) in the limit of \(n \rightarrow \infty\)” (<a href="https://math.stackexchange.com/questions/620145/understanding-definition-of-big-o-notation/620150#620150">Source</a>)</p>
+
+<p>Big-O notation, thus, <strong>gives an upper bound</strong> on the growth rate of a function as its input size <em>n</em> tends to infinity. Hence, \(f(n)\) is \(O(g(n))\) means that the <strong>growth rate of \(f(n)\)</strong> is <strong>no greater</strong> than that of the <strong>growth rate of \(g(n)\)</strong>.</p>
+
+<h4 id="big-o-of-a-function">Big-O of a Function</h4>
+
+<p>Informally, the Big-O of a function is the term that grows the fastest, as it will come to <strong>dominate</strong> for a very large <em>n</em>, and we then just pick <em>n<sub>0</sub></em> where that term is dominating, and use <em>c</em> to shift the function to fit.</p>
+
+<blockquote>
+  <p>So, if \(f(n)\) is a polynomial of degree \(d\), then \(f(n)\) is \(O(n^d)\), as we can drop all <strong>but</strong> the fastest growing term.</p>
+</blockquote>
+
+<p>When writing Big-O, we:</p>
+
+<ul>
+  <li>Try to use the smallest possible class of functions which fulfils the criteria.
+    <ul>
+      <li>E.g. <em>O(n)</em> not <em>O(n<sup>2</sup>)</em>, whilst both technically are Big-O of linear functions. (<a href="https://cs.stackexchange.com/questions/77653/why-the-big-oh-of-a-linear-function-is-n2">Why is O(n<sup>2</sup>) valid for linear functions?</a>)</li>
+    </ul>
+  </li>
+  <li>Use the simplest expression of the class.
+    <ul>
+      <li>E.g. <em>O(n)</em> not <em>O(5n)</em>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="worst-case-analysis-on">Worst Case Analysis \(O(n)\)</h3>
+
+<blockquote>
+  <p>To prove something is \(O(f(n))\), we need to show that we can pick a \(c\) and an \(n\) which <strong>satisfy the condition</strong>.</p>
+
+  <p>To prove something is <strong>not</strong> ,\(O(f(n))\) we show that there is <strong>no</strong> \(c\) for any arbitrarily large \(n_0\) which satisfies the condition.</p>
+</blockquote>
+
+<p>To analyse</p>
+
+<ol>
+  <li>Consider the <strong>worst-case</strong> number of primitive operations that the algorithm could require to run as a <strong>function of its input size</strong>.</li>
+  <li>Express this derived <strong>function</strong> in <strong>Big-O notation</strong>.</li>
+</ol>
+
+<p><strong>An example,</strong> of this being formally calculated (taken from <em>Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser</em>) is shown below:</p>
+
+<blockquote>
+  <p>Consider the function \(2n + 10\). To show that it is \(O(n)\), we take:</p>
+
+\[\begin{align}
+ 2n + 10 &amp;\le c \cdot n \\
+ cn-2n &amp;\ge 10   \\
+ n &amp;\ge \frac{10}{c-2}
+ \end{align}\]
+
+  <p>Hence, picking <em>c = 3</em> and <em>n<sub>0</sub> = 10</em> the condition is <strong>satisfied</strong>.</p>
+</blockquote>
+
+<p><img src="./images/bigOh.png" alt="bigOh" class="center" /></p>
+
+<h3 id="big-omega-omegan">Big-Omega \(\Omega(n)\)</h3>
+
+<blockquote>
+  <p>\(\Omega(n)\) looks at <strong>best cases.</strong> \(f(n) = \Omega(g(n))\) if</p>
+
+\[\begin{align}
+&amp;f(n) \ge g(n) \cdot c,&amp; &amp;\text{for all } n \geq n_0, n \in \mathbb{N}&amp; \\
+&amp;&amp; &amp;\text{with some positive} \\ 
+&amp;&amp; &amp;\text{constants } c \text{ and } n_0
+\end{align}\]
+
+  <p>This means that \(g(n)\cdot c\) will always be lesser than or equals to \(f(n)\) after a certain threshold \(n_0\). You can think of it as a lower bound to \(f(n)\), where you’re saying that \(f(n)\) cannot get any “better/faster” than this.</p>
+</blockquote>
+
+<h3 id="big-theta-thetan">Big-Theta \(\Theta(n)\)</h3>
+
+<blockquote>
+  <p>\(\Theta(n)\) looks at <strong>average cases.</strong> We say that \(f(n) = \Theta(g(n))\) when \(f(n)\) is asymptotically <strong>equal to</strong> \(g(n)\), this happens if and only if</p>
+
+\[f(n) = \Theta(g(n)) \iff f(n) = O(g(n)) \land f(n) = \Omega(g(n)) \\
+\begin{align}\\
+&amp;g(n)\cdot c_\Omega \le f(n) \le g(n) \cdot c_O,&amp; &amp;\text{for all } n \geq n_0, n \in \mathbb{N}&amp; \\
+&amp;&amp; &amp;\text{with some positive} \\ 
+&amp;&amp; &amp;\text{constants } c_O, c_\Omega, \text{ and } n_0
+\end{align}\]
+
+  <p>Here this means that for a specific \(g(n)\), we can scale it by two variables \(c_O\) and \(c_\Omega\) and \(f\) will be always “fit in-between” the two scaled \(g\)s after a certain threshold \(n_0\).</p>
+</blockquote>
+
+<p><a href="https://courses.cs.washington.edu/courses/cse326/06au/lectures/lect03.pdf">Additional notes</a></p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

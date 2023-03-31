@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Virtualization</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Virtualization</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#introduction-to-virtualization">Introduction to Virtualization</a><ul><li><a href="#architecture-of-a-physical-machine">Architecture of a Physical Machine</a></li><li><a href="#virtualization-architecture">Virtualization Architecture</a><ul><li><a href="#embedded">Embedded</a></li><li><a href="#non-embedded">Non-embedded</a></li></ul></li><li><a href="#abstract-of-physical-resources">Abstract of Physical Resources</a></li><li><a href="#life-cycles-of-vms">Life cycles of VMs</a></li></ul></li><li><a href="#impact-of-virtualization-on-security">Impact of Virtualization on Security</a><ul><li><a href="#isolated">Isolated</a></li><li><a href="#transient">Transient</a></li><li><a href="#state-restoring">State Restoring</a><ul><li><a href="#security-patches">Security Patches</a></li><li><a href="#data-lifetime">Data Lifetime</a></li></ul></li><li><a href="#low-privilege">Low Privilege</a><ul><li><a href="#security-patch">Security Patch</a></li></ul></li><li><a href="#mobile">Mobile</a></li><li><a href="#easy-to-create">Easy to Create</a></li><li><a href="#lack-of-identity">Lack of Identity</a></li></ul></li><li><a href="#other-security-issues">Other Security Issues</a><ul><li><a href="#hypervisor-intrusion">Hypervisor Intrusion</a></li><li><a href="#security-due-to-inter-vm-communication">Security due to Inter-VM communication</a></li><li><a href="#denial-of-service">Denial of Service</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<a href="part8.html" title="part8.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p align="center">Virtualization technology allows multiple operating systems to share a computer – a running instance of an operating system is called a <b>Virtual Machine</b></p>
+
+<h2 id="introduction-to-virtualization">Introduction to Virtualization</h2>
+
+<p><strong>Terminologies.</strong></p>
+
+<ul>
+  <li>Host Machine – physical machine VM is running on</li>
+  <li>Host OS – OS in the host machine</li>
+  <li>Guest OS – OS in the VM</li>
+</ul>
+
+<h3 id="architecture-of-a-physical-machine">Architecture of a Physical Machine</h3>
+
+<blockquote>
+  <p>The OS sits between the hardware and its applications and manages the interaction between application and hardware resources. It is the <strong>lowest level software</strong> in a machine.</p>
+</blockquote>
+
+<p><img src="part9.assets/image-20210513154828402.png" alt="image-20210513154828402" style="zoom:67%;" class="center" /></p>
+
+<h3 id="virtualization-architecture">Virtualization Architecture</h3>
+
+<h4 id="embedded">Embedded</h4>
+
+<p>In an embedded architecture, the hypervisor sits in between guest OSes and hardware. Each grey box is called a domain and is a VM – they are managed by the hypervisor.</p>
+
+<p><strong>Properties of Domain0</strong> in Xen</p>
+
+<ul>
+  <li>Domain0 is able to manage and control other guest domains</li>
+  <li>Domain0 contain device drivers to access hardware, guest domains cannot access hardware
+    <ul>
+      <li>When guest domains want to request access to hardware, they are routed to Domain0.</li>
+      <li>Multiple guest domains share resources with other guest domains (resources are virtualized).</li>
+    </ul>
+  </li>
+  <li>Can interact with other VMs</li>
+</ul>
+
+<p><img src="part9.assets/image-20210513155405572.png" alt="image-20210513155405572" style="zoom:67%;" class="center" /></p>
+
+<h4 id="non-embedded">Non-embedded</h4>
+
+<p>Hypervisor runs as an application to host OS e.g. QEMU.</p>
+
+<blockquote>
+  <p>These type of systems use a technique called <strong>dynamic binary translation</strong> technique. This translates an instruction issued in Guest OS to an instruction that can run in the host OS.</p>
+
+  <p>This is also why non-embedded architectures are slower than embedded, because every instruction has to be <strong>translated</strong>.</p>
+</blockquote>
+
+<p><img src="part9.assets/image-20210513160511698.png" alt="image-20210513160511698" style="zoom:67%;" class="center" /></p>
+
+<h3 id="abstract-of-physical-resources">Abstract of Physical Resources</h3>
+
+<p>Inside the <strong>hypervisor</strong>, hardware is simulated as files – virtual disk (vDisk), virtual CPU (vCPU), virtual memory (vRAM).</p>
+
+<ul>
+  <li>These files are transferred to real hardware when necessary</li>
+  <li>This is why in the coursework we create a <code class="language-plaintext highlighter-rouge">.cow</code> file for <strong>QEMU</strong></li>
+</ul>
+
+<h3 id="life-cycles-of-vms">Life cycles of VMs</h3>
+
+<p>In a normal physical machine, you can be in 3 states: <strong>Off</strong>, <strong>Running</strong>, or <strong>Suspended</strong> (Sleep).</p>
+
+<p>In VMs, you have an additional state: <strong>Paused</strong></p>
+
+<ul>
+  <li>VM is still resident in the host machine but not allocated CPU.</li>
+  <li>When multiple VMs are resident, only 1 VM is allocated CPU at a time (running on the physical machine), other VMs will be paused.</li>
+</ul>
+
+<h2 id="impact-of-virtualization-on-security">Impact of Virtualization on Security</h2>
+
+<p>Below are a list of properties of VMs, and their impact on security.</p>
+
+<h3 id="isolated">Isolated</h3>
+
+<p><em>Isolation</em></p>
+
+<p>In a traditional multi-user OS, all user in the computer can be affected by an attack</p>
+
+<blockquote>
+  <p>In virtualisation, each guest OS is encapsulated and hardware is abstracted</p>
+
+  <ul>
+    <li>Each VM accesses separate file systems and memory blocks</li>
+    <li>VM technology provides an extra layer of isolation.</li>
+  </ul>
+</blockquote>
+
+<p>Ideally a VM compromised by attackers will not affect the host or other VMs on the host</p>
+
+<p>Isolation and abstraction of VMs provides an <strong>additional security</strong> over traditional multi-user computers</p>
+
+<h3 id="transient">Transient</h3>
+
+<p><em>Transience</em></p>
+
+<p>Physical servers are often always on while VMs can be started very quickly and remotely</p>
+
+<blockquote>
+  <p>Typically VMs are <strong>turned on only when they are needed</strong>, and turned off when they are not used anymore</p>
+
+  <p><strong>Limiting operating time</strong> of VMs <strong>mitigates security risks</strong> because we can only infect a machine (physical or virtual) that is on.</p>
+</blockquote>
+
+<p><strong>However. It is a double edged sword.</strong></p>
+
+<p>When virus hits <strong>conventional</strong> networks of physical machines, administrators often do the following</p>
+
+<ul>
+  <li>Identify which machines are infected</li>
+  <li>Clean up infected machines</li>
+  <li>Apply security patches to prevent re-infection</li>
+</ul>
+
+<blockquote>
+  <p>In virtualised environments, infected VMs may appear briefly and disappear before they can be detected making it <strong>difficult to identify which VMs are infected</strong>.</p>
+
+  <p>When performing patch management, virus and vulnerability scanning, the <strong>machines must be on</strong>. Because VMs are transient and not always on – <strong>difficult to fix the vulnerability of infected VMs</strong>.</p>
+
+  <p>The infected VMs may appear online briefly, infect other VMs and disappear offline before they are noticed making it <strong>difficult to <u>eradicate</u> the infection in the system.</strong></p>
+</blockquote>
+
+<p>As a result, in virtualisation environment worm/virus infections tend to persist at a low level and flare up again at another time.</p>
+
+<h3 id="state-restoring">State Restoring</h3>
+
+<blockquote>
+  <p>The virtual disk for a VM is stored as a file on the hypervisor. This allows the hypervisor to record changes to the contents of the virtual disk.</p>
+
+  <ul>
+    <li>
+      <p>It is <strong>easy</strong> for VMs to <strong>restore</strong> to <strong>previous states</strong>.</p>
+    </li>
+    <li>
+      <p>State restore <strong>provides a virus removal mechanism</strong> for infected VMs and helps <strong>ensure data integrity</strong>.</p>
+    </li>
+  </ul>
+</blockquote>
+
+<p><strong>However,</strong> if the hypervisor is compromised then we can’t restore state, and attackers have unlimited freedom and access to the hardware. (Limitation)</p>
+
+<p><strong>Additionally,</strong> since it is easy to restore infected VMs many users <strong>are not motivated</strong> to secure their VMs with virus protection</p>
+
+<ul>
+  <li>60% of VMs in production are less secure than their physical counterparts, due to this factor</li>
+</ul>
+
+<h4 id="security-patches">Security Patches</h4>
+
+<p>In physical machines, when a new <strong>security patch</strong> is applied, the machines remain patched. A VM may also get the security patch, but if the user rolls back to a previous state, then the guest OS is no longer patched. It is <strong>challenging</strong> for system administrators <strong>to apply security patch</strong> in VMs because they have to</p>
+
+<ul>
+  <li>record when patches have been applied</li>
+  <li>evaluate which patches need to be applied again when a VM is restored to a previous state</li>
+</ul>
+
+<blockquote>
+  <p><strong>Furthermore</strong>, rolling back a VM may <strong>expose vulnerabilities</strong></p>
+
+  <ul>
+    <li>re-expose patched vulnerabilities or virus</li>
+    <li>re-enable accounts or passwords that have been disabled</li>
+    <li>reuse encryption keys/tokens that have been deleted.</li>
+  </ul>
+</blockquote>
+
+<h4 id="data-lifetime">Data Lifetime</h4>
+
+<blockquote>
+  <p>A fundamental principle for building secure systems is <strong>minimising the amount of time</strong> that sensitive data remains in a system</p>
+</blockquote>
+
+<p>In virtualised system, all changes are <strong>recorded</strong>, which <strong>undermines</strong> the principle. Moreover, the state changes will be transferred to persistent storage, which again break the security principle.</p>
+
+<h3 id="low-privilege">Low Privilege</h3>
+
+<p>In a physical computer, OS is the software that has the highest privilege in the computer</p>
+
+<ul>
+  <li>OS can only be monitored by itself in a physical machine</li>
+  <li>If the OS is infected with virus, it cannot be trusted. (Not reliable)</li>
+</ul>
+
+<blockquote>
+  <p>A VM has <strong>lower privilege</strong> than the hypervisor.</p>
+
+  <ul>
+    <li>VMS can be <strong>monitored by either the hypervisor</strong>, or by an <strong>authorised dedicated VM</strong> (Domain0)
+      <ul>
+        <li>The <strong>latter is preferred</strong> method since it helps <strong>keep the hypervisor simple</strong></li>
+        <li>The hypervisor gives the dedicated VM the permission to view resources allocated to the monitored VM.</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h4 id="security-patch">Security Patch</h4>
+
+<p>In physical machines, when a new security patch is applied, the machines remain patched ,</p>
+
+<p>A VM may also get the security patch, but if the user rolls back to a previous state, then the guest OS is no longer patched</p>
+
+<p>Therefore, it is very challenging for system administrators to apply security patch in VMs because they have to</p>
+
+<ul>
+  <li>record when patches have been applied</li>
+  <li>evaluate which patches need to be applied again when a VM is restored to a previous state</li>
+</ul>
+
+<h3 id="mobile">Mobile</h3>
+
+<p><em>Mobility</em></p>
+
+<p>VMS are not physical, everything about a VM is virtualised as files – makes <strong>theft</strong> of data easier.</p>
+
+<p>In fact, attackers <strong>can access copies</strong> of VM that are located on the <strong>physical disk</strong> of the host machine. Because the Guest OS has no access to that disk, the VM will <strong>not show any records</strong> of intrusion.</p>
+
+<blockquote>
+  <p>Being <strong>offline</strong> does not guarantee safety. An attacker can access and modify VM files while the VM is offline. A physical machine must be running to be susceptible.</p>
+</blockquote>
+
+<h3 id="easy-to-create">Easy to Create</h3>
+
+<p>In a traditional network of physical machines, all machines have same configurations.</p>
+
+<ul>
+  <li>When there are security vulnerabilities, the same security measure can be applied to all machines</li>
+</ul>
+
+<blockquote>
+  <p>VMs can be created rapidly, each with a unique configuration (<strong>VM Sprawl</strong>)</p>
+
+  <ul>
+    <li><strong>Cannot apply</strong> a uniform security measure to all VMs</li>
+    <li>The rapid growth of VMs exceeds the administrators’ ability to secure each unique VM</li>
+  </ul>
+</blockquote>
+
+<h3 id="lack-of-identity">Lack of Identity</h3>
+
+<p>In a traditional environment, a machine can be identified by MAC address, Ethernet port number. It is used as a mechanism of non-repudiation – the system has the mechanism to check who did something.</p>
+
+<blockquote>
+  <p>In a virtualised system , there is <strong>only one</strong> physical MAC address and a Port number, <strong>but multiple</strong> VMs are running so we cannot use MAC or ethernet port number for <strong>non-repudiation</strong> anymore.</p>
+</blockquote>
+
+<h2 id="other-security-issues">Other Security Issues</h2>
+
+<h3 id="hypervisor-intrusion">Hypervisor Intrusion</h3>
+
+<blockquote>
+  <p>If the hypervisor is compromised, the attacker can access all the VMs.</p>
+</blockquote>
+
+<p>For non-embedded hypervisor, the hypervisor is a program, running on the host OS</p>
+
+<ul>
+  <li>If it is compromised, all VMs can be accessed</li>
+  <li>The host OS will be in danger as well, as the hypervisor converts instructions (dynamic binary translation) for the guest OS into instructions for the host OS
+    <ul>
+      <li>This means he instructions sent by hypervisor <strong>can no longer be trusted</strong> as it could be malicious.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="security-due-to-inter-vm-communication">Security due to Inter-VM communication</h3>
+
+<blockquote>
+  <p>“VM-to-VM” attacks means that attackers user one VM to access or control other VMs on the same hypervisor.</p>
+</blockquote>
+
+<p>Attacks can be achieved by inter-VM communication. A malicious VM can potentially access other VMs because all VMs share resources (memory, network connections etc.) on the hypervisor.</p>
+
+<p><em>One example is with the embedded architecture of virtualization.</em></p>
+
+<p>Domain0 is connected to all guest domains and inter-VM communication happens through the hypervisor. An attack on the <strong>shared memory segment</strong> of the hypervisor can use 1 VM to attack another VM.</p>
+
+<h3 id="denial-of-service">Denial of Service</h3>
+
+<blockquote>
+  <p>An <strong>improperly configured</strong> hypervisor can allow a <strong>single VM</strong> to consume all resources, starving other running VMs.</p>
+</blockquote>
+
+<p>However, the solution to this is <strong>simple</strong>. Hypervisors should prevent any VM from gaining 100% usage of any resources.</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

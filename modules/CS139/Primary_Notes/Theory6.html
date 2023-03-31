@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Security</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Security</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#hashing-algorithms">Hashing Algorithms</a><ul><li><a href="#salt">Salt</a></li></ul></li><li><a href="#redirect">Redirect</a></li><li><a href="#query-strings">Query Strings</a></li><li><a href="#https">HTTPS</a><ul><li><a href="#operation">Operation</a><ul><li><a href="#public-key">Public Key</a></li><li><a href="#certificate-authority">Certificate Authority</a></li></ul></li><li><a href="#drawbacks">Drawbacks</a></li><li><a href="#man-in-the-middle">Man in the Middle</a></li></ul></li><li><a href="#sql-injection">SQL Injection</a><ul><li><a href="#prevention">Prevention</a></li></ul></li><li><a href="#session-sniffing">Session Sniffing</a></li><li><a href="#session-fixation">Session Fixation</a></li><li><a href="#xss">XSS</a><ul><li><a href="#persistent-xss">Persistent-XSS</a></li></ul></li><li><a href="#directory-traversal">Directory traversal</a></li><li><a href="#php-cgi-vulnerabilities">PHP-CGI Vulnerabilities</a><ul><li><a href="#other-configuration-advice">Other Configuration Advice</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Theory5.html" title="Theory5.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory7.html" title="Theory7.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="hashing-algorithms">Hashing Algorithms</h2>
+
+<ul>
+  <li><strong>md5</strong> - easily calculated but clashes have been found</li>
+  <li><strong>sha1</strong> - (160 bits) easily calculated</li>
+  <li><strong>Bcrypt</strong> - current best recommendation</li>
+</ul>
+
+<p>Passwords are still susceptible to dictionary attacks</p>
+
+<p>Passwords should be unique when stored</p>
+
+<h3 id="salt">Salt</h3>
+<p>a salt is a random value for each user and is included when checking the password. Can be stored alongside the password in the database.</p>
+
+<ul>
+  <li>11:11:23 + “Password” =&gt; asdfkjh67fasf69d8f6aadf4w8…..</li>
+  <li>22:21:23 + “Password” =&gt; flkafj948rj9fjsd9cnyrur94jrf….</li>
+</ul>
+
+<p>harder to crack many passwords
+only needed for SHA1 php <code class="language-plaintext highlighter-rouge">password_hash</code> adds salt automatically</p>
+
+<h2 id="redirect">Redirect</h2>
+<p>When submitting a from the page should redirect to a confirmation page to prevent re entry , and prevent re-submit through refreshing the page. causing a double submit.</p>
+
+<h2 id="query-strings">Query Strings</h2>
+<p>Query strings can be modified by the user
+and should be checked for validity nothing should be assumed</p>
+
+<p>known as sanitizing / validating input</p>
+
+<h2 id="https">HTTPS</h2>
+
+<p>Https is a protocol for secure communication over a network, built on the SSL/TLS protocol.</p>
+
+<p>the HTTP is encrypted but is not changed.</p>
+
+<p>HTTPS should be used for all sensitive data.</p>
+
+<p>Now all services opt for HTTPS and HTTP is rarely used.</p>
+
+<h3 id="operation">Operation</h3>
+
+<ol>
+  <li>The client sends a list specifications to the server
+    <ul>
+      <li>what SSL/TLS version it is running</li>
+      <li>What ciphersuits it wants to use</li>
+      <li>What compression methods it wants to use</li>
+    </ul>
+  </li>
+  <li>The server selects the highest SSL/TLS version and agrees on ciphersuits and compression</li>
+  <li>The server sends a certificate to the client which must
+    <ul>
+      <li>be trusted by the client explicitly</li>
+      <li>be signed by a party the client trusts</li>
+    </ul>
+  </li>
+  <li>The server has also sends an asymmetric key continued with the certificate</li>
+  <li>The client and server setup symmetric key encryption</li>
+  <li>All communication is then encrypted</li>
+  <li>The server then verifies the MAC
+    <h4 id="public-key">Public Key</h4>
+    <p>These are the keys that are used to encrypt data asymmetrically.
+They are distributed with a certificate signed by a certificate authority.</p>
+    <h4 id="certificate-authority">Certificate Authority</h4>
+    <p>These are 3rd parties and the public keys are installed with OS/ browser establishing trust and sign certificates to verify identity.</p>
+  </li>
+</ol>
+
+<p>Signatures can be compared with the public key to ensure identity.</p>
+
+<p>Issuing a certificate is done when a domain registrant can prove they own the domain</p>
+
+<h3 id="drawbacks">Drawbacks</h3>
+<p>Encryption algorithms can be computationally intensive</p>
+
+<p>Dedicated and faster hardware generally now makes this negligible</p>
+
+<h3 id="man-in-the-middle">Man in the Middle</h3>
+<p>a machine sits in the middle and read the messages</p>
+
+<p>even if keys are transmitted fake keys can be made can can be decrypted in the middle</p>
+
+<p>By signing certificated fake keys cannot be made</p>
+
+<h2 id="sql-injection">SQL Injection</h2>
+<p>Transmitting SQL strings to modify the database request</p>
+
+<p>Consider the defaut request
+<code class="language-plaintext highlighter-rouge">"SELECT * FROM users WHERE name ='"+UserName+"';"</code></p>
+
+<p>By adding ``or ‘1’=1` to a username entry box
+the query becomes</p>
+
+<p><code class="language-plaintext highlighter-rouge">"SELECT * FROM users WHERE name = '' or '1'=1;"</code></p>
+
+<p>this would return all users from the database</p>
+
+<p>Other issues could be destroying databases or modifying entries.</p>
+
+<h3 id="prevention">Prevention</h3>
+<p>The use of parameterized statements that has placeholder values where the data can be added later</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$stmt</span><span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="nf">prepare</span><span class="p">(</span><span class="s2">"Select bar FORM foo WHERE id=;id"</span><span class="p">);</span>
+<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="nf">bindValue</span><span class="p">(</span><span class="s2">";id"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="no">SQLITE3_INTEGER</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span> <span class="nf">execute</span><span class="p">();</span>
+</code></pre></div></div>
+<p>This treats all data as data and never as instructions.</p>
+
+<p>Alternatively <code class="language-plaintext highlighter-rouge">addslashes()</code> can be used to escape any characters but is not a preferred method</p>
+
+<p>Other additional ensures can be database access management such as limits on deletion</p>
+
+<h2 id="session-sniffing">Session Sniffing</h2>
+<p>An attacker observers communication between a server and a victim , Cookies and session data could be reconstructed which could then be used to impersonate the victim.</p>
+
+<h2 id="session-fixation">Session Fixation</h2>
+<p>An attacker obtains a session ID form the server
+The attacker then forces the session id of the victim to be identical to theirs
+The victim logs on, the attacker can then use their session id</p>
+
+<h2 id="xss">XSS</h2>
+<p>Cross Site scripting, Injects client script into webpages</p>
+
+<p>Accounts for 84% of all security Vulnerabilities documents by Symantec in 2007</p>
+
+<p>Non-Persistent data is provided by a client and is used by a server without proper sanitization. The content is uploaded back to the page could be provided by clicking in a link like a GET request</p>
+
+<p>consider</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$name</span> <span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'name'</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">"Hi </span><span class="nv">$name</span><span class="s2">!"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>the user gould be given a link with HTTP / javascript as name the javascript would then be run by the browser.</p>
+
+<p>this should be avoided by filtering</p>
+
+<p><code class="language-plaintext highlighter-rouge">$name= filter_input(INPUT_GET,'name',FILTER_SANITIZE_STRING);</code></p>
+
+<p>and output should be escaped</p>
+
+<pre><code class="language-PHP">$name= filter_input(INPUT_GET,'name',FILTER_SANITIZE_STRING);
+echo 'Hi '.htmlspecialchars($name,ENT_COMPAT,'UTF-8')
+</code></pre>
+
+<p>The recommendation is to store the data in as raw form as possible and only convert when it is time to output it.</p>
+
+<h3 id="persistent-xss">Persistent-XSS</h3>
+<p>When data is stored to a database then redisplayed later for a user, e.g a comment.</p>
+
+<p>All data should be escaped.</p>
+
+<h2 id="directory-traversal">Directory traversal</h2>
+
+<p>A user many insert a path outside the web</p>
+
+<p>Restrict access to only some directories (whitelisting)</p>
+
+<p>Convert paths to absolute and ensure they are in the correct directory</p>
+
+<h2 id="php-cgi-vulnerabilities">PHP-CGI Vulnerabilities</h2>
+
+<p>PHP-CGI  had the option to server the php source</p>
+
+<p>another option allows the setting of variables this could allow variable and variable manipulation this should be disable d in sever settings</p>
+
+<h3 id="other-configuration-advice">Other Configuration Advice</h3>
+<p><code class="language-plaintext highlighter-rouge">allow_url_fopen</code> - indicates wether remote files can be downloaded
+                    should be off</p>
+
+<p><code class="language-plaintext highlighter-rouge">allow_url_include</code> - indicated wether scripts can include/ require remote files
+turn off if not needed</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

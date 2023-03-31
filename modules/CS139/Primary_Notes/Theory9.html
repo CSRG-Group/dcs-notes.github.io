@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Web Architectures and Performance</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Web Architectures and Performance</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#three-tier-architecture">Three Tier Architecture</a></li><li><a href="#scaling">Scaling</a><ul><li><a href="#vertical-scaling">Vertical Scaling</a><ul><li><a href="#advantages">Advantages</a></li><li><a href="#disadvantages">Disadvantages</a></li></ul></li><li><a href="#horizontal-scaling">Horizontal Scaling</a><ul><li><a href="#advantages-1">Advantages</a></li><li><a href="#disadvantages-1">Disadvantages</a></li></ul></li><li><a href="#cloud-based-infrastructure">Cloud Based Infrastructure</a></li><li><a href="#caches">Caches</a></li><li><a href="#message-queues">Message Queues</a></li></ul></li><li><a href="#measuring-performance">Measuring Performance</a><ul><li><a href="#throughput">Throughput</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Theory8.html" title="Theory8.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory10.html" title="Theory10.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="three-tier-architecture">Three Tier Architecture</h2>
+<ul>
+  <li>Web Tier
+    <ul>
+      <li>Handles requests</li>
+      <li>Serves static assets</li>
+      <li>(apache)</li>
+    </ul>
+  </li>
+  <li>Application tier
+    <ul>
+      <li>Application specific logic</li>
+      <li>(PHP C++ C## …)</li>
+    </ul>
+  </li>
+  <li>Database Tier
+    <ul>
+      <li>File storage</li>
+      <li>(SQL MongoDB …)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="scaling">Scaling</h2>
+<h3 id="vertical-scaling">Vertical Scaling</h3>
+<p>An older way of scaling or for small companies</p>
+
+<p>If the older server is too small</p>
+
+<p>Buy a bigger server</p>
+
+<p>Fairly practical 
+    * can fit 3TB of RAM in a 1u server
+    * a Standard rack is 42u</p>
+
+<h4 id="advantages">Advantages</h4>
+<ul>
+  <li>Can buy a small system now then expand later</li>
+  <li>Minimizes immediate capital expenditure</li>
+</ul>
+
+<h4 id="disadvantages">Disadvantages</h4>
+<ul>
+  <li>Whole machine needs to be replaced to scale up</li>
+  <li>Replacing the machine leads to downtime</li>
+  <li>Harder to scale down</li>
+</ul>
+
+<h3 id="horizontal-scaling">Horizontal Scaling</h3>
+<p>Separate the database to a separate computer</p>
+
+<p>Multiple servers can be setup to communicate with the single database computer</p>
+
+<p>Load cam be spread across the servers</p>
+
+<p>Any requests are sorted by a <strong>Load Balancer</strong> to ensure that all server are equally loaded</p>
+
+<p>Load balancing algorithms</p>
+<ul>
+  <li><strong>Round Robin</strong> - requests sent to each server in turn</li>
+  <li><strong>Weighted round robin</strong> - Request sent to each server in turn but also determined by a weighting for each server</li>
+  <li><strong>Least active sessions</strong> - requests are sent to the most lightly loaded server
+    <h4 id="advantages-1">Advantages</h4>
+  </li>
+  <li>The individual computers are cheaper</li>
+  <li>Built in redundancy if a server breaks the others can continue</li>
+  <li>Easily add more servers</li>
+</ul>
+
+<h4 id="disadvantages-1">Disadvantages</h4>
+<ul>
+  <li>Higher upfront costs</li>
+  <li>More complex systems, More Maintenance needed</li>
+</ul>
+
+<h3 id="cloud-based-infrastructure">Cloud Based Infrastructure</h3>
+<p>Cloud computing can allow users to rent servers</p>
+
+<p>Servers can be leased by the hour</p>
+
+<p>Software can monitor changes and boot up / shutdown servers to scale with demand</p>
+
+<h3 id="caches">Caches</h3>
+<p>Results of heavy computation can be cached</p>
+
+<p>Calculations does nto need to be run again</p>
+
+<h3 id="message-queues">Message Queues</h3>
+<p>Applications hav long running tasks</p>
+
+<p>Warning can take a long time</p>
+
+<p>Applications can drop messages into the queue which are then processed by software which listen’s to the queue</p>
+
+<h2 id="measuring-performance">Measuring Performance</h2>
+<p>There are different Metrics</p>
+
+<ul>
+  <li>End to End response time
+    <ul>
+      <li>Time takes form issuing a request to receiving a response</li>
+      <li>measures the application as the user sees it</li>
+      <li>Needs to be done for each request type</li>
+      <li>use JMeter, Apache BEnchmark , siege</li>
+    </ul>
+  </li>
+  <li>Site Response time
+    <ul>
+      <li>Time taken for the server to process a request</li>
+    </ul>
+  </li>
+  <li>Request Throughput
+    <ul>
+      <li>number of requests processed by the server per second</li>
+    </ul>
+  </li>
+  <li>Test for concurrent users
+    <ul>
+      <li>A test on user capacity</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>A system under load will perform differently to an idle system</strong></p>
+
+<p>When specifying performance percentiles are used as targets.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"95% of all requests should be processed in less than 5 seconds.
+The maximum acceptable processing time is 60 seconds"
+</code></pre></div></div>
+
+<p>Users expect a site ro be responsive.</p>
+
+<p>A poor experience will cause page abandonment.</p>
+
+<h3 id="throughput">Throughput</h3>
+<p>How many responses a system can service per unit time</p>
+
+<p>Range of requests</p>
+
+<p>Simulate possible user actions</p>
+
+<p>Each request represents a different proportion of application actions</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

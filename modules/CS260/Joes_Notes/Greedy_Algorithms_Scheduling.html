@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Greedy Algorithms Scheduling</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Greedy Algorithms Scheduling</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#greedy-algorithms">Greedy Algorithms</a><ul><li><a href="#interval-scheduling">Interval Scheduling</a><ul><li><a href="#the-problem">The Problem</a></li><li><a href="#strategy">Strategy</a><ul><li><a href="#checking-for-compatibility">Checking For compatibility</a></li></ul></li><li><a href="#pseudocode">Pseudocode</a></li><li><a href="#proof">Proof</a></li></ul></li><li><a href="#interval-partitioning-problem">Interval Partitioning Problem</a><ul><li><a href="#strategy-1">Strategy</a></li><li><a href="#checking-for-compatibility-1">**Checking For compatibility</a></li><li><a href="#pseudocode-1">Pseudocode</a></li><li><a href="#proof-1">Proof</a></li></ul></li><li><a href="#minimizing-lateness">Minimizing Lateness</a><ul><li><a href="#strategy-2">Strategy</a></li><li><a href="#pseudocode-2">Pseudocode</a></li><li><a href="#proof-2">Proof</a></li></ul></li><li><a href="#generic-proof-strategies">Generic Proof Strategies</a><ul><li><a href="#greedy-algorithm-stays-ahead">Greedy Algorithm Stays Ahead</a></li><li><a href="#structural">Structural</a></li><li><a href="#exchange">Exchange</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    <a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Greedy_Algorithms_Shortest_Path.html" title="Greedy_Algorithms_Shortest_Path.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="greedy-algorithms">Greedy Algorithms</h2>
+
+<h3 id="interval-scheduling">Interval Scheduling</h3>
+<h4 id="the-problem">The Problem</h4>
+
+<p>Given a set of jobs with a start and end time. Find the largest set of jobs such that no two jobs are running at the same time (the jobs are compatible).</p>
+
+<blockquote>
+  <p>Input:  A Set of jobs with a start and end time</p>
+</blockquote>
+
+<blockquote>
+  <p>Output: The largest set of jobs such that all are compatible with each other</p>
+</blockquote>
+
+<h4 id="strategy">Strategy</h4>
+
+<ul>
+  <li>Sort the jobs by end time in ascending order</li>
+  <li>Create an empty set of selected jobs</li>
+  <li>Iterate though the set of jobs</li>
+  <li>
+    <ul>
+      <li>If a job is compatible with the current selected jobs then add it</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="checking-for-compatibility">Checking For compatibility</h5>
+
+<ul>
+  <li>keep a record of the last job added</li>
+  <li>if the start time is after, or at the finish time of the last job added the jobs are compatible</li>
+</ul>
+
+<p>The set is compatible with itself and the last job added has the last finish time so any job that occurs after the finish is compatible with the rest fo the set.</p>
+
+<h4 id="pseudocode">Pseudocode</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">jobs</span> <span class="o">&lt;-</span> <span class="nc">The</span> <span class="n">available</span> <span class="n">jobs</span> <span class="n">with</span> <span class="o">.</span><span class="na">start</span> <span class="n">and</span> <span class="o">.</span><span class="na">end</span>
+
+<span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">job</span><span class="o">.</span><span class="na">end</span><span class="o">)</span> <span class="c1">// Sort the job by end time in increasing order O(nlogn)</span>
+<span class="n">selected</span> <span class="o">=</span> <span class="o">[]</span> <span class="c1">// empty set</span>
+<span class="k">for</span><span class="o">(</span> <span class="n">job</span> <span class="o">:</span> <span class="n">jobs</span> <span class="o">){</span>
+    <span class="c1">// the first job is added by default</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">selected</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span><span class="mi">0</span> <span class="o">||</span> <span class="n">last</span><span class="o">.</span><span class="na">finish</span> <span class="o">&lt;=</span> <span class="n">job</span><span class="o">.</span><span class="na">start</span><span class="o">){</span>
+        <span class="n">selected</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">job</span><span class="o">)</span>
+        <span class="n">last</span><span class="o">=</span><span class="n">job</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">selected</span> <span class="c1">// An array of selected Jobs</span>
+</code></pre></div></div>
+<div id="screen1"></div>
+
+<h4 id="proof">Proof</h4>
+<p>It is necessary to prove that this algorithm generates the most efficient set.</p>
+
+<p>proof by contradiction</p>
+
+<ul>
+  <li>Assume the set (\(i_1,i_2,i_3...i_n\)) generated by the algorithm is not the most efficient</li>
+  <li>The most efficient set (\(j_1,j_2,j_3...j_m\)) also exists such that the largest \(r\) can be found</li>
+  <li>Select an \(r\) such that \(\forall v &lt; r : i_v = j_v \land i_r \neq j_r\) (r is the largest value such that all pairs before r are equal)</li>
+</ul>
+
+<p>As $i_r$ is selected by the finish first algorithm; no job exists that is compatible with \(\{ i_1...i_{r-1} \}\) and finishes before \(i_r\) so \(j_r\) finishes after or with \(i_r\)</p>
+
+<p>This implies that \(i_r\) can replace \(j_r\) this is contradictory as it goes against the maximality of \(r\)</p>
+
+<p>A more efficient solution can not be found, so the algorithm provides the most efficient solution</p>
+
+<h3 id="interval-partitioning-problem">Interval Partitioning Problem</h3>
+
+<p>Given a set of jobs (intervals) schedule the jobs into the least number of rooms such that at any given time a room only has one job in it.</p>
+
+<blockquote>
+  <p>Input: A set of jobs with a start and end time</p>
+</blockquote>
+
+<blockquote>
+  <p>Output: A set of schedules for each room</p>
+</blockquote>
+
+<h4 id="strategy-1">Strategy</h4>
+
+<ul>
+  <li>Sort the jobs by start time</li>
+  <li>Going through each job in turn</li>
+  <li>
+    <ul>
+      <li>check if the new schedule and add the job</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="checking-for-compatibility-1">**Checking For compatibility</h4>
+<ul>
+  <li>Store the schedules in a priority queue</li>
+  <li>use the end time of the last job added as the key</li>
+  <li>Check compatibility with queue.Find_Min</li>
+  <li>if is not compatible is not compatible with any</li>
+  <li>if is compatible add to it</li>
+</ul>
+
+<h4 id="pseudocode-1">Pseudocode</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rooms</span><span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span>
+<span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">job</span><span class="o">.</span><span class="na">start</span><span class="o">)</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">job</span> <span class="n">in</span> <span class="n">jobs</span><span class="o">){</span>
+    <span class="c1">// the first job is added by default</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">rooms</span><span class="o">.</span><span class="na">length</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">rooms</span><span class="o">.</span><span class="na">find_Min_Key</span> <span class="o">&lt;=</span> <span class="n">job</span><span class="o">.</span><span class="na">start</span><span class="o">){</span>
+        <span class="n">room</span><span class="o">=</span><span class="n">rooms</span><span class="o">.</span><span class="na">pop_Min</span><span class="o">()</span>
+        <span class="n">room</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">job</span><span class="o">)</span>
+        <span class="n">rooms</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">room</span><span class="o">,</span><span class="n">job</span><span class="o">.</span><span class="na">end</span><span class="o">)</span>
+    <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+        <span class="n">room</span><span class="o">=[</span><span class="n">job</span><span class="o">]</span>
+        <span class="n">rooms</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">room</span><span class="o">,</span><span class="n">job</span><span class="o">.</span><span class="na">end</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">rooms</span><span class="o">.</span><span class="na">values</span><span class="o">();</span>
+</code></pre></div></div>
+<div id="screen1"></div>
+
+<h4 id="proof-1">Proof</h4>
+
+<p>terminology</p>
+
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">depth</code> of a set of jobs is the maximum number of jobs running at the same time.</p>
+</blockquote>
+
+<p>equally</p>
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">depth</code> of a set of intervals is the maximum number of intervals that contain any given point</p>
+</blockquote>
+
+<p>When rooms.find_Min_Key is called the room with the earliest finish time is found, there are no rooms that has a finish time earlier. This shows the <code class="language-plaintext highlighter-rouge">depth = roomCount</code>. Adding the job means <code class="language-plaintext highlighter-rouge">depth+=1</code> and <code class="language-plaintext highlighter-rouge">roomCount+=1</code>, roomCount matches depth. A more efficient solution can’t be found as <code class="language-plaintext highlighter-rouge">depth</code> \(\nless\) <code class="language-plaintext highlighter-rouge">roomCount</code></p>
+
+<h3 id="minimizing-lateness">Minimizing Lateness</h3>
+
+<p>Given a set of jobs with a running time and deadline, order the jobs to result in the smallest maximum lateness.</p>
+
+<blockquote>
+  <p>Input: Jobs with running time and deadline</p>
+</blockquote>
+
+<blockquote>
+  <p>Output: Schedule of Jobs</p>
+</blockquote>
+
+<h4 id="strategy-2">Strategy</h4>
+
+<ul>
+  <li>Sort the jobs by the deadline</li>
+</ul>
+
+<p>This is the optimal strategy adding start and end times can be added</p>
+
+<h4 id="pseudocode-2">Pseudocode</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">jobs</span> <span class="o">&lt;-</span> <span class="nc">The</span> <span class="n">available</span> <span class="n">jobs</span> <span class="n">with</span> <span class="o">.</span><span class="na">time</span> <span class="n">and</span> <span class="o">.</span><span class="na">deadline</span>
+
+<span class="n">jobs</span> <span class="o">=</span> <span class="n">jobs</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">job</span><span class="o">.</span><span class="na">deadline</span><span class="o">)</span> <span class="c1">// Sort the job by deadline time in increasing order O(nlogn)</span>
+
+<span class="c1">//not needed for correct order just being explicit</span>
+<span class="n">time</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">job</span> <span class="n">in</span> <span class="n">jobs</span><span class="o">){</span>
+    <span class="n">job</span><span class="o">.</span><span class="na">setStart</span><span class="o">(</span><span class="n">time</span><span class="o">);</span>
+    <span class="n">job</span><span class="o">.</span><span class="na">setEnd</span><span class="o">(</span><span class="n">time</span><span class="o">+</span><span class="n">job</span><span class="o">.</span><span class="na">time</span><span class="o">);</span>
+    <span class="n">time</span><span class="o">+=</span><span class="n">job</span><span class="o">.</span><span class="na">time</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">jobs</span>
+</code></pre></div></div>
+
+<h4 id="proof-2">Proof</h4>
+
+<p>Prove that the strategy produces an optimal solution</p>
+
+<blockquote>
+  <p>Observation 1: There exists an optimal solution with no idle time</p>
+</blockquote>
+
+<blockquote>
+  <p>Observation 2: The earliest-deadline-first strategy produces no idle time</p>
+</blockquote>
+
+<blockquote>
+  <p>Definition: Given a schedule S an <strong>inversion</strong> is a pair of jobs \(i\) , \(j\) where \(i \lt j\) (\(i\)’s deadline is before \(j\)’s) however \(j\) appears before \(i\)</p>
+</blockquote>
+
+<blockquote>
+  <p>Observation 3: The earliest-deadline-first strategy produces the unique schedule with no inversions</p>
+</blockquote>
+
+<blockquote>
+  <p>Observation 4: if an idle-free schedule has an inversion it has an adjacent inversion</p>
+
+  <p>Proof:</p>
+  <ul>
+    <li>Let \(i , j\) be the closest inversion</li>
+    <li>Let \(k\) be the element to the right of \(j\)</li>
+    <li>Case 1 [\(j \gt k\)] then \(j ,k\) is an adjacent inversion</li>
+    <li>Case 2 [\(j \lt k\)] then \(i,k\) is a closer inversion as \(i \lt j \lt K\) this is contradictory as \(i,j\) is a closer inversion</li>
+  </ul>
+</blockquote>
+
+<p><strong>Key Claim</strong>:
+Exchanging two adjacent inverted jobs reduces the number of inverses by 1 and does not increase the max lateness. When applied to an optimal solution the result will also be an optimal solution</p>
+
+<p><strong>Proof of claim</strong></p>
+
+<p>let \(l_x\) be the lateness before exchange and \(l'_x\) after for job \(x\).</p>
+
+<p>let \(i,j\) be jobs s.t \(i \lt j\) but \(j\) is before \(i\) in the solution \(S\) (inversion)</p>
+
+<p>\(\forall k \neq i,j : l'_k = l_k\)(1)</p>
+
+<p>\(l'_j \leq l_j\) (2)</p>
+
+<p>if job \(j\) is late (start time is getting later)
+\(l'_j = f'_j -d_j\)(3)
+\(l'_j = f_i -d_j\)(4)
+\(l'_j \leq f_i -d_i\)(5)
+\(l'_j \leq l_i\)(6)</p>
+
+<ol>
+  <li>There is no change from the exchange to the lateness of any other jobs.</li>
+  <li>The start time of \(j\) was moved forward so its new lateness has improved or remained the same</li>
+  <li>The new lateness of \(j\) is \(f'_j-d_j\) definition (finish - delay)</li>
+  <li>The new finish time of \(j\) is equal to the old finish time of \(i\)</li>
+  <li>as \(i \lt j\) by definition \(d_i \lt d_j\) so \(f_i -d_j \leq f_i-d_i\)</li>
+  <li>relying on the definition \(l_i =  f_i-d_i\)</li>
+</ol>
+
+<p>Shows that the new lateness of \(j)\) is no worse than the old lateness of \(i\) so the solution is still just as optimal.</p>
+
+<p><strong>Final Proof</strong></p>
+
+<p>Let \(S\) be the solution generated bu the earliest-deadline-first strategy</p>
+
+<p>Let \(S'\) be an optimal solution with the fewest inversionsGoodVibes</p>
+<ul>
+  <li>Can assume \(S'\) has no idle time (claim 1)</li>
+  <li>Case 1 [\(S'\) has no inversions]</li>
+  <li>
+    <ul>
+      <li>Then \(S'=S\) the optimal solution was found</li>
+    </ul>
+  </li>
+  <li>Case 2 [\(S'\)] has an inversion</li>
+  <li>
+    <ul>
+      <li>let \(i-j\) be an adjacent inversion</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>exchange \(i,j\), is still an optimal solution</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>contradicts the “optimal solution with the fewest inversions”</li>
+    </ul>
+  </li>
+</ul>
+
+<p>So \(S =S'\) the earliest-deadline-first strategy is optimal</p>
+
+<h3 id="generic-proof-strategies">Generic Proof Strategies</h3>
+
+<h4 id="greedy-algorithm-stays-ahead">Greedy Algorithm Stays Ahead</h4>
+<p>Show that at every stage of the the greedy algorithm produces a solution that is better then or as good as an optimal solution.</p>
+
+<h4 id="structural">Structural</h4>
+<p>Discover structural bounds asserting that every solution must have a set value. Then show your algorithm achieves this bound.</p>
+
+<h4 id="exchange">Exchange</h4>
+<p>Gradually transform any optimal solution to the one found by the greedy algorithm without hurting the solution quality.</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

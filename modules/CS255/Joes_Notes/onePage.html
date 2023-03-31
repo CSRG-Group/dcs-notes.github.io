@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>onePage CS255 One Page Notes</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">CS255 One Page Notes</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#rational-agents">Rational Agents</a><ul><li><a href="#rational-agents">Rational Agents</a><ul><li><a href="#inputs-to-an-agent">Inputs to an agent</a></li><li><a href="#agent-system">Agent System</a></li><li><a href="#dimensions-of-an-agent">Dimensions of an Agent</a><ul><li><a href="#modularity">Modularity</a></li><li><a href="#planning-horizon">Planning horizon</a></li><li><a href="#representation">Representation</a></li><li><a href="#computational-limits">Computational limits</a></li><li><a href="#learning-from-experience">Learning from experience</a></li><li><a href="#sensing-uncertainty">Sensing uncertainty</a></li><li><a href="#effect-uncertainty">Effect uncertainty</a></li><li><a href="#preference">Preference</a></li><li><a href="#number-of-agents">Number of Agents</a></li><li><a href="#interaction">Interaction</a></li></ul></li><li><a href="#representation-1">Representation</a><ul><li><a href="#requirements">Requirements</a></li></ul></li><li><a href="#solution">Solution</a><ul><li><a href="#quality-of-a-solution">Quality of a solution</a></li></ul></li><li><a href="#decisions-and-outcomes">Decisions and Outcomes</a></li><li><a href="#physical-symbol-hypothesis">Physical symbol Hypothesis</a></li><li><a href="#knowledge-and-symbol-levels">Knowledge and symbol levels</a></li><li><a href="#abstraction">Abstraction</a></li><li><a href="#reasoning-and-acting">Reasoning and acting</a></li><li><a href="#knowledge-base-and-observations">Knowledge base and observations</a></li></ul></li></ul></li><li><a href="#agent-architectures">Agent Architectures</a><ul><li><a href="#agent-architectures">Agent architectures</a><ul><li><a href="#body">Body</a></li><li><a href="#controller">Controller</a></li><li><a href="#agent-logic">Agent logic</a><ul><li><a href="#traces">Traces</a></li><li><a href="#belief-status">Belief Status</a></li></ul></li><li><a href="#single-level-hierarchy">Single level hierarchy</a><ul><li><a href="#functions">functions</a></li><li><a href="#advantages">Advantages</a></li><li><a href="#disadvantages">Disadvantages</a></li></ul></li><li><a href="#multi-level-hierarchy">Multi level hierarchy</a></li><li><a href="#functions-1">functions</a></li><li><a href="#agent-types">Agent Types</a><ul><li><a href="#ideal-mapping">Ideal Mapping</a></li><li><a href="#simple-reflex-agents">Simple Reflex agents</a></li><li><a href="#reflex-agent-with-state">Reflex agent with State</a></li><li><a href="#goal-based-agents">Goal based agents</a></li><li><a href="#utility-based-agents">Utility based agents</a></li><li><a href="#learning-agent">Learning Agent</a></li></ul></li></ul></li></ul></li><li><a href="#problem-formulation">Problem Formulation</a><ul><li><a href="#problem-formulation">Problem formulation</a><ul><li><a href="#problem-solving-steps">Problem solving steps</a></li><li><a href="#types-of-environment">types of Environment</a></li><li><a href="#state-space-problem">State Space Problem</a></li><li><a href="#abstraction">Abstraction</a></li><li><a href="#state-space-graph">State space graph</a></li></ul></li></ul></li><li><a href="#uninformed-search">Uninformed Search</a><ul><li><a href="#tree-search">Tree Search</a><ul><li><a href="#algorithm">Algorithm</a></li></ul></li><li><a href="#graph-search">Graph Search</a></li><li><a href="#analysis">Analysis</a></li><li><a href="#breath-first">Breath first</a><ul><li><a href="#complexity">Complexity</a></li></ul></li></ul></li><li><a href="#depth-first">Depth first</a><ul><li><a href="#complexity-1">Complexity</a></li></ul></li></ul></li><li><a href="#lowest-cost-first">Lowest Cost First</a></li><li><a href="#comparison">Comparison</a></li></ul></li><li><a href="#informed-search">Informed Search</a><ul><li><a href="#heuristic">Heuristic</a></li><li><a href="#best-first-search">Best First Search</a><ul><li><a href="#complexity">Complexity</a></li></ul></li><li><a href="#a-search">A* Search</a><ul><li><a href="#proof">Proof</a></li><li><a href="#solution">Solution</a></li><li><a href="#heuristics">Heuristics</a></li><li><a href="#complexity-1">Complexity</a></li></ul></li><li><a href="#comparison">Comparison</a></li></ul></li><li><a href="#search-optimizations">Search Optimizations</a><ul><li><a href="#cycle-checking">Cycle Checking</a><ul><li><a href="#solution">Solution</a></li><li><a href="#implementation">Implementation</a></li></ul></li><li><a href="#multiple-path-pruning">Multiple Path Pruning</a><ul><li><a href="#solutions">Solutions</a></li><li><a href="#implementation-1">Implementation</a></li><li><a href="#implementation-with-a">Implementation with A*</a></li></ul></li><li><a href="#monotone-restriction">Monotone Restriction</a></li><li><a href="#direction-of-a-search">Direction of a Search</a></li><li><a href="#bi-directional-search">Bi-directional Search</a></li><li><a href="#island-driven-search">Island Driven Search</a></li><li><a href="#dynamic-programming">Dynamic Programming</a></li><li><a href="#bounded-depth-first-search">Bounded Depth-first search</a><ul><li><a href="#iterative-deepening-search">Iterative-deepening search</a></li><li><a href="#depth-first-branch-and-bound">Depth-first Branch-and-Bound</a><ul><li><a href="#initializing-bound">Initializing Bound</a></li></ul></li></ul></li></ul></li><li><a href="#heuristics">Heuristics</a><ul><li><a href="#characterizing-heuristics">Characterizing Heuristics</a></li><li><a href="#deriving-heuristics">Deriving heuristics</a><ul><li><a href="#relaxed-problems">Relaxed problems</a></li><li><a href="#pattern-databases">Pattern Databases</a></li><li><a href="#other-approaches">Other approaches</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="../">🏡Module Home</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Are defined in the relevant module data file
+-->
+
+
+
+
+
+<!-- not the best and a little O-horrible  but the easiest way to do it --><h1 id="rational-agents">Rational Agents</h1>
+       
+            <h2 id="rational-agents">Rational Agents</h2>
+
+<p>In a rational agent a <code class="language-plaintext highlighter-rouge">goal</code> can be specified by some performance metric.</p>
+
+<p>A rational agent will choose the the actions that maximizes the expected value.</p>
+
+<h3 id="inputs-to-an-agent">Inputs to an agent</h3>
+
+<ul>
+  <li><strong>Abilities</strong> A set of actions that the agent can perform</li>
+  <li><strong>Goal</strong> What is the agent trying to achieve</li>
+  <li><strong>Prior Knowledge</strong>  What sis the agent kno when it came into being</li>
+  <li><strong>History</strong></li>
+  <li>
+    <ul>
+      <li>Stimuli: The current environment</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Past experiences</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="agent-system">Agent System</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>An agent systems is an agent in an environment
+
+receives **stimuli** and caries out **actions**
+</code></pre></div></div>
+
+<h3 id="dimensions-of-an-agent">Dimensions of an Agent</h3>
+<p>An agent can be defined in many ways or dimensions that specifies its complexity and structure.</p>
+
+<h4 id="modularity">Modularity</h4>
+<p>How is the agent structured</p>
+<ul>
+  <li><strong>Flat</strong> Agent has one level.</li>
+  <li><strong>Modules</strong> Agent has many interlinking modules.</li>
+  <li><strong>Hierarchy</strong> Agent has a hierarchy(recursive) of modules.</li>
+</ul>
+
+<h4 id="planning-horizon">Planning horizon</h4>
+<p>How far ahead is the agent expected to plan</p>
+
+<ul>
+  <li><strong>Static</strong> World does not change.</li>
+  <li><strong>Finite Stages</strong> The agent plans a finite number of steps.</li>
+  <li><strong>Indefinite</strong> The agent plans a finite but unknown number of steps.</li>
+  <li><strong>Infinite</strong> The agent plans continuously.</li>
+</ul>
+
+<h4 id="representation">Representation</h4>
+<p>How is the environment represented</p>
+<ul>
+  <li><strong>Explicit states</strong> A state is one of the ways the world can be.</li>
+  <li><strong>Features or Propositions</strong> States can be described using features.</li>
+  <li><strong>Individuals and relations</strong> Feature of relationships between sets of individuals.
+    <h4 id="computational-limits">Computational limits</h4>
+    <p>How is the agent limited by computation</p>
+  </li>
+  <li>
+    <p><strong>Perfect rationality</strong> The agent can determine the best course of action.</p>
+  </li>
+  <li><strong>Bounded rationality</strong> The agent must make a good decision with computation and memory limitations.</li>
+</ul>
+
+<h4 id="learning-from-experience">Learning from experience</h4>
+<p>does the agent learn form experience</p>
+<ul>
+  <li><strong>Knowledge is given</strong> at creation.</li>
+  <li><strong>Knowledge is learnt</strong> from past experiences.</li>
+</ul>
+
+<h4 id="sensing-uncertainty">Sensing uncertainty</h4>
+<p>How well does the agent know its environment</p>
+<ul>
+  <li><strong>Fully observable</strong> The agent knows its entire environment.</li>
+  <li><strong>Partially observable</strong> There is a limited number of states, the observation is nto true to reality.</li>
+</ul>
+
+<h4 id="effect-uncertainty">Effect uncertainty</h4>
+<p>Cant the result of an effect be known</p>
+<ul>
+  <li><strong>Deterministic</strong> The resulting state can be known form the previous state and action.</li>
+  <li><strong>Stochastic</strong> There us uncertainty about the environment after the action.</li>
+</ul>
+
+<h4 id="preference">Preference</h4>
+<p>What is the agents desire</p>
+<ul>
+  <li><strong>Achievement goal</strong> The agent must reach a goal which could be the result of a complex formulae.</li>
+  <li><strong>Complex preferences</strong> The agent has a range of complex preferences that interact with one another.</li>
+  <li>
+    <ul>
+      <li><strong>Ordinal</strong> Only the order of the preferences matters.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li><strong>Cardinal</strong> The value of the preferences matters.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="number-of-agents">Number of Agents</h4>
+<ul>
+  <li><strong>Single Agent</strong> All other agents are part of the environment.</li>
+  <li><strong>Multiple Agent</strong> Agents will reason about the actions of other.agents</li>
+</ul>
+
+<h4 id="interaction">Interaction</h4>
+<p>How does the agent interact with the environment</p>
+<ul>
+  <li><strong>Reason offline</strong> reason before taking action.</li>
+  <li><strong>Reason online</strong> reason while taking action.</li>
+</ul>
+
+<h3 id="representation-1">Representation</h3>
+<p>To compute a problem the problem must be in a computable representation before an output can be provided</p>
+
+<h4 id="requirements">Requirements</h4>
+<p>An representation should be</p>
+<ul>
+  <li>Rich enough to express the knowledge needed</li>
+  <li>As close to the problem as possible</li>
+  <li>Amenable to efficient computation</li>
+  <li>Able to be acquired</li>
+</ul>
+
+<h3 id="solution">Solution</h3>
+<h4 id="quality-of-a-solution">Quality of a solution</h4>
+<ul>
+  <li><strong>Optimal Solution</strong> The best solution possible</li>
+  <li><strong>Satisfactory solution</strong> A solution that is good enough</li>
+  <li><strong>Approximate solution</strong> A solution that is close to an optimal solution</li>
+  <li><strong>Probable solution</strong> A solution that is likely to be correct</li>
+</ul>
+
+<h3 id="decisions-and-outcomes">Decisions and Outcomes</h3>
+<p>Good decisions can have bad outcomes and Bad decisions can have good outcomes</p>
+
+<p>Information can lead to better decisions.</p>
+
+<p>Computation time can provide a better solution.</p>
+
+<p>An <strong>Any time algorithm</strong> an produce a solution at any time but given more computation time the solution gets better</p>
+
+<p>A worse solution now maybe be better than an optimal solution later.</p>
+
+<h3 id="physical-symbol-hypothesis">Physical symbol Hypothesis</h3>
+
+<p>A symbol is a physical pattern that can be represented.</p>
+
+<p>A symbol-system has the means to manipulate symbols.</p>
+
+<p><strong>hypothesis</strong> a Physical symbol system has the means for general intelligent action</p>
+
+<h3 id="knowledge-and-symbol-levels">Knowledge and symbol levels</h3>
+<ul>
+  <li><strong>Knowledge level</strong> : Agent’s knowledge, beliefs and goals.</li>
+  <li><strong>Symbol level</strong> Describes what reasoning agent does. This is what the agent uses to implement the knowledge level</li>
+</ul>
+
+<h3 id="abstraction">Abstraction</h3>
+<ul>
+  <li><strong>Low level</strong> Easier for machines to understand</li>
+  <li><strong>High level</strong> Easier for humans to understand</li>
+</ul>
+
+<h3 id="reasoning-and-acting">Reasoning and acting</h3>
+<ul>
+  <li><strong>Design time reasoning and computation</strong> Reasoning done by designer to design the agent.</li>
+  <li><strong>Offline computation</strong> Done by agent before it has to act</li>
+  <li><strong>Online computation</strong> Done by agent “on the go”
+    <h3 id="knowledge-base-and-observations">Knowledge base and observations</h3>
+  </li>
+  <li><strong>Knowledge base</strong> Compiled background knowledge and data</li>
+  <li><strong>Observations</strong> Information obtained online</li>
+  <li>Both used to make decisions</li>
+</ul>
+
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="agent-architectures">Agent Architectures</h1>
+       
+            <h2 id="agent-architectures">Agent architectures</h2>
+
+<h3 id="body">Body</h3>
+<p>The agent interacts with the environment through the body</p>
+
+<p>The body:</p>
+<ul>
+  <li>Perceives stimuli form the environment and creates precepts for the controller</li>
+  <li>Receives commands form the controller and generates actions on the environment</li>
+  <li>In some cases may have actions that are not controlled</li>
+</ul>
+
+<h3 id="controller">Controller</h3>
+<p>The controller is the brains of the agent and generates commands based on current and previous precepts.
+Controllers have a limited memory and computational resources</p>
+
+<h3 id="agent-logic">Agent logic</h3>
+<h4 id="traces">Traces</h4>
+<ul>
+  <li><strong>Percept Trace</strong> A sequence of all percepts, past present and future.</li>
+  <li><strong>Command Trace</strong> A sequence of all commands, past present and future.</li>
+  <li><strong>Agent History</strong> A sequence of past and present commands and precepts at to time \(t\).</li>
+  <li><strong>transduction</strong> A function from percept traces to command traces.</li>
+  <li><strong>History</strong> Percepts to time \(t\) (including time \(t\)) + Commands to time \(t\) = History at \(t\)</li>
+  <li><strong>Causal transduction</strong> History at time \(t\) -&gt; Command at \(t\)</li>
+  <li><strong>Controller</strong> An implementation of a causal transduction.</li>
+</ul>
+
+<h4 id="belief-status">Belief Status</h4>
+<p>An agent has limited memory</p>
+
+<p>It must decide what subset of its history to remember</p>
+
+<p>This is the agents <strong>memory</strong></p>
+
+<p>At every step the controller needs to decide</p>
+<ol>
+  <li>What to do</li>
+  <li>What to remember</li>
+</ol>
+
+<p>A belief status should approximate the environment</p>
+<h3 id="single-level-hierarchy">Single level hierarchy</h3>
+<p>In a single level hierarchy the agent has one body and a single controller.</p>
+
+<p><img src="./assets/single_level_hierarchy.png" alt="Single level hierarchy diagram" /></p>
+
+<h4 id="functions">functions</h4>
+<ul>
+  <li><strong>Belief state function</strong> controls the next belief state / memories.</li>
+  <li><strong>Command state function</strong> decides on the commands the controller should produce.</li>
+</ul>
+
+<p><img src="./assets/single_level_funcitons.png" alt="Single level function diagram" /></p>
+
+<h4 id="advantages">Advantages</h4>
+<p>Simpler and can be easier to program</p>
+
+<h4 id="disadvantages">Disadvantages</h4>
+<p>All problems are processes together, e.g collision detection and long term planning</p>
+
+<p>This can slow down the goals that need a quick response time</p>
+
+<h3 id="multi-level-hierarchy">Multi level hierarchy</h3>
+
+<p>Made from a body and many layers of controllers.</p>
+
+<p>Each controller acts as a virtual body to the controller above. It receives precepts and commands from the controller below it and sends selected precepts and commands to the controller above.</p>
+
+<p><img src="assets/multiple_level_hierarchy.png" alt="Multiple level hierarchy" /></p>
+
+<h3 id="functions-1">functions</h3>
+<ul>
+  <li><strong>Belief state function</strong> controls the next belief state / memories.</li>
+  <li><strong>Command state function</strong> decides on the commands the controller should produce.</li>
+  <li><strong>Precept function</strong> decides what commands to send to the higher controller</li>
+</ul>
+
+<p><img src="assets/miltiple_level_functions.png" alt="Multi level function diagram" /></p>
+
+<h3 id="agent-types">Agent Types</h3>
+<h4 id="ideal-mapping">Ideal Mapping</h4>
+<p>In principle an agent can be though of as an mapping from the set of precepts to the set of commands. There is a theoretical <strong>Ideal mapping</strong> where the ideal action is taken at each step.
+The simple approach would be a lookup table:</p>
+<ul>
+  <li>Table too large</li>
+  <li>Time to build</li>
+</ul>
+
+<p>The goal of an agent is to approximate this ideal mapping</p>
+
+<h4 id="simple-reflex-agents">Simple Reflex agents</h4>
+<p>Simple agents based on a series of if -&gt; else statements</p>
+
+<p>Can achieve fairly complex behavior.</p>
+
+<p>Can be run quickly</p>
+
+<h4 id="reflex-agent-with-state">Reflex agent with State</h4>
+<p>similar to the simple Reflex Agents but retains knowledge</p>
+
+<p>Needs an internal state</p>
+
+<p>Can keep track of a changing world</p>
+<h4 id="goal-based-agents">Goal based agents</h4>
+<p>Keeps track of what is trying to be achieved</p>
+
+<p>More flexible than a reflex agent</p>
+
+<h4 id="utility-based-agents">Utility based agents</h4>
+
+<p>Uses a <strong>Utility function</strong> to judge the state of the world</p>
+
+<p>Allows for a choice of which goals to achieve and can select the one with the highest utility.</p>
+
+<p>If goal outcomes are uncertain a probability formula can be used.</p>
+
+<h4 id="learning-agent">Learning Agent</h4>
+<p>Adds in several components</p>
+<ul>
+  <li><strong>critic</strong> Using a <strong>performance standard</strong> informs the learning agent how well it is doing.</li>
+  <li><strong>performance element</strong> responsible for acting based on the improvements from the learning agent.</li>
+  <li><strong>learning element</strong> responsible for making improvements with knowledge of the agents success.</li>
+  <li><strong>problem generator</strong> responsible for suggesting actions for new experiences to attempt to prevent being stuck at a local maximum</li>
+</ul>
+
+<p>Takes information about hove the performance agent is doing and attempts to optimise the agent to improve performance.
+Learning provides the agent with autonomy.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="problem-formulation">Problem Formulation</h1>
+       
+            <h2 id="problem-formulation">Problem formulation</h2>
+<p>Given a specification of a solution, not an algorithm to follow</p>
+
+<p>Agent has a a starting state and wants to get to the goal state</p>
+
+<p>Many problems can ba abstracted into the problem of finding a path in a directed graph.</p>
+
+<h3 id="problem-solving-steps">Problem solving steps</h3>
+<ul>
+  <li><strong>Goal Formulation</strong> Identify a desirable solution</li>
+  <li><strong>Problem formulation</strong> - identify the problem</li>
+  <li><strong>Search</strong> find the sequence of actions</li>
+  <li><strong>Execution</strong> Perform the actions</li>
+</ul>
+
+<h3 id="types-of-environment">types of Environment</h3>
+<ul>
+  <li><strong>Deterministic, Fully observable</strong>
+    <ul>
+      <li>The agent knows everything about the current state</li>
+      <li>The agent knows what state the environment will be in after any action</li>
+    </ul>
+  </li>
+  <li><strong>Deterministic, Partially observable</strong>
+    <ul>
+      <li>The agent has limited access to the current state</li>
+      <li>The agent can determine a set of states from a given action</li>
+      <li>Instead of actions on a single state the agent must manipulate sets fo states</li>
+    </ul>
+  </li>
+  <li><strong>Stochastic, partially Observable</strong>
+    <ul>
+      <li>The agent has limited access to state</li>
+      <li>The agent does not know the effect of any action</li>
+      <li>Must use sensors to determine an effect</li>
+      <li>Search and executions are interwoven</li>
+    </ul>
+  </li>
+  <li><strong>Unknown state space</strong>
+    <ul>
+      <li>Knowledge is learned</li>
+      <li>(not a priority in the module)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="state-space-problem">State Space Problem</h3>
+<ul>
+  <li>Has a set of states \(S\)</li>
+  <li><strong>Start states</strong> A Subset of states where the agent can start</li>
+  <li><strong>action function</strong> Given a state and an action returns the new state</li>
+  <li><strong>goal states</strong> A subset of states that the agent targets</li>
+  <li>A criterion that specifies the quality fo a solution</li>
+</ul>
+
+<h3 id="abstraction">Abstraction</h3>
+<p>The real world is complex and so abstraction is uses</p>
+
+<p><strong>Abstract states</strong> are a subset of real states</p>
+
+<p><strong>Abstract operations</strong> are a combination of real actions</p>
+
+<p><strong>Abstract Solution</strong> A set of paths between states that are applicable to the real world</p>
+
+<h3 id="state-space-graph">State space graph</h3>
+<p>A state space problem can be represented using a stat space graph</p>
+
+<p>A state space graph consists of a set \(S\) of \(N\) nodes and a set of orders pairs \(A\) representing arcs or edges</p>
+
+<p>if \(&lt;S_i,S_j&gt; \in S\) then \(S_i\) is a neighbor to \(S_j\)</p>
+
+<p>A path is a sequence of nodes \(&lt;n_1,n_2,n_3....n_i&gt;\) such that \(&lt;n_{i-1},n_i&gt; \in S\)</p>
+
+<p>Given a set of start and and nodes a solution is a path from a start node to an end node.</p>
+
+<p>To solve these problems the ability to navigate a tree or graph is very useful.</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="uninformed-search">Uninformed Search</h1>
+       
+            <p>Getting from a to b on a simple directed graph with no prior knowledge</p>
+
+<p>following an informed search through a graph can simulate th exploration fo the state space</p>
+<h2 id="tree-search">Tree Search</h2>
+
+<h3 id="algorithm">Algorithm</h3>
+<p>The exploration of an uninformed tree search tends follows the following algorithm.</p>
+
+<pre><code class="language-Java">node &lt;- Root or starting node
+goal &lt;- a target goal
+frontier &lt;- some data store
+
+
+frontier.add(node)
+while (items in frontier){
+    current= frontier.RemoveTop()
+    if (current==goal){
+        return current
+    }
+    for (neighbor of current){
+        frontier.push(neighbor)
+    }
+}
+return none &lt;- no solutions found
+</code></pre>
+
+<ul>
+  <li><strong>node</strong> An element in a graph, continuing a parent and actions needed to reach its children</li>
+  <li><strong>frontier</strong> the nodes currently explored the type of data structure depends on the algorithm</li>
+</ul>
+
+<h2 id="graph-search">Graph Search</h2>
+
+<p>With tree search state space with loops give rises to repeated states that cause inefficiencies.</p>
+
+<p>Graph search is a practical way of exploring a state space that can account to such repetitions.</p>
+
+<p>Rather than holding nodes in the frontier a graph search instead holds the path of nodes needed to reach the current point in the frontier.</p>
+
+<pre><code class="language-Java">node &lt;- Root or starting node
+goal &lt;- a target goal
+frontier &lt;- some data store
+
+
+frontier.add([node])
+while (items in frontier){
+    current= frontier.RemoveTop()
+    if (current[last]==goal){
+        return current
+    }
+    for (neighbor of current[last]){
+        current.add(neighbor)
+        frontier.push(current)
+    }
+}
+return none &lt;- no solutions found
+</code></pre>
+<h2 id="analysis">Analysis</h2>
+
+<p>An algorithm can be judged by different metrics</p>
+
+<ul>
+  <li><strong>Completeness</strong> can the solution be found</li>
+  <li><strong>optimality</strong> does the solution find the solution with the least cost</li>
+  <li><strong>Complexity</strong>
+    <ul>
+      <li>Judged by several factors
+        <ul>
+          <li><strong>b</strong> Maximum branch factor</li>
+          <li><strong>d</strong> Depth of least cost</li>
+          <li><strong>m</strong> maximum depth can be infinite</li>
+        </ul>
+      </li>
+      <li><strong>time complexity</strong> how does the time taken scale</li>
+      <li><strong>space complexity</strong> how many nodes in memory</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="breath-first">Breath first</h2>
+<p>A <strong>queue</strong> is used for the frontier data store</p>
+
+<p>Prioritizes expanding horizontally over expanding vertically</p>
+
+<h4 id="complexity">Complexity</h4>
+<ul>
+  <li>
+    <p><strong>completeness</strong> will always find a solution if b is finite</p>
+  </li>
+  <li><strong>time</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(b^d)\)</li>
+  <li>
+    <p><strong>space</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(b^d)\)</p>
+  </li>
+  <li><strong>Optimal</strong> Yes if cost is a function of depth, not optimal in general</li>
+</ul>
+
+<p>Space complexity is the biggest issue with this type of search</p>
+
+<h2 id="depth-first">Depth first</h2>
+<p>A <strong>stack</strong> is used for the frontier data store
+Prioritizes expanding vertically over expanding horizontally</p>
+
+<h4 id="complexity-1">Complexity</h4>
+<ul>
+  <li><strong>completeness</strong> Fails with infinite depth or loops
+    <ul>
+      <li>can be modified to avoid loops</li>
+    </ul>
+  </li>
+  <li><strong>time</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(b^d)\)</li>
+  <li>
+    <p><strong>space</strong> \(1 + b + b^2 +b^3 +...+ b^d = O(bm)\)</p>
+  </li>
+  <li><strong>Optimal</strong> No</li>
+</ul>
+
+<p>Not optimal but cuts down on space complexity a lot</p>
+
+<h2 id="lowest-cost-first">Lowest Cost First</h2>
+<p>A <strong>priority queue</strong> is used for the frontier data store where the key is the cost of the path.</p>
+
+<p>The <strong>cost</strong> of a path is the current is the sum of the cost of each of it’s arcs.</p>
+
+<p>The path of least cost is chosen first from the frontier to expand.</p>
+
+<p>When arc costs are equal simply produces a breath first search.</p>
+
+<h2 id="comparison">Comparison</h2>
+<p>|Strategy|Frontier Selection|Complete|Halts| Space |
+|-|-|-|-|-|
+|Breadth-first| First node added| Yes | No | Exp|
+| Depth-first | Last node added | No | No | Linear|
+| Lowest cost first| minimal cost | Yes | No | Exp|</p>
+
+<ul>
+  <li>complete- Guaranteed to fins a solution if one exists.</li>
+  <li>Halts - on a finite graph (maybe with cycles).</li>
+  <li>Space as a function of the length of the current path.</li>
+</ul>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="informed-search">Informed Search</h1>
+       
+            <p>Using information about the goal to inform our path choice.</p>
+
+<h2 id="heuristic">Heuristic</h2>
+<p>Extra information used to guide the path is called a heuristic</p>
+
+<p>The <strong>heuristic</strong> \(h(n)\) is th estimated minimum cost to get form a node to the goal node</p>
+
+<p>Calculating \(h(n)\) needs to be done efficiently</p>
+
+<p>A \(h(n)\) function is an underestimate if there is no path from the node \(n\) to the goal with cost strictly less than \(h(n)\)</p>
+
+<p>A heuristic is <strong>admissible</strong> if it is both:</p>
+<ul>
+  <li>A non-negative function</li>
+  <li>An underestimate of the actual cost</li>
+</ul>
+
+<h2 id="best-first-search">Best First Search</h2>
+<p>We can use the heuristic to determine the order fo the stack representing the frontier.</p>
+
+<p>Select the path that is closest to the goal node, according to the heuristic function.</p>
+
+<p>Greedy best-first search selects a path on the frontier with the lowest heuristic value.</p>
+
+<p>A priority queue is used as the frontier.</p>
+
+<p>This algorithm can get stuck in loops.</p>
+
+<h3 id="complexity">Complexity</h3>
+<p>Space: \(b^n\) where b is the branching factor and n is the path length</p>
+
+<p>Time: \(b^n\)</p>
+
+<p>Not guaranteed to find a solution</p>
+
+<p>It does nto always find te shortest path</p>
+
+<h2 id="a-search">A* Search</h2>
+
+<p>A* search uses a combination os path cost and heuristic value to guess the length of a path too the goal if a particular node is chosen.</p>
+
+<p>[f(p) = {cost}(p) + h(p)]</p>
+
+<p>The frontier is a priority queue sorted by the \(f(p)\) function</p>
+
+<p>The node on the frontier with the lowest estimated cost from the start to the goal via such node is chosen.</p>
+
+<p>A* search is admissable if:</p>
+<ul>
+  <li>The branching factor is finite</li>
+  <li>Arc costs are bounded above Zero</li>
+  <li>the function \(h(n)\) is non-negative and is an underestimate fo the shortest path of n to the goal node</li>
+</ul>
+
+<h3 id="proof">Proof</h3>
+<p>It can be shown that the A* algorithm is admissable.</p>
+
+<p>Let \(P\) be a path selected from the frontier to the goal node.</p>
+
+<p>Suppose path \(P'\) is on the frontier, because \(P\) was selected before \(P'\) and \(h(p) =0\)
+\(cost(P) \leq cost(P') + h(P')\)</p>
+
+<p>Because h is an underestimate
+\(cost(P') + h(P') \leq cost(P'')\)
+For any path \(P''\) that extends \(P'\)
+So \(cost(P) \leq cost(P'')\) for any path \(P''\) to a goal</p>
+
+<h3 id="solution">Solution</h3>
+<blockquote>
+  <p>Theorem: A* will always find a solution if there is one</p>
+</blockquote>
+
+<p>The frontier always contains the initial part of a path to a goal</p>
+
+<p>As A* runs the costs of the paths keeps increasing and will eventually exceed any finite number.</p>
+
+<p>Admissability does nto guarantee that every node selected from the frontier is on an optimal path but that the first solution found wil be optimal even with graphs with cycles.</p>
+
+<h3 id="heuristics">Heuristics</h3>
+<p>The performance of the A* algorithm depends on the performance of the heuristic, given a path \(P\) and a heuristic function \(h\) and \(c\) is the cost of the optimal solution the heuristic can fall into 3 categories.</p>
+
+<p>\(cost(p) + h(p) \lt c\)(1)
+\(cost(p) + h(p) = c\)(2)
+\(cost(p) + h(p) \gt c\)(3)</p>
+
+<p>A* expands all paths in the set \(\{cost(p) + h(p) \lt c\}\)</p>
+
+<p>A* expands some paths in the set \(\{cost(p) + h(p) = c\}\)</p>
+
+<p>Increasing the heuristic while keeping it admissable reduces the size of the sets.</p>
+
+<h3 id="complexity-1">Complexity</h3>
+<p>time: exponential in relative error of \(h*\) Length of solution</p>
+
+<p>space: Exponential keeps all nodes in memory</p>
+
+<h2 id="comparison">Comparison</h2>
+<p>|Strategy|Frontier Selection|Complete|Halts| Space |
+|-|-|-|-|-|
+|Breadth-first| First node added| Yes | No | Exp|
+| Depth-first | Last node added | No | No | Linear|
+| Heuristic-depth-first | local min \(h(p)\)| No | No | Linear|
+| Best-first | Global min \(h(p)\)| No | No | Linear|
+| Lowest cost first| minimal cost | Yes | No | Exp|
+| A*| minimal \(f(p)\) | Yes | No | Exp|</p>
+
+<ul>
+  <li>complete- Guaranteed to fins a solution if one exists.</li>
+  <li>Halts - on a finite graph (maybe with cycles).</li>
+  <li>Space as a function of the length of the current path.</li>
+</ul>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="search-optimizations">Search Optimizations</h1>
+       
+            <h2 id="cycle-checking">Cycle Checking</h2>
+<p>The search encounters a node on a path that it has already encountered (the path traversed a cycle)</p>
+
+<h3 id="solution">Solution</h3>
+<p>Prune the path as it is not an optimal path so does not need to be explored</p>
+
+<h3 id="implementation">Implementation</h3>
+<p>Keeping the nodes in the path in a hash table allows for checking in constant \(O(1)\) time.</p>
+
+<h2 id="multiple-path-pruning">Multiple Path Pruning</h2>
+<p>Two paths may meet at the same note, one taking a longer path anther a shorter one.</p>
+
+<h3 id="solutions">Solutions</h3>
+<ul>
+  <li>If the expanding path is shorter it can be pruned</li>
+  <li>Otherwise if the expanding path \(&lt;s,..n&gt;_1\) is shorter than the current path \(&lt;s,..n,..m&gt;_2\) for subpath \(&lt;s,..n&gt;_2\) then
+    <ul>
+      <li>Employ a strategy to prevent this from happening</li>
+      <li>Remove all paths from the frontier that include subpath \(&lt;s,..n&gt;_2\)</li>
+      <li>Change the initial segment of the paths on the frontier to use the shorter path. All paths containing \(&lt;s,..n&gt;_2\) has the subpath replaced with \(&lt;s,..n&gt;_1\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="implementation-1">Implementation</h3>
+<p>Maintain a set of explored set (<strong>closed list</strong>) of nodes.</p>
+
+<p>Initially the closed list is empty</p>
+
+<p>When a path is selected if the endpoint in the closed list then a conflict has emerged otherwise add the endpoint to the closed list.</p>
+
+<h3 id="implementation-with-a">Implementation with A*</h3>
+<p>Suppose path \(p'\) to \(n'\) was selected but there is a lower cost path to \(n'\) Suppose this is via point \(p\) on the frontier.</p>
+
+<p>let path \(p\) end at node \(n\)</p>
+
+<p>by A* \(p'\) was selected before \(p\) i.e \(f(p')&lt;f(p)\)</p>
+
+<p>[cost(p’) + h(p’) \leq cost(p)+h(p)]</p>
+
+<p>The path of \(n'\) via \(p\) is lower cost than via \(p'\)</p>
+
+<p>[cost(p)+ cost(n,n’) \lt cost(p’)]</p>
+
+<p>[cost(n,n’) \lt cost(p’)- cost(p) \leq h(p) -h(p’) = h(n)-h(n’)]</p>
+
+<p>we can ensure that this does not occur if</p>
+
+<p>[\vert h(n) - h(n’) \vert \leq cost(n,n’)]</p>
+
+<p>The heuristic is a <strong>monotone restriction</strong></p>
+
+<h2 id="monotone-restriction">Monotone Restriction</h2>
+<p>A heuristic function satisfies the monotone restriction if \(\vert h(m) - h(n) \vert \leq cost(m,n)\) for every arc \(&lt;m,n&gt;\)</p>
+
+<p>If h satisfies the monotone function is is consistent meaning \(h(m) \lt cost(m,n) + h(n)\)</p>
+
+<p>A* with a consistent heuristic and multiple path pruning always finds the shortest path to a goal</p>
+
+<h2 id="direction-of-a-search">Direction of a Search</h2>
+
+<p>A search can be thought of as symmetric</p>
+
+<p>Shortest path from start to end</p>
+
+<p>equals</p>
+
+<p>Shortest path from end to start</p>
+
+<p><strong>Forward branching factor</strong> number of arcs that are leaving ths node</p>
+
+<p><strong>Backwards branching factor</strong> number of arcs that are entering ths node</p>
+
+<p>Search complexity is b^n so use forward is forward branching factor \(\lt\) backwards branching factor.</p>
+
+<p>However when a graph is dynamically constructed the backwards graph may not be available.</p>
+
+<h2 id="bi-directional-search">Bi-directional Search</h2>
+<p>Search backwards from the goal and the start simultaneously</p>
+
+<p>This can be effective since \(2b^{k/2} \lt b^k\)</p>
+
+<p>Implementation can vary however one strategy is to do a breath first stack to generate a rangd of targets then to do anther strategy like depth first to find the most optimal strategy.</p>
+
+<h2 id="island-driven-search">Island Driven Search</h2>
+
+<p>This process expands on the idea of multiple hops to many hops between islands.</p>
+
+<p>Find a set of m islands between the start and end.</p>
+
+<p>There are m smaller problems \(mb^k/m \lt b^k\)</p>
+
+<p>There are issues to overcome:</p>
+<ul>
+  <li>Identifying island can be difficult</li>
+  <li>Hard to guarantee optimality</li>
+</ul>
+
+<h2 id="dynamic-programming">Dynamic Programming</h2>
+
+<p>For statically stored graphs, build a table of dist(n) the actual distance form node n to a gaol</p>
+
+<p>This can be build backwards from the goal:</p>
+
+<p>This can be used locally to determine what to do</p>
+
+<p>There are two main problems</p>
+<ul>
+  <li>It requires enough space</li>
+  <li>The dist function needs to be recomputed for each goal</li>
+</ul>
+
+<h2 id="bounded-depth-first-search">Bounded Depth-first search</h2>
+
+<p>A bounded depth first search takes a bound (cost or depth) and does nto exceed paths that exceed the bound</p>
+<ul>
+  <li>Explores part of the search graph</li>
+  <li>Uses space linear in the depth of the Search</li>
+</ul>
+
+<h3 id="iterative-deepening-search">Iterative-deepening search</h3>
+<ul>
+  <li>start with a bound b=0</li>
+  <li>Do a bounded depth-first search with bound b</li>
+  <li>If a solution is found return that solution</li>
+  <li>Otherwise, increment b and repeat</li>
+</ul>
+
+<p>Finds the same first solution as breadth first search.</p>
+
+<p>As is based on depth first uses linear space.</p>
+
+<p>Iterative deepening has an overhead of \((\frac{b}{b-1}) *\) cost of expanding nodes at depth \(k\).</p>
+
+<p>When \(b=2\) there is an overhead factor of \(2\) when \(b=3\) there is an overhead of \(1.5\) as b gets higher, the overhead factor reduces.</p>
+
+<h3 id="depth-first-branch-and-bound">Depth-first Branch-and-Bound</h3>
+
+<p>Combines depth-first search with heuristic information and finds the optimal solution.</p>
+
+<p>Most useful when there are multiple solutions and we want an optimal one.</p>
+
+<p>Uses the space of depth-first search.</p>
+
+<p>let bound be the lowest-cost path found to a goal.</p>
+
+<p>If the search encounters a path p where \(cost(p)+h(p) \geq bound\) the path can be pruned.</p>
+
+<p>If a non - pruned path to the goal is found then bound can be set to \(cost(p)\) and p is set to the best solution.</p>
+
+<h4 id="initializing-bound">Initializing Bound</h4>
+<ul>
+  <li>Bound can be initialized to \(\infty\)</li>
+  <li>Bound can be set to an estimate of the optimal path cost</li>
+  <li>After depth-first search terminates either
+    <ul>
+      <li>A solution was found</li>
+      <li>No solution was found and no path was pruned</li>
+      <li>No solution was found and a Path was pruned</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Can be combined with iterative deepening to increase the bound until either a solution is found or to show there is no solution</p>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="heuristics">Heuristics</h1>
+       
+            <p>The choice of a heuristic to choose can have a large impact in the efficiency and running time of the search.</p>
+
+<h2 id="characterizing-heuristics">Characterizing Heuristics</h2>
+
+<blockquote>
+  <p>Def: If an A* tree-search expands N nodes and solution depth is d, then the <strong>effective branching factor</strong> b*, is the branching factor a uniform tree of depth d would have to contain N nodes.</p>
+</blockquote>
+
+<p>[N = 1 + b* + (b<em>)^2 + .. + (b</em>)^d]</p>
+
+<p>It is desirable to obtain a branching factor as close to one as possible, a smaller branching factor allows a larger problem to be solved.</p>
+
+<p>We can estimate b* experimentally and it is usually consistent when performed over multiple runs.</p>
+
+<p>If the branching factor of one heuristic is smaller then it should be used.</p>
+
+<p>More specifically if</p>
+
+<p>[h_1(n) \geq h_2(n) \forall n]</p>
+
+<p>then \(h_1\) <strong>dominates</strong> \(h_2\)</p>
+
+<p>A* expands all nodes with \(f(n) &lt;f*\) where \(f*\) is the cost of the optimal path.
+All nodes with \(h(n)\lt f*=g(n)\)  expanded</p>
+
+<p>An admissable heuristic with higher values is better.</p>
+
+<p>The computation for the heuristic should be taken into account as well.</p>
+
+<h2 id="deriving-heuristics">Deriving heuristics</h2>
+<h3 id="relaxed-problems">Relaxed problems</h3>
+<p>Admissible heuristics can be derived from a relaxed problem.</p>
+
+<p>A relaxed problem is obtained by reducing the restrictions on operations.</p>
+
+<p>e.g</p>
+<ul>
+  <li>Get from the start node to the end node by traversing the graph</li>
+  <li>Get from the start node to the end node</li>
+</ul>
+
+<p>If there are several heuristics and none dominate then the maximum heuristic from the set may be chosen for any given value of \(n\), more formally:</p>
+
+<p>[h(n) = max(h_1(n) , h_2(n) …)]</p>
+
+<h3 id="pattern-databases">Pattern Databases</h3>
+<p>Store exact solution costs for each possible sub problem instance.</p>
+
+<p>Heuristic \(h_{DB}\) = cost of solution ot corresponding subproblem.</p>
+
+<p>Construct database by searching backwards from goal.</p>
+
+<h3 id="other-approaches">Other approaches</h3>
+
+<ul>
+  <li>Statistical approaches
+    <ul>
+      <li>Gather probable heuristics from training problems</li>
+      <li>e.g if \(95%\) of all cases \(cost(n,goal)\) is 20 then \(n(n)=20\)</li>
+      <li>Not admissable but still likely to expand less</li>
+    </ul>
+  </li>
+  <li>Select Features of a state to contribute to the heuristic
+    <ul>
+      <li>e.g For Chess number/ type of pieces left</li>
+      <li>Can use learning to determine weighting</li>
+    </ul>
+  </li>
+</ul>
+
+            <br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/>
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Web Protocols</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Web Protocols</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#protocols">Protocols</a></li><li><a href="#network-layers">Network Layers</a><ul><li><a href="#application-layer">Application Layer</a><ul><li><a href="#http">HTTP</a></li></ul></li><li><a href="#transport-layer">Transport Layer</a></li><li><a href="#internet-layer">Internet Layer</a><ul><li><a href="#ipv4">IPV4</a><ul><li><a href="#nat-network-address-translation">NAT Network Address Translation</a></li></ul></li><li><a href="#ipv6">IPV6</a></li></ul></li><li><a href="#link-layer">Link Layer</a></li></ul></li><li><a href="#domain-name">Domain Name</a><ul><li><a href="#resolving-a-domain-name">Resolving A Domain Name</a><ul><li><a href="#caching">Caching</a></li></ul></li></ul></li><li><a href="#url">URL</a><ul><li><a href="#path">Path</a></li><li><a href="#query-string-">Query String :</a></li><li><a href="#fragment">Fragment</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Theory3.html" title="Theory3.html">👈Prev</a><a href="./" title="Primary Notes Home">🏡Primary Notes</a><a href="Theory5.html" title="Theory5.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="protocols">Protocols</h2>
+<p>A communication Standard so that computers can transfer data and instructions accurately.</p>
+
+<h2 id="network-layers">Network Layers</h2>
+<p>There are 4 (in this course) Network layers each have different protocols and are responsible for parts of data transmission.</p>
+<h3 id="application-layer">Application Layer</h3>
+
+<p>Many protocols</p>
+<ul>
+  <li><strong>HTTP</strong> Hypertext Transfer Protocol used for web communication</li>
+  <li><strong>FTP</strong>  File Transfer Protocol used for transferring files</li>
+  <li><strong>POP/IMAP/SMTP</strong> Email protocols for transferring and storing email</li>
+  <li><strong>DNS</strong> Domain name service for resolving domain names to IP addresses</li>
+</ul>
+
+<h4 id="http">HTTP</h4>
+<p>An Application Protocol for hypermedia information</p>
+
+<p>standard response request</p>
+
+<p>Development by Internet Engineering Task Force (IETF) and World Wide Web Consortium (W3C)</p>
+
+<h3 id="transport-layer">Transport Layer</h3>
+<p>Ensures Transmissions arrive in order an without error</p>
+<ul>
+  <li>TCP</li>
+  <li>UDP</li>
+</ul>
+
+<h3 id="internet-layer">Internet Layer</h3>
+<p>Establishes connection, routing and addressing</p>
+<ul>
+  <li>IPV4</li>
+  <li>IPV6
+An IP address is needed by every computer on the internet</li>
+</ul>
+
+<h4 id="ipv4">IPV4</h4>
+
+<p>Uses 4x8-bit numbers so 4,294,967,296 addresses
+they are now gone.</p>
+
+<blockquote>
+  <p>Reserved Addresses</p>
+  <ul>
+    <li>127.0.0.1 - LocalHost (the computer itself)</li>
+    <li>192.168.*.* - Private Networks</li>
+    <li>10.0.*.* - Private Networks</li>
+  </ul>
+
+  <p>There are other reserved addresses</p>
+</blockquote>
+
+<h5 id="nat-network-address-translation">NAT Network Address Translation</h5>
+<p>Used in part to overcome the shortage of IPV4 addresses</p>
+
+<ul>
+  <li>A device connects to a router</li>
+  <li>The router opens a port and</li>
+  <li>The router connects to the external resource</li>
+  <li>Data is passed through the router to the device</li>
+</ul>
+
+<p>The port number is added to the end of an Ip address
+e.g <code class="language-plaintext highlighter-rouge">213.31.218.101:5001</code> is port <code class="language-plaintext highlighter-rouge">5001</code> at address <code class="language-plaintext highlighter-rouge">213.31.218.101</code></p>
+
+<p>A single IP address is need for the router all of the internal computers use 
+one of the reserved addresses for private networks</p>
+
+<h4 id="ipv6">IPV6</h4>
+
+<p>Uses 8x16-bit numbers 340 undecillion numbers (a lot)</p>
+<h3 id="link-layer">Link Layer</h3>
+<p>Responsible for transmission of raw bits
+*MAC</p>
+
+<h2 id="domain-name">Domain Name</h2>
+<p>DNS Domain Name system acts an a contact list for servers</p>
+
+<p>Translates Human readable Name to IP addresses</p>
+
+<p>Hierarchical distributed naming system</p>
+
+<p>The Domain Name is Linked to an IP address, e.g <code class="language-plaintext highlighter-rouge">www.google.com</code> would be given an ip address that can be used to communicate with the servers</p>
+
+<p>can be broken down</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Server1.</code> -  Fourth level</li>
+  <li><code class="language-plaintext highlighter-rouge">www.</code>     - Third-Level</li>
+  <li><code class="language-plaintext highlighter-rouge">FunCode.</code> - Second Level</li>
+  <li><code class="language-plaintext highlighter-rouge">com</code>      - Top-Level Domain (TLD)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Server1.www.FunCode.com</code></p>
+
+<p>A tree of domain Names are created.</p>
+
+<p>Root Zone (TLD) is controlled by the Internet Assigned Numbers Authority (IANA)</p>
+
+<p>Different registrars assign domain names beneath this</p>
+
+<p>Registrars check with interNIC for the names</p>
+
+<p>Domain names are case insensitive</p>
+
+<h3 id="resolving-a-domain-name">Resolving A Domain Name</h3>
+<p>Default Base</p>
+
+<p>When connecting to a network the computer is given a DNS server (root)</p>
+
+<p>When Resolving a domain name</p>
+<ul>
+  <li>The computer asks the root server</li>
+  <li>The root server provides the top level domain</li>
+  <li>The top level domain which provides a sub domain server</li>
+  <li>Repeat until the address is found</li>
+</ul>
+
+<h4 id="caching">Caching</h4>
+<p>The previous steps are extensive so DNS caching is used.</p>
+<ul>
+  <li>The computer points to a caching server</li>
+  <li>The caching server checks if it has the address in memory
+    <ul>
+      <li>If it does return the memory</li>
+      <li>If not perform the other steps</li>
+    </ul>
+  </li>
+  <li>Any requests are saved to memory for next time.</li>
+</ul>
+
+<p>DNS records have a TTL (time to live) which dictates how ling they are valid for</p>
+
+<h2 id="url">URL</h2>
+
+<p>Made form several steps
+Name | Example
+–|–
+Protocol| http
+Domain| www.FunCode.com
+Path | index.php
+Query String | page=17
+Fragment | article</p>
+
+<p><code class="language-plaintext highlighter-rouge">http://www.FunCode.com/index.php?page=17#article</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">ftp://example.com/abc.txt</code> -&gt; sends an FTP request on port 21
+<code class="language-plaintext highlighter-rouge">http://example.com/abc.txt</code> -&gt; sends an HTTP request on port 80</p>
+
+<p>No guarantee of a response</p>
+
+<h3 id="path">Path</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A request requests a file the path specifies the file
+
+/ is the root folder for the webserver
+
+if a file is not specified one is usually selected usually index.html
+
+path is case sensitive
+</code></pre></div></div>
+
+<h3 id="query-string-">Query String :</h3>
+<p><a href="Theory3.html">SEE GET</a></p>
+
+<h3 id="fragment">Fragment</h3>
+
+<p>Requests a portion of a page.</p>
+
+<p>Browser will usually jump to the location in the page</p>
+
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

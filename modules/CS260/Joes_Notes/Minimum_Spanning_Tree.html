@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Minimum Spanning Tree</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Minimum Spanning Tree</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#spanning-tree">Spanning Tree</a><ul><li><a href="#properties">Properties</a></li><li><a href="#minimum-spanning-tree">Minimum Spanning Tree</a></li></ul></li><li><a href="#cuts-and-cutset">Cuts and Cutset</a><ul><li><a href="#proposition">Proposition</a></li></ul></li><li><a href="#fundamental-cycle">Fundamental Cycle</a></li><li><a href="#fundamental-cut-set">Fundamental Cut Set</a></li><li><a href="#greedy-algorithms">Greedy Algorithms</a><ul><li><a href="#the-red-rule">The Red Rule</a></li><li><a href="#the-blue-rule">The Blue Rule</a></li><li><a href="#algorithm">Algorithm</a></li></ul></li><li><a href="#proof">Proof</a><ul><li><a href="#step-1">Step 1</a><ul><li><a href="#induction-on-blue-rule">Induction On Blue Rule</a><ul><li><a href="#inductive-step">Inductive Step:</a></li></ul></li><li><a href="#induction-on-red-rule">Induction on Red Rule</a></li></ul></li><li><a href="#step-2">Step 2</a><ul><li><a href="#case-1">Case 1</a></li><li><a href="#case-2">Case 2</a></li></ul></li></ul></li><li><a href="#prims-algorithm">Prim’s Algorithm</a><ul><li><a href="#algorithm-1">Algorithm</a></li><li><a href="#proof-1">Proof</a></li><li><a href="#complexity">Complexity</a></li><li><a href="#pseudocode">Pseudocode</a></li></ul></li><li><a href="#kruskals-algorithms">Kruskal’s Algorithms</a><ul><li><a href="#proof-2">Proof</a></li><li><a href="#complexity-1">Complexity</a></li><li><a href="#pseudocode-1">Pseudocode</a></li></ul></li><li><a href="#reverse-delete-algorithm">Reverse-delete algorithm</a><ul><li><a href="#proof-3">Proof</a></li><li><a href="#complexity-2">Complexity</a></li></ul></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Greedy_Algorithms_Shortest_Path.html" title="Greedy_Algorithms_Shortest_Path.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Divide_and_Conquer_Merge_Sort.html" title="Divide_and_Conquer_Merge_Sort.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="spanning-tree">Spanning Tree</h2>
+<p>A spanning tree fo a graph is a subgraph fot he graph that is both acyclic and connected</p>
+
+<h3 id="properties">Properties</h3>
+<p>if \(H=(V,T)\) is a subgraph of undirected graph \(G=(V,E)\) then the following are equivalent</p>
+<ul>
+  <li>H is a spanning tree of G</li>
+  <li>H is connected and hs \(\vert V \vert -1\) edges</li>
+  <li>H is acyclic and hs \(\vert V \vert -1\) edges</li>
+  <li>H is minimally connected, removing any edge disconnects it</li>
+  <li>H is maximally acyclic, adding an edge creates a cycle</li>
+</ul>
+
+<h3 id="minimum-spanning-tree">Minimum Spanning Tree</h3>
+<p>Given a weighted connected undirected graph a minimum spanning tree is one there the total sum of it’s edges weights are minimized.</p>
+
+<h2 id="cuts-and-cutset">Cuts and Cutset</h2>
+
+<blockquote>
+  <p>Def Cut: A partition of nodes into two non-empty subsets of \(S\) and  \(V \setminus S\)</p>
+</blockquote>
+
+<blockquote>
+  <p>Def Cutset: The cutset of a cut S is the ste of edges with exactly one endpoint in S</p>
+</blockquote>
+
+<h3 id="proposition">Proposition</h3>
+<p>A Cycle and a cutset intersect on an even number of edges</p>
+
+<p>If cycle C is within cut S or outside then the intersection is empty and even</p>
+
+<p>If a node on the Cycle is outside S and the cycle enters S then the cycle must leave, this can be repeated but results in an intersection of even size.</p>
+
+<h2 id="fundamental-cycle">Fundamental Cycle</h2>
+
+<p>let \(H=(V,T)\) be a spanning tree of \(G(V,E)\)</p>
+
+<p>For any edge \(e \in E \notin T : (V,T\cup {e})\) contains a cycle \(C\)</p>
+
+<p>For any edge \(f\in C :  (v,(T\cup{e})\setminus{f})\) is a spanning tree</p>
+
+<p>if \(C_e \leq C_f\) then \((V,T)\) is not a minimum spanning tree.</p>
+
+<h2 id="fundamental-cut-set">Fundamental Cut Set</h2>
+<p>let \(H=(V,T)\) be a spanning tree of \(G(V,E)\)</p>
+
+<p>for any edge \(f \in T : (V,T\setminus{f})\) has two connected components</p>
+
+<p>Let \(D\) denote the cutset between the two components</p>
+
+<p>For any edge \(e \in D : (V,(T\setminus{f})\cup{e})\) is a spanning tree</p>
+
+<p>if \(C_e \leq C_f\) then \((V,T)\) is not a minimum spanning tree.</p>
+
+<h2 id="greedy-algorithms">Greedy Algorithms</h2>
+
+<h3 id="the-red-rule">The Red Rule</h3>
+<p>let \(C\) be a cycle with no red edges</p>
+
+<p>Select an uncolored edge of \(C\) of max cost and color it red.</p>
+
+<h3 id="the-blue-rule">The Blue Rule</h3>
+<p>let \(D\) be a cutset with no blue edges</p>
+
+<p>select an uncolored edge of \(D\) of min cost and color it blue</p>
+
+<h3 id="algorithm">Algorithm</h3>
+<p>Apply the red and blue rules nondeterministically until all edges are blue or red</p>
+
+<p>The blue edges form a minimum spanning tree</p>
+
+<p>Note: We can stop when n-1 edges are colored blue.</p>
+
+<h2 id="proof">Proof</h2>
+<h3 id="step-1">Step 1</h3>
+<blockquote>
+  <p>Color Invariant: There exists a MST \((V,T')\) containing every blue edge and no red edge</p>
+</blockquote>
+
+<h4 id="induction-on-blue-rule">Induction On Blue Rule</h4>
+<p>Base Case: No edges colored \(\implies\) Every MST satisfies invariant</p>
+
+<h5 id="inductive-step">Inductive Step:</h5>
+
+<p>Suppose the color invariant is true before the blue rule</p>
+
+<p>Let \(D\) be a chosen cutset, let \(f \in D\) be a blue edge</p>
+
+<p>If \(f \in T'\) then \(T'\) still satisfies the invariant</p>
+
+<p>Otherwise: Consider fundament cycle \(C\) by adding \(f\) to \(T'\)</p>
+
+<p>let \(e \in C\) be another edge in \(D\)</p>
+
+<p>we can show \(e\)is uncolored and \(C_e \geq C_f\)</p>
+<ul>
+  <li>as \(e \in T' \implies e\) is not red</li>
+  <li>as blue rule \(\implies e\) not blue \(C_e \geq C_f\)</li>
+</ul>
+
+<p>Thus \((T' \cup {f})\setminus {e}\) satisfies the invariant</p>
+
+<h4 id="induction-on-red-rule">Induction on Red Rule</h4>
+<p>Base Case: No edges colored \(\implies\) Every MST satisfies invariant</p>
+
+<p>Suppose the color invariant is true before the red rule</p>
+
+<p>let \(C\) be the chosen cycle and let \(e\) be the edge colored red</p>
+
+<p>If \(e \notin T'\) then the \(T'\) still satisfies the invariant</p>
+
+<p>Otherwise: Consider the fundamental cutset \(D\) by deleting \(e\) form \(T'\)</p>
+
+<p>let \(f \in D\) be an edge in \(C\)</p>
+
+<p>we can show \(f\) is uncolored and \(C_e \geq C_f\)</p>
+<ul>
+  <li>as \(f \notin T' \implies f\) is not blue</li>
+  <li>as red rule \(\implies f\) not red and \(C_e \geq C_f\)</li>
+</ul>
+
+<p>Thus \((T' \cup {f})\setminus {e}\) satisfies the invariant</p>
+
+<h3 id="step-2">Step 2</h3>
+
+<blockquote>
+  <p>Theorem: The algorithm terminates</p>
+</blockquote>
+
+<p>Show that a uncolored edge or any other uncolored ede can be colored red or blue.</p>
+
+<p>Select uncolored edge \(e\)</p>
+
+<p>The blue edges form a forrest</p>
+<h4 id="case-1">Case 1</h4>
+<p>Both endpoints of \(e\) are in the same blue tree</p>
+<ul>
+  <li>Apply red rule to the cycle formed by adidng \(e\) to the forrest</li>
+  <li>Coloring \(e\) red</li>
+</ul>
+
+<h4 id="case-2">Case 2</h4>
+<p>Both endpoints of \(e\) are in different blue trees</p>
+<ul>
+  <li>Apply blue rule to the cutset introduces by either of the two blue trees</li>
+  <li>Some uncolored line in the cutset will be colored</li>
+</ul>
+
+<h2 id="prims-algorithm">Prim’s Algorithm</h2>
+
+<h3 id="algorithm-1">Algorithm</h3>
+<p>initialize \(S = {s}\) for any node \(s\)</p>
+
+<p>let \(T = \emptyset\)</p>
+
+<p>repeat \(n-1\) times</p>
+<ul>
+  <li>Add to \(T\) a minimum cost edge with exactly one endpoint in \(S\)</li>
+  <li>Add the other endpoint to \(S\)</li>
+</ul>
+
+<h3 id="proof-1">Proof</h3>
+<blockquote>
+  <p>Theorem: Prim’s algorithms computes a MST</p>
+</blockquote>
+
+<p>Assume all vertices in \(S\) are connected by a blue edges</p>
+
+<p>All vertices in cutset \(C\) of \(S\) are nto colored can apply blue rule by coloring cheapest edge in \(C\) blue</p>
+
+<h3 id="complexity">Complexity</h3>
+<p>Prims algorithm can run in \(O(m\log n)\) time</p>
+
+<h3 id="pseudocode">Pseudocode</h3>
+
+<pre><code class="language-Java">graph &lt;- graph to find MST
+
+S &lt;- empty set
+T &lt;- empty set
+
+dist &lt;- current known distances
+
+//initialize start values
+pq = priorityQueue()
+for each vertex in graph{
+    dist[vertex] = INFINITY
+    prev[vertex] = UNDEFINED
+}
+S.add( arbitrary node from graph)
+dist[s] = 0;
+for each vertex in graph{
+    pq.insert(s,dist[s]);
+}
+// calculate minimum path
+while (pq.empty =false){
+    u = pq.removeMin();
+    S.add(u)
+    for edge (u,v) where v not in S{
+        if (edge.length &lt; dist[v]){
+            dist[v]=edge.weight
+            pq.decreaseKey(v,dist[v])
+            prev[v]=edge
+        }
+    }
+}
+</code></pre>
+
+<h2 id="kruskals-algorithms">Kruskal’s Algorithms</h2>
+<p>Consider edges in acceding order of coset</p>
+<ul>
+  <li>Add to the tree unless it would form a cycle</li>
+</ul>
+
+<h3 id="proof-2">Proof</h3>
+<p>Theorem: kruskal’s algorithm computes an MST</p>
+
+<p>select edge \(e\)</p>
+
+<p>Case 1: both end points of e in the same blue tree</p>
+<ul>
+  <li>Color e by applying red rule to unique cycle
+Case 2: both endpoints of e in different blue trees</li>
+  <li>Color e blue by applying blue rule to cutset defined by either tree</li>
+</ul>
+
+<h3 id="complexity-1">Complexity</h3>
+<p>Kruskal’s algorithm can run in \(O(m \log m)\)</p>
+
+<h3 id="pseudocode-1">Pseudocode</h3>
+<p>Using union-find data structure to dynamically maintain connected components</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">edges</span> <span class="o">&lt;-</span> <span class="n">edges</span> <span class="n">in</span> <span class="n">the</span> <span class="n">graph</span>
+<span class="n">vertices</span> <span class="o">&lt;-</span> <span class="n">vertices</span> <span class="n">in</span> <span class="n">the</span> <span class="n">graph</span>
+<span class="no">T</span> <span class="o">&lt;-</span> <span class="n">empty</span> <span class="n">set</span>
+
+<span class="nc">Sort</span> <span class="n">edges</span> <span class="n">by</span> <span class="n">cost</span>
+<span class="n">uf</span><span class="o">=</span><span class="nc">UnionFind</span><span class="o">()</span>
+
+<span class="k">for</span> <span class="n">vertex</span> <span class="n">of</span> <span class="n">vertices</span><span class="o">{</span>
+    <span class="n">uf</span><span class="o">.</span><span class="na">makeSet</span><span class="o">(</span><span class="n">vertex</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="k">for</span> <span class="n">edge</span> <span class="n">of</span> <span class="n">edges</span><span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">uf</span><span class="o">.</span><span class="na">getSet</span><span class="o">(</span><span class="n">edge</span><span class="o">.</span><span class="na">start</span><span class="o">)!=</span><span class="n">uf</span><span class="o">.</span><span class="na">getSet</span><span class="o">(</span><span class="n">edge</span><span class="o">.</span><span class="na">end</span><span class="o">)){</span>
+        <span class="no">T</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">edge</span><span class="o">)</span>
+        <span class="n">uf</span><span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">u</span><span class="o">,</span><span class="n">v</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="no">T</span>
+</code></pre></div></div>
+
+<h2 id="reverse-delete-algorithm">Reverse-delete algorithm</h2>
+<p>Start with all edges in T</p>
+
+<p>Sort into descending order</p>
+
+<p>Delete edge form T unless it would disconnect T</p>
+
+<h3 id="proof-3">Proof</h3>
+<p>Theorem the reverse-delete algorithm</p>
+
+<p>Case 1: removing edge does not disconnects \(T\)</p>
+<ul>
+  <li>apply red rule to the cycle the line becomes red
+Case 2: removing edge disconnects \(T\)</li>
+  <li>apply blue rule to cutset \(D\) introduced by either component</li>
+</ul>
+
+<h3 id="complexity-2">Complexity</h3>
+<p>Can be done in \(O(m \log n (\log \log n)^3)\)</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

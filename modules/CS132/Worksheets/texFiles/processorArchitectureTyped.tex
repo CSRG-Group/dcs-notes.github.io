@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+
+\title{CS132 Quizzes - Processor Architecture}
+\begin{document}
+\begin{center}
+    \Huge\textbf{CS132 Quizzes - Processor Architecture}\\
+    \huge\textit{May 2021}\\
+    \medskip
+    \Large\textit{Justin Tan}
+\end{center}
+
+
+
+\section{Distinguish between macro and micro instructions}
+
+Micro instructions are the individual signals that the control unit has to
+assert to a microprocessor to change the state of values in the processor. When
+several micro instructions are executed in the right sequence, the
+microprocessor computes an overall result. \\
+This sequence of instructions are specified by a macro instruction in the form
+of an opcode which is fed into the control unit from the instruction register.
+The control unit is able to translate this opcode into the appropriate sequence
+of micro instructions that achieve the desired result mentioned earlier.
+
+\section{Relate the fetch-execute cycle to the execution of macro and micro instructions}
+
+Before each macro instruction is received as an opcode, the control unit has to fetch it. The contents of the program counter are passed to the MAR, the MAR sends this to Main store to retrieve the data from the address. This data is typically passed to the MDR and then the IR, and the opcode is then sent to the control unit. \\
+This opcode is translated to a sequence of control signals by the control unit, and each of these signals is a micro instruction. When carried out in the right sequence, these micro instructions compute a result which is the desired result of the macro instruction. To execute the next macro instruction, the control unit has to fetch the next set of instructions and then execute it.
+
+
+\section{Give a detailed explanation of the hardwired approach to control unit design}
+
+The hardwired approach consists of 4 main components. The sequencer takes the
+clock input of our microprocessor, and its main role is to align the operation
+of the combinatorial logic circuit in the control unit (CU) with the control
+steps for each macro instruction that depend on the microprocessor's clock.
+Hence these regulated signals should ideally match the clock frequency. \\
+The instruction decoder decodes the opcode and sends a signal down the right
+path that will have the appropriate logic gates to assert the right signals to
+other subsystems together with the sequencer. \\
+The fetch/execute flip-flop works together with the sequencer to regulate the
+control rounds, essentially making sure that the sequencer is in sync with the
+start and end of control rounds.\\
+Lastly, the main component in the control unit contains the combinatorial logic
+circuit that has inputs from the decoder and outputs to communication busses
+that connect to the rest of the microprocessor. It also has output lines to the
+flip-flop to signify when certain control rounds start and end.
+
+\section{Discuss the advantages and disadvantages of using a hardwired approach to control unit design}
+
+The advantages are that it is very fast, as it operates at the speed of logic
+gates. \\
+The disadvantages are a long design time because of complex hardware, there is
+no backward compatibility, and it is inflexible as it is difficult to change the
+design if new instructions are added.
+
+\section{Given a detailed explanation of the micro-programmed approach to control unit design}
+
+The CU with this approach is made up of a few components. Firstly there is an
+OTOA circuit, which is essentially a lookup table that translates opcodes into
+microprogram addresses. \\
+This is fed into a CN circuit that is meant to control the value given to the
+micro program counter (microPC). The microPC is the internal PC of the CU and it
+stores the value of the address of the microprogram to be executed next. Before
+each opcode is received, the microPC will have to point to the starting
+microaddress of the fetch microprogram that initiates the macro fetch operation
+in the processor. Otherwise, it points to the microaddress specified by the
+opcode. \\
+The microprogram memory is the internal memory of the CU that stores the
+microinstructions for each microprogram at its respective microaddress location.
+\\
+It feeds microinstructions based on the microadress to the microIR, which then
+takes the values in the instruction and sets the appropriate output values for
+the CU. \\
+Microinstructions are typically executed in sequence, incremented by the
+microPC, until the last microinstruction is executed. When this happens the
+microPC is set such that it either points back to microadress 0 which
+corresponds to the starting address of the fetch microprogram or points to the
+microaddress set by the OTOA.
+
+\section{Discuss the advantages and disadvantages of using a micro-programmed approach to control unit design}
+
+The advantages are that is easy to design and implement, there is backward
+compatibility because it is can be reprogrammed for new instructions but still
+accept older instructions. Its hardware is simple compared to hardwired
+implementations and its flexibility of design allows families of processors to
+be built. \\
+Its disadvantage is that it is slower than hardwired implementations.
+
+\section{Distinguish between CISC and RISC architectures, giving a specific example of each}
+
+CISC architectures primarily use the micro-programmed approach for control unit
+design, while RISC architectures use a hard-wired approach. A very well known
+example of RISC is of computer chips made from the company ARM (Advanced RISC
+Machine). While Intel uses a hybrid approach, commonly used instructions are
+hardwired, while others are micro-programmed, their chips are a good example of
+ones that use the CISC architecture.
+
+
+
+\end{document}

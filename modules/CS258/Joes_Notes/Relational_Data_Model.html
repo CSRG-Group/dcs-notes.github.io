@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Relational Data Model</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Relational Data Model</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#informal-definition">Informal definition</a></li><li><a href="#formal-definition">Formal Definition</a><ul><li><a href="#schema">Schema</a></li><li><a href="#domain">Domain</a></li><li><a href="#tuple-of-a-relation">tuple of a relation</a></li><li><a href="#relation-state">Relation State</a></li><li><a href="#relation-instance">Relation instance</a></li><li><a href="#short-hand">Short hand</a></li><li><a href="#other-terminology">Other Terminology</a></li><li><a href="#database">Database</a></li><li><a href="#database-schema">Database Schema</a></li><li><a href="#intension">Intension</a></li><li><a href="#extension">Extension</a></li><li><a href="#metadata">Metadata</a></li></ul></li><li><a href="#informal-to-formal">Informal to formal</a></li><li><a href="#sql">SQL</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Database_Basics.html" title="Database_Basics.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Relational_Database_Constraints.html" title="Relational_Database_Constraints.html">Next👉</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <h2 id="informal-definition">Informal definition</h2>
+<ul>
+  <li><strong>Relation</strong> is a table of values made from
+    <ul>
+      <li>A set of rows, the data elements in each row represents certain facts that correspond to a real-world entity or relationship.</li>
+      <li>Each column Represents a particular characteristic or attributes
+        <ul>
+          <li>Gives meaning to the data</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Key of a relation</strong>
+    <ul>
+      <li>Each row must me uniquely identifiable, the key of the row does this</li>
+      <li>Sometimes row-id or sequential numbers are assigned as keys</li>
+    </ul>
+  </li>
+  <li><strong>Relational Database Model</strong>
+    <ul>
+      <li>Based on tables, table name and attribute (name,type) pairs</li>
+      <li><strong>Formulating Queries</strong>
+        <ul>
+          <li>Specify the table name and attribute of interest</li>
+          <li>Specify constraints (predicates) needed to be satisfied for data to be of interest</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="formal-definition">Formal Definition</h2>
+
+<h3 id="schema">Schema</h3>
+<p>also the description of a relation
+    * With <strong>Attributes</strong> of \(A_1\),\(A_2\)…,\(A_n\)
+    * where <strong>R</strong> is the name of the relation
+    * is denoted by R(\(A_1\),\(A_2\)…,\(A_n\))</p>
+
+<h3 id="domain">Domain</h3>
+<p>The set of all possible values that a particular attribute could be.</p>
+<ul>
+  <li>A domain may be re-used for several attributes</li>
+  <li>Typically contains ranged and/or format</li>
+  <li>The domain of <em>name</em> could be the set fo all strings of length 2 to 25</li>
+</ul>
+
+<h3 id="tuple-of-a-relation">tuple of a relation</h3>
+<p>An ordered set of values</p>
+<ul>
+  <li>represented using (&lt;..&gt;)</li>
+  <li>Each value is within the a defined domain</li>
+  <li>A relation is an unordered set of such tuples</li>
+</ul>
+
+<h3 id="relation-state">Relation State</h3>
+<p>The set of tuples currently in the relation</p>
+<ul>
+  <li>Is a subset of all the cartesian product of the domains of it’s attributes</li>
+</ul>
+
+<h3 id="relation-instance"><strong>Relation instance</strong></h3>
+<p>A set of tuples for a relation schema</p>
+<ul>
+  <li>Denoted by <strong>r(R)</strong>
+    <h3 id="short-hand">Short hand</h3>
+    <p>given R(\(A_1\),\(A_2\)…,\(A_n\))</p>
+  </li>
+  <li><strong>Relation Schema</strong>: R(\(A_1\),\(A_2\)…,\(A_n\))</li>
+  <li><strong>Relation Name</strong>: R</li>
+  <li><strong>Relation Attributes</strong>: \(A_1\),\(A_2\)…,\(A_n\)</li>
+  <li><strong>r(R)</strong>: {\(t_1\),\(t_2\)…,\(t_n\)}
+    <ul>
+      <li>is a specific state of a relation with a set of tuples</li>
+      <li>r(R) \(\subset\) dom(\(A_1\)) \(x\) dom(\(A_2\)) … dom(\(A_n\))</li>
+    </ul>
+  </li>
+  <li><strong>\(t_i\)</strong>: &lt;\(v_1\),\(v_2\)…,\(v_n\)&gt;</li>
+</ul>
+
+<h3 id="other-terminology">Other Terminology</h3>
+
+<h3 id="database">Database</h3>
+<p>A collection of relations</p>
+<h3 id="database-schema">Database Schema</h3>
+<p>A set of all relation schemas in the database</p>
+
+<h3 id="intension">Intension</h3>
+<ul>
+  <li>Schema
+    <h3 id="extension">Extension</h3>
+  </li>
+  <li>Values /data
+    <h3 id="metadata">Metadata</h3>
+  </li>
+  <li>Schema</li>
+  <li>Other key info about the relations</li>
+</ul>
+
+<h2 id="informal-to-formal">Informal to formal</h2>
+<ul>
+  <li><strong>Table</strong> = <strong>Relation</strong></li>
+  <li><strong>Column Headers</strong> = <strong>Attributes</strong></li>
+  <li><strong>Row</strong> = <strong>Tuple</strong></li>
+  <li><strong>Table Elements</strong> = <strong>Relation instance</strong></li>
+</ul>
+
+<h2 id="sql">SQL</h2>
+
+<p>Sql is built on <strong>Bags</strong> not sets a back is a set that can have multiple of the same value e.g</p>
+
+<p><code class="language-plaintext highlighter-rouge">SELECT fname FROM users WHERE Sname = "Smith"</code>
+will return many instances of John</p>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>

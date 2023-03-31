@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="/assets/js/tocNav.js"></script>
+    
+    <!-- seo used to be here -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link id="mainCS" rel="stylesheet" href="/assets/css/style.css">
+    <title>notes Informed Search</title>
+</head>
+
+<body>
+    <div id="mainGrid" class="container">
+        <header style="padding:10px;" class="page-header notes-header" role="banner">
+            
+            
+            <h1 class="project-name">Informed Search</h1>
+        </header>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul class="table-of-contents"><li><a href="#heuristic">Heuristic</a></li><li><a href="#best-first-search">Best First Search</a><ul><li><a href="#complexity">Complexity</a></li></ul></li><li><a href="#a-search">A* Search</a><ul><li><a href="#proof">Proof</a></li><li><a href="#solution">Solution</a></li><li><a href="#heuristics">Heuristics</a></li><li><a href="#complexity-1">Complexity</a></li></ul></li><li><a href="#comparison">Comparison</a></li></ul>
+</div>
+        </div>
+        
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav">
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <a href="Uninformed_Search.html" title="Uninformed_Search.html">👈Prev</a><a href="./" title="Joes Notes Home">🏡Joes Notes</a><a href="Search_Optimizations.html" title="Search_Optimizations.html">Next👉</a>
+    
+    
+    
+
+
+
+</div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <p>Using information about the goal to inform our path choice.</p>
+
+<h2 id="heuristic">Heuristic</h2>
+<p>Extra information used to guide the path is called a heuristic</p>
+
+<p>The <strong>heuristic</strong> \(h(n)\) is th estimated minimum cost to get form a node to the goal node</p>
+
+<p>Calculating \(h(n)\) needs to be done efficiently</p>
+
+<p>A \(h(n)\) function is an underestimate if there is no path from the node \(n\) to the goal with cost strictly less than \(h(n)\)</p>
+
+<p>A heuristic is <strong>admissible</strong> if it is both:</p>
+<ul>
+  <li>A non-negative function</li>
+  <li>An underestimate of the actual cost</li>
+</ul>
+
+<h2 id="best-first-search">Best First Search</h2>
+<p>We can use the heuristic to determine the order fo the stack representing the frontier.</p>
+
+<p>Select the path that is closest to the goal node, according to the heuristic function.</p>
+
+<p>Greedy best-first search selects a path on the frontier with the lowest heuristic value.</p>
+
+<p>A priority queue is used as the frontier.</p>
+
+<p>This algorithm can get stuck in loops.</p>
+
+<h3 id="complexity">Complexity</h3>
+<p>Space: \(b^n\) where b is the branching factor and n is the path length</p>
+
+<p>Time: \(b^n\)</p>
+
+<p>Not guaranteed to find a solution</p>
+
+<p>It does nto always find te shortest path</p>
+
+<h2 id="a-search">A* Search</h2>
+
+<p>A* search uses a combination os path cost and heuristic value to guess the length of a path too the goal if a particular node is chosen.</p>
+
+\[f(p) = {cost}(p) + h(p)\]
+
+<p>The frontier is a priority queue sorted by the \(f(p)\) function</p>
+
+<p>The node on the frontier with the lowest estimated cost from the start to the goal via such node is chosen.</p>
+
+<p>A* search is admissable if:</p>
+<ul>
+  <li>The branching factor is finite</li>
+  <li>Arc costs are bounded above Zero</li>
+  <li>the function \(h(n)\) is non-negative and is an underestimate fo the shortest path of n to the goal node</li>
+</ul>
+
+<h3 id="proof">Proof</h3>
+<p>It can be shown that the A* algorithm is admissable.</p>
+
+<p>Let \(P\) be a path selected from the frontier to the goal node.</p>
+
+<p>Suppose path \(P'\) is on the frontier, because \(P\) was selected before \(P'\) and \(h(p) =0\)
+\(cost(P) \leq cost(P') + h(P')\)</p>
+
+<p>Because h is an underestimate
+\(cost(P') + h(P') \leq cost(P'')\)
+For any path \(P''\) that extends \(P'\)
+So \(cost(P) \leq cost(P'')\) for any path \(P''\) to a goal</p>
+
+<h3 id="solution">Solution</h3>
+<blockquote>
+  <p>Theorem: A* will always find a solution if there is one</p>
+</blockquote>
+
+<p>The frontier always contains the initial part of a path to a goal</p>
+
+<p>As A* runs the costs of the paths keeps increasing and will eventually exceed any finite number.</p>
+
+<p>Admissability does nto guarantee that every node selected from the frontier is on an optimal path but that the first solution found wil be optimal even with graphs with cycles.</p>
+
+<h3 id="heuristics">Heuristics</h3>
+<p>The performance of the A* algorithm depends on the performance of the heuristic, given a path \(P\) and a heuristic function \(h\) and \(c\) is the cost of the optimal solution the heuristic can fall into 3 categories.</p>
+
+<p>\(cost(p) + h(p) \lt c\)(1)
+\(cost(p) + h(p) = c\)(2)
+\(cost(p) + h(p) \gt c\)(3)</p>
+
+<p>A* expands all paths in the set \(\{cost(p) + h(p) \lt c\}\)</p>
+
+<p>A* expands some paths in the set \(\{cost(p) + h(p) = c\}\)</p>
+
+<p>Increasing the heuristic while keeping it admissable reduces the size of the sets.</p>
+
+<h3 id="complexity-1">Complexity</h3>
+<p>time: exponential in relative error of \(h*\) Length of solution</p>
+
+<p>space: Exponential keeps all nodes in memory</p>
+
+<h2 id="comparison">Comparison</h2>
+<p>|Strategy|Frontier Selection|Complete|Halts| Space |
+|-|-|-|-|-|
+|Breadth-first| First node added| Yes | No | Exp|
+| Depth-first | Last node added | No | No | Linear|
+| Heuristic-depth-first | local min \(h(p)\)| No | No | Linear|
+| Best-first | Global min \(h(p)\)| No | No | Linear|
+| Lowest cost first| minimal cost | Yes | No | Exp|
+| A*| minimal \(f(p)\) | Yes | No | Exp|</p>
+
+<ul>
+  <li>complete- Guaranteed to fins a solution if one exists.</li>
+  <li>Halts - on a finite graph (maybe with cycles).</li>
+  <li>Space as a function of the length of the current path.</li>
+</ul>
+
+
+
+                <footer class="site-footer">
+
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+</html>
