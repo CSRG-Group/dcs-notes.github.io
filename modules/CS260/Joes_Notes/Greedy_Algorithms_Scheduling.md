@@ -22,7 +22,7 @@ Given a set of jobs with a start and end time. Find the largest set of jobs such
 * Sort the jobs by end time in ascending order
 * Create an empty set of selected jobs
 * Iterate though the set of jobs
-* * If a job is compatible with the current selected jobs then add it
+  * If a job is compatible with the current selected jobs then add it
 
 ##### Checking For compatibility
 
@@ -38,9 +38,9 @@ jobs <- The available jobs with .start and .end
 
 jobs = jobs.sort(job.end) // Sort the job by end time in increasing order O(nlogn)
 selected = [] // empty set
-for( job : jobs ){
+for ( job : jobs ) {
     // the first job is added by default
-    if (selected.length ==0 || last.finish <= job.start){
+    if (selected.length == 0 || last.finish <= job.start){
         selected.add(job)
         last=job
     }
@@ -58,7 +58,7 @@ proof by contradiction
 * The most efficient set ($$j_1,j_2,j_3...j_m$$) also exists such that the largest $$r$$ can be found
 * Select an $$r$$ such that $$\forall v < r : i_v = j_v \land i_r \neq j_r$$ (r is the largest value such that all pairs before r are equal)
   
-As $i_r$ is selected by the finish first algorithm; no job exists that is compatible with $$\{ i_1...i_{r-1} \}$$ and finishes before $$i_r$$ so $$j_r$$ finishes after or with $$i_r$$
+As $$i_r$$ is selected by the finish first algorithm; no job exists that is compatible with $$\{ i_1...i_{r-1} \}$$ and finishes before $$i_r$$ so $$j_r$$ finishes after or with $$i_r$$
 
 This implies that $$i_r$$ can replace $$j_r$$ this is contradictory as it goes against the maximality of $$r$$ 
 
@@ -78,7 +78,7 @@ Given a set of jobs (intervals) schedule the jobs into the least number of rooms
 * Going through each job in turn
 * * check if the new schedule and add the job
   
-#### **Checking For compatibility
+#### Checking For compatibility
 * Store the schedules in a priority queue
 * use the end time of the last job added as the key
 * Check compatibility with queue.Find_Min 
@@ -90,18 +90,18 @@ Given a set of jobs (intervals) schedule the jobs into the least number of rooms
 ```java
 rooms= new PriorityQueue
 jobs = jobs.sort(job.start)
-for (job in jobs){
+for (job : jobs) {
     // the first job is added by default
-    if (rooms.length>0 && rooms.find_Min_Key <= job.start){
+    if (rooms.length > 0 && rooms.find_Min_Key <= job.start) {
         room=rooms.pop_Min()
         room.add(job)
-        rooms.add(room,job.end)
-    }else{
-        room=[job]
-        rooms.add(room,job.end)
+        rooms.add(room, job.end)
+    } else {
+        room = [job]
+        rooms.add(room, job.end)
     }
 }
-return rooms.values();
+return rooms.values()
 ```
 <div id="screen1"></div>
 
