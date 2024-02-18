@@ -25,6 +25,6 @@ Questions :
   altQuestions:
     - name : Anki flashcards
       description : Download and import with Anki
-      link : https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Discrete%20Mathematics%20-%20CS130.apkg
+      link : https://github.com/bora-7/Anki-Flashcards/raw/main/year%201/Discrete%20Mathematics%20-%20CS130.apkg
       authors:
         - Bora Akyuz

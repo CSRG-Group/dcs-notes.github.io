@@ -39,6 +39,6 @@ Questions :
         - Leon Chipchase
     - name : Anki flash cards
       description : simply download the CS118 deck and import it with Anki.
-      link: https://github.com/bora-7/Anki-Flashcards-Year-1/raw/main/Programming%20for%20Computer%20Scientists%20-%20CS118.apkg
+      link: https://github.com/bora-7/Anki-Flashcards/raw/main/year%201/Programming%20for%20Computer%20Scientists%20-%20CS118.apkg
       authors:
         - Bora Akyuz

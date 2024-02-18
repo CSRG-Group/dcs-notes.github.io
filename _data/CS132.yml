@@ -30,7 +30,7 @@ Notes:
 
 CribSheets :
   - name: logic_circuits
-    link: http://fbcf.xyz/resources/doc/cheatsheet.pdf
+    link: https://github.com/efbicief/efbicief.github.io/blob/master/resources/doc/cheatsheet.pdf
     description: reference for common logic circuits and their diagrams <a href="logic_circuits/logiccircuitsheet.pdf">(mirror)</a>
     authors:
       - Felix Bowyer
