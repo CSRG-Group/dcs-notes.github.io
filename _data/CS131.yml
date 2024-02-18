@@ -31,9 +31,6 @@ CribSheets :
     description: crib sheet for question types
     authors:
       - Akram Ahmad
-  - name: Summary of key results
-    description : summary notes of key results, again made by the module organiser (not hosted here, and only accessible using a Warwick ITS account)
-    link: https://warwick.ac.uk/fac/sci/dcs/teaching/material/cs131/revision_summary.pdf
     
 
 Questions :
